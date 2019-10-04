@@ -9,7 +9,7 @@ import com.hades.example.android.android_mechanism.msg_handler._main_2_thread.Te
 import com.hades.example.android.android_mechanism.msg_handler._main_2_thread_2_main.TestMsgMain2Thread2MainFragment;
 import com.hades.example.android.android_mechanism.msg_handler._main_2_thread_2_main.handler_thread.TestMsgMain2Thread2Main_HandlerThread_Fragment;
 import com.hades.example.android.android_mechanism.msg_handler._thread_2_main.TestMsgThread2MainFragment;
-import com.hades.example.android.lib.base.BaseActivity;
+import com.github.yingvickycao.autils.base.BaseActivity;
 
 public class MessageHandlerActivity extends BaseActivity {
     @Override

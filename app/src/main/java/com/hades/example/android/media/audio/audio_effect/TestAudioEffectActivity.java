@@ -23,8 +23,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.yingvickycao.autils.base.PermissionActivity;
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.PermissionActivity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -11,7 +11,7 @@ import android.widget.RatingBar;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.github.yingvickycao.autils.base.BaseFragment;
 
 public class TestRatingBarFragment extends BaseFragment {
     private static final String TAG = TestRatingBarFragment.class.getSimpleName();

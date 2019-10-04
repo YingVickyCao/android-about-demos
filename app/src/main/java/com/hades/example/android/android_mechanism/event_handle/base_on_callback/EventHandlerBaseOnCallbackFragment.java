@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.github.yingvickycao.autils.base.BaseFragment;
 
 /**
  * 基于回调的事件处理

@@ -5,8 +5,8 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
+import com.github.yingvickycao.autils.base.PermissionActivity;
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.PermissionActivity;
 import com.hades.example.android.network.tcp_ip.multi_thread_client.MultiThreadClientActivity;
 import com.hades.example.android.network.tcp_ip.one_thread_client.SimpleClientActivity;
 import com.hades.example.android.network.url.http_url_connection.MultiThreadDownFragment;

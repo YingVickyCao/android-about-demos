@@ -6,8 +6,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.hades.example.android.lib.BuildConfig;
-import com.hades.example.android.lib.utils.VersionUtil;
+import com.github.yingvickycao.autils.BuildConfig;
+import com.github.yingvickycao.autils.utils.VersionUtil;
 
 import java.lang.ref.WeakReference;
 

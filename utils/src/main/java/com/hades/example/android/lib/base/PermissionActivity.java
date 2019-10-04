@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.hades.example.android.lib.R;
+import com.github.yingvickycao.autils.R;
 
 public class PermissionActivity extends BaseActivity {
     private static final String TAG = PermissionActivity.class.getSimpleName();

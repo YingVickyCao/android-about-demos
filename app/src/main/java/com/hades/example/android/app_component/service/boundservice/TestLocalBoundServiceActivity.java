@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.LogHelper;
+import com.github.yingvickycao.autils.utils.LogHelper;
 
 public class TestLocalBoundServiceActivity extends Activity {
     private static final String TAG = TestLocalBoundServiceActivity.class.getSimpleName();

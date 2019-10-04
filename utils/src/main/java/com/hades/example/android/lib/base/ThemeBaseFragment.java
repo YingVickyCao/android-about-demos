@@ -2,8 +2,8 @@ package com.hades.example.android.lib.base;
 
 import android.app.TaskStackBuilder;
 
-import com.hades.example.android.lib.R;
-import com.hades.example.android.lib.mock.SFMock;
+import com.github.yingvickycao.autils.R;
+import com.github.yingvickycao.autils.mock.SFMock;
 
 public class ThemeBaseFragment extends BaseFragment {
 

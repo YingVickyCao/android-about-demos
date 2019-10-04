@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.hades.example.android.lib.utils.LogHelper;
+import com.github.yingvickycao.autils.utils.LogHelper;
 
 public class FeedSQLiteOpenHelper extends SQLiteOpenHelper {
     private static final String TAG = FeedSQLiteOpenHelper.class.getSimpleName();

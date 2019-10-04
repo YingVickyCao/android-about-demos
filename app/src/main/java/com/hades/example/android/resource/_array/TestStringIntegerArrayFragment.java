@@ -22,7 +22,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.github.yingvickycao.autils.base.BaseFragment;
 
 /**
  * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html

@@ -11,9 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 
+import com.github.yingvickycao.autils.base.ThemeBaseFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.ThemeBaseFragment;
 
 public class TestTabLayoutFragment extends ThemeBaseFragment {
     private static final String TAG = TestTabLayoutFragment.class.getSimpleName();

@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.hades.example.android.lib.base.BaseActivity;
+import com.github.yingvickycao.autils.base.BaseActivity;
 
 public class TestPlaneActivity extends BaseActivity {
     private static final String TAG = TestPlaneActivity.class.getSimpleName();

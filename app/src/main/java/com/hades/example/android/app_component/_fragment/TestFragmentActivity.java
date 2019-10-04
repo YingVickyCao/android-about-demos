@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseActivity;
+import com.github.yingvickycao.autils.base.BaseActivity;
 
 public class TestFragmentActivity extends BaseActivity {
 

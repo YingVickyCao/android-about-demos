@@ -10,9 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.ArrayRes;
 import androidx.annotation.Nullable;
 
+import com.github.yingvickycao.autils.utils.ThemeUtils;
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
-import com.hades.example.android.lib.utils.ThemeUtils;
+import com.github.yingvickycao.autils.base.BaseFragment;
 
 public class TestAttrInThemeFragment extends BaseFragment {
     private static final String TAG = TestAttrInThemeFragment.class.getSimpleName();

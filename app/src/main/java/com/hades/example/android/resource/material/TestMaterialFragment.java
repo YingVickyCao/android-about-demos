@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.github.yingvickycao.autils.base.BaseFragment;
 import com.hades.example.android.media.audio.media_player.TestMediaPlayer4AudioFragment;
 
 import java.io.IOException;

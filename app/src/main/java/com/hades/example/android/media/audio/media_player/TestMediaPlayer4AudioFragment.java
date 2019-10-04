@@ -21,10 +21,10 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.Constant;
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
-import com.hades.example.android.lib.timer.ITimerView;
-import com.hades.example.android.lib.timer.TimerHandler;
-import com.hades.example.android.lib.utils.FileUtil;
+import com.github.yingvickycao.autils.base.BaseFragment;
+import com.github.yingvickycao.autils.timer.ITimerView;
+import com.github.yingvickycao.autils.timer.TimerHandler;
+import com.github.yingvickycao.autils.utils.FileUtil;
 
 import java.io.IOException;
 

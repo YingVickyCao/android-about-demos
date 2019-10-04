@@ -12,10 +12,10 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.yingvickycao.autils.base.BaseFragment;
+import com.github.yingvickycao.autils.mock.DummyContent;
+import com.github.yingvickycao.autils.mock.DummyItem;
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
-import com.hades.example.android.lib.mock.DummyContent;
-import com.hades.example.android.lib.mock.DummyItem;
 import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v1.SimpleDividerItemDecoration;
 
 /**

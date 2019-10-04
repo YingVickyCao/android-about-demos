@@ -15,13 +15,13 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.github.yingvickycao.autils.base.RxPermissionsActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.RxPermissionsActivity;
 
 import java.util.List;
 

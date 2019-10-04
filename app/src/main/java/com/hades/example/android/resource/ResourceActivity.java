@@ -6,7 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.PermissionActivity;
+import com.github.yingvickycao.autils.base.PermissionActivity;
 import com.hades.example.android.resource._array.TestStringIntegerArrayFragment;
 import com.hades.example.android.resource._color_state_list.TestColorFragment;
 import com.hades.example.android.resource._color_state_list.TestColorStateListFragment;

@@ -1,6 +1,7 @@
 package com.hades.example.android;
 
-import com.hades.example.android.lib.utils.FileUtil;
+
+import com.github.yingvickycao.autils.utils.FileUtil;
 
 public class Constant {
     public final static int KEY_SEND = 0x345;

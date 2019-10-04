@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.github.yingvickycao.autils.mock.DummyContent;
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
-import com.hades.example.android.lib.mock.DummyContent;
+import com.github.yingvickycao.autils.base.BaseFragment;
 
 import java.util.ArrayList;
 

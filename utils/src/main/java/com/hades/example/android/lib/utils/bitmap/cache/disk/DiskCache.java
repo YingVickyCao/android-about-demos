@@ -4,11 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 
-import com.hades.example.android.lib.BuildConfig;
-import com.hades.example.android.lib.utils.bitmap.cache.ImageCacheParams;
-import com.hades.example.android.lib.utils.bitmap.fetch.IInBitmapListener;
-import com.hades.example.android.lib.utils.FileUtil;
-import com.hades.example.android.lib.utils.ImageUtil;
+import com.github.yingvickycao.autils.BuildConfig;
+import com.github.yingvickycao.autils.utils.bitmap.cache.ImageCacheParams;
+import com.github.yingvickycao.autils.utils.bitmap.fetch.IInBitmapListener;
+import com.github.yingvickycao.autils.utils.FileUtil;
+import com.github.yingvickycao.autils.utils.ImageUtil;
 
 import java.io.File;
 import java.io.FileDescriptor;

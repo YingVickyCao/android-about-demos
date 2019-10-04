@@ -16,8 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.github.yingvickycao.autils.utils.LogHelper;
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.LogHelper;
 
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;

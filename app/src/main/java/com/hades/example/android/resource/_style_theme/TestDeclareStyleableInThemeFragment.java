@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.ThemeBaseFragment;
+import com.github.yingvickycao.autils.base.ThemeBaseFragment;
 
 public class TestDeclareStyleableInThemeFragment extends ThemeBaseFragment {
     @Nullable

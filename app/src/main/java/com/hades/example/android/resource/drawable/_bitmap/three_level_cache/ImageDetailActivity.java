@@ -35,12 +35,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.github.yingvickycao.autils.mock.Images;
+import com.github.yingvickycao.autils.utils.VersionUtil;
+import com.github.yingvickycao.autils.utils.bitmap.cache.ImageCacheParams;
+import com.github.yingvickycao.autils.utils.bitmap.fetch.ImageFetcher;
 import com.hades.example.android.BuildConfig;
 import com.hades.example.android.R;
-import com.hades.example.android.lib.mock.Images;
-import com.hades.example.android.lib.utils.VersionUtil;
-import com.hades.example.android.lib.utils.bitmap.cache.ImageCacheParams;
-import com.hades.example.android.lib.utils.bitmap.fetch.ImageFetcher;
 
 public class ImageDetailActivity extends FragmentActivity implements OnClickListener {
     private static final String IMAGE_CACHE_DIR = "images";

@@ -11,7 +11,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.PermissionActivity;
+import com.github.yingvickycao.autils.base.PermissionActivity;
 
 public class AddPinndedShortcutsActivity extends PermissionActivity {
     @Override

@@ -9,12 +9,12 @@ import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.hades.example.android.lib.BuildConfig;
-import com.hades.example.android.lib.R;
-import com.hades.example.android.lib.utils.bitmap.cache.ImageCacheParams;
-import com.hades.example.android.lib.utils.bitmap.cache.disk.DiskLruCache;
-import com.hades.example.android.lib.utils.FileUtil;
-import com.hades.example.android.lib.utils.ImageUtil;
+import com.github.yingvickycao.autils.BuildConfig;
+import com.github.yingvickycao.autils.R;
+import com.github.yingvickycao.autils.utils.bitmap.cache.ImageCacheParams;
+import com.github.yingvickycao.autils.utils.bitmap.cache.disk.DiskLruCache;
+import com.github.yingvickycao.autils.utils.FileUtil;
+import com.github.yingvickycao.autils.utils.ImageUtil;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

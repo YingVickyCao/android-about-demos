@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.hades.example.android.lib.utils.ThemeUtils;
+import com.github.yingvickycao.autils.utils.ThemeUtils;
 
 class ImageAdapterWithActionBar extends BaseAdapter {
     private static final String TAG = ImageAdapterWithActionBar.class.getSimpleName();

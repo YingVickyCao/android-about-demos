@@ -8,7 +8,7 @@ import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.LogHelper;
+import com.github.yingvickycao.autils.utils.LogHelper;
 
 import java.util.ArrayList;
 import java.util.List;

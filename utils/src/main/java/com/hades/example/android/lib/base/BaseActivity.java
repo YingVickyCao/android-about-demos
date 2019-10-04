@@ -13,8 +13,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.hades.example.android.lib.R;
-import com.hades.example.android.lib.mock.SFMock;
+import com.github.yingvickycao.autils.R;
+import com.github.yingvickycao.autils.mock.SFMock;
 
 public class BaseActivity extends AppCompatActivity {
     private View topic;

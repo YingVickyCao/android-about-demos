@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.mock.DummyContentFragment;
+import com.github.yingvickycao.autils.mock.DummyContentFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;

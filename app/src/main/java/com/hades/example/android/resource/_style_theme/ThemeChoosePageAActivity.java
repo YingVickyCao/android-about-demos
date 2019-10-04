@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.NoNeedPermissionActivity;
+import com.github.yingvickycao.autils.base.NoNeedPermissionActivity;
 
 public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
 

@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.lib.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.github.yingvickycao.autils.R;
+import com.github.yingvickycao.autils.base.BaseFragment;
 
 public class DummyFragment extends BaseFragment {
     public static final String ARG_SECTION_NUMBER = "section_number";

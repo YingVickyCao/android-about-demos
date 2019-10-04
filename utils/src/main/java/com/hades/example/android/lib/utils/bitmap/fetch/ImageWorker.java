@@ -30,10 +30,10 @@ import androidx.fragment.app.FragmentManager;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.hades.example.android.lib.BuildConfig;
-import com.hades.example.android.lib.utils.ImageUtil;
-import com.hades.example.android.lib.utils.bitmap.cache.ImageCache;
-import com.hades.example.android.lib.utils.bitmap.cache.ImageCacheParams;
+import com.github.yingvickycao.autils.BuildConfig;
+import com.github.yingvickycao.autils.utils.ImageUtil;
+import com.github.yingvickycao.autils.utils.bitmap.cache.ImageCache;
+import com.github.yingvickycao.autils.utils.bitmap.cache.ImageCacheParams;
 
 public abstract class ImageWorker implements IImageWorker {
     private static final String TAG = ImageWorker.class.getSimpleName();

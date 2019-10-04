@@ -4,8 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
+import com.github.yingvickycao.autils.base.NoNeedPermissionActivity;
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 
 /**
  * Created by hades on 17/03/2018.

@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.hades.example.android.lib.R;
-import com.hades.example.android.lib.mock.DummyItem;
+import com.github.yingvickycao.autils.R;
+import com.github.yingvickycao.autils.mock.DummyItem;
 
 import java.util.List;
 

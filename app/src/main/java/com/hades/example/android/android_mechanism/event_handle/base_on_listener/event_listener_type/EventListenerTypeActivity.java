@@ -4,13 +4,13 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
+import com.github.yingvickycao.autils.base.BaseActivity;
 import com.hades.example.android.R;
 import com.hades.example.android.android_mechanism.event_handle.base_on_listener.event_listener_type.activity_itself.ActivityItselfListenerActivity;
 import com.hades.example.android.android_mechanism.event_handle.base_on_listener.event_listener_type.anonymous_inner_class.AnonymousInnerClassListenFragment;
 import com.hades.example.android.android_mechanism.event_handle.base_on_listener.event_listener_type.inner_class.InnerClassListenFragment;
 import com.hades.example.android.android_mechanism.event_handle.base_on_listener.event_listener_type.outer_class.OuterClassListenFragment;
 import com.hades.example.android.android_mechanism.event_handle.base_on_listener.event_listener_type.xml.XmlListenerActivity;
-import com.hades.example.android.lib.base.BaseActivity;
 
 public class EventListenerTypeActivity extends BaseActivity {
 

@@ -1,7 +1,7 @@
 package com.hades.example.android.widget._list._recyclerview.dummy;
 
-import com.hades.example.android.lib.mock.DummyItem;
 
+import com.github.yingvickycao.autils.mock.DummyItem;
 
 public interface IItemClickAction {
     void onItemClickListener(DummyItem item);
