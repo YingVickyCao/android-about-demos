@@ -17,6 +17,7 @@
     <string name="page_intent_Flag">Intent-Flag</string>
     <string name="page_Fragment">Fragment</string>
     <string name="page_BottomSheetDialogFragment">BottomSheetDialogFragment</string>
+    <string name="page_half_width_DialogFragment">Half width DialogFragment</string>
     <string name="page_DialogFragment">DialogFragment</string>
     <string name="page_Base_DialogFragment">Base DialogFragment</string>
 

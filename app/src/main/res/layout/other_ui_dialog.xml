@@ -45,7 +45,7 @@
                     android:text="@string/_2" />
 
                 <Button
-                    android:id="@+id/btn2"
+                    android:id="@+id/btn3"
                     style="@style/btn.small"
                     android:text="@string/_3" />
 
@@ -113,6 +113,12 @@
                     android:id="@+id/pageBottomSheetDialogFragment"
                     style="@style/btn.small"
                     android:text="@string/page_BottomSheetDialogFragment" />
+
+                <Button
+                    android:id="@+id/pageHalfWidthDialogFragment"
+                    style="@style/btn.small"
+                    android:text="@string/page_half_width_DialogFragment" />
+
             </LinearLayout>
 
             <View style="@style/div" />

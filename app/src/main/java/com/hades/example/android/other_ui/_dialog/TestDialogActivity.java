@@ -2,6 +2,7 @@ package com.hades.example.android.other_ui._dialog;
 
 
 import android.os.Bundle;
+import android.util.Half;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -16,6 +17,7 @@ import com.hades.example.android.other_ui._dialog.depressed.TestAlertDialogFragm
 import com.hades.example.android.other_ui._dialog.depressed.TestProgressDialogFragment;
 import com.hades.example.android.other_ui._dialog.depressed.TimePickerDialogFragment;
 import com.hades.example.android.other_ui._dialog.good.activity.DialogStyleActivity;
+import com.hades.example.android.other_ui._dialog.good.fragment.HalfWidthDialogFragment;
 import com.hades.example.android.other_ui._dialog.good.fragment.ShowAsDialogOrEmbeddedDialogFragment;
 import com.hades.example.android.other_ui._dialog.good.fragment.MyAlertDialogFragment;
 import com.hades.example.android.other_ui._dialog.good.fragment.MyBaseDialogFragment;
@@ -35,7 +37,7 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
 
         findViewById(R.id.btn1).setOnClickListener(v -> showMyBaseDialogFragment(1));
         findViewById(R.id.btn2).setOnClickListener(v -> showMyBaseDialogFragment(2));
-        findViewById(R.id.btn2).setOnClickListener(v -> showMyBaseDialogFragment(3));
+        findViewById(R.id.btn3).setOnClickListener(v -> showMyBaseDialogFragment(3));
         findViewById(R.id.btn4).setOnClickListener(v -> showMyBaseDialogFragment(4));
         findViewById(R.id.btn5).setOnClickListener(v -> showMyBaseDialogFragment(5));
         findViewById(R.id.btn6).setOnClickListener(v -> showMyBaseDialogFragment(6));
@@ -57,6 +59,7 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
         findViewById(R.id.pageProgressDialog).setOnClickListener(v -> pageProgressDialog());
         findViewById(R.id.pageDatePickerDialog).setOnClickListener(v -> pageDatePickerDialog());
         findViewById(R.id.pageTimePickerDialog).setOnClickListener(v -> pageTimePickerDialog());
+        findViewById(R.id.pageHalfWidthDialogFragment).setOnClickListener(v -> pageHalfWidthDialogFragment());
     }
 
     private void firstRemoveDialogFragment() {
@@ -114,9 +117,12 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
     }
 
     private void pageBottomSheetDialogFragment() {
-        firstRemoveDialogFragment();
         showFragment(new TestBottomSheetDialogFragment()); // embedded : added as content in a view hierarchy
 //        new TestBottomSheetDialogFragment().show(getSupportFragmentManager(), "dialog"); // be created and shown as a dialog
+    }
+
+    private void pageHalfWidthDialogFragment() {
+        new HalfWidthDialogFragment().show(getSupportFragmentManager(), "dialog");
     }
 
     private void pageDialogStyleActivity() {
