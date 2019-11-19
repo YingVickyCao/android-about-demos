@@ -62,6 +62,13 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
         findViewById(R.id.pageHalfWidthDialogFragment).setOnClickListener(v -> pageHalfWidthDialogFragment());
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        pageHalfWidthDialogFragment();
+    }
+
     private void firstRemoveDialogFragment() {
         // DialogFragment.show() will take care of adding the fragment
         // in a transaction.  We also want to remove any currently showing

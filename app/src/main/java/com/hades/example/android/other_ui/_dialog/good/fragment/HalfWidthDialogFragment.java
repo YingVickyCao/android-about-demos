@@ -4,11 +4,14 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -94,8 +97,16 @@ public class HalfWidthDialogFragment extends DialogFragment {
         Dialog dialog = getDialog();
         if (null != dialog) {
             Log.d(TAG, "onStart: dialog != null"); // Show as a Dialog
-            int width = ViewGroup.LayoutParams.MATCH_PARENT;
+            int width = (int) (getScreenWidth() * 0.5);
             int height = ViewGroup.LayoutParams.MATCH_PARENT;
+            Toast.makeText(getActivity(), "" + width + "," + height, Toast.LENGTH_SHORT).show();
+            
+            /**
+             * tablet
+             * portrait:  width =1600, height=2452
+             * landscape: width = 2560,height =1492
+             */
+            Log.d(TAG, "onStart: width = " + getScreenWidth() + ", height = " + getScreenHeight());
             if (null != dialog.getWindow()) {
                 dialog.getWindow().setLayout(width, height);                                        // 3)
                 dialog.getWindow().setWindowAnimations(R.style.DialogFragmentShowAsFullDialog);
@@ -117,6 +128,24 @@ public class HalfWidthDialogFragment extends DialogFragment {
         } else {
             Log.d(TAG, "onStart: dialog = null"); // Show as an Embedded Fragment
         }
+    }
+
+    // TODO: refactor get screen width and height
+    private int getScreenWidth() {
+        DisplayMetrics metrics = new DisplayMetrics();
+        WindowManager windowManager = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        windowManager.getDefaultDisplay().getMetrics(metrics);
+        // dp = metrics.widthPixels/metrics.density
+        // px
+        return metrics.widthPixels;
+    }
+
+    // TODO: 2019-11-19
+    private int getScreenHeight() {
+        DisplayMetrics metrics = new DisplayMetrics();
+        WindowManager windowManager = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        windowManager.getDefaultDisplay().getMetrics(metrics);
+        return metrics.heightPixels;
     }
 
     @Override
