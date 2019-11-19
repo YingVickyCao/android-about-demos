@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,13 @@ import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
 
+/**
+ * DialogFragment:
+ * height = full screen
+ * width = half screen size
+ * Animation enter =  down -> up. and exit = up -> down
+ * Position = right.
+ */
 public class HalfWidthDialogFragment extends DialogFragment {
     private static final String TAG = HalfWidthDialogFragment.class.getSimpleName();
 
@@ -109,6 +117,7 @@ public class HalfWidthDialogFragment extends DialogFragment {
             Log.d(TAG, "onStart: width = " + getScreenWidth() + ", height = " + getScreenHeight());
             if (null != dialog.getWindow()) {
                 dialog.getWindow().setLayout(width, height);                                        // 3)
+                dialog.getWindow().setGravity(Gravity.END);
                 dialog.getWindow().setWindowAnimations(R.style.DialogFragmentShowAsFullDialog);
             }
             dialog.setOnKeyListener((dialog1, keyCode, event) -> {
