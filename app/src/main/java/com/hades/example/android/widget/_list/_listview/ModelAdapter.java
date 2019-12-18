@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.hades.example.android.R;
+
 import java.util.List;
 
 public class ModelAdapter extends ArrayAdapter<Model> {
@@ -28,7 +30,22 @@ public class ModelAdapter extends ArrayAdapter<Model> {
         // 如果 convertView 为 null，就填充视图
         if (convertView == null) {
             // 创建视图
-            convertView = mInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
+//            convertView = mInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
+//            convertView = mInflater.inflate(R.layout.list_item_view_4, parent, false); // Recommended. item height = 64dp
+
+            /**
+             * Not Recommended.
+             * item height != 64dp.  Wrong
+             *
+             * root = null -> LayoutParams ViewGroup generate a default set.
+             *
+             * android:layout_XXX attributes are always be evaluated in the context of the parent view.
+             * As a result, without any parent, all LayoutParams declared on the root element of XML tree will just get thrown away.
+             * Without LayoutParams, the ViewGroup that eventually hosts the inflated layout is left to generate a default set for app..
+             */
+//            convertView = mInflater.inflate(R.layout.list_item_view_4, null);
+//            convertView = mInflater.inflate(R.layout.list_item_view_5, null); // item height != 64dp. Wrong
+            convertView = mInflater.inflate(R.layout.list_item_view_6, null);// item height = 64dp. OK
 
             viewHolder = new ViewHolder();
             // 获取视图中各个控件的引用，并存入viewHolder中

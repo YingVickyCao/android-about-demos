@@ -1,7 +1,4 @@
-/*******************************************************************************
- * Copyright (c) 2012 Manning
- * See the file license.txt for copying permission.
- ******************************************************************************/
+
 package com.hades.example.android.widget._list._listview;
 
 import android.os.Bundle;
@@ -22,12 +19,15 @@ import java.util.List;
 public class TestListViewFragment extends Fragment {
     private static final String TAG = TestListViewFragment.class.getSimpleName();
 
-    private static final int MODEL_COUNT = 1000;
+    //    private static final int MODEL_COUNT = 1000;
+    private static final int MODEL_COUNT = 10;
     private ListView mListView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reuse_adapter_item_view_in_list_view, container, false);
+        // ERROR:java.lang.IllegalStateException: The specified child already has a parent. You must call removeView() on the child's parent first.
+//        View view = inflater.inflate(R.layout.fragment_reuse_adapter_item_view_in_list_view, container);
         mListView = view.findViewById(R.id.listView);
         mListView.setAdapter(new ModelAdapter(getActivity(), 0, buildModels()));
         forbidScroll();

@@ -106,7 +106,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     @Override
     protected void showCurrentTest() {
-        pageSwitch();
+        pageListView();
     }
 
     private void pageViewLocation() {
@@ -161,7 +161,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         showActivity(VideoViewRotateScreenTipActivity.class);
     }
 
-    private void pageSurfaceViewPlayVideo(){
+    private void pageSurfaceViewPlayVideo() {
         showFragment(new TestSurfaceViewPlayVideoFragment());
     }
 
