@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -20,17 +21,20 @@ public class TestListViewFragment extends Fragment {
     private static final String TAG = TestListViewFragment.class.getSimpleName();
 
     //    private static final int MODEL_COUNT = 1000;
-    private static final int MODEL_COUNT = 10;
+    private static final int MODEL_COUNT = 5;
     private ListView mListView;
+    private ViewGroup mItemsRoot;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reuse_adapter_item_view_in_list_view, container, false);
         // ERROR:java.lang.IllegalStateException: The specified child already has a parent. You must call removeView() on the child's parent first.
 //        View view = inflater.inflate(R.layout.fragment_reuse_adapter_item_view_in_list_view, container);
+        mItemsRoot = view.findViewById(R.id.itemsRoot);
         mListView = view.findViewById(R.id.listView);
         mListView.setAdapter(new ModelAdapter(getActivity(), 0, buildModels()));
         forbidScroll();
+        fillItems();
         return view;
     }
 
@@ -54,5 +58,15 @@ public class TestListViewFragment extends Fragment {
             ret.add(model);
         }
         return ret;
+    }
+
+    private void fillItems() {
+        for (int i = 0; i < 3; i++) {
+//            View view = LayoutInflater.from(getActivity()).inflate(R.layout.list_item_view_7, null); // Wrong
+            View view = LayoutInflater.from(getActivity()).inflate(R.layout.list_item_view_7, mItemsRoot, false); //OK
+            TextView textView = view.findViewById(android.R.id.text1);
+            textView.setText(String.valueOf(i + 1));
+            mItemsRoot.addView(view);
+        }
     }
 }
