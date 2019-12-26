@@ -110,9 +110,13 @@ public class HalfWidthDialogFragment extends DialogFragment {
             Toast.makeText(getActivity(), "" + width + "," + height, Toast.LENGTH_SHORT).show();
             
             /**
-             * tablet
+             * tablet:amSung Galaxy Tab S4,Android 9(28)
              * portrait:  width =1600, height=2452
              * landscape: width = 2560,height =1492
+             *
+             * tablet:amSung Galaxy Tab S2,Android 7(24)
+             * portrait: width = 1536, height = 2048
+             * landscape:width = 2048, height = 1536
              */
             Log.d(TAG, "onStart: width = " + getScreenWidth() + ", height = " + getScreenHeight());
             if (null != dialog.getWindow()) {

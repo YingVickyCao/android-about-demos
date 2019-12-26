@@ -292,6 +292,11 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
     @Override
     public void onCompletion(MediaPlayer mp) {
         Log.d(TAG, "onCompletion: ");
+
+        if (null != mPlayer) {
+            mPlayer.release();
+            mPlayer = null;
+        }
     }
 
     @Override

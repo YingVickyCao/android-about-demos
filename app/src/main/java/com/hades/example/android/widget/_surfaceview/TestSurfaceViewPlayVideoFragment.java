@@ -2,9 +2,11 @@ package com.hades.example.android.widget._surfaceview;
 
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.TimedText;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -12,22 +14,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.github.yingvickycao.autils.timer.ITimerView;
+import com.github.yingvickycao.autils.timer.TimerHandler;
 import com.hades.example.android.R;
+import com.hades.example.android.media.audio.media_player.IMediaPlayer;
+import com.hades.example.android.media.audio.media_player.MediaController;
 
 import java.io.IOException;
 
-public class TestSurfaceViewPlayVideoFragment extends Fragment implements SurfaceHolder.Callback, MediaPlayer.OnPreparedListener {
-
+public class TestSurfaceViewPlayVideoFragment extends Fragment implements SurfaceHolder.Callback, MediaPlayer.OnPreparedListener, IMediaPlayer, ITimerView {
+    private static final String TAG = TestSurfaceViewPlayVideoFragment.class.getSimpleName();
     private SurfaceView surfaceView;
+    private SeekBar mProgress;
+    private TextView mCurrentTime;
+    private TextView mEndTime;
     private View mView;
 
     private MediaPlayer mPlayer;
     private int currentPosition;
+
+    private TimerHandler mHandler;
+    private MediaController mMediaController;
+    private boolean mDragging = false;
+    private int mCurrentBufferPercentage;
 
     @Nullable
     @Override
@@ -37,14 +53,79 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
         view.findViewById(R.id.play).setOnClickListener(v -> onClickPlay());
         view.findViewById(R.id.pause).setOnClickListener(v -> onClickPause());
         view.findViewById(R.id.stopRecord).setOnClickListener(v -> onClickStop());
+        mProgress = view.findViewById(R.id.playProgress);
+        mCurrentTime = view.findViewById(R.id.currentTime);
+        mEndTime = view.findViewById(R.id.totalTime);
         surfaceView = view.findViewById(R.id.surfaceView);
         mView = view;
+
+        mMediaController = new MediaController();
+
+        mProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                //  FIXED_ERROR:TBD: seekbar -> MediaPlayer.seekTo(int)没有效果,直接回调old position
+                if (!fromUser) {
+                    return;
+                }
+                long duration = mPlayer.getDuration();
+                long newposition = (duration * progress) / 100L;
+                seekTo((int) newposition);
+                if (mCurrentTime != null) {
+                    mCurrentTime.setText(mMediaController.stringForTime((int) newposition));
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                mDragging = true;
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Log.d(TAG, "onStopTrackingTouch: ");
+                mDragging = false;
+            }
+        });
+
         enableBtns(false);
 
         mPlayer = new MediaPlayer();
         mPlayer.setOnPreparedListener(this);
         onClickPlay();
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (null == mHandler) {
+            mHandler = new TimerHandler();
+        }
+        startUpdateProgress();
+    }
+
+    @Override
+    public void onPause() {
+        if (mPlayer.isPlaying()) {
+            currentPosition = mPlayer.getCurrentPosition();
+            mPlayer.pause();
+        }
+
+        if (null != mHandler) {
+            mHandler.clear();
+            mHandler.setITimerView(null);
+        }
+        stopUpdateProgress();
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        releasePlayer();
     }
 
     private void onClickPlay() {
@@ -89,11 +170,34 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
 
     @Override
     public void onPrepared(MediaPlayer mp) {
+        if (null == mPlayer) {
+            return;
+        }
+
         mPlayer.start();
+        if (null != mHandler) {
+            mHandler.setITimerView(this);
+            mHandler.sendMessage4UpdateView();
+        }
+        setEndTime(mPlayer.getDuration());
+
         enableBtns(true);
         adjustSurfaceViewSize();
         // 把视频画面输出到SurfaceView
         mPlayer.setDisplay(surfaceView.getHolder());  // ①
+    }
+
+    private void startUpdateProgress() {
+        if (null != mHandler) {
+            mHandler.sendMessage4UpdateView();
+        }
+    }
+
+    private void stopUpdateProgress() {
+        if (null != mHandler) {
+            mHandler.clear();
+            mHandler.setITimerView(null);
+        }
     }
 
     private void enableBtns(boolean enabled) {
@@ -136,26 +240,104 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
         holder.addCallback(null);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+
+    private void seekTo(int seekToProgress) {
+        if (null == mPlayer) {
+            return;
+        }
+        mPlayer.seekTo(seekToProgress);
     }
 
     @Override
-    public void onPause() {
-        if (mPlayer.isPlaying()) {
-            currentPosition = mPlayer.getCurrentPosition();
-            mPlayer.pause();
-        }
-        super.onPause();
+    public void onBufferingUpdate(MediaPlayer mp, int percent) {
+        mCurrentBufferPercentage = percent;
     }
 
     @Override
-    public void onDestroyView() {
-        if (mPlayer.isPlaying()) {
-            mPlayer.stop();
+    public void onCompletion(MediaPlayer mp) {
+        releasePlayer();
+    }
+
+    private void releasePlayer() {
+        if (null != mPlayer) {
+            if (mPlayer.isPlaying()) {
+                mPlayer.stop();
+            }
+
+            mPlayer.release();
+            mPlayer = null;
         }
-        mPlayer.release();
-        super.onDestroyView();
+
+        if (null != mMediaController) {
+            mMediaController = null;
+        }
+
+    }
+
+    @Override
+    public boolean onError(MediaPlayer mp, int what, int extra) {
+        return false;
+    }
+
+    @Override
+    public boolean onInfo(MediaPlayer mp, int what, int extra) {
+        Log.d(TAG, "onInfo: what=" + what + ",extra=" + extra);
+        return false;
+    }
+
+    @Override
+    public void onSeekComplete(MediaPlayer mp) {
+        Log.d(TAG, "onSeekComplete: ");
+    }
+
+    @Override
+    public void onTimedText(MediaPlayer mp, TimedText text) {
+        Log.d(TAG, "onTimedText: ");
+    }
+
+    @Override
+    public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
+        Log.d(TAG, "onVideoSizeChanged: width=" + width + ",height=" + height);
+    }
+
+    @Override
+    public void updateView() {
+        /**
+         * ERROR:
+         *  E/MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0xd3ee1d40, mCurrentState=0
+         *  E/MediaPlayerNative: error (-38, 0)
+         */
+        if (null == mPlayer || mDragging || getActivity() == null) {
+            return;
+        }
+
+        getActivity().runOnUiThread(() -> {
+            int position = mPlayer.getCurrentPosition();
+            int duration = mPlayer.getDuration();
+            if (mProgress != null) {
+                if (duration > 0) {
+                    // use long to avoid overflow
+                    long pos = 100L * position / duration;
+                    mProgress.setProgress((int) pos);
+                    Log.d(TAG, "updateView: ,[" + mPlayer.getCurrentPosition() + "," + mCurrentBufferPercentage + "," + mPlayer.getDuration() + "]," + "progress=" + pos + ",bufferPercentage=" + mCurrentBufferPercentage);
+                }
+                mProgress.setSecondaryProgress(mCurrentBufferPercentage);
+            }
+
+            if (mEndTime != null)
+                mEndTime.setText(mMediaController.stringForTime(duration));
+            if (mCurrentTime != null)
+                mCurrentTime.setText(mMediaController.stringForTime(position));
+        });
+    }
+
+    private void setEndTime(int duration) {
+        if (null == getActivity()) {
+            return;
+        }
+        getActivity().runOnUiThread(() -> {
+            mProgress.setMax(100);
+            mEndTime.setText(mMediaController.stringForTime(duration));
+        });
     }
 }

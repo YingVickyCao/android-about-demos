@@ -16,7 +16,7 @@ public class MediaController {
         mFormatter = new Formatter(mFormatBuilder, Locale.getDefault());
     }
 
-    String stringForTime(int timeMs) {
+    public String stringForTime(int timeMs) {
         int totalSeconds = timeMs / 1000;
 
         int seconds = totalSeconds % 60;
