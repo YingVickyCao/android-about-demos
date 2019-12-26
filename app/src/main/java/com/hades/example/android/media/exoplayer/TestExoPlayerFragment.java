@@ -1,4 +1,4 @@
-package com.hades.example.android.widget._surfaceview;
+package com.hades.example.android.media.exoplayer;
 
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -29,8 +29,10 @@ import com.hades.example.android.media.audio.media_player.MediaController;
 
 import java.io.IOException;
 
-public class TestSurfaceViewPlayVideoFragment extends Fragment implements SurfaceHolder.Callback, MediaPlayer.OnPreparedListener, IMediaPlayer, ITimerView {
-    private static final String TAG = TestSurfaceViewPlayVideoFragment.class.getSimpleName();
+import static com.hades.example.android.media.exoplayer.TestExoPlayerActivity.KEY_URI_STRING;
+
+public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Callback, MediaPlayer.OnPreparedListener, IMediaPlayer, ITimerView {
+    private static final String TAG = TestExoPlayerFragment.class.getSimpleName();
     private SurfaceView surfaceView;
     private SeekBar mProgress;
     private TextView mCurrentTime;
@@ -45,10 +47,16 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
     private boolean mDragging = false;
     private int mCurrentBufferPercentage;
 
+    private String mUriString;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.media_video_surface_view, container, false);
+
+        if (getArguments() != null) {
+            mUriString = getArguments().getString(KEY_URI_STRING);
+        }
 
         view.findViewById(R.id.play).setOnClickListener(v -> onClickPlay());
         view.findViewById(R.id.pause).setOnClickListener(v -> onClickPause());
@@ -155,7 +163,8 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
         mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         // 设置需要播放的视频
 //        mPlayer.setDataSource(getActivity(), Uri.parse("android.resource://" + getContext().getPackageName() + "/" + R.raw.mp4_1));
-        mPlayer.setDataSource(getActivity(), Uri.parse("/sdcard/mp4_1.mp4"));
+//        mPlayer.setDataSource(getActivity(), Uri.parse("/sdcard/mp4_1.mp4"));
+        mPlayer.setDataSource(getActivity(), Uri.parse(mUriString));
         mPlayer.prepareAsync();
     }
 
@@ -183,9 +192,15 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
         setEndTime(mPlayer.getDuration());
 
         enableBtns(true);
-        adjustSurfaceViewSize();
-        // 把视频画面输出到SurfaceView
-        mPlayer.setDisplay(surfaceView.getHolder());  // ①
+        if (!isMp3()) {
+            adjustSurfaceViewSize();
+            // 把视频画面输出到SurfaceView
+            mPlayer.setDisplay(surfaceView.getHolder());  // ①
+        }
+    }
+
+    private boolean isMp3() {
+        return mUriString.endsWith(".mp3");
     }
 
     private void startUpdateProgress() {

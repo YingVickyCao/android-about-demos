@@ -90,4 +90,26 @@
     <attr name="m_0" format="reference" />
     <attr name="m_0_with_opacity" format="reference" />
     <!-- Custom View,end -->
+
+
+    <string-array name="media_data_type">
+        <item>Dash</item>
+        <item>SmoothStreaming</item>
+        <item>HLS</item>
+        <item>Progressive mp4</item>
+        <item>Progressive mp3</item>
+    </string-array>
+
+    <string-array name="media_data">
+        <!-- Dash -->
+        <item>https://storage.googleapis.com/wvmedia/clear/hevc/tears/tears.mpd</item>
+        <!-- SmoothStreaming -->
+        <item>https://playready.directtaps.net/smoothstreaming/SSWSS720H264/SuperSpeedway_720.ism/Manifest</item>
+        <!-- HLS -->
+        <item>https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8</item>
+        <!-- Progressive mp4 -->
+        <item>/sdcard/mp4_1.mp4</item>
+        <!-- Progressive mp3 -->
+        <item>/sdcard/mp3_1.mp3</item>
+    </string-array>
 </resources>

@@ -11,8 +11,8 @@ import com.hades.example.android.media.audio.audio_effect.TestAudioEffectActivit
 import com.hades.example.android.media.audio.media_player.TestMediaPlayer4AudioFragment;
 import com.hades.example.android.media.audio.sound_pool.TestSoundPoolFragment;
 import com.hades.example.android.media.camera.TestCameraActivity;
+import com.hades.example.android.media.exoplayer.TestExoPlayerActivity;
 import com.hades.example.android.media.record.audio.TestRecordAudioFragment;
-import com.hades.example.android.widget._surfaceview.TestSurfaceViewPlayVideo2Fragment;
 import com.hades.example.android.widget._surfaceview.TestSurfaceViewPlayVideoFragment;
 import com.hades.example.android.widget._videoview.VideoViewRotateScreenTipActivity;
 
@@ -29,6 +29,7 @@ public class TestMediaActivity extends PermissionActivity {
 
         findViewById(R.id.pageVideoViewPlayVideo).setOnClickListener(v -> pageVideoViewPlayVideo());
         findViewById(R.id.pageSurfaceViewPlayVideo).setOnClickListener(v -> pageSurfaceViewPlayVideo());
+        findViewById(R.id.pageSurfaceViewPlayVideo2).setOnClickListener(v -> pageSurfaceViewPlayVideo2());
 
         findViewById(R.id.pageRecordAudio).setOnClickListener(v -> pageRecordAudio());
 
@@ -63,6 +64,10 @@ public class TestMediaActivity extends PermissionActivity {
 
     private void pageSurfaceViewPlayVideo() {
         showFragment(new TestSurfaceViewPlayVideoFragment());
+    }
+
+    private void pageSurfaceViewPlayVideo2() {
+        showActivity(TestExoPlayerActivity.class);
     }
 
     private void pageRecordAudio() {

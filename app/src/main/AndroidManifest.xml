@@ -484,6 +484,7 @@
         <activity android:name=".media.TestMediaActivity" />
         <activity android:name=".media.audio.audio_effect.TestAudioEffectActivity" />
         <activity android:name=".media.camera.TestCameraActivity" />
+        <activity android:name=".media.exoplayer.TestExoPlayerActivity" />
     </application>
 
 </manifest>
