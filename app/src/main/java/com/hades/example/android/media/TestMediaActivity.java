@@ -29,7 +29,6 @@ public class TestMediaActivity extends PermissionActivity {
 
         findViewById(R.id.pageVideoViewPlayVideo).setOnClickListener(v -> pageVideoViewPlayVideo());
         findViewById(R.id.pageSurfaceViewPlayVideo).setOnClickListener(v -> pageSurfaceViewPlayVideo());
-        findViewById(R.id.pageSurfaceViewPlayVideo2).setOnClickListener(v -> pageSurfaceViewPlayVideo2());
 
         findViewById(R.id.pageRecordAudio).setOnClickListener(v -> pageRecordAudio());
 
@@ -43,7 +42,7 @@ public class TestMediaActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageSurfaceViewPlayVideo2();
+        pageSurfaceViewPlayVideo();
     }
 
     private void pageMediaPlayerPlayAudio() {
@@ -64,10 +63,6 @@ public class TestMediaActivity extends PermissionActivity {
 
     private void pageSurfaceViewPlayVideo() {
         showFragment(new TestSurfaceViewPlayVideoFragment());
-    }
-
-    private void pageSurfaceViewPlayVideo2() {
-        showFragment(new TestSurfaceViewPlayVideo2Fragment());
     }
 
     private void pageRecordAudio() {
