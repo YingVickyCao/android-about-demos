@@ -33,6 +33,7 @@ import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.PlaybackPreparer;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.Timeline;
 import com.google.android.exoplayer2.mediacodec.MediaCodecRenderer;
 import com.google.android.exoplayer2.mediacodec.MediaCodecUtil;
 import com.google.android.exoplayer2.source.BehindLiveWindowException;
@@ -76,6 +77,8 @@ import static com.hades.example.android.media.exoplayer.TestExoPlayerActivity.KE
 public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Callback, ITimerView {
     private static final String TAG = TestExoPlayerFragment.class.getSimpleName();
     private SurfaceView surfaceView;
+    private View mPauseBtn;
+    private View mResumeBtn;
     private SeekBar mProgress;
     private TextView mCurrentTime;
     private TextView mEndTime;
@@ -164,14 +167,18 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.media_video_exopalyer_surfaceview, container, false);
 
-        view.findViewById(R.id.play).setOnClickListener(v -> onClickPlay());
-        view.findViewById(R.id.pause).setOnClickListener(v -> onClickPause());
-        view.findViewById(R.id.stopRecord).setOnClickListener(v -> onClickStop());
+        mPauseBtn = view.findViewById(R.id.pause);
+        mResumeBtn = view.findViewById(R.id.resume);
         mProgress = view.findViewById(R.id.playProgress);
         mCurrentTime = view.findViewById(R.id.currentTime);
         mEndTime = view.findViewById(R.id.totalTime);
         surfaceView = view.findViewById(R.id.surfaceView);
         mView = view;
+
+        view.findViewById(R.id.play).setOnClickListener(v -> onClickPlay());
+        mPauseBtn.setOnClickListener(v -> onClickPause());
+        mResumeBtn.setOnClickListener(v -> onClickResume());
+        view.findViewById(R.id.stop).setOnClickListener(v -> onClickStop());
 
         debugRootView = view.findViewById(R.id.controls_root);
         debugTextView = view.findViewById(R.id.debug_text_view);
@@ -390,6 +397,10 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
     }
 
     private void onClickPlay() {
+        initializePlayer();
+    }
+
+    private void onClickResume() {
         if (mPlayer.getPlaybackState() == Player.STATE_IDLE) {
             if (playbackPreparer != null) {
                 playbackPreparer.preparePlayback();
@@ -406,6 +417,40 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
 
     private void onClickStop() {
         mPlayer.stop();
+    }
+
+    private boolean isPlaying() {
+        return mPlayer != null
+                && mPlayer.getPlaybackState() != Player.STATE_ENDED
+                && mPlayer.getPlaybackState() != Player.STATE_IDLE
+                && mPlayer.getPlayWhenReady();
+    }
+
+    private void updatePlayPauseButton() {
+        boolean requestPlayPauseFocus = false;
+        boolean playing = isPlaying();
+        if (mResumeBtn != null) {
+            requestPlayPauseFocus = playing && mResumeBtn.isFocused();
+            Log.d(TAG, "updatePlayPauseButton: mResumeBtn " + (playing ? "View.GONE" : "View.VISIBLE"));
+            mResumeBtn.setVisibility(playing ? View.GONE : View.VISIBLE);
+        }
+        if (mPauseBtn != null) {
+            requestPlayPauseFocus |= !playing && mPauseBtn.isFocused();
+            Log.d(TAG, "updatePlayPauseButton: mPauseBtn " + (!playing ? "View.GONE" : "View.VISIBLE"));
+            mPauseBtn.setVisibility(!playing ? View.GONE : View.VISIBLE);
+        }
+        if (requestPlayPauseFocus) {
+            requestPlayPauseFocus();
+        }
+    }
+
+    private void requestPlayPauseFocus() {
+        boolean playing = isPlaying();
+        if (!playing && mResumeBtn != null) {
+            mResumeBtn.requestFocus();
+        } else if (playing && mPauseBtn != null) {
+            mPauseBtn.requestFocus();
+        }
     }
 
     private void adjustSurfaceViewSize() {
@@ -442,7 +487,7 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
     private void enableBtns(boolean enabled) {
         mView.findViewById(R.id.play).setEnabled(enabled);
         mView.findViewById(R.id.pause).setEnabled(enabled);
-        mView.findViewById(R.id.stopRecord).setEnabled(enabled);
+        mView.findViewById(R.id.stop).setEnabled(enabled);
     }
 
     @Override
@@ -499,7 +544,7 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
         }
 
         getActivity().runOnUiThread(() -> {
-            setProgressView();
+            updateProgress();
             setEndTime();
             setCurrentTime();
         });
@@ -525,7 +570,10 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
         });
     }
 
-    private void setProgressView() {
+    private void updateProgress() {
+        if (null == mPlayer) {
+            return;
+        }
         long position = mPlayer.getCurrentPosition();
         long duration = mPlayer.getDuration();
         if (mProgress != null) {
@@ -535,7 +583,7 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
                 mProgress.setProgress((int) pos);
             }
             int cachePercentage = mPlayer.getBufferedPercentage();
-            Log.d(TAG, "setProgressView: cachePercentage=" + cachePercentage);
+            Log.d(TAG, "updateProgress: cachePercentage=" + cachePercentage);
             mProgress.setSecondaryProgress(cachePercentage);
         }
     }
@@ -675,7 +723,8 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
 
         @Override
         public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-
+            updatePlayPauseButton();
+            updateProgress();
         }
 
     }
@@ -729,8 +778,6 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
         @Override
         public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
             Log.d(TAG, "onPlayerStateChanged: playWhenReady=" + playWhenReady + ",playbackState=" + playbackState);
-            updateTrackSelectionBtnsVisibilities();
-
             if (Player.STATE_READY == playbackState) {
                 if (!isMp3()) {
                     adjustSurfaceViewSize();
@@ -739,12 +786,14 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
                 showDebugControls();
                 setEndTime();
                 enableBtns(true);
-                return;
             }
 
             if (Player.STATE_ENDED == playbackState) {
-                releasePlayer();
+//                releasePlayer();
             }
+            updatePlayPauseButton();
+            updateProgress();
+            updateTrackSelectionBtnsVisibilities();
         }
 
         @Override
