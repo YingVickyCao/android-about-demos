@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -16,62 +15,12 @@
         android:layout_height="360dp"
         android:layout_below="@+id/topic" />
 
-    <TextView
-        android:id="@+id/errorMessageView"
-        android:layout_width="match_parent"
-        android:layout_height="360dp"
-        android:layout_below="@+id/topic"
-        android:gravity="center"
-        android:text="ERROR"
-        android:visibility="gone" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center_horizontal"
         android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#88000000"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/debug_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
-                android:textSize="10sp"
-                tools:ignore="SmallSp" />
-
-            <LinearLayout
-                android:id="@+id/controls_root"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="visible">
-
-                <Button
-                    android:id="@+id/audioOfDebug"
-                    style="@style/btn.small"
-                    android:text="@string/audio" />
-
-                <Button
-                    android:id="@+id/videoOfDebug"
-                    style="@style/btn.small"
-                    android:text="@string/video" />
-
-                <Button
-                    android:id="@+id/textOfDebug"
-                    style="@style/btn.small"
-                    android:text="@string/text" />
-
-            </LinearLayout>
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
