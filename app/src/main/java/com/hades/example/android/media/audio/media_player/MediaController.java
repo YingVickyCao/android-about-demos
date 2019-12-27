@@ -16,12 +16,12 @@ public class MediaController {
         mFormatter = new Formatter(mFormatBuilder, Locale.getDefault());
     }
 
-    public String stringForTime(int timeMs) {
-        int totalSeconds = timeMs / 1000;
+    public String stringForTime(long timeMs) {
+        long totalSeconds = timeMs / 1000L;
 
-        int seconds = totalSeconds % 60;
-        int minutes = (totalSeconds / 60) % 60;
-        int hours   = totalSeconds / 3600;
+        long seconds = totalSeconds % 60L;
+        long minutes = (totalSeconds / 60L) % 60;
+        long hours   = totalSeconds / 3600L;
 
         mFormatBuilder.setLength(0);
         if (hours > 0) {

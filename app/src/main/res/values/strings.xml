@@ -313,7 +313,6 @@
     <string name="home">Home</string>
     <string name="dashboard">Dashboard</string>
     <string name="notifications">Notifications</string>
-    <string name="text">Text</string>
     <string name="set_max_level_0">Set Max Level 0</string>
     <string name="set_max_level_1">Set Max Level 1</string>
     <string name="textview">TextView</string>
@@ -461,4 +460,7 @@
     <string name="off">Off</string>
     <string name="on">On</string>
     <string name="record">Record</string>
+    <string name="audio">Audio</string>
+    <string name="video">Video</string>
+    <string name="text">Text</string>
 </resources>
