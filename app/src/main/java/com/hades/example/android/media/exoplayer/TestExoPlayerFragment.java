@@ -66,7 +66,6 @@ import com.hades.example.android.R;
 import com.hades.example.android.media.audio.media_player.MediaController;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
@@ -163,7 +162,7 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.media_video_surface_view, container, false);
+        View view = inflater.inflate(R.layout.media_video_exopalyer_surfaceview, container, false);
 
         view.findViewById(R.id.play).setOnClickListener(v -> onClickPlay());
         view.findViewById(R.id.pause).setOnClickListener(v -> onClickPause());
@@ -391,20 +390,14 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
     }
 
     private void onClickPlay() {
-        try {
-            play();
-
-            if (mPlayer.getPlaybackState() == Player.STATE_IDLE) {
-                if (playbackPreparer != null) {
-                    playbackPreparer.preparePlayback();
-                }
-            } else if (mPlayer.getPlaybackState() == Player.STATE_ENDED) {
-                controlDispatcher.dispatchSeekTo(mPlayer, mPlayer.getCurrentWindowIndex(), C.TIME_UNSET);
+        if (mPlayer.getPlaybackState() == Player.STATE_IDLE) {
+            if (playbackPreparer != null) {
+                playbackPreparer.preparePlayback();
             }
-            controlDispatcher.dispatchSetPlayWhenReady(mPlayer, true);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else if (mPlayer.getPlaybackState() == Player.STATE_ENDED) {
+            controlDispatcher.dispatchSeekTo(mPlayer, mPlayer.getCurrentWindowIndex(), C.TIME_UNSET);
         }
+        controlDispatcher.dispatchSetPlayWhenReady(mPlayer, true);
     }
 
     private void onClickPause() {
@@ -413,10 +406,6 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
 
     private void onClickStop() {
         mPlayer.stop();
-    }
-
-    private void play() throws IOException {
-        initializePlayer();
     }
 
     private void adjustSurfaceViewSize() {
