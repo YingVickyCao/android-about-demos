@@ -108,8 +108,8 @@
         <!-- HLS -->
         <item>https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8</item>
         <!-- Progressive mp4 -->
-        <item>/sdcard/mp4_1.mp4</item>
+        <item>/sdcard/mp4.mp4</item>
         <!-- Progressive mp3 -->
-        <item>/sdcard/mp3_1.mp3</item>
+        <item>/sdcard/mp3.mp3</item>
     </string-array>
 </resources>

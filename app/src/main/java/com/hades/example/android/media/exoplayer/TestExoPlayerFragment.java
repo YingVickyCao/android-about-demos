@@ -33,7 +33,6 @@ import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.PlaybackPreparer;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.Timeline;
 import com.google.android.exoplayer2.mediacodec.MediaCodecRenderer;
 import com.google.android.exoplayer2.mediacodec.MediaCodecUtil;
 import com.google.android.exoplayer2.source.BehindLiveWindowException;
@@ -42,8 +41,6 @@ import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.source.hls.HlsMediaSource;
-import com.google.android.exoplayer2.text.Cue;
-import com.google.android.exoplayer2.text.TextOutput;
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.MappingTrackSelector;
@@ -70,19 +67,18 @@ import java.io.File;
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
-import java.util.List;
 
 import static com.hades.example.android.media.exoplayer.TestExoPlayerActivity.KEY_URI_STRING;
 
-public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Callback, ITimerView {
+public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Callback, ITimerView, PlaybackPreparer {
     private static final String TAG = TestExoPlayerFragment.class.getSimpleName();
     private SurfaceView surfaceView;
-    private View mPauseBtn;
-    private View mResumeBtn;
     private SeekBar mProgress;
     private TextView mCurrentTime;
     private TextView mEndTime;
-    private View mView;
+    private View mPauseBtn;
+    private View mResumeBtn;
+    private View mStopBtn;
 
     private SimpleExoPlayer mPlayer;
     private int currentPosition;
@@ -112,14 +108,17 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
 
     private static final CookieManager DEFAULT_COOKIE_MANAGER;
     private com.google.android.exoplayer2.ControlDispatcher controlDispatcher;
-    private PlaybackPreparer playbackPreparer;
+    //    private PlaybackPreparer playbackPreparer;
     private boolean startAutoPlay;
-    private ComponentListener componentListener;
     private DataSource.Factory dataSourceFactory;
     private TrackGroupArray lastSeenTrackGroupArray;
     private static final String DOWNLOAD_CONTENT_DIRECTORY = "downloads";
     private File downloadDirectory; // Recommend: global
     private Cache downloadCache;    // Recommend: global
+
+    private EventLogger mEventLogger;
+    private VideoListener mVideoListener;
+    private PlayerEventListener mPlayerEventListener;
 
     static {
         DEFAULT_COOKIE_MANAGER = new CookieManager();
@@ -169,29 +168,27 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
 
         mPauseBtn = view.findViewById(R.id.pause);
         mResumeBtn = view.findViewById(R.id.resume);
+        mStopBtn = view.findViewById(R.id.stop);
         mProgress = view.findViewById(R.id.playProgress);
         mCurrentTime = view.findViewById(R.id.currentTime);
         mEndTime = view.findViewById(R.id.totalTime);
         surfaceView = view.findViewById(R.id.surfaceView);
-        mView = view;
+        errorMessageView = view.findViewById(R.id.exo_error_message);
 
-        view.findViewById(R.id.play).setOnClickListener(v -> onClickPlay());
+        view.findViewById(R.id.start).setOnClickListener(v -> onClickStart());
         mPauseBtn.setOnClickListener(v -> onClickPause());
         mResumeBtn.setOnClickListener(v -> onClickResume());
-        view.findViewById(R.id.stop).setOnClickListener(v -> onClickStop());
+        mStopBtn.setOnClickListener(v -> onClickStop());
 
         debugRootView = view.findViewById(R.id.controls_root);
         debugTextView = view.findViewById(R.id.debug_text_view);
         mAudioOfDebug = view.findViewById(R.id.audioOfDebug);
         mVideoOfDebug = view.findViewById(R.id.videoOfDebug);
         mTextOfDebug = view.findViewById(R.id.textOfDebug);
-        errorMessageView = view.findViewById(R.id.errorMessageView);
+        errorMessageView = view.findViewById(R.id.exo_error_message);
         mAudioOfDebug.setOnClickListener(this::setOnTrackSelectionBtnClickListener);
         mVideoOfDebug.setOnClickListener(this::setOnTrackSelectionBtnClickListener);
         mTextOfDebug.setOnClickListener(this::setOnTrackSelectionBtnClickListener);
-        componentListener = new ComponentListener();
-
-        mMediaController = new MediaController();
 
         mProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -221,9 +218,7 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
         });
 
         enableBtns(false);
-
-        initializePlayer();
-        onClickPlay();
+        preparePlayback();
         return view;
     }
 
@@ -269,9 +264,33 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
         }
     }
 
-    private void initializePlayer() {
-        if (null == mPlayer) {
+    @Override
+    public void preparePlayback() {
+        initializeResources();
+    }
 
+    private void initializeResources() {
+        if (null == mMediaController) {
+            mMediaController = new MediaController();
+        }
+
+        if (null == mEventLogger) {
+            mEventLogger = new EventLogger(trackSelector);
+        }
+
+        if (null == mVideoListener) {
+            mVideoListener = new MyVideoListener();
+        }
+
+        if (null == mPlayerEventListener) {
+            mPlayerEventListener = new PlayerEventListener();
+        }
+
+        if (null == errorMessageProvider) {
+            errorMessageProvider = new PlayerErrorMessageProvider();
+        }
+
+        if (null == mPlayer) {
             dataSourceFactory = buildDataSourceFactory();
             TrackSelection.Factory trackSelectionFactory = buildTrackSelectionFactory();
             setTrackSelector(trackSelectionFactory);
@@ -280,20 +299,19 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
             if (!checkUris(uris)) {
                 return;
             }
-
             DefaultRenderersFactory renderersFactory = buildRenderersFactory();
             mPlayer = ExoPlayerFactory.newSimpleInstance(getActivity().getApplicationContext(), renderersFactory, trackSelector);
-            mPlayer.addListener(new PlayerEventListener());
+            mPlayer.addListener(mPlayerEventListener);
             mPlayer.setPlayWhenReady(startAutoPlay);
-            mPlayer.addAnalyticsListener(new EventLogger(trackSelector));
-            mPlayer.addVideoListener(new MyVideoListener());
+            mPlayer.addAnalyticsListener(mEventLogger);
+            mPlayer.addVideoListener(mVideoListener);
 
             setControlDispatcher();
             setDebugViewHelper();
 
             setMediaSource(uris);
-
-            initPlayerView();
+            bindSurfaceView();
+//            playbackPreparer = this;
         }
 
         boolean haveStartPosition = startWindow != C.INDEX_UNSET;
@@ -302,7 +320,69 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
         }
         mPlayer.prepare(mediaSource, !haveStartPosition, false);
         updateTrackSelectionBtnsVisibilities();
+    }
 
+    private void bindSurfaceView() {
+        if (null != mPlayer) {
+            this.mPlayer.removeListener(mPlayerEventListener);
+
+            Player.VideoComponent oldVideoComponent = this.mPlayer.getVideoComponent();
+            if (oldVideoComponent != null) {
+                oldVideoComponent.removeVideoListener(mVideoListener);
+                oldVideoComponent.clearVideoSurfaceView(surfaceView);
+            }
+
+//            Player.TextComponent oldTextComponent = this.mPlayer.getTextComponent();
+//            if (oldTextComponent != null) {
+//                oldTextComponent.removeTextOutput();
+//            }
+            Player.VideoComponent newVideoComponent = mPlayer.getVideoComponent();
+            if (null != newVideoComponent) {
+                newVideoComponent.setVideoSurfaceView(surfaceView);
+                newVideoComponent.addVideoListener(mVideoListener);
+            }
+        }
+
+        surfaceView.requestFocus();
+    }
+
+    private void releaseResources() {
+        if (null != mMediaController) {
+            mMediaController = null;
+        }
+
+        if (mPlayer != null) {
+            updateTrackSelectorParameters();
+            updateStartPosition();
+            debugViewHelper.stop();
+            debugViewHelper = null;
+            if (null != mEventLogger) {
+                mPlayer.removeAnalyticsListener(mEventLogger);
+            }
+
+            if (null != mVideoListener) {
+                mPlayer.removeVideoListener(mVideoListener);
+            }
+
+            if (null != mPlayerEventListener) {
+                mPlayer.removeListener(mPlayerEventListener);
+            }
+
+            mPlayer.release();
+            mPlayer = null;
+            mediaSource = null;
+            trackSelector = null;
+            enableBtns(false);
+        }
+
+        if (null != dataSourceFactory) {
+            dataSourceFactory = null;
+        }
+
+        if (null != downloadCache) {
+            downloadCache.release();
+            downloadCache = null;
+        }
     }
 
     private boolean checkUris(Uri[] uris) {
@@ -316,30 +396,6 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
 
     private Uri[] parseUris() {
         return new Uri[]{Uri.parse(mUriString)};
-    }
-
-    private void initPlayerView() {
-        surfaceView.requestFocus();
-        errorMessageProvider = new PlayerErrorMessageProvider();
-        if (null != mPlayer) {
-            this.mPlayer.removeListener(componentListener);
-            Player.VideoComponent oldVideoComponent = this.mPlayer.getVideoComponent();
-
-            if (oldVideoComponent != null) {
-                oldVideoComponent.removeVideoListener(componentListener);
-                oldVideoComponent.clearVideoSurfaceView(surfaceView);
-            }
-
-            Player.TextComponent oldTextComponent = this.mPlayer.getTextComponent();
-            if (oldTextComponent != null) {
-                oldTextComponent.removeTextOutput(componentListener);
-            }
-
-            Player.VideoComponent newVideoComponent = mPlayer.getVideoComponent();
-            newVideoComponent.setVideoSurfaceView(surfaceView);
-            newVideoComponent.addVideoListener(componentListener);
-        }
-        playbackPreparer = this::initPlayerView;
     }
 
     @Override
@@ -358,7 +414,7 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
         super.onPause();
         if (Util.SDK_INT <= 23) {
             stopUpdateProgress();
-            releasePlayer();
+            releaseResources();
         }
     }
 
@@ -367,44 +423,30 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
         super.onStop();
         if (Util.SDK_INT > 23) {
             stopUpdateProgress();
-            releasePlayer();
+            releaseResources();
         }
     }
-
-    private void releasePlayer() {
-        if (null != mMediaController) {
-            mMediaController = null;
-        }
-
-        if (mPlayer != null) {
-            updateTrackSelectorParameters();
-            updateStartPosition();
-            debugViewHelper.stop();
-            debugViewHelper = null;
-            mPlayer.release();
-            mPlayer = null;
-            mediaSource = null;
-            trackSelector = null;
-        }
-    }
-
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
 
-        releasePlayer();
+        releaseResources();
     }
 
-    private void onClickPlay() {
-        initializePlayer();
+    private void onClickStart() {
+        preparePlayback();
     }
 
     private void onClickResume() {
+        if (null == mPlayer) {
+            return;
+        }
         if (mPlayer.getPlaybackState() == Player.STATE_IDLE) {
-            if (playbackPreparer != null) {
-                playbackPreparer.preparePlayback();
-            }
+//            if (playbackPreparer != null) {
+//                playbackPreparer.preparePlayback();
+//            }
+            preparePlayback();
         } else if (mPlayer.getPlaybackState() == Player.STATE_ENDED) {
             controlDispatcher.dispatchSeekTo(mPlayer, mPlayer.getCurrentWindowIndex(), C.TIME_UNSET);
         }
@@ -417,6 +459,7 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
 
     private void onClickStop() {
         mPlayer.stop();
+        releaseResources();
     }
 
     private boolean isPlaying() {
@@ -430,14 +473,14 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
         boolean requestPlayPauseFocus = false;
         boolean playing = isPlaying();
         if (mResumeBtn != null) {
-            requestPlayPauseFocus = playing && mResumeBtn.isFocused();
-            Log.d(TAG, "updatePlayPauseButton: mResumeBtn " + (playing ? "View.GONE" : "View.VISIBLE"));
+            requestPlayPauseFocus |= playing && mResumeBtn.isFocused();
             mResumeBtn.setVisibility(playing ? View.GONE : View.VISIBLE);
+            Log.d(TAG, "updatePlayPauseButton:mResumeBtn=" + (playing ? "View.GONE" : "View.VISIBLE"));
         }
         if (mPauseBtn != null) {
             requestPlayPauseFocus |= !playing && mPauseBtn.isFocused();
-            Log.d(TAG, "updatePlayPauseButton: mPauseBtn " + (!playing ? "View.GONE" : "View.VISIBLE"));
             mPauseBtn.setVisibility(!playing ? View.GONE : View.VISIBLE);
+            Log.d(TAG, "updatePlayPauseButton:mPauseBtn=" + (!playing ? "View.GONE" : "View.VISIBLE"));
         }
         if (requestPlayPauseFocus) {
             requestPlayPauseFocus();
@@ -485,9 +528,9 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
     }
 
     private void enableBtns(boolean enabled) {
-        mView.findViewById(R.id.play).setEnabled(enabled);
-        mView.findViewById(R.id.pause).setEnabled(enabled);
-        mView.findViewById(R.id.stop).setEnabled(enabled);
+        mResumeBtn.setVisibility(enabled ? View.VISIBLE : View.GONE);
+        mPauseBtn.setVisibility(enabled ? View.VISIBLE : View.GONE);
+        mStopBtn.setVisibility(enabled ? View.VISIBLE : View.GONE);
     }
 
     @Override
@@ -497,7 +540,6 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
         }
         holder.setKeepScreenOn(true);
         holder.addCallback(this);
-
         if (currentPosition > 0) {
             try {
                 // 开始播放
@@ -523,7 +565,6 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
         holder.setKeepScreenOn(false);
         holder.addCallback(null);
     }
-
 
     private void seekTo(int seekToProgress) {
         if (null == mPlayer) {
@@ -701,34 +742,6 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
         startPosition = C.TIME_UNSET;
     }
 
-
-    private final class ComponentListener implements Player.EventListener,
-            TextOutput,
-            VideoListener,
-            View.OnLayoutChangeListener {
-
-        // TextOutput implementation
-
-        @Override
-        public void onCues(List<Cue> cues) {
-//            if (subtitleView != null) {
-//                subtitleView.onCues(cues);
-//            }
-        }
-
-        @Override
-        public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-
-        }
-
-        @Override
-        public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-            updatePlayPauseButton();
-            updateProgress();
-        }
-
-    }
-
     private class PlayerErrorMessageProvider implements ErrorMessageProvider<ExoPlaybackException> {
         @Override
         public Pair<Integer, String> getErrorMessage(ExoPlaybackException e) {
@@ -760,6 +773,8 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
         @Override
         public void onVideoSizeChanged(int width, int height, int unappliedRotationDegrees, float pixelWidthHeightRatio) {
             Log.d(TAG, "onVideoSizeChanged: width=" + width + ",height=" + height);
+            updatePlayPauseButton();
+            updateProgress();
         }
 
         @Override
@@ -782,15 +797,13 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
                 if (!isMp3()) {
                     adjustSurfaceViewSize();
                 }
-
                 showDebugControls();
                 setEndTime();
                 enableBtns(true);
             }
-
-            if (Player.STATE_ENDED == playbackState) {
-//                releasePlayer();
-            }
+//            if (Player.STATE_ENDED == playbackState) {
+//                releaseResources();
+//            }
             updatePlayPauseButton();
             updateProgress();
             updateTrackSelectionBtnsVisibilities();
@@ -809,7 +822,7 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
         public void onPlayerError(ExoPlaybackException e) {
             if (isBehindLiveWindow(e)) {
                 clearStartPosition();
-                initializePlayer();
+                preparePlayback();
             } else {
                 updateStartPosition();
                 updateTrackSelectionBtnsVisibilities();
@@ -834,6 +847,7 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
                 lastSeenTrackGroupArray = trackGroups;
             }
         }
+
     }
 
     private boolean isBehindLiveWindow(ExoPlaybackException e) {

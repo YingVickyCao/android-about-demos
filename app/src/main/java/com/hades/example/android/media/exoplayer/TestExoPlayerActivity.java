@@ -29,8 +29,6 @@ public class TestExoPlayerActivity extends PermissionActivity {
         setContentView(R.layout.media_exoplayer);
         initViews();
 
-        setUriString(3);
-
         findViewById(R.id.clear).setOnClickListener(v -> clear());
         findViewById(R.id.play).setOnClickListener(v -> play());
         ((Spinner) findViewById(R.id.mediaFrom)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -43,6 +41,8 @@ public class TestExoPlayerActivity extends PermissionActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+
+        setUriString(3);
     }
 
     @Override

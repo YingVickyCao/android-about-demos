@@ -8,22 +8,53 @@
     <TextView
         android:id="@+id/topic"
         style="@style/topic"
-        android:text="@string/page_MediaPlayer_SurfaceView_play_video" />
+        android:text="@string/page_ExoPlayer" />
+
+    <LinearLayout
+        android:id="@+id/debug"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topic"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/debug_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+
+        <LinearLayout
+            android:id="@+id/controls_root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/audioOfDebug"
+                style="@style/btn.small"
+                android:text="@string/audio" />
+
+            <Button
+                android:id="@+id/videoOfDebug"
+                style="@style/btn.small"
+                android:text="@string/video" />
+
+            <Button
+                android:id="@+id/textOfDebug"
+                style="@style/btn.small"
+                android:text="@string/text" />
+        </LinearLayout>
+    </LinearLayout>
 
     <SurfaceView
         android:id="@+id/surfaceView"
         android:layout_width="match_parent"
         android:layout_height="360dp"
-        android:layout_below="@+id/topic" />
-
-    <TextView
-        android:id="@+id/errorMessageView"
-        android:layout_width="match_parent"
-        android:layout_height="360dp"
-        android:layout_below="@+id/topic"
-        android:gravity="center"
-        android:text="ERROR"
-        android:visibility="gone" />
+        android:layout_below="@+id/debug" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,46 +63,14 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/exo_error_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#88000000"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/debug_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
-                android:textSize="10sp"
-                tools:ignore="SmallSp" />
-
-            <LinearLayout
-                android:id="@+id/controls_root"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="visible">
-
-                <Button
-                    android:id="@+id/audioOfDebug"
-                    style="@style/btn.small"
-                    android:text="@string/audio" />
-
-                <Button
-                    android:id="@+id/videoOfDebug"
-                    style="@style/btn.small"
-                    android:text="@string/video" />
-
-                <Button
-                    android:id="@+id/textOfDebug"
-                    style="@style/btn.small"
-                    android:text="@string/text" />
-
-            </LinearLayout>
-
-        </LinearLayout>
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility="visible" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -104,9 +103,9 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/play"
+                android:id="@+id/start"
                 style="@style/btn.small"
-                android:text="@string/play" />
+                android:text="@string/start" />
 
             <FrameLayout
                 android:layout_width="wrap_content"
