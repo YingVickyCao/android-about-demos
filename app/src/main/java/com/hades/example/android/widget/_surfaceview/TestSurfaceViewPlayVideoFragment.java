@@ -302,7 +302,7 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
     }
 
     @Override
-    public void updateView() {
+    public void setProgress() {
         /**
          * ERROR:
          *  E/MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0xd3ee1d40, mCurrentState=0
@@ -320,7 +320,7 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
                     // use long to avoid overflow
                     long pos = 100L * position / duration;
                     mProgress.setProgress((int) pos);
-                    Log.d(TAG, "updateView: ,[" + mPlayer.getCurrentPosition() + "," + mCurrentBufferPercentage + "," + mPlayer.getDuration() + "]," + "progress=" + pos + ",bufferPercentage=" + mCurrentBufferPercentage);
+                    Log.d(TAG, "setProgress: ,[" + mPlayer.getCurrentPosition() + "," + mCurrentBufferPercentage + "," + mPlayer.getDuration() + "]," + "progress=" + pos + ",bufferPercentage=" + mCurrentBufferPercentage);
                 }
                 mProgress.setSecondaryProgress(mCurrentBufferPercentage);
             }

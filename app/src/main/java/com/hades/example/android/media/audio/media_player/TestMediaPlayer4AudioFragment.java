@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -29,13 +30,14 @@ import com.github.yingvickycao.autils.utils.FileUtil;
 
 import java.io.IOException;
 
-public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMediaPlayer, ITimerView {
+public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMediaPlayer, ITimerView, IPlayer {
     private static final String TAG = TestMediaPlayer4AudioFragment.class.getName();
 
     MediaPlayer mPlayer = null;
     SeekBar mProgress;
     TextView mCurrentTime;
     TextView mEndTime;
+    View mMediaPlayControlView;
 
     private TimerHandler mHandler;
     private MediaController mMediaController;
@@ -51,6 +53,7 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
         mProgress = view.findViewById(R.id.playProgress);
         mCurrentTime = view.findViewById(R.id.currentTime);
         mEndTime = view.findViewById(R.id.totalTime);
+        mMediaPlayControlView = view.findViewById(R.id.media_play_control);
 
         ((Spinner) view.findViewById(R.id.mediaFrom)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -94,8 +97,31 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
         view.findViewById(R.id.pause).setOnClickListener(v -> pause());
         view.findViewById(R.id.stopRecord).setOnClickListener(v -> stop());
 
-        mMediaController = new MediaController();
+        view.findViewById(R.id.show).setOnClickListener(v -> show());
+        view.findViewById(R.id.hide).setOnClickListener(v -> hide());
 
+        mMediaController = new MediaController();
+        mMediaController.setMediaPlayControlView(mMediaPlayControlView);
+        mMediaController.setPlayer(this);
+        view.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    Log.d(TAG, "onCreateView: show(0)");
+                    mMediaController.show(0); // show until hide is called
+                    break;
+                case MotionEvent.ACTION_UP:
+                    Log.d(TAG, "onCreateView: show()");
+                    mMediaController.show(); // start timeout
+                    break;
+                case MotionEvent.ACTION_CANCEL:
+                    Log.d(TAG, "onCreateView: hide");
+                    mMediaController.hide();
+                    break;
+                default:
+                    break;
+            }
+            return true;
+        });
         return view;
     }
 
@@ -315,7 +341,7 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
 
         mPlayer.start();
         if (null != mHandler) {
-            mHandler.setITimerView(this);
+//            mHandler.setITimerView(this);// TODO: tmp delete
             mHandler.sendMessage4Progress();
         }
         setEndTime(mPlayer.getDuration());
@@ -348,7 +374,7 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
     }
 
     @Override
-    public void updateView() {
+    public void setProgress() {
         /**
          * ERROR:
          *  E/MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0xd3ee1d40, mCurrentState=0
@@ -366,7 +392,7 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
                     // use long to avoid overflow
                     long pos = 100L * position / duration;
                     mProgress.setProgress((int) pos);
-                    Log.d(TAG, "updateView: ,[" + mPlayer.getCurrentPosition() + "," + mCurrentBufferPercentage + "," + mPlayer.getDuration() + "]," + "progress=" + pos + ",bufferPercentage=" + mCurrentBufferPercentage);
+                    Log.d(TAG, "setProgress: ,[" + mPlayer.getCurrentPosition() + "," + mCurrentBufferPercentage + "," + mPlayer.getDuration() + "]," + "progress=" + pos + ",bufferPercentage=" + mCurrentBufferPercentage);
                 }
                 mProgress.setSecondaryProgress(mCurrentBufferPercentage);
             }
@@ -391,5 +417,34 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
             mProgress.setMax(100);
             mEndTime.setText(mMediaController.stringForTime(duration));
         });
+    }
+
+    @Override
+    public int getCurrentPosition() {
+        if (mPlayer == null || mDragging) {
+            return 0;
+        }
+        return mPlayer.getCurrentPosition();
+    }
+
+    @Override
+    public boolean isPlaying() {
+        return isInPlaybackState() && null != mPlayer && mPlayer.isPlaying();
+    }
+
+    private boolean isInPlaybackState() {
+//        return (mMediaPlayer != null &&
+//                mCurrentState != STATE_ERROR &&
+//                mCurrentState != STATE_IDLE &&
+//                mCurrentState != STATE_PREPARING);
+        return true;
+    }
+
+    private void show() {
+        mMediaController.show();
+    }
+
+    private void hide() {
+        mMediaController.hide();
     }
 }

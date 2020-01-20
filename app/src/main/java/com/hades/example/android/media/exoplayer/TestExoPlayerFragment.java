@@ -574,7 +574,7 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
     }
 
     @Override
-    public void updateView() {
+    public void setProgress() {
         /**
          * ERROR:
          *  E/MediaPlayerNative: Attempt to call getDuration in wrong state: mPlayer=0xd3ee1d40, mCurrentState=0
