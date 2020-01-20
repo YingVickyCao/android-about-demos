@@ -1,6 +1,7 @@
 package com.hades.example.android._process_and_thread.threadPoolExecutor;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,67 +12,59 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.github.yingvickycao.autils.base.BaseFragment;
 
-import java.util.Locale;
-
 public class ThreadPoolExecutorFragment extends BaseFragment implements IProgressListener {
-    private final int START_NUM = 0;
-    private final int END_NUM = Integer.MAX_VALUE;
-    private TextView mProgressInfo;
-    CounterSingleThreadPoolExecutor mExecutor;
+    private static final String TAG = ThreadPoolExecutorFragment.class.getSimpleName();
+
+    private int mCounter = 1;
+    private TextView mResultView;
+    CounterMgr mCounterMgr;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.bt_threadpoolexecutor, container, false);
+        View view = inflater.inflate(R.layout.process_thread_threadpoolexecutor, container, false);
 
-        mExecutor = new CounterSingleThreadPoolExecutor(END_NUM, this);
-        ((TextView) view.findViewById(R.id.numInfo)).setText(String.format(Locale.getDefault(), "%d:%d", START_NUM, END_NUM));
-        mProgressInfo = view.findViewById(R.id.progressInfo);
+        mCounterMgr = new CounterMgr();
+        mResultView = view.findViewById(R.id.result);
 
+        view.findViewById(R.id.init).setOnClickListener(v -> init());
         view.findViewById(R.id.start).setOnClickListener(v -> start());
-        view.findViewById(R.id.pause).setOnClickListener(v -> pause());
-        view.findViewById(R.id.cancel).setOnClickListener(v -> cancel());
-        view.findViewById(R.id.end).setOnClickListener(v -> end());
-        
+        view.findViewById(R.id.stop).setOnClickListener(v -> stop());
+        view.findViewById(R.id.destroy).setOnClickListener(v -> destroy());
+
         return view;
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        mExecutor.setProgressListener(null);
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        if (null != mCounterMgr) {
+            mCounterMgr.destroy();
+            mCounterMgr = null;
+        }
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        mExecutor.setProgressListener(this);
+    private void init() {
+        mCounterMgr.init(this);
     }
 
     private void start() {
-        mExecutor.setProgressListener(this);
-        mExecutor.start();
+        mCounterMgr.start();
     }
 
-    private void pause() {
-        mExecutor.pause();
+    private void stop() {
+        mCounterMgr.stop();
     }
 
-    private void cancel() {
-        mExecutor.cancel();
-    }
-
-    private void end() {
-        mExecutor.end();
+    private void destroy() {
+        mCounterMgr.destroy();
     }
 
     @Override
-    public void update(String counter) {
-        mProgressInfo.post(new Runnable() {
-            @Override
-            public void run() {
-                mProgressInfo.setText(counter);
-            }
-        });
+    public void update() {
+        mCounter++;
+        Log.d(TAG, "update: mCounter=" + mCounter);
+        mResultView.post(() -> mResultView.setText(String.valueOf(mCounter)));
     }
 }

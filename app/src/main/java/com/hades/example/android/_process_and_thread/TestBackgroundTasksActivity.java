@@ -23,7 +23,7 @@ public class TestBackgroundTasksActivity extends NoNeedPermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageAsyncTask();
+        pageThreadPoolExecutor();
     }
 
     private void pageThreadPoolExecutor() {

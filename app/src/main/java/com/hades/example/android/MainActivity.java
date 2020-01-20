@@ -1,6 +1,8 @@
 package com.hades.example.android;
 
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 
 import com.github.yingvickycao.autils.base.NoNeedPermissionActivity;
@@ -10,6 +12,7 @@ import com.hades.example.android.resource.ResourceActivity;
 import com.hades.example.android.widget.WidgetActivity;
 
 public class MainActivity extends NoNeedPermissionActivity {
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,16 +20,12 @@ public class MainActivity extends NoNeedPermissionActivity {
         setContentView(R.layout.activity_main);
         initViews();
 
-        findViewById(R.id.pageSecurity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pageSecurity();
-            }
-        });
+        findViewById(R.id.pageSecurity).setOnClickListener(v -> pageSecurity());
         findViewById(R.id.pageWidget).setOnClickListener(v -> pageWidget());
         findViewById(R.id.pageDateStorage).setOnClickListener(v -> pageDateStorage());
         findViewById(R.id.pageResource).setOnClickListener(v -> pageResource());
         findViewById(R.id.pageQAAboutView).setOnClickListener(v -> pageQAAboutView());
+        findViewById(R.id.test).setOnClickListener(v -> test());
     }
 
     private void pageSecurity() {
@@ -47,5 +46,11 @@ public class MainActivity extends NoNeedPermissionActivity {
 
     private void pageQAAboutView() {
         showActivity(QAActivity.class);
+    }
+
+    private void test() {
+        Log.d(TAG, "test: " + SystemClock.currentThreadTimeMillis());
+        Log.d(TAG, "test: " + System.currentTimeMillis());
+        Log.d(TAG, "test: " + System.nanoTime());
     }
 }

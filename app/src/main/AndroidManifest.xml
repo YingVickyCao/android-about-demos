@@ -256,6 +256,9 @@
         <activity android:name=".app_component._activity._children.TestLauncherActivity" />
         <activity android:name=".app_component._activity._children.TestPreferenceActivity" />
         <activity android:name=".app_component._activity._children.TestExpandableListActivity" />
+        <activity
+            android:name=".app_component._activity.FullScreenActivity"
+            android:theme="@style/AppTheme.FullScreen" />
 
         <activity android:name=".app_component._fragment.book.BookListActivity" />
         <activity android:name=".app_component._fragment.book.BookDetailActivity" />

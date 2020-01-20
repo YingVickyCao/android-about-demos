@@ -22,7 +22,7 @@ public class TestAsyncTaskTestFragment extends BaseFragment implements ISum {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.bt_asynctask, container, false);
+        View view = inflater.inflate(R.layout.process_thread_asynctask, container, false);
         progressBar = view.findViewById(R.id.progressbar);
         mResult = view.findViewById(R.id.result);
 

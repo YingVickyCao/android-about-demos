@@ -116,7 +116,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <!-- Case 1: Minimum dimensions on ConstraintLayout,end -->
+    <!-- Case 1: Minimum dimensions on ConstraintLayout,shutdown -->
 
     <!-- Case 2: Widgets dimension constraints,start -->
 

@@ -9,18 +9,9 @@
         android:text="@string/page_threadPoolExecutor" />
 
     <TextView
-        android:id="@+id/numInfo"
+        android:id="@+id/result"
         style="@style/tv.small"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="50dp"
-        android:text="0 - 0" />
-
-    <TextView
-        android:id="@+id/progressInfo"
-        style="@style/tv.small"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="50dp" />
+        android:layout_centerInParent="true" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,23 +20,23 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/init"
+            style="@style/btn.small"
+            android:text="@string/init" />
+
+        <Button
             android:id="@+id/start"
             style="@style/btn.small"
             android:text="@string/start" />
 
         <Button
-            android:id="@+id/pause"
+            android:id="@+id/stop"
             style="@style/btn.small"
-            android:text="@string/pause" />
+            android:text="@string/stop" />
 
         <Button
-            android:id="@+id/cancel"
+            android:id="@+id/destroy"
             style="@style/btn.small"
-            android:text="@string/cancel" />
-
-        <Button
-            android:id="@+id/end"
-            style="@style/btn.small"
-            android:text="@string/end" />
+            android:text="destroy" />
     </LinearLayout>
 </RelativeLayout>
