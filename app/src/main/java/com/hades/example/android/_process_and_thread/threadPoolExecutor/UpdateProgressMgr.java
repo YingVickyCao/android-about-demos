@@ -7,15 +7,16 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-public class CounterMgr {
-    private static final String TAG = CounterMgr.class.getSimpleName();
+public class UpdateProgressMgr {
+    private static final String TAG = UpdateProgressMgr.class.getSimpleName();
     private ScheduledExecutorService mExecutorService;
     private ScheduledFuture mFuture;
     private Runnable mRunnable;
 
     private IProgressListener mProgressListener;
+    private final int PERIOD_IN_SECONDS = 1;
 
-    public CounterMgr() {
+    public UpdateProgressMgr() {
     }
 
     public void setProgressListener(IProgressListener progressListener) {
@@ -48,7 +49,7 @@ public class CounterMgr {
 
     private void checkFuture() {
         if (null == mFuture || mFuture.isCancelled()) {
-            mFuture = mExecutorService.scheduleAtFixedRate(mRunnable, 0, 1, TimeUnit.SECONDS);
+            mFuture = mExecutorService.scheduleAtFixedRate(mRunnable, 0, PERIOD_IN_SECONDS, TimeUnit.SECONDS);
         }
     }
 

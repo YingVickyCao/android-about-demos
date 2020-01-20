@@ -16,7 +16,7 @@
         <TextView
             style="@style/topic"
             android:layout_width="match_parent"
-            android:text="@string/page_activity_fullscreen" />
+            android:text="@string/page_activity_full_screen" />
 
     </LinearLayout>
 

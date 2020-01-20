@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -232,7 +233,7 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
 
     private void startUpdateProgress() {
         if (null != mHandler) {
-            mHandler.sendMessage4UpdateView();
+            mHandler.sendMessage4Progress();
         }
     }
 
@@ -315,7 +316,7 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
         mPlayer.start();
         if (null != mHandler) {
             mHandler.setITimerView(this);
-            mHandler.sendMessage4UpdateView();
+            mHandler.sendMessage4Progress();
         }
         setEndTime(mPlayer.getDuration());
     }
@@ -375,6 +376,11 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
             if (mCurrentTime != null)
                 mCurrentTime.setText(mMediaController.stringForTime(position));
         });
+    }
+
+    @Override
+    public void cancelUpdateView() {
+        Toast.makeText(getActivity(), "Cancel progress", Toast.LENGTH_SHORT).show();
     }
 
     private void setEndTime(int duration) {

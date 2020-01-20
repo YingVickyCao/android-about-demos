@@ -5,6 +5,7 @@
     <string name="page_bond_service">Bound service</string>
     <string name="page_content_provider">Content Provider</string>
     <string name="page_activity">Activity</string>
+    <string name="page_activity_full_screen">Full Screen Activity</string>
     <string name="page_activity_save_and_restore_state">Saving and restoring transient UI state</string>
     <string name="page_activity_ExpandableListActivity">ExpandableListActivity</string>
     <string name="page_LauncherActivity">LauncherActivity</string>
@@ -464,4 +465,5 @@
     <string name="video">Video</string>
     <string name="text">Text</string>
     <string name="resume">Resume</string>
+    <string name="init">init</string>
 </resources>

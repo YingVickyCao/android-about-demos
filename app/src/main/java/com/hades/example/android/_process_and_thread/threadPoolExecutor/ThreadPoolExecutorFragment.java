@@ -17,14 +17,14 @@ public class ThreadPoolExecutorFragment extends BaseFragment implements IProgres
 
     private int mCounter = 1;
     private TextView mResultView;
-    CounterMgr mCounterMgr;
+    UpdateProgressMgr mUpdateProgressMgr;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.process_thread_threadpoolexecutor, container, false);
 
-        mCounterMgr = new CounterMgr();
+        mUpdateProgressMgr = new UpdateProgressMgr();
         mResultView = view.findViewById(R.id.result);
 
         view.findViewById(R.id.init).setOnClickListener(v -> init());
@@ -39,26 +39,26 @@ public class ThreadPoolExecutorFragment extends BaseFragment implements IProgres
     public void onDestroyView() {
         super.onDestroyView();
 
-        if (null != mCounterMgr) {
-            mCounterMgr.destroy();
-            mCounterMgr = null;
+        if (null != mUpdateProgressMgr) {
+            mUpdateProgressMgr.destroy();
+            mUpdateProgressMgr = null;
         }
     }
 
     private void init() {
-        mCounterMgr.init(this);
+        mUpdateProgressMgr.init(this);
     }
 
     private void start() {
-        mCounterMgr.start();
+        mUpdateProgressMgr.start();
     }
 
     private void stop() {
-        mCounterMgr.stop();
+        mUpdateProgressMgr.stop();
     }
 
     private void destroy() {
-        mCounterMgr.destroy();
+        mUpdateProgressMgr.destroy();
     }
 
     @Override

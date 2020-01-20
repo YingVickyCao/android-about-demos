@@ -43,7 +43,7 @@ public class TestMediaActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageSurfaceViewPlayVideo();
+        pageMediaPlayerPlayAudio();
     }
 
     private void pageMediaPlayerPlayAudio() {
