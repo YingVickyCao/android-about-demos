@@ -63,8 +63,6 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
         findViewById(R.id.pageDatePickerDialog).setOnClickListener(v -> pageDatePickerDialog());
         findViewById(R.id.pageTimePickerDialog).setOnClickListener(v -> pageTimePickerDialog());
         findViewById(R.id.pageHalfWidthDialogFragment).setOnClickListener(v -> pageHalfWidthDialogFragment());
-
-        Log.e(TAG, "onCreate: screen type=" + getResources().getString(R.string.screen));
     }
 
     @Override
