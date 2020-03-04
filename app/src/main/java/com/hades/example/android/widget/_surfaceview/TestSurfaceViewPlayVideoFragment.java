@@ -154,8 +154,8 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
         mPlayer.reset();
         mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         // 设置需要播放的视频
-//        mPlayer.setDataSource(getActivity(), Uri.parse("android.resource://" + getContext().getPackageName() + "/" + R.raw.mp4_1));
-        mPlayer.setDataSource(getActivity(), Uri.parse("/sdcard/mp4_1.mp4"));
+        mPlayer.setDataSource(getActivity(), Uri.parse("android.resource://" + getContext().getPackageName() + "/" + R.raw.mp4_1));
+//        mPlayer.setDataSource(getActivity(), Uri.parse("/sdcard/mp4_3.mp4"));
         mPlayer.prepareAsync();
     }
 
@@ -178,7 +178,7 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
         mPlayer.start();
         if (null != mHandler) {
             mHandler.setITimerView(this);
-            mHandler.sendMessage4UpdateView();
+            mHandler.sendMessage4Progress();
         }
         setEndTime(mPlayer.getDuration());
 
@@ -190,7 +190,7 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
 
     private void startUpdateProgress() {
         if (null != mHandler) {
-            mHandler.sendMessage4UpdateView();
+            mHandler.sendMessage4Progress();
         }
     }
 
@@ -341,4 +341,5 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
             mEndTime.setText(mMediaController.stringForTime(duration));
         });
     }
+
 }

@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -35,6 +36,8 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
     SeekBar mProgress;
     TextView mCurrentTime;
     TextView mEndTime;
+
+    private Button mPauseBtn;
 
     private TimerHandler mHandler;
     private MediaController mMediaController;
@@ -90,14 +93,12 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
         });
 
         view.findViewById(R.id.start).setOnClickListener(v -> start());
-        view.findViewById(R.id.pause).setOnClickListener(v -> pause());
+        mPauseBtn = view.findViewById(R.id.pause);
+        mPauseBtn.setOnClickListener(v -> pause());
         view.findViewById(R.id.stopRecord).setOnClickListener(v -> stop());
-
         mMediaController = new MediaController();
-
         return view;
     }
-
 
     @Override
     public void onResume() {
@@ -232,7 +233,7 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
 
     private void startUpdateProgress() {
         if (null != mHandler) {
-            mHandler.sendMessage4UpdateView();
+            mHandler.sendMessage4Progress();
         }
     }
 
@@ -262,8 +263,26 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
         if (null == mPlayer) {
             return;
         }
-        mPlayer.pause();
-        stopUpdateProgress();
+
+        if ("Pause".equals(mPauseBtn.getText().toString())) {
+            mPlayer.pause();
+            stopUpdateProgress();
+        } else {
+            mPlayer.start();
+            startUpdateProgress();
+        }
+        togglePlayPause();
+    }
+
+    private void togglePlayPause() {
+        if (null == mPlayer) {
+            return;
+        }
+        if (mPlayer.isPlaying()) {
+            mPauseBtn.setText("Pause");
+        } else {
+            mPauseBtn.setText("Play");
+        }
     }
 
     /**
@@ -313,9 +332,10 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
         }
 
         mPlayer.start();
+        togglePlayPause();
         if (null != mHandler) {
             mHandler.setITimerView(this);
-            mHandler.sendMessage4UpdateView();
+            mHandler.sendMessage4Progress();
         }
         setEndTime(mPlayer.getDuration());
     }

@@ -187,7 +187,7 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
         mPlayer.start();
         if (null != mHandler) {
             mHandler.setITimerView(this);
-            mHandler.sendMessage4UpdateView();
+            mHandler.sendMessage4Progress();
         }
         setEndTime(mPlayer.getDuration());
 
@@ -205,7 +205,7 @@ public class TestExoPlayerFragment extends Fragment implements SurfaceHolder.Cal
 
     private void startUpdateProgress() {
         if (null != mHandler) {
-            mHandler.sendMessage4UpdateView();
+            mHandler.sendMessage4Progress();
         }
     }
 
