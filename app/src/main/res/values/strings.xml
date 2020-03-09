@@ -15,6 +15,7 @@
     <string name="page_intent_Filter_system_action">Intent-Filter - system action</string>
     <string name="page_intent_Filter_data_and_type">Intent-Filter - Data, and Type</string>
     <string name="page_intent_Flag">Intent-Flag</string>
+    <string name="page_manage_system_ui">Manage System UI</string>
     <string name="page_Fragment">Fragment</string>
     <string name="page_BottomSheetDialogFragment">BottomSheetDialogFragment</string>
     <string name="page_half_width_DialogFragment">Half width DialogFragment</string>

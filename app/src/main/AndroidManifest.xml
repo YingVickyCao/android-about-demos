@@ -49,6 +49,7 @@
         <!-- </activity> -->
         <activity android:name=".MainActivity" />
         <activity android:name=".QAActivity" />
+        <activity android:name=".app_component._activity.ManageSystemUIActivity" />
         <activity android:name=".app_component.TestAppComponentActivity" />
         <activity android:name=".app_component._activity.TestActivityActivity" />
         <activity android:name=".app_component._fragment.TestFragmentActivity" />
@@ -251,7 +252,7 @@
             android:theme="@android:style/Theme.Dialog" />
 
         <activity android:name=".app_component._activity._life_cycle.C" />
-        <activity android:name=".app_component._activity.GetViewSizeInOncreateActivity" />
+        <activity android:name=".app_component._activity.GetViewSizeActivity" />
 
         <activity android:name=".app_component._activity._children.TestLauncherActivity" />
         <activity android:name=".app_component._activity._children.TestPreferenceActivity" />
@@ -467,7 +468,9 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".resource.drawable._bitmap.three_level_cache.ImageGridActivity" />
-        </activity> <!-- END_RESOURCES -->
+        </activity>
+        <!-- END_RESOURCES -->
+
         <activity android:name=".data_storage.DataStorageActivity" />
         <activity android:name=".data_storage.database.TestSQLiteActivity" />
         <activity android:name=".po.security.SecurityActivity" />
@@ -485,6 +488,10 @@
         <activity android:name=".media.audio.audio_effect.TestAudioEffectActivity" />
         <activity android:name=".media.camera.TestCameraActivity" />
         <activity android:name=".media.exoplayer.TestExoPlayerActivity" />
+        <activity
+            android:name="._fix.black_screen.LoginActivity"
+            android:theme="@style/LoginIn_RemoveSplash2" />
+        <activity android:name="._fix.black_screen.MockMainActivity" />
     </application>
 
 </manifest>

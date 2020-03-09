@@ -23,6 +23,7 @@ public class TestActivityActivity extends NoNeedPermissionActivity {
         findViewById(R.id.pageSaveAndRestoreState).setOnClickListener(v -> pageSaveAndRestoreState());
         findViewById(R.id.pageLauncherActivity).setOnClickListener(v -> pageLauncherActivity());
         findViewById(R.id.pageLaunchMode).setOnClickListener(v -> pageLaunchMode());
+        findViewById(R.id.page_manage_system_ui).setOnClickListener(v -> pageManageSystemUI());
     }
 
     private void pageActivityLifecycle() {
@@ -30,7 +31,7 @@ public class TestActivityActivity extends NoNeedPermissionActivity {
     }
 
     private void pageGetViewSizeInActivityOnCreate() {
-        showActivity(GetViewSizeInOncreateActivity.class);
+        showActivity(GetViewSizeActivity.class);
     }
 
     private void pageSaveAndRestoreState() {
@@ -43,5 +44,9 @@ public class TestActivityActivity extends NoNeedPermissionActivity {
 
     private void pageLaunchMode() {
         showActivity(D.class);
+    }
+
+    private void pageManageSystemUI() {
+        showActivity(ManageSystemUIActivity.class);
     }
 }

@@ -317,4 +317,18 @@
         <!-- background：content的默认背景色  -->
         <item name="android:background">@android:color/holo_orange_light</item>
     </style>
+
+<!--    <style name="LoginIn" parent="AppTheme.Light"/>-->
+    <style name="LoginIn_RemoveSplash" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item> 
+        <item name="android:windowNoTitle">true</item>  
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="LoginIn_RemoveSplash2" parent="AppTheme">
+        <!--        <item name="android:windowBackground">@android:color/black</item>-->
+        <item name="android:windowBackground">@drawable/wallpaper</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
 </resources>
