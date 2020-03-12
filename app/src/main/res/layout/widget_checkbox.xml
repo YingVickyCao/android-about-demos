@@ -29,14 +29,21 @@
             android:checked="true"
             android:text="@string/is_friday" />
 
-        <!--  android:buttonTint:Change color of Image, and Change color of Text -->
+        <!--  android:buttonTint:Change color of Image -->
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/margin_medium"
             android:buttonTint="@android:color/holo_green_dark"
-            android:checked="false"
+            android:text="@string/is_friday" />
+
+        <!--  android:buttonTint: Change color of Text -->
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_medium"
             android:text="@string/is_friday"
             android:textColor="@android:color/holo_red_dark" />
 
@@ -57,7 +64,6 @@
             android:layout_marginTop="@dimen/margin_medium"
             android:button="@drawable/checkbox"
             android:buttonTint="@android:color/holo_green_dark"
-            android:checked="false"
             android:text="@string/is_friday" />
 
         <!--  android:background:Not work -->
@@ -71,6 +77,15 @@
             android:checked="true"
             android:text="@string/is_friday" />
 
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:background="@android:color/holo_blue_bright"
+            android:button="@drawable/checkbox"
+            android:text="@string/is_friday" />
+
         <!-- android:gravity : Change test position, not change button image position-->
         <CheckBox
             android:layout_width="wrap_content"
@@ -79,16 +94,6 @@
             android:layout_marginTop="@dimen/margin_medium"
             android:button="@drawable/checkbox"
             android:gravity="top"
-            android:text="@string/is_friday" />
-
-        <!-- android:background -->
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:background="@android:color/holo_blue_bright"
-            android:button="@drawable/checkbox"
             android:text="@string/is_friday" />
 
         <!-- AppCompatCheckBox + app:theme: Change 点击时的动画效果颜色 -->
