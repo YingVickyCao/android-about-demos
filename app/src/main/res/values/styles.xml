@@ -318,7 +318,7 @@
         <item name="android:background">@android:color/holo_orange_light</item>
     </style>
 
-<!--    <style name="LoginIn" parent="AppTheme.Light"/>-->
+    <!--    <style name="LoginIn" parent="AppTheme.Light"/>-->
     <style name="LoginIn_RemoveSplash" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item> 
         <item name="android:windowNoTitle">true</item>  
@@ -330,5 +330,9 @@
         <item name="android:windowBackground">@drawable/wallpaper</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="checkBox" parent="AppTheme">
+        <item name="colorAccent">@android:color/holo_orange_dark</item>
     </style>
 </resources>

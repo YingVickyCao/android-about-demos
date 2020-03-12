@@ -9,6 +9,7 @@ import com.github.yingvickycao.autils.base.NoNeedPermissionActivity;
 import com.github.yingvickycao.autils.mock.DummyItem;
 import com.hades.example.android.R;
 import com.hades.example.android.widget._button.TestButtonActivity;
+import com.hades.example.android.widget._checkbox.CheckBoxFragment;
 import com.hades.example.android.widget._layout._constraintlayout.TestConstraintLayoutFragment;
 import com.hades.example.android.widget._layout._framelayout.TestFrameLayoutFragment;
 import com.hades.example.android.widget._layout._viewgroup.TestViewGroupFragment;
@@ -101,12 +102,13 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.pageSpinner).setOnClickListener(v -> pageSpinner());
         findViewById(R.id.pageTabLayout).setOnClickListener(v -> pageTabLayout());
         findViewById(R.id.pageRadioButton).setOnClickListener(v -> pageRadioButton());
+        findViewById(R.id.pageCheckBox).setOnClickListener(v -> pageCheckBox());
         findViewById(R.id.pageSwitch).setOnClickListener(v -> pageSwitch());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageSurfaceViewPlayVideo();
+        pageCheckBox();
     }
 
     private void pageViewLocation() {
@@ -259,6 +261,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void pageRadioButton() {
         showFragment(new TestRadioButtonFragment());
+    }
+
+    private void pageCheckBox() {
+        showFragment(new CheckBoxFragment());
     }
 
     private void pageSwitch() {
