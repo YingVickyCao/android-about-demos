@@ -27,7 +27,7 @@ public class CheckBoxFragment extends BaseFragment {
         checkBox = view.findViewById(R.id.checkbox);
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {  // setChecked(bool) or Clicked
                 // isChecked=false,text=Is Friday
                 // isChecked=true,text=Is Friday
                 Log.d(TAG, "onCheckedChanged: isChecked=" + isChecked + ",text=" + buttonView.getText());
