@@ -441,9 +441,10 @@
         <activity android:name=".android_mechanism.event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity" />
         <activity android:name=".android_mechanism.event_handle.base_on_listener.event_listener_type.activity_itself.ActivityItselfListenerActivity" />
         <activity android:name=".android_mechanism.event_handle.base_on_listener.event_listener_type.xml.XmlListenerActivity" />
-        <activity android:name=".android_mechanism.event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity" /> <!-- END_EVENT_HANDLER -->
-        <!-- START_EVENT_HANDLER -->
-        <activity android:name=".android_mechanism.msg_handler.MessageHandlerActivity" /> <!-- END_EVENT_HANDLER -->
+        <activity android:name=".android_mechanism.event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity" />
+        <activity android:name=".android_mechanism.msg_handler.MessageHandlerActivity" />
+        <!-- END_EVENT_HANDLER -->
+
         <!-- START_RESOURCES -->
         <activity
             android:name=".resource.ResourceActivity"
@@ -469,6 +470,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".resource.drawable._bitmap.three_level_cache.ImageGridActivity" />
         </activity>
+        <activity android:name=".resource.anim.Activity1" />
+        <activity
+            android:name=".resource.anim.Activity2"
+            android:theme="@style/ActivityWithAnimation" />
+        <activity android:name=".resource.anim.Activity3" />
+
         <!-- END_RESOURCES -->
 
         <activity android:name=".data_storage.DataStorageActivity" />

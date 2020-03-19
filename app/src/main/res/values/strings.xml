@@ -58,6 +58,7 @@
     <string name="page_Tween_Animation">Tween animation</string>
     <string name="page_Frame_Animation">Frame animation</string>
     <string name="page_Property_Animation">Property animation</string>
+    <string name="page_Animation_when_activity_enter_exit"> Animation When activity enter/exit</string>
 
     <string name="page_widget">Widget</string>
     <string name="page_CustomView">Custom View</string>
@@ -465,4 +466,6 @@
     <string name="record">Record</string>
     <string name="toggle_checkbox_checked_status">Toggle CheckBox checked status</string>
     <string name="is_friday">Is Friday</string>
+    <string name="overridependingtransition">overridePendingTransition</string>
+    <string name="theme">Theme</string>
 </resources>

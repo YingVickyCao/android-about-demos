@@ -1,13 +1,13 @@
-package com.hades.example.android._fix.black_screen;
+package com.hades.example.android.resource.anim;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
 
-public class MockMainActivity extends Activity {
+public class Activity2 extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
