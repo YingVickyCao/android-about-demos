@@ -475,6 +475,7 @@
             android:name=".resource.anim.Activity2"
             android:theme="@style/ActivityWithAnimation" />
         <activity android:name=".resource.anim.Activity3" />
+        <activity android:name=".resource._layout.LoadDiffLayoutActivity" />
 
         <!-- END_RESOURCES -->
 

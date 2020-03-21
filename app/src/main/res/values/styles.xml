@@ -348,15 +348,6 @@
 
     <style name="AnimationForActivity" parent="@android:style/Animation">
         <!-- Open new Activity,and the new Activity enters -->
-        <!--        <item name="android:activityOpenEnterAnimation">@android:anim/activity_open_enter</item>-->
-        <!-- Open new Activity, and previous activity exits-->
-        <!--        <item name="android:activityOpenExitAnimation">@android:anim/activity_open_exit</item>-->
-        <!-- Close current Activity, and previous activity enters -->
-        <!--        <item name="android:activityCloseEnterAnimation">@android:anim/activity_close_enter</item>-->
-        <!-- Close current activity -->
-        <!--        <item name="android:activityCloseExitAnimation">@android:anim/activity_close_exit</item>-->
-
-        <!-- Open new Activity,and the new Activity enters -->
         <item name="android:activityOpenEnterAnimation">@anim/in_from_right</item>
         <!-- Open new Activity, and previous activity exits-->
         <item name="android:activityOpenExitAnimation">@anim/in_from_right_abit</item>
