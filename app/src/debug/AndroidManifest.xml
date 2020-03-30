@@ -4,7 +4,7 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".resource._layout.LoadDiffLayoutActivity">
+        <activity android:name=".feature.multi_window.MultiWindowRootActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

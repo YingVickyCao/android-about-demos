@@ -327,18 +327,21 @@
         <!-- </intent-filter> -->
         <!-- </receiver> -->
         <!-- END_RUNTIME_PERMISSION -->
+
+
+        <!-- Widget,START -->
         <activity android:name=".widget.WidgetActivity" /> <!-- START_WIDGET -->
         <!-- SPLASH_NOTIFY_ICON_START -->
         <activity android:name=".widget.splash_notify_icon.SplashNotifyIconActivity" />
         <activity android:name=".widget.splash_notify_icon.SplashNotifyIconActivity2" /> <!-- SPLASH_NOTIFY_ICON_END -->
-        <!-- START_SCROLL_VIEW -->
         <activity android:name=".widget._list.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
         <activity android:name=".widget._list._recyclerview._dag_reorder_list.v1.DragAndReorderListActivity" /> <!-- END_SCROLL_VIEW -->
         <activity android:name=".widget._list._recyclerview._dag_reorder_list.v2.DragAndReorderListActivity" />
         <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivity" />
         <activity android:name=".widget._button.TestButtonActivity" />
         <activity android:name=".widget._videoview.VideoViewRotateScreenTipActivity" />
-        <!-- END_WIDGET -->
+        <activity android:name=".widget._layout.relativelayout.TestRelativeLayoutActivity" />
+        <!-- Widget,END -->
 
         <activity android:name=".other_ui.OtherUIActivity" />
         <activity android:name=".other_ui._notification.TestNotificationDescActivity" />
@@ -476,7 +479,6 @@
             android:theme="@style/ActivityWithAnimation" />
         <activity android:name=".resource.anim.Activity3" />
         <activity android:name=".resource._layout.LoadDiffLayoutActivity" />
-
         <!-- END_RESOURCES -->
 
         <activity android:name=".data_storage.DataStorageActivity" />
@@ -500,6 +502,27 @@
             android:name="._fix.black_screen.LoginActivity"
             android:theme="@style/LoginIn_RemoveSplash2" />
         <activity android:name="._fix.black_screen.MockMainActivity" />
+
+        <!-- Feature,START -->
+        <!--  Multi Window  -->
+        <activity
+            android:name=".feature.multi_window.MultiWindowRootActivity"
+            android:resizeableActivity="true"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            tools:targetApi="n">
+            <layout
+                android:defaultWidth="600dp"
+                android:defaultHeight="500dp"
+                android:gravity="top|end"
+                android:minWidth="300dp"
+                android:minHeight="450dp" />
+        </activity>
+        <activity
+            android:name=".feature.multi_window.AActivity"
+            android:resizeableActivity="true"
+            tools:targetApi="n"></activity>
+        <activity android:name=".feature.multi_window.BActivity" />
+        <!-- Feature,END -->
     </application>
 
 </manifest>

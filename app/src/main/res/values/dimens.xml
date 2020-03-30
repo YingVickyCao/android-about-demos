@@ -12,4 +12,5 @@
     <dimen name="stroke_width">1dp</dimen>
 
     <dimen name="widget_margin">8dp</dimen>
+    <dimen name="big_size">3000dp</dimen>
 </resources>
