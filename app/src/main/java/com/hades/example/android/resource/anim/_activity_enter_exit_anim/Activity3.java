@@ -1,4 +1,4 @@
-package com.hades.example.android.resource.anim;
+package com.hades.example.android.resource.anim._activity_enter_exit_anim;
 
 import android.content.Intent;
 import android.os.Bundle;

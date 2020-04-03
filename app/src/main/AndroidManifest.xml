@@ -473,12 +473,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".resource.drawable._bitmap.three_level_cache.ImageGridActivity" />
         </activity>
-        <activity android:name=".resource.anim.TestAnimActivity" />
-        <activity android:name=".resource.anim.Activity1" />
+
+        <activity android:name=".resource.anim._activity_enter_exit_anim.TestAnimActivity" />
+        <activity android:name=".resource.anim._activity_enter_exit_anim.Activity1" />
         <activity
-            android:name=".resource.anim.Activity2"
+            android:name=".resource.anim._activity_enter_exit_anim.Activity2"
             android:theme="@style/ActivityWithAnimation" />
-        <activity android:name=".resource.anim.Activity3" />
+        <activity android:name=".resource.anim._activity_enter_exit_anim.Activity3" />
+
+        <activity android:name=".resource.anim._activity_transition_animation.TransitionMainActivity" />
+        <activity android:name=".resource.anim._activity_transition_animation.FirstPageActivity" />
+
         <activity android:name=".resource._layout.LoadDiffLayoutActivity" />
         <!-- END_RESOURCES -->
 
