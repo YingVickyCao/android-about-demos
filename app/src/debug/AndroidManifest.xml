@@ -4,7 +4,7 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".feature.multi_window.MultiWindowRootActivity">
+        <activity android:name=".resource.anim.TestAnimActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

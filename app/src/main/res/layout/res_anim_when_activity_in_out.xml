@@ -20,6 +20,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
+            android:id="@+id/activityAnim_Default"
+            style="@style/btn.small"
+            android:text="Default" />
+
+        <Button
             android:id="@+id/activityAnim_theme"
             style="@style/btn.small"
             android:text="@string/theme" />

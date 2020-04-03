@@ -25,6 +25,9 @@ public class Activity3 extends AppCompatActivity {
     public void finish() {
         super.finish();
 //        overridePendingTransition(R.anim.activity_close_enter, R.anim.activity_close_exit);
-        overridePendingTransition(R.anim.out_to_right_abit, R.anim.out_to_right);
+//        overridePendingTransition(R.anim.out_to_right_abit, R.anim.out_to_right);
+
+//        overridePendingTransition(0, R.anim.up_2_down);
+        overridePendingTransition(R.anim.slide_out_down_abit, R.anim.slide_out_down);  // Recommend
     }
 }

@@ -473,6 +473,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".resource.drawable._bitmap.three_level_cache.ImageGridActivity" />
         </activity>
+        <activity android:name=".resource.anim.TestAnimActivity" />
         <activity android:name=".resource.anim.Activity1" />
         <activity
             android:name=".resource.anim.Activity2"
@@ -507,8 +508,8 @@
         <!--  Multi Window  -->
         <activity
             android:name=".feature.multi_window.MultiWindowRootActivity"
-            android:resizeableActivity="true"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:resizeableActivity="true"
             tools:targetApi="n">
             <layout
                 android:defaultWidth="600dp"
