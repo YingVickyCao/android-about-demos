@@ -4,7 +4,7 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".resource.anim._activity_transition_animation.TransitionMainActivity">
+        <activity android:name=".QAActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

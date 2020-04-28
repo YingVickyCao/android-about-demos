@@ -86,7 +86,7 @@
             android:button="@drawable/checkbox"
             android:text="@string/is_friday" />
 
-        <!-- android:gravity : Change test position, not change button image position-->
+        <!-- android:gravity : Change text position, not change button image position-->
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -136,6 +136,7 @@
             android:paddingStart="5dp"
             android:text="@string/is_friday" />
         <!--  Fix：Left of dynamic Circle when Clicked is hidden , END -->
+
     </LinearLayout>
 
     <Button

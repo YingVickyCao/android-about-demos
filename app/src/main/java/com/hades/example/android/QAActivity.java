@@ -5,9 +5,11 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.github.yingvickycao.autils.base.NoNeedPermissionActivity;
-import com.hades.example.android.other_ui._actionbar.TestActionBarActivity;
+import com.hades.example.android.tools.DensityUtil;
 
 public class QAActivity extends NoNeedPermissionActivity {
+    private static final String TAG = "QAActivity";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,7 @@ public class QAActivity extends NoNeedPermissionActivity {
     }
 
     private void temp() {
-        showActivity(TestActionBarActivity.class);
+        DensityUtil densityUtil = new DensityUtil(this);
+        densityUtil.temp();
     }
 }
