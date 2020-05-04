@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- Not Work : When pressed , ImageView can not have pressed status -->
+        <ImageView
+            android:id="@+id/svg2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:src="@drawable/drawable_vector_add"
+            android:tint="@color/color_v3" />
+
+        <!-- Work : ImageView set android:clickable="true". When pressed , it can have pressed status -->
+        <ImageView
+            android:id="@+id/svg21"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:clickable="true"
+            android:src="@drawable/drawable_vector_add"
+            android:tint="@color/color_v3" />
+
+        <!-- Work : When pressed , ImageButton can have pressed status -->
+        <ImageButton
+            android:id="@+id/svg3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:src="@drawable/drawable_vector_add"
+            android:tint="@color/color_v3" />
+
+        <!-- Work : When pressed , ImageView can have pressed status -->
+        <FrameLayout
+            android:id="@+id/svg4Container"
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/svg4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:clickable="false"
+                android:duplicateParentState="true"
+                android:src="@drawable/drawable_vector_add"
+                android:tint="@color/color_v3" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/enableSvg"
+            style="@style/btn.small"
+            android:text="Enable = true" />
+
+        <Button
+            android:id="@+id/disableSvg"
+            style="@style/btn.small"
+            android:text="Enable = false" />
+    </LinearLayout>
+</LinearLayout>

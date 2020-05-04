@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.github.yingvickycao.autils.base.NoNeedPermissionActivity;
-import com.hades.example.android.tools.DensityUtil;
+import com.hades.example.android.tools.TestDensityUtil;
 
 public class QAActivity extends NoNeedPermissionActivity {
     private static final String TAG = "QAActivity";
@@ -35,7 +35,6 @@ public class QAActivity extends NoNeedPermissionActivity {
     }
 
     private void temp() {
-        DensityUtil densityUtil = new DensityUtil(this);
-        densityUtil.temp();
+        new TestDensityUtil().temp(this);
     }
 }
