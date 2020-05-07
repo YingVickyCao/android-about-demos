@@ -8,16 +8,124 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/size_20">
 
-        <!-- START,Button icon color is highlight with state_selected -->
+        <!-- START:Button icon color is highlight with state_selected -->
         <include layout="@layout/res_tint_icon_supports_selected" />
-        <!-- END,Button icon color is highlight with state_selected -->
+        <!-- END:Button icon color is highlight with state_selected -->
 
         <View style="@style/div" />
 
-        <!-- START,When enabled, Button icon color is highlight when pressed. When disable, icon is disable color -->
+        <!-- START:When enabled, Button icon color is highlight when pressed. When disable, icon is disable color -->
         <include layout="@layout/res_tint_icon_supports_enable_pressed" />
-        <!-- END,When enabled, Button icon color is highlight when pressed. When disable, icon is disable color -->
+        <!-- END:When enabled, Button icon color is highlight when pressed. When disable, icon is disable color -->
+
+        <View style="@style/div" />
+
+        <!-- START:Tint for  drawableRight -->
+        <Button
+            style="@style/btn"
+            android:drawableRight="@drawable/ic_launcher"
+            android:text="No Tint" />
+
+        <!-- drawableTint -->
+        <Button
+            style="@style/btn"
+            android:drawableRight="@drawable/ic_launcher"
+            android:drawableTint="@color/color_v3"
+            android:text="drawableRight" />
+
+        <!-- backgroundTint -->
+        <Button
+            style="@style/btn"
+            android:backgroundTint="@color/color_v3"
+            android:drawableRight="@drawable/ic_launcher"
+            android:text="backgroundTint" />
+
+        <!-- foregroundTint -->
+        <Button
+            style="@style/btn"
+            android:drawableRight="@drawable/ic_launcher"
+            android:foregroundTint="@color/color_v3"
+            android:text="Tint - foregroundTint" />
+        <!-- END:Tint when drawableRight -->
+
+        <View style="@style/div" />
+
+        <TextView
+            style="@style/tv"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="Tint with enable + pressed status" />
+
+        <!--  START: SeekBar, Tint with enable + pressed status  -->
+        <!--  android:thumbTint -->
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:max="100"
+            android:progress="40"
+            android:secondaryProgress="60"
+            android:thumb="@drawable/drawable_animated_selector_4_seekbar_thumb_material_anim"
+            android:thumbTint="@color/color_v3" />
+        <!--  END: Tint with enable + pressed status  -->
+
+        <View style="@style/div" />
+        <!-- START: tint in svg -->
+        <!--
+            View tint > svg tint > svg fillColor
+            1 svg tint no existing , svg color = svg fillColor
+            2 svg tint is existing , svg color = svg tint
+            3 if View tint, svg color = View tint, no matter svg tint is existing or not. -->
+
+        <!-- In Light theme, svg color = svg tint . In dark, svg color =  svg fillColor-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/drawable_vector_add" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/drawable_vector_add" />
+
+        <!-- In Light theme, svg color = view tint. In dark, svg color = view tint -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/drawable_vector_add"
+            android:tint="@color/green" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/drawable_vector_add"
+            android:indeterminateTint="@color/green" />
+
+        <View style="@style/div" />
+        <!-- END: tint in svg, alpha -->
+
+        <!-- START: tint in svg,alpha -->
+        <!-- If svg has alpha, tint of svg can not be used, but tint of ImageView can .-->
+        <!-- ✔  -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/drawable_vector_alpha" />
+
+        <!-- ✗ -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/drawable_vector_alpha2" />
+
+        <!-- ✔  -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/drawable_vector_alpha"
+            android:tint="#80FF0000" />
+        <!-- END: tint in svg,alpha -->
     </LinearLayout>
 </ScrollView>

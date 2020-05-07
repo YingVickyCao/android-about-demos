@@ -8,12 +8,14 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 
-import com.hades.example.android.R;
 import com.github.yingvickycao.autils.base.NoNeedPermissionActivity;
+import com.github.yingvickycao.autils.mock.SFMock;
+import com.hades.example.android.R;
 
 public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
 
     TextView textView;
+    TextView themeName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,6 +26,7 @@ public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
         initViews();
 
         textView = findViewById(R.id.textView);
+        themeName = findViewById(R.id.themeName);
 
         findViewById(R.id.setLightTheme).setOnClickListener(v -> setLightTheme());
         findViewById(R.id.setDarkTheme).setOnClickListener(v -> setDarkTheme());
@@ -36,6 +39,17 @@ public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
         findViewById(R.id.pageDeclareStyleable).setOnClickListener(v -> pageDeclareStyleable());
         findViewById(R.id.pageColorFilter).setOnClickListener(v -> pageColorFilter());
         findViewById(R.id.pageTint).setOnClickListener(v -> pageTint());
+
+        setThemeName();
+    }
+
+    protected void setThemeName() {
+        boolean isLightTheme = SFMock.getInstance().isRedTheme();
+        if (isLightTheme) {
+            themeName.setText("Light Theme");
+        } else {
+            themeName.setText("Dark Theme");
+        }
     }
 
     private void colorOne() {

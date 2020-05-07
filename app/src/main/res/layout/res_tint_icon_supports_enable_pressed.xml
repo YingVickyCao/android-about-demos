@@ -46,6 +46,15 @@
             android:clickable="true"
             android:focusable="true">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:clickable="false"
+                android:duplicateParentState="true"
+                android:text="Test"
+                android:textColor="@color/color_v3" />
+
             <ImageView
                 android:id="@+id/svg4"
                 android:layout_width="50dp"

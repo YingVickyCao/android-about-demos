@@ -108,7 +108,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     @Override
     protected void showCurrentTest() {
-        pageCheckBox();
+        pageSeekBar();
     }
 
     private void pageViewLocation() {
