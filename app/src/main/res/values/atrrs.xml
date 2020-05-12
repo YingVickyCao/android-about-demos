@@ -28,5 +28,4 @@
         <attr name="rvText" format="reference" />
         <attr name="rvSize" format="dimension" />
     </declare-styleable>
-
 </resources>

@@ -83,7 +83,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageThemeChoose();
+        pageLevelListDrawable();
     }
 
     private void pageColor() {

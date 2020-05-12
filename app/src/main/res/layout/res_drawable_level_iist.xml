@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -7,72 +8,77 @@
         style="@style/topic"
         android:text="@string/page_LevelListDrawable" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="horizontal">
+        android:layout_marginTop="@dimen/size_topic">
 
-        <TextView
-            android:id="@+id/textView1_1"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="@dimen/margin_tiny"
-            android:background="@drawable/drawable_level_list_1_1" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-        <!--<TextView-->
-        <!--android:id="@+id/textView4"-->
-        <!--android:layout_width="40dp"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:layout_margin="@dimen/margin_tiny"-->
-        <!--android:background="@drawable/drawable_level_list_1_2_v1" />-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView1_2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="@dimen/margin_tiny"
-            android:background="@drawable/drawable_level_list_1_2_v2" />
+                <TextView
+                    android:id="@+id/textView1_1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="@dimen/margin_tiny"
+                    android:background="@drawable/drawable_level_list_1_1" />
 
-
-        <TextView
-            android:id="@+id/textView2_1"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="@dimen/margin_tiny"
-            android:background="@drawable/drawable_level_list_2_1" />
-
-        <!--<TextView-->
-        <!--android:id="@+id/textView2_v2"-->
-        <!--android:layout_width="40dp"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:layout_margin="@dimen/margin_tiny"-->
-        <!--android:background="@drawable/drawable_level_list_2_2_v1" />-->
-
-        <TextView
-            android:id="@+id/textView2_2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="@dimen/margin_tiny"
-            android:background="@drawable/drawable_level_list_2_2_v2" />
-
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/textView1_2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="@dimen/margin_tiny"
+                    android:background="@drawable/drawable_level_list_1_2_v2" />
 
 
-    <Button
-        android:id="@+id/setMaxLevel0"
-        style="@style/btn.small"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/set_max_level_0" />
+                <TextView
+                    android:id="@+id/textView2_1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="@dimen/margin_tiny"
+                    android:background="@drawable/drawable_level_list_2_1" />
 
-    <Button
-        android:id="@+id/setMaxLevel1"
-        style="@style/btn.small"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/set_max_level_1" />
+                <!--<TextView-->
+                <!--android:id="@+id/textView2_v2"-->
+                <!--android:layout_width="40dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_margin="@dimen/margin_tiny"-->
+                <!--android:background="@drawable/drawable_level_list_2_2_v1" />-->
 
+                <TextView
+                    android:id="@+id/textView2_2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="@dimen/margin_tiny"
+                    android:background="@drawable/drawable_level_list_2_2_v2" />
+
+                <Button
+                    android:id="@+id/setMaxLevel0"
+                    style="@style/btn.small"
+                    android:text="@string/set_max_level_0" />
+
+                <Button
+                    android:id="@+id/setMaxLevel1"
+                    style="@style/btn.small"
+                    android:text="@string/set_max_level_1" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="168dp"
+                android:layout_height="274dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/size_5"
+                android:background="@drawable/drawable_shadow"
+                android:elevation="@dimen/size_5"
+                android:padding="5dp"
+                android:src="@drawable/drawable_vector_4_placeholder_svg" />
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
