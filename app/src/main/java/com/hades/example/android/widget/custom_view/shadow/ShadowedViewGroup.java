@@ -78,6 +78,9 @@ public class ShadowedViewGroup extends ViewGroup {
         mShadowPaint.setStyle(Paint.Style.FILL);
         mShadowPaint.setAntiAlias(true);
         mShadowPaint.setColor(Color.TRANSPARENT);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+            setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        }
         mShadowPaint.setShadowLayer(shadowRadius, 0, 0, shadowColor);
     }
 
