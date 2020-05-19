@@ -29,4 +29,11 @@
 
     <color name="item_view_highlight_bg_2">@android:color/holo_orange_dark</color>
     <color name="item_view_default_bg_2">@android:color/holo_orange_light</color>
+
+    <color name="bg_0_light">#fff</color>
+    <color name="bg_0_dark">#22272c</color>
+
+    <color name="s_0_light">#26000000</color>
+    <color name="s_0_light_red">#80FF0000</color>
+    <color name="s_0_dark">#CC22272C</color>
 </resources>

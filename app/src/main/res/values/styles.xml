@@ -360,4 +360,25 @@
     <style name="ActivityWithAnimation" parent="AppTheme">
         <item name="android:windowAnimationStyle">@style/AnimationForActivity</item>
     </style>
+
+
+    <!-- 0, 2dp, 4dp -->
+    <style name="viewgroup_with_box_shadow">
+        <item name="bg_radius">0dp</item>
+        <item name="bg_color">@android:color/transparent</item>
+        <item name="shadow_radius">10dp</item>
+        <item name="shadow_color">@color/s_0_light_red</item>
+        <item name="shadow_topRadius">10dp</item>
+        <item name="shadow_rightRadius">10dp</item>
+        <item name="shadow_leftRadius">10dp</item>
+        <item name="shadow_bottomRadius">10dp</item>
+    </style>
+
+    <style name="img_with_box_shadow">
+        <!--        <item name="android:elevation">4dp</item>-->
+        <!--        <item name="android:background">@drawable/box_shadow</item>-->
+        <!--        <item name="android:background">@color/colorPrimary</item>-->
+        <!--                <item name="android:background">@drawable/box_shadow</item>-->
+        <!--        <item name="android:adjustViewBounds">true</item>-->
+    </style>
 </resources>

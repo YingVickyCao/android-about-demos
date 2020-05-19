@@ -33,6 +33,7 @@ import com.hades.example.android.widget._switch.TestSwitchFragment;
 import com.hades.example.android.widget._tablayout.TestTabLayoutFragment;
 import com.hades.example.android.widget.custom_view.TestCustomViewFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
+import com.hades.example.android.widget.custom_view.shadow.ShadowViewFragment;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageFragment;
 import com.hades.example.android.widget.imageview.TestImageViewFragment;
@@ -63,9 +64,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         initViews();
 
         findViewById(R.id.pageCustomVew).setOnClickListener(v -> pageCustomVew());
+        findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
+        findViewById(R.id.page_CustomVew_ShadowView).setOnClickListener(v -> page_CustomVew_ShadowView());
         findViewById(R.id.pageListView).setOnClickListener(v -> pageListView());
         findViewById(R.id.pageViewLocation).setOnClickListener(v -> pageViewLocation());
-        findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
         findViewById(R.id.pageConstraintLayout).setOnClickListener(v -> pageConstraintLayout());
         findViewById(R.id.pageLinearLayout).setOnClickListener(v -> pageLinearLayout());
         findViewById(R.id.pageLinearLayoutCanNotChangeColor).setOnClickListener(v -> pageLinearLayoutCanNotChangeColor());
@@ -108,7 +110,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     @Override
     protected void showCurrentTest() {
-        pageSeekBar();
+        page_CustomVew_ShadowView();
     }
 
     private void pageViewLocation() {
@@ -125,6 +127,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void pageCustomView4CascadeLayout() {
         showActivity(CascadeLayoutActivity.class);
+    }
+
+    private void page_CustomVew_ShadowView() {
+        showFragment(new ShadowViewFragment());
     }
 
     private void pageConstraintLayout() {
