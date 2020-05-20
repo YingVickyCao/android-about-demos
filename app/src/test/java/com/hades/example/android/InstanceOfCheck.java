@@ -1,4 +1,4 @@
-package com.hades.example.android.android_about_demos;
+package com.hades.example.android;
 
 import org.junit.Test;
 

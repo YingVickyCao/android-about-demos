@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <!--  TODO:使用levelListDrawable 画出的 shadow 不像 shadow，像border   -->
         <ImageView
             android:layout_width="168dp"
@@ -21,7 +20,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/size_5"
             android:layout_marginBottom="@dimen/size_5"
-            android:background="@drawable/drawable_shadow"
+            android:background="@drawable/shadow_2"
             android:elevation="@dimen/size_5"
             android:padding="5dp"
             android:src="@drawable/drawable_vector_4_placeholder_svg" />
@@ -35,7 +34,6 @@
             android:orientation="horizontal"
             android:weightSum="2">
 
-
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -45,8 +43,8 @@
                 <!-- shadow_radius 决定圆角 -->
                 <com.hades.example.android.widget.custom_view.shadow.ShadowedFrameLayout
                     style="@style/viewgroup_with_box_shadow"
-                    android:layout_width="168dp"
-                    android:layout_height="274dp"
+                    android:layout_width="336dp"
+                    android:layout_height="548dp"
                     android:layout_centerInParent="true"
                     android:layout_gravity="center_horizontal">
 
@@ -67,8 +65,8 @@
                 android:layout_weight="1">
 
                 <com.hades.example.android.widget.custom_view.shadow.ShadowedViewGroup
-                    android:layout_width="168dp"
-                    android:layout_height="274dp"
+                    android:layout_width="336dp"
+                    android:layout_height="548dp"
                     android:layout_centerInParent="true"
                     app:child_base_margin="8dp"
                     app:container_cornerRadius="0dp"
@@ -101,6 +99,12 @@
                     android:src="@drawable/drawable_vector_4_placeholder_svg" />
             </RelativeLayout>
         </LinearLayout>
-    </LinearLayout>
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/shadow_1"
+            android:src="@drawable/drawable_vector_4_placeholder_svg" />
+    </LinearLayout>
 </ScrollView>
