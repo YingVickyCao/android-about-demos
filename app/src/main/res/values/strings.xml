@@ -481,4 +481,6 @@
     <string name="layout_1">Layout 1</string>
     <string name="layout_2">Layout 2</string>
     <string name="change_SurfaceView_size">Change SurfaceView size</string>
+    <string name="object_animator">objectAnimator</string>
+    <string name="cv_toast_example">简单的提示信息</string>
 </resources>

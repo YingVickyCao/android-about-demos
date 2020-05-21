@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/toast_frame_v2"
+    android:background="@drawable/toast_frame_4_no_icon_light"
     android:orientation="vertical">
 
     <!-- View is more smaller
@@ -22,7 +22,7 @@
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:shadowRadius="2.75"
-        android:text="简单的提示信息"
-        android:textColor="#de000000"
+        android:text="@string/cv_toast_example"
+        android:textColor="@color/light_text_0"
         android:textSize="14sp" />
 </LinearLayout>

@@ -306,7 +306,7 @@
 
         <!-- windowBackground  = shadow color of dialog -->
         <!--<item name="android:windowBackground">@android:color/transparent</item>-->
-        <item name="android:windowBackground">@color/light_shadow</item>
+        <item name="android:windowBackground">@color/light_s_0_E_red</item>
 
         <!--<item name="bottomSheetStyle">@style/Widget.Design.BottomSheet.Modal</item>-->
         <item name="bottomSheetStyle">@style/Widget.Design.BottomSheet.Modal_Custom</item>
