@@ -13,6 +13,48 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- outlineSpotShadowColor -->
+        <View style="@style/div" />
+
+        <TextView
+            style="@style/tv.small"
+            android:text="outlineSpotShadowColor" />
+
+        <!--  outlineAmbientShadowColor,outlineSpotShadowColor 基本上看不到颜色  -->
+        <Button
+            android:id="@+id/view_1"
+            style="@style/btn.small"
+            android:layout_gravity="center_horizontal"
+            android:elevation="20dp"
+            android:gravity="center"
+            android:outlineAmbientShadowColor="@color/green"
+            android:outlineSpotShadowColor="@color/green"
+            android:shadowColor="@color/red"
+            android:shadowDy="4"
+            android:shadowRadius="4"
+            android:text="内容1" />
+
+        <!-- .9.png -->
+        <View style="@style/div" />
+
+        <TextView
+            style="@style/tv.small"
+            android:text=".9.png" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/shadow_1"
+            android:src="@drawable/drawable_vector_4_placeholder_svg" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/shadow_1_2"
+            android:src="@drawable/drawable_vector_4_placeholder_svg" />
+
         <!--  TODO: 使用levelListDrawable 画出的 shadow 不像 shadow，像border   -->
         <TextView
             style="@style/tv.small"
@@ -28,6 +70,7 @@
             android:elevation="@dimen/size_5"
             android:padding="5dp"
             android:src="@drawable/drawable_vector_4_placeholder_svg" />
+
 
         <!-- CustomView - setShadowLayer  -->
         <View style="@style/div" />
@@ -115,23 +158,7 @@
             </RelativeLayout>
         </LinearLayout>
 
-        <!-- .9.png -->
-        <View style="@style/div" />
-
-        <TextView
-            style="@style/tv.small"
-            android:text=".9.png" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/shadow_1"
-            android:src="@drawable/drawable_vector_4_placeholder_svg" />
-
         <!--  TranslateZ use animation - objectAnimator -->
-        <View style="@style/div" />
-
         <TextView
             style="@style/tv.small"
             android:text="TranslateZ use animation - objectAnimator" />
@@ -146,8 +173,7 @@
 
         <!-- 点击时，shadow增加 -->
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/btn.small"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/size_5"
             android:stateListAnimator="@animator/shadow_3" />
@@ -163,6 +189,47 @@
             android:focusable="true"
             android:src="@drawable/drawable_vector_4_placeholder_svg"
             android:stateListAnimator="@animator/shadow_3" />
+
+        <!--  android:elevation -->
+        <View style="@style/div" />
+
+        <TextView
+            style="@style/tv.small"
+            android:text="android:elevation" />
+
+        <Button
+            android:id="@+id/button4"
+            style="@style/btn.small"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/size_5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/elevationPlus"
+                style="@style/btn.small"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/size_5"
+                android:text="Elevation +" />
+
+            <TextView
+                android:id="@+id/elevationNum"
+                style="@style/btn.small"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/size_5"
+                android:text="Elevation +" />
+
+            <Button
+                android:id="@+id/elevationMinus"
+                style="@style/btn.small"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/size_5"
+                android:text="Elevation -" />
+        </RelativeLayout>
 
         <!--  OutlineProvider  -->
         <View style="@style/div" />
@@ -187,26 +254,64 @@
             <!-- 有shadow，但四边多了留白-->
             <Button
                 android:id="@+id/button1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/btn.small"
                 android:layout_gravity="center_horizontal" />
 
             <!-- 没有shadow -->
             <Button
                 android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/btn.small"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="@dimen/margin_tiny"
                 android:layout_marginTop="@dimen/margin_tiny"
                 android:background="#f00" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/btn.small"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="@dimen/margin_tiny"
                 android:layout_marginTop="@dimen/margin_tiny" />
         </LinearLayout>
+
+        <!-- CardView -->
+        <View style="@style/div" />
+
+        <TextView
+            style="@style/tv.small"
+            android:text="CardView" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/size_20"
+            app:cardElevation="@dimen/size_10">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/drawable_vector_4_placeholder_svg" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- MaterialShapeDrawable -->
+        <View style="@style/div" />
+
+        <TextView
+            style="@style/tv.small"
+            android:text="MaterialShapeDrawable" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/drawable_vector_4_placeholder_svg" />
+
+        <Button
+            android:id="@+id/button3"
+            style="@style/btn.small"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 </ScrollView>

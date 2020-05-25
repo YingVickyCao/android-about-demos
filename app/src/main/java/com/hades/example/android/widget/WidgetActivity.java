@@ -33,7 +33,7 @@ import com.hades.example.android.widget._switch.TestSwitchFragment;
 import com.hades.example.android.widget._tablayout.TestTabLayoutFragment;
 import com.hades.example.android.widget.custom_view.TestCustomViewFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
-import com.hades.example.android.widget.custom_view.shadow.ShadowViewFragment;
+import com.hades.example.android.widget.custom_view.shadow.TestShadowViewFragment;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageFragment;
 import com.hades.example.android.widget.imageview.TestImageViewFragment;
@@ -130,7 +130,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
     }
 
     private void page_CustomVew_ShadowView() {
-        showFragment(new ShadowViewFragment());
+        showFragment(new TestShadowViewFragment());
     }
 
     private void pageConstraintLayout() {
