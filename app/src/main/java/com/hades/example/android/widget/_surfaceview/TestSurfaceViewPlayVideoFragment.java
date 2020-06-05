@@ -178,7 +178,7 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
         mPlayer.start();
         if (null != mHandler) {
             mHandler.setITimerView(this);
-            mHandler.sendMessage4UpdateView();
+            mHandler.sendMessage4Progress();
         }
         setEndTime(mPlayer.getDuration());
 
@@ -190,7 +190,7 @@ public class TestSurfaceViewPlayVideoFragment extends Fragment implements Surfac
 
     private void startUpdateProgress() {
         if (null != mHandler) {
-            mHandler.sendMessage4UpdateView();
+            mHandler.sendMessage4Progress();
         }
     }
 

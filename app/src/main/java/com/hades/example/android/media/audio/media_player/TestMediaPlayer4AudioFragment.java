@@ -232,7 +232,7 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
 
     private void startUpdateProgress() {
         if (null != mHandler) {
-            mHandler.sendMessage4UpdateView();
+            mHandler.sendMessage4Progress();
         }
     }
 
@@ -315,7 +315,7 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
         mPlayer.start();
         if (null != mHandler) {
             mHandler.setITimerView(this);
-            mHandler.sendMessage4UpdateView();
+            mHandler.sendMessage4Progress();
         }
         setEndTime(mPlayer.getDuration());
     }
