@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.lib.mock.DummyContent;
+import com.hades.example.java.lib.DummyItems;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
 
@@ -21,7 +21,7 @@ public class TestSpinnerFragment extends BaseFragment {
     private static final String TAG = TestSpinnerFragment.class.getSimpleName();
 
     Spinner gradeSpinner;
-    ArrayList<String> gradeList = DummyContent.ITEMS_STRING_3();
+    ArrayList<String> gradeList = DummyItems.ITEMS_STRING_3();
 
     @Nullable
     @Override

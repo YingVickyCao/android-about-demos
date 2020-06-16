@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hades.example.android.lib.base.BaseFragment;
-import com.hades.example.android.lib.mock.DummyContent;
-import com.hades.example.android.lib.mock.DummyItem;
+import com.hades.example.java.lib.DummyItems;
+import com.hades.example.java.lib.DummyItem;
 import com.hades.example.android.R;
 import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v1.SimpleDividerItemDecoration;
 
@@ -66,7 +66,7 @@ public class DummyRecyclerViewFragment extends BaseFragment implements IItemClic
         rv.setLayoutManager(mLinearLayoutManager);
 //        rv.setLayoutManager(new GridLayoutManager(context, ARG_COLUMN_COUNT));
         rv.addItemDecoration(new SimpleDividerItemDecoration(getContext(), R.drawable.drawable_shape_4_divider_vertical));
-        mAdapter = new DummyRecyclerViewAdapter(DummyContent.ITEMS(), this);
+        mAdapter = new DummyRecyclerViewAdapter(DummyItems.ITEMS(), this);
         rv.setAdapter(mAdapter);
     }
 
@@ -98,7 +98,7 @@ public class DummyRecyclerViewFragment extends BaseFragment implements IItemClic
     }
 
     private void findItemView() {
-        for (int i = 0; i < DummyContent.COUNT - 1; i++) {
+        for (int i = 0; i < DummyItems.COUNT - 1; i++) {
             findItemView(i);
         }
     }
@@ -115,7 +115,7 @@ public class DummyRecyclerViewFragment extends BaseFragment implements IItemClic
     }
 
     private void findViewByPosition() {
-        for (int i = 0; i < DummyContent.COUNT - 1; i++) {
+        for (int i = 0; i < DummyItems.COUNT - 1; i++) {
             findViewByPosition(i);
         }
     }
@@ -132,11 +132,11 @@ public class DummyRecyclerViewFragment extends BaseFragment implements IItemClic
     }
 
     private void scrollToPosition() {
-        rv.scrollToPosition(DummyContent.COUNT - 2);
+        rv.scrollToPosition(DummyItems.COUNT - 2);
 //        mLinearLayoutManager.scrollToPosition(DummyContent.COUNT - 2);
     }
 
     private void smoothScrollToPosition() {
-        rv.smoothScrollToPosition(DummyContent.COUNT - 2);
+        rv.smoothScrollToPosition(DummyItems.COUNT - 2);
     }
 }

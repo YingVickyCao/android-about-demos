@@ -16,8 +16,8 @@ import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.lib.mock.DummyContent;
-import com.hades.example.android.lib.mock.DummyItem;
+import com.hades.example.java.lib.DummyItems;
+import com.hades.example.java.lib.DummyItem;
 import com.hades.example.java.lib.DateUtil;
 import com.hades.example.android.lib.mock.DummyContentFragment;
 
@@ -190,7 +190,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     private List<DummyItem> getDummyItems() {
 //        return DummyContent.ITEMS_100000();
 //        return DummyContent.ITEMS_10000();
-        return DummyContent.ITEMS_1000();
+        return DummyItems.ITEMS_1000();
     }
 
     private void insertMultiple(SQLiteDatabase db, String tableName, List<DummyItem> list) {

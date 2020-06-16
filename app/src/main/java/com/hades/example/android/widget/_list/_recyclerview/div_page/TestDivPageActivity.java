@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.hades.example.android.lib.mock.DummyItem;
+import com.hades.example.java.lib.DummyItem;
 import com.hades.example.android.R;
 
 import java.util.ArrayList;

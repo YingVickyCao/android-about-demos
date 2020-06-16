@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.lib.mock.MockHeavyWork;
+import com.hades.example.java.lib.MockHeavyWork;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
 import com.hades.example.java.lib.ThreadUtils;
@@ -96,7 +96,7 @@ public class TestMsgThread2MainFragment extends BaseFragment {
 
             @Override
             public void run() {
-                MockHeavyWork.sum();
+                MockHeavyWork.sum(99);
                 Handler lab2Handler = new Handler();
                 lab2Handler.sendMessage(defineNewMessage(HANDLER_MSG_KEY_2, "Lab2"));
             }

@@ -6,7 +6,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.lib.mock.DummyItem;
+import com.hades.example.java.lib.DummyItem;
 import com.hades.example.android.R;
 import com.hades.example.android.widget._button.TestButtonActivity;
 import com.hades.example.android.widget._layout._constraintlayout.TestConstraintLayoutFragment;
