@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.lib.mock.MockHeavyWork;
-import com.hades.example.android.lib.utils.LogHelper;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.java.lib.ThreadUtils;
 
 /**
  * main -> thread -> main
@@ -45,7 +46,8 @@ public class TestMsgMain2ThreadFragment extends BaseFragment {
             /**
              * main
              */
-            LogHelper.printThread(TAG, "mUIHandler,handleMessage", "what=" + msg.what + ",obj=" + msg.obj);
+            Log.d(TAG, "mUIHandler,handleMessage,what=" + msg.what + ",obj=" + msg.obj);
+            Log.d(TAG, "handleMessage: " + ThreadUtils.getThreadInfo());
             String sum = (String) msg.obj;
             test.setText(sum);
         }
@@ -81,7 +83,8 @@ public class TestMsgMain2ThreadFragment extends BaseFragment {
              * thread:
              * receive message
              */
-            LogHelper.printThread(TAG, "ChildCallback,handleMessage", "what=" + msg.what);
+            Log.d(TAG, "ChildCallback,handleMessage," + "what=" + msg.what);
+            Log.d(TAG, "handleMessage: "+ThreadUtils.getThreadInfo());
 
             long sum = MockHeavyWork.sum(msg.what);
             Message msg1 = new Message();

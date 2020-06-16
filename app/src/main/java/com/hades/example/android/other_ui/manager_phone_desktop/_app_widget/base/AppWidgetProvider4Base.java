@@ -11,7 +11,7 @@ import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.LogHelper;
+import com.hades.example.java.lib.ThreadUtils;
 
 import static com.hades.example.android.other_ui.manager_phone_desktop._app_widget.base.TestAppWidgetConfigureActivity.PREFS_KEY_COLOR;
 
@@ -49,9 +49,9 @@ public class AppWidgetProvider4Base extends AppWidgetProvider {
      */
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) { // [thread =2,main].
-        Log.d(TAG, "onUpdate: " + LogHelper.getThreadInfo());
+        Log.d(TAG, "onUpdate: " + ThreadUtils.getThreadInfo());
         for (int appWidgetId : appWidgetIds) {
-            Log.d(TAG, "onUpdate:appWidgetId=" + appWidgetId + LogHelper.getThreadInfo());
+            Log.d(TAG, "onUpdate:appWidgetId=" + appWidgetId + ThreadUtils.getThreadInfo());
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
     }
@@ -59,7 +59,7 @@ public class AppWidgetProvider4Base extends AppWidgetProvider {
     @Override
     public void onReceive(Context context, Intent intent) { // [thread =2,main]
         super.onReceive(context, intent);
-        Log.d(TAG, "onReceive: " + LogHelper.getThreadInfo());
+        Log.d(TAG, "onReceive: " + ThreadUtils.getThreadInfo());
 
         // If ake several seconds ->service. or ANR
     }
@@ -102,32 +102,32 @@ public class AppWidgetProvider4Base extends AppWidgetProvider {
     @Override
     public void onDeleted(Context context, int[] appWidgetIds) { // [thread =2,main].  delete cache data
         super.onDeleted(context, appWidgetIds);
-        Log.d(TAG, "onDeleted: " + LogHelper.getThreadInfo());
+        Log.d(TAG, "onDeleted: " + ThreadUtils.getThreadInfo());
     }
 
     // Below often not override
     @Override
     public void onDisabled(Context context) { // [thread =2,main]
         super.onDisabled(context);
-        Log.d(TAG, "onDisabled: " + LogHelper.getThreadInfo());
+        Log.d(TAG, "onDisabled: " + ThreadUtils.getThreadInfo());
     }
 
     @Override
     public void onEnabled(Context context) { // [thread =2,main]
         super.onEnabled(context);
-        Log.d(TAG, "onEnabled: " + LogHelper.getThreadInfo());
+        Log.d(TAG, "onEnabled: " + ThreadUtils.getThreadInfo());
     }
 
     @Override
     public void onAppWidgetOptionsChanged(Context context, AppWidgetManager appWidgetManager, int appWidgetId, Bundle newOptions) { // [thread =2,main]
         super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions);
-        Log.d(TAG, "onAppWidgetOptionsChanged: " + LogHelper.getThreadInfo());
+        Log.d(TAG, "onAppWidgetOptionsChanged: " + ThreadUtils.getThreadInfo());
         updateAppWidget(context, appWidgetManager, appWidgetId);
     }
 
     @Override
     public void onRestored(Context context, int[] oldWidgetIds, int[] newWidgetIds) { // [thread =2,main]
         super.onRestored(context, oldWidgetIds, newWidgetIds);
-        Log.d(TAG, "onRestored: " + LogHelper.getThreadInfo());
+        Log.d(TAG, "onRestored: " + ThreadUtils.getThreadInfo());
     }
 }

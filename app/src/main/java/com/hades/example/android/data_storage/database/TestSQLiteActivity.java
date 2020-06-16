@@ -18,7 +18,7 @@ import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.lib.mock.DummyContent;
 import com.hades.example.android.lib.mock.DummyItem;
-import com.hades.example.android.lib.utils.DateUtil;
+import com.hades.example.java.lib.DateUtil;
 import com.hades.example.android.lib.mock.DummyContentFragment;
 
 import java.util.ArrayList;
@@ -445,7 +445,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         cursor.close();
 
         long end = System.currentTimeMillis();
-        String duringTime = mDateUtil.compareDate(start, end);
+        String duringTime = mDateUtil.compare(start, end);
         Log.d(TAG, "queryTotalCountOfOneTable_way1: duringTime=" + duringTime + ",size=" + count);
     }
 
@@ -466,7 +466,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         cursor.close();
 
         long end = System.currentTimeMillis();
-        String duringTime = mDateUtil.compareDate(start, end);
+        String duringTime = mDateUtil.compare(start, end);
         Log.d(TAG, "queryTotalCountOfOneTable_way2: duringTime=" + duringTime + ",size=" + count);
     }
 
@@ -484,7 +484,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         long numRows = DatabaseUtils.longForQuery(db, sql, null);
 
         long end = System.currentTimeMillis();
-        String duringTime = mDateUtil.compareDate(start, end);
+        String duringTime = mDateUtil.compare(start, end);
         Log.d(TAG, "queryTotalCountOfOneTable_way3: duringTime=" + duringTime + ",size=" + numRows);
     }
 
@@ -768,7 +768,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     }
 
     private void setUsedTime(long start, long end) {
-        String duringTime = mDateUtil.compareDate(start, end);
+        String duringTime = mDateUtil.compare(start, end);
         Log.d(TAG, "setUsedTime: " + start + "-" + end + " = " + duringTime);
         runOnUiThread(() -> {
             mUsedTimeTv.setText(duringTime);

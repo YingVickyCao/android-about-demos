@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.hades.example.android.lib.utils.LogHelper;
+import com.hades.example.java.lib.ThreadUtils;
 
 public class FeedSQLiteOpenHelper extends SQLiteOpenHelper {
     private static final String TAG = FeedSQLiteOpenHelper.class.getSimpleName();
@@ -41,11 +41,11 @@ public class FeedSQLiteOpenHelper extends SQLiteOpenHelper {
 
     public FeedSQLiteOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        Log.d(TAG, "FeedSQLiteOpenHelper() " + LogHelper.getThreadInfo());
+        Log.d(TAG, "FeedSQLiteOpenHelper() " + ThreadUtils.getThreadInfo());
     }
 
     public void onCreate(SQLiteDatabase db) {
-        Log.d(TAG, "onCreate: " + LogHelper.getThreadInfo());
+        Log.d(TAG, "onCreate: " + ThreadUtils.getThreadInfo());
         db.execSQL(SQL_CREATE_TABLE_TABLE1);
         db.execSQL(SQL_CREATE_TABLE_BOOK);
     }
@@ -56,7 +56,7 @@ public class FeedSQLiteOpenHelper extends SQLiteOpenHelper {
 
     public void onUpgrade_test(SQLiteDatabase db, int oldVersion, int newVersion) {
         // This database is only a cache for online data, so its upgrade policy is to simply to discard the data and start over
-        Log.d(TAG, "onUpgrade: oldVersion=" + oldVersion + ",newVersion=" + newVersion + LogHelper.getThreadInfo());
+        Log.d(TAG, "onUpgrade: oldVersion=" + oldVersion + ",newVersion=" + newVersion + ThreadUtils.getThreadInfo());
         db.execSQL(SQL_DROP_TABLE_TABLE1);
         onCreate(db);
     }
@@ -83,7 +83,7 @@ public class FeedSQLiteOpenHelper extends SQLiteOpenHelper {
     }
 
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.d(TAG, "onDowngrade: oldVersion=" + oldVersion + ",newVersion=" + newVersion + LogHelper.getThreadInfo());
+        Log.d(TAG, "onDowngrade: oldVersion=" + oldVersion + ",newVersion=" + newVersion + ThreadUtils.getThreadInfo());
         onUpgrade(db, oldVersion, newVersion);
     }
 }

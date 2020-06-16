@@ -6,7 +6,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.lib.utils.LogHelper;
+import com.hades.example.java.lib.ThreadUtils;
 
 public class MyIntentService extends IntentService {
     private static final String TAG = MyIntentService.class.getSimpleName();
@@ -17,7 +17,8 @@ public class MyIntentService extends IntentService {
 
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
-        LogHelper.printThread(TAG, "onStartCommand,intent=" + intent + ",flags=" + flags + ",startId=" + startId);
+        Log.d(TAG, "onStartCommand: intent=" + intent + ",flags=" + flags + ",startId=" + startId);
+        Log.d(TAG, "onStartCommand: " + ThreadUtils.getThreadInfo());
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -27,7 +28,7 @@ public class MyIntentService extends IntentService {
         /**
          * onHandleIntent,thread =29058,IntentService[MyIntentService]
          */
-        LogHelper.printThread(TAG, "onHandleIntent");
+        Log.d(TAG, "onHandleIntent: "+ThreadUtils.getThreadInfo());
 
         // 该方法内可以执行任何耗时任务，比如下载文件等，此处只是让线程暂停50秒
 //        long endTime = System.currentTimeMillis() + 50 * 1000;

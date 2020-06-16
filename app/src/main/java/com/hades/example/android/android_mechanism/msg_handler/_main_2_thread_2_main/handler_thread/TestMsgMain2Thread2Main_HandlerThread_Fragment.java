@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.lib.mock.MockHeavyWork;
-import com.hades.example.android.lib.utils.LogHelper;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.java.lib.ThreadUtils;
 
 /**
  * main -> thread -> main
@@ -45,7 +46,8 @@ public class TestMsgMain2Thread2Main_HandlerThread_Fragment extends BaseFragment
             /**
              * main
              */
-            LogHelper.printThread(TAG, "mUIHandler,handleMessage", "what=" + msg.what + ",obj=" + msg.obj);
+            Log.d(TAG, "mUIHandler,handleMessage" + ",what=" + msg.what + ",obj=" + msg.obj);
+            Log.d(TAG, "handleMessage:" + ThreadUtils.getThreadInfo());
             String sum = (String) msg.obj;
             test.setText(sum);
         }
@@ -62,7 +64,9 @@ public class TestMsgMain2Thread2Main_HandlerThread_Fragment extends BaseFragment
         //必须先开启线程
         handlerThread.start();
 
-        LogHelper.printThread(TAG, "onCreateView,send msg", "what=" + uppers);
+        Log.d(TAG, "onCreateView,send msg," + "what=" + uppers);
+        Log.d(TAG, "onCreateView: " + ThreadUtils.getThreadInfo());
+
 
         //子线程Handler
 //        Handler threadHandler = new Handler(handlerThread.getLooper(), new ChildCallback());
@@ -84,14 +88,14 @@ public class TestMsgMain2Thread2Main_HandlerThread_Fragment extends BaseFragment
             /**
              * thread
              */
-            LogHelper.printThread(TAG, "ChildCallback,handleMessage", "what=" + msg.what);
+            Log.d(TAG, "ChildCallback,handleMessage" + ",what=" + msg.what + "," + ThreadUtils.getThreadInfo());
 
             long sum = MockHeavyWork.sum(msg.what);
             Message msg1 = new Message();
             msg1.what = msg.what;
             msg1.obj = String.valueOf(sum);
 
-            LogHelper.printThread(TAG, "ChildCallback,sendMessage", "what=" + msg.what + ",obj=" + sum);
+            Log.d(TAG, "ChildCallback,sendMessage" + ",what=" + msg.what + ",obj=" + sum + "," + ThreadUtils.getThreadInfo());
 
             /**
              * thread -> main
@@ -106,14 +110,14 @@ public class TestMsgMain2Thread2Main_HandlerThread_Fragment extends BaseFragment
     class ChildCallback implements Handler.Callback {
         @Override
         public boolean handleMessage(Message msg) {
-            LogHelper.printThread(TAG, "ChildCallback,handleMessage", "what=" + msg.what);
+            Log.d(TAG, "ChildCallback,handleMessage" + ",what=" + msg.what + "," + ThreadUtils.getThreadInfo());
 
             long sum = MockHeavyWork.sum(msg.what);
             Message msg1 = new Message();
             msg1.what = msg.what;
             msg1.obj = String.valueOf(sum);
 
-            LogHelper.printThread(TAG, "ChildCallback,sendMessage", "what=" + msg.what + ",obj=" + sum);
+            Log.d(TAG, "ChildCallback,sendMessage" + ",what=" + msg.what + ",obj=" + sum + "," + ThreadUtils.getThreadInfo());
             mUIHandler.sendMessage(msg1);
             return false;
         }

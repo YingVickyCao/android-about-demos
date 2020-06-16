@@ -3,9 +3,10 @@ package com.hades.example.android.android_mechanism.msg_handler._main_2_thread_2
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
+import android.util.Log;
 
 import com.hades.example.android.lib.mock.MockHeavyWork;
-import com.hades.example.android.lib.utils.LogHelper;
+import com.hades.example.java.lib.ThreadUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -92,15 +93,15 @@ public class SumThread extends HandlerThread implements Handler.Callback {
         }
 
         int num = msg.arg1;
-        LogHelper.printThread(TAG, "ChildCallback,handleMessage()", "num=" + num);
+        Log.d(TAG, "ChildCallback,handleMessage()" + ",num=" + num + "," + ThreadUtils.getThreadInfo());
 
         long sum = MockHeavyWork.sum(num);
-        LogHelper.printThread(TAG, "ChildCallback,handleMessage() -> sendMessage", "num=" + num + ",sum=" + sum);
+        Log.d(TAG, "ChildCallback,handleMessage() -> sendMessage" + ",num=" + num + ",sum=" + sum + "," + ThreadUtils.getThreadInfo());
 
         /**
          * 子线程计算完成，通知主线程
          */
-        mUIHandler.sendMessage(createMessage4Sum(num,sum));
+        mUIHandler.sendMessage(createMessage4Sum(num, sum));
 
         sumedNum++;
 

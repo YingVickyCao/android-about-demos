@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.lib.mock.MockHeavyWork;
-import com.hades.example.android.lib.utils.LogHelper;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.java.lib.ThreadUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -52,12 +53,12 @@ public class TestMsgThread2MainFragment extends BaseFragment {
                  */
 
                 if (msg.what == HANDLER_MSG_KEY_1) {
-                    LogHelper.printThread(TAG, "uiHandler -> handleMessage()", String.valueOf(currentImageId));
+                    Log.d(TAG, "uiHandler -> handleMessage()," + String.valueOf(currentImageId) + "," + ThreadUtils.getThreadInfo());
                     show.setText(imageIds[currentImageId++ % imageIds.length]);
                 }
 
                 if (msg.what == HANDLER_MSG_KEY_3) {
-                    LogHelper.printThread(TAG, "uiHandler,handleMessage", "what=" + msg.what + ",obj=" + msg.obj);
+                    Log.d(TAG, "uiHandler,handleMessage" + ",what=" + msg.what + ",obj=" + msg.obj + "," + ThreadUtils.getThreadInfo());
                     Toast.makeText(getActivity(), (String) msg.obj, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -72,7 +73,7 @@ public class TestMsgThread2MainFragment extends BaseFragment {
                 /***
                  * 子线程中执行
                  */
-                LogHelper.printThread(TAG, "Timer -> run()", String.valueOf(currentImageId));
+                Log.d(TAG, "Timer -> run()," + String.valueOf(currentImageId) + "," + ThreadUtils.getThreadInfo());
 
                 /**
                  * Thread -> UI
@@ -120,7 +121,7 @@ public class TestMsgThread2MainFragment extends BaseFragment {
             public void run() {
                 Handler uiHandler;
                 long result = MockHeavyWork.sum(10);
-                LogHelper.printThread(TAG, "thread2Main_createHandler_with_Looper_getMainLooper()->run()", String.valueOf(result));
+                Log.d(TAG, "thread2Main_createHandler_with_Looper_getMainLooper()->run()," + String.valueOf(result) + "," + ThreadUtils.getThreadInfo());
 
                 uiHandler = new Handler(Looper.getMainLooper()) {
 
@@ -130,7 +131,7 @@ public class TestMsgThread2MainFragment extends BaseFragment {
                         /**
                          * main
                          */
-                        LogHelper.printThread(TAG, "uiHandler", "what=" + msg.what + ",obj=" + msg.obj);
+                        Log.d(TAG, "uiHandler" + ",what=" + msg.what + ",obj=" + msg.obj + "," + ThreadUtils.getThreadInfo());
                         showToast(String.valueOf(msg.what));
                     }
                 };

@@ -8,7 +8,7 @@ import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.LogHelper;
+import com.hades.example.java.lib.ThreadUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,14 +66,14 @@ public class ExampleRemoteViewsService4Collections extends RemoteViewsService {
 
         public StackRemoteViewsFactory(Context context, Intent intent) {
             mContext = context;
-            Log.d(TAG, "StackRemoteViewsFactory: " + LogHelper.getThreadInfo());
+            Log.d(TAG, "StackRemoteViewsFactory: " + ThreadUtils.getThreadInfo());
             ;
             appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
         }
 
         @Override
         public void onCreate() {// must < =20 seconds, or ANR
-            Log.d(TAG, "onCreate: " + LogHelper.getThreadInfo());
+            Log.d(TAG, "onCreate: " + ThreadUtils.getThreadInfo());
             widgetItems.add(new WidgetItem(android.R.color.holo_red_dark));
             widgetItems.add(new WidgetItem(android.R.color.holo_green_dark));
             widgetItems.add(new WidgetItem(android.R.color.holo_orange_dark));
@@ -82,18 +82,18 @@ public class ExampleRemoteViewsService4Collections extends RemoteViewsService {
         @Override
         public void onDestroy() {
             widgetItems = null;
-            Log.d(TAG, "onDestroy: " + LogHelper.getThreadInfo());
+            Log.d(TAG, "onDestroy: " + ThreadUtils.getThreadInfo());
         }
 
         @Override
         public int getCount() {
-            Log.d(TAG, "getCount: " + LogHelper.getThreadInfo());
+            Log.d(TAG, "getCount: " + ThreadUtils.getThreadInfo());
             return widgetItems.size();
         }
 
         @Override
         public RemoteViews getViewAt(int position) {// perform processing-intensive operations synchronously
-            Log.d(TAG, "getViewAt: " + LogHelper.getThreadInfo());
+            Log.d(TAG, "getViewAt: " + ThreadUtils.getThreadInfo());
             RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.app_widget_list_item);
 
             rv.setImageViewResource(R.id.img, widgetItems.get(position).getColor());
@@ -102,7 +102,7 @@ public class ExampleRemoteViewsService4Collections extends RemoteViewsService {
 
             // 此处让线程暂停0.5秒来模拟加载该组件
             try {
-                System.out.println("加载【" + position + "】位置的组件" + LogHelper.getThreadInfo());
+                System.out.println("加载【" + position + "】位置的组件" + ThreadUtils.getThreadInfo());
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -111,7 +111,7 @@ public class ExampleRemoteViewsService4Collections extends RemoteViewsService {
         }
 
         private void addClick4EachItem(RemoteViews rv, int position) {
-            Log.d(TAG, "addClick4EachItem: " + LogHelper.getThreadInfo());
+            Log.d(TAG, "addClick4EachItem: " + ThreadUtils.getThreadInfo());
             // set a fill-intent, which will be used to fill in the pending intent template that is set on the collection view.
             // Make it possible to distinguish the individual on-click action of a given item
             Intent fillInIntent = new Intent();
@@ -121,31 +121,31 @@ public class ExampleRemoteViewsService4Collections extends RemoteViewsService {
 
         @Override
         public RemoteViews getLoadingView() {
-            Log.d(TAG, "getLoadingView: " + LogHelper.getThreadInfo());
+            Log.d(TAG, "getLoadingView: " + ThreadUtils.getThreadInfo());
             return new RemoteViews(mContext.getPackageName(), R.layout.app_widget_list_progress_view);
         }
 
         @Override
         public int getViewTypeCount() {
-            Log.d(TAG, "getViewTypeCount: " + LogHelper.getThreadInfo());
+            Log.d(TAG, "getViewTypeCount: " + ThreadUtils.getThreadInfo());
             return 1;
         }
 
         @Override
         public long getItemId(int position) {
-            Log.d(TAG, "getItemId: " + LogHelper.getThreadInfo());
+            Log.d(TAG, "getItemId: " + ThreadUtils.getThreadInfo());
             return position;
         }
 
         @Override
         public boolean hasStableIds() {
-            Log.d(TAG, "hasStableIds: " + LogHelper.getThreadInfo());
+            Log.d(TAG, "hasStableIds: " + ThreadUtils.getThreadInfo());
             return true;
         }
 
         @Override
         public void onDataSetChanged() { // perform processing-intensive operations synchronously
-            Log.d(TAG, "onDataSetChanged: " + LogHelper.getThreadInfo());
+            Log.d(TAG, "onDataSetChanged: " + ThreadUtils.getThreadInfo());
         }
     }
 }

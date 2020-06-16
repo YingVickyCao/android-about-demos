@@ -16,8 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.hades.example.android.lib.utils.LogHelper;
 import com.hades.example.android.R;
+import com.hades.example.java.lib.ThreadUtils;
 
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
@@ -81,7 +81,7 @@ public class TestURLFragment extends Fragment {
 
     private void doRequestImg() {
         try {
-            Log.d(TAG, "doRequestImg: " + LogHelper.getThreadInfo());
+            Log.d(TAG, "doRequestImg: " + ThreadUtils.getThreadInfo());
             /**
              * ERROR:
              * NetworkSecurityConfig: No Network Security Config specified, using platform default

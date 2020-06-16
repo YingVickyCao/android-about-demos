@@ -7,7 +7,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.hades.example.android.lib.utils.LogHelper;
+import com.hades.example.java.lib.ThreadUtils;
 
 /**
  *
@@ -23,8 +23,8 @@ public class SimpleReceiver extends BroadcastReceiver {
         /**
          * SimpleReceiver: onReceive,[thread =2,main],hashCode()=77016919
          */
-        LogHelper.printThread(TAG, "onReceive", "------->");
-        LogHelper.printThread(TAG, "onReceive", "hashCode=" + String.valueOf(System.identityHashCode(this)));
+        Log.d(TAG, "onReceive: " + ThreadUtils.getThreadInfo());
+        Log.d(TAG, "onReceive" + ",hashCode=" + String.valueOf(System.identityHashCode(this)));
         if (null == intent || null == intent.getAction()) {
             return;
         }
@@ -42,7 +42,7 @@ public class SimpleReceiver extends BroadcastReceiver {
                 testGoAsync(intent);
                 break;
         }
-        LogHelper.printThread(TAG, "onReceive", "<-------");
+        Log.d(TAG, "onReceive,<-------" + ThreadUtils.getThreadInfo());
     }
 
     /*
@@ -62,13 +62,13 @@ public class SimpleReceiver extends BroadcastReceiver {
     ...
      */
     private void doLongRunningWorkInMain() {
-        LogHelper.printThread(TAG, "doLongRunningWorkInMain", "------->");
+        Log.d(TAG, "doLongRunningWorkInMain ------>" + ThreadUtils.getThreadInfo());
         int count = 0;
         for (; ; ) {
             count++;
             try {
                 Thread.sleep(1000);
-                LogHelper.printThread(TAG, "doLongRunningWorkInMain", "count=" + count);
+                Log.d(TAG, "doLongRunningWorkInMain" + ",count=" + count + ThreadUtils.getThreadInfo());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -87,7 +87,7 @@ public class SimpleReceiver extends BroadcastReceiver {
     ...
      */
     private void startLongRunningBackgroundThreads() {
-        LogHelper.printThread(TAG, "startLongRunningBackgroundThreads", "------->");
+        Log.d(TAG, "startLongRunningBackgroundThreads" + "------->" + ThreadUtils.getThreadInfo());
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -96,18 +96,18 @@ public class SimpleReceiver extends BroadcastReceiver {
                     count++;
                     try {
                         Thread.sleep(1000);
-                        LogHelper.printThread(TAG, "startLongRunningBackgroundThreads", "count=" + count);
+                        Log.d(TAG, "startLongRunningBackgroundThreads" + ",count=" + count + "," + ThreadUtils.getThreadInfo());
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
             }
         }).start();
-        LogHelper.printThread(TAG, "startLongRunningBackgroundThreads", "<-------");
+        Log.d(TAG, "startLongRunningBackgroundThreads" + "<-------" + ThreadUtils.getThreadInfo());
     }
 
     private void testGoAsync(final Intent intent) {
-        LogHelper.printThread(TAG, "testGoAsync", "------->");
+        Log.d(TAG, "testGoAsync" + "------->" + ThreadUtils.getThreadInfo());
         final PendingResult pendingResult = goAsync();
         AsyncTask<String, Integer, String> asyncTask = new AsyncTask<String, Integer, String>() {
             @Override
@@ -117,7 +117,7 @@ public class SimpleReceiver extends BroadcastReceiver {
                     count++;
                     try {
                         Thread.sleep(1000);
-                        LogHelper.printThread(TAG, "testGoAsync", "count=" + count);
+                        Log.d(TAG, "testGoAsync" + ",count=" + count + "," + ThreadUtils.getThreadInfo());
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -128,6 +128,6 @@ public class SimpleReceiver extends BroadcastReceiver {
             }
         };
         asyncTask.execute();
-        LogHelper.printThread(TAG, "testGoAsync", "<-------");
+        Log.d(TAG, "testGoAsync" + "<-------");
     }
 }

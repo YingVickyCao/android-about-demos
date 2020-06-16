@@ -3,6 +3,7 @@ package com.hades.example.android.android_mechanism.msg_handler._main_2_thread_2
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,9 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.lib.utils.LogHelper;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.java.lib.ThreadUtils;
 
 import static com.hades.example.android.android_mechanism.msg_handler._main_2_thread_2_main.handler_thread.refactor.SumThread.KEY_FINISH;
 import static com.hades.example.android.android_mechanism.msg_handler._main_2_thread_2_main.handler_thread.refactor.SumThread.KEY_SUM;
@@ -88,7 +89,7 @@ public class HandlerThreadFragment4Refactor extends BaseFragment implements Hand
 
     @Override
     public boolean handleMessage(Message msg) {
-        LogHelper.printThread(TAG, "mUIHandler,handleMessage", "num=" + msg.arg1 + ",sum=" + msg.obj);
+        Log.d(TAG, "mUIHandler,handleMessage" + ",num=" + msg.arg1 + ",sum=" + msg.obj + "," + ThreadUtils.getThreadInfo());
         switch (msg.what) {
             case KEY_SUM:
                 showResult((String) msg.obj);

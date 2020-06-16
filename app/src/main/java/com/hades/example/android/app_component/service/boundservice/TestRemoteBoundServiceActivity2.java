@@ -11,7 +11,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.LogHelper;
+import com.hades.example.java.lib.ThreadUtils;
 
 public class TestRemoteBoundServiceActivity2 extends Activity {
     private static final String TAG = TestRemoteBoundServiceActivity2.class.getSimpleName();
@@ -63,7 +63,7 @@ public class TestRemoteBoundServiceActivity2 extends Activity {
 
     private void bindAutoCreateInThread() {
         new Thread(() -> {
-            Log.d(TAG, "bindAutoCreateInThread->run: " + LogHelper.getThreadInfo());
+            Log.d(TAG, "bindAutoCreateInThread->run: " + ThreadUtils.getThreadInfo());
             Intent intent = buildIntent();
             bindService(intent, mConnection, Service.BIND_AUTO_CREATE);
         }).start();

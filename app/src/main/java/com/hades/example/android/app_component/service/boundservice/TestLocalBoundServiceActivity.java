@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.LogHelper;
+import com.hades.example.java.lib.ThreadUtils;
 
 public class TestLocalBoundServiceActivity extends Activity {
     private static final String TAG = TestLocalBoundServiceActivity.class.getSimpleName();
@@ -93,7 +93,7 @@ public class TestLocalBoundServiceActivity extends Activity {
 
     private void bindAutoCreateInThread() {
         new Thread(() -> {
-            Log.d(TAG, "bindAutoCreateInThread->run: " + LogHelper.getThreadInfo());
+            Log.d(TAG, "bindAutoCreateInThread->run: " + ThreadUtils.getThreadInfo());
             bindService(buildIntent(), mConn, Service.BIND_AUTO_CREATE);
         }).start();
     }

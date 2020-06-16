@@ -6,7 +6,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.hades.example.android.lib.utils.LogHelper;
+import com.hades.example.java.lib.ThreadUtils;
 
 public class LocalBoundedService extends Service {
     private static final String TAG = LocalBoundedService.class.getSimpleName();
@@ -32,18 +32,18 @@ public class LocalBoundedService extends Service {
     // Service被创建时回调该方法
     @Override
     public void onCreate() {
-        Log.d(TAG, "onCreate: " + LogHelper.getThreadInfo());
+        Log.d(TAG, "onCreate: " + ThreadUtils.getThreadInfo());
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(TAG, "onStartCommand: " + LogHelper.getThreadInfo());
+        Log.d(TAG, "onStartCommand: " + ThreadUtils.getThreadInfo());
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public void onRebind(Intent intent) {
-        Log.d(TAG, "onRebind: " + LogHelper.getThreadInfo());
+        Log.d(TAG, "onRebind: " + ThreadUtils.getThreadInfo());
         mIsBounded = true;
         super.onRebind(intent);
     }
@@ -51,7 +51,7 @@ public class LocalBoundedService extends Service {
     // 必须实现的方法，绑定该Service时回调该方法
     @Override
     public IBinder onBind(Intent intent) {
-        Log.d(TAG, "onBind: " + LogHelper.getThreadInfo());
+        Log.d(TAG, "onBind: " + ThreadUtils.getThreadInfo());
         mIsBounded = true;
 
         // 返回IBinder对象
@@ -74,7 +74,7 @@ public class LocalBoundedService extends Service {
     // Service被断开连接时回调该方法
     @Override
     public boolean onUnbind(Intent intent) {
-        Log.d(TAG, "onUnbind: " + LogHelper.getThreadInfo());
+        Log.d(TAG, "onUnbind: " + ThreadUtils.getThreadInfo());
         mIsBounded = false;
         return true;
     }
@@ -83,6 +83,6 @@ public class LocalBoundedService extends Service {
     @Override
     public void onDestroy() {
         this.mQuit = true;
-        Log.d(TAG, "onDestroy: " + LogHelper.getThreadInfo());
+        Log.d(TAG, "onDestroy: " + ThreadUtils.getThreadInfo());
     }
 }

@@ -9,8 +9,8 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.LogHelper;
 import com.hades.example.android.lib.utils.VersionUtil;
+import com.hades.example.java.lib.ThreadUtils;
 
 import static com.hades.example.android.app_component.service.unbounservice.StartServiceTest1Activity.KEY_COUNT;
 
@@ -32,7 +32,7 @@ public class FirstService extends Service {
     @Override
     public void onCreate() {
 //        Log.d(TAG, "onCreate");
-        LogHelper.printThread(TAG, "onCreate");
+        Log.d(TAG, "onCreate: " + ThreadUtils.getThreadInfo());
 
         if (VersionUtil.isAndroid8()) {
             NotificationChannel channel = new NotificationChannel(FIRST_SERVICE_CHANNEL_ID, "Test Notification", NotificationManager.IMPORTANCE_HIGH);
@@ -69,7 +69,7 @@ public class FirstService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "onStartCommand");
-        LogHelper.printThread(TAG, "onStartCommand");
+        Log.d(TAG, "onStartCommand: " + ThreadUtils.getThreadInfo());
         int num = intent.getIntExtra(KEY_COUNT, 0);
         Log.d(TAG, "onStartCommand," + num);
         mNum = num;
@@ -93,7 +93,8 @@ public class FirstService extends Service {
             @Override
             public void run() {
                 for (int i = mNum; i < MAX_NUM; i++) {
-                    LogHelper.printThread(TAG, "mockHeavyWork", "i=" + i);
+                    Log.d(TAG, "mockHeavyWork" + ",i=" + i);
+                    Log.d(TAG, "run: " + ThreadUtils.getThreadInfo());
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -111,10 +112,11 @@ public class FirstService extends Service {
             public void run() {
                 for (int i = mNum; i < MAX_NUM; i++) {
                     if (mIsForceStop) {
-                        LogHelper.printThread(TAG, "mockHeavyWork,force stop", "i=" + i);
+                        Log.d(TAG, "mockHeavyWork,force stop" + ",i=" + i);
                         return;
                     }
-                    LogHelper.printThread(TAG, "mockHeavyWork", "i=" + i);
+                    Log.d(TAG, "mockHeavyWork" + ",i=" + i);
+                    Log.d(TAG, "run: " + ThreadUtils.getThreadInfo());
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -128,7 +130,8 @@ public class FirstService extends Service {
 
     private void mockHeavyWorkInUIThread() {
         for (int i = mNum; i < MAX_NUM; i++) {
-            LogHelper.printThread(TAG, "mockHeavyWork", "i=" + i);
+            Log.d(TAG, "mockHeavyWork" + ",i=" + i);
+            Log.d(TAG, "mockHeavyWorkInUIThread: " + ThreadUtils.getThreadInfo());
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -150,7 +153,7 @@ public class FirstService extends Service {
     public void onDestroy() {
 //        Log.d(TAG, "onDestroy");
 //        mIsForceStop = true;
-        LogHelper.printThread(TAG, "onDestroy");
+        Log.d(TAG, "onDestroy: " + ThreadUtils.getThreadInfo());
 
         if (VersionUtil.isAndroid8()) {
             stopForeground(true);

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.lib.mock.MockHeavyWork;
-import com.hades.example.android.lib.utils.LogHelper;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.java.lib.ThreadUtils;
 
 /**
  * main -> thread -> main
@@ -52,7 +53,7 @@ public class TestMsgMain2Thread2MainFragment extends BaseFragment {
     }
 
     public void sum(View source) {
-        LogHelper.printThread(TAG, "sum()", String.valueOf(num));
+        Log.d(TAG, "sum: " + ThreadUtils.getThreadInfo() + ",sum()=" + String.valueOf(num));
         /**
          * main -> thread
          */
@@ -82,7 +83,8 @@ public class TestMsgMain2Thread2MainFragment extends BaseFragment {
                      */
                     if (msg.what == HANDLER_MSG_KEY_1) {
                         int upper = msg.getData().getInt(UPPER_NUM);
-                        LogHelper.printThread(TAG, "SumThread -> handleMessage()", String.valueOf(upper));
+                        Log.d(TAG, "SumThread -> handleMessage()" + String.valueOf(upper));
+                        Log.d(TAG, "handleMessage: " + ThreadUtils.getThreadInfo());
                         long sum = MockHeavyWork.sum(upper);
 
                         /**
@@ -102,7 +104,7 @@ public class TestMsgMain2Thread2MainFragment extends BaseFragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                LogHelper.printThread(TAG, "updateResult()", String.valueOf(sum));
+                Log.d(TAG, "updateResult()," + String.valueOf(sum) + ThreadUtils.getThreadInfo());
                 result.setText(String.valueOf(sum));
             }
         });

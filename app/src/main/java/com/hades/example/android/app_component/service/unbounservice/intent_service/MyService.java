@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.hades.example.android.lib.utils.LogHelper;
+import com.hades.example.java.lib.ThreadUtils;
 
 public class MyService extends Service {
     private static final String TAG = MyService.class.getSimpleName();
@@ -17,7 +17,7 @@ public class MyService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        LogHelper.printThread(TAG, "onStartCommand");
+        Log.d(TAG, "onStartCommand: " + ThreadUtils.getThreadInfo());
         /**
          * onStartCommand,thread =2,main
          */
