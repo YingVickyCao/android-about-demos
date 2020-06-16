@@ -3,7 +3,7 @@ package com.hades.example.android;
 import android.os.Bundle;
 import android.view.View;
 
-import com.github.yingvickycao.autils.base.NoNeedPermissionActivity;
+import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.data_storage.DataStorageActivity;
 import com.hades.example.android.po.security.SecurityActivity;
 import com.hades.example.android.resource.ResourceActivity;

@@ -11,7 +11,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.utils.LogHelper;
+import com.hades.example.android.lib.utils.LogHelper;
 
 public class TestRemoteBoundServiceActivity2 extends Activity {
     private static final String TAG = TestRemoteBoundServiceActivity2.class.getSimpleName();

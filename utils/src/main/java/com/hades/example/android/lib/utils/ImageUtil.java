@@ -7,7 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 
-import com.github.yingvickycao.autils.utils.bitmap.fetch.IInBitmapListener;
+import com.hades.example.autils.utils.bitmap.fetch.IInBitmapListener;
 
 import java.io.FileDescriptor;
 

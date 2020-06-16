@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import com.github.yingvickycao.autils.base.NoNeedPermissionActivity;
+import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.R;
 
 public class DragAndReorderListActivity extends NoNeedPermissionActivity {

@@ -9,7 +9,7 @@ import com.hades.example.android.R;
 import com.hades.example.android.data_storage.database.TestSQLiteActivity;
 import com.hades.example.android.data_storage.io.TestIOFragment;
 import com.hades.example.android.data_storage.shared_preferences.TestSharedPreferencesFragment;
-import com.github.yingvickycao.autils.base.PermissionActivity;
+import com.hades.example.android.lib.base.PermissionActivity;
 
 public class DataStorageActivity extends PermissionActivity {
     @Override

@@ -1,7 +1,6 @@
 package com.hades.example.android.widget.webview;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,7 @@ import android.webkit.WebView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.BaseFragment;
+import com.hades.example.android.lib.base.BaseFragment;
 
 public class TestWebViewFragment extends BaseFragment {
     private WebView mWebView;

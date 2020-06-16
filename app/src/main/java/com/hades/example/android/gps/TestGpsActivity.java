@@ -15,7 +15,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.github.yingvickycao.autils.base.RxPermissionsActivity;
+import com.hades.example.android.lib.base.RxPermissionsActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;

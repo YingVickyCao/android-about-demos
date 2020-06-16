@@ -8,8 +8,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.BaseActivity;
-import com.github.yingvickycao.autils.mock.DummyFragment;
+import com.hades.example.android.lib.base.BaseActivity;
+import com.hades.example.android.lib.mock.DummyFragment;
 
 public class TestSwipeViewPagerActivity extends BaseActivity {
 

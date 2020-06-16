@@ -6,10 +6,10 @@ import android.graphics.drawable.BitmapDrawable;
 import androidx.collection.LruCache;
 import android.util.Log;
 
-import com.github.yingvickycao.autils.BuildConfig;
-import com.github.yingvickycao.autils.utils.bitmap.cache.ImageCacheParams;
-import com.github.yingvickycao.autils.utils.ImageUtil;
-import com.github.yingvickycao.autils.utils.VersionUtil;
+import com.hades.example.autils.BuildConfig;
+import com.hades.example.autils.utils.bitmap.cache.ImageCacheParams;
+import com.hades.example.autils.utils.ImageUtil;
+import com.hades.example.autils.utils.VersionUtil;
 
 import java.lang.ref.SoftReference;
 import java.util.Collections;

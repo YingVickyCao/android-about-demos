@@ -13,9 +13,9 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 
-import com.github.yingvickycao.autils.utils.ImageUtil;
+import com.hades.example.android.lib.utils.ImageUtil;
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.BaseFragment;
+import com.hades.example.android.lib.base.BaseFragment;
 
 public class TestDecodeSampledBitmapFragment extends BaseFragment {
     private static final String TAG = TestDecodeSampledBitmapFragment.class.getSimpleName();

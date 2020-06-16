@@ -9,7 +9,7 @@ import com.hades.example.android.android_mechanism.event_handle.base_on_callback
 import com.hades.example.android.android_mechanism.event_handle.base_on_listener.TestEventHandlerBaseOnListenFragment;
 import com.hades.example.android.android_mechanism.event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity;
 import com.hades.example.android.android_mechanism.event_handle.base_on_listener.plane.TestCircleViewActivity;
-import com.github.yingvickycao.autils.base.BaseActivity;
+import com.hades.example.android.lib.base.BaseActivity;
 
 public class TestEventHandlerActivity extends BaseActivity {
 

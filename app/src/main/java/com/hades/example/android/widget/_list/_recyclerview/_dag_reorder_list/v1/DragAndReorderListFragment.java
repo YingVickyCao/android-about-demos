@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.yingvickycao.autils.base.BaseFragment;
+import com.hades.example.android.lib.base.BaseFragment;
 import com.hades.example.android.R;
 
 import java.util.ArrayList;

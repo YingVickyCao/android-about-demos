@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.NoNeedPermissionActivity;
+import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 
 public class TestActionBarActivity extends NoNeedPermissionActivity {
     TextView textView;

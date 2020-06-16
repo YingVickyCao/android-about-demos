@@ -24,10 +24,10 @@ import android.os.Build;
 import androidx.fragment.app.FragmentManager;
 import android.util.Log;
 
-import com.github.yingvickycao.autils.utils.bitmap.cache.disk.DiskCache;
-import com.github.yingvickycao.autils.utils.bitmap.cache.mememory.MemoryCache;
-import com.github.yingvickycao.autils.utils.bitmap.fetch.IInBitmapListener;
-import com.github.yingvickycao.autils.utils.bitmap.fetch.RetainImageCacheFragment;
+import com.hades.example.autils.utils.bitmap.cache.disk.DiskCache;
+import com.hades.example.autils.utils.bitmap.cache.mememory.MemoryCache;
+import com.hades.example.autils.utils.bitmap.fetch.IInBitmapListener;
+import com.hades.example.autils.utils.bitmap.fetch.RetainImageCacheFragment;
 
 
 public class ImageCache implements IInBitmapListener {

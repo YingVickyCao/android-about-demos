@@ -6,7 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.PermissionActivity;
+import com.hades.example.android.lib.base.PermissionActivity;
 import com.hades.example.android.media.audio.audio_effect.TestAudioEffectActivity;
 import com.hades.example.android.media.audio.media_player.TestMediaPlayer4AudioFragment;
 import com.hades.example.android.media.audio.sound_pool.TestSoundPoolFragment;

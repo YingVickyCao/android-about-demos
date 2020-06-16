@@ -7,7 +7,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.util.Log;
 
-import com.github.yingvickycao.autils.BuildConfig;
+import com.hades.example.autils.BuildConfig;
 
 import java.io.File;
 import java.security.MessageDigest;

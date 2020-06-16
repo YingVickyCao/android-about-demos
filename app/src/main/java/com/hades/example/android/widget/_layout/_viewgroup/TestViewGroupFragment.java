@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.BaseFragment;
+import com.hades.example.android.lib.base.BaseFragment;
 
 public class TestViewGroupFragment extends BaseFragment {
     private static final String TAG = TestViewGroupFragment.class.getSimpleName();

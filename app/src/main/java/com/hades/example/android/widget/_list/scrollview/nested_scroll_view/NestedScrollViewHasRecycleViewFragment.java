@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.BaseFragment;
+import com.hades.example.android.lib.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.github.yingvickycao.autils.mock.MockHeavyWork;
-import com.github.yingvickycao.autils.utils.LogHelper;
+import com.hades.example.android.lib.mock.MockHeavyWork;
+import com.hades.example.android.lib.utils.LogHelper;
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.BaseFragment;
+import com.hades.example.android.lib.base.BaseFragment;
 
 /**
  * main -> thread -> main

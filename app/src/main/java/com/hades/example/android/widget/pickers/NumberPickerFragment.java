@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.BaseFragment;
+import com.hades.example.android.lib.base.BaseFragment;
 
 public class NumberPickerFragment extends BaseFragment {
 

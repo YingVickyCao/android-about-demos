@@ -15,11 +15,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.NoNeedPermissionActivity;
-import com.github.yingvickycao.autils.mock.DummyContent;
-import com.github.yingvickycao.autils.mock.DummyItem;
-import com.github.yingvickycao.autils.utils.DateUtil;
-import com.github.yingvickycao.autils.mock.DummyContentFragment;
+import com.hades.example.android.lib.base.NoNeedPermissionActivity;
+import com.hades.example.android.lib.mock.DummyContent;
+import com.hades.example.android.lib.mock.DummyItem;
+import com.hades.example.android.lib.utils.DateUtil;
+import com.hades.example.android.lib.mock.DummyContentFragment;
 
 import java.util.ArrayList;
 import java.util.List;

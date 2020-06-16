@@ -6,7 +6,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.github.yingvickycao.autils.utils.LogHelper;
+import com.hades.example.android.lib.utils.LogHelper;
 
 public class MyIntentService extends IntentService {
     private static final String TAG = MyIntentService.class.getSimpleName();

@@ -21,8 +21,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.github.yingvickycao.autils.timer.ITimerView;
-import com.github.yingvickycao.autils.timer.TimerHandler;
+import com.hades.example.android.lib.timer.ITimerView;
+import com.hades.example.android.lib.timer.TimerHandler;
 import com.hades.example.android.R;
 import com.hades.example.android.media.audio.media_player.IMediaPlayer;
 import com.hades.example.android.media.audio.media_player.MediaController;

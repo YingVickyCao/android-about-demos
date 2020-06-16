@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.loader.content.CursorLoader;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.PermissionActivity;
+import com.hades.example.android.lib.base.PermissionActivity;
 
 public class SystemActionActivity extends PermissionActivity {
     final int REQUEST_CODE_PICK_CONTACT = 1000;

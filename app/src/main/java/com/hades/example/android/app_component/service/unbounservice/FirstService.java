@@ -9,8 +9,8 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.utils.LogHelper;
-import com.github.yingvickycao.autils.utils.VersionUtil;
+import com.hades.example.android.lib.utils.LogHelper;
+import com.hades.example.android.lib.utils.VersionUtil;
 
 import static com.hades.example.android.app_component.service.unbounservice.StartServiceTest1Activity.KEY_COUNT;
 

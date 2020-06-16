@@ -9,15 +9,8 @@ import android.widget.Spinner;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.github.yingvickycao.autils.base.PermissionActivity;
+import com.hades.example.android.lib.base.PermissionActivity;
 import com.hades.example.android.R;
-import com.hades.example.android.media.audio.audio_effect.TestAudioEffectActivity;
-import com.hades.example.android.media.audio.media_player.TestMediaPlayer4AudioFragment;
-import com.hades.example.android.media.audio.sound_pool.TestSoundPoolFragment;
-import com.hades.example.android.media.camera.TestCameraActivity;
-import com.hades.example.android.media.record.audio.TestRecordAudioFragment;
-import com.hades.example.android.widget._surfaceview.TestSurfaceViewPlayVideoFragment;
-import com.hades.example.android.widget._videoview.VideoViewRotateScreenTipActivity;
 
 public class TestExoPlayerActivity extends PermissionActivity {
     private String mUriString;

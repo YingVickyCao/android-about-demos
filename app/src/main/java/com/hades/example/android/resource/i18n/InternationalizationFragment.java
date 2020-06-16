@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.BaseFragment;
+import com.hades.example.android.lib.base.BaseFragment;
 
 public class InternationalizationFragment extends BaseFragment {
     @Nullable

@@ -25,7 +25,7 @@ import android.view.TextureView;
 import android.widget.Toast;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.PermissionActivity;
+import com.hades.example.android.lib.base.PermissionActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;

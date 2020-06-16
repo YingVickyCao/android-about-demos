@@ -5,7 +5,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.github.yingvickycao.autils.base.BaseActivity;
+import com.hades.example.android.lib.base.BaseActivity;
 import com.hades.example.android.R;
 
 public class WrongSwipeWhoPageActivity extends BaseActivity implements View.OnClickListener {

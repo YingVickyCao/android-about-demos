@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.NoNeedPermissionActivity;
+import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.other_ui._actionbar.TestActionBarActivity;
 import com.hades.example.android.other_ui._dialog.TestDialogActivity;
 import com.hades.example.android.other_ui._notification.TestNotificationFragment;

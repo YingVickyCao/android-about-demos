@@ -17,8 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.BaseFragment;
-import com.github.yingvickycao.autils.utils.VersionUtil;
+import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.lib.utils.VersionUtil;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 

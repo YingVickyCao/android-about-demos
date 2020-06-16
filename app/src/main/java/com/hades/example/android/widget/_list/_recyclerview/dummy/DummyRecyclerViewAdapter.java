@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.yingvickycao.autils.mock.DummyItem;
+import com.hades.example.android.lib.mock.DummyItem;
 import com.hades.example.android.R;
 
 import java.util.List;

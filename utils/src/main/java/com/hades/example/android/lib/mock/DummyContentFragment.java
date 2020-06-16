@@ -8,8 +8,8 @@ import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 
-import com.github.yingvickycao.autils.R;
-import com.github.yingvickycao.autils.base.BaseFragment;
+import com.hades.example.autils.R;
+import com.hades.example.autils.base.BaseFragment;
 
 import java.util.ArrayList;
 

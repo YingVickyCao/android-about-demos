@@ -2,7 +2,6 @@ package com.hades.example.android.other_ui._dialog;
 
 
 import android.os.Bundle;
-import android.util.Half;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -12,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.hades.example.android.R;
-import com.github.yingvickycao.autils.base.BaseActivity;
+import com.hades.example.android.lib.base.BaseActivity;
 import com.hades.example.android.other_ui._dialog.depressed.DateTimePickerDialogFragment;
 import com.hades.example.android.other_ui._dialog.depressed.TestAlertDialogFragment;
 import com.hades.example.android.other_ui._dialog.depressed.TestProgressDialogFragment;
