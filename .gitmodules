@@ -1,3 +1,7 @@
-[submodule "autils"]
-	path = autils
-	url = https://gitee.com/YingVickyCao/autils-build.git
+[submodule "JavaLib"]
+	path = JavaLib
+	url = git@gitee.com:YingVickyCao/JavaLib.git
+
+[submodule "AndroidLib"]
+	path = AndroidLib
+	url = git@gitee.com:YingVickyCao/AndroidLib.git
