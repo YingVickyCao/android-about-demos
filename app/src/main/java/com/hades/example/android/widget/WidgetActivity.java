@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
+import com.hades.example.android.widget._edittext.TestEditTextFragment;
 import com.hades.example.java.lib.DummyItem;
 import com.hades.example.android.R;
 import com.hades.example.android.widget._button.TestButtonActivity;
@@ -102,11 +103,12 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.pageTabLayout).setOnClickListener(v -> pageTabLayout());
         findViewById(R.id.pageRadioButton).setOnClickListener(v -> pageRadioButton());
         findViewById(R.id.pageSwitch).setOnClickListener(v -> pageSwitch());
+        findViewById(R.id.pageEditText).setOnClickListener(v -> pageEditText());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageWebView();
+        pageEditText();
     }
 
     private void pageViewLocation() {
@@ -263,6 +265,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void pageSwitch() {
         showFragment(new TestSwitchFragment());
+    }
+
+    private void pageEditText() {
+        showFragment(new TestEditTextFragment());
     }
 
     @Override
