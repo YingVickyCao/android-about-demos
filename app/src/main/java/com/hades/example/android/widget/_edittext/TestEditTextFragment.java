@@ -1,5 +1,6 @@
 package com.hades.example.android.widget._edittext;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.HideReturnsTransformationMethod;
