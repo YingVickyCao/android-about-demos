@@ -190,27 +190,33 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     private List<DummyItem> getDummyItems() {
 //        return DummyContent.ITEMS_100000();
 //        return DummyContent.ITEMS_10000();
-        return DummyItems.ITEMS_1000();
+//        return DummyItems.ITEMS_1000();
+        return DummyItems.ITEMS_4_2();
     }
 
     private void insertMultiple(SQLiteDatabase db, String tableName, List<DummyItem> list) {
-//        insertMultiple_way1(db, tableName, list);
+//        return insertMultiple_way1(db, tableName, list);
         insertMultiple_way2(db, tableName, list);
 //        insertMultiple_way3(db, tableName, list);
     }
 
-    private void insertMultiple_way1(SQLiteDatabase db, String tableName, List<DummyItem> list) {
+    private long insertMultiple_way1(SQLiteDatabase db, String tableName, List<DummyItem> list) {
+        long result = -1;
         for (int i = 0; i < list.size(); i++) {
             DummyItem dummyItem = list.get(i);
             // Way1
-            db.insert(tableName, null, convertBean2ContentValues(dummyItem));
+            long successOfinsert = db.insert(tableName, null, convertBean2ContentValues(dummyItem));
+            if (successOfinsert == -1) {
+                result = -1;
+            }
+            Log.e(TAG, "insertMultiple_way1:successOfinsert" + successOfinsert);
         }
+        return result;
     }
 
     private void insertMultiple_way2(SQLiteDatabase db, String tableName, List<DummyItem> list) {
         for (int i = 0; i < list.size(); i++) {
             DummyItem dummyItem = list.get(i);
-
             // Way2
             String sql = "INSERT INTO table1 VALUES(? , ? , ?)";
             Object[] bindArgs = new Object[]{dummyItem.getId(), dummyItem.getColo2(), dummyItem.getCol3()};
@@ -285,11 +291,14 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             try {
                 db.beginTransaction();
                 insertMultiple(db, Table1ReaderContract.TableEntry.TABLE_NAME, getDummyItems());
+//                if (r != -1) {
                 db.setTransactionSuccessful();
+//                }
+            } catch (Exception ex) {
+                Log.e(TAG, "insertMultipleWithTransaction: " + ex);
             } finally {
                 db.endTransaction();
             }
-
             long end = System.currentTimeMillis();
             setUsedTime(start, end);
             queryAll(db);
@@ -650,7 +659,6 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
 
         int count = db.update(Table1ReaderContract.TableEntry.TABLE_NAME, values, whereClause, whereArgs);
         Log.d(TAG, "update:count=" + count);
-
     }
 
     private void updateFuzzy_way2() {
@@ -663,9 +671,9 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     // col2 任意位置包含A
     private void delete() {
         new Thread(() -> {
-            delete_way1();
+//            delete_way1();
 //            delete_way2();
-
+            delete_multiple_condition();
         }).start();
     }
 
@@ -674,11 +682,17 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
 
         // Way1:
         String whereClause = Table1ReaderContract.TableEntry.COL2 + " LIKE ?";
-        String keyword = "A";
-        String[] whereArgs = {"%" + keyword + "%"};
+        String[] whereArgs = {"%A%"};
 
         int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, whereClause, whereArgs);
         Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
+    }
+
+    private void delete_multiple_condition() {
+        SQLiteDatabase db = getWritableDatabase();
+        String whereClause = Table1ReaderContract.TableEntry._ID + "=? OR " + Table1ReaderContract.TableEntry.COL3 + ">?";
+        String[] whereArgs = new String[]{"5", "10"};
+        db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, whereClause, whereArgs);
     }
 
     private void delete_way2() {
