@@ -27,7 +27,7 @@
             <include
                 layout="@layout/res_theme_btns"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_alignParentBottom="true" />
 
             <LinearLayout

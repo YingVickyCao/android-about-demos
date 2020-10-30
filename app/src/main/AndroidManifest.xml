@@ -455,8 +455,12 @@
             android:name=".resource.adapter_screen.TestConfigurationActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
-        <activity android:name=".resource._style_theme.ThemeChoosePageAActivity" />
-        <activity android:name=".resource._style_theme.ThemeChoosePageBActivity" />
+        <activity
+            android:name=".resource._style_theme.ThemeChoosePageAActivity"
+            android:configChanges="uiMode" />
+        <activity
+            android:name=".resource._style_theme.ThemeChoosePageBActivity"
+            android:configChanges="uiMode" />
         <activity
             android:name=".resource.drawable._bitmap.three_level_cache.ImageGridActivity"
             android:label="@string/app_name" />

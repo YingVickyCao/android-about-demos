@@ -27,7 +27,7 @@ import java.util.List;
 public class TestSQLiteActivity extends NoNeedPermissionActivity {
     private static final String TAG = TestSQLiteActivity.class.getSimpleName();
 
-    private FeedSQLiteOpenHelper dbHelper;
+    private MySQLiteOpenHelper dbHelper;
     private DateUtil mDateUtil = new DateUtil();
 
     private TextView mUsedTimeTv;
@@ -44,9 +44,11 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         mUsedTimeTv = findViewById(R.id.usedTime);
         mProgressBar = findViewById(R.id.progressBar);
 
-        dbHelper = new FeedSQLiteOpenHelper(this);
+        dbHelper = new MySQLiteOpenHelper(this);
 
         findViewById(R.id.clear).setOnClickListener(v -> clear());
+
+        findViewById(R.id.checkTableExist).setOnClickListener(v -> checkTableExist());
 
         findViewById(R.id.insertOne).setOnClickListener(v -> insertOne());
         findViewById(R.id.insertMultiple).setOnClickListener(v -> insertMultiple());
@@ -78,6 +80,20 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     private void clear() {
         mUsedTimeTv.setText("");
         handleQueryResult(null);
+    }
+
+    private void checkTableExist() {
+        // Way 1 : create table if not exists
+
+        // Way 2
+        boolean exist = dbHelper.checkTableExist(Table1ReaderContract.TableEntry.TABLE_NAME);
+//        boolean exist = dbHelper.checkTableExist("any_table");
+        Log.d(TAG, "checkTableExist: " + exist);
+
+        // Way 3
+//        boolean exist2 = dbHelper.checkTableExist2(Table1ReaderContract.TableEntry.TABLE_NAME);
+        boolean exist2 = dbHelper.checkTableExist2("any_table");
+        Log.d(TAG, "checkTableExist: " + exist2);
     }
 
     private void insertOne() {
@@ -411,7 +427,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
             long start = System.currentTimeMillis();
 
             // PO: Use getReadableDatabase()/getWritableDatabase() in background thread
-            Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_TABLE_TABLE1, null);
+            Cursor cursor = getReadableDatabase().rawQuery(MySQLiteOpenHelper.SQL_RETRIEVE_TABLE_TABLE1, null);
             handleQueryResult(cursor);
 
             long end = System.currentTimeMillis();
@@ -420,7 +436,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     }
 
     private void queryAll(SQLiteDatabase db) {
-        Cursor cursor = db.rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_TABLE_TABLE1, null);
+        Cursor cursor = db.rawQuery(MySQLiteOpenHelper.SQL_RETRIEVE_TABLE_TABLE1, null);
         handleQueryResult(cursor);
     }
 
@@ -718,7 +734,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
         int deletedRowNum = db.delete(Table1ReaderContract.TableEntry.TABLE_NAME, null, null);
         Log.d(TAG, "delete: deletedRowNum=" + deletedRowNum);
 
-        Cursor cursor = getReadableDatabase().rawQuery(FeedSQLiteOpenHelper.SQL_RETRIEVE_TABLE_TABLE1, null);
+        Cursor cursor = getReadableDatabase().rawQuery(MySQLiteOpenHelper.SQL_RETRIEVE_TABLE_TABLE1, null);
         handleQueryResult(cursor);
     }
 

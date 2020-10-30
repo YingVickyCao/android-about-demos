@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:background="?attr/pageRootBg"
-    android:backgroundTint="?attr/pageRootBg">
+    android:layout_height="150dp"
+    android:background="?attr/bg_0">
 
     <Button
         android:id="@+id/setLightTheme"
         style="@style/btn.small"
         android:layout_alignParentBottom="true"
+        android:background="?attr/link_0"
         android:text="@string/light_theme" />
 
     <Button
@@ -16,6 +16,7 @@
         style="@style/btn.small"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:background="?attr/link_0"
         android:text="@string/jump_page_b"
         android:visibility="visible" />
 
@@ -24,5 +25,6 @@
         style="@style/btn.small"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:background="?attr/link_0"
         android:text="@string/dark_theme" />
 </RelativeLayout>

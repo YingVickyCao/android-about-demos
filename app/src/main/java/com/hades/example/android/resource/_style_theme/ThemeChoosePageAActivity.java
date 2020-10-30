@@ -2,9 +2,11 @@ package com.hades.example.android.resource._style_theme;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 
@@ -70,5 +72,21 @@ public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
 
     private void pageTint() {
         showFragment(new TestTintFragment());
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        int currentNightMode = newConfig.uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        switch (currentNightMode) {
+            case Configuration.UI_MODE_NIGHT_NO:
+                setLightTheme();
+                break;
+
+            case Configuration.UI_MODE_NIGHT_YES:
+                setDarkTheme();
+                break;
+        }
     }
 }

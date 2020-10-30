@@ -81,8 +81,7 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-core:2.9.6'
     implementation 'com.google.android.exoplayer:exoplayer-hls:2.9.6'
 
-
-//    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 
     testImplementation 'junit:junit:4.12'
 

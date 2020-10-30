@@ -1,14 +1,15 @@
 package com.hades.example.android.data_storage.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.hades.example.java.lib.ThreadUtils;
 
-public class FeedSQLiteOpenHelper extends SQLiteOpenHelper {
-    private static final String TAG = FeedSQLiteOpenHelper.class.getSimpleName();
+public class MySQLiteOpenHelper extends SQLiteOpenHelper {
+    private static final String TAG = MySQLiteOpenHelper.class.getSimpleName();
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "FeedReader.db";
@@ -39,7 +40,7 @@ public class FeedSQLiteOpenHelper extends SQLiteOpenHelper {
     // v3: add link between table Book and Category
     public static final String SQL_ADD_LINK_BETWEEN_BOOK_AND_CATEGORY = "ALTER TABLE Book ADD COLUMN category_id INTEGER";
 
-    public FeedSQLiteOpenHelper(Context context) {
+    public MySQLiteOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         Log.d(TAG, "FeedSQLiteOpenHelper() " + ThreadUtils.getThreadInfo());
     }
@@ -85,5 +86,55 @@ public class FeedSQLiteOpenHelper extends SQLiteOpenHelper {
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d(TAG, "onDowngrade: oldVersion=" + oldVersion + ",newVersion=" + newVersion + ThreadUtils.getThreadInfo());
         onUpgrade(db, oldVersion, newVersion);
+    }
+
+    public boolean checkTableExist(String tableName) {
+        Cursor cursor = null;
+        try {
+            SQLiteDatabase db = getReadableDatabase();
+//            cursor = db.rawQuery("select name from sqlite_master where type='table';", null);
+            cursor = db.rawQuery("select name from sqlite_master where type='table' and name=?", new String[]{tableName});
+            while (cursor.moveToNext()) {
+                String name = cursor.getString(0);
+                if (name.equals(tableName)) {
+                    return true;
+                }
+            }
+        } catch (Exception ex) {
+            Log.e(TAG, "checkTableExist: ", ex);
+            return false;
+        } finally {
+            if (null != cursor) {
+                cursor.close();
+            }
+        }
+        return false;
+    }
+
+    public boolean checkTableExist2(String table) {
+        Cursor cursor = null;
+
+        try {
+            SQLiteDatabase db = getReadableDatabase();
+
+//            String sql = "select count(*) as c from sqlite_master where type ='table' and name ='" + table + "';";
+//            cursor = db.rawQuery(sql, null);
+            String sql = "select count(*) as c from sqlite_master where type ='table' and name = ?;";
+            cursor = db.rawQuery(sql, new String[]{table});
+            if (cursor.moveToNext()) {
+                int count = cursor.getInt(0);
+                if (count > 0) {
+                    return true;
+                }
+            }
+        } catch (Exception ex) {
+            Log.e(TAG, "checkTableExist2: ", ex);
+            return false;
+        } finally {
+            if (null != cursor) {
+                cursor.close();
+            }
+        }
+        return false;
     }
 }
