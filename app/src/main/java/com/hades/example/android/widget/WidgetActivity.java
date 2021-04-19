@@ -10,6 +10,7 @@ import com.hades.example.android.widget._edittext.TestEditTextFragment;
 import com.hades.example.java.lib.DummyItem;
 import com.hades.example.android.R;
 import com.hades.example.android.widget._button.TestButtonActivity;
+import com.hades.example.android.widget._checkbox.CheckBoxFragment;
 import com.hades.example.android.widget._layout._constraintlayout.TestConstraintLayoutFragment;
 import com.hades.example.android.widget._layout._framelayout.TestFrameLayoutFragment;
 import com.hades.example.android.widget._layout._viewgroup.TestViewGroupFragment;
@@ -33,6 +34,7 @@ import com.hades.example.android.widget._switch.TestSwitchFragment;
 import com.hades.example.android.widget._tablayout.TestTabLayoutFragment;
 import com.hades.example.android.widget.custom_view.TestCustomViewFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
+import com.hades.example.android.widget.custom_view.shadow.TestShadowViewFragment;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageFragment;
 import com.hades.example.android.widget.imageview.TestImageViewFragment;
@@ -63,9 +65,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         initViews();
 
         findViewById(R.id.pageCustomVew).setOnClickListener(v -> pageCustomVew());
+        findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
+        findViewById(R.id.page_CustomVew_ShadowView).setOnClickListener(v -> page_CustomVew_ShadowView());
         findViewById(R.id.pageListView).setOnClickListener(v -> pageListView());
         findViewById(R.id.pageViewLocation).setOnClickListener(v -> pageViewLocation());
-        findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
         findViewById(R.id.pageConstraintLayout).setOnClickListener(v -> pageConstraintLayout());
         findViewById(R.id.pageLinearLayout).setOnClickListener(v -> pageLinearLayout());
         findViewById(R.id.pageLinearLayoutCanNotChangeColor).setOnClickListener(v -> pageLinearLayoutCanNotChangeColor());
@@ -102,13 +105,14 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.pageSpinner).setOnClickListener(v -> pageSpinner());
         findViewById(R.id.pageTabLayout).setOnClickListener(v -> pageTabLayout());
         findViewById(R.id.pageRadioButton).setOnClickListener(v -> pageRadioButton());
+        findViewById(R.id.pageCheckBox).setOnClickListener(v -> pageCheckBox());
         findViewById(R.id.pageSwitch).setOnClickListener(v -> pageSwitch());
         findViewById(R.id.pageEditText).setOnClickListener(v -> pageEditText());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageListView();
+        page_CustomVew_ShadowView();
     }
 
     private void pageViewLocation() {
@@ -125,6 +129,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void pageCustomView4CascadeLayout() {
         showActivity(CascadeLayoutActivity.class);
+    }
+
+    private void page_CustomVew_ShadowView() {
+        showFragment(new TestShadowViewFragment());
     }
 
     private void pageConstraintLayout() {
@@ -261,6 +269,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void pageRadioButton() {
         showFragment(new TestRadioButtonFragment());
+    }
+
+    private void pageCheckBox() {
+        showFragment(new CheckBoxFragment());
     }
 
     private void pageSwitch() {

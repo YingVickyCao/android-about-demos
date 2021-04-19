@@ -20,9 +20,8 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/id"
-                style="@style/tv"
-                android:text="@string/a" />
+                android:id="@+id/themeName"
+                style="@style/tv" />
 
             <include
                 layout="@layout/res_theme_btns"

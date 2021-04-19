@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/page_CheckBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:checked="true"
+            android:text="@string/is_friday" />
+
+        <!--  android:buttonTint:Change color of Image -->
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:buttonTint="@android:color/holo_green_dark"
+            android:text="@string/is_friday" />
+
+        <!--  android:buttonTint: Change color of Text -->
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="@string/is_friday"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <!--  android:button:Change Image -->
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:button="@drawable/checkbox"
+            android:text="@string/is_friday" />
+
+        <!--  android:buttonTint:Change Image,and color -->
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:button="@drawable/checkbox"
+            android:buttonTint="@android:color/holo_green_dark"
+            android:text="@string/is_friday" />
+
+        <!--  android:background:Not work -->
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:background="@drawable/checkbox"
+            android:button="@null"
+            android:checked="true"
+            android:text="@string/is_friday" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:background="@android:color/holo_blue_bright"
+            android:button="@drawable/checkbox"
+            android:text="@string/is_friday" />
+
+        <!-- android:gravity : Change text position, not change button image position-->
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:button="@drawable/checkbox"
+            android:gravity="top"
+            android:text="@string/is_friday" />
+
+        <!-- AppCompatCheckBox + app:theme: Change 点击时的动画效果颜色 -->
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:button="@drawable/checkbox"
+            android:text="@string/is_friday"
+            app:theme="@style/checkBox" />
+
+
+        <!--  Fix：Left of dynamic Circle when Clicked is hidden , START -->
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:button="@drawable/checkbox"
+            android:text="@string/is_friday" />
+
+        <!-- android:layout_marginStart : Work  -->
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:button="@drawable/checkbox"
+            android:text="@string/is_friday" />
+
+        <!-- android:paddingStart : Not work  -->
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:button="@drawable/checkbox"
+            android:paddingStart="5dp"
+            android:text="@string/is_friday" />
+        <!--  Fix：Left of dynamic Circle when Clicked is hidden , END -->
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/toggle"
+        style="@style/btn.small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/toggle_checkbox_checked_status"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

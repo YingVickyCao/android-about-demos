@@ -12,10 +12,12 @@ import androidx.appcompat.content.res.AppCompatResources;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
+import com.hades.example.java.lib.MemoryCache;
 
 public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
 
     TextView textView;
+    TextView themeName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
         initViews();
 
         textView = findViewById(R.id.textView);
+        themeName = findViewById(R.id.themeName);
 
         findViewById(R.id.setLightTheme).setOnClickListener(v -> setLightTheme());
         findViewById(R.id.setDarkTheme).setOnClickListener(v -> setDarkTheme());
@@ -38,6 +41,17 @@ public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
         findViewById(R.id.pageDeclareStyleable).setOnClickListener(v -> pageDeclareStyleable());
         findViewById(R.id.pageColorFilter).setOnClickListener(v -> pageColorFilter());
         findViewById(R.id.pageTint).setOnClickListener(v -> pageTint());
+
+        setThemeName();
+    }
+
+    protected void setThemeName() {
+        boolean isLightTheme = MemoryCache.getInstance().isRedTheme();
+        if (isLightTheme) {
+            themeName.setText("Light Theme");
+        } else {
+            themeName.setText("Dark Theme");
+        }
     }
 
     private void colorOne() {

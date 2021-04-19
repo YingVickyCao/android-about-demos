@@ -40,7 +40,8 @@ public class MyTextView extends TextView {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        Log.d(TAG, "onLayout: ");
+        // width=1080,height=275,width=1080,height=275
+        Log.d(TAG, "onLayout: width=" + getWidth() + ",height=" + getHeight() + ",width=" + getMeasuredWidth() + ",height=" + getMeasuredHeight());
     }
 
     @Override
@@ -69,5 +70,12 @@ public class MyTextView extends TextView {
         if (null != state) {
             Log.d(TAG, "onRestoreInstanceState: state=" + state.hashCode());
         }
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        // width=1080,height=275,width=1080,height=275
+        Log.d(TAG, "onSizeChanged: width=" + getWidth() + ",height=" + getHeight() + ",width=" + getMeasuredWidth() + ",height=" + getMeasuredHeight());
     }
 }

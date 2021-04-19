@@ -5,9 +5,12 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.other_ui._actionbar.TestActionBarActivity;
+import com.hades.example.android.tools.TestDensityUtil;
+
 
 public class QAActivity extends NoNeedPermissionActivity {
+    private static final String TAG = "QAActivity";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,6 @@ public class QAActivity extends NoNeedPermissionActivity {
     }
 
     private void temp() {
-        showActivity(TestActionBarActivity.class);
+        new TestDensityUtil().temp(this);
     }
 }

@@ -29,4 +29,20 @@
         <attr name="rvSize" format="dimension" />
     </declare-styleable>
 
+
+    <!--  阴影程度：由 shadow_radius，shadow_*Radius，child_base_margin，共同决定  -->
+    <declare-styleable name="ShadowViewGroup">
+        <attr name="bg_radius" format="dimension" />
+        <attr name="bg_color" format="color" />
+        <attr name="shadow_color" format="color" />
+        <attr name="shadow_radius" format="dimension" />
+        <attr name="shadow_leftRadius" format="dimension" />
+        <attr name="shadow_rightRadius" format="dimension" />
+        <attr name="shadow_topRadius" format="dimension" />
+        <attr name="shadow_bottomRadius" format="dimension" />
+        <!--         child_base_margin =  shadow_radius -->
+        <attr name="child_base_margin" format="dimension" />
+        <attr name="container_cornerRadius" format="dimension" />
+        <attr name="shadow_enable" format="boolean" />
+    </declare-styleable>
 </resources>

@@ -15,6 +15,7 @@
     <string name="page_intent_Filter_system_action">Intent-Filter - system action</string>
     <string name="page_intent_Filter_data_and_type">Intent-Filter - Data, and Type</string>
     <string name="page_intent_Flag">Intent-Flag</string>
+    <string name="page_manage_system_ui">Manage System UI</string>
     <string name="page_Fragment">Fragment</string>
     <string name="page_BottomSheetDialogFragment">BottomSheetDialogFragment</string>
     <string name="page_half_width_DialogFragment">Half width DialogFragment</string>
@@ -57,11 +58,15 @@
     <string name="page_Tween_Animation">Tween animation</string>
     <string name="page_Frame_Animation">Frame animation</string>
     <string name="page_Property_Animation">Property animation</string>
+    <string name="page_Animation_when_activity_enter_exit"> Animation When activity enter/exit</string>
+    <string name="page_activity_transitions_animation"> Start an activity using an animation</string>
 
     <string name="page_widget">Widget</string>
     <string name="page_CustomView">Custom View</string>
+    <string name="page_RelativeView">RelativeView</string>
     <string name="page_view_location">View location</string>
-    <string name="page_CustomView4CascadeLayout">Custom View 4 CascadeLayout</string>
+    <string name="page_CustomView_CascadeLayout">Custom View 4 CascadeLayout</string>
+    <string name="page_CustomView_ShadowView">Custom View 4 Shadow View</string>
     <string name="page_ConstraintLayout">ConstraintLayout</string>
     <string name="page_linearLayout">LinearLayout</string>
     <string name="page_LinearLayout_CanNotChangeColor">LinearLayout can not change color</string>
@@ -86,6 +91,7 @@
     <string name="page_check_vector_rendering_time">Check vector rendering time</string>
     <string name="page_webView">WebView</string>
     <string name="page_app_chooser">Show an app chooser</string>
+    <string name="page_CheckBox">CheckBox</string>
     <string name="page_RadioButton">RadioButton</string>
     <string name="page_Switch">Switch</string>
     <string name="page_layout_inflater">LayoutInflater</string>
@@ -149,6 +155,8 @@
     <string name="page_MediaRecorder_Record_audio">MediaRecorder - Record audio</string>
     <string name="page_MediaRecorder_Record_video">MediaRecorder - Record video</string>
     <string name="page_Screen_Capture">Screen Capture</string>
+
+    <string name="page_multi_window">Multi-Window</string>
 
     <!-- ========================= -->
 
@@ -462,4 +470,18 @@
     <string name="off">Off</string>
     <string name="on">On</string>
     <string name="record">Record</string>
+    <string name="toggle_checkbox_checked_status">Toggle CheckBox checked status</string>
+    <string name="is_friday">Is Friday</string>
+    <string name="overridependingtransition">overridePendingTransition</string>
+    <string name="theme">Theme</string>
+    <string name="layoutMain">Layout main</string>
+    <string name="layout1">Layout 1</string>
+    <string name="layout2">Layout 2</string>
+    <string name="layout3">Layout 3</string>
+    <string name="layout_main">Layout main</string>
+    <string name="layout_1">Layout 1</string>
+    <string name="layout_2">Layout 2</string>
+    <string name="change_SurfaceView_size">Change SurfaceView size</string>
+    <string name="object_animator">objectAnimator</string>
+    <string name="cv_toast_example">简单的提示信息</string>
 </resources>

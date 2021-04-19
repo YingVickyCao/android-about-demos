@@ -21,16 +21,22 @@ import com.hades.example.android.R;
   https://www.jianshu.com/p/ca8d7dd6172e
  */
 public class TestToastFragment extends Fragment {
+    private View root;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.other_ui_toast, container, false);
+        View view = inflater.inflate(R.layout.toast_layout, container, false);
         view.findViewById(R.id.showNormalToast).setOnClickListener(v -> toast());
         view.findViewById(R.id.androidToast).setOnClickListener(v -> androidToast());
         view.findViewById(R.id.showCustomToast).setOnClickListener(v -> showCustomToast());
-        view.findViewById(R.id.devCustom).setOnClickListener(v -> devCustom());
-        view.findViewById(R.id.lightToast).setOnClickListener(v -> lightToast());
+        view.findViewById(R.id.toast_without_icon_in_dark_theme).setOnClickListener(v -> toastWithoutIconInDarkTheme());
+        view.findViewById(R.id.toast_without_icon_in_light_theme).setOnClickListener(v -> toastWithoutIconInLightTheme());
+        view.findViewById(R.id.toast_with_icon_in_dark_theme).setOnClickListener(v -> toastWithIconInDarkTheme());
+        view.findViewById(R.id.toast_with_icon_in_light_theme).setOnClickListener(v -> toastWithIconInLightTheme());
+        view.findViewById(R.id.toast_with_icon_in_light_theme2).setOnClickListener(v -> toastWithIconInLightTheme2());
+        view.findViewById(R.id.toast_with_icon_in_light_theme3).setOnClickListener(v -> toastWithIconInLightTheme3());
+        root = view.findViewById(R.id.root);
         return view;
     }
 
@@ -45,7 +51,7 @@ public class TestToastFragment extends Fragment {
     private void androidToast() {
         Toast toast = new Toast(getUsedContext());
 //        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.transient_no1tification_v1, null));
+        toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.toast_custom_android, null));
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.show();
     }
@@ -73,21 +79,68 @@ public class TestToastFragment extends Fragment {
         return ll;
     }
 
-    private void devCustom() {
+    private void toastWithoutIconInDarkTheme() {
+        root.setBackgroundColor(getResources().getColor(R.color.dark_bg_0, null));
         Toast toast = new Toast(getUsedContext());
         toast.setGravity(Gravity.CENTER, 0, 0);
 
-        toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.other_ui_toast_custom_dev, null));
-        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.toast_custom_without_icon_dark, null));
+        toast.setDuration(Toast.LENGTH_SHORT);
         toast.show();
     }
 
-    private void lightToast() {
+
+    private void toastWithoutIconInLightTheme() {
+        root.setBackgroundColor(getResources().getColor(R.color.light_bg_0, null));
+
         Toast toast = new Toast(getUsedContext());
         toast.setGravity(Gravity.CENTER, 0, 0);
 
-        toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.other_ui_toast_custom_light, null));
-        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.toast_custom_without_icon_light, null));
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    private void toastWithIconInDarkTheme() {
+        root.setBackgroundColor(getResources().getColor(R.color.dark_bg_0, null));
+        Toast toast = new Toast(getUsedContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+
+        toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.toast_custom_with_icon_dark, null));
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    private void toastWithIconInLightTheme() {
+        root.setBackgroundColor(getResources().getColor(R.color.light_bg_0, null));
+
+        Toast toast = new Toast(getUsedContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+
+        toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.toast_custom_with_icon_light, null));
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    private void toastWithIconInLightTheme2() {
+        root.setBackgroundColor(getResources().getColor(R.color.light_bg_0, null));
+
+        Toast toast = new Toast(getUsedContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+
+        toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.toast_custom_with_icon_light2, null));
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    private void toastWithIconInLightTheme3() {
+        root.setBackgroundColor(getResources().getColor(R.color.light_bg_0, null));
+
+        Toast toast = new Toast(getUsedContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+
+        toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.toast_custom_with_icon_light3, null));
+        toast.setDuration(Toast.LENGTH_SHORT);
         toast.show();
     }
 }

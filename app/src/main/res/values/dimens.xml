@@ -12,4 +12,9 @@
     <dimen name="stroke_width">1dp</dimen>
 
     <dimen name="widget_margin">8dp</dimen>
+    <dimen name="big_size">3000dp</dimen>
+
+    <dimen name="shadow_padding">10dp</dimen>
+    <dimen name="shadow_radius">5dp</dimen>
+    <color name="shadow_color">#f1f3f4</color>
 </resources>

@@ -306,7 +306,7 @@
 
         <!-- windowBackground  = shadow color of dialog -->
         <!--<item name="android:windowBackground">@android:color/transparent</item>-->
-        <item name="android:windowBackground">@color/light_shadow</item>
+        <item name="android:windowBackground">@color/light_s_0_E_red</item>
 
         <!--<item name="bottomSheetStyle">@style/Widget.Design.BottomSheet.Modal</item>-->
         <item name="bottomSheetStyle">@style/Widget.Design.BottomSheet.Modal_Custom</item>
@@ -316,5 +316,69 @@
     <style name="Widget.Design.BottomSheet.Modal_Custom" parent="Widget.Design.BottomSheet.Modal">
         <!-- background：content的默认背景色  -->
         <item name="android:background">@android:color/holo_orange_light</item>
+    </style>
+
+    <!--    <style name="LoginIn" parent="AppTheme.Light"/>-->
+    <style name="LoginIn_RemoveSplash" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item> 
+        <item name="android:windowNoTitle">true</item>  
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="LoginIn_RemoveSplash2" parent="AppTheme">
+        <!--        <item name="android:windowBackground">@android:color/black</item>-->
+        <item name="android:windowBackground">@drawable/wallpaper</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="checkBox" parent="AppTheme">
+        <!-- Option 2 -->
+        <!-- UnChecked -->
+        <item name="colorAccent">@android:color/holo_orange_dark</item>
+        <!-- Checked: no color -->
+        <item name="android:textColorSecondary">@android:color/holo_green_dark</item>
+
+        <!-- Option 1 -->
+        <!-- UnChecked ( 更优先 )-->
+        <item name="colorControlActivated">@android:color/holo_blue_dark</item>
+        <!-- Checked: no color ( 更优先 ) -->
+        <item name="colorControlNormal">@android:color/holo_purple</item>
+    </style>
+
+    <style name="AnimationForActivity" parent="@android:style/Animation">
+        <!-- Open new Activity,and the new Activity enters -->
+        <item name="android:activityOpenEnterAnimation">@anim/in_from_right</item>
+        <!-- Open new Activity, and previous activity exits-->
+        <item name="android:activityOpenExitAnimation">@anim/in_from_right_abit</item>
+        <!-- Close current Activity, and previous activity enters -->
+        <item name="android:activityCloseEnterAnimation">@anim/out_to_right_abit</item>
+        <!-- Close current activity -->
+        <item name="android:activityCloseExitAnimation">@anim/out_to_right</item>
+    </style>
+
+    <style name="ActivityWithAnimation" parent="AppTheme">
+        <item name="android:windowAnimationStyle">@style/AnimationForActivity</item>
+    </style>
+
+
+    <!-- 0, 2dp, 4dp -->
+    <style name="viewgroup_with_box_shadow">
+        <item name="bg_radius">0dp</item>
+        <item name="bg_color">@android:color/transparent</item>
+        <item name="shadow_radius">10dp</item>
+        <item name="shadow_color">@color/s_0_light_red</item>
+        <item name="shadow_topRadius">10dp</item>
+        <item name="shadow_rightRadius">10dp</item>
+        <item name="shadow_leftRadius">10dp</item>
+        <item name="shadow_bottomRadius">10dp</item>
+    </style>
+
+    <style name="img_with_box_shadow">
+        <!--        <item name="android:elevation">4dp</item>-->
+        <!--        <item name="android:background">@drawable/box_shadow</item>-->
+        <!--        <item name="android:background">@color/colorPrimary</item>-->
+        <!--                <item name="android:background">@drawable/box_shadow</item>-->
+        <!--        <item name="android:adjustViewBounds">true</item>-->
     </style>
 </resources>
