@@ -67,7 +67,7 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
     protected void onResume() {
         super.onResume();
 
-//        pageHalfWidthDialogFragment();
+        pageHalfWidthDialogFragment();
     }
 
     private void firstRemoveDialogFragment() {
@@ -125,8 +125,8 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
     }
 
     private void pageBottomSheetDialogFragment() {
-        showFragment(new TestBottomSheetDialogFragment()); // embedded : added as content in a view hierarchy
-//        new TestBottomSheetDialogFragment().show(getSupportFragmentManager(), "dialog"); // be created and shown as a dialog
+//        showFragment(new TestBottomSheetDialogFragment()); // embedded : added as content in a view hierarchy
+        new TestBottomSheetDialogFragment().show(getSupportFragmentManager(), "dialog"); // be created and shown as a dialog
     }
 
     private void pageHalfWidthDialogFragment() {

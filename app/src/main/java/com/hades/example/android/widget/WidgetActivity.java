@@ -112,7 +112,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     @Override
     protected void showCurrentTest() {
-        page_CustomVew_ShadowView();
+        pageSwitch();
     }
 
     private void pageViewLocation() {

@@ -146,16 +146,17 @@
     <style name="SwitchStyle" parent="Theme.AppCompat.Light">
 
         <!--   Track + Thumb when pressed 4 check on -->
-        <item name="android:colorControlActivated">@color/green</item>
+        <item name="android:colorControlActivated">#00b755</item>
         <!--        ERROR: Android resource linking failed-->
         <!--        <item name="android:colorSwitchThumbNormal">@color/red</item>-->
         <!--        <item name="colorSwitchThumbNormal">@color/red</item>-->
 
         <!--   Outside Big Circle when pressed 4 check off -->
-        <item name="android:colorControlHighlight">@color/blue</item>
+        <item name="android:colorControlHighlight">#00b755</item>
         <!--   Track when check off -->
-        <item name="android:colorForeground">@color/red</item>
+        <item name="android:colorForeground">#fff</item>
         <item name="android:disabledAlpha">@dimen/alpha</item>
+        <item name="thumbTint">#00b755</item>
     </style>
 
     <style name="Widget.SampleMessage">
@@ -280,37 +281,36 @@
         <!--<item name="android:colorBackgroundCacheHint">@android:color/holo_red_light</item>-->
 
         <!-- windowFrame：全屏显示，把一切盖住，包括系统bar -->
-        <item name="android:windowFrame">@null</item>
-        <!--<item name="android:windowFrame">@android:color/holo_purple</item>-->
+<!--        <item name="android:windowFrame">@null</item>-->
+<!--        <item name="android:windowFrame">@android:color/holo_purple</item>-->
 
         <!-- windowIsFloating
             False: 全屏 view.
             True: small view. == content
              -->
-        <item name="android:windowIsFloating">true</item>
-        <!--<item name="android:windowIsFloating">false</item>-->
+<!--        <item name="android:windowIsFloating">true</item>-->
+<!--        <item name="android:windowIsFloating">false</item>-->
 
         <!--backgroundDimEnabled
             True:  允许dialog背后的背景变暗
             False: 不允许dialog背后的背景变暗 =>Depressed：没有层次感
          -->
-        <item name="android:backgroundDimEnabled">true</item>
+<!--        <item name="android:backgroundDimEnabled">true</item>-->
         <!--<item name="android:backgroundDimEnabled">false</item>-->
 
         <!-- windowContentOverlay not work -->
-        <item name="android:windowContentOverlay">@null</item>
+<!--        <item name="android:windowContentOverlay">@null</item>-->
         <!--<item name="android:windowContentOverlay">@android:color/holo_red_dark</item>-->
 
-        <item name="windowActionBar">false</item>
-        <item name="windowActionModeOverlay">true</item>
+<!--        <item name="windowActionBar">true</item>-->
+<!--        <item name="windowActionModeOverlay">true</item>-->
 
         <!-- windowBackground  = shadow color of dialog -->
-        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
-        <item name="android:windowBackground">@color/light_s_0_E_red</item>
+<!--        <item name="android:windowBackground">@android:color/transparent</item>-->
+<!--        <item name="android:windowBackground">@color/light_s_0_E_red</item>-->
 
-        <!--<item name="bottomSheetStyle">@style/Widget.Design.BottomSheet.Modal</item>-->
+<!--        <item name="bottomSheetStyle">@style/Widget.Design.BottomSheet.Modal</item>-->
         <item name="bottomSheetStyle">@style/Widget.Design.BottomSheet.Modal_Custom</item>
-
     </style>
 
     <style name="Widget.Design.BottomSheet.Modal_Custom" parent="Widget.Design.BottomSheet.Modal">
