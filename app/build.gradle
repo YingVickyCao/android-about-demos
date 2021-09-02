@@ -10,13 +10,13 @@ android {
         }
     }
 
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion '30.0.3'
 
     defaultConfig {
         applicationId "com.hades.example.android"
         minSdkVersion 23
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
@@ -55,18 +55,14 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':JavaLib')
-    implementation project(':lib-android')
 
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
     implementation "androidx.core:core:$core_version"
     implementation "androidx.core:core-ktx:$core_version"
-
     implementation "com.google.android.material:material:$material_version"
-
     implementation "com.google.android.gms:play-services-location:$gms_version"
-
     implementation "com.tbruyelle.rxpermissions2:rxpermissions:$rxpermissions2_version"
     //RxPermissions (required RxJava2)
     implementation "io.reactivex.rxjava2:rxjava:$rxjava2_version"

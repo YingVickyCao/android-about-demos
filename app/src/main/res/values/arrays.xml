@@ -40,6 +40,7 @@
         <item>SIM卡序列号</item>
         <item>SIM卡状态</item>
     </string-array>
+
     <!-- 声明一个名为simState的字符串数组 -->
     <string-array name="simState">
         <item>状态未知</item>
@@ -84,13 +85,6 @@
         <item>播放外部存储上的音频文件</item>
         <item>播放来自网络的音频文件</item>
     </string-array>
-
-    <!-- Custom View,start -->
-    <attr name="bg_0" format="reference" />
-    <attr name="m_0" format="reference" />
-    <attr name="m_0_with_opacity" format="reference" />
-    <!-- Custom View,end -->
-
 
     <string-array name="media_data_type">
         <item>Dash</item>

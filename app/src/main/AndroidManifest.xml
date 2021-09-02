@@ -27,6 +27,7 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -508,7 +509,6 @@
         <activity android:name=".media.TestMediaActivity" />
         <activity android:name=".media.audio.audio_effect.TestAudioEffectActivity" />
         <activity android:name=".media.camera.TestCameraActivity" />
-        <activity android:name=".media.exoplayer.TestExoPlayerActivity" />
         <activity
             android:name="._fix.black_screen.LoginActivity"
             android:theme="@style/LoginIn_RemoveSplash2" />

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+<!--    <style name="BaseAppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">-->
+<!--        <item name="android:windowSplashScreenBackground">#00ff00</item>-->
+<!--        <item name="android:windowSplashScreenAnimatedIcon">-->
+<!--            @drawable/splash_screen_animateable_icon-->
+<!--        </item>-->
+<!--        &lt;!&ndash;        max duration is 1000ms&ndash;&gt;-->
+<!--&lt;!&ndash;        <item name="android:windowSplashScreenAnimationDuration">800</item>&ndash;&gt;-->
+<!--        &lt;!&ndash;splash screen branding image&ndash;&gt;-->
+<!--        <item name="android:windowSplashScreenIconBackgroundColor">#ff0000</item>-->
+<!--        <item name="android:windowSplashScreenBrandingImage">@drawable/ic_launcher_round</item>-->
+<!--    </style>-->
+</resources>
