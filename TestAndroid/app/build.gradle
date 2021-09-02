@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'debug_key'
             keyPassword '123456'
-            storeFile file('/Users/hades/Documents/GitHub/AndroidAboutDemos/soruce/android-about-demos/key/debug/debug_key.jks')
+            storeFile file("$rootProject.projectDir/key/debug/debug_key.jks")
             storePassword '123456'
         }
     }
