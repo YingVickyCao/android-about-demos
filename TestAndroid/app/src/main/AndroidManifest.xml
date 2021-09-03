@@ -15,7 +15,6 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" /> <!-- 授予程序访问振动器的权限 -->
     <uses-permission android:name="android.permission.VIBRATE" /> <!-- END_CONTENT_PROVIDER -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.BODY_SENSORS" />
@@ -27,7 +26,6 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -68,7 +66,9 @@
 
         <activity android:name=".app_component._intent_and_intent_filter._launch_mode.E" />
         <activity android:name=".app_component._intent_and_intent_filter._action_category.A" />
-        <activity android:name=".app_component._intent_and_intent_filter._action_category.B">
+        <activity
+            android:name=".app_component._intent_and_intent_filter._action_category.B"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.hades.example.android.app_component._intent_and_intent_filter._action_category.B.ACTION_1" />
                 <action android:name="com.hades.example.android.app_component._intent_and_intent_filter._action_category.B.ACTION_2" />
@@ -78,7 +78,9 @@
                 <category android:name="com.hades.example.android.app_component._intent_and_intent_filter._action_category.B.CATEGORY_2" />
             </intent-filter>
         </activity>
-        <activity android:name=".app_component._intent_and_intent_filter._action_category.C">
+        <activity
+            android:name=".app_component._intent_and_intent_filter._action_category.C"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.hades.example.android.app_component._intent_and_intent_filter._action_category.C.ACTION_3" />
                 <category android:name="com.hades.example.android.app_component._intent_and_intent_filter._action_category.C.CATEGORY_3" />
@@ -89,6 +91,7 @@
         <activity android:name=".app_component._intent_and_intent_filter._data_type.A" />
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B1"
+            android:exported="false"
             android:label="B1">
             <intent-filter>
                 <data android:scheme="@string/scheme_1" />
@@ -97,6 +100,7 @@
 
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B2"
+            android:exported="false"
             android:label="B2">
             <intent-filter>
                 <action android:name="action1" />
@@ -105,6 +109,7 @@
         </activity>
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B3"
+            android:exported="false"
             android:label="B3">
             <intent-filter>
                 <category android:name="category1" />
@@ -113,6 +118,7 @@
         </activity>
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B4"
+            android:exported="false"
             android:label="B4">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
@@ -121,6 +127,7 @@
         </activity>
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B5"
+            android:exported="false"
             android:label="B5">
             <intent-filter>
                 <action android:name="action1" />
@@ -131,6 +138,7 @@
 
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B6"
+            android:exported="false"
             android:label="B6">
             <intent-filter>
                 <action android:name="action1" />
@@ -141,6 +149,7 @@
 
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B7"
+            android:exported="false"
             android:label="B7">
             <intent-filter>
                 <action android:name="action2" />
@@ -150,6 +159,7 @@
         </activity>
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B8"
+            android:exported="false"
             android:label="B8">
             <intent-filter>
                 <action android:name="action2" />
@@ -162,6 +172,7 @@
 
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B9"
+            android:exported="false"
             android:label="B9">
             <intent-filter>
                 <action android:name="action2" />
@@ -173,6 +184,7 @@
         </activity>
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B10"
+            android:exported="false"
             android:label="B10">
             <intent-filter>
                 <action android:name="action2" />
@@ -185,6 +197,7 @@
         </activity>
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B11"
+            android:exported="false"
             android:label="B11">
             <intent-filter>
                 <action android:name="action2" />
@@ -198,6 +211,7 @@
         </activity>
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B12"
+            android:exported="false"
             android:label="B12">
             <intent-filter>
                 <action android:name="action2" />
@@ -212,6 +226,7 @@
 
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B13"
+            android:exported="false"
             android:label="B13">
             <intent-filter>
                 <action android:name="action3" />
@@ -226,6 +241,7 @@
 
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B14"
+            android:exported="false"
             android:label="B14">
             <intent-filter>
                 <action android:name="action3" />
@@ -266,7 +282,7 @@
         <provider
             android:name=".app_component.cp.dict.DictContentProvider"
             android:authorities=".app_component.cp.dict.DictContentProvider"
-            android:exported="true" />
+            android:exported="false" />
 
         <activity android:name=".app_component.cp.dict.DictActivity" />
         <activity android:name=".app_component.cp.dict.DictSearchResultActivity" />
@@ -305,7 +321,9 @@
         <!-- </intent-filter> -->
         <!-- </receiver> -->
         <!-- W/BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.BOOT_COMPLETED flg=0x9000010 (has extras) } to .android_about_demos/.app_component.broadcast.normal.BootCompletedReceiver requires android.permission.RECEIVE_BOOT_COMPLETED due to sender null (uid 1000) -->
-        <receiver android:name=".app_component.broadcast.normal.BootCompletedReceiver">
+        <receiver
+            android:name=".app_component.broadcast.normal.BootCompletedReceiver"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -364,6 +382,7 @@
             android:theme="@android:style/Theme.Material.DialogWhenLarge" />
         <receiver
             android:name=".other_ui.manager_phone_desktop._app_widget.base.AppWidgetProvider4Base"
+            android:exported="false"
             android:icon="@drawable/ic_launcher"
             android:label="@string/basic_app_widget">
             <intent-filter>
@@ -375,7 +394,9 @@
                 android:resource="@xml/appwidget_provider_info_4_base" />
         </receiver>
 
-        <activity android:name=".other_ui.manager_phone_desktop._app_widget.base.TestAppWidgetConfigureActivity">
+        <activity
+            android:name=".other_ui.manager_phone_desktop._app_widget.base.TestAppWidgetConfigureActivity"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
@@ -384,6 +405,7 @@
 
         <receiver
             android:name=".other_ui.manager_phone_desktop._app_widget.clock.AppWidgetProvider4LedClock"
+            android:exported="false"
             android:icon="@drawable/digital_clock"
             android:label="@string/digital_clock">
             <intent-filter>
@@ -395,6 +417,7 @@
         </receiver>
         <receiver
             android:name=".other_ui.manager_phone_desktop._app_widget.list.ExampleAppWidgetProvider4Collections"
+            android:exported="false"
             android:icon="@android:color/holo_red_dark"
             android:label="@string/page_ListView">
             <intent-filter>
@@ -413,6 +436,7 @@
         <!-- 配置动态壁纸Service -->
         <service
             android:name=".other_ui.manager_phone_desktop.wallpaper.live_wallpaper.LiveWallpaper"
+            android:exported="false"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_WALLPAPER">
             <intent-filter>

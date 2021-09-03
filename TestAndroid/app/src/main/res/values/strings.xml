@@ -149,7 +149,6 @@
     <string name="page_MediaPlayer_play_audio">MediaPlayer - Play Audio</string>
     <string name="page_SoundPool_play_audio">SoundPool - Play audio</string>
     <string name="page_MediaPlayer_SurfaceView_play_video">MediaPlayer + SurfaceView - Play Video</string>
-    <string name="page_ExoPlayer_SurfaceView_play_video">ExoPlayer + SurfaceView - Play Video</string>
     <string name="page_VideoView_play_video">VideoView - Play Video</string>
     <string name="page_Camera">Camera</string>
     <string name="page_MediaRecorder_Record_audio">MediaRecorder - Record audio</string>

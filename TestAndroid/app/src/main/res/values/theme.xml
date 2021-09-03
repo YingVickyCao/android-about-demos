@@ -2,12 +2,7 @@
 <resources>
     <!-- Base application theme. -->
     <!--    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
-    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-
-    </style>
-
-    <style name="AppTheme" parent="BaseAppTheme">
-        <item name="android:windowBackground">#161616</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <!--   a darker variant of the primary color, used for the status bar (on Android 5.0+) and contextual app bars -->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

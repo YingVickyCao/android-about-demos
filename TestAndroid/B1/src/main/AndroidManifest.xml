@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,6 +27,7 @@
        -->
         <activity
             android:name="com.hades.example.android.b1.app_component.Intent_and_intent_filter.TestReceiveImplicitIntentActivity"
+            android:exported="true"
             android:launchMode="singleInstance"
             android:noHistory="true">
 
@@ -56,6 +59,7 @@
 
         <activity
             android:name="com.hades.example.android.b1.app_component.Intent_and_intent_filter.SecondActivity"
+            android:exported="true"
             android:launchMode="singleInstance"
             android:noHistory="true">
             <intent-filter>
