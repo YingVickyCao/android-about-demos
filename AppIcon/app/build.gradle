@@ -7,7 +7,7 @@ android {
         release {
             storeFile file("$rootProject.projectDir/key.keystore")
             storePassword '123456'
-            keyAlias '123456'
+            keyAlias 'test'
             keyPassword '123456'
         }
     }
