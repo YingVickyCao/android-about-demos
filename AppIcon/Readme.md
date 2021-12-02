@@ -29,6 +29,23 @@
 ]
 ```
 
+# Icon
+
+- mipmap 图标文件  
+   Android >=8.0(API 26) : mipmap-anydpi-v26, 应用图标设计分为 2 层：前景层和背景层。手机厂商在这两层之上盖上一个 Mask，切成相同规范的图标。
+  ![NB_Icon_Mask_Shapes_Ext_01](https://developer.android.google.cn/guide/practices/ui_guidelines/images/NB_Icon_Mask_Shapes_Ext_01.gif?hl=zh-cn)
+
+  ![NB_Icon_Mask_Shapes_Ext_02](https://developer.android.google.cn/guide/practices/ui_guidelines/images/NB_Icon_Mask_Shapes_Ext_02.gif?hl=zh-cn)
+
+  Andrid <=7.1(API 25) : 系统应用图标适配的过渡版本.
+
+- android:icon vs android:roundIcon  
+  `android:icon="@mipmap/ic_launcher"` 普通图标。 => 用于切成各种形状.
+
+  `android:roundIcon="@mipmap/ic_launcher_round"` 圆形图标 => 系统要的是圆形，所以不用切，直接拿来使用。
+
+  https://developer.android.google.cn/guide/practices/ui_guidelines/icon_design_adaptive?hl=zh-cn
+
 # Refs:
 
 - https://developer.android.com/training/app-links
