@@ -36,6 +36,7 @@ public class QAActivity extends NoNeedPermissionActivity {
     }
 
     private void temp() {
-        new TestDensityUtil().temp(this);
+//        new TestDensityUtil().temp(this);
+        new MyLog().test();
     }
 }

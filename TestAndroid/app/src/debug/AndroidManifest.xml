@@ -5,7 +5,7 @@
 
     <application tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".widget.WidgetActivity"
+            android:name=".QAActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
