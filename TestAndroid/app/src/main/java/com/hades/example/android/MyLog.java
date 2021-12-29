@@ -4,19 +4,19 @@ package com.hades.example.android;
 import android.util.Log;
 
 public class MyLog {
-    private static final String TAG = "AppLog";
+    private static final String TAG = "MyLog";
 
     public void test() {
-//        Log.v(TAG, "test,v log");
+        Log.v(TAG, "test,v log");
 //        Log.v(TAG, "test,v log", new Exception("Null"));
 
-//        Log.d(TAG, "test,d log");
+        Log.d(TAG, "test,d log");
 //        Log.d(TAG, "test,d log", new Exception("Null"));
 //
-//        Log.i(TAG, "test,i log");
+        Log.i(TAG, "test,i log");
 //        Log.i(TAG, "test,i log", new Exception("Null"));
 //
-//        Log.w(TAG, "test,w log");
+        Log.w(TAG, "test,w log");
 //        Log.w(TAG, new Exception("Null"));
 //        Log.w(TAG, "test,w log", new Exception("Null"));
 //
@@ -47,18 +47,21 @@ public class MyLog {
          *         at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
          * ```
          */
-        Log.e(TAG, "test,e log", new Exception("Null"));
+//        Log.e(TAG, "test,e log", new Exception("Null"));
         /**
          * 2021-12-28 19:55:57.139 27675-27675/com.hades.example.android E/AppLog: test,e log:Null
          */
-        Log.e(TAG, "test,e log:" + new Exception("Null").getMessage());
+//        Log.e(TAG, "test,e log:" + new Exception("Null").getMessage());
 //
 //        //
-//        Log.wtf(TAG, "test,assert log");
+        Log.wtf(TAG, "test,assert log");
 //        Log.wtf(TAG, new Exception("Null"));
 //        Log.wtf(TAG, "test,assert log", new Exception("Null"));
 //
 //        Log.println(Log.ASSERT, TAG, "message");
 //        Log.i(TAG, "v log", new Exception("Null"));
+
+        Log.d(TAG, "test: " + Log.isLoggable(TAG, Log.INFO)); // true
+        Log.d(TAG, "test: " + Log.isLoggable(TAG, Log.DEBUG)); // false
     }
 }
