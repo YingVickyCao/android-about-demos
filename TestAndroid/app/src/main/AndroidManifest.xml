@@ -518,6 +518,9 @@
         <!-- END_RESOURCES -->
 
         <activity android:name=".data_storage.DataStorageActivity" />
+        <activity android:name=".data_storage.shared_preferences.TestSFProcess1Activity"
+            android:multiprocess="true"
+            android:process="sf_process"/>
         <activity android:name=".data_storage.database.TestSQLiteActivity" />
         <activity android:name=".po.security.SecurityActivity" />
         <activity android:name="._process_and_thread.TestBackgroundTasksActivity" />

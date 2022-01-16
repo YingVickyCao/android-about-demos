@@ -9,7 +9,7 @@
         android:text="@string/page_shared_preferences" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/saved_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
@@ -37,5 +37,15 @@
         android:id="@+id/runnableInMainThread"
         style="@style/btn.small"
         android:text="Runnable on Main Thread" />
+
+    <Button
+        android:id="@+id/testApis"
+        style="@style/btn.small"
+        android:text="Test APIs" />
+
+    <Button
+        android:id="@+id/testProcessSafe"
+        style="@style/btn.small"
+        android:text="Test Process Safe" />
 
 </LinearLayout>

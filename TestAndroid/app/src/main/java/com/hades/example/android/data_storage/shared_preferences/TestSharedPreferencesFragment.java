@@ -11,57 +11,69 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.data_storage.DataStorageActivity;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import static android.content.Context.MODE_PRIVATE;
-import static com.hades.example.android.Constant.SHARED_PREFERENCES_FILE_NAME;
 
-public class TestSharedPreferencesFragment extends BaseFragment {
+public class TestSharedPreferencesFragment extends Fragment {
     private static final String TAG = TestSharedPreferencesFragment.class.getSimpleName();
 
-    private TextView mContent;
+    private final String FILE_NAME = "test_sf";
+    private final String KEY_INT = "key_int";
+    private final String KEY_BOOL = "key_bool";
+    private final String KEY_FLOAT = "key_float";
+    private final String KEY_STRING = "key_string";
+    private final String KEY_STRING_SET = "key_string_set";
+
+    private TextView mSavedText;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.io_shared_preferences_layout, container, false);
-        mContent = view.findViewById(R.id.content);
+        mSavedText = view.findViewById(R.id.saved_text);
 
-        view.findViewById(R.id.read).setOnClickListener(arg0 -> read());
         view.findViewById(R.id.write).setOnClickListener(arg0 -> write());
+        view.findViewById(R.id.read).setOnClickListener(arg0 -> read());
         view.findViewById(R.id.checkSharedPreferencesIsSameInstance).setOnClickListener(v -> checkSharedPreferencesIsSameInstance());
         view.findViewById(R.id.runnableInMainThread).setOnClickListener(v -> runnableInMainThread());
+        view.findViewById(R.id.testApis).setOnClickListener(v -> testApis());
+        view.findViewById(R.id.testProcessSafe).setOnClickListener(v -> testProcessSafe());
 
+        view.findViewById(R.id.testProcessSafe).setVisibility(getActivity() instanceof DataStorageActivity ? View.VISIBLE : View.GONE);
         return view;
     }
 
     private void read() {
         // 获取只能被本应用程序读、写的SharedPreferences对象
-        SharedPreferences preferences = getActivity().getSharedPreferences(SHARED_PREFERENCES_FILE_NAME, MODE_PRIVATE);
+        // MODE_PRIVATE,MODE_WORLD_READABLE,MODE_WORLD_WRITEABLE,MODE_MULTI_PROCESS
+        SharedPreferences preferences = getActivity().getSharedPreferences(FILE_NAME, MODE_PRIVATE);
 
         // 读取字符串数据
-        String time = preferences.getString("time", null);
+        String time = preferences.getString(KEY_STRING, null);
         // 读取int类型的数据
-        int randNum = preferences.getInt("random", 0);
+        int randNum = preferences.getInt(KEY_INT, 0);
         String result = time == null ? "您暂时还未写入数据" : "写入时间为：" + time + "\n上次生成的随机数为：" + randNum;
-        mContent.setText(result);
+        mSavedText.setText(result);
     }
 
     private void write_PO_before() {
         // 获取只能被本应用程序读、写的SharedPreferences对象
-        SharedPreferences preferences = getActivity().getSharedPreferences(SHARED_PREFERENCES_FILE_NAME, MODE_PRIVATE);
+        SharedPreferences preferences = getActivity().getSharedPreferences(FILE_NAME, MODE_PRIVATE);
 
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("time", new SimpleDateFormat("YYYY-MM-DD hh:mm:ss").format(new Date()));
+        editor.putString(KEY_STRING, new Date().toString());
         editor.commit();
 
         SharedPreferences.Editor editor2 = preferences.edit();
-        editor2.putInt("random", (int) (Math.random() * 100));
+        editor2.putInt(KEY_INT, (int) (Math.random() * 100));
         // Default in main  thread
         editor2.commit();
         Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
@@ -70,13 +82,22 @@ public class TestSharedPreferencesFragment extends BaseFragment {
 
     private void write() {
         // 获取只能被本应用程序读、写的SharedPreferences对象
-        SharedPreferences preferences = getActivity().getSharedPreferences(SHARED_PREFERENCES_FILE_NAME, MODE_PRIVATE);
+        if (null == getActivity()) {
+            return;
+        }
+        SharedPreferences preferences = getActivity().getSharedPreferences(FILE_NAME, MODE_PRIVATE);
+
+        Set<String> setOfString = new HashSet<>();
+        setOfString.add("abc");
+        setOfString.add("xyz");
 
         SharedPreferences.Editor editor = preferences.edit();
         Log.d(TAG, "write,Editor hashCode=" + editor.hashCode());
-        editor.putString("time", new SimpleDateFormat("YYYY-MM-DD hh:mm:ss").format(new Date()));
-        editor.putInt("random", (int) (Math.random() * 100));
-        // Default in main  thread
+//        editor.putBoolean(KEY_BOOL, true);
+//        editor.putInt(KEY_INT, (int) (Math.random() * 100));
+        editor.putString(KEY_STRING, new Date().toString());
+//        editor.putFloat(KEY_FLOAT, 1.5F);
+//        editor.putStringSet(KEY_STRING_SET, setOfString);
         editor.apply();
 
         Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
@@ -113,13 +134,23 @@ public class TestSharedPreferencesFragment extends BaseFragment {
     }
 
     private void runnableInMainThread() {
-        Runnable runnable = new Runnable() {
-
+        new Thread(new Runnable() {
             @Override
             public void run() {
+                // thread id =559,thread name=Thread-3
                 Log.d(TAG, "runnableInMainThread,thread id =" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(KEY_STRING, new Date().toString());
+                editor.commit();
             }
-        };
-        runnable.run();
+        }).start();
+    }
+
+    private void testApis() {
+
+    }
+
+    private void testProcessSafe() {
     }
 }

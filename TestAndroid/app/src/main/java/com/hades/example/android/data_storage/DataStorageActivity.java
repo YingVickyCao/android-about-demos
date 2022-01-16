@@ -2,6 +2,7 @@ package com.hades.example.android.data_storage;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -15,8 +16,9 @@ public class DataStorageActivity extends PermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate: ");
 
-        setContentView(R.layout.activity_data_storage_layout);
+        setContentView(R.layout.data_storage_layout);
 
         initViews();
 
@@ -34,7 +36,7 @@ public class DataStorageActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageDatabase();
+        pageSharedPreferences();
     }
 
     private void pageSharedPreferences() {
