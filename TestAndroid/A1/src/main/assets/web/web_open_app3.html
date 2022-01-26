@@ -1,0 +1,36 @@
+<!Doctype html><html>
+
+<head>
+    <title>Web access app</title>
+    <script>
+        function openApp() {
+        // DeepLinksActivity: onCreate: action:android.intent.action.VIEW,uri:vickydemo://go?project=img
+        // 对应规则1：直接打开app。虽然intent不对应 规则1的scheme(vickydemo),但scheme=vickydemo对应规则1的scheme(vickydemo)，因此依然可以打开。
+        window.location = "intent://go?project=img#Intent;scheme=vickydemo;package=com.hades.example.android.myapplication;end"
+        }
+
+        function openApp2() {
+        // DeepLinksActivity: onCreate: action:android.intent.action.VIEW,uri:vickydemo://go?menucode=videos#Intent;scheme=vickydemo;package=com.hades.example.android.myapplication;end
+        // 对应规则1：直接打开app。 scheme=vickydemo对应规则1的scheme(vickydemo)，host(go) 不对应规则1的host(go)
+        // window.location = "vickydemo://go?menucode=videos#Intent;scheme=vickydemo;package=com.hades.example.android.myapplication;end"
+
+        // 打不开：没有对应规则. scheme=vickydemo对应规则1的scheme(vickydemo)，但host(run) 不对应规则1的host(go)
+        window.location = "vickydemo://run?menucode=videos#Intent;scheme=vickydemo;package=com.hades.example.android.myapplication;end"
+        }
+
+        function openApp3() {
+        // DeepLinksActivity: onCreate: action:android.intent.action.VIEW,uri:https://github.com/YingVickyCao/test1
+        // 对应规则2 ：requiring the user to select the app
+        window.location = "https://github.com/YingVickyCao/test1"
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1 onclick="openApp()" value="Open App" style="height: 100px;background-color: red;">Open app</h1>
+    <h1 onclick="openApp2()" value="Open App 2" style="height: 100px;background-color: red;">Open app</h1>
+    <h1 onclick="openApp3()" value="Open App 3" style="height: 100px;background-color: red;">Open app</h1>
+</body>
+
+</html>

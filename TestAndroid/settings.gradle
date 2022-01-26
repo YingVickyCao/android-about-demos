@@ -1,2 +1,5 @@
-include ':app', ':assist', ':A', ':B', ':lib', ':A1', ':B1'
+include ':app', ':assist', ':A', ':B', ':A1', ':B1'
 include ':JavaLib'
+include ':lib-android'
+
+//':lib',

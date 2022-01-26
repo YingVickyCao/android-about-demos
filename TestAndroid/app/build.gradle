@@ -10,13 +10,13 @@ android {
         }
     }
 
-    compileSdkVersion 31
-    buildToolsVersion '30.0.3'
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
         applicationId "com.hades.example.android"
-        minSdkVersion 23
-        targetSdkVersion 31
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode 1
         versionName "1.0"
 

@@ -30,7 +30,7 @@ public class DictUserActivity extends Activity {
 
         contentResolver = getContentResolver();
 
-        mDictContentObserver = new DictContentObserver(DictUserActivity.this, new Handler());
+        mDictContentObserver = new DictContentObserver(this, new Handler());
         getContentResolver().registerContentObserver(Dict.Word.WORDS_URI, true, mDictContentObserver);
 
         findViewById(R.id.insert).setOnClickListener(v -> insert());

@@ -1,0 +1,18 @@
+ext {
+    android = [
+            compileSdkVersion: 30,
+            minSdkVersion    : 24,
+            targetSdkVersion : 30,
+            buildToolsVersion: '30.0.3',
+    ]
+
+//    https://blog.csdn.net/zhijiandedaima/article/details/90897018
+
+    android_lib = [
+
+    ]
+    third_party_lib = []
+}
+
+
+

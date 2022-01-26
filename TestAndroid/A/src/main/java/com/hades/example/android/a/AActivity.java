@@ -3,7 +3,9 @@ package com.hades.example.android.a;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.util.Log;
 import android.widget.Toast;
 
@@ -20,8 +22,7 @@ public class AActivity extends AppCompatActivity {
     }
 
     private void jumpB() {
-        ComponentName componentName = new ComponentName("com.hades.example.android.b",
-                "com.hades.example.android.b.BActivity");
+        ComponentName componentName = new ComponentName("com.hades.example.android.b", "com.hades.example.android.b.BActivity");
         Intent intent = new Intent();
         intent.setComponent(componentName);
         intent.putExtra("NUM", 100);
@@ -31,13 +32,11 @@ public class AActivity extends AppCompatActivity {
     private void jumpC4ExplicitIntent() {
         Intent intent = new Intent();
         // setComponent
-        ComponentName componentName = new ComponentName("com.hades.example.android.b",
-                "com.hades.example.android.b.CActivity");
+        ComponentName componentName = new ComponentName("com.hades.example.android.b", "com.hades.example.android.b.CActivity");
 //        intent.setComponent(componentName);
 
         // setClassName
-        intent.setClassName("com.hades.example.android.b",
-                "com.hades.example.android.b.CActivity");
+        intent.setClassName("com.hades.example.android.b", "com.hades.example.android.b.CActivity");
         intent.putExtra("NUM1", 100);
 //        startActivity(intent);
         startActivityForResult(intent, 1000);
@@ -59,6 +58,7 @@ public class AActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         Log.d(TAG, "onActivityResult: intent=" + data.toString());
         if (1000 == requestCode) {
             Log.d(TAG, "onActivityResult:num1=" + data.getStringExtra("NUM1"));
