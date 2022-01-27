@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/size_10"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_10"
+        android:divider="@android:color/holo_red_light"
+        android:showDividers="middle">
+
+        <TextView
+            style="@style/tv.small"
+            android:text="Consolas" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fontFamily="@font/consola"
+            android:text="@string/test_string" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fontFamily="@font/console_fonts"
+            android:text="@string/test_string" />
+
+    </LinearLayout>
+
+    <View style="@style/div" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@android:color/holo_red_light"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+        <TextView
+            style="@style/tv.small"
+            android:text="Consolas Bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fontFamily="@font/consolab"
+            android:text="@string/test_string" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fontFamily="@font/console_fonts"
+            android:text="@string/test_string"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View style="@style/div" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_10"
+        android:divider="@android:color/holo_red_light"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+        <TextView
+            style="@style/tv.small"
+            android:text="Consolas Italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fontFamily="@font/consolai"
+            android:text="@string/test_string" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fontFamily="@font/console_fonts"
+            android:text="@string/test_string"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+    <View style="@style/div" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@android:color/holo_red_light"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+        <TextView
+            style="@style/tv.small"
+            android:text="Consolas Bold Italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fontFamily="@font/consolaz"
+            android:text="@string/test_string" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            app:fontFamily="@font/console_fonts"
+            android:text="@string/test_string"
+            android:textStyle="italic|bold" />
+    </LinearLayout>
+</LinearLayout>
