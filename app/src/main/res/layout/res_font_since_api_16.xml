@@ -29,7 +29,6 @@
             android:layout_height="wrap_content"
             app:fontFamily="@font/console_fonts"
             android:text="@string/test_string" />
-
     </LinearLayout>
 
     <View style="@style/div" />

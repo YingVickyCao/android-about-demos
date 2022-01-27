@@ -48,9 +48,13 @@
     <style name="div">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
-        <item name="android:background">@android:color/holo_red_light</item>
+        <item name="android:background">@android:color/darker_gray</item>
         <item name="android:layout_marginTop">@dimen/margin_tiny</item>
         <item name="android:layout_marginBottom">@dimen/margin_tiny</item>
+    </style>
+
+    <style name="div.red">
+        <item name="android:background">@android:color/holo_red_light</item>
     </style>
 
     <style name="div.big">

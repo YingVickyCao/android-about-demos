@@ -1,34 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <TextView
-        style="@style/topic"
-        android:text="@string/page_font" />
-
-    <!-- 使用默认字体  -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/test_string" />
-
-    <!--  >= Android 8.0(26)支持font -->
-    <!-- 使用单个字体  -->
-    <include layout="@layout/res_font_since_api_26_v1" />
-
-    <!-- 使用字体系列，TextView会根据需要自行切换，以使用该系列中的字体文件  -->
-    <include
-        layout="@layout/res_font_since_api_26_v2"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_20" />
+        android:orientation="vertical">
 
-    <!--  使用支持库，>=Android 4.1(16)支持font -->
-    <include
-        layout="@layout/res_font_since_api_16"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_20" />
-</LinearLayout>
+        <TextView
+            style="@style/topic"
+            android:text="@string/page_font" />
+
+        <!-- 使用默认字体  -->
+        <!--        Same with
+        android:fontFamily="sans-serif"
+         -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/test_string" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/test_string" />
+
+        <!-- Same with
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"        -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/test_string"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/test_string"
+            android:textStyle="bold" />
+
+        <View style="@style/div.red" />
+
+        <!-- START, >= Android 8.0(26)使用font       -->
+
+        <!-- 通过代码设置font       -->
+        <TextView
+            android:id="@+id/fontText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/test_string" />
+
+        <!-- 使用单个字体  -->
+        <!-- 使用字体系列，TextView会根据需要自行切换，以使用该系列中的字体文件  -->
+        <include layout="@layout/res_font_since_api_26" />
+        <!-- END, >= Android 8.0(26)支持font       -->
+
+        <View style="@style/div.red" />
+        <!--  START,Support library 26.0 支持库，>=Android 4.1(16)使用font -->
+
+        <!-- 通过代码设置font       -->
+        <TextView
+            android:id="@+id/fontText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_20"
+            android:text="@string/test_string" />
+
+        <!-- 使用单个字体  -->
+        <!-- 使用字体系列，TextView会根据需要自行切换，以使用该系列中的字体文件  -->
+        <include
+            layout="@layout/res_font_since_api_16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <!--  END,Support library 26.0 支持库，>=Android 4.1(16)使用font -->
+    </LinearLayout>
+</ScrollView>
