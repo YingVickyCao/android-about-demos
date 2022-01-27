@@ -60,6 +60,7 @@
     <string name="page_Property_Animation">Property animation</string>
     <string name="page_Animation_when_activity_enter_exit"> Animation When activity enter/exit</string>
     <string name="page_activity_transitions_animation"> Start an activity using an animation</string>
+    <string name="page_font">Font</string>
 
     <string name="page_widget">Widget</string>
     <string name="page_CustomView">Custom View</string>
@@ -493,4 +494,5 @@
     <string name="attribute_4_default_style_in_custom_view">4-Default style in Custom View</string>
     <string name="attribute_5_attribute_in_theme">5-Attribute in Theme</string>
     <string name="attribute_6_not_use_theme">6-Not use theme </string>
+    <string name="test_string">Android Studio provides the fastest tools for building apps on every type of Android device.Android Studio 为在各种类型的 Android 设备上构建应用程序提供了最快的工具。</string>
 </resources>

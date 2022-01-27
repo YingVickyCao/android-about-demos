@@ -13,6 +13,8 @@ import com.hades.example.android.data_storage.shared_preferences.TestSharedPrefe
 import com.hades.example.android.lib.base.PermissionActivity;
 
 public class DataStorageActivity extends PermissionActivity {
+    private static final String TAG = DataStorageActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

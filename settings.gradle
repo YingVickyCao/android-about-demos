@@ -3,12 +3,11 @@ include ':JavaLib'
 include ':lib-android'
 
 // When not use below modules, mark them to improve build speed
-/*
-include ':A'
-include ':B1'
 
-include ':A1'
-
-include ':assist'
-include ':B'
-*/
+//include ':A'
+//include ':B1'
+//
+//include ':A1'
+//
+//include ':assist'
+//include ':B'

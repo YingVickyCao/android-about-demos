@@ -20,7 +20,7 @@ public class MainActivity extends NoNeedPermissionActivity {
         findViewById(R.id.pageSecurity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pageSecurity();
+                pageResource();
             }
         });
         findViewById(R.id.pageWidget).setOnClickListener(v -> pageWidget());

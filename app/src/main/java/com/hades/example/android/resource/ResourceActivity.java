@@ -28,6 +28,7 @@ import com.hades.example.android.resource.drawable.layer.TestLayerDrawableFragme
 import com.hades.example.android.resource.drawable.shape.TestShapeDrawableFragment;
 import com.hades.example.android.resource.drawable.state.TestStateDrawableFragment;
 import com.hades.example.android.resource.drawable.vector.TestVectorDrawableFragment;
+import com.hades.example.android.resource.font.TestFontFragment;
 import com.hades.example.android.resource.i18n.InternationalizationFragment;
 import com.hades.example.android.resource.material.TestMaterialFragment;
 import com.hades.example.android.resource.xml.TestXMLFragment;
@@ -83,7 +84,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageLevelListDrawable();
+        pageFont();
     }
 
     private void pageColor() {
@@ -180,5 +181,9 @@ public class ResourceActivity extends PermissionActivity {
 
     private void pagePropertyAnimation() {
         showFragment(new TestPropertyAnimationFragment());
+    }
+
+    private void pageFont() {
+        showFragment(new TestFontFragment());
     }
 }
