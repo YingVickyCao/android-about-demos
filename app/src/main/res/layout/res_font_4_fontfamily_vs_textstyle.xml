@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!--   normal     -->
+    <TextView
+        style="@style/tv"
+        android:fontFamily="@font/consola"
+        android:text="@string/test_string"
+        android:textSize="30sp" />
+
+    <!--   normal     -->
+    <TextView
+        style="@style/tv"
+        android:fontFamily="@font/consola"
+        android:text="@string/test_string"
+        android:textSize="30sp"
+        android:textStyle="normal" />
+
+    <!--  I -->
+    <TextView
+        style="@style/tv"
+        android:fontFamily="@font/consolai"
+        android:text="@string/test_string"
+        android:textSize="30sp" />
+
+    <!--  I -->
+    <TextView
+        style="@style/tv"
+        android:fontFamily="@font/consolai"
+        android:text="@string/test_string"
+        android:textSize="30sp"
+        android:textStyle="italic" />
+
+    <!--   I 再加粗 = Z    -->
+    <TextView
+        style="@style/tv"
+        android:fontFamily="@font/consolai"
+        android:text="@string/test_string"
+        android:textSize="30sp"
+        android:textStyle="italic|bold" />
+
+    <!--   I 再加粗 = Z    -->
+    <TextView
+        style="@style/tv"
+        android:fontFamily="@font/consolai"
+        android:text="@string/test_string"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+
+    <!--   B    -->
+    <TextView
+        style="@style/tv"
+        android:fontFamily="@font/consolab"
+        android:text="@string/test_string"
+        android:textSize="30sp" />
+
+    <!--   B   -->
+    <TextView
+        style="@style/tv"
+        android:fontFamily="@font/consolab"
+        android:text="@string/test_string"
+        android:textSize="30sp"
+        android:textStyle="normal" />
+
+    <!--   B    -->
+    <TextView
+        style="@style/tv"
+        android:fontFamily="@font/consolab"
+        android:text="@string/test_string"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <!--  B 再加粗  + I => 比Z好粗      -->
+    <TextView
+        style="@style/tv"
+        android:fontFamily="@font/consolab"
+        android:text="@string/test_string"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
+
+    <!--  B 再加粗  + I => 比Z好粗      -->
+    <TextView
+        style="@style/tv"
+        android:fontFamily="@font/consolab"
+        android:text="@string/test_string"
+        android:textSize="30sp"
+        android:textStyle="italic|bold" />
+
+    <!-- B，然后倾斜 = Z(B + I)     -->
+    <TextView
+        style="@style/tv"
+        android:fontFamily="@font/consolab"
+        android:text="@string/test_string"
+        android:textSize="30sp"
+        android:textStyle="italic" />
+
+    <!--  Z    -->
+    <TextView
+        style="@style/tv"
+        android:fontFamily="@font/consolaz"
+        android:text="@string/test_string"
+        android:textSize="30sp" />
+
+    <!--  Z     -->
+    <TextView
+        style="@style/tv"
+        android:fontFamily="@font/consolaz"
+        android:text="@string/test_string"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
+
+    <!-- fontFamily 和 typeface 同时出现， fontFamily生效，typeface 被忽略 -->
+    <TextView
+        style="@style/tv"
+        android:fontFamily="@font/consolaz"
+        android:text="@string/test_string"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        android:typeface="monospace" />
+</LinearLayout>

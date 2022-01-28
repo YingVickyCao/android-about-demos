@@ -12,17 +12,26 @@
             style="@style/topic"
             android:text="@string/page_font" />
 
-        <!-- 使用默认字体  -->
-        <include layout="@layout/res_font_default" />
+        <!--  textStyle vs fontFamily-->
+        <include layout="@layout/res_font_4_fontfamily_vs_textstyle" />
 
-                <View style="@style/div.red" />
+        <View style="@style/div.red" />
+        <!--  typeface vs fontFamily-->
+        <include layout="@layout/res_font_4_typeface_vs_textfamily" />
+
+        <!-- 使用默认字体  -->
+        <include layout="@layout/res_font_4_default" />
+
+        <View style="@style/div.red" />
+
+        <View style="@style/div.red" />
 
         <!-- >= Android 8.0(26)使用自定义font       -->
-                <include layout="@layout/res_font_since_api_26" />
+        <include layout="@layout/res_font_4_since_api_26" />
 
-        <!--        <View style="@style/div.red" />-->
+        <View style="@style/div.red" />
 
         <!--  >=Android 4.1(16) 使用自定义font：Support library 26.0-->
-<!--        <include layout="@layout/res_font_since_api_16" />-->
+        <include layout="@layout/res_font_4_since_api_16" />
     </LinearLayout>
 </ScrollView>
