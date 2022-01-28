@@ -5,7 +5,15 @@
     android:layout_marginTop="@dimen/size_10"
     android:orientation="vertical">
 
+    <!-- 通过代码设置font       -->
+    <TextView
+        android:id="@+id/fontText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/test_string" />
 
+    <!-- 使用单个字体  -->
+    <!-- 使用字体系列，TextView会根据需要自行切换，以使用该系列中的字体文件  -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

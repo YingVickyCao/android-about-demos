@@ -35,10 +35,10 @@
         <item name="android:statusBarColor">@color/colorPrimary</item>
 
         <!-- START,font       -->
-<!--        <item name="android:fontFamily">@font/consolaz</item>-->
-        <!--        <item name="android:fontFamily">@font/consola</item>-->
-<!--        <item name="fontFamily">@font/consolaz</item>-->
-        <!--        <item name="fontFamily">@font/consola</item>-->
+        <!--        <item name="android:fontFamily">@font/consolaz</item>-->
+                <item name="android:fontFamily">@font/consola</item>
+        <!--        <item name="fontFamily">@font/consolaz</item>-->
+<!--        <item name="fontFamily">@font/consola</item>-->
         <!-- END,font       -->
     </style>
 

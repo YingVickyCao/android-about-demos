@@ -21,18 +21,18 @@ public class TestFontFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.res_font, container, false);
 
-        //  通过代码设置font
-        //  直接使用font
-        TextView fontText = view.findViewById(R.id.fontText);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Typeface typeface = getResources().getFont(R.font.consolab);
-            fontText.setTypeface(typeface);
-        }
-
-        //  使用Support library 支持库
-        TextView fontText2 = view.findViewById(R.id.fontText2);
-        Typeface typeface2 = ResourcesCompat.getFont(getActivity(), R.font.consolab);
-        fontText2.setTypeface(typeface2);
+//        //  通过代码设置font
+//        //  直接使用font
+//        TextView fontText = view.findViewById(R.id.fontText);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            Typeface typeface = getResources().getFont(R.font.consolab);
+//            fontText.setTypeface(typeface);
+//        }
+//
+//        //  使用Support library 支持库
+//        TextView fontText2 = view.findViewById(R.id.fontText2);
+//        Typeface typeface2 = ResourcesCompat.getFont(getActivity(), R.font.consolab);
+//        fontText2.setTypeface(typeface2);
         return view;
     }
 }
