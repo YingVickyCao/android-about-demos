@@ -7,11 +7,12 @@
     android:orientation="vertical"
     tools:context=".widget.WidgetActivity">
 
-    <!-- 以With约束height, width=150 => height? 50
-            app:layout_constraintDimensionRatio="3:1"
-            等价于
-            app:layout_constraintDimensionRatio="H,3:1"
-            ratio = w / h 代表宽高比 = 3:1
+    <!--
+        以With约束height, width=150 => height? 50
+        app:layout_constraintDimensionRatio="3:1"
+        等价于
+        app:layout_constraintDimensionRatio="H,3:1"
+        ratio = w / h 代表宽高比 = 3:1
     -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,8 +32,11 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--
-    width设为100dp，height设为0dp(match_constraint):以width为准去约束height
-    加上一句app:layout_constraintDimensionRatio="h,1:2" :高是宽的2倍
+        以height约束width, height=150 => width? 50
+        app:layout_constraintDimensionRatio="W,1:3"
+        等价于
+        app:layout_constraintDimensionRatio="1:3"
+        ratio = w / h 代表宽高比 = 3:1
     -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,11 +44,6 @@
         android:layout_height="wrap_content"
         android:visibility="gone">
 
-        <!--  height=150 => width? 50
-         app:layout_constraintDimensionRatio="W,1:3"
-         等价于
-         app:layout_constraintDimensionRatio="1:3"
-        -->
         <Button
             android:layout_width="0dp"
             android:layout_height="150dp"
