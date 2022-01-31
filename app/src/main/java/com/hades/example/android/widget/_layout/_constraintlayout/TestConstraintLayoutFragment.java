@@ -17,6 +17,7 @@ public class TestConstraintLayoutFragment extends BaseFragment {
 //        return inflater.inflate(R.layout.widget_constraintlayout, container, false);
 //        return inflater.inflate(R.layout.widget_constraintlayout_relative_positing, container, false);
 //        return inflater.inflate(R.layout.widget_constraintlayout_margins, container, false);
-        return inflater.inflate(R.layout.widget_constraintlayout_dimension_constraints, container, false);
+//        return inflater.inflate(R.layout.widget_constraintlayout_dimension_constraints, container, false);
+        return inflater.inflate(R.layout.widget_constraintlayout_ratio, container, false);
     }
 }
