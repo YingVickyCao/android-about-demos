@@ -65,4 +65,9 @@
         android:id="@+id/customView_style"
         style="@style/btn.small"
         android:text="自定义View对话框 - style" />
+
+    <Button
+        android:id="@+id/customDialog"
+        style="@style/btn.small"
+        android:text="完全自定义Dialog" />
 </LinearLayout>

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -37,6 +38,7 @@ public class TestAlertDialogFragment extends BaseFragment {
         view.findViewById(R.id.customList).setOnClickListener(this::customList);
         view.findViewById(R.id.customView).setOnClickListener(this::customView);
         view.findViewById(R.id.customView_style).setOnClickListener(v -> customView_style());
+        view.findViewById(R.id.customDialog).setOnClickListener(v -> customDialog());
         return view;
     }
 
@@ -215,5 +217,15 @@ public class TestAlertDialogFragment extends BaseFragment {
 
     private Context getUsedContext() {
         return getActivity();
+    }
+
+    private void customDialog() {
+        CustomDialogBean bean = new CustomDialogBean();
+        bean.setTitle("Title")
+                .setMessage("Message")
+                .setPositiveText("Say Yes").setPositiveClickListener(view -> Toast.makeText(getActivity(), "Click Yes", Toast.LENGTH_SHORT).show());
+        CustomDialog dialog = new CustomDialog(getActivity());
+        dialog.setBean(bean);
+        dialog.show();
     }
 }
