@@ -33,7 +33,7 @@ public class CustomDialog extends Dialog {
     CustomDialogBean bean;
 
     public CustomDialog(@NonNull Context context) {
-        super(context);
+        super(context,R.style.custom_dialog);
         this.bean = bean;
     }
 
@@ -119,6 +119,8 @@ public class CustomDialog extends Dialog {
         } else {
             customView.setVisibility(View.GONE);
         }
+
+        setCanceledOnTouchOutside(bean.isCancelable);
     }
 
     private void findViews() {

@@ -268,7 +268,9 @@
     </style>
     <!-- Custom View, end -->
 
-    <!-- Dialog，非DialogFragment显示，not found 设置 dialog shadow 的方法。 只能通过 android:backgroundDimAmount 设置 遮盖层 的黑色程度-->
+    <!-- Dialog，start
+    非DialogFragment显示，not found 设置 dialog shadow 的方法。 只能通过 android:backgroundDimAmount 设置 遮盖层 的黑色程度
+    -->
     <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <!-- not work -->
         <!--<item name="android:colorBackground">@android:color/holo_blue_bright</item>-->
@@ -384,10 +386,17 @@
         <item name="bottomSheetStyle">@style/Widget.Design.BottomSheet.Modal_Custom</item>
     </style>
 
+    <style name="custom_dialog" parent="Theme.AppCompat.Dialog">
+        <!--  设置圆角背景      -->
+        <!--  圆角设置在此处有效 -->
+        <item name="android:background">@drawable/drawable_custom_dialog_bg</item>
+    </style>
+
     <style name="Widget.Design.BottomSheet.Modal_Custom" parent="Widget.Design.BottomSheet.Modal">
         <!-- background：content的默认背景色  -->
         <item name="android:background">@android:color/holo_orange_light</item>
     </style>
+    <!-- Dialog,end   -->
 
     <!--    <style name="LoginIn" parent="AppTheme.Light"/>-->
     <style name="LoginIn_RemoveSplash" parent="AppTheme">
