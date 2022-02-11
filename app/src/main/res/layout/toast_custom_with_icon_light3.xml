@@ -20,6 +20,9 @@
             android:layout_height="50dp"
             android:src="@drawable/li_jiang" />
 
+        <!-- shadowDX、shadowDy、shadowRadius
+        设置 阴影的横、纵坐标偏移，以及阴影的半径
+        https://blog.csdn.net/ly0303521/article/details/50955166-->
         <TextView
             android:id="@+id/message"
             style="@style/tv.small"
