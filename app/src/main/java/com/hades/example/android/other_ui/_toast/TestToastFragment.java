@@ -148,7 +148,7 @@ public class TestToastFragment extends Fragment {
         toast.show();
     }
 
-    // Recommend。toast为具体底部100dp，距离左右屏幕为8dp
+    // Recommend。toast为距离底部100dp，距离左右屏幕为8dp
     private void toast_4_custom_width_and_position() {
         Toast toast = new Toast(getUsedContext());
         FrameLayout toastLayout = (FrameLayout) LayoutInflater.from(getUsedContext()).inflate(R.layout.toast_custom_4_custom_width_and_position, null);
@@ -158,7 +158,7 @@ public class TestToastFragment extends Fragment {
         toast.show();
     }
 
-    // Depressed。toast为具体底部100dp，距离左右屏幕为8dp
+    // Depressed。toast为距离底部100dp，距离左右屏幕为8dp
     private void toast_4_custom_width_and_position_v2() {
         Toast toast = new Toast(getUsedContext());
         FrameLayout toastLayout = (FrameLayout) LayoutInflater.from(getUsedContext()).inflate(R.layout.toast_custom_4_custom_width_and_position, null);
@@ -181,8 +181,7 @@ public class TestToastFragment extends Fragment {
 
     private void toast_with_icon_4_custom_width_and_position() {
         Toast toast = new Toast(getUsedContext());
-        toast.setGravity(Gravity.BOTTOM, 0, 0);
-
+        toast.setGravity(Gravity.BOTTOM | Gravity.FILL_HORIZONTAL, 0, 0);
         toast.setView(LayoutInflater.from(getUsedContext()).inflate(R.layout.toast_custom_with_icon_4_custom_width_and_position, null));
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.show();

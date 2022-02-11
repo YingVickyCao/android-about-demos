@@ -484,7 +484,7 @@
     <string name="change_SurfaceView_size">Change SurfaceView size</string>
     <string name="object_animator">objectAnimator</string>
     <string name="cv_toast_example">简单的提示信息</string>
-
+    <string name="cv_toast_example_long">Create complex layouts with ConstraintLayout by adding constraints from each view to other views and guidelines.Then preview your layout on any screen size by selecting one of various device configurations or by simply resizing the preview window.</string>
     <string name="ok">OK</string>
     <string name="no_network_connection_toast">No network connection found</string>
 

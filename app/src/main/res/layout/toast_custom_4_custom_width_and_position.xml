@@ -28,7 +28,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="12dp"
             android:gravity="start|center_vertical"
-            android:text="@string/cv_toast_example"
+            android:text="@string/cv_toast_example_long"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
     </FrameLayout>
