@@ -112,7 +112,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     @Override
     protected void showCurrentTest() {
-        pageConstraintLayout();
+        pageLinearLayout();
     }
 
     private void pageViewLocation() {
