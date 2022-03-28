@@ -24,6 +24,7 @@ public class TestTextViewFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.widget_textview, container, false);
+//      View view = inflater.inflate(R.layout.widget_textview_4_drawable, container, false);
         Log.d(TAG, "onCreateView: ");
 
         getViewSize(view);

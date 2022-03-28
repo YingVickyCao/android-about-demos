@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_TextView_4_drawable" />
+
+    <TextView
+        android:layout_width="@dimen/size_200"
+        android:layout_height="@dimen/size_200"
+        android:background="@android:color/holo_red_light" />
+
+    <!--
+    drawableStart
+    drawableTop
+    drawableEnd
+    drawableBottom
+   -->
+    <TextView
+        android:layout_width="@dimen/size_200"
+        android:layout_height="@dimen/size_200"
+        android:layout_marginTop="@dimen/size_5"
+        android:background="@android:color/holo_red_light"
+        android:drawableStart="@drawable/blank"
+        android:drawableTop="@drawable/blank"
+        android:drawableEnd="@drawable/blank"
+        android:drawableBottom="@drawable/blank"
+        android:gravity="center"
+        android:text="This is an drawable example of TextView" />
+
+    <!--
+        drawablePadding
+        drawableTint
+        padding
+        -->
+    <TextView
+        android:layout_width="@dimen/size_200"
+        android:layout_height="@dimen/size_200"
+        android:layout_marginTop="@dimen/size_5"
+        android:background="@android:color/holo_red_light"
+        android:drawableStart="@drawable/blank"
+        android:drawableTop="@drawable/blank"
+        android:drawableEnd="@drawable/blank"
+        android:drawableBottom="@drawable/blank"
+        android:drawablePadding="10dp"
+        android:drawableTint="@android:color/holo_green_light"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="This is an drawable example of TextView" />
+
+    <View
+        android:layout_width="10dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_red_light" />
+</LinearLayout>
