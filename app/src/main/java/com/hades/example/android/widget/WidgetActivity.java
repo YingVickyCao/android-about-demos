@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.widget._edittext.TestEditTextFragment;
+import com.hades.example.android.widget.keyboard.TestKeyBoardViewFragment;
 import com.hades.example.java.lib.DummyItem;
 import com.hades.example.android.R;
 import com.hades.example.android.widget._button.TestButtonActivity;
@@ -108,11 +109,12 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.pageCheckBox).setOnClickListener(v -> pageCheckBox());
         findViewById(R.id.pageSwitch).setOnClickListener(v -> pageSwitch());
         findViewById(R.id.pageEditText).setOnClickListener(v -> pageEditText());
+        findViewById(R.id.pageKeyBoardView).setOnClickListener(v -> pageKeyBoardView());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageTextView();
+        pageKeyBoardView();
     }
 
     private void pageViewLocation() {
@@ -281,6 +283,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void pageEditText() {
         showFragment(new TestEditTextFragment());
+    }
+
+    private void pageKeyBoardView() {
+        showFragment(new TestKeyBoardViewFragment());
     }
 
     @Override

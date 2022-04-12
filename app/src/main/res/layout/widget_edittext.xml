@@ -80,5 +80,38 @@
             android:layout_height="@dimen/size_50"
             android:text="1234" />
 
+        <!-- EditText 状态有3种，disable、正常、选中       -->
+        <TextView
+            style="@style/tv.small"
+            android:text="EditText 状态有3种，disable、正常、选中" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50"
+            android:layout_margin="@dimen/size_5"
+            android:background="@drawable/xml_edittext_bg"
+            android:enabled="false"
+            android:hint="Text EditText - Disable"
+            android:textColor="@color/color_edittext_text_color"
+            android:textColorHint="@color/xml_edittext_text_color_hint" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50"
+            android:layout_margin="@dimen/size_5"
+            android:background="@drawable/xml_edittext_bg"
+            android:hint="Text EditText - 正常状态"
+            android:textColor="@color/color_edittext_text_color"
+            android:textColorHint="@color/xml_edittext_text_color_hint" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_50"
+            android:layout_margin="@dimen/size_5"
+            android:background="@drawable/xml_edittext_bg"
+            android:hint="Text EditText - 选中"
+            android:textColor="@color/color_edittext_text_color"
+            android:textColorHint="@color/xml_edittext_text_color_hint" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

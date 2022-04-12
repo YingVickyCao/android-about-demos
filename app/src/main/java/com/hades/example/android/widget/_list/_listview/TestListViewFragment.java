@@ -21,7 +21,7 @@ public class TestListViewFragment extends Fragment {
     private static final String TAG = TestListViewFragment.class.getSimpleName();
 
     //    private static final int MODEL_COUNT = 1000;
-    private static final int MODEL_COUNT = 5;
+    private static final int MODEL_COUNT = 50;
     private ListView mListView;
     private ViewGroup mItemsRoot;
 
@@ -33,7 +33,7 @@ public class TestListViewFragment extends Fragment {
         mItemsRoot = view.findViewById(R.id.itemsRoot);
         mListView = view.findViewById(R.id.listView);
         mListView.setAdapter(new ModelAdapter(getActivity(), 0, buildModels()));
-        forbidScroll();
+//        forbidScroll();
         fillItems();
         return view;
     }
@@ -61,10 +61,10 @@ public class TestListViewFragment extends Fragment {
     }
 
     private void fillItems() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
 //            View view = LayoutInflater.from(getActivity()).inflate(R.layout.list_item_view_7, null); // Wrong
             View view = LayoutInflater.from(getActivity()).inflate(R.layout.list_item_view_7, mItemsRoot, false); //OK
-            TextView textView = view.findViewById(android.R.id.text1);
+            TextView textView = view.findViewById(R.id.text1);
             textView.setText(String.valueOf(i + 1));
             mItemsRoot.addView(view);
         }

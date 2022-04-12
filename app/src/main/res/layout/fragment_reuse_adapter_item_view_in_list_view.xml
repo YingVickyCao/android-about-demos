@@ -9,16 +9,10 @@
         style="@style/topic"
         android:text="@string/page_ListView" />
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_topic"
-        android:visibility="visible" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="80dp"
+        android:layout_marginTop="@dimen/size_5">
 
         <LinearLayout
             android:id="@+id/itemsRoot"
@@ -29,9 +23,31 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <include layout="@layout/list_item_view_4"/>
+            <include layout="@layout/list_item_view_4" />
 
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    <ListView-->
+    <!--        android:id="@+id/listView"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="@dimen/size_5" />-->
+
+    <!--
+    android:listSelector="@android:color/holo_green_light"
+    单击松开会，颜色也一一直是green，直到另一个item被单击。
+    -->
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_5"
+        android:background="@android:color/white"
+        android:divider="@color/red"
+        android:dividerHeight="@dimen/size_1"
+        android:listSelector="@drawable/drawable_selector_4_listview"
+        android:scrollbars="none" />
 </LinearLayout>
