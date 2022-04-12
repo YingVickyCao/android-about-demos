@@ -80,11 +80,50 @@
                 android:textAllCaps="false"
                 android:textColor="@color/color_btn_text_color" />
 
+            <!--  图会变形          -->
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@drawable/xml_btn_bg"
+                android:drawableStart="@drawable/ic_home"
+                android:drawableTint="@color/color_btn_text_color"
+                android:enabled="true"
+                android:text="Button - Icon + status"
+                android:textAllCaps="false"
+                android:textColor="@color/color_btn_text_color" />
+
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@drawable/xml_btn_bg"
+                android:drawableStart="@drawable/ic_home"
+                android:drawableTint="@color/color_btn_text_color"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="Button - Icon + status"
+                android:textAllCaps="false"
+                android:textColor="@color/color_btn_text_color" />
+
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@drawable/xml_btn_bg"
+                android:drawableStart="@drawable/ic_home"
+                android:drawableTint="@color/color_btn_text_color"
+                android:enabled="true"
+                android:paddingStart="@dimen/size_10"
+                android:text="Button - Icon + status"
+                android:textAllCaps="false"
+                android:textColor="@color/color_btn_text_color" />
+
+            <Button
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
-                android:background="@drawable/xnl_btn_bg_with_border"
+                android:background="@drawable/xml_btn_bg_with_border"
                 android:text="Button - with status and border"
                 android:textAllCaps="false" />
 

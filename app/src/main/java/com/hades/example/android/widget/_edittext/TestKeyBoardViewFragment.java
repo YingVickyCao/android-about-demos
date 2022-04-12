@@ -50,7 +50,7 @@ public class TestKeyBoardViewFragment extends BaseFragment {
         mKeyboard = new Keyboard(getActivity(), R.xml.xml_keyboard_numbers);
         for (Keyboard.Key key : mKeyboard.getKeys()) {
             if (Keyboard.KEYCODE_DELETE == key.codes[0]) {
-                key.icon = getResources().getDrawable(R.drawable.delete);
+                key.icon = getResources().getDrawable(R.drawable.ic_delete);
             }
         }
 

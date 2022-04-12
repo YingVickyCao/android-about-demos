@@ -56,7 +56,7 @@ public class TestTintFragment extends Fragment {
         mImageView_png_url = view.findViewById(R.id.png_url);
         mImageView_png_url_2 = view.findViewById(R.id.png_url2);
 
-        mImageView_svg.setImageDrawable(AppCompatResources.getDrawable(getActivity(), R.drawable.drawable_vector_add));
+        mImageView_svg.setImageDrawable(AppCompatResources.getDrawable(getActivity(), R.drawable.ic_add));
         mImageView_svg.getDrawable().mutate();
 
         //非透明，not ok

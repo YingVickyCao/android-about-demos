@@ -75,6 +75,7 @@
     <string name="page_ViewGroup">ViewGroup</string>
     <string name="page_FrameLayout">FrameLayout</string>
     <string name="page_Button">Button</string>
+    <string name="page_ImageButton">Image Button</string>
     <string name="page_TextView">TextView</string>
     <string name="page_TextView_4_highlight_digital_clock">TextView - Highlight Digital Clock</string>
     <string name="page_TextView_4_drawable">TextView - Drawable</string>

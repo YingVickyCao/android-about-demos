@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/page_ImageButton" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <!-- Disable vs enable
+        没有android:enable 属性,即没有 Disable 状态
+         -->
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:clickable="false"
+            android:src="@drawable/ic_home"
+            android:textAllCaps="false"
+            android:tint="@color/color_btn_text_color" />
+
+        <!--  图不会变形，等比例          -->
+        <ImageButton
+            android:layout_width="@dimen/size_12"
+            android:layout_height="@dimen/size_12"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@drawable/xml_btn_bg"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_home"
+            android:text="Image Button - with status"
+            android:textAllCaps="false"
+            android:textColor="@color/color_btn_text_color"
+            android:tint="@color/color_btn_text_color" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@drawable/xml_btn_bg"
+            android:src="@drawable/ic_home"
+            android:text="Image Button - with status"
+            android:textAllCaps="false"
+            android:textColor="@color/color_btn_text_color"
+            android:tint="@color/color_btn_text_color" />
+
+        <!--  图在最左边，无法实现实现居中 -->
+        <ImageButton
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@drawable/xml_btn_bg"
+            android:src="@drawable/ic_home"
+            android:text="Image Button - with status"
+            android:textAllCaps="false"
+            android:textColor="@color/color_btn_text_color"
+            android:tint="@color/color_btn_text_color" />
+    </LinearLayout>
+</RelativeLayout>

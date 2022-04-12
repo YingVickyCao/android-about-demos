@@ -46,12 +46,12 @@
             android:id="@+id/tintImageView"
             android:layout_width="50dp"
             android:layout_height="100dp"
-            android:src="@drawable/drawable_vector_4_ic_adjust_48px" />
+            android:src="@drawable/ic_adjust" />
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="100dp"
-            android:src="@drawable/drawable_vector_4_ic_adjust_48px" />
+            android:src="@drawable/ic_adjust" />
 
         <View style="@style/div" />
     </LinearLayout>

@@ -83,6 +83,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.pageHighlightDigitalClock).setOnClickListener(v -> pageHighlightDigitalClock());
         findViewById(R.id.pageTextView).setOnClickListener(v -> pageTextView());
         findViewById(R.id.pageButton).setOnClickListener(v -> pageButton());
+        findViewById(R.id.page_ImageButton).setOnClickListener(v -> page_ImageButton());
         findViewById(R.id.pageImageView).setOnClickListener(v -> pageImageView());
         findViewById(R.id.pageKenBurnsImage).setOnClickListener(v -> pageKenBurnsImage());
         findViewById(R.id.pageImageViewScaleType).setOnClickListener(v -> pageImageViewScaleType());
@@ -187,6 +188,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void pageButton() {
         showActivity(TestButtonActivity.class);
+    }
+
+    private void page_ImageButton() {
+        showFragment(new TestImageButtonFragment());
     }
 
     private void pageImageView() {

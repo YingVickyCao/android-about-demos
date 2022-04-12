@@ -26,7 +26,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/drawable_vector_4_ic_adjust_48px"
+            android:src="@drawable/ic_adjust"
             android:tint="@color/textview_text_color_selector_v1" />
 
         <ImageView
@@ -35,7 +35,7 @@
             android:layout_height="100dp"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/drawable_vector_4_ic_adjust_48px"
+            android:src="@drawable/ic_adjust"
             android:tint="@color/textview_text_color_selector_v1" />
 
         <Button
