@@ -65,24 +65,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
-                android:background="@drawable/drawable_selector_4_status_btn"
+                android:background="@drawable/xml_btn_bg"
                 android:enabled="false"
                 android:text="Button - with status"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:textColor="@color/color_btn_text_color" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
-                android:background="@drawable/drawable_selector_4_status_btn"
+                android:background="@drawable/xml_btn_bg"
                 android:text="Button - with status"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:textColor="@color/color_btn_text_color" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
-                android:background="@drawable/drawable_selector_4_status_and_border_btn"
+                android:background="@drawable/xnl_btn_bg_with_border"
                 android:text="Button - with status and border"
                 android:textAllCaps="false" />
 
