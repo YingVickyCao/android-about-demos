@@ -1,11 +1,9 @@
-package com.hades.example.android.widget.keyboard;
+package com.hades.example.android.widget._edittext;
 
-import android.content.Context;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -28,7 +26,7 @@ public class TestKeyBoardViewFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_keyboardview, container, false);
+        View view = inflater.inflate(R.layout.widget_edittext_add_keyboardview, container, false);
         mKeyBoardView = view.findViewById(R.id.keyBoardView);
         editText = view.findViewById(R.id.editText);
         view.findViewById(R.id.show).setOnClickListener(view1 -> show());
@@ -36,6 +34,7 @@ public class TestKeyBoardViewFragment extends BaseFragment {
         setKeyBoardView();
         return view;
     }
+    // TODO: 2022/4/12 keyboardview
 
     private void show() {
         mKeyBoardView.setVisibility(View.VISIBLE);

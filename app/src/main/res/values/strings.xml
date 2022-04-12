@@ -98,7 +98,7 @@
     <string name="page_Switch">Switch</string>
     <string name="page_layout_inflater">LayoutInflater</string>
     <string name="page_EditText">EditText</string>
-    <string name="page_KeyboardView_and_Keyboard">KeyboardView and Keyboard</string>
+    <string name="page_EditText_adding_KeyboardView_and_Keyboard">EditText adding KeyboardView and Keyboard</string>
 
     <string name="page_qa_about_view">QA about view</string>
 

@@ -5,7 +5,7 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_KeyboardView_and_Keyboard" />
+        android:text="@string/page_EditText_adding_KeyboardView_and_Keyboard" />
 
     <!--    <EditText-->
     <!--        android:id="@+id/editText"-->
