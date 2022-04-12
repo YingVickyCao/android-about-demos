@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Pressed   -->
-    <item android:drawable="@android:color/holo_red_light" android:state_pressed="true" />
+    <item android:drawable="@android:color/holo_red_light" android:state_enabled="true" android:state_pressed="true" />
     <!-- Android 中没有focus 状态。写了也没有效果   -->
-    <!--    <item android:drawable="@android:color/holo_green_light" android:state_focused="true" />-->
+    <!--    <item android:drawable="@android:color/holo_green_light" android:state_focused="true"  android:state_enabled="true"/>-->
     <!-- Android 中没有hover 状态。写了也没有效果   -->
-    <!--    <item android:drawable="@android:color/holo_blue_bright" android:state_hovered="true" />-->
+    <!--    <item android:drawable="@android:color/holo_blue_bright" android:state_hovered="true" android:state_enabled="true"/>-->
     <!-- Default   -->
     <item android:drawable="@android:color/holo_orange_dark" android:state_enabled="true" />
     <!-- Disable   -->
