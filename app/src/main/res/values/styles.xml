@@ -465,4 +465,12 @@
         <item name="bgColor">?attr/m_0_with_opacity</item>
         <!--<item name="bgColor">@android:color/holo_orange_dark</item>-->
     </style>
+
+    <style name="progress_dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/xml_dialog_bg</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 </resources>

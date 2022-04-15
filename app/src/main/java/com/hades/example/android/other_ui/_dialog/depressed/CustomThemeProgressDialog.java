@@ -11,20 +11,20 @@ import android.widget.TextView;
 
 import com.hades.example.android.R;
 
-public class MyProgressDialog2 extends ProgressDialog {
-    private static final String TAG = MyProgressDialog2.class.getSimpleName();
+public class CustomThemeProgressDialog extends ProgressDialog {
+    private static final String TAG = CustomThemeProgressDialog.class.getSimpleName();
 
     View mView;
     private ProgressBar mProgress;
     private TextView mMessageView;
     private CharSequence mMessage;
 
-    public MyProgressDialog2(Context context) {
-        super(context);
+    public CustomThemeProgressDialog(Context context) {
+        super(context, R.style.progress_dialog);
     }
 
     // When set theme, width of dialog is shorter.
-    public MyProgressDialog2(Context context, int theme) {
+    public CustomThemeProgressDialog(Context context, int theme) {
         super(context, theme);
         Log.d(TAG, "MyProgressDialog2: ");
 
@@ -35,7 +35,7 @@ public class MyProgressDialog2 extends ProgressDialog {
         Log.d(TAG, "onCreate: ");
 //        super.onCreate(savedInstanceState); // In some device, invorked, first opened with dark flash.
 
-        mView = LayoutInflater.from(getContext()).inflate(R.layout.my_progress_dialog, null);
+        mView = LayoutInflater.from(getContext()).inflate(R.layout.other_ui_progress_dialog, null);
         mMessageView = mView.findViewById(R.id.message);
         mProgress = mView.findViewById(R.id.progress);
 

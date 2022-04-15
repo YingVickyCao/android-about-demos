@@ -68,7 +68,7 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
         super.onResume();
 
 //        pageHalfWidthDialogFragment();
-        pageAlertDialog();
+        pageProgressDialog();
     }
 
     private void firstRemoveDialogFragment() {

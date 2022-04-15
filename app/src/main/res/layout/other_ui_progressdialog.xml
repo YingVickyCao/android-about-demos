@@ -38,7 +38,7 @@
                 android:text="Custom 环形进度条" />
 
             <Button
-                android:id="@+id/showCustomCircleProgressDialog2"
+                android:id="@+id/showCustomThemeProgressDialog"
                 style="@style/btn.small"
                 android:text="Custom 环形进度条" />
         </LinearLayout>

@@ -59,7 +59,7 @@ public class TestProgressDialogFragment extends Fragment {
         view.findViewById(R.id.showCircleProgressDialog).setOnClickListener(this::showCircleProgressDialog);
         view.findViewById(R.id.showCircleProgressDialogWithBtns).setOnClickListener(this::showCircleProgressDialogWithBtns);
         view.findViewById(R.id.showCustomCircleProgressDialog).setOnClickListener(v -> showCustomCircleProgressDialog());
-        view.findViewById(R.id.showCustomCircleProgressDialog2).setOnClickListener(v -> showCustomCircleProgressDialog2());
+        view.findViewById(R.id.showCustomThemeProgressDialog).setOnClickListener(v -> showCustomThemeProgressDialog());
 
         view.findViewById(R.id.showIndeterminateBarProgressDialog).setOnClickListener(this::showIndeterminateBarProgressDialog);
         view.findViewById(R.id.showIndeterminateBarProgressDialogWithBtns).setOnClickListener(this::showIndeterminateBarProgressDialogWithBtns);
@@ -120,9 +120,9 @@ public class TestProgressDialogFragment extends Fragment {
         dialog.show();
     }
 
-    private void showCustomCircleProgressDialog2() {
+    private void showCustomThemeProgressDialog() {
         //         MyProgressDialog2 较矮
-        final MyProgressDialog2 dialog = new MyProgressDialog2(getActivity());
+        final CustomThemeProgressDialog dialog = new CustomThemeProgressDialog(getActivity());
         dialog.setMessage("Loading ...");
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(true);
