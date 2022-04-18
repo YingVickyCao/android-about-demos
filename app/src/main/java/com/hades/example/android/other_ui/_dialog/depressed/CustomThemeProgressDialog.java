@@ -21,6 +21,7 @@ public class CustomThemeProgressDialog extends ProgressDialog {
 
     public CustomThemeProgressDialog(Context context) {
         super(context, R.style.progress_dialog);
+//        super(context);
     }
 
     // When set theme, width of dialog is shorter.

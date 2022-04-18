@@ -2,8 +2,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/dark_bg_0"
+    android:minWidth="350dp"
     android:minHeight="@dimen/size_80">
+    <!--  使用 R.style.progress_dialog 后，显示的宽度很小，使用android:minWidth="350dp"解决   -->
 
     <LinearLayout
         android:id="@+id/body"
