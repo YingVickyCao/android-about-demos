@@ -226,7 +226,18 @@
         <!--   Track when check off -->
         <item name="android:colorForeground">#fff</item>
         <item name="android:disabledAlpha">@dimen/alpha</item>
+        <!--        <item name="thumbTint">#00b755</item>-->
         <item name="thumbTint">#00b755</item>
+    </style>
+
+    <!--  更改icon的错误方式:icon会变形       -->
+    <style name="toggle_style">
+        <!--        <item name="android:button">@drawable/xml_toggle</item>-->
+        <item name="android:background">@drawable/xml_toggle</item>
+        <item name="android:thumb">@android:color/transparent</item>
+        <item name="android:track">@android:color/transparent</item>
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
     </style>
 
     <style name="Widget.SampleMessage">
@@ -466,10 +477,10 @@
         <!--<item name="bgColor">@android:color/holo_orange_dark</item>-->
     </style>
 
-<!--    <style name="progress_dialog" parent="Theme.AppCompat.Dialog.Alert">-->
-<!--        <item name="android:colorBackground">@color/dark_bg_0</item>-->
-<!--        <item name="android:windowBackground">@drawable/xml_dialog_bg</item>-->
-<!--    </style>-->
+    <!--    <style name="progress_dialog" parent="Theme.AppCompat.Dialog.Alert">-->
+    <!--        <item name="android:colorBackground">@color/dark_bg_0</item>-->
+    <!--        <item name="android:windowBackground">@drawable/xml_dialog_bg</item>-->
+    <!--    </style>-->
 
     <style name="progress_dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>

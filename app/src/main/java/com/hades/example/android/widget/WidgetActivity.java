@@ -109,13 +109,14 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.pageRadioButton).setOnClickListener(v -> pageRadioButton());
         findViewById(R.id.pageCheckBox).setOnClickListener(v -> pageCheckBox());
         findViewById(R.id.pageSwitch).setOnClickListener(v -> pageSwitch());
+        findViewById(R.id.page_ToggleButton).setOnClickListener(v -> page_ToggleButton());
         findViewById(R.id.pageEditText).setOnClickListener(v -> pageEditText());
         findViewById(R.id.pageKeyBoardView).setOnClickListener(v -> pageKeyBoardView());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageButton();
+        page_ImageButton();
     }
 
     private void pageViewLocation() {
@@ -284,6 +285,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void pageSwitch() {
         showFragment(new TestSwitchFragment());
+    }
+
+    private void page_ToggleButton() {
+        showFragment(new TestToggleButtonFragment());
     }
 
     private void pageEditText() {

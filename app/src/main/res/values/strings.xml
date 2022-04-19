@@ -97,6 +97,7 @@
     <string name="page_CheckBox">CheckBox</string>
     <string name="page_RadioButton">RadioButton</string>
     <string name="page_Switch">Switch</string>
+    <string name="page_ToggleButton">ToggleButton</string>
     <string name="page_layout_inflater">LayoutInflater</string>
     <string name="page_EditText">EditText</string>
     <string name="page_EditText_adding_KeyboardView_and_Keyboard">EditText adding KeyboardView and Keyboard</string>
@@ -472,6 +473,8 @@
     <string name="response_static_shortcuts_click_action">Response Static shortcuts click action</string>
     <string name="off">Off</string>
     <string name="on">On</string>
+    <string name="off_long">This is long long Off</string>
+    <string name="on_long">This is long long On</string>
     <string name="record">Record</string>
     <string name="toggle_checkbox_checked_status">Toggle CheckBox checked status</string>
     <string name="is_friday">Is Friday</string>

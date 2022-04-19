@@ -14,8 +14,11 @@
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
-        <!-- Disable vs enable
-        没有android:enable 属性,即没有 Disable 状态
+        <!--  Image Button - with status      -->
+        <!-- 没有 android:state_enable 属性.
+        enable=false，仍然能点击，但icon颜色为enable。
+         代码是为enable=true，icon颜色也不会改变
+          正确的做法：使用 state_selected代替 android:state_enable
          -->
         <ImageButton
             android:layout_width="wrap_content"
@@ -34,9 +37,6 @@
             android:background="@drawable/xml_btn_bg"
             android:scaleType="fitXY"
             android:src="@drawable/ic_home"
-            android:text="Image Button - with status"
-            android:textAllCaps="false"
-            android:textColor="@color/color_btn_text_color"
             android:tint="@color/color_btn_text_color" />
 
         <ImageButton
@@ -45,11 +45,9 @@
             android:layout_marginTop="@dimen/margin_small"
             android:background="@drawable/xml_btn_bg"
             android:src="@drawable/ic_home"
-            android:text="Image Button - with status"
-            android:textAllCaps="false"
-            android:textColor="@color/color_btn_text_color"
             android:tint="@color/color_btn_text_color" />
 
+        <!-- Image Button - with status -->
         <!--  图在最左边，无法实现实现居中 -->
         <ImageButton
             android:layout_width="300dp"
@@ -58,8 +56,31 @@
             android:background="@drawable/xml_btn_bg"
             android:src="@drawable/ic_home"
             android:text="Image Button - with status"
-            android:textAllCaps="false"
-            android:textColor="@color/color_btn_text_color"
             android:tint="@color/color_btn_text_color" />
+
+        <ImageButton
+            android:id="@+id/testEnable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/ic_add"
+            android:tint="@color/color_image_button_icon_color" />
+
+        <FrameLayout
+            android:id="@+id/testEnable2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="false"
+                android:duplicateParentState="true"
+                android:src="@drawable/ic_add"
+                android:tint="@color/color_image_button_icon_color" />
+        </FrameLayout>
     </LinearLayout>
 </RelativeLayout>

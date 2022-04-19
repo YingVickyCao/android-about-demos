@@ -16,6 +16,10 @@ public class TestImageButtonFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.widget_image_button_page, container, false);
+        view.findViewById(R.id.testEnable).setEnabled(true);
+        view.findViewById(R.id.testEnable).setClickable(true);
+        view.findViewById(R.id.testEnable2).setEnabled(true);
+        view.findViewById(R.id.testEnable2).setClickable(true);
         return view;
     }
 }

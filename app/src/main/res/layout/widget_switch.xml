@@ -2,45 +2,68 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#22272c"
     android:orientation="vertical">
 
     <TextView
         style="@style/topic"
         android:text="@string/page_Switch" />
 
-    <Switch
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textOff="@string/off"
-        android:textOn="@string/on" />
+        android:orientation="vertical">
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textOff="@string/off"
-        android:textOn="@string/on"
-        android:theme="@style/SwitchStyle" />
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textOff="@string/off"
+            android:textOn="@string/on" />
 
-    <!--
-        style="@android:style/Widget.Material.Light.CompoundButton.Switch"
-        android  res/attrs
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            android:theme="@style/SwitchStyle" />
 
-        android:trackTint="@android:color/holo_green_dark"
-        android:thumbTint="@android:color/holo_green_dark"
-    -->
-    <Switch
-        android:id="@+id/switch2"
-        style="@android:style/Widget.Material.Light.CompoundButton.Switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/switch1"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="@dimen/size_20"
-        android:textOff="@string/off"
-        android:textOn="@string/on"
-        android:theme="@style/SwitchStyle" />
+        <!--
+            style="@android:style/Widget.Material.Light.CompoundButton.Switch"
+            android  res/attrs
+
+            android:trackTint="@android:color/holo_green_dark"
+            android:thumbTint="@android:color/holo_green_dark"
+        -->
+        <Switch
+            android:id="@+id/switch2"
+            style="@android:style/Widget.Material.Light.CompoundButton.Switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/switch1"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/size_20"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            android:theme="@style/SwitchStyle" />
+
+        <!--  更改icon的错误方式:icon会变形      -->
+        <Switch
+            style="@style/toggle_style"
+            android:layout_marginTop="@dimen/size_20"
+            android:textOff="@string/off"
+            android:textOn="@string/on" />
+
+        <!--  更改icon的错误方式:icon会变形       -->
+        <Switch
+            style="@style/toggle_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_20"
+            android:showText="true"
+            android:textOff="@string/off_long"
+            android:textOn="@string/on_long" />
+    </LinearLayout>
 </RelativeLayout>
