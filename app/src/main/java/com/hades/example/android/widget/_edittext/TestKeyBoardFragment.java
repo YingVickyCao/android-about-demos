@@ -39,10 +39,10 @@ public class TestKeyBoardFragment extends Fragment {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (!editText.hasFocus()) {
-                    int inputType = editText.getInputType();
-                    editText.setInputType(InputType.TYPE_NULL);
+//                    int inputType = editText.getInputType();
+//                    editText.setInputType(InputType.TYPE_NULL);
                     showKeyboard();
-                    editText.setInputType(inputType);
+//                    editText.setInputType(inputType);
                 } else {
                     if (keyboardView.getVisibility() != View.VISIBLE) { // Fix：多次消失 KeyboardView，再次点击EditText时，KeyboardView 不可见
                         showKeyboard();
@@ -78,6 +78,11 @@ public class TestKeyBoardFragment extends Fragment {
     }
 
     private void initKeyboard() {
+//        keyboard = new Keyboard(editText.getContext(), R.xml.keyboard_characters);
+        keyboard = new Keyboard(editText.getContext(), R.xml.keyboard_numbers);
+        keyboardView.setKeyboard(keyboard);
+        keyboardView.setEnabled(true);
+        keyboardView.setPreviewEnabled(false);
         keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
             @Override
             public void swipeUp() {
@@ -130,11 +135,6 @@ public class TestKeyBoardFragment extends Fragment {
                 }
             }
         });
-//        keyboard = new Keyboard(editText.getContext(), R.xml.keyboard_characters);
-        keyboard = new Keyboard(editText.getContext(), R.xml.keyboard_numbers);
-        keyboardView.setKeyboard(keyboard);
-        keyboardView.setEnabled(true);
-        keyboardView.setPreviewEnabled(false);
     }
 
     // Activity中获取焦点时调用，显示出键盘
