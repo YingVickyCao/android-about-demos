@@ -56,12 +56,11 @@ public class TestKeyBoardFragment2 extends Fragment {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Fix：反复点击EditText，点击的太快，键盘会闪。
                 // 解决：增加200ms的重复事件的过滤
                 if (ButtonUtils.isFastClick()) {
                     return;
                 }
-                toggleKeyboardViewVisible();
+                hideKeyboard();
             }
         });
 

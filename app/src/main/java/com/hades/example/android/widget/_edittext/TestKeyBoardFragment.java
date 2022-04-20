@@ -10,6 +10,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -44,26 +46,42 @@ public class TestKeyBoardFragment extends Fragment {
                 if (ButtonUtils.isFastClick()) {
                     return false;
                 }
-                if (!editText.hasFocus()) {
-                    Log.d(TAG, "onTouch: !editText.hasFocus():go here");
-                    // setInputType 调用或不调用，显现一样，因此注释掉该代码
-//                    int inputType = editText.getInputType();
-//                    editText.setInputType(InputType.TYPE_NULL);
-                    showKeyboard();
-//                    editText.setInputType(inputType);
-                } else {
-                    if (keyboardView.getVisibility() != View.VISIBLE) { // Fix：显示和不可见自定义键盘多次后，再次点击EditText，自定义键盘不显示。
-                        Log.d(TAG, "onTouch: else keyboard is not visible, show it");
-                        showKeyboard();
-                    } else {
-                        Log.d(TAG, "onTouch: else keyboard is visible, hide it");
-                        hideKeyboard();
-                    }
-                }
+                toggleKeyboardViewVisible();
                 return false;
             }
         });
+
+        // Fix:点击其他区域时，键盘应该消失
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 解决：增加200ms的重复事件的过滤
+                if (ButtonUtils.isFastClick()) {
+                    return;
+                }
+                hideKeyboard();
+            }
+        });
         return view;
+    }
+
+    private void toggleKeyboardViewVisible() {
+        if (!editText.hasFocus()) {
+            Log.d(TAG, "onTouch: !editText.hasFocus():go here");
+            // setInputType 调用或不调用，显现一样，因此注释掉该代码
+//                    int inputType = editText.getInputType();
+//                    editText.setInputType(InputType.TYPE_NULL);
+            showKeyboard();
+//                    editText.setInputType(inputType);
+        } else {
+            if (keyboardView.getVisibility() != View.VISIBLE) { // Fix：显示和不可见自定义键盘多次后，再次点击EditText，自定义键盘不显示。
+                Log.d(TAG, "onTouch: else keyboard is not visible, show it");
+                showKeyboard();
+            } else {
+                Log.d(TAG, "onTouch: else keyboard is visible, hide it");
+                hideKeyboard();
+            }
+        }
     }
 
     // Fix：点击EditText时，系统软键盘覆盖了KeyboardView
@@ -151,6 +169,7 @@ public class TestKeyBoardFragment extends Fragment {
     public void showKeyboard() {
         int visibility = keyboardView.getVisibility();
         if (visibility == View.GONE || visibility == View.INVISIBLE) {
+            // 隐藏键盘时，添加动画，增加流畅度
             keyboardView.setVisibility(View.VISIBLE);
         }
     }
@@ -158,7 +177,24 @@ public class TestKeyBoardFragment extends Fragment {
     public void hideKeyboard() {
         int visibility = keyboardView.getVisibility();
         if (visibility == View.VISIBLE) {
+            // 隐藏键盘时，添加动画，增加流畅度
             keyboardView.setVisibility(View.INVISIBLE);
         }
+    }
+
+    private void anim_slide_in_up() {
+        final Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_up2);
+        // 设置动画结束后保留结束状态
+        anim.setFillAfter(false);
+        Log.d(TAG, "alpha: ");
+        keyboardView.startAnimation(anim);
+    }
+
+    private void anim_slide_out_down() {
+        final Animation anim = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_out_down2);
+        // 设置动画结束后保留结束状态
+        anim.setFillAfter(false);
+        Log.d(TAG, "alpha: ");
+        keyboardView.startAnimation(anim);
     }
 }
