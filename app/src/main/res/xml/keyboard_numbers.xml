@@ -49,17 +49,16 @@
             android:keyLabel="9" />
 
         <Key
-            android:codes="58"
-            android:keyLabel="10" />
-    </Row>
-
-    <Row android:rowEdgeFlags="bottom">
-        <Key
             android:codes="48"
             android:keyLabel="0" />
 
+    </Row>
+
+    <Row android:rowEdgeFlags="bottom">
+        <!--  Delete  -->
         <Key
-            android:codes="127"
+            android:codes="-5"
+            android:keyWidth="50%"
             android:keyLabel="Delete" />
         <!--  Done     -->
         <Key

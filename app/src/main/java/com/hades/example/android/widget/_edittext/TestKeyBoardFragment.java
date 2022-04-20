@@ -6,25 +6,31 @@ import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.hades.example.android.R;
 
-public class TestKeyBoardActivity extends Activity {
+public class TestKeyBoardFragment extends Fragment {
 
     private EditText editText;
     private KeyboardView keyboardView;
     private Keyboard keyboard;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.widget_edittext_add_keyboardview);
-        editText = (EditText) findViewById(R.id.editText);
-        keyboardView = (KeyboardView) findViewById(R.id.keyboardView);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.widget_edittext_add_keyboardview, container, false);
+        editText = (EditText) view.findViewById(R.id.editText);
+        keyboardView = (KeyboardView) view.findViewById(R.id.keyboardView);
         editText.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -44,15 +50,27 @@ public class TestKeyBoardActivity extends Activity {
                 return false;
             }
         });
+        return view;
     }
 
     // Fix：点击EditText时，系统软键盘覆盖了KeyboardView
     // 禁止EditText弹出系统软键盘
     private void forbidSystemKeyBoard() {
         // 禁用软键盘
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         // 在需要打开的Activity取消禁用软键盘
         //getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+    }
+
+    // 取消禁用软键盘
+    private void cancelForbidSystemKeyBoard() {
+        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        cancelForbidSystemKeyBoard();
     }
 
     private void init() {
@@ -110,7 +128,7 @@ public class TestKeyBoardActivity extends Activity {
                 }
             }
         });
-//        keyboard = new Keyboard(editText.getContext(), R.xml.qwerty);
+//        keyboard = new Keyboard(editText.getContext(), R.xml.keyboard_characters);
         keyboard = new Keyboard(editText.getContext(), R.xml.keyboard_numbers);
         keyboardView.setKeyboard(keyboard);
         keyboardView.setEnabled(true);

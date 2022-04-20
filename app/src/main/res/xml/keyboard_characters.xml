@@ -39,11 +39,12 @@
             android:keyLabel="l" />
     </Row>
     <Row android:rowEdgeFlags="bottom">
-        <!--        Space -->
-<!--        <Key-->
-<!--            android:codes="32"-->
-<!--            android:keyLabel="Space" />-->
+        <!-- Space -->
+        <Key
+            android:codes="32"
+            android:keyLabel="Space" />
 
+        <!--  Delete  -->
         <Key
             android:codes="-5"
             android:keyIcon="@drawable/ic_delete" />
