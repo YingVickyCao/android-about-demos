@@ -120,10 +120,12 @@
 
         <View style="@style/div" />
 
-        <!--  3 图在最左边，无法实现实现居中 -->
+        <!--  3 图在最左边，无法实现实现居中
+              4 可同时设置 background 和 src 图片
+        -->
         <TextView
             style="@style/tv"
-            android:text="3 图在最左边，无法实现实现居中" />
+            android:text="3 图在最左边，无法实现实现居中\n4 可同时设置 background 和 src 图片" />
 
         <ImageButton
             android:layout_width="300dp"
