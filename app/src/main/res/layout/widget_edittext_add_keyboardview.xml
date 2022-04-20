@@ -1,59 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
 
-    <TextView
-        style="@style/topic"
-        android:text="@string/page_EditText_adding_KeyboardView_and_Keyboard" />
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="@dimen/size_16"
-            android:layout_marginEnd="@dimen/size_16"
-            android:background="@drawable/xml_edittext_bg"
-            android:inputType="number"
-            android:padding="4dp" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_10">
-
-            <Button
-                android:id="@+id/show"
-                style="@style/btn.small"
-                android:text="Show" />
-
-            <Button
-                android:id="@+id/hide"
-                style="@style/btn.small"
-                android:layout_alignParentEnd="true"
-                android:text="Hide" />
-        </RelativeLayout>
-    </LinearLayout>
-
-    <!--    android:keyBackground="@drawable/xml_keyboard_bg"-->
-    <android.inputmethodservice.KeyboardView
-        android:id="@+id/keyBoardView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/size_10"
-        android:background="@android:color/holo_green_dark"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:keyBackground="@drawable/xml_keyboard_bg"
-        android:keyTextColor="#f00"
-        android:shadowRadius="0.0"
-        android:visibility="visible" />
-</RelativeLayout>
+        android:inputType="none"
+        android:text=""
+        android:textSize="30sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.inputmethodservice.KeyboardView
+            android:id="@+id/keyboardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:keyBackground="@drawable/xml_keyboard_bg"
+            android:keyPreviewLayout="@layout/key_preview_layout"
+            android:keyTextColor="@android:color/black"
+            android:keyTextSize="30sp"
+            android:visibility="invisible" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,61 +1,71 @@
-<?xml version="1.0" encoding="utf-8"?>
-<keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-    android:horizontalGap="0dp"
-    android:keyWidth="25%p"
+<?xml version="1.0" encoding="UTF-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:horizontalGap="2dp"
+    android:keyWidth="20%p"
     android:keyHeight="50dp"
-    android:verticalGap="0dp">
+    android:verticalGap="2dp">
+
+    <!-- Fix：字母键盘可以显示，为啥这个数字键盘不能显示？
+    Keyboard，Row、Key必须首字母大写，如果是写成小写，虽然不报错，但是自定义数字键盘不会显示。
+       -->
 
     <Row>
-        <key
+        <Key
             android:codes="49"
             android:keyLabel="1" />
 
-        <key
+        <Key
             android:codes="50"
             android:keyLabel="2" />
 
-        <key
+        <Key
             android:codes="51"
             android:keyLabel="3" />
 
-        <key
+        <Key
             android:codes="52"
             android:keyLabel="4" />
 
-        <key
+        <Key
             android:codes="53"
             android:keyLabel="5" />
     </Row>
 
     <Row>
-        <key
+        <Key
             android:codes="54"
             android:keyLabel="6" />
 
-        <key
+        <Key
             android:codes="55"
             android:keyLabel="7" />
 
-        <key
+        <Key
             android:codes="56"
             android:keyLabel="8" />
 
-        <key
+        <Key
             android:codes="57"
             android:keyLabel="9" />
 
-        <key
+        <Key
             android:codes="58"
             android:keyLabel="10" />
     </Row>
 
-    <Row>
-        <key
+    <Row android:rowEdgeFlags="bottom">
+        <Key
             android:codes="48"
             android:keyLabel="0" />
 
-        <key
+        <Key
             android:codes="127"
             android:keyLabel="Delete" />
+        <!--  Done     -->
+        <Key
+            android:codes="-3"
+            android:keyWidth="50%"
+            android:keyEdgeFlags="right"
+            android:keyLabel="Done" />
     </Row>
-</keyboard>
+</Keyboard>

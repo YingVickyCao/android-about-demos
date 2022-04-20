@@ -22,17 +22,17 @@ public class TestKeyBoardActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.widget_edittext_add_keyboardview2);
+        setContentView(R.layout.widget_edittext_add_keyboardview);
         editText = (EditText) findViewById(R.id.editText);
         keyboardView = (KeyboardView) findViewById(R.id.keyboardView);
         editText.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (!editText.hasFocus()) {
-//                    int inputType = editText.getInputType();
-//                    editText.setInputType(InputType.TYPE_NULL);
+                    int inputType = editText.getInputType();
+                    editText.setInputType(InputType.TYPE_NULL);
                     init();
-//                    editText.setInputType(inputType);
+                    editText.setInputType(inputType);
                 } else {
                     if (keyboardView.getVisibility() != View.VISIBLE) { // Fix：多次消失 KeyboardView，再次点击EditText时，KeyboardView 不可见
                         init();
@@ -49,12 +49,10 @@ public class TestKeyBoardActivity extends Activity {
     // Fix：点击EditText时，系统软键盘覆盖了KeyboardView
     // 禁止EditText弹出系统软键盘
     private void forbidSystemKeyBoard() {
+        // 禁用软键盘
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
-
-    }
-
-    private void forbidSystemKeyBoard2() {
-
+        // 在需要打开的Activity取消禁用软键盘
+        //getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
     }
 
     private void init() {
@@ -112,7 +110,8 @@ public class TestKeyBoardActivity extends Activity {
                 }
             }
         });
-        keyboard = new Keyboard(editText.getContext(), R.xml.qwerty);
+//        keyboard = new Keyboard(editText.getContext(), R.xml.qwerty);
+        keyboard = new Keyboard(editText.getContext(), R.xml.keyboard_numbers);
         keyboardView.setKeyboard(keyboard);
         keyboardView.setEnabled(true);
         keyboardView.setPreviewEnabled(false);

@@ -1,5 +1,6 @@
 package com.hades.example.android.widget;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -7,7 +8,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.lib.base.NoNeedPermissionActivity;
 import com.hades.example.android.widget._edittext.TestEditTextFragment;
-import com.hades.example.android.widget._edittext.TestKeyBoardViewFragment;
+import com.hades.example.android.widget._edittext.TestKeyBoardActivity;
 import com.hades.example.java.lib.DummyItem;
 import com.hades.example.android.R;
 import com.hades.example.android.widget._button.TestButtonActivity;
@@ -296,7 +297,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
     }
 
     private void pageKeyBoardView() {
-        showFragment(new TestKeyBoardViewFragment());
+        startActivity(new Intent(this, TestKeyBoardActivity.class));
     }
 
     @Override
