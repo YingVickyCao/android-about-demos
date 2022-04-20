@@ -26,7 +26,7 @@ public class TestKeyBoardActivity extends Activity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (!editText.hasFocus()) {
                     int inputback = editText.getInputType();
-                    editText.setInputType(InputType.TYPE_NULL);
+                    editText.setInputType(InputType.TYPE_CLASS_NUMBER);
                     new KeyboardUtil(keyboardView, editText).showKeyboard();
                     editText.setInputType(inputback);
                 }

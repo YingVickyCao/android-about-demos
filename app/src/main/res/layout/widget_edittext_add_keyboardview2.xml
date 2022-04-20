@@ -24,10 +24,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:background="@android:color/transparent"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:keyBackground="@drawable/xml_keyboard_bg"
             android:keyPreviewLayout="@layout/key_preview_layout"
-            android:keyTextColor="@android:color/white" />
+            android:keyTextSize="30sp"
+            android:keyTextColor="@android:color/black" />
     </RelativeLayout>
 </LinearLayout>
