@@ -39,6 +39,7 @@ public class TestKeyBoardFragment extends Fragment {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (!editText.hasFocus()) {
+                    // setInputType 调用或不调用，显现一样，因此注释掉该代码
 //                    int inputType = editText.getInputType();
 //                    editText.setInputType(InputType.TYPE_NULL);
                     showKeyboard();
