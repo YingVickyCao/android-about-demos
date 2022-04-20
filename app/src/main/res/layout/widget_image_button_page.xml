@@ -9,27 +9,98 @@
         android:text="@string/page_ImageButton" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <!--  Image Button - with status      -->
-        <!-- 没有 android:state_enable 属性.
-        enable=false，仍然能点击，但icon颜色为enable。
-         代码是为enable=true，icon颜色也不会改变
-          正确的做法：使用 state_selected代替 android:state_enable
-         -->
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:clickable="false"
-            android:src="@drawable/ic_home"
-            android:textAllCaps="false"
-            android:tint="@color/color_btn_text_color" />
+        <TextView
+            style="@style/tv"
+            android:text="1 Image Button - with status " />
 
-        <!--  图不会变形，等比例          -->
+        <!--  1 Image Button - with status （ImageButton 实现可用、不可用、icon 颜色根据动作变化？）      -->
+        <!--  default android:clickable="true" -> android:state_enabled="true"：icon 颜色对应state_enabled="true"，icon 颜色可以改变      -->
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@null"
+            android:src="@drawable/ic_add"
+            android:textAllCaps="false"
+            android:tint="@color/color_image_button_icon_color" />
+
+        <!--  android:clickable="false" -> android:state_enabled="false" :icon 颜色对应state_enabled="true"，且颜色不改变
+        => enable应该通过代码设置，不要通过xml。
+        -->
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@null"
+            android:clickable="false"
+            android:src="@drawable/ic_add"
+            android:textAllCaps="false"
+            android:tint="@color/color_image_button_icon_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--  android:clickable="false" ->android:state_enabled="false"：code setEnabled(true/false),icon 可变 -->
+            <ImageButton
+                android:id="@+id/btn1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@null"
+                android:clickable="false"
+                android:src="@drawable/ic_add"
+                android:tint="@color/color_image_button_icon_color" />
+
+            <Button
+                android:id="@+id/enable_true"
+                style="@style/btn.small"
+                android:text="Enable-True" />
+
+            <Button
+                android:id="@+id/enable_false"
+                style="@style/btn.small"
+                android:text="Enable-False" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--  android:clickable="false" ->android:state_enabled="false"：code setSelected(true/false),icon 可变      -->
+            <ImageButton
+                android:id="@+id/btn2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@null"
+                android:clickable="false"
+                android:src="@drawable/ic_add"
+                android:tint="@color/color_image_button_icon_color2" />
+
+            <Button
+                android:id="@+id/selected_true"
+                style="@style/btn.small"
+                android:text="Selected-True" />
+
+            <Button
+                android:id="@+id/selected_false"
+                style="@style/btn.small"
+                android:text="Selected-False" />
+        </LinearLayout>
+
+        <View style="@style/div" />
+
+        <!--  2 图不会变形，等比例          -->
+        <TextView
+            style="@style/tv"
+            android:text="2 图不会变形，等比例" />
+
         <ImageButton
             android:layout_width="@dimen/size_12"
             android:layout_height="@dimen/size_12"
@@ -47,40 +118,19 @@
             android:src="@drawable/ic_home"
             android:tint="@color/color_btn_text_color" />
 
-        <!-- Image Button - with status -->
-        <!--  图在最左边，无法实现实现居中 -->
+        <View style="@style/div" />
+
+        <!--  3 图在最左边，无法实现实现居中 -->
+        <TextView
+            style="@style/tv"
+            android:text="3 图在最左边，无法实现实现居中" />
+
         <ImageButton
             android:layout_width="300dp"
             android:layout_height="80dp"
             android:layout_marginTop="@dimen/margin_small"
             android:background="@drawable/xml_btn_bg"
             android:src="@drawable/ic_home"
-            android:text="Image Button - with status"
             android:tint="@color/color_btn_text_color" />
-
-        <ImageButton
-            android:id="@+id/testEnable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:src="@drawable/ic_add"
-            android:tint="@color/color_image_button_icon_color" />
-
-        <FrameLayout
-            android:id="@+id/testEnable2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:clickable="false"
-                android:duplicateParentState="true"
-                android:src="@drawable/ic_add"
-                android:tint="@color/color_image_button_icon_color" />
-        </FrameLayout>
     </LinearLayout>
 </RelativeLayout>
