@@ -3,6 +3,7 @@ package com.hades.example.android.widget._edittext;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.hades.example.android.R;
 import com.hades.example.android.lib.base.BaseFragment;
 
 public class TestKeyBoardViewFragment extends BaseFragment {
+    private static final String TAG = "TestKeyBoardViewFragment";
 
     private KeyboardView mKeyBoardView;
     private Keyboard mKeyboard;
@@ -22,6 +24,7 @@ public class TestKeyBoardViewFragment extends BaseFragment {
     private EditText editText;
     private KeyboardView.OnKeyboardActionListener onKeyboardActionListener;
     private InputMethodManager inputMethodManager;
+    private int KEY_ENTER_CODE = 13;
 
     @Nullable
     @Override
@@ -34,7 +37,6 @@ public class TestKeyBoardViewFragment extends BaseFragment {
         setKeyBoardView();
         return view;
     }
-    // TODO: 2022/4/12 keyboardview
 
     private void show() {
         mKeyBoardView.setVisibility(View.VISIBLE);
@@ -55,53 +57,34 @@ public class TestKeyBoardViewFragment extends BaseFragment {
         }
 
         mKeyBoardView.setKeyboard(mKeyboard);
+        mKeyBoardView.setVisibility(View.VISIBLE);
         mKeyBoardView.setEnabled(true);
-        mKeyBoardView.setPreviewEnabled(true);
-        mKeyBoardView.setOnKeyboardActionListener(onKeyboardActionListener);
-
-//        editText.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View view, MotionEvent motionEvent) {
-//                if (!editText.hasFocus()) {
-//                    int type = editText.getInputType();
-//                    editText.setShowSoftInputOnFocus(false);
-//                    mKeyBoardView.setVisibility(View.VISIBLE);
-//                    editText.setInputType(type);
-//                }
-//                return false;
-//            }
-//        });
-
-//        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View view, boolean flag) {
-//                if (!flag) {
-//                    mKeyBoardView.setVisibility(View.GONE);
-//                } else {
-//                    inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-//                }
-//            }
-//        });
-
-        onKeyboardActionListener = new KeyboardView.OnKeyboardActionListener() {
+        mKeyBoardView.setPreviewEnabled(false);
+        mKeyBoardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
             @Override
-            public void onPress(int i) {
-
+            public void onPress(int primaryCode) {
+                Log.d(TAG, "onPress: ");
             }
 
             @Override
-            public void onRelease(int i) {
-
+            public void onRelease(int primaryCode) {
+                Log.d(TAG, "onRelease: ");
+                if (KEY_ENTER_CODE == primaryCode) {
+//                    if (null != onEnterListener) {
+//                        onEnterListener.enter();
+//                    }
+                    hideKeyboard();
+                }
             }
 
             @Override
-            public void onKey(int i, int[] ints) {
-
+            public void onKey(int primaryCode, int[] keyCodes) {
+                Log.d(TAG, "onKey: primaryCode=" + primaryCode);
             }
 
             @Override
-            public void onText(CharSequence charSequence) {
-
+            public void onText(CharSequence text) {
+                Log.d(TAG, "onText: ");
             }
 
             @Override
@@ -123,6 +106,21 @@ public class TestKeyBoardViewFragment extends BaseFragment {
             public void swipeUp() {
 
             }
-        };
+        });
     }
+
+    public void showKeyboard() {
+        int visibility = mKeyBoardView.getVisibility();
+        if (visibility == View.GONE || visibility == View.INVISIBLE) {
+            mKeyBoardView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void hideKeyboard() {
+        int visibility = mKeyBoardView.getVisibility();
+        if (visibility == View.VISIBLE) {
+            mKeyBoardView.setVisibility(View.INVISIBLE);
+        }
+    }
+
 }
