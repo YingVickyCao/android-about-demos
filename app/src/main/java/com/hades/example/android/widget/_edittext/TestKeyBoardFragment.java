@@ -30,17 +30,22 @@ public class TestKeyBoardFragment extends Fragment {
         View view = inflater.inflate(R.layout.widget_edittext_add_keyboardview, container, false);
         editText = (EditText) view.findViewById(R.id.editText);
         keyboardView = (KeyboardView) view.findViewById(R.id.keyboardView);
+
+        hideKeyboard();
+        forbidSystemKeyBoard();
+        initKeyboard();
+
         editText.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (!editText.hasFocus()) {
                     int inputType = editText.getInputType();
                     editText.setInputType(InputType.TYPE_NULL);
-                    init();
+                    showKeyboard();
                     editText.setInputType(inputType);
                 } else {
                     if (keyboardView.getVisibility() != View.VISIBLE) { // Fix：多次消失 KeyboardView，再次点击EditText时，KeyboardView 不可见
-                        init();
+                        showKeyboard();
                     } else {
                         hideKeyboard();
                     }
@@ -72,9 +77,7 @@ public class TestKeyBoardFragment extends Fragment {
         cancelForbidSystemKeyBoard();
     }
 
-    private void init() {
-        forbidSystemKeyBoard();
-        showKeyboard();
+    private void initKeyboard() {
         keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
             @Override
             public void swipeUp() {
