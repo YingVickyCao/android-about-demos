@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
     android:orientation="vertical">
 
     <!-- android:inputType="none" 通常设置为none。也设置成别的类型，但是因为使用自定义键盘，设置成其他类型也没啥意义   -->
@@ -25,7 +22,7 @@
 
         <!--  android:background="@android:color/holo_red_dark"：整个自定义Keyboard的背景色
              android:keyBackground="@drawable/xml_keyboard_bg" ：定义Key的背景色能根据pressed 状态改变颜色
-             android:keyPreviewLayout="@layout/key_preview_layout":按下Key时，弹出的预览图
+             android:keyPreviewLayout="@layout/key_preview_layout":按下Key时，弹出的预览效果
              android:keyTextColor ： Key 的字体颜色
              android:keyTextSize ： Key 的字体大小
              android:visibility="invisible" ：一般时gone 或 invisible
