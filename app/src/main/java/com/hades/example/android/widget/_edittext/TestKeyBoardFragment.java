@@ -45,7 +45,7 @@ public class TestKeyBoardFragment extends Fragment {
                     showKeyboard();
 //                    editText.setInputType(inputType);
                 } else {
-                    if (keyboardView.getVisibility() != View.VISIBLE) { // Fix：多次消失 KeyboardView，再次点击EditText时，KeyboardView 不可见
+                    if (keyboardView.getVisibility() != View.VISIBLE) { // Fix：显示和不可见自定义键盘多次后，再次点击EditText，自定义键盘不显示。
                         showKeyboard();
                     } else {
                         hideKeyboard();
@@ -127,6 +127,7 @@ public class TestKeyBoardFragment extends Fragment {
                         break;
                     case Keyboard.KEYCODE_CANCEL:
                         keyboardView.setVisibility(View.GONE);
+                        // Fix: 显示和不可见自定义键盘多次后，再次点击EditText，自定义键盘不显示。
                         editText.clearFocus();
                         break;
 
