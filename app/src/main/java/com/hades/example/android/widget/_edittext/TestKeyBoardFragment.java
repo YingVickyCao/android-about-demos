@@ -1,6 +1,5 @@
 package com.hades.example.android.widget._edittext;
 
-import android.app.Activity;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;

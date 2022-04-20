@@ -7,6 +7,7 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
+    <!-- android:inputType="none" 通常设置为none。也设置成别的类型，但是因为使用自定义键盘，设置成其他类型也没啥意义   -->
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
@@ -17,10 +18,18 @@
         android:text=""
         android:textSize="30sp" />
 
+    <!--  为了让自定义Keyboard 位于底部，用RelativeLayout 包裹 KeyboardView -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!--  android:background="@android:color/holo_red_dark"：整个自定义Keyboard的背景色
+             android:keyBackground="@drawable/xml_keyboard_bg" ：定义Key的背景色能根据pressed 状态改变颜色
+             android:keyPreviewLayout="@layout/key_preview_layout":按下Key时，弹出的预览图
+             android:keyTextColor ： Key 的字体颜色
+             android:keyTextSize ： Key 的字体大小
+             android:visibility="invisible" ：一般时gone 或 invisible
+        -->
         <android.inputmethodservice.KeyboardView
             android:id="@+id/keyboardView"
             android:layout_width="match_parent"
