@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.InputType;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.hades.example.android.R;
@@ -28,20 +29,37 @@ public class TestKeyBoardActivity extends Activity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (!editText.hasFocus()) {
-                    int inputType = editText.getInputType();
-                    editText.setInputType(InputType.TYPE_NULL);
-                    showKeyboard();
+//                    int inputType = editText.getInputType();
+//                    editText.setInputType(InputType.TYPE_NULL);
                     init();
-                    editText.setInputType(inputType);
+//                    editText.setInputType(inputType);
                 } else {
-                    hideKeyboard();
+                    if (keyboardView.getVisibility() != View.VISIBLE) { // Fix：多次消失 KeyboardView，再次点击EditText时，KeyboardView 不可见
+                        init();
+                    } else {
+                        hideKeyboard();
+                    }
+
                 }
                 return false;
             }
         });
     }
 
+    // Fix：点击EditText时，系统软键盘覆盖了KeyboardView
+    // 禁止EditText弹出系统软键盘
+    private void forbidSystemKeyBoard() {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+
+    }
+
+    private void forbidSystemKeyBoard2() {
+
+    }
+
     private void init() {
+        forbidSystemKeyBoard();
+        showKeyboard();
         keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
             @Override
             public void swipeUp() {

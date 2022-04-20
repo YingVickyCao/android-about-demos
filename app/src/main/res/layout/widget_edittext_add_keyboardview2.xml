@@ -11,6 +11,8 @@
         android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:inputType="none"
         android:text=""
         android:textSize="30sp" />
@@ -29,7 +31,7 @@
             android:focusableInTouchMode="true"
             android:keyBackground="@drawable/xml_keyboard_bg"
             android:keyPreviewLayout="@layout/key_preview_layout"
-            android:keyTextSize="30sp"
-            android:keyTextColor="@android:color/black" />
+            android:keyTextColor="@android:color/black"
+            android:keyTextSize="30sp" />
     </RelativeLayout>
 </LinearLayout>
