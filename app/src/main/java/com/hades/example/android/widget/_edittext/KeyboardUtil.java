@@ -22,7 +22,7 @@ public class KeyboardUtil {
         k1 = new Keyboard(editText.getContext(), R.xml.qwerty);
         keyboardView.setKeyboard(k1);
         keyboardView.setEnabled(true);
-        keyboardView.setPreviewEnabled(true);
+        keyboardView.setPreviewEnabled(false);
     }
 
     private KeyboardView.OnKeyboardActionListener listener = new KeyboardView.OnKeyboardActionListener() {
@@ -69,7 +69,9 @@ public class KeyboardUtil {
                     break;
                 case Keyboard.KEYCODE_CANCEL:
                     keyboardView.setVisibility(View.GONE);
+                    editText.clearFocus();
                     break;
+
                 default:
                     editable.insert(start, Character.toString((char) primaryCode));
                     break;

@@ -26,12 +26,29 @@ public class TestKeyBoardActivity extends Activity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (!editText.hasFocus()) {
                     int inputback = editText.getInputType();
-                    editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    editText.setInputType(InputType.TYPE_NULL);
+                    showKeyboard();
                     new KeyboardUtil(keyboardView, editText).showKeyboard();
                     editText.setInputType(inputback);
+                } else {
+                    hideKeyboard();
                 }
                 return false;
             }
         });
+    }
+
+    public void showKeyboard() {
+        int visibility = keyboardView.getVisibility();
+        if (visibility == View.GONE || visibility == View.INVISIBLE) {
+            keyboardView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void hideKeyboard() {
+        int visibility = keyboardView.getVisibility();
+        if (visibility == View.VISIBLE) {
+            keyboardView.setVisibility(View.INVISIBLE);
+        }
     }
 }
