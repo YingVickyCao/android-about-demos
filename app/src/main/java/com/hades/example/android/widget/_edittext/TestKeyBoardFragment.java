@@ -28,7 +28,7 @@ public class TestKeyBoardFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_edittext_add_keyboardview, container, false);
+        View view = inflater.inflate(R.layout.widget_edittext_keyboardview, container, false);
         editText = (EditText) view.findViewById(R.id.editText);
         keyboardView = (KeyboardView) view.findViewById(R.id.keyboardView);
 

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_50"
+        android:layout_weight="5"
+        android:divider="@android:color/holo_red_dark"
+        android:dividerPadding="@dimen/size_2"
+        android:showDividers="middle|end|beginning">
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/custom_keyboard_btn"
+            android:text="1" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/custom_keyboard_btn"
+            android:text="2" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/custom_keyboard_btn"
+            android:text="3" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/custom_keyboard_btn"
+            android:text="4" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/custom_keyboard_btn"
+            android:text="5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_50"
+        android:layout_weight="5"
+        android:divider="@android:color/white"
+        android:showDividers="middle|end|beginning">
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/custom_keyboard_btn"
+            android:text="6" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/custom_keyboard_btn"
+            android:text="7" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/custom_keyboard_btn"
+            android:text="8" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/custom_keyboard_btn"
+            android:text="9" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/custom_keyboard_btn"
+            android:text="0" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_50"
+        android:layout_weight="4"
+        android:divider="@android:color/white"
+        android:showDividers="middle|end|beginning">
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/custom_keyboard_btn"
+            android:layout_weight="2"
+            android:text="Delete" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/custom_keyboard_btn"
+            android:layout_weight="2"
+            android:text="Done" />
+
+    </LinearLayout>
+</LinearLayout>
