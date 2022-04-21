@@ -22,6 +22,7 @@ import com.hades.example.android.R;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.Buffer;
@@ -247,6 +248,7 @@ public class TestBitmapFragment extends Fragment {
     private void img3_3() {
         try {
             InputStream inputStream = getContext().getAssets().open(IMAGE_NAME);
+//            FileInputStream is = new FileInputStream(IMAGE_FULL_PATH);
             // TODO:Bitmap = BitmapFactory.decodeStream(InputStream is),为什么得到的图片变得很小
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
             img3_3.setImageBitmap(bitmap);
@@ -260,11 +262,15 @@ public class TestBitmapFragment extends Fragment {
      * 从FileDescriptor对应的文件，解析、创建Bitmap对象
      */
     private void img3_4() {
-        AssetFileDescriptor assetFileDescriptor = getResources().openRawResourceFd(R.raw.photo7);
-        // TODO:Bitmap = BitmapFactory.decodeFileDescriptor(FileDescriptor fd) 加载不出图片，bitmap为null
-        Bitmap bitmap = BitmapFactory.decodeFileDescriptor(assetFileDescriptor.getFileDescriptor());
-        Log.d(TAG, "img3_4: " + bitmap);
-        img3_4.setImageBitmap(bitmap);
+        // TODO:Bitmap = BitmapFactory.decodeFileDescriptor(FileDescriptor fd),为什么得到的图片变得很小
+        try {
+            FileInputStream is = new FileInputStream(IMAGE_FULL_PATH);
+            Bitmap bitmap = BitmapFactory.decodeFileDescriptor(is.getFD());
+            Log.d(TAG, "img3_4: " + bitmap);
+            img3_4.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
