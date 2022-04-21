@@ -15,7 +15,7 @@
         android:layout_below="@+id/topic"
         android:layout_centerInParent="true"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <Button
             android:id="@+id/next"
@@ -34,101 +34,137 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/topic"
-        android:layout_centerInParent="true">
+
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/size_10">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Bitmap -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <ImageView
                     android:id="@+id/img0"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitCenter"
+                    android:scaleType="fitXY"
                     android:src="@drawable/photo7" />
 
+                <!--
+                1 把一个Bitmap包装成一个BitmapDrawable对象
+                获取BitmapDrawable包装的Bitmap对象
+                -->
                 <ImageView
                     android:id="@+id/img1_1"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitXY"
+                    android:visibility="gone" />
 
-                <ImageView
-                    android:id="@+id/img1_2"
-                    android:layout_width="match_parent"
+                <!-- 2 使用静态方法创建Bitmap对象              -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:scaleType="fitCenter" />
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <!-- 按指定坐标(x,y)挖出 -->
+                    <ImageView
+                        android:id="@+id/img2_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:scaleType="fitXY"
+                        android:visibility="gone" />
 
-                <ImageView
-                    android:id="@+id/img1_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:scaleType="fitCenter" />
+                    <!-- 按宽、高缩放 -->
+                    <ImageView
+                        android:id="@+id/img2_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:scaleType="fitCenter"
+                        android:visibility="gone" />
 
-                <ImageView
-                    android:id="@+id/img1_4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:scaleType="fitCenter" />
+                    <!-- 创建一个宽、高的新位图               -->
+                    <ImageView
+                        android:id="@+id/img2_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:scaleType="fitXY"
+                        android:visibility="gone" />
 
-                <ImageView
-                    android:id="@+id/img1_5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:scaleType="fitCenter" />
-            </LinearLayout>
+                    <!-- Matrix指定的规则进行转换                   -->
+                    <ImageView
+                        android:id="@+id/img2_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:scaleType="fitXY" />
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/img2_1"
-                    android:layout_width="match_parent"
+                <!--  3 从不同的数据源来解析、创建Bitmap对象              -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:scaleType="fitCenter" />
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/img2_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:scaleType="fitCenter" />
+                    <!-- BitmapFactory.decodeByteArray                   -->
+                    <ImageView
+                        android:id="@+id/img3_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:visibility="gone" />
 
-                <ImageView
-                    android:id="@+id/img2_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:scaleType="fitCenter" />
+                    <!-- BitmapFactory.decodeFile                   -->
+                    <ImageView
+                        android:id="@+id/img3_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:visibility="gone" />
 
-                <ImageView
-                    android:id="@+id/img2_4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:scaleType="fitCenter" />
+                    <!-- BitmapFactory.decodeStream                   -->
+                    <!--                    <ImageView-->
+                    <!--                        android:id="@+id/img3_3"-->
+                    <!--                        android:layout_width="200dp"-->
+                    <!--                        android:layout_height="400dp"-->
+                    <!--                        android:layout_marginTop="@dimen/margin_small"-->
+                    <!--                        android:background="@color/red"-->
+                    <!--                        android:visibility="gone" />-->
 
-                <ImageView
-                    android:id="@+id/img2_5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:scaleType="fitCenter" />
+                    <ImageView
+                        android:id="@+id/img3_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:background="@color/red"
+                        android:visibility="gone" />
+
+                    <!-- BitmapFactory.decodeFileDescriptor                   -->
+                    <ImageView
+                        android:id="@+id/img3_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:visibility="gone" />
+
+                    <!-- BitmapFactory.decodeResource                   -->
+                    <ImageView
+                        android:id="@+id/img3_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

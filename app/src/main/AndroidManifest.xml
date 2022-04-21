@@ -481,6 +481,7 @@
         <activity android:name=".resource.adapter_screen.DipTestActivity" />
         <activity android:name=".resource.drawable.state.custom_selector_drawable.CustomSelectedStatusActivity" />
         <activity android:name=".resource.drawable.state.custom_selector_drawable.CustomSelectedStatusActivity2" />
+        <activity android:name=".resource.drawable._bitmap.BitmapActivity" />
         <!--android:configChanges="screenSize|orientation"-->
         <activity
             android:name=".resource.adapter_screen.TestConfigurationActivity"

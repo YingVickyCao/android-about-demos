@@ -18,6 +18,7 @@ import com.hades.example.android.resource.anim.TestTweenAnimationFragment;
 import com.hades.example.android.resource.animator.TestPropertyAnimationFragment;
 import com.hades.example.android.resource.dimension.TestDimensionFragment;
 import com.hades.example.android.resource.drawable.TestDrawableFolderFragment;
+import com.hades.example.android.resource.drawable._bitmap.BitmapActivity;
 import com.hades.example.android.resource.drawable._bitmap.TestBitmapFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestBitmapMemoryAndScreenDensityFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestDecodeSampledBitmapFragment;
@@ -51,6 +52,7 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.pageThemeChoose).setOnClickListener(v -> pageThemeChoose());
         findViewById(R.id.pageInternationalization).setOnClickListener(v -> pageInternationalization());
         findViewById(R.id.pageStringIntegerArray).setOnClickListener(v -> pageStringIntegerArray());
+        findViewById(R.id.pageFont).setOnClickListener(v -> pageFont());
         findViewById(R.id.pageXML).setOnClickListener(v -> pageXML());
         findViewById(R.id.pageScreenOrientation).setOnClickListener(v -> pageScreenOrientation());
         findViewById(R.id.pageScreenSize).setOnClickListener(v -> pageScreenSize());
@@ -66,8 +68,6 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.pageDrawableFolder).setOnClickListener(v -> pageDrawableFolder());
 
         findViewById(R.id.pageBitmap).setOnClickListener(v -> pageBitmap());
-        findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
-        findViewById(R.id.pageMemoryCacheBitmap).setOnClickListener(v -> pageBitmapThreeLevelCache());
 
         findViewById(R.id.pageColor).setOnClickListener(v -> pageColor());
         findViewById(R.id.pageColorStateListResource).setOnClickListener(v -> pageColorStateListResource());
@@ -84,7 +84,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageDimension();
+        pageBitmap();
     }
 
     private void pageColor() {
@@ -115,6 +115,10 @@ public class ResourceActivity extends PermissionActivity {
         showFragment(new TestStringIntegerArrayFragment());
     }
 
+    private void pageFont() {
+        showFragment(new TestFontFragment());
+    }
+
     private void pageXML() {
         showFragment(new TestXMLFragment());
     }
@@ -143,16 +147,8 @@ public class ResourceActivity extends PermissionActivity {
         showFragment(new TestClipDrawableFragment());
     }
 
-    private void pageLoadBitmapPo() {
-        showFragment(new TestDecodeSampledBitmapFragment());
-    }
-
-    private void pageBitmapThreeLevelCache() {
-        showActivity(ImageGridActivity.class);
-    }
-
     private void pageBitmap() {
-        showFragment(new TestBitmapFragment());
+        showActivity(BitmapActivity.class);
     }
 
     private void pageShapeDrawable() {
@@ -181,9 +177,5 @@ public class ResourceActivity extends PermissionActivity {
 
     private void pagePropertyAnimation() {
         showFragment(new TestPropertyAnimationFragment());
-    }
-
-    private void pageFont() {
-        showFragment(new TestFontFragment());
     }
 }
