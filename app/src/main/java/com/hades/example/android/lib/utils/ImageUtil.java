@@ -39,11 +39,12 @@ public class ImageUtil {
     /**
      * 如何避免大图出现OOM？
      * BitmapFactory.Options.inJustDecodeBounds=true/false
-     * options.inSampleSize = size   // 图片压缩比例.
+     * BitmapFactory.Options.inSampleSize = size   // 计算出图片缩放比例.
      */
     public Bitmap decodeResource(Resources res, int resId, int reqWidth, int reqHeight, IInBitmapListener listener) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
         // inJustDecodeBounds = true: 表示不返回实际的Bitmap，用来查询图片大小信息。即不分配内存来避免内存溢出
+        // 将 inJustDecodeBounds 设为 true 进行解码，传递选项，然后使用新的 inSampleSize 值并将 inJustDecodeBounds 设为 false 再次进行解码
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(res, resId, options);
         // PO:[Bitmap] BitmapFactory.Options.inSampleSize
