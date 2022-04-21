@@ -12,8 +12,8 @@ import com.hades.example.android.media.audio.media_player.TestMediaPlayer4AudioF
 import com.hades.example.android.media.audio.sound_pool.TestSoundPoolFragment;
 import com.hades.example.android.media.camera.TestCameraActivity;
 import com.hades.example.android.media.record.audio.TestRecordAudioFragment;
-import com.hades.example.android.widget._surfaceview.TestSurfaceViewPlayVideoFragment;
-import com.hades.example.android.widget._videoview.VideoViewRotateScreenTipActivity;
+import com.hades.example.android.widget.surfaceview.TestSurfaceViewPlayVideoFragment;
+import com.hades.example.android.widget.videoview.VideoViewRotateScreenTipActivity;
 
 public class TestMediaActivity extends PermissionActivity {
     @Override

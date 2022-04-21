@@ -36,16 +36,6 @@
                 android:text="@string/page_CustomView" />
 
             <Button
-                android:id="@+id/page_CustomVew4CascadeLayout"
-                style="@style/btn.small"
-                android:text="@string/page_CustomView_CascadeLayout" />
-
-            <Button
-                android:id="@+id/page_CustomVew_ShadowView"
-                style="@style/btn.small"
-                android:text="@string/page_CustomView_ShadowView" />
-
-            <Button
                 android:id="@+id/pageConstraintLayout"
                 style="@style/btn.small"
                 android:text="@string/page_ConstraintLayout" />

@@ -356,13 +356,14 @@
         <!-- SPLASH_NOTIFY_ICON_START -->
         <activity android:name=".widget.splash_notify_icon.SplashNotifyIconActivity" />
         <activity android:name=".widget.splash_notify_icon.SplashNotifyIconActivity2" /> <!-- SPLASH_NOTIFY_ICON_END -->
-        <activity android:name=".widget._list.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
-        <activity android:name=".widget._list._recyclerview._dag_reorder_list.v1.DragAndReorderListActivity" /> <!-- END_SCROLL_VIEW -->
-        <activity android:name=".widget._list._recyclerview._dag_reorder_list.v2.DragAndReorderListActivity" />
+        <activity android:name=".widget.list.scrollview.qa_swipe_whole_page.WrongSwipeWhoPageActivity" />
+        <activity android:name=".widget.list._recyclerview._dag_reorder_list.v1.DragAndReorderListActivity" /> <!-- END_SCROLL_VIEW -->
+        <activity android:name=".widget.list._recyclerview._dag_reorder_list.v2.DragAndReorderListActivity" />
         <activity android:name=".widget.custom_view.cascadelayout.CascadeLayoutActivity" />
-        <activity android:name=".widget._button.TestButtonActivity" />
-        <activity android:name=".widget._videoview.VideoViewRotateScreenTipActivity" />
-        <activity android:name=".widget._layout.relativelayout.TestRelativeLayoutActivity" />
+        <activity android:name=".widget.button.TestButtonActivity" />
+        <activity android:name=".widget.videoview.VideoViewRotateScreenTipActivity" />
+        <activity android:name=".widget.layout.relativelayout.TestRelativeLayoutActivity" />
+        <activity android:name=".widget.custom_view.CustomViewActivity" />
         <!-- Widget,END -->
 
         <activity android:name=".other_ui.OtherUIActivity" />

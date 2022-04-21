@@ -1,43 +1,40 @@
 package com.hades.example.android.widget;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.widget._edittext.TestEditTextFragment;
-import com.hades.example.android.widget._edittext.TestKeyBoardFragment;
-import com.hades.example.android.widget._edittext.TestKeyBoardFragment2;
-import com.hades.example.java.lib.DummyItem;
 import com.hades.example.android.R;
-import com.hades.example.android.widget._button.TestButtonActivity;
-import com.hades.example.android.widget._checkbox.CheckBoxFragment;
-import com.hades.example.android.widget._layout._constraintlayout.TestConstraintLayoutFragment;
-import com.hades.example.android.widget._layout._framelayout.TestFrameLayoutFragment;
-import com.hades.example.android.widget._layout._viewgroup.TestViewGroupFragment;
-import com.hades.example.android.widget._layout.linearlayout.TestLinearLayout4LayoutGravityAndGravityFragment;
-import com.hades.example.android.widget._layout.linearlayout.TestLinearLayoutCannotChangeColor2Fragment;
-import com.hades.example.android.widget._layout.linearlayout.TestLinearLayoutCannotChangeColorFragment;
-import com.hades.example.android.widget._layout.linearlayout.TestLinearLayoutFragment;
-import com.hades.example.android.widget._list._listview.TestListViewFragment;
-import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v1.DragAndReorderListActivity;
-import com.hades.example.android.widget._list._recyclerview._dag_reorder_list.v2.screen_size.TestViewLocationFragment;
-import com.hades.example.android.widget._list._recyclerview.dummy.DummyRecyclerViewFragment;
-import com.hades.example.android.widget._list._recyclerview.dummy.IItemClickAction;
-import com.hades.example.android.widget._progressbar.TestProgressBarFragment;
-import com.hades.example.android.widget._progressbar.TestRatingBarFragment;
-import com.hades.example.android.widget._progressbar.TestSeekBarFragment;
-import com.hades.example.android.widget._radiobutton.TestRadioButtonFragment;
-import com.hades.example.android.widget._search_view.SearchViewFragment;
-import com.hades.example.android.widget._spinner.TestSpinnerFragment;
-import com.hades.example.android.widget._surfaceview.TestSurfaceViewPlayVideoFragment;
-import com.hades.example.android.widget._switch.TestSwitchFragment;
-import com.hades.example.android.widget._tablayout.TestTabLayoutFragment;
-import com.hades.example.android.widget.custom_view.TestCustomViewFragment;
-import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
-import com.hades.example.android.widget.custom_view.shadow.TestShadowViewFragment;
+import com.hades.example.android.lib.base.NoNeedPermissionActivity;
+import com.hades.example.android.widget.button.TestButtonActivity;
+import com.hades.example.android.widget.checkbox.CheckBoxFragment;
+import com.hades.example.android.widget.edittext.TestEditTextFragment;
+import com.hades.example.android.widget.edittext.TestKeyBoardFragment;
+import com.hades.example.android.widget.edittext.TestKeyBoardFragment2;
+import com.hades.example.android.widget.layout._constraintlayout.TestConstraintLayoutFragment;
+import com.hades.example.android.widget.layout._framelayout.TestFrameLayoutFragment;
+import com.hades.example.android.widget.layout._viewgroup.TestViewGroupFragment;
+import com.hades.example.android.widget.layout.linearlayout.TestLinearLayout4LayoutGravityAndGravityFragment;
+import com.hades.example.android.widget.layout.linearlayout.TestLinearLayoutCannotChangeColor2Fragment;
+import com.hades.example.android.widget.layout.linearlayout.TestLinearLayoutCannotChangeColorFragment;
+import com.hades.example.android.widget.layout.linearlayout.TestLinearLayoutFragment;
+import com.hades.example.android.widget.list._listview.TestListViewFragment;
+import com.hades.example.android.widget.list._recyclerview._dag_reorder_list.v1.DragAndReorderListActivity;
+import com.hades.example.android.widget.list._recyclerview._dag_reorder_list.v2.screen_size.TestViewLocationFragment;
+import com.hades.example.android.widget.list._recyclerview.dummy.DummyRecyclerViewFragment;
+import com.hades.example.android.widget.list._recyclerview.dummy.IItemClickAction;
+import com.hades.example.android.widget.progressbar.TestProgressBarFragment;
+import com.hades.example.android.widget.progressbar.TestRatingBarFragment;
+import com.hades.example.android.widget.progressbar.TestSeekBarFragment;
+import com.hades.example.android.widget.radiobutton.TestRadioButtonFragment;
+import com.hades.example.android.widget.search_view.SearchViewFragment;
+import com.hades.example.android.widget.spinner.TestSpinnerFragment;
+import com.hades.example.android.widget.surfaceview.TestSurfaceViewPlayVideoFragment;
+import com.hades.example.android.widget.switchBtn.TestSwitchFragment;
+import com.hades.example.android.widget.tablayout.TestTabLayoutFragment;
+import com.hades.example.android.widget.videoview.VideoViewRotateScreenTipActivity;
+import com.hades.example.android.widget.custom_view.CustomViewActivity;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageFragment;
 import com.hades.example.android.widget.imageview.TestImageViewFragment;
@@ -47,12 +44,12 @@ import com.hades.example.android.widget.pickers.DateTimePickerFragment;
 import com.hades.example.android.widget.pickers.NumberPickerFragment;
 import com.hades.example.android.widget.textview.TestHighlightDigitalClockFragment;
 import com.hades.example.android.widget.textview.TestTextViewFragment;
-import com.hades.example.android.widget._videoview.VideoViewRotateScreenTipActivity;
 import com.hades.example.android.widget.view_animator.ImageSwitcherFragment;
 import com.hades.example.android.widget.view_animator.TextSwitcherFragment;
 import com.hades.example.android.widget.view_animator.ViewFlipperFragment;
 import com.hades.example.android.widget.view_animator.ViewSwitcherFragment;
 import com.hades.example.android.widget.webview.TestWebViewFragment;
+import com.hades.example.java.lib.DummyItem;
 
 public class WidgetActivity extends NoNeedPermissionActivity implements IItemClickAction {
     private static final String TAG = WidgetActivity.class.getSimpleName();
@@ -68,8 +65,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         initViews();
 
         findViewById(R.id.pageCustomVew).setOnClickListener(v -> pageCustomVew());
-        findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
-        findViewById(R.id.page_CustomVew_ShadowView).setOnClickListener(v -> page_CustomVew_ShadowView());
         findViewById(R.id.pageListView).setOnClickListener(v -> pageListView());
         findViewById(R.id.pageViewLocation).setOnClickListener(v -> pageViewLocation());
         findViewById(R.id.pageConstraintLayout).setOnClickListener(v -> pageConstraintLayout());
@@ -119,7 +114,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     @Override
     protected void showCurrentTest() {
-        pageKeyBoardView2();
+        pageCustomVew();
     }
 
     private void pageViewLocation() {
@@ -131,15 +126,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
     }
 
     private void pageCustomVew() {
-        showFragment(new TestCustomViewFragment());
-    }
-
-    private void pageCustomView4CascadeLayout() {
-        showActivity(CascadeLayoutActivity.class);
-    }
-
-    private void page_CustomVew_ShadowView() {
-        showFragment(new TestShadowViewFragment());
+        showActivity(CustomViewActivity.class);
     }
 
     private void pageConstraintLayout() {
