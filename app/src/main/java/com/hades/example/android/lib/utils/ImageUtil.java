@@ -43,8 +43,10 @@ public class ImageUtil {
      */
     public Bitmap decodeResource(Resources res, int resId, int reqWidth, int reqHeight, IInBitmapListener listener) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
-        // inJustDecodeBounds = true: 表示不返回实际的Bitmap，用来查询图片大小信息。即不分配内存来避免内存溢出
-        // 将 inJustDecodeBounds 设为 true 进行解码，传递选项，然后使用新的 inSampleSize 值并将 inJustDecodeBounds 设为 false 再次进行解码
+        /**
+         * inJustDecodeBounds = true: 表示不返回实际的Bitmap，用来查询图片大小信息。即不分配内存来避免内存溢出
+         * 将 inJustDecodeBounds 设为 true 进行解码，传递选项，然后使用新的 inSampleSize 值并将 inJustDecodeBounds 设为 false 再次进行解码
+         */
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(res, resId, options);
         // PO:[Bitmap] BitmapFactory.Options.inSampleSize
@@ -71,8 +73,10 @@ public class ImageUtil {
     public int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // https://developer.android.google.cn/topic/performance/graphics/load-bitmap?hl=zh-cn#java
 
-        // options.outHeight ：原始图片的高度信息
-        // options.outWidth 原始图片的宽度信息
+        /**
+         * options.outHeight ：原始图片的高度信息
+         * options.outWidth 原始图片的宽度信息
+         */
         int height = options.outHeight;
         int width = options.outWidth;
 
@@ -81,13 +85,17 @@ public class ImageUtil {
             final int halfHeight = height / 2;
             final int halfWidth = width / 2;
 
-            // 试探最小的缩放比例
+            /**
+             * 试探最小的缩放比例
+             */
             // Calculate the largest inSampleSize value that is a power of 2 and keeps both
             // height and width larger than the requested height and width.
             while ((halfHeight / inSampleSize) >= reqHeight
                     && (halfWidth / inSampleSize) >= reqWidth) {
-                // 用于计算样本大小值，即基于目标宽度和高度的 2 的幂
-                // 根据 inSampleSize 文档，计算 2 的幂的原因是解码器使用的最终值将向下舍入为最接近的 2 的幂。
+                /**
+                 * 用于计算样本大小值，即基于目标宽度和高度的 2 的幂
+                 * 根据 inSampleSize 文档，计算 2 的幂的原因是解码器使用的最终值将向下舍入为最接近的 2 的幂。
+                 */
                 inSampleSize *= 2;
             }
         }
@@ -100,8 +108,6 @@ public class ImageUtil {
 
     public Bitmap decodeFile(String filename, int reqWidth, int reqHeight, IInBitmapListener listener) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
-        // https://developer.android.google.cn/topic/performance/graphics/load-bitmap?hl=zh-cn#java
-        // inJustDecodeBounds = true: 表示不返回实际的Bitmap，用来查询图片大小信息。即不分配内存来避免内存溢出
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(filename, options);
         options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
@@ -142,8 +148,10 @@ public class ImageUtil {
         }
         Bitmap inBitmap = listener.getReusableBitmap4InBitmap(options);
         if (inBitmap != null) {
+            /**
+             * 复用Bitmap
+             */
             options.inMutable = true;
-            // PO:[Bitmap] BitmapFactory.Options.inBitmap
             options.inBitmap = inBitmap;
         }
     }
