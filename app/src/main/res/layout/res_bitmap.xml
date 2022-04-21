@@ -9,32 +9,10 @@
         style="@style/topic"
         android:text="@string/page_bitmap" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/topic"
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:visibility="visible">
-
-        <Button
-            android:id="@+id/next"
-            style="@style/btn.small"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/next" />
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitCenter" />
-    </LinearLayout>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/topic"
-
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/size_10">
 
@@ -156,14 +134,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_small"
-                        android:visibility="gone" />
+                        android:visibility="visible" />
 
                     <!-- BitmapFactory.decodeResource                   -->
                     <ImageView
                         android:id="@+id/img3_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_small" />
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:visibility="gone" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

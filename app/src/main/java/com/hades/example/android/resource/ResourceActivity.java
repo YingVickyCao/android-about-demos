@@ -2,6 +2,7 @@ package com.hades.example.android.resource;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -19,10 +20,7 @@ import com.hades.example.android.resource.animator.TestPropertyAnimationFragment
 import com.hades.example.android.resource.dimension.TestDimensionFragment;
 import com.hades.example.android.resource.drawable.TestDrawableFolderFragment;
 import com.hades.example.android.resource.drawable._bitmap.BitmapActivity;
-import com.hades.example.android.resource.drawable._bitmap.TestBitmapFragment;
 import com.hades.example.android.resource.drawable._bitmap.TestBitmapMemoryAndScreenDensityFragment;
-import com.hades.example.android.resource.drawable._bitmap.TestDecodeSampledBitmapFragment;
-import com.hades.example.android.resource.drawable._bitmap.three_level_cache.ImageGridActivity;
 import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
 import com.hades.example.android.resource.drawable.clip.TestClipDrawableFragment;
 import com.hades.example.android.resource.drawable.layer.TestLayerDrawableFragment;
@@ -45,6 +43,7 @@ public class ResourceActivity extends PermissionActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.AppTheme_Light);
         setContentView(R.layout.activity_resources);
+        Log.d(TAG, "onCreate: ");
         initViews();
 
         findViewById(R.id.pageMaterial).setOnClickListener(v -> pageMaterial());
@@ -79,6 +78,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void requestPermission() {
+        Log.d(TAG, "requestPermission: ");
         checkPermission("Request permission for operate storage", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 

@@ -25,9 +25,9 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (isNeedCheckPermission()) {
-            requestPermission();
-        }
+//        if (isNeedCheckPermission()) {
+//            requestPermission();
+//        }
     }
 
     protected void showActionBar() {

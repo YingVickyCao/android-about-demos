@@ -5,7 +5,7 @@
 
     <application tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".resource.drawable._bitmap.BitmapActivity"
+            android:name=".resource.ResourceActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

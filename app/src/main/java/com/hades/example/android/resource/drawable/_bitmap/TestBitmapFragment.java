@@ -29,12 +29,9 @@ import java.nio.ByteBuffer;
 
 public class TestBitmapFragment extends Fragment {
     private static final String TAG = TestBitmapFragment.class.getSimpleName();
+    private static String IMAGE_FULL_PATH = "/sdcard/photo7.jpg";
+    private static String IMAGE_NAME = "photo7.jpg";
 
-    private String[] imageFileNames = null;
-    private AssetManager assets = null;
-    private int currentImg = 0;
-
-    private ImageView image;
     private ImageView img0;
 
     private ImageView img1_1;
@@ -54,16 +51,6 @@ public class TestBitmapFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.res_bitmap, container, false);
-        image = view.findViewById(R.id.image);
-        try {
-            assets = getContext().getAssets();
-            // 获取/assets/目录下所有文件
-            imageFileNames = assets.list("");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        view.findViewById(R.id.next).setOnClickListener(sources -> next());
-
         img0 = view.findViewById(R.id.img0);
 
         img1_1 = view.findViewById(R.id.img1_1);
@@ -95,38 +82,6 @@ public class TestBitmapFragment extends Fragment {
         img3_4();
         img3_5();
         return view;
-    }
-
-    private boolean isNotImage() {
-        return !imageFileNames[currentImg].endsWith(".png")
-                && !imageFileNames[currentImg].endsWith(".jpg")
-                && !imageFileNames[currentImg].endsWith(".gif");
-    }
-
-    private void next() {
-        if (currentImg >= imageFileNames.length) {
-            currentImg = 0;
-        }
-
-        while (isNotImage()) {
-            currentImg++;
-            if (currentImg >= imageFileNames.length) {
-                currentImg = 0;
-            }
-        }
-
-        InputStream assetFile = null;
-        try {
-            assetFile = assets.open(imageFileNames[currentImg++]);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        BitmapDrawable bitmapDrawable = (BitmapDrawable) image.getDrawable();
-        if (bitmapDrawable != null && !bitmapDrawable.getBitmap().isRecycled()) { // Bitmap.isRecycled(), BitmapDrawable.getBitmap()
-            bitmapDrawable.getBitmap().recycle(); // Bitmap.recycle()
-        }
-
-        image.setImageBitmap(BitmapFactory.decodeStream(assetFile)); // BitmapFactory.decodeStream(InputStream)
     }
 
     private void img1_1() {
@@ -243,13 +198,14 @@ public class TestBitmapFragment extends Fragment {
     }
 
     // 3 从不同的数据源来解析、创建Bitmap对象
+
     /**
      * static Bitmap decodeByteArray(byte[] data, int offset, int length)
      * 从指定字节数组的offset位置开始，将长度为length的字节数据解析成Bitmap对象
      */
     private void img3_1() {
         try {
-            InputStream inputStream = getContext().getAssets().open("photo7.jpg");
+            InputStream inputStream = getContext().getAssets().open(IMAGE_NAME);
             byte[] bytes = getBytes(inputStream);
             // TODO: Bitmap = BitmapFactory.decodeByteArray(byte[] data, int offset, int length),为什么得到的图片变得很小
             Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length); // ERROR: not work
@@ -278,9 +234,9 @@ public class TestBitmapFragment extends Fragment {
      * 从指定文件文件解析，创建bitmap对象
      */
     private void img3_2() {
-        // static Bitmap decodeFile(String pathName)
+        Log.d(TAG, "img3_2: ");
         // TODO:Bitmap = BitmapFactory.decodeFile(String pathName),为什么得到的图片变得很小
-        Bitmap bitmap = BitmapFactory.decodeFile("/sdcard/photo7.jpg");
+        Bitmap bitmap = BitmapFactory.decodeFile(IMAGE_FULL_PATH);
         img3_2.setImageBitmap(bitmap);
     }
 
@@ -290,7 +246,7 @@ public class TestBitmapFragment extends Fragment {
      */
     private void img3_3() {
         try {
-            InputStream inputStream = getContext().getAssets().open("photo7.jpg");
+            InputStream inputStream = getContext().getAssets().open(IMAGE_NAME);
             // TODO:Bitmap = BitmapFactory.decodeStream(InputStream is),为什么得到的图片变得很小
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
             img3_3.setImageBitmap(bitmap);
@@ -307,6 +263,7 @@ public class TestBitmapFragment extends Fragment {
         AssetFileDescriptor assetFileDescriptor = getResources().openRawResourceFd(R.raw.photo7);
         // TODO:Bitmap = BitmapFactory.decodeFileDescriptor(FileDescriptor fd) 加载不出图片，bitmap为null
         Bitmap bitmap = BitmapFactory.decodeFileDescriptor(assetFileDescriptor.getFileDescriptor());
+        Log.d(TAG, "img3_4: " + bitmap);
         img3_4.setImageBitmap(bitmap);
     }
 
