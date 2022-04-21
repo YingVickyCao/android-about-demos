@@ -6,12 +6,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
+import android.util.Log;
 
 import com.hades.example.android.lib.utils.bitmap.fetch.IInBitmapListener;
 
 import java.io.FileDescriptor;
 
 public class ImageUtil {
+    private static final String TAG = "ImageUtil";
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public int getBitmapBytesSizeAtBitmapDrawable(BitmapDrawable value) {
@@ -30,60 +32,79 @@ public class ImageUtil {
         return bitmap.getRowBytes() * bitmap.getHeight();
     }
 
-    public Bitmap decodeSampledBitmapFromDescriptor(FileDescriptor fileDescriptor, int reqWidth, int reqHeight) {
-        return decodeSampledBitmapFromDescriptor(fileDescriptor, reqWidth, reqHeight);
+    public Bitmap decodeResource(Resources res, int resId, int reqWidth, int reqHeight) {
+        return decodeResource(res, resId, reqWidth, reqHeight, null);
     }
 
-    public Bitmap decodeSampledBitmapFromDescriptor(FileDescriptor fileDescriptor, int reqWidth, int reqHeight, IInBitmapListener listener) {
+    /**
+     * 如何避免大图出现OOM？
+     * BitmapFactory.Options.inJustDecodeBounds=true/false
+     * options.inSampleSize = size   // 图片压缩比例.
+     */
+    public Bitmap decodeResource(Resources res, int resId, int reqWidth, int reqHeight, IInBitmapListener listener) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeFileDescriptor(fileDescriptor, null, options);
-        if (null != listener) {
-            options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-            useInBitmap(options, listener);
-        }
-        options.inJustDecodeBounds = false;
-        return BitmapFactory.decodeFileDescriptor(fileDescriptor, null, options);
-    }
-
-    public Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight) {
-        return decodeSampledBitmapFromResource(res, resId, reqWidth, reqHeight, null);
-    }
-
-//    public Bitmap decodeSampledBitmapFromResource(Resources res, int id, int requireWidth, int requireHeight) {
-//        BitmapFactory.Options options = new BitmapFactory.Options();
-//        options.inJustDecodeBounds = true;
-//        BitmapFactory.decodeResource(res, id, options);
-//        options.inSampleSize = calculateInSampleSize(options, requireWidth, requireHeight);
-//        options.inJustDecodeBounds = false;
-//        return BitmapFactory.decodeResource(res, id, options);
-//    }
-
-
-    public Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight, IInBitmapListener listener) {
-        final BitmapFactory.Options options = new BitmapFactory.Options();
+        // inJustDecodeBounds = true: 表示不返回实际的Bitmap，用来查询图片大小信息。即不分配内存来避免内存溢出
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(res, resId, options);
+        // PO:[Bitmap] BitmapFactory.Options.inSampleSize
+        /**
+         * options.inSampleSize 缩放比例。
+         * (1) inSampleSize可能<0，要做判断。
+         * (2) 可以计算缩放比例。也可以不计算，直接给它设定一个值。
+         * (3) inSampleSize=2,表示 高度和宽度都是原始的一半
+         */
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        Log.d(TAG, "scaleSize: viewWidth:" + reqWidth + ",viewHeight:" + reqHeight + "，scaleSize=" + options.inSampleSize);
         if (null != listener) {
-            // PO:[Bitmap] BitmapFactory.Options.inSampleSize
-            options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
             useInBitmap(options, listener);
         }
         options.inJustDecodeBounds = false;
-
         return BitmapFactory.decodeResource(res, resId, options);
     }
 
-    public Bitmap decodeSampledBitmapFromFile(String filename, int reqWidth, int reqHeight) {
-        return decodeSampledBitmapFromFile(filename, reqWidth, reqHeight, null);
+    /**
+     * @param reqWidth  ImageView 宽度
+     * @param reqHeight ImageView 高度
+     * @return 缩放比例
+     */
+    public int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // https://developer.android.google.cn/topic/performance/graphics/load-bitmap?hl=zh-cn#java
+
+        // options.outHeight ：原始图片的高度信息
+        // options.outWidth 原始图片的宽度信息
+        int height = options.outHeight;
+        int width = options.outWidth;
+
+        int inSampleSize = 1;
+        if (height > reqHeight || width > reqWidth) {
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // 试探最小的缩放比例
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) >= reqHeight
+                    && (halfWidth / inSampleSize) >= reqWidth) {
+                // 用于计算样本大小值，即基于目标宽度和高度的 2 的幂
+                // 根据 inSampleSize 文档，计算 2 的幂的原因是解码器使用的最终值将向下舍入为最接近的 2 的幂。
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
     }
 
-    public Bitmap decodeSampledBitmapFromFile(String filename, int reqWidth, int reqHeight, IInBitmapListener listener) {
+    public Bitmap decodeFile(String filename, int reqWidth, int reqHeight) {
+        return decodeFile(filename, reqWidth, reqHeight, null);
+    }
+
+    public Bitmap decodeFile(String filename, int reqWidth, int reqHeight, IInBitmapListener listener) {
         final BitmapFactory.Options options = new BitmapFactory.Options();
+        // https://developer.android.google.cn/topic/performance/graphics/load-bitmap?hl=zh-cn#java
+        // inJustDecodeBounds = true: 表示不返回实际的Bitmap，用来查询图片大小信息。即不分配内存来避免内存溢出
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(filename, options);
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
         if (null != listener) {
-            options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
             useInBitmap(options, listener);
         }
         options.inJustDecodeBounds = false;
@@ -91,35 +112,20 @@ public class ImageUtil {
         return BitmapFactory.decodeFile(filename, options);
     }
 
-    public int getRequireHeight(Resources res, int id, int originImageViewWidth) {
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(res, id, options);
-        options.inJustDecodeBounds = false;
-        return originImageViewWidth * options.outHeight / options.outWidth;
+    public Bitmap decodeFileDescriptor(FileDescriptor fileDescriptor, int reqWidth, int reqHeight) {
+        return decodeFileDescriptor(fileDescriptor, reqWidth, reqHeight);
     }
 
-    public int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
-
-        if (height > reqHeight || width > reqWidth) {
-            final int halfHeight = height / 2;
-            final int halfWidth = width / 2;
-
-            while ((halfHeight / inSampleSize) > reqHeight && (halfWidth / inSampleSize) > reqWidth) {
-                inSampleSize *= 2;
-            }
-
-            long totalPixels = width * height / inSampleSize;
-            final long totalReqPixelsCap = reqWidth * reqHeight * 2;
-            while (totalPixels > totalReqPixelsCap) {
-                inSampleSize *= 2;
-                totalPixels /= 2;
-            }
+    public Bitmap decodeFileDescriptor(FileDescriptor fileDescriptor, int reqWidth, int reqHeight, IInBitmapListener listener) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFileDescriptor(fileDescriptor, null, options);
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        if (null != listener) {
+            useInBitmap(options, listener);
         }
-        return inSampleSize;
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeFileDescriptor(fileDescriptor, null, options);
     }
 
     private void useInBitmap(final BitmapFactory.Options options, IInBitmapListener listener) {

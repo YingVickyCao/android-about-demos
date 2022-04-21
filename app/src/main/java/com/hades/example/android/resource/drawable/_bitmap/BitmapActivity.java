@@ -37,7 +37,7 @@ public class BitmapActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageBitmap();
+        pageLoadBitmapPo();
     }
 
     private void pageBitmap() {

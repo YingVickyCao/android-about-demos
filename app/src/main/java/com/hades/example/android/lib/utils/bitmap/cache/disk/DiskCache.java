@@ -121,7 +121,7 @@ public class DiskCache {
                         if (inputStream != null) {
                             FileDescriptor fd = ((FileInputStream) inputStream).getFD();
                             // Decode bitmap, but we don't want to sample so give MAX_VALUE as the target dimensions
-                            bitmap = imageUtil.decodeSampledBitmapFromDescriptor(fd, Integer.MAX_VALUE, Integer.MAX_VALUE, memoryCache);
+                            bitmap = imageUtil.decodeFileDescriptor(fd, Integer.MAX_VALUE, Integer.MAX_VALUE, memoryCache);
                         }
                     }
                 } catch (final IOException e) {

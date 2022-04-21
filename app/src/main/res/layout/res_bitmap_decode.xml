@@ -12,9 +12,9 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="@dimen/size_100"
         android:layout_marginTop="@dimen/size_topic"
-        android:background="@android:color/holo_orange_light" />
+        android:background="@android:color/holo_orange_light"
+        android:minHeight="@dimen/size_100" />
 
     <LinearLayout
         android:id="@+id/btns"
@@ -30,23 +30,23 @@
 
         <Button
             android:id="@+id/setImageResource"
-            style="@style/btn.small"
-            android:text=" from SetImageResource" />
+            style="@style/btn"
+            android:text="SetImageResource" />
 
         <Button
             android:id="@+id/decodeFile"
-            style="@style/btn.small"
-            android:text="Decode bitmap from file" />
+            style="@style/btn"
+            android:text="BitmapFactory.decodeFile" />
 
         <Button
             android:id="@+id/decodeResource"
-            style="@style/btn.small"
-            android:text="Decode bitmap from decodeResource" />
+            style="@style/btn"
+            android:text="BitmapFactory.decodeResource" />
 
         <Button
-            android:id="@+id/decodeResourceWithSampled"
-            style="@style/btn.small"
-            android:text="Decode sampled bitmap from decodeResource" />
+            android:id="@+id/decodeResource_Sampled"
+            style="@style/btn"
+            android:text="Decode sampled bitmap from Resource" />
     </LinearLayout>
 
 </RelativeLayout>

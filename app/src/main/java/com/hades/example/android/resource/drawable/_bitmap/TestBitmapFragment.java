@@ -1,7 +1,5 @@
 package com.hades.example.android.resource.drawable._bitmap;
 
-import android.content.res.AssetFileDescriptor;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -20,9 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.hades.example.android.R;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.Buffer;
@@ -30,8 +26,8 @@ import java.nio.ByteBuffer;
 
 public class TestBitmapFragment extends Fragment {
     private static final String TAG = TestBitmapFragment.class.getSimpleName();
-    private static String IMAGE_FULL_PATH = "/sdcard/photo7.jpg";
-    private static String IMAGE_NAME = "photo7.jpg";
+    private final String IMAGE_FULL_PATH = "/sdcard/photo7.jpg";
+    private final String IMAGE_NAME = "photo7.jpg";
 
     private ImageView img0;
 
