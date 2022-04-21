@@ -64,9 +64,10 @@
     <string name="page_font">Font</string>
 
     <string name="page_widget">Widget</string>
-    <string name="page_CustomView">Custom View</string>
     <string name="page_RelativeView">RelativeView</string>
     <string name="page_view_location">View location</string>
+    <string name="page_CustomView">Custom View</string>
+    <string name="page_CustomView_Canvas" tools:ignore="ExtraTranslation">Custom View - Canvas</string>
     <string name="page_CustomView_CascadeLayout">Custom View 4 CascadeLayout</string>
     <string name="page_CustomView_ShadowView">Custom View 4 Shadow View</string>
     <string name="page_ConstraintLayout">ConstraintLayout</string>

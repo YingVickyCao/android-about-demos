@@ -8,10 +8,6 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.PermissionActivity;
-import com.hades.example.android.resource.drawable._bitmap.TestBitmapFragment;
-import com.hades.example.android.resource.drawable._bitmap.TestBitmapViewerFragment;
-import com.hades.example.android.resource.drawable._bitmap.TestDecodeSampledBitmapFragment;
-import com.hades.example.android.resource.drawable._bitmap.three_level_cache.ImageGridActivity;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.example.android.widget.custom_view.shadow.TestShadowViewFragment;
 
@@ -45,7 +41,7 @@ public class CustomViewActivity extends PermissionActivity {
     }
 
     private void pageCustomVew() {
-        showFragment(new TestCustomViewFragment());
+        showFragment(new TestCanvasFragment());
     }
 
     private void pageCustomView4CascadeLayout() {

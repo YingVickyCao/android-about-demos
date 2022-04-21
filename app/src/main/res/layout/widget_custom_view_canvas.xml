@@ -6,7 +6,7 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_CustomView"
+        android:text="@string/page_CustomView_Canvas"
         android:visibility="visible" />
 
     <ScrollView
@@ -25,20 +25,20 @@
                 android:text="Path - Triangle"
                 android:visibility="visible" />
 
-            <com.hades.example.android.widget.custom_view.path.Triangle
-                android:layout_width="@dimen/size_200"
-                android:layout_height="@dimen/size_100"
-                android:visibility="visible" />
+<!--            <com.hades.example.android.widget.custom_view.path.Triangle-->
+<!--                android:layout_width="@dimen/size_200"-->
+<!--                android:layout_height="@dimen/size_100"-->
+<!--                android:visibility="visible" />-->
 
-            <TextView
-                style="@style/tv"
-                android:text="Path - PathEffect"
-                android:visibility="visible" />
+<!--            <TextView-->
+<!--                style="@style/tv"-->
+<!--                android:text="Path - PathEffect"-->
+<!--                android:visibility="visible" />-->
 
-            <com.hades.example.android.widget.custom_view.path.PathWithPathEffect
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/size_200"
-                android:visibility="visible" />
+<!--            <com.hades.example.android.widget.custom_view.path.PathWithPathEffect-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/size_200"-->
+<!--                android:visibility="visible" />-->
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
