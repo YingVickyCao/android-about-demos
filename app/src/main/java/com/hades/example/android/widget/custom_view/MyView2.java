@@ -108,8 +108,11 @@ public class MyView2 extends View {
         /**
          *Second Column
          */
+        paint.reset();
+        paint.setAntiAlias(true);
         paint.setColor(Color.GREEN);
         paint.setStyle(Paint.Style.FILL);
+        paint.setStrokeWidth(getResources().getDimension(R.dimen.paint_stroke_width));
 
         canvas.drawCircle((float) viewWidth / 3 + sizeNum_10, (float) viewWidth / 10 + sizeNum_10, (float) viewWidth / 10, paint);
         canvas.drawRect((float) viewWidth / 5 + sizeNum_20, (float) viewWidth / 5 + sizeNum_20, (float) viewWidth * 2 / 5 + sizeNum_20, (float) viewWidth * 2 / 5 + sizeNum_20, paint);
@@ -133,5 +136,44 @@ public class MyView2 extends View {
         trianglePath.lineTo((float) viewWidth * 3 / 10 + sizeNum_20, (float) viewHeight * 6 / 10); // 2. ----->.3
         trianglePath.close();   // .3 -> .1
         canvas.drawPath(trianglePath, paint);
+
+        /**
+         *Third Column
+         */
+        paint.reset();
+        paint.setShader(shader);
+        paint.setShadowLayer(25, 20, 20, Color.GRAY);
+
+        canvas.drawCircle((float) viewWidth * 6 / 10 + sizeNum_10, (float) viewWidth / 10 + sizeNum_10, (float) viewWidth / 10, paint);
+        canvas.drawRect((float) viewWidth * 5 / 10 + sizeNum_20, (float) viewWidth / 5 + sizeNum_20, (float) viewWidth * 7 / 10 + sizeNum_20, (float) viewWidth * 2 / 5 + sizeNum_20, paint);
+        canvas.drawRect((float) viewWidth * 5 / 10 + sizeNum_20, (float) viewHeight / 4 + sizeNum_10 * 3, (float) viewWidth * 7 / 10 + sizeNum_20, (float) viewHeight / 4 + sizeNum_10 * 7, paint);
+
+        rectF.left = (float) viewWidth * 5 / 10 + sizeNum_20;
+        rectF.top = (float) (viewHeight / 3) + sizeNum_10 * 3;
+        rectF.right = (float) viewWidth * 7 / 10 + sizeNum_20;
+        rectF.bottom = (float) (viewHeight / 3) + sizeNum_20 * 4;
+        canvas.drawRoundRect(rectF, borderSize, borderSize, paint);
+
+        rectF.left = (float) viewWidth * 5 / 10 + sizeNum_20;
+        rectF.top = (float) (viewHeight / 2);
+        rectF.right = (float) viewWidth * 7 / 10 + sizeNum_20;
+        rectF.bottom = (float) (viewHeight / 2) + sizeNum_10 * 3;
+        canvas.drawOval(rectF, paint);
+
+        trianglePath.reset();
+        trianglePath.moveTo((float) viewWidth * 5 / 10 + sizeNum_20, (float) viewHeight * 7 / 10); // .1
+        trianglePath.lineTo((float) viewWidth * 7 / 10 + sizeNum_20, (float) viewHeight * 7 / 10);   //.1 -----> .2
+        trianglePath.lineTo((float) viewWidth * 6 / 10 + sizeNum_20, (float) viewHeight * 6 / 10); // 2. ----->.3
+        trianglePath.close();   // .3 -> .1
+        canvas.drawPath(trianglePath, paint);
+
+        /**
+         *Forth Column
+         */
+        paint.setAntiAlias(true);
+        paint.setColor(Color.YELLOW);
+        paint.setTextSize(getResources().getDimension(R.dimen.paint_text_size));
+        canvas.drawText("Test", (float) viewWidth * 5 / 10 + sizeNum_10, (float) viewWidth / 10 + sizeNum_10, paint);
+
     }
 }
