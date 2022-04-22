@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -18,6 +19,8 @@ public class MyView2 extends View {
     private static final String TAG = "MyView2";
 
     private RectF rectF = new RectF();
+    private Path trianglePath = new Path();
+    private Path pentagonPath = new Path();
 
     public MyView2(Context context) {
         super(context);
@@ -70,7 +73,7 @@ public class MyView2 extends View {
 
         canvas.drawCircle((float) viewWidth / 10 + sizeNum_10, (float) viewWidth / 10 + sizeNum_10, (float) viewWidth / 10, paint);
         canvas.drawRect(sizeNum_10, (float) viewWidth / 5 + sizeNum_20, (float) viewWidth / 5 + sizeNum_10, (float) viewWidth * 2 / 5 + sizeNum_20, paint);
-        canvas.drawRect(sizeNum_10, (float) viewHeight / 4 + sizeNum_20 * 2, (float) viewWidth / 5 + sizeNum_10, (float) viewHeight / 4 + sizeNum_20 * 4, paint);
+        canvas.drawRect(sizeNum_10, (float) viewHeight / 4 + sizeNum_10 * 3, (float) viewWidth / 5 + sizeNum_10, (float) viewHeight / 4 + sizeNum_10 * 7, paint);
         /**
          * Warning: Avoid object allocations during draw/layout operations (preallocate and reuse instead)
          * 原因：不要在自定义View的onMeasure、onLayout、onDraw等方法里面做new对象的操作
@@ -78,17 +81,28 @@ public class MyView2 extends View {
 //        RectF rectF = new RectF(sizeNum_10, (float) viewHeight / 3 + sizeNum_10 * 3, (float) viewHeight / 5 + 10, (float) viewHeight / 3 + sizeNum_10 * 3 * 3);
         // Fix:start
         rectF.left = sizeNum_10;
-        rectF.top = (float) viewHeight / 3 + sizeNum_10 * 4;
-        rectF.right = (float) viewWidth / 5 + 10;
-        rectF.bottom = (float) viewHeight / 3 + sizeNum_10 * 6;
+        rectF.top = (float) (viewHeight / 3) + sizeNum_10 * 3;
+        rectF.right = (float) viewWidth / 5 + sizeNum_10;
+        rectF.bottom = (float) (viewHeight / 3) + sizeNum_20 * 4;
         // Fix:END
         canvas.drawRoundRect(rectF, borderSize, borderSize, paint);
 
         rectF.left = sizeNum_10;
-        rectF.top = (float) (viewHeight / 2.5) + sizeNum_10 * 3;
-        rectF.right = (float) viewWidth / 5 + 10;
-        rectF.bottom = (float) (viewHeight / 2.5) + sizeNum_10 * 6;
-        paint.setColor(Color.GREEN);
+        rectF.top = (float) (viewHeight / 2);
+        rectF.right = (float) viewWidth / 5 + sizeNum_10;
+        rectF.bottom = (float) (viewHeight / 2) + sizeNum_10 * 3;
         canvas.drawOval(rectF, paint);
+
+        /**
+         * .1 -> .2 -> .3---close--->.1
+         *        .3
+         *
+         *  .1----------> .2
+         */
+        trianglePath.moveTo(sizeNum_10, (float) viewHeight * 7 / 10); // .1
+        trianglePath.lineTo((float) viewWidth / 5 + sizeNum_10, (float) viewHeight * 7 / 10);   //.1 -----> .2
+        trianglePath.lineTo((float) viewWidth / 10 + sizeNum_10, (float) viewHeight * 6 / 10); // 2. ----->.3
+        trianglePath.close();   // .3 -> .1
+        canvas.drawPath(trianglePath, paint);
     }
 }
