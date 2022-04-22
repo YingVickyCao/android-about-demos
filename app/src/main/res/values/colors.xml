@@ -43,7 +43,7 @@
     <color name="dark_text_0">#CADACA</color>
     <color name="dark_s_0">#33191E19</color>
 
-     <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
@@ -66,6 +66,9 @@
     <color name="green">#0f0</color>
     <color name="blue">#00f</color>
     <color name="yellow">#ff0</color>
+
+    <!-- Custom View   -->
+    <color name="paint_bg">@android:color/black</color>
 
     <integer-array name="colors_integer_array">
         <item>0xFFFF0000</item>

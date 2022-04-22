@@ -68,9 +68,17 @@
     <dimen name="image_thumbnail_spacing">1dp</dimen>
 
     <dimen name="radius_size">10dp</dimen>
-    <item format="float" name="alpha" type="dimen">0.30</item>
+    <item name="alpha" format="float" type="dimen">0.30</item>
 
     <dimen name="dp_01">1dp</dimen>
     <dimen name="sp_01">1sp</dimen>
     <dimen name="px_01">1px</dimen>
+
+    <!-- Custom View   -->
+    <dimen name="paint_stroke_width">1dp</dimen>
+    <dimen name="paint_border_size">4dp</dimen>
+    <dimen name="paint_side_num_5">5dp</dimen>
+    <dimen name="paint_side_num_10">10dp</dimen>
+    <dimen name="paint_side_num_15">15dp</dimen>
+    <dimen name="paint_side_num_20">20dp</dimen>
 </resources>
