@@ -170,10 +170,13 @@ public class MyView2 extends View {
         /**
          *Forth Column
          */
+        paint.reset();
         paint.setAntiAlias(true);
-        paint.setColor(Color.YELLOW);
+        paint.setColor(Color.BLUE);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setStrokeWidth(getResources().getDimension(R.dimen.paint_stroke_width));
         paint.setTextSize(getResources().getDimension(R.dimen.paint_text_size));
-        canvas.drawText("Test", (float) viewWidth * 5 / 10 + sizeNum_10, (float) viewWidth / 10 + sizeNum_10, paint);
 
+        canvas.drawText("Test", (float) viewWidth * 8 / 10, (float) viewWidth / 10 + sizeNum_10, paint);
     }
 }

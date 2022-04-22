@@ -68,7 +68,7 @@
     <color name="yellow">#ff0</color>
 
     <!-- Custom View   -->
-    <color name="paint_bg">@android:color/black</color>
+    <color name="paint_bg">@android:color/white</color>
 
     <integer-array name="colors_integer_array">
         <item>0xFFFF0000</item>
