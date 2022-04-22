@@ -54,26 +54,37 @@ public class MyView2 extends View {
          */
         canvas.drawColor(getResources().getColor(R.color.paint_bg, getContext().getTheme()));
 
+        /**
+         * 去锯齿
+         */
         paint.setAntiAlias(true);
-        paint.setColor(Color.RED);
+        /**
+         * 设置画笔的颜色
+         * paint.setColor
+         * paint.setARGB
+         */
+        // paint.setColor(Color.RED);
+        paint.setARGB(0xff, 0xFF, 0, 0);
+        /**
+         * 描边
+         */
         paint.setStyle(Paint.Style.STROKE);
         float strokeWidth = getResources().getDimension(R.dimen.paint_stroke_width);
         Log.d(TAG, "onDraw: strokeWidth=" + strokeWidth);
+        /**
+         * 设置描边的宽度
+         */
         paint.setStrokeWidth(strokeWidth);
 
         int viewWidth = this.getWidth();
         int viewHeight = this.getHeight();
         Log.d(TAG, "onDraw: viewWidth=" + viewWidth + ",viewHeight=" + viewHeight);
 
-        float sizeNum_5 = getResources().getDimension(R.dimen.paint_side_num_5);
-        float sizeNum_10 = getResources().getDimension(R.dimen.paint_side_num_10);
-        float sizeNum_15 = getResources().getDimension(R.dimen.paint_side_num_15);
-        float sizeNum_20 = getResources().getDimension(R.dimen.paint_side_num_20);
-
+        float sizeNum_10 = getResources().getDimension(R.dimen.size_10);
         float borderSize = getResources().getDimension(R.dimen.paint_border_size);
 
         canvas.drawCircle((float) viewWidth / 10 + sizeNum_10, (float) viewWidth / 10 + sizeNum_10, (float) viewWidth / 10, paint);
-        canvas.drawRect(sizeNum_10, (float) viewWidth / 5 + sizeNum_20, (float) viewWidth / 5 + sizeNum_10, (float) viewWidth * 2 / 5 + sizeNum_20, paint);
+        canvas.drawRect(sizeNum_10, (float) viewWidth / 5 + sizeNum_10 * 2, (float) viewWidth / 5 + sizeNum_10, (float) viewWidth * 2 / 5 + sizeNum_10 * 2, paint);
         canvas.drawRect(sizeNum_10, (float) viewHeight / 4 + sizeNum_10 * 3, (float) viewWidth / 5 + sizeNum_10, (float) viewHeight / 4 + sizeNum_10 * 7, paint);
         /**
          * Warning: Avoid object allocations during draw/layout operations (preallocate and reuse instead)
@@ -84,7 +95,7 @@ public class MyView2 extends View {
         rectF.left = sizeNum_10;
         rectF.top = (float) (viewHeight / 3) + sizeNum_10 * 3;
         rectF.right = (float) viewWidth / 5 + sizeNum_10;
-        rectF.bottom = (float) (viewHeight / 3) + sizeNum_20 * 4;
+        rectF.bottom = (float) (viewHeight / 3) + sizeNum_10 * 8;
         // Fix:END
         canvas.drawRoundRect(rectF, borderSize, borderSize, paint);
 
@@ -115,25 +126,25 @@ public class MyView2 extends View {
         paint.setStrokeWidth(getResources().getDimension(R.dimen.paint_stroke_width));
 
         canvas.drawCircle((float) viewWidth / 3 + sizeNum_10, (float) viewWidth / 10 + sizeNum_10, (float) viewWidth / 10, paint);
-        canvas.drawRect((float) viewWidth / 5 + sizeNum_20, (float) viewWidth / 5 + sizeNum_20, (float) viewWidth * 2 / 5 + sizeNum_20, (float) viewWidth * 2 / 5 + sizeNum_20, paint);
-        canvas.drawRect((float) viewWidth / 5 + sizeNum_20, (float) viewHeight / 4 + sizeNum_10 * 3, (float) viewWidth * 2 / 5 + sizeNum_20, (float) viewHeight / 4 + sizeNum_10 * 7, paint);
+        canvas.drawRect((float) viewWidth / 5 + sizeNum_10 * 2, (float) viewWidth / 5 + sizeNum_10 * 2, (float) viewWidth * 2 / 5 + sizeNum_10 * 2, (float) viewWidth * 2 / 5 + sizeNum_10 * 2, paint);
+        canvas.drawRect((float) viewWidth / 5 + sizeNum_10 * 2, (float) viewHeight / 4 + sizeNum_10 * 3, (float) viewWidth * 2 / 5 + sizeNum_10 * 2, (float) viewHeight / 4 + sizeNum_10 * 7, paint);
 
-        rectF.left = (float) viewWidth / 5 + sizeNum_20;
+        rectF.left = (float) viewWidth / 5 + sizeNum_10 * 2;
         rectF.top = (float) (viewHeight / 3) + sizeNum_10 * 3;
-        rectF.right = (float) viewWidth * 2 / 5 + sizeNum_20;
-        rectF.bottom = (float) (viewHeight / 3) + sizeNum_20 * 4;
+        rectF.right = (float) viewWidth * 2 / 5 + sizeNum_10 * 2;
+        rectF.bottom = (float) (viewHeight / 3) + sizeNum_10 * 8;
         canvas.drawRoundRect(rectF, borderSize, borderSize, paint);
 
-        rectF.left = (float) viewWidth / 5 + sizeNum_20;
+        rectF.left = (float) viewWidth / 5 + sizeNum_10 * 2;
         rectF.top = (float) (viewHeight / 2);
-        rectF.right = (float) viewWidth * 2 / 5 + sizeNum_20;
+        rectF.right = (float) viewWidth * 2 / 5 + sizeNum_10 * 2;
         rectF.bottom = (float) (viewHeight / 2) + sizeNum_10 * 3;
         canvas.drawOval(rectF, paint);
 
         trianglePath.reset();
-        trianglePath.moveTo((float) viewWidth / 5 + sizeNum_20, (float) viewHeight * 7 / 10); // .1
-        trianglePath.lineTo((float) viewWidth * 2 / 5 + sizeNum_20, (float) viewHeight * 7 / 10);   //.1 -----> .2
-        trianglePath.lineTo((float) viewWidth * 3 / 10 + sizeNum_20, (float) viewHeight * 6 / 10); // 2. ----->.3
+        trianglePath.moveTo((float) viewWidth / 5 + sizeNum_10 * 2, (float) viewHeight * 7 / 10); // .1
+        trianglePath.lineTo((float) viewWidth * 2 / 5 + sizeNum_10 * 2, (float) viewHeight * 7 / 10);   //.1 -----> .2
+        trianglePath.lineTo((float) viewWidth * 3 / 10 + sizeNum_10 * 2, (float) viewHeight * 6 / 10); // 2. ----->.3
         trianglePath.close();   // .3 -> .1
         canvas.drawPath(trianglePath, paint);
 
@@ -145,25 +156,25 @@ public class MyView2 extends View {
         paint.setShadowLayer(25, 20, 20, Color.GRAY);
 
         canvas.drawCircle((float) viewWidth * 6 / 10 + sizeNum_10, (float) viewWidth / 10 + sizeNum_10, (float) viewWidth / 10, paint);
-        canvas.drawRect((float) viewWidth * 5 / 10 + sizeNum_20, (float) viewWidth / 5 + sizeNum_20, (float) viewWidth * 7 / 10 + sizeNum_20, (float) viewWidth * 2 / 5 + sizeNum_20, paint);
-        canvas.drawRect((float) viewWidth * 5 / 10 + sizeNum_20, (float) viewHeight / 4 + sizeNum_10 * 3, (float) viewWidth * 7 / 10 + sizeNum_20, (float) viewHeight / 4 + sizeNum_10 * 7, paint);
+        canvas.drawRect((float) viewWidth * 5 / 10 + sizeNum_10 * 2, (float) viewWidth / 5 + sizeNum_10 * 2, (float) viewWidth * 7 / 10 + sizeNum_10 * 2, (float) viewWidth * 2 / 5 + sizeNum_10 * 2, paint);
+        canvas.drawRect((float) viewWidth * 5 / 10 + sizeNum_10 * 2, (float) viewHeight / 4 + sizeNum_10 * 3, (float) viewWidth * 7 / 10 + sizeNum_10 * 2, (float) viewHeight / 4 + sizeNum_10 * 7, paint);
 
-        rectF.left = (float) viewWidth * 5 / 10 + sizeNum_20;
+        rectF.left = (float) viewWidth * 5 / 10 + sizeNum_10 * 2;
         rectF.top = (float) (viewHeight / 3) + sizeNum_10 * 3;
-        rectF.right = (float) viewWidth * 7 / 10 + sizeNum_20;
-        rectF.bottom = (float) (viewHeight / 3) + sizeNum_20 * 4;
+        rectF.right = (float) viewWidth * 7 / 10 + sizeNum_10 * 2;
+        rectF.bottom = (float) (viewHeight / 3) + sizeNum_10 * 8;
         canvas.drawRoundRect(rectF, borderSize, borderSize, paint);
 
-        rectF.left = (float) viewWidth * 5 / 10 + sizeNum_20;
+        rectF.left = (float) viewWidth * 5 / 10 + sizeNum_10 * 2;
         rectF.top = (float) (viewHeight / 2);
-        rectF.right = (float) viewWidth * 7 / 10 + sizeNum_20;
+        rectF.right = (float) viewWidth * 7 / 10 + sizeNum_10 * 2;
         rectF.bottom = (float) (viewHeight / 2) + sizeNum_10 * 3;
         canvas.drawOval(rectF, paint);
 
         trianglePath.reset();
-        trianglePath.moveTo((float) viewWidth * 5 / 10 + sizeNum_20, (float) viewHeight * 7 / 10); // .1
-        trianglePath.lineTo((float) viewWidth * 7 / 10 + sizeNum_20, (float) viewHeight * 7 / 10);   //.1 -----> .2
-        trianglePath.lineTo((float) viewWidth * 6 / 10 + sizeNum_20, (float) viewHeight * 6 / 10); // 2. ----->.3
+        trianglePath.moveTo((float) viewWidth * 5 / 10 + sizeNum_10 * 2, (float) viewHeight * 7 / 10); // .1
+        trianglePath.lineTo((float) viewWidth * 7 / 10 + sizeNum_10 * 2, (float) viewHeight * 7 / 10);   //.1 -----> .2
+        trianglePath.lineTo((float) viewWidth * 6 / 10 + sizeNum_10 * 2, (float) viewHeight * 6 / 10); // 2. ----->.3
         trianglePath.close();   // .3 -> .1
         canvas.drawPath(trianglePath, paint);
 
