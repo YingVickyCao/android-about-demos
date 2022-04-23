@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.custom_view.path;
+package com.hades.example.android.widget.custom_view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -12,7 +12,12 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 
+/**
+ * Path
+ * canvas.drawPath
+ */
 public class Triangle extends View {
+    Path path = new Path();
     Paint paint;
 
     public Triangle(Context context) {
@@ -47,12 +52,12 @@ public class Triangle extends View {
         paint.setStrokeWidth(getResources().getDimension(R.dimen.stroke_width));
 
         // 定义一个Path对象，封闭成一个三角形
-        Path path1 = new Path();
-        path1.moveTo( (int) getResources().getDimension(R.dimen.size_100),  (int) getResources().getDimension(R.dimen.size_25));
-        path1.lineTo( (int) getResources().getDimension(R.dimen.size_50), (int) getResources().getDimension(R.dimen.size_75));
-        path1.lineTo( (int) getResources().getDimension(R.dimen.size_150), (int) getResources().getDimension(R.dimen.size_75));
-        path1.close();
+        path.moveTo((int) getResources().getDimension(R.dimen.size_100), (int) getResources().getDimension(R.dimen.size_25));
+        path.lineTo((int) getResources().getDimension(R.dimen.size_50), (int) getResources().getDimension(R.dimen.size_75));
+        path.lineTo((int) getResources().getDimension(R.dimen.size_150), (int) getResources().getDimension(R.dimen.size_75));
+        path.close();
+
         // 根据Path进行绘制，绘制三角形
-        canvas.drawPath(path1, paint);
+        canvas.drawPath(path, paint);
     }
 }

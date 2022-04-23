@@ -9,15 +9,51 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 
+/**
+ * Example: Canvas and Paint
+ * canvas.drawColor
+ * Canvas.drawCircle        绘制圆形
+ * Canvas.drawRect          绘制矩形、长方形
+ * Canvas.drawRoundRect     绘制圆角矩形
+ * Canvas.drawOval          绘制椭圆
+ * Canvas.drawPath          使用Path，绘制任意形状
+ * Canvas.drawText
+ * <p>
+ * Paint.setColor
+ * Paint.setARGB
+ * Paint.setStyle
+ * Paint.setStrokeWidth
+ * Paint.reset()
+ * Paint.setShader
+ * Paint.setShadowLayer
+ * Paint.setTextSize
+ * Paint.setAntiAlias
+ * Paint.moveTo
+ * Paint.lineTo
+ */
 public class MyView extends View {
-    public MyView(Context context, AttributeSet set) {
-        super(context, set);
+    private static final String TAG = "MyView2";
+
+    private RectF rectF = new RectF();
+    private Paint paint = new Paint();
+    private Path trianglePath = new Path();
+    Shader shader = new LinearGradient(0, 0, 40, 60, new int[]{Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW}, null, Shader.TileMode.REPEAT);
+    float sizeNum_10 = getResources().getDimension(R.dimen.size_10);
+    float borderSize = getResources().getDimension(R.dimen.paint_border_size);
+
+    public MyView(Context context) {
+        super(context);
+    }
+
+    public MyView(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
     }
 
     public MyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -28,142 +64,193 @@ public class MyView extends View {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public MyView(Context context) {
-        super(context);
-    }
-
+    /**
+     * 重写该方法，进行绘图
+     *
+     * @param canvas
+     */
     @Override
-    // 重写该方法，进行绘图
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        // 把整张画布绘制成白色
-        canvas.drawColor(Color.WHITE);
 
-        Paint paint = new Paint();
+        /**
+         * 给画布绘制底色
+         */
+        canvas.drawColor(getResources().getColor(R.color.paint_bg, getContext().getTheme()));
 
-        // 去锯齿
+        /**
+         * 去锯齿
+         */
         paint.setAntiAlias(true);
-        paint.setColor(Color.RED);
+        /**
+         * 设置画笔的颜色
+         * paint.setColor
+         * paint.setARGB
+         */
+        // paint.setColor(Color.RED);
+        paint.setARGB(0xff, 0xFF, 0, 0);
+        /**
+         * 描边
+         */
         paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(4);
+        float strokeWidth = getResources().getDimension(R.dimen.paint_stroke_width);
+        Log.d(TAG, "onDraw: strokeWidth=" + strokeWidth);
+        /**
+         * 设置描边的宽度
+         */
+        paint.setStrokeWidth(strokeWidth);
+
         int viewWidth = this.getWidth();
+        int viewHeight = this.getHeight();
+        Log.d(TAG, "onDraw: viewWidth=" + viewWidth + ",viewHeight=" + viewHeight);
 
-//        // 绘制圆形
-        canvas.drawCircle(viewWidth / 10 + 10, viewWidth / 10 + 10, viewWidth / 10, paint);
-//
-//        // 绘制正方形
-        canvas.drawRect(10, viewWidth / 5 + 20, viewWidth / 5 + 10, viewWidth * 2 / 5 + 20, paint);
-//
-//        // 绘制矩形
-        canvas.drawRect(10, viewWidth * 2 / 5 + 30, viewWidth / 5 + 10, viewWidth / 2 + 30, paint);
-        RectF re1 = new RectF(10, viewWidth / 2 + 40, 10 + viewWidth / 5, viewWidth * 3 / 5 + 40);
+        /**
+         *============== First Column,START ==============
+         */
+        /**
+         * 绘制圆形
+         */
+        canvas.drawCircle((float) viewWidth / 10 + sizeNum_10, (float) viewWidth / 10 + sizeNum_10, (float) viewWidth / 10, paint);
+        /**
+         * 绘制正方形
+         */
+        canvas.drawRect(sizeNum_10, (float) viewWidth / 5 + sizeNum_10 * 2, (float) viewWidth / 5 + sizeNum_10, (float) viewWidth * 2 / 5 + sizeNum_10 * 2, paint);
+        /**
+         * 绘制长方形
+         */
+        canvas.drawRect(sizeNum_10, (float) viewHeight / 4 + sizeNum_10 * 3, (float) viewWidth / 5 + sizeNum_10, (float) viewHeight / 4 + sizeNum_10 * 7, paint);
 
-        // 绘制圆角矩形
-        canvas.drawRoundRect(re1, 15, 15, paint);
-        RectF re11 = new RectF(10, viewWidth * 3 / 5 + 50, 10 + viewWidth / 5, viewWidth * 7 / 10 + 50);
-        // 绘制椭圆
-        canvas.drawOval(re11, paint);
-        // 定义一个Path对象，封闭成一个三角形
-        Path path1 = new Path();
-        path1.moveTo(10, viewWidth * 9 / 10 + 60);
-        path1.lineTo(viewWidth / 5 + 10, viewWidth * 9 / 10 + 60);
-        path1.lineTo(viewWidth / 10 + 10, viewWidth * 7 / 10 + 60);
-        path1.close();
-        // 根据Path进行绘制，绘制三角形
-        canvas.drawPath(path1, paint);
-        // 定义一个Path对象，封闭成一个五角形
-        Path path2 = new Path();
-        path2.moveTo(10 + viewWidth / 15, viewWidth * 9 / 10 + 70);
-        path2.lineTo(10 + viewWidth * 2 / 15, viewWidth * 9 / 10 + 70);
-        path2.lineTo(10 + viewWidth / 5, viewWidth + 70);
-        path2.lineTo(10 + viewWidth / 10, viewWidth * 11 / 10 + 70);
-        path2.lineTo(10, viewWidth + 70);
-        path2.close();
-        // 根据Path进行绘制，绘制五角形
-        canvas.drawPath(path2, paint);
-        // ----------设置填充风格后绘制----------
+
+        /**
+         * 绘制圆角矩形
+         */
+        /**
+         * Warning: Avoid object allocations during draw/layout operations (preallocate and reuse instead)
+         * 原因：不要在自定义View的onMeasure、onLayout、onDraw等方法里面做new对象的操作
+         */
+//        RectF rectF = new RectF(sizeNum_10, (float) viewHeight / 3 + sizeNum_10 * 3, (float) viewHeight / 5 + 10, (float) viewHeight / 3 + sizeNum_10 * 3 * 3);
+        // Fix:start
+        rectF.left = sizeNum_10;
+        rectF.top = (float) (viewHeight / 3) + sizeNum_10 * 3;
+        rectF.right = (float) viewWidth / 5 + sizeNum_10;
+        rectF.bottom = (float) (viewHeight / 3) + sizeNum_10 * 8;
+        // Fix:END
+        canvas.drawRoundRect(rectF, borderSize, borderSize, paint);
+
+        /**
+         * 绘制椭圆
+         */
+        rectF.left = sizeNum_10;
+        rectF.top = (float) (viewHeight / 2);
+        rectF.right = (float) viewWidth / 5 + sizeNum_10;
+        rectF.bottom = (float) (viewHeight / 2) + sizeNum_10 * 3;
+        canvas.drawOval(rectF, paint);
+
+        /**
+         * 使用Path，绘制三角形
+         */
+        /**
+         * .1 -> .2 -> .3---close--->.1
+         *        .3
+         *
+         *  .1----------> .2
+         */
+        trianglePath.moveTo(sizeNum_10, (float) viewHeight * 7 / 10); // .1
+        trianglePath.lineTo((float) viewWidth / 5 + sizeNum_10, (float) viewHeight * 7 / 10);   //.1 -----> .2
+        trianglePath.lineTo((float) viewWidth / 10 + sizeNum_10, (float) viewHeight * 6 / 10); // 2. ----->.3
+        trianglePath.close();   // .3 -> .1
+        canvas.drawPath(trianglePath, paint);
+        /**
+         *============== First Column,END ==============
+         */
+        /**
+         *============== Second Column,START ==============
+         */
+        paint.reset();
+        paint.setAntiAlias(true);
+        paint.setColor(Color.GREEN);
         paint.setStyle(Paint.Style.FILL);
-        paint.setColor(Color.RED);
+        paint.setStrokeWidth(getResources().getDimension(R.dimen.paint_stroke_width));
 
+        canvas.drawCircle((float) viewWidth / 3 + sizeNum_10, (float) viewWidth / 10 + sizeNum_10, (float) viewWidth / 10, paint);
+        canvas.drawRect((float) viewWidth / 5 + sizeNum_10 * 2, (float) viewWidth / 5 + sizeNum_10 * 2, (float) viewWidth * 2 / 5 + sizeNum_10 * 2, (float) viewWidth * 2 / 5 + sizeNum_10 * 2, paint);
+        canvas.drawRect((float) viewWidth / 5 + sizeNum_10 * 2, (float) viewHeight / 4 + sizeNum_10 * 3, (float) viewWidth * 2 / 5 + sizeNum_10 * 2, (float) viewHeight / 4 + sizeNum_10 * 7, paint);
 
-        // 绘制圆形
-        canvas.drawCircle(viewWidth * 3 / 10 + 20, viewWidth / 10 + 10, viewWidth / 10, paint);
-        // 绘制正方形
-        canvas.drawRect(viewWidth / 5 + 20, viewWidth / 5 + 20, viewWidth * 2 / 5 + 20, viewWidth * 2 / 5 + 20, paint);
-        // 绘制矩形
-        canvas.drawRect(viewWidth / 5 + 20, viewWidth * 2 / 5 + 30, viewWidth * 2 / 5 + 20, viewWidth / 2 + 30, paint);
-        RectF re2 = new RectF(viewWidth / 5 + 20, viewWidth / 2 + 40, 20 + viewWidth * 2 / 5, viewWidth * 3 / 5 + 40);
-        // 绘制圆角矩形
-        canvas.drawRoundRect(re2, 15, 15, paint);
-        RectF re21 = new RectF(20 + viewWidth / 5, viewWidth * 3 / 5 + 50, 20 + viewWidth * 2 / 5, viewWidth * 7 / 10 + 50);
-        // 绘制椭圆
-        canvas.drawOval(re21, paint);
-        // 定义一个Path对象，封闭成一个三角形
-        Path path3 = new Path();
-        path3.moveTo(20 + viewWidth / 5, viewWidth * 9 / 10 + 60);
-        path3.lineTo(viewWidth * 2 / 5 + 20, viewWidth * 9 / 10 + 60);
-        path3.lineTo(viewWidth * 3 / 10 + 20, viewWidth * 7 / 10 + 60);
-        path3.close();
-        // 根据Path进行绘制，绘制三角形
-        canvas.drawPath(path3, paint);
-        // 定义一个Path对象，封闭成一个五角形
-        Path path4 = new Path();
-        path4.moveTo(20 + viewWidth * 4 / 15, viewWidth * 9 / 10 + 70);
-        path4.lineTo(20 + viewWidth / 3, viewWidth * 9 / 10 + 70);
-        path4.lineTo(20 + viewWidth * 2 / 5, viewWidth + 70);
-        path4.lineTo(20 + viewWidth * 3 / 10, viewWidth * 11 / 10 + 70);
-        path4.lineTo(20 + viewWidth / 5, viewWidth + 70);
-        path4.close();
-        // 根据Path进行绘制，绘制五角形
-        canvas.drawPath(path4, paint);
-        // ----------设置渐变器后绘制----------
-        // 为Paint设置渐变器
-        Shader mShader = new LinearGradient(0, 0, 40, 60, new int[]{Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW}, null, Shader.TileMode.REPEAT);
-        paint.setShader(mShader);
-        //设置阴影
+        rectF.left = (float) viewWidth / 5 + sizeNum_10 * 2;
+        rectF.top = (float) (viewHeight / 3) + sizeNum_10 * 3;
+        rectF.right = (float) viewWidth * 2 / 5 + sizeNum_10 * 2;
+        rectF.bottom = (float) (viewHeight / 3) + sizeNum_10 * 8;
+        canvas.drawRoundRect(rectF, borderSize, borderSize, paint);
+
+        rectF.left = (float) viewWidth / 5 + sizeNum_10 * 2;
+        rectF.top = (float) (viewHeight / 2);
+        rectF.right = (float) viewWidth * 2 / 5 + sizeNum_10 * 2;
+        rectF.bottom = (float) (viewHeight / 2) + sizeNum_10 * 3;
+        canvas.drawOval(rectF, paint);
+
+        trianglePath.reset();
+        trianglePath.moveTo((float) viewWidth / 5 + sizeNum_10 * 2, (float) viewHeight * 7 / 10); // .1
+        trianglePath.lineTo((float) viewWidth * 2 / 5 + sizeNum_10 * 2, (float) viewHeight * 7 / 10);   //.1 -----> .2
+        trianglePath.lineTo((float) viewWidth * 3 / 10 + sizeNum_10 * 2, (float) viewHeight * 6 / 10); // 2. ----->.3
+        trianglePath.close();   // .3 -> .1
+        canvas.drawPath(trianglePath, paint);
+        /**
+         *============== Second Column,END ==============
+         */
+
+        /**
+         *============== Third Column,START ==============
+         */
+        paint.reset();
+        /**
+         * 为Path设置颜色渐变器
+         */
+        paint.setShader(shader);
+        /**
+         * 设置阴影
+         */
         paint.setShadowLayer(25, 20, 20, Color.GRAY);
-        // 绘制圆形
-        canvas.drawCircle(viewWidth / 2 + 30, viewWidth / 10 + 10
-                , viewWidth / 10, paint);
-        // 绘制正方形
-        canvas.drawRect(viewWidth * 2 / 5 + 30, viewWidth / 5 + 20, viewWidth * 3 / 5 + 30, viewWidth * 2 / 5 + 20, paint);
-        // 绘制矩形
-        canvas.drawRect(viewWidth * 2 / 5 + 30, viewWidth * 2 / 5 + 30, viewWidth * 3 / 5 + 30, viewWidth / 2 + 30, paint);
-        RectF re3 = new RectF(viewWidth * 2 / 5 + 30, viewWidth / 2 + 40, 30 + viewWidth * 3 / 5, viewWidth * 3 / 5 + 40);
-        // 绘制圆角矩形
-        canvas.drawRoundRect(re3, 15, 15, paint);
-        RectF re31 = new RectF(30 + viewWidth * 2 / 5, viewWidth * 3 / 5 + 50, 30 + viewWidth * 3 / 5, viewWidth * 7 / 10 + 50);
-        // 绘制椭圆
-        canvas.drawOval(re31, paint);
-        // 定义一个Path对象，封闭成一个三角形
-        Path path5 = new Path();
-        path5.moveTo(30 + viewWidth * 2 / 5, viewWidth * 9 / 10 + 60);
-        path5.lineTo(viewWidth * 3 / 5 + 30, viewWidth * 9 / 10 + 60);
-        path5.lineTo(viewWidth / 2 + 30, viewWidth * 7 / 10 + 60);
-        path5.close();
-        // 根据Path进行绘制，绘制三角形
-        canvas.drawPath(path5, paint);
-        // 定义一个Path对象，封闭成一个五角形
-        Path path6 = new Path();
-        path6.moveTo(30 + viewWidth * 7 / 15, viewWidth * 9 / 10 + 70);
-        path6.lineTo(30 + viewWidth * 8 / 15, viewWidth * 9 / 10 + 70);
-        path6.lineTo(30 + viewWidth * 3 / 5, viewWidth + 70);
-        path6.lineTo(30 + viewWidth / 2, viewWidth * 11 / 10 + 70);
-        path6.lineTo(30 + viewWidth * 2 / 5, viewWidth + 70);
-        path6.close();
-        // 根据Path进行绘制，绘制五角形
-        canvas.drawPath(path6, paint);
 
-        // ----------设置字符大小后绘制----------
-        paint.setTextSize(48);
-        paint.setShader(null);
-        // 绘制7个字符串
-        canvas.drawText(getResources().getString(R.string.circle), 60 + viewWidth * 3 / 5, viewWidth / 10 + 10, paint);
-        canvas.drawText(getResources().getString(R.string.square), 60 + viewWidth * 3 / 5, viewWidth * 3 / 10 + 20, paint);
-        canvas.drawText(getResources().getString(R.string.rect), 60 + viewWidth * 3 / 5, viewWidth * 1 / 2 + 20, paint);
-        canvas.drawText(getResources().getString(R.string.round_rect), 60 + viewWidth * 3 / 5, viewWidth * 3 / 5 + 30, paint);
-        canvas.drawText(getResources().getString(R.string.oval), 60 + viewWidth * 3 / 5, viewWidth * 7 / 10 + 30, paint);
-        canvas.drawText(getResources().getString(R.string.triangle), 60 + viewWidth * 3 / 5, viewWidth * 9 / 10 + 30, paint);
-        canvas.drawText(getResources().getString(R.string.pentagon), 60 + viewWidth * 3 / 5, viewWidth * 11 / 10 + 30, paint);
+        canvas.drawCircle((float) viewWidth * 6 / 10 + sizeNum_10, (float) viewWidth / 10 + sizeNum_10, (float) viewWidth / 10, paint);
+        canvas.drawRect((float) viewWidth * 5 / 10 + sizeNum_10 * 2, (float) viewWidth / 5 + sizeNum_10 * 2, (float) viewWidth * 7 / 10 + sizeNum_10 * 2, (float) viewWidth * 2 / 5 + sizeNum_10 * 2, paint);
+        canvas.drawRect((float) viewWidth * 5 / 10 + sizeNum_10 * 2, (float) viewHeight / 4 + sizeNum_10 * 3, (float) viewWidth * 7 / 10 + sizeNum_10 * 2, (float) viewHeight / 4 + sizeNum_10 * 7, paint);
+
+        rectF.left = (float) viewWidth * 5 / 10 + sizeNum_10 * 2;
+        rectF.top = (float) (viewHeight / 3) + sizeNum_10 * 3;
+        rectF.right = (float) viewWidth * 7 / 10 + sizeNum_10 * 2;
+        rectF.bottom = (float) (viewHeight / 3) + sizeNum_10 * 8;
+        canvas.drawRoundRect(rectF, borderSize, borderSize, paint);
+
+        rectF.left = (float) viewWidth * 5 / 10 + sizeNum_10 * 2;
+        rectF.top = (float) (viewHeight / 2);
+        rectF.right = (float) viewWidth * 7 / 10 + sizeNum_10 * 2;
+        rectF.bottom = (float) (viewHeight / 2) + sizeNum_10 * 3;
+        canvas.drawOval(rectF, paint);
+
+        trianglePath.reset();
+        trianglePath.moveTo((float) viewWidth * 5 / 10 + sizeNum_10 * 2, (float) viewHeight * 7 / 10); // .1
+        trianglePath.lineTo((float) viewWidth * 7 / 10 + sizeNum_10 * 2, (float) viewHeight * 7 / 10);   //.1 -----> .2
+        trianglePath.lineTo((float) viewWidth * 6 / 10 + sizeNum_10 * 2, (float) viewHeight * 6 / 10); // 2. ----->.3
+        trianglePath.close();   // .3 -> .1
+        canvas.drawPath(trianglePath, paint);
+        /**
+         *============== Third Column,END ==============
+         */
+
+        /**
+         *============== Fourth Column,START ==============
+         */
+        paint.reset();
+        paint.setAntiAlias(true);
+        paint.setColor(Color.BLUE);
+        paint.setTextSize(getResources().getDimension(R.dimen.paint_text_size));
+
+        /**
+         *绘制字体
+         */
+        canvas.drawText("Test", (float) viewWidth * 8 / 10, (float) viewWidth / 10 + sizeNum_10, paint);
+        /**
+         *============== Fourth Column,END ==============
+         */
     }
 }

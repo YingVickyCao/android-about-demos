@@ -11,6 +11,9 @@ import android.view.View;
 
 import com.hades.example.android.R;
 
+/**
+ * paint.setShader Paint设置渐变器
+ */
 public class CircleWithShader extends View {
     Paint paint;
 

@@ -9,6 +9,9 @@ import android.view.View;
 
 import com.hades.example.android.R;
 
+/**
+ * paint.setStyle(Paint.Style.STROKE)
+ */
 public class Circle4Stroke extends View {
     Paint paint;
 

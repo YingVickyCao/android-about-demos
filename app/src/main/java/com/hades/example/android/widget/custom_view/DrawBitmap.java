@@ -1,6 +1,8 @@
 package com.hades.example.android.widget.custom_view;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -29,13 +31,9 @@ public class DrawBitmap extends View {
         canvas.drawColor(Color.BLACK);
 
         paint.setAntiAlias(true);
-        paint.setColor(Color.GREEN);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(getResources().getDimension(R.dimen.size_2));
+        paint.setStyle(Paint.Style.FILL);
 
-//        canvas.drawBitmap((int) getResources().getDimension(R.dimen.size_50)
-//                , (int) getResources().getDimension(R.dimen.size_50)
-//                , (int) getResources().getDimension(R.dimen.size_150)
-//                , (int) getResources().getDimension(R.dimen.size_50), paint);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_home);
+        canvas.drawBitmap(bitmap, 200, 200, paint);
     }
 }

@@ -8,42 +8,53 @@
         style="@style/topic"
         android:text="@string/page_CustomView_Canvas" />
 
-    <com.hades.example.android.widget.custom_view.MyView2
+    <!-- Canvas and Paint   -->
+    <com.hades.example.android.widget.custom_view.MyView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
+    <!--  paint.setPathEffect  -->
+    <com.hades.example.android.widget.custom_view.PathWithPathEffect
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_200"
+        android:visibility="gone" />
 
-    <!--    <ScrollView-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent">-->
+    <!--
+        Path
+        canvas.drawPath
+    -->
+    <com.hades.example.android.widget.custom_view.Triangle
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="@dimen/size_200"-->
-    <!--            android:background="@android:color/holo_red_dark"-->
-    <!--            android:orientation="vertical"-->
-    <!--            android:padding="@dimen/size_5">-->
-    <!--            -->
+    <!-- paint.setStyle(Paint.Style.FILL)   -->
+    <com.hades.example.android.widget.custom_view.Circle4Fill
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
-    <!--            <TextView-->
-    <!--                style="@style/tv"-->
-    <!--                android:text="Path - Triangle"-->
-    <!--                android:visibility="visible" />-->
+    <!-- paint.setStyle(Paint.Style.STROKE)   -->
+    <com.hades.example.android.widget.custom_view.Circle4Stroke
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
-    <!--            <com.hades.example.android.widget.custom_view.path.Triangle-->
-    <!--                android:layout_width="@dimen/size_200"-->
-    <!--                android:layout_height="@dimen/size_100"-->
-    <!--                android:visibility="visible" />-->
+    <!-- paint.setStyle(Paint.Style.FILL_AND_STROKE)   -->
+    <com.hades.example.android.widget.custom_view.Circle4FillStroke
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
-    <!--            <TextView-->
-    <!--                style="@style/tv"-->
-    <!--                android:text="Path - PathEffect"-->
-    <!--                android:visibility="visible" />-->
+    <!-- paint.setShader Paint设置渐变器   -->
+    <com.hades.example.android.widget.custom_view.CircleWithShader
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
-    <!--            <com.hades.example.android.widget.custom_view.path.PathWithPathEffect-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="@dimen/size_200"-->
-    <!--                android:visibility="visible" />-->
-    <!--        </LinearLayout>-->
-    <!--    </ScrollView>-->
+    <!-- canvas.drawBitmap   -->
+    <com.hades.example.android.widget.custom_view.DrawBitmap
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

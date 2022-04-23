@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.custom_view.path;
+package com.hades.example.android.widget.custom_view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -17,6 +17,11 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+/**
+ * paint.setPathEffect
+ * <p>
+ * canvas.translate
+ */
 public class PathWithPathEffect extends View {
     float phase;
     PathEffect[] effects = new PathEffect[7];
@@ -72,8 +77,7 @@ public class PathWithPathEffect extends View {
         // 初始化DiscretePathEffect
         effects[2] = new DiscretePathEffect(3.0f, 5.0f);
         // 初始化DashPathEffect
-        effects[3] = new DashPathEffect(new float[]{20, 10, 5, 10},
-                phase);
+        effects[3] = new DashPathEffect(new float[]{20, 10, 5, 10}, phase);
         // 初始化PathDashPathEffect
         Path p = new Path();
         p.addRect(0, 0, 8, 8, Path.Direction.CCW);
