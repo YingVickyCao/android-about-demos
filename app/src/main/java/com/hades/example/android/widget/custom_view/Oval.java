@@ -11,6 +11,9 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 
+/**
+ * canvas.drawOval
+ */
 public class Oval extends View {
     Paint paint;
 
@@ -42,7 +45,7 @@ public class Oval extends View {
 
         paint.setAntiAlias(true);
         paint.setColor(Color.GREEN);
-        paint.setStyle(Paint.Style.FILL);
+        paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(getResources().getDimension(R.dimen.stroke_width));
 
         int left = (int) getResources().getDimension(R.dimen.size_50);
@@ -50,7 +53,9 @@ public class Oval extends View {
         int right = (int) getResources().getDimension(R.dimen.size_150);
         int bottom = (int) getResources().getDimension(R.dimen.size_75);
 
-        // 绘制椭圆
+        /**
+         * 绘制椭圆
+         */
         canvas.drawOval(left, top, right, bottom, paint);
     }
 }

@@ -37,6 +37,8 @@ import com.hades.example.android.R;
  * Paint.setAntiAlias
  * Paint.moveTo
  * Paint.lineTo
+ * <p>
+ * 难点：计算left、top、right、bottom的位置
  */
 public class MyView extends View {
     private static final String TAG = "MyView2";

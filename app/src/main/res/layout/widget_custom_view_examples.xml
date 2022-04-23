@@ -56,5 +56,43 @@
     <!-- canvas.drawBitmap   -->
     <com.hades.example.android.widget.custom_view.DrawBitmap
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <!-- canvas.drawLine   -->
+    <com.hades.example.android.widget.custom_view.Line
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <!-- canvas.drawOval   -->
+    <com.hades.example.android.widget.custom_view.Oval
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <!-- canvas.drawRect-->
+    <com.hades.example.android.widget.custom_view.RectView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <!-- canvas.drawRect-->
+    <com.hades.example.android.widget.custom_view.Square
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <!-- canvas.drawRoundRect   -->
+    <com.hades.example.android.widget.custom_view.RectWithBorder
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <!-- canvas.drawText   -->
+    <com.hades.example.android.widget.custom_view.Text
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+
 </LinearLayout>

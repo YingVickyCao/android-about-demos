@@ -31,13 +31,16 @@ public class RectWithBorder extends View {
         paint.setAntiAlias(true);
         paint.setColor(Color.GREEN);
         paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(getResources().getDimension(R.dimen.size_2));
+        paint.setStrokeWidth(getResources().getDimension(R.dimen.paint_stroke_width));
 
         int left = (int) getResources().getDimension(R.dimen.size_50);
         int top = (int) getResources().getDimension(R.dimen.size_25);
         int right = (int) getResources().getDimension(R.dimen.size_150);
         int bottom = (int) getResources().getDimension(R.dimen.size_75);
-        int radius = (int) getResources().getDimension(R.dimen.size_1);
+        int radius = (int) getResources().getDimension(R.dimen.paint_border_size);
+        /**
+         * drawRoundRect 绘制圆角的矩形，包括正方形、长方形
+         */
         canvas.drawRoundRect(left, top, right, bottom, radius, radius, paint);
     }
 }

@@ -32,6 +32,9 @@ public class Text extends View {
         paint.setTextSize(getResources().getDimension(R.dimen.text_size_20));
         int x = (int) getResources().getDimension(R.dimen.size_50);
         int y = x;
-        canvas.drawText(getResources().getString(R.string.circle), x,y, paint);
+        /**
+         * canvas.drawText 画字符串
+         */
+        canvas.drawText(getResources().getString(R.string.circle), x, y, paint);
     }
 }

@@ -30,6 +30,9 @@ public class Square extends View {
 
         int height = (int) getResources().getDimension(R.dimen.size_50);
 
+        /**
+         * drawRect 绘制矩形，包括正方形、长方形
+         */
         canvas.drawRect(height / 2, height / 2, height + height / 2, height / 2 + height, paint);
     }
 }

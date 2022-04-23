@@ -19,8 +19,7 @@ public class TestCanvasFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_custom_view_canvas, container, false);
-//        View view = inflater.inflate(R.layout.custom_view, container, false);
+        View view = inflater.inflate(R.layout.widget_custom_view_examples, container, false);
 //        View view = inflater.inflate(R.layout.custom_view_canvas_left_position_1, container, false);
 //        View view = inflater.inflate(R.layout.custom_view_canvas_left_position_2, container, false);
         getScreenDensity();

@@ -10,6 +10,9 @@ import android.view.View;
 
 import com.hades.example.android.R;
 
+/**
+ * canvas.drawRect
+ */
 public class RectView extends View {
     private static final String TAG = RectView.class.getSimpleName();
 
@@ -37,6 +40,9 @@ public class RectView extends View {
         int top = (int) getResources().getDimension(R.dimen.size_25);
         int right = (int) getResources().getDimension(R.dimen.size_150);
         int bottom = (int) getResources().getDimension(R.dimen.size_75);
+        /**
+         * drawRect 绘制矩形，包括正方形、长方形
+         */
         canvas.drawRect(left, top, right, bottom, paint);
     }
 }

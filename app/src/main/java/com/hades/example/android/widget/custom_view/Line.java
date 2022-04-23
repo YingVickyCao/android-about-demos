@@ -10,6 +10,9 @@ import android.view.View;
 
 import com.hades.example.android.R;
 
+/**
+ * canvas.drawLine
+ */
 public class Line extends View {
     private static final String TAG = Line.class.getSimpleName();
 
@@ -33,6 +36,9 @@ public class Line extends View {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(getResources().getDimension(R.dimen.size_2));
 
+        /**
+         * canvas.drawLine 绘制线
+         */
         canvas.drawLine((int) getResources().getDimension(R.dimen.size_50)
                 , (int) getResources().getDimension(R.dimen.size_50)
                 , (int) getResources().getDimension(R.dimen.size_150)
