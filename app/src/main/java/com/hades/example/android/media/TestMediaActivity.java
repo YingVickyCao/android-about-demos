@@ -20,7 +20,7 @@ public class TestMediaActivity extends PermissionActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.media_layout);
-        initViews();
+        initViews(R.id.root);
 
         findViewById(R.id.pageMediaPlayerPlayAudio).setOnClickListener(v -> pageMediaPlayerPlayAudio());
         findViewById(R.id.pageAudioEffect).setOnClickListener(v -> pageAudioEffect());

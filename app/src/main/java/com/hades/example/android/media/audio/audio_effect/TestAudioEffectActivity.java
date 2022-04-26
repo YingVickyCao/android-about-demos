@@ -58,7 +58,7 @@ public class TestAudioEffectActivity extends PermissionActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.audio_effect_layout);
 
-        initViews();
+        initViews(R.id.root);
 
         // 设置控制音乐声音
         setVolumeControlStream(AudioManager.STREAM_MUSIC);

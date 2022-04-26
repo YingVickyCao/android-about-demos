@@ -17,7 +17,7 @@ public class TestEventHandlerActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_handler);
-        initViews();
+        initViews(R.id.root);
 
         findViewById(R.id.page_event_handler_base_on_listener).setOnClickListener(v -> page_event_handler_base_on_listener());
         findViewById(R.id.page_event_handler_base_on_listener_4_plane).setOnClickListener(v -> page_event_handler_base_on_listener_4_plane());

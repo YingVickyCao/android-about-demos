@@ -37,7 +37,7 @@ public class GroupSendSmsActivity extends PermissionActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_system_sms_group_send_sms);
 
-        initViews();
+        initViews(R.id.root);
 
         numbers = findViewById(R.id.numbers);
         content = findViewById(R.id.content);

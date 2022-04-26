@@ -22,7 +22,7 @@ public class DataStorageActivity extends PermissionActivity {
 
         setContentView(R.layout.data_storage_layout);
 
-        initViews();
+        initViews(R.id.root);
 
         findViewById(R.id.pageSharedPreferences).setOnClickListener(v -> pageSharedPreferences());
         findViewById(R.id.pageDatabase).setOnClickListener(v -> pageDatabase());

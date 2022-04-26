@@ -23,7 +23,7 @@ public class CustomViewActivity extends PermissionActivity {
         setTheme(R.style.AppTheme_Light);
         setContentView(R.layout.widget_custom_view_activity_layout);
         Log.d(TAG, "onCreate: ");
-        initViews();
+        initViews(R.id.root);
         findViewById(R.id.pageCustomVew).setOnClickListener(v -> pageCustomVew());
         findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
         findViewById(R.id.page_CustomVew_ShadowView).setOnClickListener(v -> page_CustomVew_ShadowView());

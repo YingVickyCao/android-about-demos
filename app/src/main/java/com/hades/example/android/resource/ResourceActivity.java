@@ -44,7 +44,7 @@ public class ResourceActivity extends PermissionActivity {
         setTheme(R.style.AppTheme_Light);
         setContentView(R.layout.activity_resources);
         Log.d(TAG, "onCreate: ");
-        initViews();
+        initViews(R.id.root);
 
         findViewById(R.id.pageMaterial).setOnClickListener(v -> pageMaterial());
         findViewById(R.id.pageDimension).setOnClickListener(v -> pageDimension());

@@ -22,7 +22,7 @@ public class BitmapActivity extends PermissionActivity {
         setTheme(R.style.AppTheme_Light);
         setContentView(R.layout.res_bitmap_activity_layout);
         Log.d(TAG, "onCreate: ");
-        initViews();
+        initViews(R.id.root);
         findViewById(R.id.pageBitmap).setOnClickListener(v -> pageBitmap());
         findViewById(R.id.pageBitmapViewer).setOnClickListener(v -> pageBitmapViewer());
         findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());

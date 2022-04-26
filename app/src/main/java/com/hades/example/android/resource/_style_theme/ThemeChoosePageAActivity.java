@@ -11,10 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.java.lib.MemoryCache;
+import com.hades.example.android.lib.base.BaseActivity;
+import com.hades.example.android.lib.utils.MemoryCache;
 
-public class ThemeChoosePageAActivity extends NoNeedPermissionActivity {
+public class ThemeChoosePageAActivity extends BaseActivity {
 
     TextView textView;
     TextView themeName;

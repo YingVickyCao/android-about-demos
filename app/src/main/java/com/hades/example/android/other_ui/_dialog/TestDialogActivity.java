@@ -34,7 +34,7 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
 
         mIsLargeLayout = getResources().getBoolean(R.bool.is_large_layout);
 
-        initViews();
+        initViews(R.id.root);
 
         findViewById(R.id.btn1).setOnClickListener(v -> showMyBaseDialogFragment(1));
         findViewById(R.id.btn2).setOnClickListener(v -> showMyBaseDialogFragment(2));

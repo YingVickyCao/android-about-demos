@@ -20,7 +20,7 @@ public class TestNetworkActivity extends PermissionActivity {
 
         setContentView(R.layout.network_layout);
 
-        initViews();
+        initViews(R.id.root);
 
         findViewById(R.id.pageSimpleSocketClient).setOnClickListener(v -> pageSimpleSocketClient());
         findViewById(R.id.pageMultiThreadSocketClient).setOnClickListener(v -> pageMultiThreadSocketClient());

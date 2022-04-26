@@ -14,7 +14,7 @@ public class TestManagerPhoneDesktopActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manager_phone_desktop);
 
-        initViews();
+        initViews(R.id.root);
 
         findViewById(R.id.page_SetStaticWallpaper).setOnClickListener(v -> page_SetStaticWallpaper());
     }

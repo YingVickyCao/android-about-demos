@@ -169,12 +169,12 @@
         <item name="android:layout_height">48dp</item>
     </style>
 
-    <style name="Widget.SampleMessage">
+    <style name="SampleMessage">
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
         <item name="android:lineSpacingMultiplier">1.1</item>
     </style>
 
-    <style name="Widget.SampleMessageTile">
+    <style name="SampleMessageTile">
         <item name="android:background">@drawable/tile</item>
         <item name="android:shadowColor">#7F000000</item>
         <item name="android:shadowDy">-3.5</item>

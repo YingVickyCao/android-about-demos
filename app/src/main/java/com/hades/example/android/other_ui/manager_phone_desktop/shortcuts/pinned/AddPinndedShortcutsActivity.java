@@ -18,7 +18,7 @@ public class AddPinndedShortcutsActivity extends PermissionActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        initViews();
+        initViews(R.id.root);
 
         setContentView(R.layout.add_dynamic_shorts_layout);
 

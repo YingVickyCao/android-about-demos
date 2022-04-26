@@ -65,7 +65,7 @@ public class TestCameraActivity extends PermissionActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.media_camera);
-        initViews();
+        initViews(R.id.root);
 
         findViewById(R.id.capture).setOnClickListener(v -> capture());
 

@@ -17,7 +17,7 @@ public class MessageHandlerActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_handler);
 
-        initViews();
+        initViews(R.id.root);
 
         findViewById(R.id.pageHandler_thread_2_main).setOnClickListener(v -> pageHandler_thread_2_main());
         findViewById(R.id.pageHandler_main_2_thread_2_main).setOnClickListener(v -> pageHandler_main_2_thread_2_main());

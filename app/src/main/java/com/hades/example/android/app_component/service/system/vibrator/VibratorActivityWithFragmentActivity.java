@@ -23,7 +23,7 @@ public class VibratorActivityWithFragmentActivity extends PermissionActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_system_vibrator_service);
 
-        initViews();
+        initViews(R.id.root);
 
         // 获取系统的Vibrator服务
         vibrator = (Vibrator) getSystemService(Service.VIBRATOR_SERVICE);
