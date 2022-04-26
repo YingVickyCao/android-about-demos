@@ -22,7 +22,7 @@
 
             <Button
                 android:id="@+id/checkIntrinsicHeight"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="getIntrinsicHeight()" />
 
             <View style="@style/div" />

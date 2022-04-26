@@ -70,18 +70,18 @@
             android:textSize="12sp" />
 
         <Button
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/page_Button"
             android:textColor="@color/textview_color" />
 
         <Button
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:enabled="true"
             android:text="@string/page_Button"
             android:textColor="@color/textview_color" />
 
         <Button
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:enabled="false"
             android:text="@string/page_Button"
             android:textColor="@color/textview_color" />
@@ -99,7 +99,7 @@
             android:textSize="12sp" />
 
         <Button
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/page_Button"
             android:textColor="@color/textview_color_enable" />
     </LinearLayout>
@@ -111,18 +111,18 @@
 
         <Button
             android:id="@+id/btn1"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/page_Button"
             android:textColor="@color/textview_color" />
 
         <Button
             android:id="@+id/enableTrue"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="Enable = true" />
 
         <Button
             android:id="@+id/enableFalse"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="Enable = false" />
     </LinearLayout>
 
@@ -189,18 +189,18 @@
             android:textSize="12sp" />
 
         <Button
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:background="@drawable/drawable_selector_4_textview_bg"
             android:text="@string/page_Button" />
 
         <Button
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:background="@drawable/drawable_selector_4_textview_bg"
             android:enabled="true"
             android:text="@string/page_Button" />
 
         <Button
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:background="@drawable/drawable_selector_4_textview_bg"
             android:enabled="false"
             android:text="@string/page_Button" />
@@ -219,7 +219,7 @@
             android:textSize="12sp" />
 
         <Button
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:background="@drawable/drawable_selector_4_textview_bg_enable"
             android:text="@string/page_Button" />
 
@@ -232,18 +232,18 @@
 
         <Button
             android:id="@+id/btn2"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:background="@drawable/drawable_selector_4_textview_bg"
             android:text="@string/page_Button" />
 
         <Button
             android:id="@+id/enableTrue2"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="Enable = true" />
 
         <Button
             android:id="@+id/enableFalse2"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="Enable = false" />
     </LinearLayout>
 </LinearLayout>

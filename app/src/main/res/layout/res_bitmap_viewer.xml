@@ -18,7 +18,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/next"
-        style="@style/btn.small"
+        style="@style/btn_small"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="@string/next" />

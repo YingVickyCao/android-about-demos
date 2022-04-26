@@ -24,22 +24,22 @@
 
             <Button
                 android:id="@+id/pageBitmap"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_bitmap" />
 
             <Button
                 android:id="@+id/pageBitmapViewer"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_bitmap_viewer" />
 
             <Button
                 android:id="@+id/pageLoadBitmapPo"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_decode_sampled_bitmap" />
 
             <Button
                 android:id="@+id/pageMemoryCacheBitmap"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_bitmap_three_level_cache" />
 
         </LinearLayout>

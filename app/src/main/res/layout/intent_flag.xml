@@ -38,12 +38,12 @@
 
         <Button
             android:id="@+id/openD"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/d" />
 
         <Button
             android:id="@+id/openE"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/e" />
 
     </LinearLayout>
@@ -62,103 +62,103 @@
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_BROUGHT_TO_FRONT"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_BROUGHT_TO_FRONT" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_CLEAR_TOP"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_CLEAR_TOP" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_NEW_TASK"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_NEW_TASK" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_NO_ANIMATION"
-                style="@style/btn.small.green"
+                style="@style/btn_small_green"
                 android:text="D - FLAG_ACTIVITY_NO_ANIMATION" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_NO_HISTORY"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_NO_HISTORY" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_REORDER_TO_FRONT"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_REORDER_TO_FRONT" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_SINGLE_TOP"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_SINGLE_TOP" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_MULTIPLE_TASK"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_MULTIPLE_TASK" />
 
 
             <Button
                 android:id="@+id/openD_ACTIVITY_FORWARD_RESULT"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - ACTIVITY_FORWARD_RESULT" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_PREVIOUS_IS_TOP"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_PREVIOUS_IS_TOP" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_RESET_TASK_IF_NEEDED"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_RESET_TASK_IF_NEEDED" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_NO_HISTORY" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_NEW_DOCUMENT"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_NEW_DOCUMENT" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_NO_USER_ACTION"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_NO_USER_ACTION" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_TASK_ON_HOME"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_TASK_ON_HOME" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_RETAIN_IN_RECENTS"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_RETAIN_IN_RECENTS" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_LAUNCH_ADJACENT"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_LAUNCH_ADJACENT" />
 
             <Button
                 android:id="@+id/openD_FLAG_ACTIVITY_MATCH_EXTERNAL"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="D - FLAG_ACTIVITY_MATCH_EXTERNAL" />
         </LinearLayout>
     </ScrollView>

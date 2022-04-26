@@ -16,7 +16,7 @@ public class CascadeLayoutActivity extends NoNeedPermissionActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.widget_customview_cascadelayout);
+        setContentView(R.layout.widget_custom_view_cascadelayout_activity_layout);
 
         initViews();
 

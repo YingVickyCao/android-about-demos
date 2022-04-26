@@ -21,7 +21,7 @@
 
         <Button
             android:id="@+id/changeSurfaceViewSize"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/change_SurfaceView_size" />
 
         <SurfaceView

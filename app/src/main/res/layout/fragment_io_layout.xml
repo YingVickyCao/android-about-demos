@@ -23,25 +23,25 @@
 
             <Button
                 android:id="@+id/read"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/read"
                 android:textSize="10sp" />
 
             <Button
                 android:id="@+id/write"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/write"
                 android:textSize="10sp" />
 
             <Button
                 android:id="@+id/readSDCard"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/read_sd_card"
                 android:textSize="10sp" />
 
             <Button
                 android:id="@+id/writeSDCard"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/write_sdc_ard"
                 android:textSize="10sp" />
         </LinearLayout>

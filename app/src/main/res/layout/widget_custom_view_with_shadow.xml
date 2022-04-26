@@ -23,7 +23,7 @@
         <!--  outlineAmbientShadowColor,outlineSpotShadowColor 基本上看不到颜色  -->
         <Button
             android:id="@+id/view_1"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_gravity="center_horizontal"
             android:elevation="20dp"
             android:gravity="center"
@@ -173,7 +173,7 @@
 
         <!-- 点击时，shadow增加 -->
         <Button
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/size_5"
             android:stateListAnimator="@animator/shadow_3" />
@@ -199,7 +199,7 @@
 
         <Button
             android:id="@+id/button4"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/size_5" />
 
@@ -209,14 +209,14 @@
 
             <Button
                 android:id="@+id/elevationPlus"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/size_5"
                 android:text="Elevation +" />
 
             <TextView
                 android:id="@+id/elevationNum"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/size_5"
@@ -224,7 +224,7 @@
 
             <Button
                 android:id="@+id/elevationMinus"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/size_5"
@@ -254,20 +254,20 @@
             <!-- 有shadow，但四边多了留白-->
             <Button
                 android:id="@+id/button1"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:layout_gravity="center_horizontal" />
 
             <!-- 没有shadow -->
             <Button
                 android:id="@+id/button2"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="@dimen/margin_tiny"
                 android:layout_marginTop="@dimen/margin_tiny"
                 android:background="#f00" />
 
             <Button
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="@dimen/margin_tiny"
                 android:layout_marginTop="@dimen/margin_tiny" />
@@ -311,7 +311,7 @@
 
         <Button
             android:id="@+id/button3"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
 </ScrollView>

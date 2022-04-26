@@ -24,22 +24,22 @@
 
             <Button
                 android:id="@+id/showCircleProgressDialog"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="环形进度条" />
 
             <Button
                 android:id="@+id/showCircleProgressDialogWithBtns"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="环形进度条, 带按钮" />
 
             <Button
                 android:id="@+id/showCustomCircleProgressDialog"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="Custom 环形进度条" />
 
             <Button
                 android:id="@+id/showCustomThemeProgressDialog"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="Custom 环形进度条" />
         </LinearLayout>
 
@@ -51,23 +51,23 @@
 
             <Button
                 android:id="@+id/showIndeterminateBarProgressDialog"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="不显示进度的进度条" />
 
             <Button
                 android:id="@+id/showIndeterminateBarProgressDialogWithBtns"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="不显示进度的进度条, 带按钮" />
 
             <Button
                 android:id="@+id/showBarProgressDialog"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="显示进度的进度条" />
 
 
             <Button
                 android:id="@+id/showBarProgressDialogWithBtns"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="显示进度的进度条, 带按钮" />
         </LinearLayout>
 

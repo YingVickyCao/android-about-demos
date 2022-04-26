@@ -23,12 +23,12 @@
 
             <Button
                 android:id="@+id/pageThreadPoolExecutor"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_threadPoolExecutor" />
 
             <Button
                 android:id="@+id/pageAsyncTask"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_asynctask" />
         </LinearLayout>
     </ScrollView>

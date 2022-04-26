@@ -21,7 +21,7 @@
         app:layout_constraintTop_toBottomOf="@+id/topic">
 
         <Button
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_marginStart="100dp"
             android:layout_marginTop="100dp"
             android:background="@android:color/holo_orange_dark"
@@ -38,12 +38,12 @@
 
         <Button
             android:id="@+id/btn31"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_alignParentStart="true"
             android:text="@string/a" />
 
         <Button
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_marginStart="236dp"
             android:layout_toEndOf="@+id/btn31"
             android:text="@string/b" />
@@ -58,14 +58,14 @@
 
         <Button
             android:id="@+id/tv41"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="A"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/tv42"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_marginStart="400dp"
             android:text="B"
             app:layout_constraintStart_toEndOf="@+id/tv41"

@@ -77,7 +77,7 @@
         <!--  2 Change show as password     -->
         <Button
             android:id="@+id/showAsPassword"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="Change show as password" />
 
         <EditText

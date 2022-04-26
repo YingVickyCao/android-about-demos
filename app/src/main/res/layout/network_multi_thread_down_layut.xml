@@ -47,7 +47,7 @@
 
         <Button
             android:id="@+id/down"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/download" />
     </LinearLayout>
 </RelativeLayout>

@@ -22,32 +22,32 @@
 
             <Button
                 android:id="@+id/pageActivityLifecycle"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="Activity Lifecycle" />
 
             <Button
                 android:id="@+id/pageGetViewSizeInActivityOncreate"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_get_view_size_in_activity_oncreate" />
 
             <Button
                 android:id="@+id/pageSaveAndRestoreState"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_activity_save_and_restore_state" />
 
             <Button
                 android:id="@+id/pageLauncherActivity"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_LauncherActivity" />
 
             <Button
                 android:id="@+id/pageLaunchMode"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_LaunchMode" />
 
             <Button
                 android:id="@+id/page_manage_system_ui"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_manage_system_ui" />
 
         </LinearLayout>

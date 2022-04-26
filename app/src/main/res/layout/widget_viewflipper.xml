@@ -40,25 +40,25 @@
 
         <Button
             android:id="@+id/prev"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_weight="1"
             android:text="@string/prev" />
 
         <Button
             android:id="@+id/auto"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_weight="1"
             android:text="@string/auto" />
 
         <Button
             android:id="@+id/stopAuto"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_weight="1"
             android:text="@string/stopAuto" />
 
         <Button
             android:id="@+id/next"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_weight="1"
             android:text="@string/next" />
     </LinearLayout>

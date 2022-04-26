@@ -65,6 +65,12 @@
         android:layout_height="wrap_content"
         android:visibility="gone" />
 
+    <!-- canvas.drawLines   -->
+    <com.hades.example.android.widget.custom_view.Lines
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
     <!-- canvas.drawOval   -->
     <com.hades.example.android.widget.custom_view.Oval
         android:layout_width="match_parent"
@@ -92,7 +98,18 @@
     <!-- canvas.drawText   -->
     <com.hades.example.android.widget.custom_view.Text
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
+    <!-- canvas.drawPoint   -->
+    <com.hades.example.android.widget.custom_view.Point
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.hades.example.android.widget.custom_view.PathText
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:visibility="gone" />
 
 </LinearLayout>

@@ -6,7 +6,7 @@
 
     <Button
         android:id="@+id/switchMenuColor"
-        style="@style/btn.small"
+        style="@style/btn_small"
         android:text="Switch Menu color" />
 
     <LinearLayout

@@ -70,6 +70,7 @@
     <string name="page_CustomView_Canvas" tools:ignore="ExtraTranslation">Custom View - Canvas</string>
     <string name="page_CustomView_CascadeLayout">Custom View 4 CascadeLayout</string>
     <string name="page_CustomView_ShadowView">Custom View 4 Shadow View</string>
+    <string name="page_CustomView_double_buffer_for_drawing_board">Custom View - 采用双缓冲实现画图板</string>
     <string name="page_ConstraintLayout">ConstraintLayout</string>
     <string name="page_linearLayout">LinearLayout</string>
     <string name="page_LinearLayout_CanNotChangeColor">LinearLayout can not change color</string>

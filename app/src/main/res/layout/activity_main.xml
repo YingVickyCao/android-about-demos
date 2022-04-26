@@ -21,27 +21,27 @@
 
             <Button
                 android:id="@+id/pageSecurity"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_security" />
 
             <Button
                 android:id="@+id/pageWidget"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="Widget" />
 
             <Button
                 android:id="@+id/pageDateStorage"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_data_storage" />
 
             <Button
                 android:id="@+id/pageResource"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_resource" />
 
             <Button
                 android:id="@+id/pageQAAboutView"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_qa_about_view" />
 
         </LinearLayout>

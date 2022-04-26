@@ -22,27 +22,27 @@
 
             <Button
                 android:id="@+id/pageNotification"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_Notification" />
 
             <Button
                 android:id="@+id/pageToast"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_Toast" />
 
             <Button
                 android:id="@+id/pageActionBar"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_ActionBar" />
 
             <Button
                 android:id="@+id/pagePopupWindow"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_PopupWindow" />
 
             <Button
                 android:id="@+id/pageDialog"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_Dialog" />
         </LinearLayout>
     </ScrollView>

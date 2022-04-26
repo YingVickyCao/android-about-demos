@@ -13,14 +13,14 @@
 
         <Button
             android:id="@+id/tv11"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="A"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/tv12"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="B"
             app:layout_constraintLeft_toRightOf="@+id/tv11"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,21 +31,21 @@
 
         <Button
             android:id="@+id/tv21"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="A"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/tv22"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="B"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/tv31"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="C"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -53,7 +53,7 @@
         <!-- Baseline -->
         <Button
             android:id="@+id/tv32"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="D"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

@@ -18,17 +18,17 @@
 
         <Button
             android:id="@+id/printConfiguration"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/print_configuration" />
 
         <Button
             android:id="@+id/switchConfiguration"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/switch_configuration" />
 
         <Button
             android:id="@+id/disableRotate"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="Disable rotate" />
     </LinearLayout>
 

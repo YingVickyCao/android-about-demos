@@ -93,7 +93,7 @@
         android:textColor="#171a1c" />
 
     <Button
-        style="@style/btn.small"
+        style="@style/btn_small"
         android:background="@drawable/ab_solid_shadow_material" />
 
 

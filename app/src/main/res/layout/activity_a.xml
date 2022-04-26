@@ -23,12 +23,12 @@
 
         <Button
             android:id="@+id/pageB"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/b" />
 
         <Button
             android:id="@+id/pageBForResult"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/b_for_result" />
     </LinearLayout>
 </RelativeLayout>

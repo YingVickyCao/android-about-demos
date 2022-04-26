@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_CustomView_double_buffer_for_drawing_board" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:weightSum="8">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/colorRed"
+            style="@style/btn_small"
+            android:layout_weight="1"
+            android:text="Red" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/colorGreen"
+            style="@style/btn_small"
+            android:layout_weight="1"
+            android:text="Green" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/colorBlue"
+            style="@style/btn"
+            android:layout_weight="1"
+            android:text="Blue" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/width1"
+            style="@style/btn_small_red"
+            android:layout_weight="1"
+            android:text="1dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/width3"
+            style="@style/btn_small_red"
+            android:layout_weight="1"
+            android:text="3dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/width5"
+            style="@style/btn_small_red"
+            android:layout_weight="1"
+            android:text="5dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/blur"
+            style="@style/btn"
+            android:layout_weight="1"
+            android:text="Blur" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/emboss"
+            style="@style/btn"
+            android:layout_weight="1"
+            android:text="Emboss" />
+    </LinearLayout>
+</LinearLayout>

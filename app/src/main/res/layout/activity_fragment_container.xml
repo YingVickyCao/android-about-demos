@@ -15,12 +15,12 @@
 
         <Button
             android:id="@+id/showFragment1"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="Show fragment 1" />
 
         <Button
             android:id="@+id/showFragment2"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_alignParentEnd="true"
             android:text="Show fragment 2" />
 
@@ -34,12 +34,12 @@
 
         <Button
             android:id="@+id/replaceBy1"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="Replace by 1" />
 
         <Button
             android:id="@+id/replaceBy2"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_alignParentEnd="true"
             android:text="Replace by 2" />
 

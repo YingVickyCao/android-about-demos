@@ -40,13 +40,13 @@
 
         <Button
             android:id="@+id/selectImageView1"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_alignParentBottom="true"
             android:text="@string/select_imageview_1" />
 
         <Button
             android:id="@+id/selectImageView2"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:text="@string/select_imageview_2" />

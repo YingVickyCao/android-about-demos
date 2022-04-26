@@ -28,12 +28,12 @@
 
         <Button
             android:id="@+id/selectTab1"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="Select tab 1" />
 
         <Button
             android:id="@+id/selectTab2"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_alignParentEnd="true"
             android:text="Select tab 2" />
 

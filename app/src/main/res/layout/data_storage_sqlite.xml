@@ -31,82 +31,82 @@
 
                 <Button
                     android:id="@+id/clear"
-                    style="@style/btn.small.red"
+                    style="@style/btn_small_red"
                     android:text="@string/clear" />
 
                 <Button
                     android:id="@+id/checkTableExist"
-                    style="@style/btn.small"
+                    style="@style/btn_small"
                     android:text="Check table is exist or not " />
 
                 <Button
                     android:id="@+id/insertOne"
-                    style="@style/btn.small"
+                    style="@style/btn_small"
                     android:text="@string/insert_one" />
 
                 <Button
                     android:id="@+id/insertMultiple"
-                    style="@style/btn.small"
+                    style="@style/btn_small"
                     android:text="@string/insert_multiple" />
 
                 <Button
                     android:id="@+id/insertMultipleWithTransaction"
-                    style="@style/btn.small"
+                    style="@style/btn_small"
                     android:text="@string/insert_multiple_with_Transaction" />
 
                 <Button
                     android:id="@+id/insertSQLiteStatementWithTransaction"
-                    style="@style/btn.small"
+                    style="@style/btn_small"
                     android:text="@string/insert_sqlitestatement_with_transaction" />
 
                 <Button
                     android:id="@+id/queryTotalCountOfOneTable"
-                    style="@style/btn.small"
+                    style="@style/btn_small"
                     android:text="@string/query_total_count_of_one_table" />
 
                 <Button
                     android:id="@+id/query"
-                    style="@style/btn.small"
+                    style="@style/btn_small"
                     android:text="@string/query" />
 
                 <Button
                     android:id="@+id/queryAll"
-                    style="@style/btn.small"
+                    style="@style/btn_small"
                     android:text="Query All" />
 
                 <Button
                     android:id="@+id/rawQueryAll"
-                    style="@style/btn.small"
+                    style="@style/btn_small"
                     android:text="@string/rawQuery_all" />
 
                 <Button
                     android:id="@+id/fuzzySearch"
-                    style="@style/btn.small"
+                    style="@style/btn_small"
                     android:text="@string/fuzzy_search" />
 
                 <Button
                     android:id="@+id/fuzzySearch2"
-                    style="@style/btn.small"
+                    style="@style/btn_small"
                     android:text="@string/fuzzy_search" />
 
                 <Button
                     android:id="@+id/update"
-                    style="@style/btn.small"
+                    style="@style/btn_small"
                     android:text="@string/update" />
 
                 <Button
                     android:id="@+id/updateFuzzy"
-                    style="@style/btn.small"
+                    style="@style/btn_small"
                     android:text="@string/update_Fuzzy" />
 
                 <Button
                     android:id="@+id/delete"
-                    style="@style/btn.small"
+                    style="@style/btn_small"
                     android:text="@string/delete" />
 
                 <Button
                     android:id="@+id/deleteAll"
-                    style="@style/btn.small"
+                    style="@style/btn_small"
                     android:text="@string/delete_all" />
 
             </LinearLayout>

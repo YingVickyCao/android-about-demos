@@ -6,7 +6,7 @@
 
     <Button
         android:id="@+id/loadAssertsImg"
-        style="@style/btn.small"
+        style="@style/btn_small"
         android:text="Load asserts Image" />
 
     <ImageView

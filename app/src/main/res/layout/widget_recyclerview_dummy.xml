@@ -16,12 +16,12 @@
 
         <Button
             android:id="@+id/findItemView"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="Find item view" />
 
         <Button
             android:id="@+id/findViewByPosition"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="findView By Position" />
     </LinearLayout>
 
@@ -32,12 +32,12 @@
 
         <Button
             android:id="@+id/scrollToPosition"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="Scroll to position" />
 
         <Button
             android:id="@+id/smoothScrollToPosition"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="Smooth scroll to position" />
     </LinearLayout>
 

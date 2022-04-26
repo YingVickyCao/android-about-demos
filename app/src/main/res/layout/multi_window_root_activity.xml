@@ -25,7 +25,7 @@
 
         <Button
             android:id="@+id/openA"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/a" />
     </LinearLayout>
 

@@ -29,7 +29,7 @@
 
         <Button
             android:id="@+id/gradienterView"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/show"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
 
         <Button
             android:id="@+id/hide"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/hide"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

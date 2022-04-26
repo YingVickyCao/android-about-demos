@@ -21,21 +21,21 @@
 
     <Button
         android:id="@+id/startRecycleUpdateText"
-        style="@style/btn.small"
+        style="@style/btn_small"
         android:layout_above="@+id/missLooperWhenCreateHandlerInThread"
         android:layout_centerHorizontal="true"
         android:text="Start recycle update text" />
 
     <Button
         android:id="@+id/missLooperWhenCreateHandlerInThread"
-        style="@style/btn.small"
+        style="@style/btn_small"
         android:layout_above="@+id/thread2Main_createHandler_with_Looper_getMainLooper"
         android:layout_centerHorizontal="true"
         android:text="Miss Looper when create Handler in Thread" />
 
     <Button
         android:id="@+id/thread2Main_createHandler_with_Looper_getMainLooper"
-        style="@style/btn.small"
+        style="@style/btn_small"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="getMainLooper" />

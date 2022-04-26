@@ -71,12 +71,12 @@
 
         <Button
             android:id="@+id/checkPermission"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="Check Permission" />
 
         <Button
             android:id="@+id/query"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/search" />
 
     </LinearLayout>

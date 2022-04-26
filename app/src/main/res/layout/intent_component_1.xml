@@ -28,24 +28,24 @@
 
         <Button
             android:id="@+id/open1"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:gravity="start"
             android:text="ComponentName(Context pkg, Class cls) - Activity" />
 
         <Button
             android:id="@+id/open2"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="ComponentName(Context pkg, Class cls) - Application" />
 
         <Button
             android:id="@+id/open3"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:gravity="start"
             android:text="ComponentName(String pkg, String cls)" />
 
         <Button
             android:id="@+id/open4"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:gravity="start"
             android:text="ComponentName(Context pkg, String cls)" />
 
@@ -53,19 +53,19 @@
 
         <Button
             android:id="@+id/open5"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:gravity="start"
             android:text="Intent.setClass(Context pkg, Class cls)" />
 
         <Button
             android:id="@+id/open6"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:gravity="start"
             android:text="Intent.setClass(String pkg, String cls)" />
 
         <Button
             android:id="@+id/open7"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:gravity="start"
             android:text="Intent.setClass(Context pkg, String cls)" />
     </LinearLayout>

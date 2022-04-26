@@ -23,24 +23,24 @@
 
             <Button
                 android:id="@+id/page_event_handler_base_on_listener"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/event_handler_base_on_listener" />
 
             <Button
                 android:id="@+id/page_event_handler_base_on_listener_4_plane"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/event_handler_base_on_listener_4_PlaneView" />
 
             <Button
                 android:id="@+id/page_event_handler_base_on_listener_types"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/event_handler_base_on_listener_types" />
 
             <View style="@style/div" />
 
             <Button
                 android:id="@+id/page_event_handler_base_on_callback"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/event_handler_base_on_callback" />
         </LinearLayout>
     </ScrollView>

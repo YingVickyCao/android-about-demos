@@ -12,12 +12,12 @@
 
         <Button
             android:id="@+id/pageCrossAppAccess"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/page_cross_app_access" />
 
         <Button
             android:id="@+id/pageCustomPermission"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:text="@string/page_custom_permission" />
     </LinearLayout>
 </ScrollView>

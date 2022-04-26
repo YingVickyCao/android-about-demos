@@ -22,19 +22,19 @@
 
         <Button
             android:id="@+id/simpleNotify"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_gravity="center_horizontal"
             android:text="发送Notification" />
 
         <Button
             android:id="@+id/del"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_gravity="center_horizontal"
             android:text="删除Notification" />
 
         <Button
             android:id="@+id/progressNotification"
-            style="@style/btn.small"
+            style="@style/btn_small"
             android:layout_gravity="center_horizontal"
             android:text="Progress Notification" />
     </LinearLayout>

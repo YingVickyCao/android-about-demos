@@ -22,22 +22,22 @@
 
             <Button
                 android:id="@+id/pageBondService"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_bond_service" />
 
             <Button
                 android:id="@+id/pageBondService2"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_bond_service" />
 
             <Button
                 android:id="@+id/pageContentProvider"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_content_provider" />
 
             <Button
                 android:id="@+id/pageDialogFragment"
-                style="@style/btn.small"
+                style="@style/btn_small"
                 android:text="@string/page_DialogFragment" />
 
         </LinearLayout>

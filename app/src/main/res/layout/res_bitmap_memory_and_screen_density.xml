@@ -16,7 +16,7 @@
 
     <Button
         android:id="@+id/getScreenDensity"
-        style="@style/btn.small"
+        style="@style/btn_small"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -24,7 +24,7 @@
 
     <Button
         android:id="@+id/checkDrawableMemory"
-        style="@style/btn.small"
+        style="@style/btn_small"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
