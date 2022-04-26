@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.PermissionActivity;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
+import com.hades.example.android.widget.custom_view.drawing_board.DrawingBoardFragment;
 import com.hades.example.android.widget.custom_view.shadow.TestShadowViewFragment;
 
 /**
@@ -25,6 +26,7 @@ public class CustomViewActivity extends PermissionActivity {
         Log.d(TAG, "onCreate: ");
         initViews(R.id.root);
         findViewById(R.id.pageCustomVew).setOnClickListener(v -> pageCustomVew());
+        findViewById(R.id.pageDrawingBoard).setOnClickListener(v -> pageDrawingBoard());
         findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
         findViewById(R.id.page_CustomVew_ShadowView).setOnClickListener(v -> page_CustomVew_ShadowView());
     }
@@ -37,12 +39,17 @@ public class CustomViewActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageCustomVew();
+        pageDrawingBoard();
     }
 
     private void pageCustomVew() {
         showFragment(new TestCanvasFragment());
     }
+
+    private void pageDrawingBoard() {
+        showFragment(new DrawingBoardFragment());
+    }
+
 
     private void pageCustomView4CascadeLayout() {
         showActivity(CascadeLayoutActivity.class);

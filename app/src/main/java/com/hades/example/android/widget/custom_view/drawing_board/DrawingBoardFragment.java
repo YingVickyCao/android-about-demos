@@ -19,6 +19,45 @@ public class DrawingBoardFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.widget_custom_view_double_buffer_for_drawing_board, container, false);
+        view.findViewById(R.id.colorRed).setOnClickListener(v -> colorRed());
+        view.findViewById(R.id.colorGreen).setOnClickListener(v -> colorGreen());
+        view.findViewById(R.id.colorBlue).setOnClickListener(v -> colorBlue());
+        view.findViewById(R.id.width1).setOnClickListener(v -> width1());
+        view.findViewById(R.id.width3).setOnClickListener(v -> width3());
+        view.findViewById(R.id.width5).setOnClickListener(v -> width5());
+        view.findViewById(R.id.blur).setOnClickListener(v -> width5());
+        view.findViewById(R.id.emboss).setOnClickListener(v -> emboss());
         return view;
+    }
+
+    private void colorRed() {
+
+    }
+
+    private void colorGreen() {
+    }
+
+    private void colorBlue() {
+
+    }
+
+    private void width1() {
+
+    }
+
+    private void width3() {
+
+    }
+
+    private void width5() {
+
+    }
+
+    private void blur() {
+
+    }
+
+    private void emboss() {
+
     }
 }
