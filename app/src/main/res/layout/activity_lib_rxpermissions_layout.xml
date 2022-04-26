@@ -11,7 +11,7 @@
 
     <Button
         android:id="@+id/sendMessage"
-        style="@style/btn"
+        style="@style/topic"
         android:text="@string/send_message" />
 
     <Button
