@@ -206,8 +206,7 @@ public class TestSQLiteActivity extends NoNeedPermissionActivity {
     private List<DummyItem> getDummyItems() {
 //        return DummyContent.ITEMS_100000();
 //        return DummyContent.ITEMS_10000();
-//        return DummyItems.ITEMS_1000();
-        return DummyItems.ITEMS_4_2();
+        return DummyItems.ITEMS_1000();
     }
 
     private void insertMultiple(SQLiteDatabase db, String tableName, List<DummyItem> list) {
