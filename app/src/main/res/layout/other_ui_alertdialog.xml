@@ -16,12 +16,12 @@
 
     <Button
         android:id="@+id/simple"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="简单对话框" />
 
     <Button
         android:id="@+id/simple_with_style"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="简单对话框 - custom style" />
 
     <View style="@style/div" />
@@ -32,22 +32,22 @@
 
     <Button
         android:id="@+id/simpleList"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="@string/a_traditional_single_choice_list" />
 
     <Button
         android:id="@+id/singleChoice"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="@string/a_persistent_single_choice_list_radio_buttons" />
 
     <Button
         android:id="@+id/multiChoice"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="@string/a_persistent_multiple_choice_list_checkboxes" />
 
     <Button
         android:id="@+id/customList"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="自定义列表项对话框" />
 
     <View style="@style/div" />
@@ -58,16 +58,16 @@
 
     <Button
         android:id="@+id/customView"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="自定义View对话框" />
 
     <Button
         android:id="@+id/customView_style"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="自定义View对话框 - style" />
 
     <Button
         android:id="@+id/customDialog"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="完全自定义Dialog" />
 </LinearLayout>

@@ -75,12 +75,12 @@
 
         <Button
             android:id="@+id/enableSvg"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Enable = true" />
 
         <Button
             android:id="@+id/disableSvg"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Enable = false" />
     </LinearLayout>
 </LinearLayout>

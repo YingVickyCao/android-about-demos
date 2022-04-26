@@ -21,7 +21,7 @@
 
         <Button
             android:id="@+id/setPositionCenterAndTextCenter"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/set_position_center_in_parent_and_text_is_center" />
 
         <LinearLayout

@@ -98,17 +98,17 @@
 
                 <Button
                     android:id="@+id/color1"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:text="@string/color_1" />
 
                 <Button
                     android:id="@+id/toggleEnable"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:text="Toggle Enable" />
 
                 <Button
                     android:id="@+id/color2"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:text="@string/color_2" />
             </LinearLayout>
 
@@ -120,19 +120,19 @@
                 android:orientation="horizontal">
                 <!-- @Deprecated  -->
                 <Button
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:text="@string/selector_color"
                     android:textColor="@drawable/color_v1_2_in_drawable" />
 
                 <!-- @Deprecated  -->
                 <Button
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:text="@string/selector_color"
                     android:textColor="@drawable/color_v1_2_in_drawable" />
 
                 <!-- @Recommend -->
                 <Button
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:text="@string/selector_color"
                     android:textColor="@color/color_v1_2" />
 
@@ -148,13 +148,13 @@
                 Caused by: android.content.res.Resources$NotFoundException: File res/color/color_v1_2.xml from drawable resource ID #0x7f060036
                 Caused by: org.xmlpull.v1.XmlPullParserException: Binary XML file line #3: <item> tag requires a 'drawable' attribute or child tag defining a drawable -->
                 <!--<Button-->
-                <!--style="@style/btn_small"-->
+                <!--style="@style/btn"-->
                 <!--android:background="@color/color_v1_2"-->
                 <!--android:text="@string/selector_color" />-->
 
                 <!-- @Deprecated  -->
                 <Button
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:backgroundTint="@color/color_v1_2"
                     android:text="@string/selector_color" />
 
@@ -165,19 +165,19 @@
                    drawable - android:drawable -> drawable - <color attr >
                    -->
                 <!--<Button-->
-                <!--style="@style/btn_small"-->
+                <!--style="@style/btn"-->
                 <!--android:background="@drawable/color_v1_2_in_drawable"-->
                 <!--android:text="@string/selector_use_color_in_drawable_dir" />-->
 
                 <!-- @Deprecated  -->
                 <Button
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:backgroundTint="@drawable/color_v1_2_in_drawable"
                     android:text="@string/selector_color" />
 
                 <!-- @Recommend -->
                 <Button
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:background="@drawable/color_v2_in_drawable"
                     android:text="@string/selector_color" />
             </LinearLayout>
@@ -189,20 +189,20 @@
 
                 <!-- FIXED_ERROR: Caused by: android.content.res.Resources$NotFoundException: File res/drawable/drawable_v2_1_1.xml from drawable resource ID #0x7f0800a5 -->
                 <!--<Button-->
-                <!--style="@style/btn_small"-->
+                <!--style="@style/btn"-->
                 <!--android:background="@drawable/drawable_v2_1"-->
                 <!--android:text="@string/selector_drawable" />-->
 
                 <!-- @Deprecated -->
                 <!-- No error, but backgroundTint not working -->
                 <Button
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:backgroundTint="@drawable/drawable_v2_1"
                     android:text="@string/selector_drawable" />
 
                 <!-- @Recommend -->
                 <Button
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:background="@drawable/drawable_v2_2"
                     android:text="@string/selector_drawable" />
 
@@ -212,22 +212,22 @@
 
             <Button
                 android:id="@+id/pageThemeAndStyle"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_theme_and_style" />
 
             <Button
                 android:id="@+id/pageDeclareStyleable"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_theme_DeclareStyleable" />
 
             <Button
                 android:id="@+id/pageColorFilter"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_theme_ColorFilter" />
 
             <Button
                 android:id="@+id/pageTint"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_theme_tint" />
 
         </LinearLayout>

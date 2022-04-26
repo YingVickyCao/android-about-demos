@@ -12,7 +12,7 @@
 
     <Button
         android:id="@+id/back_to_layout_main"
-        style="@style/btn_small"
+        style="@style/btn"
         android:layout_gravity="center"
         android:text="Back to Layout main" />
 

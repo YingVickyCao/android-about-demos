@@ -21,7 +21,7 @@
 
         <Button
             android:id="@+id/tv41"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="A"
             android:layout_marginStart="100dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,7 @@
 
         <Button
             android:id="@+id/tv42"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="B"
             app:layout_constraintStart_toEndOf="@+id/tv41"
             app:layout_constraintTop_toTopOf="parent" />

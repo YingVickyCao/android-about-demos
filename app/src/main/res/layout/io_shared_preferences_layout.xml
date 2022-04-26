@@ -16,36 +16,36 @@
 
     <Button
         android:id="@+id/write"
-        style="@style/btn_small"
+        style="@style/btn"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:text="@string/write" />
 
     <Button
         android:id="@+id/read"
-        style="@style/btn_small"
+        style="@style/btn"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:text="@string/read" />
 
     <Button
         android:id="@+id/checkSharedPreferencesIsSameInstance"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="@string/check_sharedPreferences_is_same_instance" />
 
     <Button
         android:id="@+id/runnableInMainThread"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="Runnable on Main Thread" />
 
     <Button
         android:id="@+id/testApis"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="Test APIs" />
 
     <Button
         android:id="@+id/testProcessSafe"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="Test Process Safe" />
 
 </LinearLayout>

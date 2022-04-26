@@ -40,12 +40,12 @@
 
         <Button
             android:id="@+id/openD"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/d" />
 
         <Button
             android:id="@+id/openE"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/e" />
     </LinearLayout>
 </RelativeLayout>

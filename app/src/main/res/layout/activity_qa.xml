@@ -24,7 +24,7 @@
 
             <Button
                 android:id="@+id/temp"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:background="@android:color/holo_red_dark"
                 android:text="Temp" />
         </LinearLayout>

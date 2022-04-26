@@ -11,17 +11,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:showDividers="middle"
         android:weightSum="8">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/colorRed"
-            style="@style/btn_small"
+            style="@style/btn"
             android:layout_weight="1"
             android:text="Red" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/colorGreen"
-            style="@style/btn_small"
+            style="@style/btn"
             android:layout_weight="1"
             android:text="Green" />
 
@@ -33,19 +34,19 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/width1"
-            style="@style/btn_small_red"
+            style="@style/btn_red"
             android:layout_weight="1"
             android:text="1dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/width3"
-            style="@style/btn_small_red"
+            style="@style/btn_red"
             android:layout_weight="1"
             android:text="3dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/width5"
-            style="@style/btn_small_red"
+            style="@style/btn_red"
             android:layout_weight="1"
             android:text="5dp" />
 

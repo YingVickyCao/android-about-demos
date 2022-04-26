@@ -10,21 +10,21 @@
 
     <Button
         android:id="@+id/start"
-        style="@style/btn_small"
+        style="@style/btn"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:text="@string/start" />
 
     <Button
         android:id="@+id/jump"
-        style="@style/btn_small"
+        style="@style/btn"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="@string/jump" />
 
     <Button
         android:id="@+id/stopRecord"
-        style="@style/btn_small"
+        style="@style/btn"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:text="@string/stop" />

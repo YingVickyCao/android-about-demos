@@ -25,7 +25,7 @@
 
         <Button
             android:id="@+id/clear"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="clear" />
 
         <Button

@@ -30,22 +30,22 @@
 
         <Button
             android:id="@+id/start"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/start" />
 
         <Button
             android:id="@+id/pause"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/pause" />
 
         <Button
             android:id="@+id/cancel"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/cancel" />
 
         <Button
             android:id="@+id/end"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/end" />
     </LinearLayout>
 </RelativeLayout>

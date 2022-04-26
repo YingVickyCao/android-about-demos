@@ -22,223 +22,223 @@
 
             <Button
                 android:id="@+id/pageViewLocation"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_view_location" />
 
             <Button
                 android:id="@+id/pageListView"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_ListView" />
 
             <Button
                 android:id="@+id/pageCustomVew"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_CustomView" />
 
             <Button
                 android:id="@+id/pageConstraintLayout"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_ConstraintLayout" />
 
             <Button
                 android:id="@+id/pageLinearLayout"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_linearLayout" />
 
             <Button
                 android:id="@+id/pageLinearLayoutCanNotChangeColor"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_LinearLayout_CanNotChangeColor" />
 
             <Button
                 android:id="@+id/pageLinearLayoutCanNotChangeColor2"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_LinearLayout_CanNotChangeColor" />
 
 
             <Button
                 android:id="@+id/pageLinearLayout4LayoutGravityAndGravity"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_linearLayout" />
 
             <Button
                 android:id="@+id/pageViewGroup"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_ViewGroup" />
 
             <Button
                 android:id="@+id/pageFrameLayout"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_FrameLayout" />
 
             <Button
                 android:id="@+id/pageWebView"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_webView" />
 
             <Button
                 android:id="@+id/pageVideoView"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_videoview_rotate_screen_tip" />
 
             <Button
                 android:id="@+id/pageSurfaceViewPlayVideo"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_MediaPlayer_SurfaceView_play_video" />
 
             <Button
                 android:id="@+id/pageHighlightDigitalClock"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_TextView_4_highlight_digital_clock" />
 
             <Button
                 android:id="@+id/pageTextView"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_TextView" />
 
             <Button
                 android:id="@+id/pageButton"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_Button" />
 
             <Button
                 android:id="@+id/page_ImageButton"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_ImageButton" />
 
             <Button
                 android:id="@+id/pageImageView"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_imageView" />
 
             <Button
                 android:id="@+id/pageKenBurnsImage"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_ken_burns_image" />
 
             <Button
                 android:id="@+id/pageImageViewScaleType"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_imageView_scaleType" />
 
             <Button
                 android:id="@+id/pageRatingBar"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_RatingBar" />
 
             <Button
                 android:id="@+id/pageSeekBar"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_SeekBar" />
 
             <Button
                 android:id="@+id/pageProgressbar"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_Progressbar" />
 
             <Button
                 android:id="@+id/jumpViewSwitcher"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/view_switcher" />
 
             <Button
                 android:id="@+id/jumpImageSwitcher"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/image_switcher" />
 
             <Button
                 android:id="@+id/jumpTextSwitcher"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/text_switcher" />
 
             <Button
                 android:id="@+id/pageRecyclerView"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/test_recyclerView" />
 
             <Button
                 android:id="@+id/recyclerView2"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/test_recyclerView" />
 
             <Button
                 android:id="@+id/pageRecyclerView4DragReorderList"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_recyclerView_4_drag_reorder_list" />
 
             <Button
                 android:id="@+id/testDragAndDrop"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/test_drag_and_drop" />
 
             <Button
                 android:id="@+id/testViewFlipper"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/test_view_flipper" />
 
             <Button
                 android:id="@+id/testCalendarView"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/test_CalendarView" />
 
             <Button
                 android:id="@+id/testDatePickerAndTimePicker"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/test_DatePicker_and_TimePicker" />
 
             <Button
                 android:id="@+id/testNumberPicker"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/test_NumberPicker" />
 
             <Button
                 android:id="@+id/testSearchView"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/test_SearchView" />
 
             <Button
                 android:id="@+id/pageSpinner"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_spinner" />
 
             <Button
                 android:id="@+id/pageTabLayout"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_TabLayout" />
 
             <Button
                 android:id="@+id/pageRadioButton"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_RadioButton" />
 
             <Button
                 android:id="@+id/pageCheckBox"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_CheckBox" />
 
             <Button
                 android:id="@+id/pageSwitch"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_Switch" />
 
             <Button
                 android:id="@+id/page_ToggleButton"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_ToggleButton" />
 
             <Button
                 android:id="@+id/pageEditText"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_EditText" />
 
             <Button
                 android:id="@+id/pageKeyBoardView"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_EditText_adding_KeyboardView_and_Keyboard" />
 
             <Button
                 android:id="@+id/pageKeyBoardView2"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_EditText_adding_KeyboardView_and_Keyboard" />
         </LinearLayout>
     </ScrollView>

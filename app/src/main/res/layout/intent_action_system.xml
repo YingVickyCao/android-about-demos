@@ -41,12 +41,12 @@
 
             <Button
                 android:id="@+id/actionGetContent"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Intent.ACTION_GET_CONTENT" />
 
             <Button
                 android:id="@+id/backToSystemHome"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/back_to_system_home" />
 
         </LinearLayout>

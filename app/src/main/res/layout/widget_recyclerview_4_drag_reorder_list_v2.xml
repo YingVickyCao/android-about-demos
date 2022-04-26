@@ -44,7 +44,7 @@
 
                     <Button
                         android:id="@+id/moreOrLess"
-                        style="@style/btn_small"
+                        style="@style/btn"
                         android:layout_alignParentEnd="true"
                         android:text="@string/more" />
                 </RelativeLayout>

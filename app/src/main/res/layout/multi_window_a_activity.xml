@@ -29,7 +29,7 @@
 
         <Button
             android:id="@+id/openB"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/b" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

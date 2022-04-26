@@ -17,17 +17,17 @@
 
         <Button
             android:id="@+id/btn1"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Btn 1" />
 
         <Button
             android:id="@+id/btn2"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Btn 2" />
 
         <Button
             android:id="@+id/btn3"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Btn 3" />
     </LinearLayout>
 

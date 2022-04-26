@@ -109,7 +109,7 @@
 
         <TextView
             android:id="@+id/useStyle"
-            style="@style/btn_small"
+            style="@style/btn"
             android:layout_gravity="center_horizontal"
             android:text="@string/user_style"
             android:textAllCaps="false" />

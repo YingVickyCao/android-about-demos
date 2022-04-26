@@ -23,7 +23,7 @@
 
             <Button
                 android:id="@+id/pageAppChooser"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_app_chooser" />
 
         </LinearLayout>

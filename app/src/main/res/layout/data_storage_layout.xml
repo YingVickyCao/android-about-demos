@@ -24,17 +24,17 @@
 
             <Button
                 android:id="@+id/pageSharedPreferences"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_shared_preferences" />
 
             <Button
                 android:id="@+id/pageDatabase"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_sqlite" />
 
             <Button
                 android:id="@+id/pageIO"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_io" />
 
         </LinearLayout>

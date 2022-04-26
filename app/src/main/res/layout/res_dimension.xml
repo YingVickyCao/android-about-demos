@@ -23,17 +23,17 @@
 
         <Button
             android:id="@+id/px2dp"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/px_dp" />
 
         <Button
             android:id="@+id/dp2px"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/dp_px" />
 
         <Button
             android:id="@+id/test_dimen"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="getDimension vs getDimensionPixelSize vs getDimensionPixelOffset" />
 
     </LinearLayout>

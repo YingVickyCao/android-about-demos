@@ -37,47 +37,47 @@
 
             <Button
                 android:id="@+id/case1"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="case1:scheme1:" />
 
             <Button
                 android:id="@+id/case2"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="case2:scheme2" />
 
             <Button
                 android:id="@+id/case3"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="case3:scheme2://com.hades,action1" />
 
             <Button
                 android:id="@+id/case4"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="case4:scheme2://com.hades,action2" />
 
             <Button
                 android:id="@+id/case5"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="case5:scheme2:/com.hades,action2" />
 
             <Button
                 android:id="@+id/case6"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="case6:scheme2:/com.hades:1000/path2,action2" />
 
             <Button
                 android:id="@+id/case7"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="case7:1 type, 2 data" />
 
             <Button
                 android:id="@+id/case8"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="case8:1 data, 2 type" />
 
             <Button
                 android:id="@+id/case9"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="case9:(data, type)" />
         </LinearLayout>
     </ScrollView>

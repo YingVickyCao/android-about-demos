@@ -32,62 +32,62 @@
 
             <Button
                 android:id="@+id/action0"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Action0" />
 
             <Button
                 android:id="@+id/action1"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Action1" />
 
             <Button
                 android:id="@+id/action2"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Action2" />
 
             <Button
                 android:id="@+id/action1_action2"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Action1, Action2" />
 
             <Button
                 android:id="@+id/category_2"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Category2" />
 
             <Button
                 android:id="@+id/action1_category1_category3"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Action1,Category1,Category3" />
 
             <Button
                 android:id="@+id/action1_category1_category2"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Action1,Category1,Category2" />
 
             <Button
                 android:id="@+id/action1_category1_categoryDefault"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Action1,Category1,Category Default" />
 
             <Button
                 android:id="@+id/action1_categoryDefault"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Action1 , Category Default" />
 
             <Button
                 android:id="@+id/action1_category3"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Action1 , Category3" />
 
             <Button
                 android:id="@+id/action1_category2"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Action1 , Category2" />
 
             <Button
                 android:id="@+id/action3_categoryDefault"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Action3 , Category Default" />
         </LinearLayout>
     </ScrollView>

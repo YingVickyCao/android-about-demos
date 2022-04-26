@@ -59,12 +59,12 @@
 
             <Button
                 android:id="@+id/enable_true"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Enable-True" />
 
             <Button
                 android:id="@+id/enable_false"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Enable-False" />
 
         </LinearLayout>
@@ -85,12 +85,12 @@
 
             <Button
                 android:id="@+id/selected_true"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Selected-True" />
 
             <Button
                 android:id="@+id/selected_false"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="Selected-False" />
         </LinearLayout>
 

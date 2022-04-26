@@ -12,6 +12,6 @@
     <!-- 事件源 -->
     <Button
         android:id="@+id/btn"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="@string/click" />
 </LinearLayout>

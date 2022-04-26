@@ -63,14 +63,14 @@
 
         <Button
             android:id="@+id/start"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/start"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/pause"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/pause"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
 
         <Button
             android:id="@+id/stopRecord"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/stop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

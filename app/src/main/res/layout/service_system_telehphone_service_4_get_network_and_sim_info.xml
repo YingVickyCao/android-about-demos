@@ -6,12 +6,12 @@
 
     <Button
         android:id="@+id/checkPermission"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="Check Permission" />
 
     <Button
         android:id="@+id/getData"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="Get data " />
 
     <ListView

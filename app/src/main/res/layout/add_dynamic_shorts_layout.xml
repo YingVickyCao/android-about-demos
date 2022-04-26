@@ -19,7 +19,7 @@
     <Button
         android:visibility="gone"
         android:id="@+id/createDynamicShortcuts"
-        style="@style/btn_small"
+        style="@style/btn"
         android:layout_gravity="center"
         android:text="@string/create_dynamic_shortcuts" />
 </FrameLayout>

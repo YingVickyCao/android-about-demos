@@ -27,7 +27,7 @@
 
             <Button
                 android:id="@+id/checkIfHaveAddedView"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/check_if_have_added_view" />
         </LinearLayout>
 
@@ -38,7 +38,7 @@
 
             <Button
                 android:id="@+id/checkGoneViewSize"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/check_gone_view_size" />
 
             <Button

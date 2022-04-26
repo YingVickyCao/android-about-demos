@@ -61,12 +61,12 @@
 
                 <Button
                     android:id="@+id/setMaxLevel0"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:text="@string/set_max_level_0" />
 
                 <Button
                     android:id="@+id/setMaxLevel1"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:text="@string/set_max_level_1" />
             </LinearLayout>
         </LinearLayout>

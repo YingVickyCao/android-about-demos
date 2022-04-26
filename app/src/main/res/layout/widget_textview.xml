@@ -71,7 +71,7 @@
 
                 <Button
                     android:id="@+id/requestViewSize"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:text="@string/request_view_size" />
 
                 <com.hades.example.android.widget.textview.MyTextView
@@ -88,14 +88,14 @@
 
                     <Switch
                         android:id="@+id/toggleHideShow"
-                        style="@style/btn_small"
+                        style="@style/btn"
                         android:layout_alignParentStart="true"
                         android:textOff="Hide"
                         android:textOn="Show" />
 
                     <TextView
                         android:id="@+id/tv2"
-                        style="@style/btn_small"
+                        style="@style/btn"
                         android:layout_alignParentEnd="true"
                         android:text="@string/page_TextView" />
                 </RelativeLayout>

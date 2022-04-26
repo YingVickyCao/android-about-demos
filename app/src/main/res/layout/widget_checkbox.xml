@@ -141,7 +141,7 @@
 
     <Button
         android:id="@+id/toggle"
-        style="@style/btn_small"
+        style="@style/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/toggle_checkbox_checked_status"

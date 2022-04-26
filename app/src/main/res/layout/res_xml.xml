@@ -18,7 +18,7 @@
 
     <Button
         android:id="@+id/parseXML"
-        style="@style/btn_small"
+        style="@style/btn"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="bottom"

@@ -17,12 +17,12 @@
 
             <Button
                 android:id="@+id/cascadeLayout1"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="CascadeLayout - RelativeLayout" />
 
             <Button
                 android:id="@+id/cascadeLayout2"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="CascadeLayout - CustomView" />
         </LinearLayout>
     </ScrollView>

@@ -21,17 +21,17 @@
 
         <Button
             android:id="@+id/activityAnim_Default"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Default" />
 
         <Button
             android:id="@+id/activityAnim_theme"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/theme" />
 
         <Button
             android:id="@+id/activityAnim_override_func"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/overridependingtransition" />
     </LinearLayout>
 

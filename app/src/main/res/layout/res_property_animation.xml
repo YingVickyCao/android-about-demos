@@ -22,23 +22,23 @@
 
                 <Button
                     android:id="@+id/btn"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:background="@android:color/holo_red_dark"
                     android:text="Bg color" />
 
                 <Button
                     android:id="@+id/bg_color_1_objectAnimation_xml"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:text="XML - objectAnimation" />
 
                 <Button
                     android:id="@+id/bg_color_2_objectAnimation_java"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:text="Java - objectAnimation" />
 
                 <Button
                     android:id="@+id/bg_color_3_valueAnimation_java"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:text="Java - ValueAnimation" />
             </LinearLayout>
 
@@ -51,40 +51,40 @@
 
                 <Button
                     android:id="@+id/btn2"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:text="X Y" />
 
                 <Button
                     android:id="@+id/xy_1_translation_xml"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:layout_above="@+id/xy_2_translation_AnimatorSet"
                     android:layout_alignParentEnd="true"
                     android:text="XML" />
 
                 <Button
                     android:id="@+id/xy_2_translation_AnimatorSet"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:layout_above="@+id/xy_3_translation_PropertyValuesHolder"
                     android:layout_alignParentEnd="true"
                     android:text="Java - AnimatorSet" />
 
                 <Button
                     android:id="@+id/xy_3_translation_PropertyValuesHolder"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:layout_above="@+id/moveOver"
                     android:layout_alignParentEnd="true"
                     android:text="Java - PropertyValuesHolder" />
 
                 <Button
                     android:id="@+id/moveOver"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:layout_above="@+id/moveBack"
                     android:layout_alignParentEnd="true"
                     android:text="Move Over" />
 
                 <Button
                     android:id="@+id/moveBack"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
                     android:text="Move Back" />

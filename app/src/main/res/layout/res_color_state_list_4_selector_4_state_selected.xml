@@ -24,12 +24,12 @@
 
         <Button
             android:id="@+id/switchTextViewTextColor11"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Selected = true" />
 
         <Button
             android:id="@+id/switchTextViewTextColor12"
-            style="@style/btn_small"
+            style="@style/btn"
             android:layout_alignParentEnd="true"
             android:text="Selected = false" />
     </RelativeLayout>
@@ -79,12 +79,12 @@
 
         <Button
             android:id="@+id/switchTextViewTextColor21"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Selected = true" />
 
         <Button
             android:id="@+id/switchTextViewTextColor22"
-            style="@style/btn_small"
+            style="@style/btn"
             android:layout_alignParentEnd="true"
             android:text="Selected = false" />
     </RelativeLayout>
@@ -129,7 +129,7 @@
 
         <Button
             android:id="@+id/reset"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Reset" />
     </LinearLayout>
 
@@ -154,7 +154,7 @@
 
         <Button
             android:id="@+id/reset2"
-            style="@style/btn_small"
+            style="@style/btn"
             android:layout_alignParentEnd="true"
             android:text="Reset" />
     </RelativeLayout>

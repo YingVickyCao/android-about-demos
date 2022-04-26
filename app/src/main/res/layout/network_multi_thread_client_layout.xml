@@ -47,7 +47,7 @@
 
             <Button
                 android:id="@+id/send"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:layout_alignParentEnd="true"
                 android:text="@string/send" />
         </RelativeLayout>

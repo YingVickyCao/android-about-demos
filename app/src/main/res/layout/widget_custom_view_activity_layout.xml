@@ -24,17 +24,17 @@
 
             <Button
                 android:id="@+id/pageCustomVew"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_CustomView" />
 
             <Button
                 android:id="@+id/page_CustomVew4CascadeLayout"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_CustomView_CascadeLayout" />
 
             <Button
                 android:id="@+id/page_CustomVew_ShadowView"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_CustomView_ShadowView" />
 
         </LinearLayout>

@@ -16,24 +16,24 @@
 
         <Button
             android:id="@+id/bind"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/bind" />
 
         <Button
             android:id="@+id/bindAutoCreate"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Bind auto create" />
 
         <Button
             android:id="@+id/bindAutoCreateInThread"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Bind auto create In Thread" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/unbind"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="@string/unbind" />
 
     <LinearLayout
@@ -43,24 +43,24 @@
 
         <Button
             android:id="@+id/start"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/start" />
 
         <Button
             android:id="@+id/stopRecord"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="@string/stop" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/check"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="@string/check" />
 
     <Button
         android:id="@+id/jump"
-        style="@style/btn_small"
+        style="@style/btn"
         android:text="@string/jump"
         android:visibility="gone" />
 </LinearLayout>

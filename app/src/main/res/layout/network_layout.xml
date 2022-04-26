@@ -24,27 +24,27 @@
 
             <Button
                 android:id="@+id/pageSimpleSocketClient"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_simple_client_socket" />
 
             <Button
                 android:id="@+id/pageMultiThreadSocketClient"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_multi_thread_client_socket" />
 
             <Button
                 android:id="@+id/pageURL"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_url" />
 
             <Button
                 android:id="@+id/pageURLConnection"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_URLConnection" />
 
             <Button
                 android:id="@+id/pageHttpURLConnection"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_HttpURLConnection" />
 
         </LinearLayout>

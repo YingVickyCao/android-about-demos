@@ -16,13 +16,13 @@
 
         <Button
             android:id="@+id/buttonLayout1"
-            style="@style/btn_small"
+            style="@style/btn"
             android:onClick="buttonClick"
             android:text="@string/layout_1" />
 
         <Button
             android:id="@+id/buttonLayout2"
-            style="@style/btn_small"
+            style="@style/btn"
             android:onClick="buttonClick"
             android:text="@string/layout_2" />
     </LinearLayout>

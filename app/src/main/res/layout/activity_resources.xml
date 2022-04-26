@@ -24,47 +24,47 @@
 
             <Button
                 android:id="@+id/pageMaterial"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_material" />
 
             <Button
                 android:id="@+id/pageDimension"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_dimension" />
 
             <Button
                 android:id="@+id/pageColor"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_Color" />
 
             <Button
                 android:id="@+id/pageColorStateListResource"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_ColorStateList" />
 
             <Button
                 android:id="@+id/pageThemeChoose"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_theme_choose" />
 
             <Button
                 android:id="@+id/pageInternationalization"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="国际化" />
 
             <Button
                 android:id="@+id/pageStringIntegerArray"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_String_and_Integer_and_Array" />
 
             <Button
                 android:id="@+id/pageFont"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_font" />
 
             <Button
                 android:id="@+id/pageXML"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_XML" />
 
             <View style="@style/div" />
@@ -76,76 +76,76 @@
 
             <Button
                 android:id="@+id/pageScreenOrientation"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="屏幕方向" />
 
             <Button
                 android:id="@+id/pageScreenSize"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="屏幕尺寸" />
 
             <Button
                 android:id="@+id/pageDrawableAndScreenDensity"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_bitmap_4_screen_density_and_drawable_memory" />
 
             <View style="@style/div" />
 
             <Button
                 android:id="@+id/pageStateDrawable"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_StateDrawable" />
 
             <Button
                 android:id="@+id/pageVectorDrawable"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_drawable_vectorDrawable" />
 
             <Button
                 android:id="@+id/pageBitmap"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_bitmap" />
 
             <Button
                 android:id="@+id/pageShapeDrawable"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_ShapeDrawable" />
 
             <Button
                 android:id="@+id/pageLevelListDrawable"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_LevelListDrawable" />
 
             <Button
                 android:id="@+id/pageLayerListDrawable"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_LayerListDrawable" />
 
             <Button
                 android:id="@+id/pageDrawableFolder"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_DrawableFolder" />
 
             <Button
                 android:id="@+id/pageClipDrawable"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_ClipDrawable" />
 
             <View style="@style/div" />
 
             <Button
                 android:id="@+id/pageTweenAnimation"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_Tween_Animation" />
 
             <Button
                 android:id="@+id/pageFrameAnimation"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_Frame_Animation" />
 
             <Button
                 android:id="@+id/pagePropertyAnimation"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_Property_Animation" />
         </LinearLayout>
     </ScrollView>

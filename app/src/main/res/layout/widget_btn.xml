@@ -47,12 +47,12 @@
 
                 <Button
                     android:id="@+id/btn1"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:text="Perform btn click" />
 
                 <Button
                     android:id="@+id/btn2"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:layout_alignParentEnd="true"
                     android:text="Btn 2"
                     android:textColor="@color/btn_text_color_selector" />

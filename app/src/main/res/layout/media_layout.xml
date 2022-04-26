@@ -24,38 +24,38 @@
 
             <Button
                 android:id="@+id/pageMediaPlayerPlayAudio"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_MediaPlayer_play_audio" />
 
             <Button
                 android:id="@+id/pageAudioEffect"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_AudioEffect" />
 
             <Button
                 android:id="@+id/pageSoundPoolPlayAudio"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_SoundPool_play_audio" />
 
             <Button
                 android:id="@+id/pageVideoViewPlayVideo"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_VideoView_play_video" />
 
             <Button
                 android:id="@+id/pageSurfaceViewPlayVideo"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_MediaPlayer_SurfaceView_play_video" />
 
 
             <Button
                 android:id="@+id/pageRecordAudio"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_MediaRecorder_Record_audio" />
 
             <Button
                 android:id="@+id/pageCamera"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/page_Camera" />
 
         </LinearLayout>

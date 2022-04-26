@@ -16,42 +16,42 @@
 
         <Button
             android:id="@+id/test1"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Test 1" />
 
         <Button
             android:id="@+id/test2"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Test 2" />
 
         <Button
             android:id="@+id/test3"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Test 3" />
 
         <Button
             android:id="@+id/test4"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Test 4" />
 
         <Button
             android:id="@+id/test5"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Test 5" />
 
         <Button
             android:id="@+id/test6"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Test 6" />
 
         <Button
             android:id="@+id/test7"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Test 7" />
 
         <Button
             android:id="@+id/test8"
-            style="@style/btn_small"
+            style="@style/btn"
             android:text="Test 8" />
 
         <TextView style="@style/div" />

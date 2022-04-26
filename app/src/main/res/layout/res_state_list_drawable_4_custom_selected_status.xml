@@ -30,13 +30,13 @@
 
         <Button
             android:id="@+id/read"
-            style="@style/btn_small"
+            style="@style/btn"
             android:layout_centerInParent="true"
             android:text="Read" />
 
         <Button
             android:id="@+id/unread"
-            style="@style/btn_small"
+            style="@style/btn"
             android:layout_alignParentEnd="true"
             android:text="Unread" />
     </LinearLayout>

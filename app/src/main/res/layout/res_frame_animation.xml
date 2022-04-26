@@ -16,13 +16,13 @@
 
         <Button
             android:id="@+id/startAnimation"
-            style="@style/btn_small"
+            style="@style/btn"
             android:layout_alignParentStart="true"
             android:text="@string/start_animation" />
 
         <Button
             android:id="@+id/stopAnimation"
-            style="@style/btn_small"
+            style="@style/btn"
             android:layout_alignParentEnd="true"
             android:text="@string/stop_animation" />
     </RelativeLayout>

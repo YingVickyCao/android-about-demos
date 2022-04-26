@@ -17,7 +17,7 @@
         <!--        android:alpha="0.8"-->
 
         <ImageView
-            style="@style/btn_small"
+            style="@style/btn"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/li_jiang" />

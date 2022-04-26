@@ -105,7 +105,7 @@
 
                 <Button
                     android:id="@+id/getStringArray"
-                    style="@style/btn_small"
+                    style="@style/btn"
                     android:text="String array" />
 
                 <ListView

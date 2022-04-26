@@ -54,17 +54,17 @@
 
             <Button
                 android:id="@+id/play"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/play" />
 
             <Button
                 android:id="@+id/pause"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/pause_resume" />
 
             <Button
                 android:id="@+id/stopRecord"
-                style="@style/btn_small"
+                style="@style/btn"
                 android:text="@string/stop" />
         </LinearLayout>
 
