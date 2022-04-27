@@ -18,8 +18,11 @@ import com.hades.example.android.R;
  */
 public class FingerMovedBallView extends View {
     private static final String TAG = "FingerMovedBallView";
-    private float currentX = -1;
-    private float currentY = -1;
+
+    private float currentX = getResources().getDimension(R.dimen.size_15);
+    private float currentY = getResources().getDimension(R.dimen.size_15);
+    private float radius = getResources().getDimension(R.dimen.size_10);
+
     Paint paint;
 
     public FingerMovedBallView(Context context) {
@@ -44,55 +47,45 @@ public class FingerMovedBallView extends View {
 
     private void initViews() {
         if (null == paint) {
+            // 创建画笔，颜色为红色
             paint = new Paint();
             paint.setColor(Color.RED);
+            // 设置消除锯齿
+            paint.setAntiAlias(true);
         }
     }
 
     private void initBallStartPosition() {
-//        if (-1 == currentX) {
-//            // onDraw 中获取宽度和高度，并1/2 长度作为小球的开始位置
-//            currentX = (float) getWidth() / 2;
-//        }
-//        if (-1 == currentY) {
-//            currentY = (float) getHeight() / 2;
-//        }
-
         if (-1 == currentX) {
-            currentX = getResources().getDimension(R.dimen.size_15);
+            // onDraw 中获取宽度和高度，并1/2 长度作为小球的开始位置
+            currentX = (float) getWidth() / 2;
         }
         if (-1 == currentY) {
-            currentY = getResources().getDimension(R.dimen.size_15);
+            currentY = (float) getHeight() / 2;
         }
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        // 设置画布的颜色
         canvas.drawColor(getResources().getColor(R.color.paint_bg, getContext().getTheme()));
 
-        Log.d(TAG, "onDraw: width=" + getWidth() + ",height=" + getHeight());
-        initBallStartPosition();
+        // Log.d(TAG, "onDraw: width=" + getWidth() + ",height=" + getHeight());
+        // initBallStartPosition();
 
-        float radius = getResources().getDimension(R.dimen.size_10);
-        /**
-         * 绘制圆形小球
-         */
+        // 绘制圆形小球
         canvas.drawCircle(currentX, currentY, radius, paint);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Log.d(TAG, "onTouchEvent: " + event.getAction());
-        /**
-         * 获取当前手指触摸的X 和 Y 坐标位置，并把保存
-         */
+        // 记录触屏坐标，并把保存
         currentX = event.getX();
         currentY = event.getY();
 
-        /**
-         * 通知重绘： 让小球绘制到当前手指触摸的X 和 Y 坐标
-         */
+        // 通知重绘： 用新的坐标重新绘制小球
         invalidate();
         return true;
     }
