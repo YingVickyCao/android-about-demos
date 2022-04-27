@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <TextView
         style="@style/topic"
@@ -55,4 +56,17 @@
             android:layout_width="wrap_content"
             android:text="Emboss" />
     </LinearLayout>
+
+    <com.hades.example.android.widget.custom_view.drawing_board.DrawingBoardView
+        android:id="@+id/drawingBoardView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/save"
+        style="@style/btn_small"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Save" />
 </LinearLayout>
