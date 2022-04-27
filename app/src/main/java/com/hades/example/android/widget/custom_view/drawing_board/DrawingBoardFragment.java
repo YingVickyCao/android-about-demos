@@ -21,7 +21,7 @@ public class DrawingBoardFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_custom_view_double_buffer_for_drawing_board, container, false);
+        View view = inflater.inflate(R.layout.widget_custom_view_of_drawing_board, container, false);
         view.findViewById(R.id.colorRed).setOnClickListener(v -> colorRed());
         view.findViewById(R.id.colorGreen).setOnClickListener(v -> colorGreen());
         view.findViewById(R.id.colorBlue).setOnClickListener(v -> colorBlue());

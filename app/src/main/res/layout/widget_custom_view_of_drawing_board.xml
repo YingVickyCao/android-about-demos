@@ -7,7 +7,7 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_CustomView_double_buffer_for_drawing_board" />
+        android:text="@string/page_CustomView_of_drawing_board" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,6 +63,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <!-- TODO:save    -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/save"
         style="@style/btn_small"

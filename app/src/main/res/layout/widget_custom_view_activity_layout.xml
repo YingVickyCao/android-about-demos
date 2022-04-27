@@ -30,7 +30,12 @@
             <Button
                 android:id="@+id/pageDrawingBoard"
                 style="@style/btn"
-                android:text="@string/page_CustomView_double_buffer_for_drawing_board" />
+                android:text="@string/page_CustomView_of_drawing_board" />
+
+            <Button
+                android:id="@+id/pageFingerMovedBall"
+                style="@style/btn"
+                android:text="@string/page_CustomView_of_FingerMovedBall" />
 
             <Button
                 android:id="@+id/page_CustomVew4CascadeLayout"
