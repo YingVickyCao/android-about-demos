@@ -31,7 +31,7 @@ public class DrawingBoardFragment extends Fragment {
         view.findViewById(R.id.blur).setOnClickListener(v -> width5());
         view.findViewById(R.id.emboss).setOnClickListener(v -> emboss());
 
-//        drawingBoardView = view.findViewById(R.id.drawingBoardView);
+        drawingBoardView = view.findViewById(R.id.drawingBoardView);
         return view;
     }
 

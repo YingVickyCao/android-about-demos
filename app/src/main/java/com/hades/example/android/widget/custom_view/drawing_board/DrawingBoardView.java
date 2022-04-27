@@ -67,6 +67,7 @@ public class DrawingBoardView extends View {
         Log.d(TAG, "DrawingBoardView: ");
     }
 
+    // TODO: 一旦改变，之前绘制的线条，也要改变
     public void setPaintStrokeWidth(float paintStrokeWidth) {
         paint.setStrokeWidth(paintStrokeWidth);
     }
