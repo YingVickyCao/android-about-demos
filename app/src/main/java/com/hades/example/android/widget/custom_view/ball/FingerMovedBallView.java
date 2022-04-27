@@ -12,6 +12,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
+import com.hades.example.android.widget.edittext.ButtonUtils;
 
 /**
  * 小球跟着手指动
@@ -81,11 +82,25 @@ public class FingerMovedBallView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Log.d(TAG, "onTouchEvent: " + event.getAction());
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, "onTouchEvent: Action Down");
+                break;
+
+            case MotionEvent.ACTION_MOVE:
+                Log.d(TAG, "onTouchEvent: Action Move");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG, "onTouchEvent: Action Up");
+                break;
+        }
+
         // 记录触屏坐标，并把保存
         currentX = event.getX();
         currentY = event.getY();
 
-        // 通知重绘： 用新的坐标重新绘制小球
+        // 通知重绘： 用新的坐标重新绘制小球  => onDraw（）
         invalidate();
         return true;
     }
