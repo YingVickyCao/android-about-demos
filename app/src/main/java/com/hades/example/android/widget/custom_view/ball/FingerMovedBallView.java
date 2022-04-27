@@ -12,10 +12,10 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.widget.edittext.ButtonUtils;
 
 /**
  * 小球跟着手指动
+ * 难点：onTouchEvent 触摸事件
  */
 public class FingerMovedBallView extends View {
     private static final String TAG = "FingerMovedBallView";
@@ -23,6 +23,9 @@ public class FingerMovedBallView extends View {
     private float currentX = getResources().getDimension(R.dimen.size_15);
     private float currentY = getResources().getDimension(R.dimen.size_15);
     private float radius = getResources().getDimension(R.dimen.size_10);
+
+    private int width = -1;
+    private int height = -1;
 
     Paint paint;
 
@@ -81,18 +84,19 @@ public class FingerMovedBallView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.d(TAG, "onTouchEvent: " + event.getAction());
+//        Log.d(TAG, "onTouchEvent: " + event.getAction());
+        Log.d(TAG, "onTouchEvent: width=" + getWidth() + ",height=" + getHeight());
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d(TAG, "onTouchEvent: Action Down");
+//                Log.d(TAG, "onTouchEvent: Action Down");
                 break;
 
             case MotionEvent.ACTION_MOVE:
-                Log.d(TAG, "onTouchEvent: Action Move");
+//                Log.d(TAG, "onTouchEvent: Action Move");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(TAG, "onTouchEvent: Action Up");
+//                Log.d(TAG, "onTouchEvent: Action Up");
                 break;
         }
 
@@ -100,8 +104,31 @@ public class FingerMovedBallView extends View {
         currentX = event.getX();
         currentY = event.getY();
 
+        reviseXY();
         // 通知重绘： 用新的坐标重新绘制小球  => onDraw（）
         invalidate();
         return true;
+    }
+
+    // 纠正XY，不让小球跑到屏幕范围外
+    private void reviseXY() {
+        if (-1 == width) {
+            width = getWidth();
+        }
+        if (-1 == height) {
+            height = getHeight();
+        }
+
+        if (currentX <= radius) {
+            currentX = radius;
+        } else if (currentX >= (width - radius)) {
+            currentX = width - radius;
+        }
+
+        if (currentY <= radius) {
+            currentY = radius;
+        } else if (currentY >= (height - radius)) {
+            currentY = height - radius;
+        }
     }
 }
