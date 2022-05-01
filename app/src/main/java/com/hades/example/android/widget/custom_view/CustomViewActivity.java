@@ -12,6 +12,7 @@ import com.hades.example.android.widget.custom_view.ball.FingerMovedBallFragment
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.example.android.widget.custom_view.drawing_board.DrawingBoardFragment;
 import com.hades.example.android.widget.custom_view.matrix.MatrixOnBitmapFragment;
+import com.hades.example.android.widget.custom_view.mesh.BitmapMeshFragment;
 import com.hades.example.android.widget.custom_view.shadow.TestShadowViewFragment;
 
 /**
@@ -31,6 +32,7 @@ public class CustomViewActivity extends PermissionActivity {
         findViewById(R.id.pageDrawingBoard).setOnClickListener(v -> pageDrawingBoard());
         findViewById(R.id.pageFingerMovedBall).setOnClickListener(v -> pageFingerMovedBall());
         findViewById(R.id.pageMatrixOnBitmap).setOnClickListener(v -> pageMatrixOnBitmap());
+        findViewById(R.id.pageBitmapMesh).setOnClickListener(v -> pageBitmapMesh());
         findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
         findViewById(R.id.page_CustomVew_ShadowView).setOnClickListener(v -> page_CustomVew_ShadowView());
     }
@@ -43,7 +45,7 @@ public class CustomViewActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageMatrixOnBitmap();
+        pageBitmapMesh();
     }
 
     private void pageCustomVew() {
@@ -60,6 +62,10 @@ public class CustomViewActivity extends PermissionActivity {
 
     private void pageMatrixOnBitmap() {
         showFragment(new MatrixOnBitmapFragment());
+    }
+
+    private void pageBitmapMesh() {
+        showFragment(new BitmapMeshFragment());
     }
 
     private void pageCustomView4CascadeLayout() {

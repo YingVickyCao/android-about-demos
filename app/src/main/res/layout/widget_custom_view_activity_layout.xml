@@ -43,6 +43,11 @@
                 android:text="@string/page_CustomView_of_matrix_on_bitmap" />
 
             <Button
+                android:id="@+id/pageBitmapMesh"
+                style="@style/btn"
+                android:text="@string/page_CustomView_of_bitmap_mesh" />
+
+            <Button
                 android:id="@+id/page_CustomVew4CascadeLayout"
                 style="@style/btn"
                 android:text="@string/page_CustomView_CascadeLayout" />
