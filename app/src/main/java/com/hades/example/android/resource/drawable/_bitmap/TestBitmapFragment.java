@@ -186,6 +186,9 @@ public class TestBitmapFragment extends Fragment {
             Bitmap bitmapSource = ((BitmapDrawable) img0.getDrawable()).getBitmap();
 
             // Matrix ? https://blog.csdn.net/nupt123456789/article/details/24600055
+            /**
+             * Matrix sample on {@link com.hades.example.android.widget.custom_view.matrix.MatrixOnBitmapFragment}
+             */
             Matrix matrix = new Matrix();
             // setTranslate-位移、setSkew-倾斜、setRotate-旋转、setScale-缩放
             matrix.setScale(2, 1);

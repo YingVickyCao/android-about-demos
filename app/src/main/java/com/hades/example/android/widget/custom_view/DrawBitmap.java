@@ -25,9 +25,8 @@ public class DrawBitmap extends View {
     }
 
     @Override
-    public void draw(Canvas canvas) {
-        super.draw(canvas);
-
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
         Log.d(TAG, "draw:" + "left=" + getLeft() + ",top=" + getTop() + ",right=" + getRight() + ",bottom=" + getBottom());
 
         canvas.drawColor(Color.BLACK);
