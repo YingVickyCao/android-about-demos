@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_CustomView_of_matrix_on_bitmap" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_scale"
+            style="@style/btn"
+            android:text="缩放" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_rotate"
+            style="@style/btn"
+            android:text="旋转" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_translate"
+            style="@style/btn"
+            android:text="平移" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_skew"
+            style="@style/btn"
+            android:text="倾斜" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+        <!-- 原始图片 -->
+        <ImageView
+            android:id="@+id/image_origin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <!-- 处理之后的图片 -->
+        <ImageView
+            android:id="@+id/image_after"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10" />
+    </LinearLayout>
+</LinearLayout>

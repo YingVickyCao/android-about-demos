@@ -38,6 +38,11 @@
                 android:text="@string/page_CustomView_of_FingerMovedBall" />
 
             <Button
+                android:id="@+id/pageMatrixOnBitmap"
+                style="@style/btn"
+                android:text="@string/page_CustomView_of_matrix_on_bitmap" />
+
+            <Button
                 android:id="@+id/page_CustomVew4CascadeLayout"
                 style="@style/btn"
                 android:text="@string/page_CustomView_CascadeLayout" />

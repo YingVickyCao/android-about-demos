@@ -72,6 +72,7 @@
     <string name="page_CustomView_ShadowView">Custom View 4 Shadow View</string>
     <string name="page_CustomView_of_drawing_board">Custom View - 采用双缓冲实现画图板</string>
     <string name="page_CustomView_of_FingerMovedBall">Custom View - 小球跟着手指动</string>
+    <string name="page_CustomView_of_matrix_on_bitmap">Custom View - Matrix 处理Bitmap对象</string>
     <string name="page_ConstraintLayout">ConstraintLayout</string>
     <string name="page_linearLayout">LinearLayout</string>
     <string name="page_LinearLayout_CanNotChangeColor">LinearLayout can not change color</string>

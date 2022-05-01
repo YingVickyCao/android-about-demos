@@ -15,7 +15,7 @@ import com.hades.example.android.R;
 
 /**
  * 小球跟着手指动
- * 难点：onTouchEvent 触摸事件
+ * 难点：onTouchEvent 触摸事件；每隔0.1秒重新绘制一次
  */
 public class FingerMovedBallView extends View {
     private static final String TAG = "FingerMovedBallView";
