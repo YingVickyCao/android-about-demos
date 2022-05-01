@@ -78,6 +78,8 @@ public class FingerMovedBallView extends View {
         // Log.d(TAG, "onDraw: width=" + getWidth() + ",height=" + getHeight());
         // initBallStartPosition();
 
+        reviseXY();
+
         // 绘制圆形小球
         canvas.drawCircle(currentX, currentY, radius, paint);
     }
@@ -89,23 +91,23 @@ public class FingerMovedBallView extends View {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-//                Log.d(TAG, "onTouchEvent: Action Down");
+                Log.d(TAG, "onTouchEvent: Action Down");
+                // 记录触屏坐标，并把保存
+                currentX = event.getX();
+                currentY = event.getY();
                 break;
 
             case MotionEvent.ACTION_MOVE:
-//                Log.d(TAG, "onTouchEvent: Action Move");
+                Log.d(TAG, "onTouchEvent: Action Move");
+                // 记录触屏坐标，并把保存
+                currentX = event.getX();
+                currentY = event.getY();
                 break;
             case MotionEvent.ACTION_UP:
-//                Log.d(TAG, "onTouchEvent: Action Up");
+                Log.d(TAG, "onTouchEvent: Action Up");
                 break;
         }
-
-        // 记录触屏坐标，并把保存
-        currentX = event.getX();
-        currentY = event.getY();
-
-        reviseXY();
-        // 通知重绘： 用新的坐标重新绘制小球  => onDraw（）
+        // 通知重绘： 用新的坐标重新绘制小球  => 调用invalidate()后，会自动调用onDraw()
         invalidate();
         return true;
     }
