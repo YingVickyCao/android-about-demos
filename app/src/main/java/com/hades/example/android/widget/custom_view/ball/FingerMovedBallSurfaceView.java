@@ -4,12 +4,14 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,8 +35,11 @@ public class FingerMovedBallSurfaceView extends SurfaceView {
     Paint paint;
 
     private Canvas canvas;
-    private Thread thread;
     private SurfaceHolder surfaceHolder;
+    private Handler handler;
+    private final int KEY_UPDATE_VIEW = 100;
+    // 初次绘制，之后当触摸动作发生后，才继续绘制。
+    private boolean isNeedDraw = true;
 
     public FingerMovedBallSurfaceView(Context context) {
         super(context);
@@ -71,7 +76,8 @@ public class FingerMovedBallSurfaceView extends SurfaceView {
                 @Override
                 public void surfaceCreated(@NonNull SurfaceHolder holder) {
                     Log.d(TAG, "surfaceCreated: SurfaceHolder@" + holder.hashCode() + ",width:" + width + ",height:" + height);
-                    thread.start();
+                    // 开始绘制
+                    handler.sendEmptyMessageDelayed(KEY_UPDATE_VIEW, 100);
                 }
 
                 @Override
@@ -90,32 +96,27 @@ public class FingerMovedBallSurfaceView extends SurfaceView {
                 public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
                     Log.d(TAG, "surfaceDestroyed: SurfaceHolder@" + hashCode());
 
-                    if (null != thread) {
-                        // 停止绘制线程
-                        thread.interrupt();
-                        thread = null;
+                    if (null != handler) {
+                        // 停止绘制
+                        handler.removeMessages(KEY_UPDATE_VIEW);
+                        handler = null;
                     }
                 }
             });
         }
 
-        if (null == thread) {
-            thread = new Thread(new Runnable() {
+        if (null == handler) {
+            handler = new Handler(Looper.getMainLooper()) {
                 @Override
-                public void run() {
-                    while (null != thread && !thread.isInterrupted()) {
-                        try {
-                            myDraw();
-                            Thread.sleep(100);
-                        } catch (Exception exception) {
-                            if (null != exception.getMessage()) {
-                                Log.d(TAG, "run: " + exception.getMessage());
-                            }
-                        }
+                public void handleMessage(@NonNull Message msg) {
+                    if (isNeedDraw) {
+                        myDraw();
+                        isNeedDraw = false;
                     }
-                    Log.d(TAG, "run:thread is interrupt ");
+                    // 每隔0.1秒重新绘制
+                    handler.sendEmptyMessageDelayed(KEY_UPDATE_VIEW, 10);
                 }
-            });
+            };
         }
     }
 
@@ -160,6 +161,7 @@ public class FingerMovedBallSurfaceView extends SurfaceView {
                 // 记录触屏坐标，并把保存
                 currentX = event.getX();
                 currentY = event.getY();
+                isNeedDraw = true;
                 break;
 
             case MotionEvent.ACTION_MOVE:
@@ -167,13 +169,18 @@ public class FingerMovedBallSurfaceView extends SurfaceView {
                 // 记录触屏坐标，并把保存
                 currentX = event.getX();
                 currentY = event.getY();
+                isNeedDraw = true;
                 break;
             case MotionEvent.ACTION_UP:
                 Log.d(TAG, "onTouchEvent: Action Up");
                 // 记录触屏坐标，并把保存
                 currentX = event.getX();
                 currentY = event.getY();
+                isNeedDraw = true;
                 break;
+
+            default:
+                isNeedDraw = false;
         }
         return true;
     }
