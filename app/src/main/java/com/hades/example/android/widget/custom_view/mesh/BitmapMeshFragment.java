@@ -17,6 +17,6 @@ public class BitmapMeshFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return new BitmapMeshView(getContext());
+        return new BitmapMeshView(getContext(), R.drawable.img_3);
     }
 }
