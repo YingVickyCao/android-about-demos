@@ -57,6 +57,12 @@
                 style="@style/btn"
                 android:text="@string/page_CustomView_ShadowView" />
 
+
+            <com.hades.example.android.widget.custom_view.RequiredTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RequiredTextView" />
+
         </LinearLayout>
 
     </ScrollView>

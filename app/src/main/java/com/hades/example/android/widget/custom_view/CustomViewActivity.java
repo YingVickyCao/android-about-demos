@@ -24,7 +24,7 @@ public class CustomViewActivity extends PermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.AppTheme_Light);
+        setTheme(R.style.AppTheme_Dark);
         setContentView(R.layout.widget_custom_view_activity_layout);
         Log.d(TAG, "onCreate: ");
         initViews(R.id.root);
@@ -45,7 +45,7 @@ public class CustomViewActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageBitmapMesh();
+//        pageBitmapMesh();
     }
 
     private void pageCustomVew() {
