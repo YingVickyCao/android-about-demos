@@ -17,6 +17,7 @@ import com.hades.example.android.R;
 
 
 public class RequiredTextView extends AppCompatTextView {
+    //    https://cloud.tencent.com/developer/article/1620320
     private static final String TAG = "RequiredTextView";
 
     private String prefix = "*";
