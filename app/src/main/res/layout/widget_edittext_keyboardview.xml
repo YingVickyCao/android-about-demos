@@ -15,39 +15,34 @@
         android:text=""
         android:textSize="30sp" />
 
+    <!--          android:background="@drawable/xml_btn_bg"
+      -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn"
         style="@style/btn"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/size_120"
-        android:background="@drawable/xml_btn_bg"
+        android:background="@drawable/xml_btn_bg_2"
         android:text="Text button is cover keyboard" />
 
     <!--  为了让自定义Keyboard 位于底部，用RelativeLayout 包裹 KeyboardView -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent">-->
 
-        <!--  android:background="@android:color/holo_red_dark"：整个自定义Keyboard的背景色
-             android:keyBackground="@drawable/xml_keyboard_bg" ：定义Key的背景色能根据pressed 状态改变颜色
-             android:keyPreviewLayout="@layout/key_preview_layout":按下Key时，弹出的预览效果
-             android:keyTextColor ： Key 的字体颜色
-             android:keyTextSize ： Key 的字体大小
-             android:visibility="invisible" ：一般时gone 或 invisible
-        -->
-        <android.inputmethodservice.KeyboardView
-            android:id="@+id/keyboardView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@android:color/holo_red_dark"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:keyBackground="@drawable/xml_keyboard_bg"
-            android:keyPreviewLayout="@layout/key_preview_layout"
-            android:keyTextColor="@android:color/black"
-            android:keyTextSize="30sp"
-            android:visibility="invisible" />
-    </RelativeLayout>
+    <!--  android:background="@android:color/holo_red_dark"：整个自定义Keyboard的背景色
+         android:keyBackground="@drawable/xml_keyboard_bg" ：定义Key的背景色能根据pressed 状态改变颜色
+         android:keyPreviewLayout="@layout/key_preview_layout":按下Key时，弹出的预览效果
+         android:keyTextColor ： Key 的字体颜色
+         android:keyTextSize ： Key 的字体大小
+         android:visibility="invisible" ：一般时gone 或 invisible
+         button 在上面？没有translationZ，btn 会在键盘上面
+    -->
+    <android.inputmethodservice.KeyboardView
+        android:id="@+id/keyboardView"
+        style="@style/custom_keyboard"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible" />
+    <!--    </RelativeLayout>-->
 </RelativeLayout>
