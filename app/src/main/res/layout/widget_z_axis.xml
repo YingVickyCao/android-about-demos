@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- (1) 视图控件的整个高度值是 Z=elevation+ translationZ
+         (2) Z 值越大，阴影范围越大
+         (3) Z = 0,没有阴影
+         (4) Z > 0,有阴影
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_100"
+        android:layout_centerInParent="true"
+        android:background="#E6C4C4"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="40dp"
+            android:layout_height="48dp"
+            android:background="@android:color/holo_orange_light"
+            android:gravity="center"
+            android:text="1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="40dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="@dimen/size_10"
+            android:background="@android:color/holo_orange_light"
+            android:elevation="0dp"
+            android:gravity="center"
+            android:text="2"
+            android:translationZ="0dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="40dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="@dimen/size_10"
+            android:background="@android:color/holo_orange_light"
+            android:elevation="6dp"
+            android:gravity="center"
+            android:text="3"
+            android:translationZ="0dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="40dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="@dimen/size_10"
+            android:background="@android:color/holo_orange_light"
+            android:elevation="0dp"
+            android:gravity="center"
+            android:text="4"
+            android:translationZ="30dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="40dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="@dimen/size_10"
+            android:background="@android:color/holo_orange_light"
+            android:elevation="6dp"
+            android:gravity="center"
+            android:text="5"
+            android:translationZ="30dp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_100"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_blue_dark"
+            android:orientation="horizontal" />
+
+        <!-- 在Z轴方向，Z数值从高到底，最高值在屏幕最上面。      -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_red_light"
+            android:orientation="horizontal"
+            android:translationZ="6dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_orange_light"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="48dp"
+            android:layout_gravity="start|center_vertical"
+            android:background="#448aff"
+            android:gravity="start"
+            android:text="test" />
+
+        <!--  android:elevation="5dp"。不显示。因为在红色后面，被红色遮盖。
+              android:elevation="6dp"。显示。跟红色一个Z值，但红色上面。-->
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:background="#448aff"
+            android:elevation="6dp"
+            android:text="test" />
+
+        <!-- android:elevation="6dp" 显示。跟红色一个Z值，在同一个层。
+             android:elevation="7dp" 显示。在红色上面。-->
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end|center_vertical"
+            android:background="#448aff"
+            android:text="test"
+            android:translationZ="6dp" />
+    </FrameLayout>
+</RelativeLayout>

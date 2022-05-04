@@ -107,6 +107,7 @@
     <string name="page_layout_inflater">LayoutInflater</string>
     <string name="page_EditText">EditText</string>
     <string name="page_EditText_adding_KeyboardView_and_Keyboard">EditText adding KeyboardView and Keyboard</string>
+    <string name="page_z_axis">Z=elevation+ translationZ</string>
 
     <string name="page_qa_about_view">QA about view</string>
 

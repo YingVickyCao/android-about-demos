@@ -240,6 +240,11 @@
                 android:id="@+id/pageKeyBoardView2"
                 style="@style/btn"
                 android:text="@string/page_EditText_adding_KeyboardView_and_Keyboard" />
+
+            <Button
+                android:id="@+id/pageZAxis"
+                style="@style/btn"
+                android:text="@string/page_z_axis" />
         </LinearLayout>
     </ScrollView>
 

@@ -15,7 +15,8 @@
         android:text=""
         android:textSize="30sp" />
 
-    <!--          android:background="@drawable/xml_btn_bg"
+
+    <!--    android:background="@drawable/xml_btn_bg"
       -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn"
@@ -23,7 +24,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/size_120"
-        android:background="@drawable/xml_btn_bg_2"
+        android:background="@drawable/xml_btn_bg"
         android:text="Text button is cover keyboard" />
 
     <!--  为了让自定义Keyboard 位于底部，用RelativeLayout 包裹 KeyboardView -->
