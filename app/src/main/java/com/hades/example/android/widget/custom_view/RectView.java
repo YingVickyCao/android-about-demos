@@ -24,8 +24,8 @@ public class RectView extends View {
     }
 
     @Override
-    public void draw(Canvas canvas) {
-        super.draw(canvas);
+    public void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
 
         Log.d(TAG, "draw:" + "left=" + getLeft() + ",top=" + getTop() + ",right=" + getRight() + ",bottom=" + getBottom());
 

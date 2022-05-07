@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.custom_view;
+package com.hades.example.android.widget.custom_view.shader;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -12,10 +12,11 @@ import android.view.View;
 import com.hades.example.android.R;
 
 /**
- * paint.setShader Paint设置渐变器
+ * paint.setShader Paint设置渐变器 LinearGradient
  */
 public class CircleWithShader extends View {
     Paint paint;
+    Shader mShader = new LinearGradient(0, 0, 40, 60, new int[]{Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW}, null, Shader.TileMode.REPEAT);
 
     public CircleWithShader(Context context, AttributeSet set) {
         super(context, set);
@@ -23,16 +24,15 @@ public class CircleWithShader extends View {
     }
 
     @Override
-    public void draw(Canvas canvas) {
-        super.draw(canvas);
+    public void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
 
         canvas.drawColor(Color.BLACK);
 
         // 为Paint设置渐变器
-        Shader mShader = new LinearGradient(0, 0, 40, 60, new int[]{Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW}, null, Shader.TileMode.REPEAT);
         paint.setShader(mShader);
         //设置阴影
-//        paint.setShadowLayer(25, 20, 20, Color.GRAY);
+        paint.setShadowLayer(25, 20, 20, Color.GRAY);
 
         paint.setAntiAlias(true); // 去锯齿
         paint.setColor(Color.GREEN);

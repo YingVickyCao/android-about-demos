@@ -13,6 +13,7 @@ import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutA
 import com.hades.example.android.widget.custom_view.drawing_board.DrawingBoardFragment;
 import com.hades.example.android.widget.custom_view.matrix.MatrixOnBitmapFragment;
 import com.hades.example.android.widget.custom_view.mesh.BitmapMeshFragment;
+import com.hades.example.android.widget.custom_view.shader.ShaderFragment;
 import com.hades.example.android.widget.custom_view.shadow.TestShadowViewFragment;
 
 /**
@@ -25,7 +26,7 @@ public class CustomViewActivity extends PermissionActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.AppTheme_Dark);
-        setContentView(R.layout.widget_custom_view_activity_layout);
+        setContentView(R.layout.widget_custom_view_layout);
         Log.d(TAG, "onCreate: ");
         initViews(R.id.root);
         findViewById(R.id.pageCustomVew).setOnClickListener(v -> pageCustomVew());
@@ -33,6 +34,7 @@ public class CustomViewActivity extends PermissionActivity {
         findViewById(R.id.pageFingerMovedBall).setOnClickListener(v -> pageFingerMovedBall());
         findViewById(R.id.pageMatrixOnBitmap).setOnClickListener(v -> pageMatrixOnBitmap());
         findViewById(R.id.pageBitmapMesh).setOnClickListener(v -> pageBitmapMesh());
+        findViewById(R.id.pageShader).setOnClickListener(v -> pageShader());
         findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
         findViewById(R.id.page_CustomVew_ShadowView).setOnClickListener(v -> page_CustomVew_ShadowView());
     }
@@ -45,11 +47,11 @@ public class CustomViewActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageBitmapMesh();
+        pageCustomVew();
     }
 
     private void pageCustomVew() {
-        showFragment(new TestCanvasFragment());
+        showFragment(new TestCanvasPaintFragment());
     }
 
     private void pageDrawingBoard() {
@@ -66,6 +68,10 @@ public class CustomViewActivity extends PermissionActivity {
 
     private void pageBitmapMesh() {
         showFragment(new BitmapMeshFragment());
+    }
+
+    private void pageShader() {
+        showFragment(new ShaderFragment());
     }
 
     private void pageCustomView4CascadeLayout() {

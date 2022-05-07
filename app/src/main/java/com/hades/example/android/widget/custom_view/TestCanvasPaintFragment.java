@@ -13,13 +13,13 @@ import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
 
-public class TestCanvasFragment extends Fragment {
-    private static final String TAG = TestCanvasFragment.class.getSimpleName();
+public class TestCanvasPaintFragment extends Fragment {
+    private static final String TAG = TestCanvasPaintFragment.class.getSimpleName();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_custom_view_examples, container, false);
+        View view = inflater.inflate(R.layout.widget_custom_view_of_canvas_and_paint, container, false);
 //        View view = inflater.inflate(R.layout.custom_view_canvas_left_position_1, container, false);
 //        View view = inflater.inflate(R.layout.custom_view_canvas_left_position_2, container, false);
         getScreenDensity();

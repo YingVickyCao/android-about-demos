@@ -26,8 +26,8 @@ public class Circle4FillStroke extends View {
     }
 
     @Override
-    public void draw(Canvas canvas) {
-        super.draw(canvas);
+    public void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
 
         paint.setAntiAlias(true); // 去锯齿
         paint.setColor(Color.RED);

@@ -21,8 +21,8 @@ public class Circle4Stroke extends View {
     }
 
     @Override
-    public void draw(Canvas canvas) {
-        super.draw(canvas);
+    public void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
 
         canvas.drawColor(Color.BLACK);
 

@@ -31,7 +31,7 @@ public class TestShadowViewFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_custom_view_with_shadow, container, false);
+        View view = inflater.inflate(R.layout.widget_custom_view_of_shadow, container, false);
         imageView2 = view.findViewById(R.id.imageView2);
         imageView3 = view.findViewById(R.id.imageView3);
         button1 = view.findViewById(R.id.button1);
