@@ -45,7 +45,7 @@ public class CustomViewActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-//        pageBitmapMesh();
+        pageBitmapMesh();
     }
 
     private void pageCustomVew() {
