@@ -9,7 +9,40 @@
         style="@style/topic"
         android:text="@string/page_CustomView_of_shader" />
 
-    <com.hades.example.android.widget.custom_view.shader.CircleWithShader
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bitmapShader"
+            style="@style/btn_small"
+            android:text="位图平铺" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/linearGradient"
+            style="@style/btn_small"
+            android:text="线性渐变" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/radialGradient"
+            style="@style/btn_small"
+            android:text="圆角渐变" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sweepGradient"
+            style="@style/btn_small"
+            android:text="角度渐变" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/composeShader"
+            style="@style/btn_small"
+            android:text="组合渲染" />
+    </LinearLayout>
+
+    <com.hades.example.android.widget.custom_view.shader.RectWithShader
+        android:id="@+id/rectWithShader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+
 </LinearLayout>

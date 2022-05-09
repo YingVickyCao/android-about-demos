@@ -47,7 +47,7 @@ public class CustomViewActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageCustomVew();
+        pageShader();
     }
 
     private void pageCustomVew() {
