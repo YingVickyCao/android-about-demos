@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/xml_edittext_focus"
+        android:maxLevel="@integer/edittext_bg_drawable_level_focus"
+        android:minLevel="@integer/edittext_bg_drawable_level_focus" />
+    <item
+        android:drawable="@drawable/xml_edittext_default"
+        android:maxLevel="@integer/edittext_bg_drawable_level_default"
+        android:minLevel="@integer/edittext_bg_drawable_level_default" />
+    <item
+        android:drawable="@drawable/xml_edittext_disable"
+        android:maxLevel="@integer/edittext_bg_drawable_level_disable"
+        android:minLevel="@integer/edittext_bg_drawable_level_disable" />
+</level-list>

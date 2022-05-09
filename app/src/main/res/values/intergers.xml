@@ -2,4 +2,8 @@
 <resources>
     <integer name="seek_viewportWidth">18</integer>
     <integer name="seek_translateX">9</integer>
+
+    <integer name="edittext_bg_drawable_level_focus">2</integer>
+    <integer name="edittext_bg_drawable_level_default">1</integer>
+    <integer name="edittext_bg_drawable_level_disable">0</integer>
 </resources>

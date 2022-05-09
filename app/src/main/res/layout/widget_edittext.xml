@@ -12,112 +12,141 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <!--  1 android:inputType -->
-        <!--  android:inputType="textVisiblePassword"      -->
-        <TextView
-            style="@style/tv.small"
-            android:text="textVisiblePassword" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/size_50"
-            android:inputType="textVisiblePassword"
-            android:text="1234" />
-
-        <View style="@style/div" />
-
-        <!--  android:inputType="numberPassword"      -->
-        <TextView
-            style="@style/tv.small"
-            android:text="numberPassword" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/size_50"
-            android:inputType="numberPassword"
-            android:text="1234" />
-
-        <View style="@style/div" />
-
-        <!--  android:inputType="textPassword"      -->
-        <TextView
-            style="@style/tv.small"
-            android:text="textPassword" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/size_50"
-            android:inputType="textPassword"
-            android:text="1234" />
-
-        <View style="@style/div" />
-
-        <!--  android:inputType="textWebEditText"      -->
-        <TextView
-            style="@style/tv.small"
-            android:text="textWebEditText" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/size_50"
-            android:inputType="textWebEditText"
-            android:text="1234" />
-
-        <View style="@style/div.red" />
-
-        <!--  2 Change show as password     -->
-        <Button
-            android:id="@+id/showAsPassword"
-            style="@style/btn"
-            android:text="Change show as password" />
-
-        <EditText
-            android:id="@+id/editText"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_50"
-            android:text="1234" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <!-- 3 EditText 状态有3种，disable、正常、选中       -->
-        <TextView
-            style="@style/tv.small"
-            android:text="EditText 状态有3种，disable、正常、选中" />
+            <!--  1 android:inputType -->
+            <!--  android:inputType="textVisiblePassword"      -->
+            <TextView
+                style="@style/tv.small"
+                android:text="textVisiblePassword" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_50"
-            android:layout_margin="@dimen/size_5"
-            android:background="@drawable/xml_edittext_bg"
-            android:enabled="false"
-            android:hint="Text EditText - Disable"
-            android:textColor="@color/color_edittext_text_color"
-            android:textColorHint="@color/color_edittext_text_color_hint" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_50"
+                android:inputType="textVisiblePassword"
+                android:text="1234" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_50"
-            android:layout_margin="@dimen/size_5"
-            android:background="@drawable/xml_edittext_bg"
-            android:hint="Text EditText - 正常状态"
-            android:textColor="@color/color_edittext_text_color"
-            android:textColorHint="@color/color_edittext_text_color_hint" />
+            <View style="@style/div" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_50"
-            android:layout_margin="@dimen/size_5"
-            android:background="@drawable/xml_edittext_bg"
-            android:hint="Text EditText - 选中"
-            android:textColor="@color/color_edittext_text_color"
-            android:textColorHint="@color/color_edittext_text_color_hint" />
+            <!--  android:inputType="numberPassword"      -->
+            <TextView
+                style="@style/tv.small"
+                android:text="numberPassword" />
 
-    </LinearLayout>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_50"
+                android:inputType="numberPassword"
+                android:text="1234" />
+
+            <View style="@style/div" />
+
+            <!--  android:inputType="textPassword"      -->
+            <TextView
+                style="@style/tv.small"
+                android:text="textPassword" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_50"
+                android:inputType="textPassword"
+                android:text="1234" />
+
+            <View style="@style/div" />
+
+            <!--  android:inputType="textWebEditText"      -->
+            <TextView
+                style="@style/tv.small"
+                android:text="textWebEditText" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_50"
+                android:inputType="textWebEditText"
+                android:text="1234" />
+
+            <View style="@style/div.red" />
+
+            <!--  2 Change show as password     -->
+            <Button
+                android:id="@+id/showAsPassword"
+                style="@style/btn"
+                android:text="Change show as password" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50"
+                android:text="1234" />
+
+            <!-- 3 EditText 状态有3种，disable、正常、选中       -->
+            <TextView
+                style="@style/tv.small"
+                android:text="EditText 状态有3种，disable、正常、选中" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50"
+                android:layout_margin="@dimen/size_5"
+                android:background="@drawable/xml_edittext_bg"
+                android:enabled="false"
+                android:hint="Text EditText - Disable"
+                android:textColor="@color/color_edittext_text_color"
+                android:textColorHint="@color/color_edittext_text_color_hint" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50"
+                android:layout_margin="@dimen/size_5"
+                android:background="@drawable/xml_edittext_bg"
+                android:hint="Text EditText - 正常状态"
+                android:textColor="@color/color_edittext_text_color"
+                android:textColorHint="@color/color_edittext_text_color_hint" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50"
+                android:layout_margin="@dimen/size_5"
+                android:background="@drawable/xml_edittext_bg"
+                android:hint="Text EditText - 选中"
+                android:textColor="@color/color_edittext_text_color"
+                android:textColorHint="@color/color_edittext_text_color_hint" />
+
+            <FrameLayout
+                android:id="@+id/editText2Container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50"
+                android:layout_margin="@dimen/size_5"
+                android:background="@drawable/xml_edittext_bg_2"
+                android:padding="@dimen/size_5">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_search" />
+
+                <EditText
+                    android:id="@+id/editText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="24dp"
+                    android:background="@null"
+                    android:hint="Text EditText - 选中"
+                    android:textColor="@color/color_edittext_text_color"
+                    android:textColorHint="@color/color_edittext_text_color_hint" />
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

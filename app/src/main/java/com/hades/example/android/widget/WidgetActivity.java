@@ -57,7 +57,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.AppTheme_Light);
+        setTheme(R.style.AppTheme_Dark);
         setContentView(R.layout.activity_widget_layout);
 
 //        hideActionBar();
@@ -110,11 +110,12 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.pageEditText).setOnClickListener(v -> pageEditText());
         findViewById(R.id.pageKeyBoardView).setOnClickListener(v -> pageKeyBoardView());
         findViewById(R.id.pageKeyBoardView2).setOnClickListener(v -> pageKeyBoardView2());
+        findViewById(R.id.pageZAxis).setOnClickListener(v -> page_z_axis());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageCustomVew();
+        pageEditText();
     }
 
     private void pageViewLocation() {
@@ -291,6 +292,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void pageKeyBoardView2() {
         showFragment(new TestKeyBoardFragment2());
+    }
+
+    private void page_z_axis() {
+        showFragment(new ZAxisFragment());
     }
 
     @Override
