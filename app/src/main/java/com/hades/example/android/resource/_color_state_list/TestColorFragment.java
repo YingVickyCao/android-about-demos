@@ -63,7 +63,9 @@ public class TestColorFragment extends BaseFragment {
     }
 
     private String getEmailWithColorLink(String color) {
-        return ">A email. <font color=" + color + ">" + "abc@outlook.com" + "</font>" + " .Press to send email.";
-//        return ">A email. <font color=" + "#ff0000" + ">" + "abc@outlook.com" + "</font>" + " .Press to send email.";
+//        https://www.w3school.com.cn/tags/att_font_color.asp
+//        <font> 不支持ARGB，只支持RGB
+        return "A email. <font color=" + color + ">" + "abc@outlook.com" + "</font>" + " .Press to send email.";
+//        return "A email. <font color=" + "#ff0000" + ">" + "abc@outlook.com" + "</font>" + " .Press to send email.";
     }
 }
