@@ -23,7 +23,8 @@ import com.hades.example.android.R;
  */
 public class RectWithShader extends View {
     Paint paint;
-    private int colors[] = new int[]{Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW};
+    private int colors[] = new int[]{Color.RED, Color.GREEN, Color.YELLOW};
+    private float positions[] = new float[]{0, 0.5F, 0.8F};
     Bitmap bitmap;
     private Shader bitmapShader;
     private Shader linearGradient;
@@ -31,6 +32,11 @@ public class RectWithShader extends View {
     private Shader sweepGradient;
     private Shader composeShader;
     private Shader currentShader;
+
+    //        int left = (int) getResources().getDimension(R.dimen.size_15);
+//        int top = (int) getResources().getDimension(R.dimen.size_15);
+    int right = (int) getResources().getDimension(R.dimen.size_400);
+    int bottom = (int) getResources().getDimension(R.dimen.size_400);
 
     public RectWithShader(Context context, AttributeSet set) {
         super(context, set);
@@ -44,17 +50,43 @@ public class RectWithShader extends View {
             if (bitmap == null) {
                 bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_grid);
             }
-            // 位图平铺
+            // https://www.cnblogs.com/tianzhijiexian/p/4298660.html
+            // 绘制过程是先采用Y轴模式，再使用X轴模式的
+
             // Shader.TileMode.CLAMP - 边缘拉伸模式. 将边缘的一个像素进行拉伸、扩展
-//            bitmapShader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-            // Shader.TileMode.REPEAT - 重复模式
-//            bitmapShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-            bitmapShader = new BitmapShader(bitmap, Shader.TileMode.MIRROR, Shader.TileMode.MIRROR);
+            // bitmapShader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+
+            // 位图平铺
+            // Shader.TileMode.REPEAT - 重复模式(平移复制)
+            bitmapShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+
+            // Shader.TileMode.MIRROR 镜像复制
+//            bitmapShader = new BitmapShader(bitmap, Shader.TileMode.MIRROR, Shader.TileMode.MIRROR);
         }
 
         if (null == linearGradient) {
             // 线性渐变
-            linearGradient = new LinearGradient(0, 0, 100, 100, colors, null, Shader.TileMode.REPEAT);
+            /**
+             * 渐变的起点：(x0,y0)
+             * 渐变的终点：(x1,y1)
+             * color0:  起点的颜色和终点的颜色
+             * TileMode：模式不能为空
+             */
+//            linearGradient = new LinearGradient(0, 0, right, bottom, Color.RED, Color.YELLOW, Shader.TileMode.REPEAT);
+//            linearGradient = new LinearGradient(0, 0, 400, 400, Color.RED, Color.YELLOW, Shader.TileMode.REPEAT);
+
+            /**
+             * 渐变的起点：(x0,y0)
+             * 渐变的终点：(x1,y1)
+             * colors:      包含多个颜色
+             * positions:   包含多个颜色的位置。 可以为null。等于null时，颜色均匀地填充整个渐变区域
+             * TileMode：模式不能为空
+             */
+//            linearGradient = new LinearGradient(0, 0, right, bottom, colors, null, Shader.TileMode.REPEAT);
+//            linearGradient = new LinearGradient(0, 0, 400, 400, colors, null, Shader.TileMode.REPEAT);
+//            linearGradient = new LinearGradient(0, 0, 400, 400, colors, positions, Shader.TileMode.REPEAT);// 颜色从红色到黄色的渐变起点是整个渐变区域（left, top, right, bottom定义了渐变区域）的起点，终点是渐变区域长度*10%的地方。例如，绿色到黄色是从渐变区域50%到80%。
+            linearGradient = new LinearGradient(0, 0, right, bottom, colors, positions, Shader.TileMode.REPEAT);
+//            linearGradient = new LinearGradient(0, 0, right, bottom, colors, null, Shader.TileMode.REPEAT);
         }
 
         if (null == radialGradient) {
@@ -112,10 +144,6 @@ public class RectWithShader extends View {
         paint.setStrokeWidth(4);
 
         // 绘制圆形
-//        int left = (int) getResources().getDimension(R.dimen.size_15);
-//        int top = (int) getResources().getDimension(R.dimen.size_15);
-        int right = (int) getResources().getDimension(R.dimen.size_400);
-        int bottom = (int) getResources().getDimension(R.dimen.size_400);
         /**
          * drawRect 绘制矩形
          */

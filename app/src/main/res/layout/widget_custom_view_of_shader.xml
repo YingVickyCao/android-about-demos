@@ -42,7 +42,10 @@
     <com.hades.example.android.widget.custom_view.shader.RectWithShader
         android:id="@+id/rectWithShader"
         android:layout_width="wrap_content"
+        android:visibility="gone"
         android:layout_height="wrap_content" />
 
-
+    <com.hades.example.android.widget.custom_view.shader.ReflectionImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>
