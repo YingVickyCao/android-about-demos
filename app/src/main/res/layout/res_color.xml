@@ -28,17 +28,43 @@
             <TextView
                 android:id="@+id/color1"
                 style="@style/tv"
-                android:text="@string/page_Color" />
+                android:text="Color 1" />
 
             <TextView
                 android:id="@+id/color2"
                 style="@style/tv"
-                android:text="@string/page_Color" />
+                android:text="Color 2" />
 
             <TextView
                 android:id="@+id/color3"
                 style="@style/tv"
-                android:text="@string/page_Color" />
+                android:text="Color 3" />
+
+            <TextView
+                android:id="@+id/color4"
+                style="@style/tv"
+                android:text="Color 4" />
+
+            <TextView
+                android:id="@+id/color5"
+                style="@style/tv"
+                android:text="Color 5" />
+
+            <TextView
+                android:id="@+id/color6"
+                style="@style/tv"
+                android:text="Color 6" />
+
+            <TextView
+                android:id="@+id/color7"
+                style="@style/tv"
+                android:text="Color 7" />
+
+            <Button
+                android:id="@+id/testColorConvert"
+                style="@style/btn"
+                android:layout_gravity="center"
+                android:text="Color Convert" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

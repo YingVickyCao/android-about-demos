@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingDefaultResource">
     <!-- Custom View   -->
     <color name="paint_bg">@android:color/background_dark</color>
+
+    <color name="text_color_convert_1">#80ff0000</color>
+    <color name="text_color_convert_2">#ff00ff00</color>
 </resources>
