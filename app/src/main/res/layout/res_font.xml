@@ -13,25 +13,34 @@
             android:text="@string/page_font" />
 
         <!--  textStyle vs fontFamily-->
-        <include layout="@layout/res_font_4_fontfamily_vs_textstyle" />
+        <include
+            layout="@layout/res_font_4_fontfamily_vs_textstyle"
+            android:visibility="gone" />
 
-<!--        <View style="@style/div.red" />-->
-<!--        &lt;!&ndash;  typeface vs fontFamily&ndash;&gt;-->
-<!--        <include layout="@layout/res_font_4_typeface_vs_textfamily" />-->
+        <View style="@style/div.red" />
 
-<!--        <View style="@style/div.red" />-->
+        <!--  typeface vs fontFamily-->
+        <include
+            layout="@layout/res_font_4_typeface_vs_textfamily"
+            android:visibility="gone" />
 
-<!--        &lt;!&ndash; 使用默认字体  &ndash;&gt;-->
-<!--        <include layout="@layout/res_font_4_default" />-->
+        <View style="@style/div.red" />
 
-<!--        <View style="@style/div.red" />-->
+        <!-- 使用默认字体  -->
+        <include
+            layout="@layout/res_font_4_default"
+            android:visibility="gone" />
 
-<!--        &lt;!&ndash; >= Android 8.0(26)使用自定义font       &ndash;&gt;-->
-<!--        <include layout="@layout/res_font_4_since_api_26" />-->
+        <View style="@style/div.red" />
 
-<!--        <View style="@style/div.red" />-->
+        <!-- >= Android 8.0(26)使用自定义font       -->
+        <include layout="@layout/res_font_4_single_font_vs_font_family_since_api_26" />
 
-<!--        &lt;!&ndash;  >=Android 4.1(16) 使用自定义font：Support library 26.0&ndash;&gt;-->
-<!--        <include layout="@layout/res_font_4_since_api_16" />-->
+        <View style="@style/div.red" />
+
+        <!--  >=Android 4.1(16) 使用自定义font：Support library 26.0 -->
+        <include
+            layout="@layout/res_font_4_single_font_vs_font_family_since_api_16"
+            android:visibility="gone" />
     </LinearLayout>
 </ScrollView>

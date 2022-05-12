@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/size_10"
+    android:orientation="vertical">
+
+    <!-- 通过代码设置font       -->
+    <TextView
+        android:id="@+id/fontText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/test_string" />
+
+    <!-- 使用单个字体  -->
+    <!-- 使用字体系列，TextView会根据需要自行切换，以使用该系列中的字体文件  -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20"
+        android:layout_marginTop="@dimen/size_10"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/tv.small"
+            android:text="Light" />
+
+        <!-- Light       -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/averia_light"
+            android:text="@string/test_string"
+            android:textSize="@dimen/size_30" />
+
+        <!-- Light       -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/averia"
+            android:text="@string/test_string"
+            android:textFontWeight="300"
+            android:textSize="@dimen/size_30" />
+
+        <!-- Light   I    -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/averia_light_italic"
+            android:text="@string/test_string"
+            android:textSize="@dimen/size_30" />
+
+        <!-- Light    I   -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/averia"
+            android:text="@string/test_string"
+            android:textFontWeight="300"
+            android:textSize="@dimen/size_30"
+            android:textStyle="italic" />
+
+        <!--   Regular    -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/averia"
+            android:text="@string/test_string"
+            android:textSize="@dimen/size_30" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20"
+        android:layout_marginTop="@dimen/size_10">
+
+        <TextView
+            style="@style/tv.small"
+            android:text="Regular" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/averia_regular"
+            android:text="@string/test_string"
+            android:textSize="@dimen/size_30" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/averia"
+            android:text="@string/test_string"
+            android:textSize="@dimen/size_30" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20">
+
+        <TextView
+            style="@style/tv.small"
+            android:text="Bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/averia_bold"
+            android:text="@string/test_string"
+            android:textSize="@dimen/size_30" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/averia"
+            android:text="@string/test_string"
+            android:textSize="@dimen/size_30"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20">
+
+        <TextView
+            style="@style/tv.small"
+            android:text="Italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/averia_italic"
+            android:text="@string/test_string"
+            android:textSize="@dimen/size_30" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/averia"
+            android:text="@string/test_string"
+            android:textSize="@dimen/size_30"
+            android:textStyle="italic" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20">
+
+        <TextView
+            style="@style/tv.small"
+            android:text="Bold Italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/averia_bold_italic"
+            android:text="@string/test_string"
+            android:textSize="@dimen/size_30" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/averia"
+            android:text="@string/test_string"
+            android:textSize="@dimen/size_30"
+            android:textStyle="italic|bold" />
+    </RelativeLayout>
+</LinearLayout>
