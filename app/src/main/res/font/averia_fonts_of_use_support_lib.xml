@@ -2,29 +2,29 @@
 <font-family xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <font
-        app:font="@font/averia_sans_libre_light"
+        app:font="@font/averia_light"
         app:fontStyle="normal"
         app:fontWeight="300" />
 
     <font
-        app:font="@font/averia_sans_libre_light_italic"
+        app:font="@font/averia_light_italic"
         app:fontStyle="italic"
         app:fontWeight="300" />
 
     <font
-        app:font="@font/averia_sans_libre"
+        app:font="@font/averia_regular"
         app:fontStyle="normal"
         app:fontWeight="400" />
     <font
-        app:font="@font/averia_sans_libre_italic"
+        app:font="@font/averia_italic"
         app:fontStyle="italic"
         app:fontWeight="400" />
     <font
-        app:font="@font/averia_sans_libre_bold"
+        app:font="@font/averia_bold"
         app:fontStyle="normal"
         app:fontWeight="700" />
     <font
-        app:font="@font/averia_sans_libre_bold_italic"
+        app:font="@font/averia_bold_italic"
         app:fontStyle="italic"
         app:fontWeight="700" />
 </font-family>
