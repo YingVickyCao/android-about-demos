@@ -5,9 +5,9 @@
     android:id="@+id/root"
     android:orientation="vertical">
 
-    <TextClock
+    <TextView
         style="@style/topic"
-        android:text="@string/subject_sms_group_send_sms" />
+        android:text="@string/page_sms_group_send_sms" />
 
     <TextView
         android:layout_width="match_parent"

@@ -245,6 +245,11 @@
                 android:id="@+id/pageZAxis"
                 style="@style/btn"
                 android:text="@string/page_z_axis" />
+
+            <Button
+                android:id="@+id/pageTextClock"
+                style="@style/btn"
+                android:text="@string/page_TextClock" />
         </LinearLayout>
     </ScrollView>
 

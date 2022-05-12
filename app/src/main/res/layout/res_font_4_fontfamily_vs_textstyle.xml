@@ -22,14 +22,14 @@
     <!--  I -->
     <TextView
         style="@style/tv"
-        android:fontFamily="@font/consolai"
+        android:fontFamily="@font/consolas_italic"
         android:text="@string/test_string"
         android:textSize="30sp" />
 
     <!--  I -->
     <TextView
         style="@style/tv"
-        android:fontFamily="@font/consolai"
+        android:fontFamily="@font/consolas_italic"
         android:text="@string/test_string"
         android:textSize="30sp"
         android:textStyle="italic" />
@@ -37,7 +37,7 @@
     <!--   I 再加粗 = Z    -->
     <TextView
         style="@style/tv"
-        android:fontFamily="@font/consolai"
+        android:fontFamily="@font/consolas_italic"
         android:text="@string/test_string"
         android:textSize="30sp"
         android:textStyle="italic|bold" />
@@ -45,7 +45,7 @@
     <!--   I 再加粗 = Z    -->
     <TextView
         style="@style/tv"
-        android:fontFamily="@font/consolai"
+        android:fontFamily="@font/consolas_italic"
         android:text="@string/test_string"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -54,14 +54,14 @@
     <!--   B    -->
     <TextView
         style="@style/tv"
-        android:fontFamily="@font/consolab"
+        android:fontFamily="@font/consolas_bold"
         android:text="@string/test_string"
         android:textSize="30sp" />
 
     <!--   B   -->
     <TextView
         style="@style/tv"
-        android:fontFamily="@font/consolab"
+        android:fontFamily="@font/consolas_bold"
         android:text="@string/test_string"
         android:textSize="30sp"
         android:textStyle="normal" />
@@ -69,7 +69,7 @@
     <!--   B    -->
     <TextView
         style="@style/tv"
-        android:fontFamily="@font/consolab"
+        android:fontFamily="@font/consolas_bold"
         android:text="@string/test_string"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -77,7 +77,7 @@
     <!--  B 再加粗  + I => 比Z好粗      -->
     <TextView
         style="@style/tv"
-        android:fontFamily="@font/consolab"
+        android:fontFamily="@font/consolas_bold"
         android:text="@string/test_string"
         android:textSize="30sp"
         android:textStyle="bold|italic" />
@@ -85,7 +85,7 @@
     <!--  B 再加粗  + I => 比Z好粗      -->
     <TextView
         style="@style/tv"
-        android:fontFamily="@font/consolab"
+        android:fontFamily="@font/consolas_bold"
         android:text="@string/test_string"
         android:textSize="30sp"
         android:textStyle="italic|bold" />
@@ -93,7 +93,7 @@
     <!-- B，然后倾斜 = Z(B + I)     -->
     <TextView
         style="@style/tv"
-        android:fontFamily="@font/consolab"
+        android:fontFamily="@font/consolas_bold"
         android:text="@string/test_string"
         android:textSize="30sp"
         android:textStyle="italic" />
@@ -101,14 +101,14 @@
     <!--  Z    -->
     <TextView
         style="@style/tv"
-        android:fontFamily="@font/consolaz"
+        android:fontFamily="@font/consolas_bold_italic"
         android:text="@string/test_string"
         android:textSize="30sp" />
 
     <!--  Z     -->
     <TextView
         style="@style/tv"
-        android:fontFamily="@font/consolaz"
+        android:fontFamily="@font/consolas_bold_italic"
         android:text="@string/test_string"
         android:textSize="30sp"
         android:textStyle="bold|italic" />
@@ -116,7 +116,7 @@
     <!-- Z -->
     <TextView
         style="@style/tv"
-        android:fontFamily="@font/consolaz"
+        android:fontFamily="@font/consolas_bold_italic"
         android:text="@string/test_string"
         android:textSize="30sp"
         android:textStyle="italic" />

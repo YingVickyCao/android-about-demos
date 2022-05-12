@@ -22,6 +22,8 @@
     <string name="page_DialogFragment">DialogFragment</string>
     <string name="page_Base_DialogFragment">Base DialogFragment</string>
 
+    <string name="page_sms_group_send_sms">短信群发</string>
+
     <string name="page_data_storage">Data Storage</string>
     <string name="page_shared_preferences">SharedPreferences</string>
     <string name="page_sqlite">Sqlite</string>
@@ -109,6 +111,7 @@
     <string name="page_EditText">EditText</string>
     <string name="page_EditText_adding_KeyboardView_and_Keyboard">EditText adding KeyboardView and Keyboard</string>
     <string name="page_z_axis">Z=elevation+ translationZ</string>
+    <string name="page_TextClock">TextClock</string>
 
     <string name="page_qa_about_view">QA about view</string>
 
@@ -254,7 +257,6 @@
     <string name="getServiceStatus">获取Service状态</string>
     <string name="start_service">启动普通Service</string>
     <string name="start_intent_service">启动IntentService</string>
-    <string name="subject_sms_group_send_sms">短信群发</string>
     <string name="numbers">号码（多个号码以逗号隔开）</string>
     <string name="content">短信内容</string>
     <string name="select">选择收件人</string>

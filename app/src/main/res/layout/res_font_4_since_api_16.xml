@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/test_string"
-            app:fontFamily="@font/console_fonts" />
+            app:fontFamily="@font/consolas_fonts" />
     </LinearLayout>
 
     <View style="@style/div" />
@@ -57,14 +57,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/test_string"
-            app:fontFamily="@font/consolab" />
+            app:fontFamily="@font/consolas_bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/test_string"
             android:textStyle="bold"
-            app:fontFamily="@font/console_fonts" />
+            app:fontFamily="@font/consolas_fonts" />
     </LinearLayout>
 
     <View style="@style/div" />
@@ -86,14 +86,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/test_string"
-            app:fontFamily="@font/consolai" />
+            app:fontFamily="@font/consolas_italic" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/test_string"
             android:textStyle="italic"
-            app:fontFamily="@font/console_fonts" />
+            app:fontFamily="@font/consolas_fonts" />
 
     </LinearLayout>
 
@@ -115,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/test_string"
-            app:fontFamily="@font/consolaz" />
+            app:fontFamily="@font/consolas_bold_italic" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -123,6 +123,6 @@
             android:layout_gravity="end"
             android:text="@string/test_string"
             android:textStyle="italic|bold"
-            app:fontFamily="@font/console_fonts" />
+            app:fontFamily="@font/consolas_fonts" />
     </LinearLayout>
 </LinearLayout>

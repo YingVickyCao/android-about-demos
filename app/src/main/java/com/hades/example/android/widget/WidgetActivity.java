@@ -111,11 +111,12 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.pageKeyBoardView).setOnClickListener(v -> pageKeyBoardView());
         findViewById(R.id.pageKeyBoardView2).setOnClickListener(v -> pageKeyBoardView2());
         findViewById(R.id.pageZAxis).setOnClickListener(v -> page_z_axis());
+        findViewById(R.id.pageTextClock).setOnClickListener(v -> pageTextClock());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageEditText();
+        pageTextClock();
     }
 
     private void pageViewLocation() {
@@ -296,6 +297,10 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void page_z_axis() {
         showFragment(new ZAxisFragment());
+    }
+
+    private void pageTextClock() {
+        showFragment(new TextClockFragment());
     }
 
     @Override

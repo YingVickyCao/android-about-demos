@@ -7,7 +7,7 @@
     <!-- fontFamily 和 typeface 同时出现， fontFamily生效，typeface 被忽略 -->
     <TextView
         style="@style/tv"
-        android:fontFamily="@font/consolaz"
+        android:fontFamily="@font/consolas_bold_italic"
         android:text="@string/test_string"
         android:textSize="30sp"
         android:textStyle="bold|italic"

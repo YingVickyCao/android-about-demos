@@ -25,13 +25,13 @@ public class TestFontFragment extends Fragment {
 //        //  直接使用font
         TextView fontText = view.findViewById(R.id.fontText);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Typeface typeface = getResources().getFont(R.font.consolab);
+            Typeface typeface = getResources().getFont(R.font.consolas_bold);
             fontText.setTypeface(typeface);
         }
 
         //  使用Support library 支持库
         TextView fontText2 = view.findViewById(R.id.fontText2);
-        Typeface typeface2 = ResourcesCompat.getFont(getActivity(), R.font.consolab);
+        Typeface typeface2 = ResourcesCompat.getFont(getActivity(), R.font.consolas_bold);
         fontText2.setTypeface(typeface2);
         return view;
     }
