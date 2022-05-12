@@ -510,5 +510,6 @@
     <string name="attribute_4_default_style_in_custom_view">4-Default style in Custom View</string>
     <string name="attribute_5_attribute_in_theme">5-Attribute in Theme</string>
     <string name="attribute_6_not_use_theme">6-Not use theme </string>
-    <string name="test_string">Studio类型</string>
+<!--    <string name="test_string">Studio类型</string>-->
+    <string name="test_string">ABC</string>
 </resources>

@@ -4,67 +4,81 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-
+    <!--结论：使用单个字体时，
+    正确：
+    使用方式1：只使用android:fontFamily，不使用android:textStyle。推荐。这种更简单。
+    使用方式2：使用 android:fontFamily，使用android:textStyle按app:fontStyle值。
+    错误：只使用android:fontFamily，使用android:textStyle但不按app:fontStyle值，font 叠加效果不确定。
+    -->
     <!--   normal     -->
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/size_10"
+        android:gravity="center"
         android:orientation="horizontal">
 
-        <!--  正确使用（推荐）      -->
+        <!--  正确使用（推荐）。使用正确      -->
         <TextView
             style="@style/tv.small"
-            android:fontFamily="@font/averia_regular"
-            android:text="@string/test_string" />
-
-        <!--  正确使用      -->
-        <TextView
-            style="@style/tv.small"
-            android:layout_alignParentEnd="true"
             android:fontFamily="@font/averia_regular"
             android:text="@string/test_string"
+            android:textSize="30sp" />
+
+        <!--  正确使用。使用正确      -->
+        <TextView
+            style="@style/tv.small"
+            android:fontFamily="@font/averia_regular"
+            android:text="@string/test_string"
+            android:textSize="30sp"
             android:textStyle="normal" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <!--  I -->
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/size_10">
+        android:layout_marginHorizontal="@dimen/size_10"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <!--  ok（推荐）      -->
+        <!--  ok（推荐）。使用正确      -->
         <TextView
             style="@style/tv.small"
             android:fontFamily="@font/averia_italic"
-            android:text="@string/test_string" />
+            android:text="@string/test_string"
+            android:textSize="30sp" />
 
-        <!--  ok      -->
+        <!--  ok。使用正确      -->
         <TextView
             style="@style/tv.small"
             android:layout_alignParentEnd="true"
             android:fontFamily="@font/averia_italic"
             android:text="@string/test_string"
+            android:textSize="30sp"
             android:textStyle="italic" />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <!--   I + B = Z    -->
+    <!--   Z    -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/size_10">
+        android:layout_marginHorizontal="@dimen/size_10"
+        android:gravity="center">
 
-        <!--  ok（推荐）      -->
-        <TextView
-            style="@style/tv.small"
-            android:fontFamily="@font/consolas_bold_italic"
-            android:text="@string/test_string" />
-
-        <!--  ok      -->
+        <!--  ok（推荐）。使用正确      -->
         <TextView
             style="@style/tv.small"
             android:fontFamily="@font/consolas_bold_italic"
             android:text="@string/test_string"
+            android:textSize="30sp" />
+
+        <!--  ok  。使用正确    -->
+        <TextView
+            style="@style/tv.small"
+            android:fontFamily="@font/consolas_bold_italic"
+            android:text="@string/test_string"
+            android:textSize="30sp"
             android:textStyle="italic" />
 
         <!-- not ok       -->
@@ -72,6 +86,7 @@
             style="@style/tv.small"
             android:fontFamily="@font/consolas_bold_italic"
             android:text="@string/test_string"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <!--  ok。 效果和  android:textStyle="italic" 一样    -->
@@ -79,6 +94,7 @@
             style="@style/tv.small"
             android:fontFamily="@font/consolas_bold_italic"
             android:text="@string/test_string"
+            android:textSize="30sp"
             android:textStyle="bold|italic" />
 
         <!--  ok。效果和  android:textStyle="italic" 一样    -->
@@ -86,78 +102,93 @@
             style="@style/tv.small"
             android:fontFamily="@font/consolas_bold_italic"
             android:text="@string/test_string"
+            android:textSize="30sp"
             android:textStyle="italic|bold" />
     </LinearLayout>
 
     <!--   B    -->
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
+        <!-- ok (推荐)。使用正确      -->
         <TextView
             style="@style/tv.small"
-            android:fontFamily="@font/averia_bold"
-            android:text="@string/test_string" />
-
-        <TextView
-            style="@style/tv.small"
-            android:layout_centerInParent="true"
             android:fontFamily="@font/averia_bold"
             android:text="@string/test_string"
+            android:textSize="@dimen/size_30" />
+
+        <!--  ok 。使用正确     -->
+        <TextView
+            style="@style/tv.small"
+            android:fontFamily="@font/averia_bold"
+            android:text="@string/test_string"
+            android:textSize="@dimen/size_30"
             android:textStyle="normal" />
 
+        <!--  ok      -->
         <TextView
             style="@style/tv.small"
-            android:layout_alignParentEnd="true"
             android:fontFamily="@font/averia_bold"
             android:text="@string/test_string"
+            android:textSize="@dimen/size_30"
             android:textStyle="bold" />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <!--  B 再加粗  + I => 比Z好粗      -->
-    <TextView
-        style="@style/tv"
-        android:fontFamily="@font/consolas_bold"
-        android:text="@string/test_string"
-        android:textSize="30sp"
-        android:textStyle="bold|italic" />
+    <View style="@style/div.red" />
+    <!-- B + I vs Z     -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <!--  B 再加粗  + I => 比Z好粗      -->
-    <TextView
-        style="@style/tv"
-        android:fontFamily="@font/consolas_bold"
-        android:text="@string/test_string"
-        android:textSize="30sp"
-        android:textStyle="italic|bold" />
+        <!-- not ok => 比Z粗      -->
+        <TextView
+            style="@style/tv"
+            android:fontFamily="@font/consolas_bold"
+            android:text="@string/test_string"
+            android:textSize="30sp"
+            android:textStyle="bold|italic" />
 
-    <!-- B，然后倾斜 = Z(B + I)     -->
-    <TextView
-        style="@style/tv"
-        android:fontFamily="@font/consolas_bold"
-        android:text="@string/test_string"
-        android:textSize="30sp"
-        android:textStyle="italic" />
+        <!-- not ok => 比Z粗      -->
+        <TextView
+            style="@style/tv"
+            android:fontFamily="@font/consolas_bold"
+            android:text="@string/test_string"
+            android:textSize="30sp"
+            android:textStyle="italic|bold" />
 
-    <!--  Z    -->
-    <TextView
-        style="@style/tv"
-        android:fontFamily="@font/consolas_bold_italic"
-        android:text="@string/test_string"
-        android:textSize="30sp" />
+        <!-- B+I, ok     -->
+        <TextView
+            style="@style/tv"
+            android:fontFamily="@font/consolas_bold"
+            android:text="@string/test_string"
+            android:textSize="30sp"
+            android:textStyle="italic" />
 
-    <!--  Z     -->
-    <TextView
-        style="@style/tv"
-        android:fontFamily="@font/consolas_bold_italic"
-        android:text="@string/test_string"
-        android:textSize="30sp"
-        android:textStyle="bold|italic" />
+        <!--  Z  ok (推荐)。使用正确  -->
+        <TextView
+            style="@style/tv"
+            android:fontFamily="@font/consolas_bold_italic"
+            android:text="@string/test_string"
+            android:textSize="30sp" />
 
-    <!-- Z -->
-    <TextView
-        style="@style/tv"
-        android:fontFamily="@font/consolas_bold_italic"
-        android:text="@string/test_string"
-        android:textSize="30sp"
-        android:textStyle="italic" />
+        <!--  Z  ok   -->
+        <TextView
+            style="@style/tv"
+            android:fontFamily="@font/consolas_bold_italic"
+            android:text="@string/test_string"
+            android:textSize="30sp"
+            android:textStyle="bold|italic" />
+
+        <!-- Z ok。使用正确 -->
+        <TextView
+            style="@style/tv"
+            android:fontFamily="@font/consolas_bold_italic"
+            android:text="@string/test_string"
+            android:textSize="30sp"
+            android:textStyle="italic" />
+    </LinearLayout>
 </LinearLayout>
