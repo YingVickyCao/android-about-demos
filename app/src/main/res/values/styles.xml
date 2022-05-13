@@ -444,4 +444,21 @@
         <item name="android:textAllCaps">false</item>
     </style>
     <!--  https://cloud.tencent.com/developer/article/1620320  -->
+
+    <style name="font_page_subject" parent="tv">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+    </style>
+
+    <style name="font_page_label" parent="tv.small">
+        <item name="android:layout_width">@dimen/size_80</item>
+    </style>
+
+    <style name="font_page_item">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:text">@string/test_string</item>
+        <item name="android:textSize">@dimen/size_30</item>
+    </style>
 </resources>

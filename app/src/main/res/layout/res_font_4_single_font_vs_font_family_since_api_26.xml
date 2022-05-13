@@ -5,184 +5,147 @@
     android:layout_marginTop="@dimen/size_10"
     android:orientation="vertical">
 
-    <!-- 通过代码设置font       -->
     <TextView
-        android:id="@+id/fontText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/test_string" />
+        style="@style/font_page_subject"
+        android:text="使用单个字体 vs 使用字体系列" />
 
-    <!-- 使用单个字体  -->
-    <!-- 使用字体系列，TextView会根据需要自行切换，以使用该系列中的字体文件  -->
+    <!--
+        1 使用单个字体
+        2 使用字体系列，TextView会根据需要自行切换，以使用该系列中的字体文件
+     -->
+
+    <!-- Light       -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <TextView
+            style="@style/font_page_label"
+            android:text="Light" />
+
+        <!--  推荐      -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_light" />
+
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_fonts"
+            android:textFontWeight="300" />
+
+        <!--  推荐      -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_light_fonts" />
+    </LinearLayout>
+
+    <!-- Light    I   -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <TextView
+            style="@style/font_page_label"
+            android:text="Light Italic" />
+
+        <!--  推荐      -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_light_italic" />
+
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_fonts"
+            android:textFontWeight="300"
+            android:textStyle="italic" />
+
+        <!--  推荐      -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_light_fonts"
+            android:textStyle="italic" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/size_20"
         android:layout_marginTop="@dimen/size_10"
-        android:orientation="horizontal">
+        android:weightSum="2">
 
         <TextView
-            style="@style/tv.small"
-            android:text="Light" />
-
-        <!-- Light       -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/averia_light"
-            android:text="@string/test_string"
-            android:textSize="@dimen/size_30" />
-
-        <!-- Light       -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="@font/averia"
-            android:text="@string/test_string"
-            android:textFontWeight="300"
-            android:textSize="@dimen/size_30" />
-
-        <!-- Light   I    -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/averia_light_italic"
-            android:text="@string/test_string"
-            android:textSize="@dimen/size_30" />
-
-        <!-- Light    I   -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="@font/averia"
-            android:text="@string/test_string"
-            android:textFontWeight="300"
-            android:textSize="@dimen/size_30"
-            android:textStyle="italic" />
-
-        <!--   Regular    -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="@font/averia"
-            android:text="@string/test_string"
-            android:textSize="@dimen/size_30" />
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/size_20"
-        android:layout_marginTop="@dimen/size_10">
-
-        <TextView
-            style="@style/tv.small"
+            style="@style/font_page_label"
             android:text="Regular" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/averia_regular"
-            android:text="@string/test_string"
-            android:textSize="@dimen/size_30" />
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_regular" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="@font/averia"
-            android:text="@string/test_string"
-            android:textSize="@dimen/size_30" />
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_fonts" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <!-- Bold   -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/size_20">
+        android:weightSum="2">
 
         <TextView
-            style="@style/tv.small"
+            style="@style/font_page_label"
             android:text="Bold" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/averia_bold"
-            android:text="@string/test_string"
-            android:textSize="@dimen/size_30" />
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_bold" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="@font/averia"
-            android:text="@string/test_string"
-            android:textSize="@dimen/size_30"
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_fonts"
             android:textStyle="bold" />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <!-- I   -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/size_20">
+        android:layout_height="wrap_content">
 
         <TextView
-            style="@style/tv.small"
+            style="@style/font_page_label"
             android:text="Italic" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/averia_italic"
-            android:text="@string/test_string"
-            android:textSize="@dimen/size_30" />
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_italic" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="@font/averia"
-            android:text="@string/test_string"
-            android:textSize="@dimen/size_30"
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_fonts"
             android:textStyle="italic" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <!-- B+I   -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/size_20">
+        android:layout_height="wrap_content">
 
         <TextView
-            style="@style/tv.small"
+            style="@style/font_page_label"
             android:text="Bold Italic" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/averia_bold_italic"
-            android:text="@string/test_string"
-            android:textSize="@dimen/size_30" />
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_bold_italic" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="@font/averia"
-            android:text="@string/test_string"
-            android:textSize="@dimen/size_30"
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_fonts"
             android:textStyle="italic|bold" />
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

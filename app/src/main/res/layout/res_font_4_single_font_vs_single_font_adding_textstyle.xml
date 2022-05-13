@@ -4,6 +4,11 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <TextView
+        style="@style/font_page_subject"
+        android:text="使用单个字体 vs 单个字体 配合 textStyle 使用" />
+
+
     <!--结论：使用单个字体时，
     正确：
     使用方式1：只使用android:fontFamily，不使用android:textStyle。推荐。这种更简单。
