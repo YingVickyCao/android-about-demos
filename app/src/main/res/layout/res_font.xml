@@ -12,8 +12,13 @@
             style="@style/topic"
             android:text="@string/page_font" />
 
-        <!--  textStyle vs fontFamily-->
+        <!--  使用单个字体 vs 单个字体 配合 textStyle 使用-->
         <include layout="@layout/res_font_4_single_font_vs_single_font_adding_textstyle_since_api_26" />
+
+        <View style="@style/div.red" />
+
+        <!--  使用单个字体 vs 单个字体 配合 textStyle 使用(Support)      -->
+        <include layout="@layout/res_font_4_single_font_vs_single_font_adding_textstyle_since_api_16" />
 
         <View style="@style/div.red" />
 

@@ -32,13 +32,13 @@
 
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/averia_fonts"
+            android:fontFamily="@font/averia_fonts_sicne_api_26"
             android:textFontWeight="300" />
 
         <!--  推荐      -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/averia_light_fonts" />
+            android:fontFamily="@font/averia_light_fonts_sicne_api_26" />
     </LinearLayout>
 
     <!-- Light    I   -->
@@ -59,14 +59,14 @@
 
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/averia_fonts"
+            android:fontFamily="@font/averia_fonts_sicne_api_26"
             android:textFontWeight="300"
             android:textStyle="italic" />
 
         <!--  推荐      -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/averia_light_fonts"
+            android:fontFamily="@font/averia_light_fonts_sicne_api_26"
             android:textStyle="italic" />
     </LinearLayout>
 
@@ -80,13 +80,15 @@
             style="@style/font_page_label"
             android:text="Regular" />
 
+        <!--  推荐      -->
         <TextView
             style="@style/font_page_item"
             android:fontFamily="@font/averia_regular" />
 
+        <!--  推荐      -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/averia_fonts" />
+            android:fontFamily="@font/averia_fonts_sicne_api_26" />
 
     </LinearLayout>
 
@@ -100,13 +102,15 @@
             style="@style/font_page_label"
             android:text="Bold" />
 
+        <!--  推荐      -->
         <TextView
             style="@style/font_page_item"
             android:fontFamily="@font/averia_bold" />
 
+        <!--  推荐      -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/averia_fonts"
+            android:fontFamily="@font/averia_fonts_sicne_api_26"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -119,13 +123,15 @@
             style="@style/font_page_label"
             android:text="Italic" />
 
+        <!--  推荐      -->
         <TextView
             style="@style/font_page_item"
             android:fontFamily="@font/averia_italic" />
 
+        <!--  推荐      -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/averia_fonts"
+            android:fontFamily="@font/averia_fonts_sicne_api_26"
             android:textStyle="italic" />
 
     </LinearLayout>
@@ -139,13 +145,15 @@
             style="@style/font_page_label"
             android:text="Bold Italic" />
 
+        <!--  推荐      -->
         <TextView
             style="@style/font_page_item"
             android:fontFamily="@font/averia_bold_italic" />
 
+        <!--  推荐      -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/averia_fonts"
+            android:fontFamily="@font/averia_fonts_sicne_api_26"
             android:textStyle="italic|bold" />
     </LinearLayout>
 </LinearLayout>

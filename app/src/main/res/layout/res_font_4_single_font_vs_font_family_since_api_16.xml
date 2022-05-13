@@ -6,115 +6,155 @@
     android:layout_marginTop="@dimen/size_10"
     android:orientation="vertical">
 
-    <!-- 使用单个字体  -->
-    <!-- 使用字体系列，TextView会根据需要自行切换，以使用该系列中的字体文件  -->
+    <TextView
+        style="@style/font_page_subject"
+        android:text="使用单个字体 vs 使用字体系列（Support）" />
+
+    <!--
+        1 使用单个字体
+        2 使用字体系列，TextView会根据需要自行切换，以使用该系列中的字体文件
+     -->
+
+    <!-- Light       -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_10"
-        android:divider="@android:color/holo_red_light"
-        android:showDividers="middle">
+        android:orientation="horizontal"
+        android:weightSum="3">
 
         <TextView
-            style="@style/tv.small"
-            android:text="Consolas" />
+            style="@style/font_page_label"
+            android:text="Light" />
+
+        <!--  推荐      -->
+        <TextView
+            style="@style/font_page_item"
+            app:fontFamily="@font/averia_light" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/test_string"
-            app:fontFamily="@font/consola" />
+            style="@style/font_page_item"
+            android:textFontWeight="300"
+            app:fontFamily="@font/averia_fonts_sicne_api_16" />
 
+        <!--  推荐      -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/test_string"
-            app:fontFamily="@font/consolas_fonts" />
+            style="@style/font_page_item"
+            app:fontFamily="@font/averia_light_fonts_sicne_api_16" />
     </LinearLayout>
 
-    <View style="@style/div" />
-
+    <!-- Light    I   -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@android:color/holo_red_light"
         android:orientation="horizontal"
-        android:showDividers="middle">
+        android:weightSum="3">
 
         <TextView
-            style="@style/tv.small"
-            android:text="Consolas Bold" />
+            style="@style/font_page_label"
+            android:text="Light Italic" />
+
+        <!--  推荐      -->
+        <TextView
+            style="@style/font_page_item"
+            app:fontFamily="@font/averia_light_italic" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/test_string"
-            app:fontFamily="@font/consolas_bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/test_string"
-            android:textStyle="bold"
-            app:fontFamily="@font/consolas_fonts" />
-    </LinearLayout>
-
-    <View style="@style/div" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_10"
-        android:divider="@android:color/holo_red_light"
-        android:orientation="horizontal"
-        android:showDividers="middle">
-
-        <TextView
-            style="@style/tv.small"
-            android:text="Consolas Italic" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/test_string"
-            app:fontFamily="@font/consolas_italic" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/test_string"
+            style="@style/font_page_item"
+            android:textFontWeight="300"
             android:textStyle="italic"
-            app:fontFamily="@font/consolas_fonts" />
+            app:fontFamily="@font/averia_fonts_sicne_api_16" />
 
+        <!--  推荐      -->
+        <TextView
+            style="@style/font_page_item"
+            android:textStyle="italic"
+            app:fontFamily="@font/averia_light_fonts_sicne_api_16" />
     </LinearLayout>
-
-    <View style="@style/div" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@android:color/holo_red_light"
-        android:orientation="horizontal"
-        android:showDividers="middle">
+        android:layout_marginTop="@dimen/size_10"
+        android:weightSum="2">
 
         <TextView
-            style="@style/tv.small"
-            android:text="Consolas Bold Italic" />
+            style="@style/font_page_label"
+            android:text="Regular" />
+
+        <!--  推荐      -->
+        <TextView
+            style="@style/font_page_item"
+            app:fontFamily="@font/averia_regular" />
+
+        <!--  推荐      -->
+        <TextView
+            style="@style/font_page_item"
+            app:fontFamily="@font/averia_fonts_sicne_api_16" />
+
+    </LinearLayout>
+
+    <!-- Bold   -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/test_string"
-            app:fontFamily="@font/consolas_bold_italic" />
+            style="@style/font_page_label"
+            android:text="Bold" />
+
+        <!--  推荐      -->
+        <TextView
+            style="@style/font_page_item"
+            app:fontFamily="@font/averia_bold" />
+
+        <!--  推荐      -->
+        <TextView
+            style="@style/font_page_item"
+            android:textStyle="bold"
+            app:fontFamily="@font/averia_fonts_sicne_api_16" />
+    </LinearLayout>
+
+    <!-- I   -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:text="@string/test_string"
+            style="@style/font_page_label"
+            android:text="Italic" />
+
+        <!--  推荐      -->
+        <TextView
+            style="@style/font_page_item"
+            app:fontFamily="@font/averia_italic" />
+
+        <!--  推荐      -->
+        <TextView
+            style="@style/font_page_item"
+            android:textStyle="italic"
+            app:fontFamily="@font/averia_fonts_sicne_api_16" />
+
+    </LinearLayout>
+
+    <!-- B+I   -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/font_page_label"
+            android:text="Bold Italic" />
+
+        <!--  推荐      -->
+        <TextView
+            style="@style/font_page_item"
+            app:fontFamily="@font/averia_bold_italic" />
+
+        <!--  推荐      -->
+        <TextView
+            style="@style/font_page_item"
             android:textStyle="italic|bold"
-            app:fontFamily="@font/consolas_fonts" />
+            app:fontFamily="@font/averia_fonts_sicne_api_16" />
     </LinearLayout>
 </LinearLayout>

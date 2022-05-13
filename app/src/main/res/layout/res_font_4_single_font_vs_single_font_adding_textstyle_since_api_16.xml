@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
         style="@style/font_page_subject"
-        android:text="使用单个字体 vs 单个字体 配合 textStyle 使用" />
+        android:text="使用单个字体 vs 单个字体 配合 textStyle 使用(Support)" />
 
     <!--结论：使用单个字体时，
     正确：
-    使用方式1：只使用android:fontFamily，不使用android:textStyle。推荐。这种更简单。
-    使用方式2：使用 android:fontFamily，使用android:textStyle按app:fontStyle值。
-    错误：只使用android:fontFamily，使用android:textStyle但不按app:fontStyle值，font 叠加效果不确定。
+    使用方式1：只使用app:fontFamily，不使用android:textStyle。推荐。这种更简单。
+    使用方式2：使用 app:fontFamily，使用android:textStyle按app:fontStyle值。
+    错误：只使用app:fontFamily，使用android:textStyle但不按app:fontStyle值，font 叠加效果不确定。
     -->
 
     <!-- ok/not ok：指的是效果正确与不正确   -->
@@ -28,13 +29,13 @@
         <!--  ok（推荐使用）      -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/averia_regular" />
+            app:fontFamily="@font/averia_regular" />
 
         <!--  ok     -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/averia_regular"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            app:fontFamily="@font/averia_regular" />
     </LinearLayout>
 
     <!--  I -->
@@ -49,13 +50,13 @@
         <!--  ok（推荐使用）      -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/averia_italic" />
+            app:fontFamily="@font/averia_italic" />
 
         <!--  ok      -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/averia_italic"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            app:fontFamily="@font/averia_italic" />
     </LinearLayout>
 
     <!--   B    -->
@@ -73,19 +74,19 @@
         <!-- ok (推荐使用)     -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/averia_bold" />
+            app:fontFamily="@font/averia_bold" />
 
         <!--  ok    -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/averia_bold"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            app:fontFamily="@font/averia_bold" />
 
         <!-- ok    -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/averia_bold"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:fontFamily="@font/averia_bold" />
     </LinearLayout>
 
     <!--   B+I    -->
@@ -100,31 +101,31 @@
         <!--  ok（推荐使用）      -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/consolas_bold_italic" />
+            app:fontFamily="@font/consolas_bold_italic" />
 
         <!--  ok     -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/consolas_bold_italic"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            app:fontFamily="@font/consolas_bold_italic" />
 
         <!-- not ok       -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/consolas_bold_italic"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:fontFamily="@font/consolas_bold_italic" />
 
         <!--  ok。   -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/consolas_bold_italic"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"
+            app:fontFamily="@font/consolas_bold_italic" />
 
         <!--  ok。   -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/consolas_bold_italic"
-            android:textStyle="italic|bold" />
+            android:textStyle="italic|bold"
+            app:fontFamily="@font/consolas_bold_italic" />
     </LinearLayout>
 
     <!-- B + I vs Z(Bold Italic)     -->
@@ -139,36 +140,36 @@
         <!-- not ok => 比Z粗      -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/consolas_bold"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"
+            app:fontFamily="@font/consolas_bold" />
 
         <!-- not ok => 比Z粗      -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/consolas_bold"
-            android:textStyle="italic|bold" />
+            android:textStyle="italic|bold"
+            app:fontFamily="@font/consolas_bold" />
 
         <!-- not ok     -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/consolas_bold"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            app:fontFamily="@font/consolas_bold" />
 
         <!-- ok (推荐使用) -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/consolas_bold_italic" />
+            app:fontFamily="@font/consolas_bold_italic" />
 
         <!-- ok   -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/consolas_bold_italic"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"
+            app:fontFamily="@font/consolas_bold_italic" />
 
         <!--ok -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/consolas_bold_italic"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            app:fontFamily="@font/consolas_bold_italic" />
     </LinearLayout>
 </LinearLayout>
