@@ -15,185 +15,161 @@
     使用方式2：使用 android:fontFamily，使用android:textStyle按app:fontStyle值。
     错误：只使用android:fontFamily，使用android:textStyle但不按app:fontStyle值，font 叠加效果不确定。
     -->
+
+    <!-- ok/not ok：指的是效果正确与不正确   -->
     <!--   normal     -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/size_10"
-        android:gravity="center"
-        android:orientation="horizontal">
+        style="@style/font_page_group_container"
+        android:weightSum="2">
 
-        <!--  正确使用（推荐）。使用正确      -->
         <TextView
-            style="@style/tv.small"
-            android:fontFamily="@font/averia_regular"
-            android:text="@string/test_string"
-            android:textSize="30sp" />
+            style="@style/font_page_label"
+            android:text="Regular" />
 
-        <!--  正确使用。使用正确      -->
+        <!--  ok（推荐使用）      -->
         <TextView
-            style="@style/tv.small"
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_regular" />
+
+        <!--  ok     -->
+        <TextView
+            style="@style/font_page_item"
             android:fontFamily="@font/averia_regular"
-            android:text="@string/test_string"
-            android:textSize="30sp"
             android:textStyle="normal" />
     </LinearLayout>
 
     <!--  I -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/size_10"
-        android:gravity="center"
-        android:orientation="horizontal">
+        style="@style/font_page_group_container"
+        android:weightSum="2">
 
-        <!--  ok（推荐）。使用正确      -->
         <TextView
-            style="@style/tv.small"
+            style="@style/font_page_label"
+            android:text="Italic" />
+
+        <!--  ok（推荐使用）      -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_italic" />
+
+        <!--  ok      -->
+        <TextView
+            style="@style/font_page_item"
             android:fontFamily="@font/averia_italic"
-            android:text="@string/test_string"
-            android:textSize="30sp" />
-
-        <!--  ok。使用正确      -->
-        <TextView
-            style="@style/tv.small"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="@font/averia_italic"
-            android:text="@string/test_string"
-            android:textSize="30sp"
             android:textStyle="italic" />
-    </LinearLayout>
-
-    <!--   Z    -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/size_10"
-        android:gravity="center">
-
-        <!--  ok（推荐）。使用正确      -->
-        <TextView
-            style="@style/tv.small"
-            android:fontFamily="@font/consolas_bold_italic"
-            android:text="@string/test_string"
-            android:textSize="30sp" />
-
-        <!--  ok  。使用正确    -->
-        <TextView
-            style="@style/tv.small"
-            android:fontFamily="@font/consolas_bold_italic"
-            android:text="@string/test_string"
-            android:textSize="30sp"
-            android:textStyle="italic" />
-
-        <!-- not ok       -->
-        <TextView
-            style="@style/tv.small"
-            android:fontFamily="@font/consolas_bold_italic"
-            android:text="@string/test_string"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <!--  ok。 效果和  android:textStyle="italic" 一样    -->
-        <TextView
-            style="@style/tv.small"
-            android:fontFamily="@font/consolas_bold_italic"
-            android:text="@string/test_string"
-            android:textSize="30sp"
-            android:textStyle="bold|italic" />
-
-        <!--  ok。效果和  android:textStyle="italic" 一样    -->
-        <TextView
-            style="@style/tv.small"
-            android:fontFamily="@font/consolas_bold_italic"
-            android:text="@string/test_string"
-            android:textSize="30sp"
-            android:textStyle="italic|bold" />
     </LinearLayout>
 
     <!--   B    -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-
-        <!-- ok (推荐)。使用正确      -->
-        <TextView
-            style="@style/tv.small"
-            android:fontFamily="@font/averia_bold"
-            android:text="@string/test_string"
-            android:textSize="@dimen/size_30" />
-
-        <!--  ok 。使用正确     -->
-        <TextView
-            style="@style/tv.small"
-            android:fontFamily="@font/averia_bold"
-            android:text="@string/test_string"
-            android:textSize="@dimen/size_30"
-            android:textStyle="normal" />
-
-        <!--  ok      -->
-        <TextView
-            style="@style/tv.small"
-            android:fontFamily="@font/averia_bold"
-            android:text="@string/test_string"
-            android:textSize="@dimen/size_30"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <View style="@style/div.red" />
-    <!-- B + I vs Z     -->
-    <LinearLayout
+        style="@style/font_page_group_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical">
+        android:weightSum="3">
 
-        <!-- not ok => 比Z粗      -->
         <TextView
-            style="@style/tv"
-            android:fontFamily="@font/consolas_bold"
-            android:text="@string/test_string"
-            android:textSize="30sp"
-            android:textStyle="bold|italic" />
+            style="@style/font_page_label"
+            android:text="Bold" />
 
-        <!-- not ok => 比Z粗      -->
+        <!-- ok (推荐使用)     -->
         <TextView
-            style="@style/tv"
-            android:fontFamily="@font/consolas_bold"
-            android:text="@string/test_string"
-            android:textSize="30sp"
-            android:textStyle="italic|bold" />
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_bold" />
 
-        <!-- B+I, ok     -->
+        <!--  ok    -->
         <TextView
-            style="@style/tv"
-            android:fontFamily="@font/consolas_bold"
-            android:text="@string/test_string"
-            android:textSize="30sp"
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_bold"
+            android:textStyle="normal" />
+
+        <!-- ok    -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_bold"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!--   B+I    -->
+    <LinearLayout
+        style="@style/font_page_group_container"
+        android:weightSum="5">
+
+        <TextView
+            style="@style/font_page_label"
+            android:text="Bold Italic" />
+
+        <!--  ok（推荐使用）      -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/consolas_bold_italic" />
+
+        <!--  ok     -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/consolas_bold_italic"
             android:textStyle="italic" />
 
-        <!--  Z  ok (推荐)。使用正确  -->
+        <!-- not ok       -->
         <TextView
-            style="@style/tv"
+            style="@style/font_page_item"
             android:fontFamily="@font/consolas_bold_italic"
-            android:text="@string/test_string"
-            android:textSize="30sp" />
+            android:textStyle="bold" />
 
-        <!--  Z  ok   -->
+        <!--  ok。   -->
         <TextView
-            style="@style/tv"
+            style="@style/font_page_item"
             android:fontFamily="@font/consolas_bold_italic"
-            android:text="@string/test_string"
-            android:textSize="30sp"
             android:textStyle="bold|italic" />
 
-        <!-- Z ok。使用正确 -->
+        <!--  ok。   -->
         <TextView
-            style="@style/tv"
+            style="@style/font_page_item"
             android:fontFamily="@font/consolas_bold_italic"
-            android:text="@string/test_string"
-            android:textSize="30sp"
+            android:textStyle="italic|bold" />
+    </LinearLayout>
+
+    <!-- B + I vs Z(Bold Italic)     -->
+    <LinearLayout
+        style="@style/font_page_group_container"
+        android:weightSum="6">
+
+        <TextView
+            style="@style/font_page_label"
+            android:text="B+I vs Bold Italic" />
+
+        <!-- not ok => 比Z粗      -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/consolas_bold"
+            android:textStyle="bold|italic" />
+
+        <!-- not ok => 比Z粗      -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/consolas_bold"
+            android:textStyle="italic|bold" />
+
+        <!-- not ok     -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/consolas_bold"
+            android:textStyle="italic" />
+
+        <!-- ok (推荐使用) -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/consolas_bold_italic" />
+
+        <!-- ok   -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/consolas_bold_italic"
+            android:textStyle="bold|italic" />
+
+        <!--ok -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/consolas_bold_italic"
             android:textStyle="italic" />
     </LinearLayout>
 </LinearLayout>

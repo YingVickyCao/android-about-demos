@@ -445,6 +445,13 @@
     </style>
     <!--  https://cloud.tencent.com/developer/article/1620320  -->
 
+    <style name="font_page_group_container" parent="tv">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
     <style name="font_page_subject" parent="tv">
         <item name="android:textColor">@android:color/holo_red_dark</item>
     </style>
