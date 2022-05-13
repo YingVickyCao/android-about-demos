@@ -4,12 +4,14 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <TextView
+        style="@style/font_page_subject"
+        android:text="typeface vs fontFamily" />
+
     <!-- fontFamily 和 typeface 同时出现， fontFamily生效，typeface 被忽略 -->
     <TextView
-        style="@style/tv"
+        style="@style/font_page_item"
         android:fontFamily="@font/consolas_bold_italic"
-        android:text="@string/test_string"
-        android:textSize="30sp"
         android:textStyle="bold|italic"
         android:typeface="monospace" />
 </LinearLayout>

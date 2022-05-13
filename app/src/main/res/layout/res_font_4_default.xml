@@ -5,29 +5,27 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <TextView
+        style="@style/font_page_subject"
+        android:text="使用默认字体" />
+
     <!-- 使用默认字体  -->
 
-    <!--
-    Same with
-    android:fontFamily="sans-serif"
-     -->
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        style="@style/font_page_group_container"
+        android:layout_weight="2">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/test_string" />
+            style="@style/font_page_label"
+            android:text="Regular" />
+        <!--   Recommend     -->
+        <!-- Same with  android:fontFamily="sans-serif" -->
+        <TextView style="@style/font_page_item" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="sans-serif"
-            android:text="@string/test_string" />
-    </RelativeLayout>
+            style="@style/font_page_item"
+            android:fontFamily="sans-serif" />
+    </LinearLayout>
 
     <!--
     android:textStyle="bold"
@@ -36,24 +34,25 @@
     android:textStyle="bold"
     -->
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        style="@style/font_page_group_container"
+        android:layout_weight="2">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/test_string"
+            style="@style/font_page_label"
+            android:text="Bold" />
+
+        <!--   Recommend     -->
+        <!-- Same with  android:fontFamily="sans-serif" -->
+        <TextView
+            style="@style/font_page_item"
             android:textStyle="bold" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            style="@style/font_page_item"
             android:fontFamily="sans-serif"
-            android:text="@string/test_string"
             android:textStyle="bold" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <!--
     android:textStyle="italic"
@@ -62,24 +61,25 @@
    android:textStyle="italic"
          -->
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        style="@style/font_page_group_container"
+        android:layout_weight="2">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/test_string"
+            style="@style/font_page_label"
+            android:text="Italic" />
+
+        <!--   Recommend     -->
+        <!-- Same with  android:fontFamily="sans-serif" -->
+        <TextView
+            style="@style/font_page_item"
             android:textStyle="italic" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            style="@style/font_page_item"
             android:fontFamily="sans-serif"
-            android:text="@string/test_string"
             android:textStyle="italic" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <!--
 android:textStyle="italic|bold"
@@ -87,22 +87,33 @@ Same with
 android:fontFamily="sans-serif"
 android:textStyle="italic|bold"
      -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        style="@style/font_page_group_container"
+        android:layout_weight="4">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/test_string"
+            style="@style/font_page_label"
+            android:text="Bold Italic / Italic Bold" />
+
+        <!--   Recommend     -->
+        <!-- Same with  android:fontFamily="sans-serif" -->
+        <TextView
+            style="@style/font_page_item"
             android:textStyle="italic|bold" />
 
+        <!--   Recommend     -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            style="@style/font_page_item"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            style="@style/font_page_item"
             android:fontFamily="sans-serif"
-            android:text="@string/test_string"
             android:textStyle="italic|bold" />
-    </RelativeLayout>
+
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold|italic" />
+    </LinearLayout>
 </LinearLayout>

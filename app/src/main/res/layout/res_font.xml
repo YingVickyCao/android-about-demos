@@ -36,15 +36,15 @@
 
         <include layout="@layout/res_font_4_code_set_font" />
 
-        <!--  typeface vs fontFamily-->
+        <View style="@style/div.red" />
+
+        <!--  typeface vs fontFamily -->
         <include layout="@layout/res_font_4_typeface_vs_textfamily" />
 
         <View style="@style/div.red" />
 
         <!-- 使用默认字体  -->
-        <include
-            layout="@layout/res_font_4_default"
-            android:visibility="gone" />
+        <include layout="@layout/res_font_4_default" />
 
         <View style="@style/div.red" />
 
