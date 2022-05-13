@@ -9,8 +9,40 @@
         style="@style/font_page_subject"
         android:text="使用默认字体" />
 
-    <!-- 使用默认字体  -->
+    <!--  Light  -->
+    <LinearLayout
+        style="@style/font_page_group_container"
+        android:layout_weight="2">
 
+        <TextView
+            style="@style/font_page_label"
+            android:text="Light" />
+
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="sans-serif-light" />
+    </LinearLayout>
+
+    <!-- Light Italic   -->
+    <LinearLayout
+        style="@style/font_page_group_container"
+        android:layout_weight="2">
+
+        <TextView
+            style="@style/font_page_label"
+            android:text="Light Italic" />
+
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="sans-serif-light"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <!--  Regular  -->
+    <!--
+      Same with
+      android:fontFamily="sans-serif"
+   -->
     <LinearLayout
         style="@style/font_page_group_container"
         android:layout_weight="2">
@@ -18,8 +50,8 @@
         <TextView
             style="@style/font_page_label"
             android:text="Regular" />
+
         <!--   Recommend     -->
-        <!-- Same with  android:fontFamily="sans-serif" -->
         <TextView style="@style/font_page_item" />
 
         <TextView
@@ -27,40 +59,13 @@
             android:fontFamily="sans-serif" />
     </LinearLayout>
 
+    <!--  Italic  -->
     <!--
-    android:textStyle="bold"
-    Same with
-    android:fontFamily="sans-serif"
-    android:textStyle="bold"
+       android:textStyle="italic"
+       Same with
+       android:fontFamily="sans-serif"
+       android:textStyle="italic"
     -->
-
-    <LinearLayout
-        style="@style/font_page_group_container"
-        android:layout_weight="2">
-
-        <TextView
-            style="@style/font_page_label"
-            android:text="Bold" />
-
-        <!--   Recommend     -->
-        <!-- Same with  android:fontFamily="sans-serif" -->
-        <TextView
-            style="@style/font_page_item"
-            android:textStyle="bold" />
-
-        <TextView
-            style="@style/font_page_item"
-            android:fontFamily="sans-serif"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <!--
-    android:textStyle="italic"
-    Same with
-   android:fontFamily="sans-serif"
-   android:textStyle="italic"
-         -->
-
     <LinearLayout
         style="@style/font_page_group_container"
         android:layout_weight="2">
@@ -70,7 +75,6 @@
             android:text="Italic" />
 
         <!--   Recommend     -->
-        <!-- Same with  android:fontFamily="sans-serif" -->
         <TextView
             style="@style/font_page_item"
             android:textStyle="italic" />
@@ -81,11 +85,38 @@
             android:textStyle="italic" />
     </LinearLayout>
 
+    <!--  Bold  -->
     <!--
-android:textStyle="italic|bold"
-Same with
-android:fontFamily="sans-serif"
-android:textStyle="italic|bold"
+        android:textStyle="bold"
+        Same with
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+    -->
+    <LinearLayout
+        style="@style/font_page_group_container"
+        android:layout_weight="2">
+
+        <TextView
+            style="@style/font_page_label"
+            android:text="Bold" />
+
+        <!--   Recommend     -->
+        <TextView
+            style="@style/font_page_item"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Bold Italic   -->
+    <!--
+        android:textStyle="italic|bold" / android:textStyle="bold|italic"
+        Same with
+        android:fontFamily="sans-serif"
+        android:textStyle="italic|bold" / android:textStyle="bold|italic"
      -->
     <LinearLayout
         style="@style/font_page_group_container"
@@ -93,10 +124,9 @@ android:textStyle="italic|bold"
 
         <TextView
             style="@style/font_page_label"
-            android:text="Bold Italic / Italic Bold" />
+            android:text="Bold Italic" />
 
         <!--   Recommend     -->
-        <!-- Same with  android:fontFamily="sans-serif" -->
         <TextView
             style="@style/font_page_item"
             android:textStyle="italic|bold" />

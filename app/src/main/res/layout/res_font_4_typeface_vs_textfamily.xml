@@ -10,8 +10,10 @@
 
     <!-- fontFamily 和 typeface 同时出现， fontFamily生效，typeface 被忽略 -->
     <TextView
-        style="@style/font_page_item"
+        style="@style/tv"
         android:fontFamily="@font/consolas_bold_italic"
+        android:text="ABC"
+        android:textSize="@dimen/text_size_30"
         android:textStyle="bold|italic"
         android:typeface="monospace" />
 </LinearLayout>

@@ -466,6 +466,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:text">@string/test_string</item>
-        <item name="android:textSize">@dimen/size_30</item>
+        <item name="android:textSize">@dimen/text_size_30</item>
     </style>
 </resources>

@@ -11,7 +11,10 @@
         <TextView
             style="@style/topic"
             android:text="@string/page_font" />
+        <!-- 使用默认字体  -->
+        <include layout="@layout/res_font_4_default" />
 
+        <View style="@style/div.red" />
         <!--  使用单个字体 vs 单个字体 配合 textStyle 使用-->
         <include layout="@layout/res_font_4_single_font_vs_single_font_adding_textstyle_since_api_26" />
 
@@ -40,11 +43,6 @@
 
         <!--  typeface vs fontFamily -->
         <include layout="@layout/res_font_4_typeface_vs_textfamily" />
-
-        <View style="@style/div.red" />
-
-        <!-- 使用默认字体  -->
-        <include layout="@layout/res_font_4_default" />
 
         <View style="@style/div.red" />
 
