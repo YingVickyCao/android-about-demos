@@ -468,4 +468,17 @@
         <item name="android:text">@string/test_string</item>
         <item name="android:textSize">@dimen/text_size_30</item>
     </style>
+
+    <style name="AppTheme_font_1" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="fontFamily">@font/digital_7</item>
+    </style>
+
+    <style name="AppTheme_font_2" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:fontFamily">@font/digital_7</item>
+    </style>
+
+    <style name="AppTheme_font_3" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="fontFamily">@font/digital_7</item>
+        <item name="android:fontFamily">@font/consola</item>
+    </style>
 </resources>
