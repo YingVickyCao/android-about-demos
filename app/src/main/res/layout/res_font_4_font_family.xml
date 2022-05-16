@@ -9,11 +9,11 @@
         style="@style/font_page_subject"
         android:text="android:fontFamily vs app:fontFamily" />
 
+    <!-- 同一个字体，android:fontFamily 和 app:fontFamily 效果一样      -->
     <LinearLayout
         style="@style/font_page_group_container"
         android:layout_weight="3">
 
-        <!-- 同一个字体，android:fontFamily 和 app:fontFamily 效果一样      -->
         <TextView
             style="@style/font_page_item"
             android:fontFamily="@font/averia_regular" />
@@ -23,46 +23,73 @@
             app:fontFamily="@font/averia_regular" />
     </LinearLayout>
 
-    <!-- 最终结论：优先级 app:fontFamily > android:fontFamily > theme app:fontFamily > theme android:fontFamily，同时出现时，优先级高的生效。 -->
+    <!-- 效果相同
+        app:fontFamily="sans-serif"
+        android:fontFamily="sans-serif"
+        不写
+       -->
     <LinearLayout
         style="@style/font_page_group_container"
         android:layout_weight="3">
 
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/consola" />
+            app:fontFamily="sans-serif" />
 
         <TextView
             style="@style/font_page_item"
-            app:fontFamily="@font/averia_regular" />
+            android:fontFamily="sans-serif" />
 
-        <!-- app:fontFamily  和 android:fontFamily同时出现，app:fontFamily生效      -->
+        <TextView style="@style/font_page_item" />
+    </LinearLayout>
+
+    <!-- 最终结论：优先级 app:fontFamily > theme app:fontFamily > android:fontFamily > theme android:fontFamily -->
+    <TextView
+        style="@style/font_page_item"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:theme="@style/AppTheme_font_1" />
+
+    <LinearLayout
+        style="@style/font_page_group_container"
+        android:layout_weight="1">
+
+        <!-- app:fontFamily > android:fontFamily -->
         <TextView
             style="@style/font_page_item"
             android:fontFamily="@font/consola"
-            app:fontFamily="@font/averia_regular" />
+            app:fontFamily="@font/digital_7" />
     </LinearLayout>
 
     <LinearLayout
         style="@style/font_page_group_container"
-        android:layout_weight="3">
+        android:layout_weight="4">
 
+        <!-- app:fontFamily > theme android:fontFamily  -->
         <TextView
             style="@style/font_page_item"
-            android:theme="@style/AppTheme_font_1" />
+            android:theme="@style/AppTheme_font_4"
+            app:fontFamily="@font/digital_7" />
 
-        <!-- app:fontFamily > theme app:fontFamily,同时存在时，app:fontFamily生效   -->
+        <!-- app:fontFamily > android:fontFamily > theme android:fontFamily -->
         <TextView
             style="@style/font_page_item"
+            android:fontFamily="@font/consolas_italic"
+            android:theme="@style/AppTheme_font_4"
+            app:fontFamily="@font/digital_7" />
+
+        <!--  app:fontFamily > theme app:fontFamily > android:fontFamily     -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/consolas_italic"
             android:theme="@style/AppTheme_font_1"
-            app:fontFamily="@font/averia_regular" />
+            app:fontFamily="@font/consola" />
 
-        <!-- app:fontFamily > android:fontFamily > theme app:fontFamily, 同时存在时，app:fontFamily生效 -->
+        <!-- theme app:fontFamily >  android:fontFamily     -->
         <TextView
             style="@style/font_page_item"
-            android:fontFamily="@font/consola"
-            android:theme="@style/AppTheme_font_1"
-            app:fontFamily="@font/averia_regular" />
+            android:fontFamily="@font/digital_7"
+            android:theme="@style/AppTheme_font_5" />
     </LinearLayout>
 
     <LinearLayout
@@ -73,13 +100,13 @@
             style="@style/font_page_item"
             android:theme="@style/AppTheme_font_2" />
 
-        <!-- android:fontFamily > theme android:fontFamily, 同时存在时，android:fontFamily 生效       -->
+        <!-- android:fontFamily > theme android:fontFamily-->
         <TextView
             style="@style/font_page_item"
             android:fontFamily="@font/consola"
             android:theme="@style/AppTheme_font_2" />
 
-        <!-- app:fontFamily > android:fontFamily > theme android:fontFamily, 同时存在时，app:fontFamily生效 -->
+        <!-- app:fontFamily > android:fontFamily > theme android:fontFamily -->
         <TextView
             style="@style/font_page_item"
             android:fontFamily="@font/consola"
@@ -91,9 +118,21 @@
         style="@style/font_page_group_container"
         android:layout_weight="3">
 
-        <!-- theme app:fontFamily > theme android:fontFamily,同时存在时，app:fontFamily生效 -->
+        <!-- theme app:fontFamily > theme android:fontFamily-->
         <TextView
             style="@style/font_page_item"
             android:theme="@style/AppTheme_font_3" />
+
+        <!--  theme app:fontFamily > android:fontFamily > theme android:fontFamily     -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_italic"
+            android:theme="@style/AppTheme_font_3" />
+
+        <!-- app:fontFamily > theme app:fontFamily       -->
+        <TextView
+            style="@style/font_page_item"
+            android:theme="@style/AppTheme_font_1"
+            app:fontFamily="sans-serif" />
     </LinearLayout>
 </LinearLayout>
