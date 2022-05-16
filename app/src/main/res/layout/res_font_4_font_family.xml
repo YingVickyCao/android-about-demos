@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/font_page_subject"
+        android:text="android:fontFamily vs app:fontFamily" />
+
+    <LinearLayout
+        style="@style/font_page_group_container"
+        android:layout_weight="3">
+
+        <!-- android:fontFamily 和 app:fontFamily 效果一样      -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/averia_regular" />
+
+        <TextView
+            style="@style/font_page_item"
+            app:fontFamily="@font/averia_regular" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/font_page_group_container"
+        android:layout_weight="3">
+
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/consola" />
+
+        <TextView
+            style="@style/font_page_item"
+            app:fontFamily="@font/averia_regular" />
+
+        <!-- app:fontFamily  和 android:fontFamily同时出现，app:fontFamily生效      -->
+        <TextView
+            style="@style/font_page_item"
+            android:fontFamily="@font/consola"
+            app:fontFamily="@font/averia_regular" />
+    </LinearLayout>
+</LinearLayout>

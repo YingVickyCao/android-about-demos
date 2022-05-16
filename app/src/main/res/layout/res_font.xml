@@ -46,5 +46,8 @@
 
         <View style="@style/div.red" />
 
+        <!-- android:fontFamily vs app:fontFamily       -->
+        <include layout="@layout/res_font_4_font_family" />
+
     </LinearLayout>
 </ScrollView>

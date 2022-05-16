@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Recommended,start  -->
     <font
         android:font="@font/averia_light"
         android:fontStyle="normal"
@@ -9,4 +10,5 @@
         android:font="@font/averia_light_italic"
         android:fontStyle="italic"
         android:fontWeight="300" />
+    <!-- Recommended,end  -->
 </font-family>
