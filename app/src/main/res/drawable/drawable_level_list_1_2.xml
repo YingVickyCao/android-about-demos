@@ -16,11 +16,11 @@
 
     <!-- Fix:   -->
     <item
-        android:drawable="@drawable/drawable_star_big_off"
+        android:drawable="@drawable/drawable_star_off"
         android:maxLevel="0" />
 
     <item
-        android:drawable="@drawable/drawable_star_big_on"
+        android:drawable="@drawable/drawable_star_on"
         android:maxLevel="1" />
 
 </level-list>
