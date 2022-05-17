@@ -490,4 +490,10 @@
         <item name="fontFamily">@font/consola</item>
     </style>
 
+    <attr name="levelListDrawable" format="reference" />
+
+    <style name="AppTheme_level_list_drawable" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="levelListDrawable">@drawable/drawable_level_list_1_1</item>
+    </style>
+
 </resources>

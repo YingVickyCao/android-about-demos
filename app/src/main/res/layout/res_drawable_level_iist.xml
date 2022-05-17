@@ -23,41 +23,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/textView1_1"
+                <ImageView
+                    android:id="@+id/image_1_1"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="@dimen/margin_tiny"
-                    android:background="@drawable/drawable_level_list_1_1" />
+                    android:src="@drawable/drawable_level_list_1_1" />
 
-                <TextView
-                    android:id="@+id/textView1_2"
+                <ImageView
+                    android:id="@+id/image_1_2"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="@dimen/margin_tiny"
-                    android:background="@drawable/drawable_level_list_1_2_v2" />
+                    android:src="@drawable/drawable_level_list_1_2" />
 
-
-                <TextView
-                    android:id="@+id/textView2_1"
+                <ImageView
+                    android:id="@+id/image_1_3"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="@dimen/margin_tiny"
-                    android:background="@drawable/drawable_level_list_2_1" />
+                    android:src="?attr/levelListDrawable"
+                    android:theme="@style/AppTheme_level_list_drawable" />
 
-                <!--<TextView-->
-                <!--android:id="@+id/textView2_v2"-->
+                <ImageView
+                    android:id="@+id/image_2_1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="@dimen/margin_tiny"
+                    android:src="@drawable/drawable_level_list_2_1" />
+
+
+                <!--<ImageView-->
+                <!--android:id="@+id/image_1_2"-->
                 <!--android:layout_width="40dp"-->
                 <!--android:layout_height="40dp"-->
                 <!--android:layout_margin="@dimen/margin_tiny"-->
-                <!--android:background="@drawable/drawable_level_list_2_2_v1" />-->
+                <!--android:src="@drawable/drawable_level_list_2_2_v1" />-->
 
-                <TextView
-                    android:id="@+id/textView2_2"
+                <ImageView
+                    android:id="@+id/image_2_2"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="@dimen/margin_tiny"
-                    android:background="@drawable/drawable_level_list_2_2_v2" />
+                    android:src="@drawable/drawable_level_list_2_2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
                 <Button
                     android:id="@+id/setMaxLevel0"
