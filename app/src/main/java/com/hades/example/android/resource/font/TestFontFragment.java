@@ -24,14 +24,25 @@ public class TestFontFragment extends Fragment {
         //  代码设置font：Typeface （>=26）
         TextView fontText = view.findViewById(R.id.fontText);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Typeface typeface = getResources().getFont(R.font.consolas_bold);
+            // Use single font
+            Typeface typeface = getResources().getFont(R.font.consolas_bold_italic);
             fontText.setTypeface(typeface);
+
+            // Use font family
+//            fontText.setTypeface(getResources().getFont(R.font.consolas_fonts_since_api_26), Typeface.BOLD_ITALIC);
+
+            // 设置monospace字体
+//            fontText.setTypeface(Typeface.MONOSPACE);
         }
 
         // 代码设置font：Typeface + Support library 支持库. （>=16）
         TextView fontText2 = view.findViewById(R.id.fontText2);
-        Typeface typeface2 = ResourcesCompat.getFont(getActivity(), R.font.consolas_bold);
+        // Use single font
+        Typeface typeface2 = ResourcesCompat.getFont(getActivity(), R.font.consolas_bold_italic);
         fontText2.setTypeface(typeface2);
+
+        // Use font family
+//        fontText2.setTypeface(ResourcesCompat.getFont(getActivity(), R.font.consolas_fonts_since_api_16), Typeface.BOLD_ITALIC);
         return view;
     }
 }
