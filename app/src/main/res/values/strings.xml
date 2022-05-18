@@ -77,6 +77,7 @@
     <string name="page_CustomView_of_matrix_on_bitmap">Custom View - Matrix 处理Bitmap对象</string>
     <string name="page_CustomView_of_bitmap_mesh">Custom View - Bitmap Mesh</string>
     <string name="page_CustomView_of_shader">Custom View - Shader（颜色渐变器）</string>
+    <string name="page_CustomView_canvas_layer">Custom View - Canvas图层(Layer)</string>
     <string name="page_ConstraintLayout">ConstraintLayout</string>
     <string name="page_linearLayout">LinearLayout</string>
     <string name="page_LinearLayout_CanNotChangeColor">LinearLayout can not change color</string>
@@ -510,6 +511,6 @@
     <string name="attribute_4_default_style_in_custom_view">4-Default style in Custom View</string>
     <string name="attribute_5_attribute_in_theme">5-Attribute in Theme</string>
     <string name="attribute_6_not_use_theme">6-Not use theme </string>
-<!--    <string name="test_string">Studio类型</string>-->
+    <!--    <string name="test_string">Studio类型</string>-->
     <string name="test_string">ABC</string>
 </resources>

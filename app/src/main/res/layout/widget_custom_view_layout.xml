@@ -62,6 +62,11 @@
                 style="@style/btn"
                 android:text="@string/page_CustomView_ShadowView" />
 
+            <Button
+                android:id="@+id/page_CustomView_canvas_layer"
+                style="@style/btn"
+                android:text="@string/page_CustomView_canvas_layer" />
+
             <com.hades.example.android.widget.custom_view.RequiredTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

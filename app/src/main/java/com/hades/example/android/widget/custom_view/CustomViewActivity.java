@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.PermissionActivity;
+import com.hades.example.android.widget.custom_view.Xfermode.CanvasLayerExampleFragment;
 import com.hades.example.android.widget.custom_view.ball.FingerMovedBallFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.example.android.widget.custom_view.drawing_board.DrawingBoardFragment;
@@ -37,6 +38,7 @@ public class CustomViewActivity extends PermissionActivity {
         findViewById(R.id.pageShader).setOnClickListener(v -> pageShader());
         findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
         findViewById(R.id.page_CustomVew_ShadowView).setOnClickListener(v -> page_CustomVew_ShadowView());
+        findViewById(R.id.page_CustomView_canvas_layer).setOnClickListener(v -> page_CustomView_canvas_layer());
     }
 
     @Override
@@ -47,7 +49,7 @@ public class CustomViewActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageShader();
+        page_CustomView_canvas_layer();
     }
 
     private void pageCustomVew() {
@@ -80,5 +82,9 @@ public class CustomViewActivity extends PermissionActivity {
 
     private void page_CustomVew_ShadowView() {
         showFragment(new TestShadowViewFragment());
+    }
+
+    private void page_CustomView_canvas_layer() {
+        showFragment(new CanvasLayerExampleFragment());
     }
 }

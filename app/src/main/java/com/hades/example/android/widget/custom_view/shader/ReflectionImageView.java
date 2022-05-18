@@ -47,7 +47,8 @@ public class ReflectionImageView extends View {
 
         canvas.drawColor(Color.GRAY);
 
-        int x = 200, y = 200;
+//        int x = 200, y = 200;
+        int x = 0, y = 0;
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_grid);
 
