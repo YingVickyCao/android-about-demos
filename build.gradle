@@ -20,8 +20,6 @@ buildscript {
     ext.androidTestRunner_version = '1.1.1'
     ext.espressoCore_version = '3.1.0'
 
-    ext.compileSdkVersion = 30
-
     repositories {
         jcenter()
         google()
