@@ -10,6 +10,9 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+/**
+ * 结论：Canvas 默认下只有一个图层。
+ */
 public class CanvasLayerExample0View extends View {
     private static final String TAG = "CanvasLayerExampleView";
     // FILTER_BITMAP_FLAG 对位图进行滤波
@@ -26,18 +29,16 @@ public class CanvasLayerExample0View extends View {
     protected void onDraw(Canvas canvas) {
 //        super.onDraw(canvas);
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
-        canvas.drawColor(Color.BLACK);  //  默认图形 index=0
+        canvas.drawColor(Color.BLACK);                       //  默认图形 index=0
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
 
-        int saveCount1 = canvas.saveLayer(OFFSET, OFFSET, getWidth() - OFFSET, getHeight() - OFFSET, paint);    // 保存的是index=0的图层
-        canvas.drawColor(Color.CYAN);   //  绘制到图形 index=1
-        Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 2
+        canvas.drawColor(Color.CYAN);
+        Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
 
-        int saveCount2 = canvas.saveLayer(OFFSET * 2, OFFSET * 2, getWidth() - OFFSET * 2, getHeight() - OFFSET * 2, paint);    // 保存的是index=1的图层
-        canvas.drawColor(Color.YELLOW); //  绘制到图形 index=2
-        Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 3
+        canvas.drawColor(Color.YELLOW);
+        Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
 
-        canvas.drawCircle(300, 300, 300, paint);    //  绘制到图形 index=2
-        Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 3
+        canvas.drawCircle(300, 300, 300, paint);
+        Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
     }
 }
