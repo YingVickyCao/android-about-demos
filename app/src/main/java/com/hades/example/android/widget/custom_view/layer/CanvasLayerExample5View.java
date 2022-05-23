@@ -13,13 +13,13 @@ import androidx.annotation.Nullable;
 /**
  * 结论：
  */
-public class CanvasLayerExample4View extends View {
+public class CanvasLayerExample5View extends View {
     private static final String TAG = "CanvasLayerExampleView";
     // FILTER_BITMAP_FLAG 对位图进行滤波
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
     private final int OFFSET = 100;
 
-    public CanvasLayerExample4View(Context context, @Nullable AttributeSet attrs) {
+    public CanvasLayerExample5View(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.FILL);
@@ -35,16 +35,19 @@ public class CanvasLayerExample4View extends View {
         int saveCount1 = canvas.saveLayer(OFFSET, OFFSET, getWidth() - OFFSET, getHeight() - OFFSET, paint); // 保存的是index=0的图层
         canvas.drawColor(Color.CYAN);   //  绘制到图层 index=1
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 2
-        Log.d(TAG, "onDraw: saveCount1:" + saveCount1); // 1
 
         int saveCount2 = canvas.saveLayer(OFFSET * 2, OFFSET * 2, getWidth() - OFFSET * 2, getHeight() - OFFSET * 2, paint);    // 保存的是index=1的图层
         canvas.drawColor(Color.YELLOW); //  绘制到图层 index=2
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 3
-        Log.d(TAG, "onDraw: saveCount2:" + saveCount2); // 2
 
-        canvas.restoreToCount(saveCount2);  // 切换到图层index=2
+        canvas.restoreToCount(saveCount1);  // 切换到图层index=0，即把图层index=2和index=3退栈，在图层index=0，继续绘制。
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
         canvas.drawCircle(100, 100, 100, paint);//  绘制到图层 index=0
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
+
+        canvas.restoreToCount(saveCount2);  // 因为前面执行了 canvas.restoreToCount(1)，已经把index=2和3退栈了，因此这句调用无效，还是在index=0。
+        Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
+        paint.setColor(Color.GREEN);
+        canvas.drawCircle(100, 200, 100, paint);//  绘制到图层 index=0
     }
 }
