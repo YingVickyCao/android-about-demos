@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.custom_view.Xfermode;
+package com.hades.example.android.widget.custom_view.layer;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,6 +10,9 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+/**
+ * 结论：
+ */
 public class CanvasLayerExample4View extends View {
     private static final String TAG = "CanvasLayerExampleView";
     // FILTER_BITMAP_FLAG 对位图进行滤波
@@ -33,14 +36,15 @@ public class CanvasLayerExample4View extends View {
         canvas.drawColor(Color.CYAN);   //  绘制到图层 index=1
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 2
 
-        int saveCount2 = canvas.saveLayer(OFFSET, OFFSET, getWidth() - OFFSET, getHeight() - OFFSET, paint);    // 保存的是index=1的图层
-        // 由于saveLayer时，图形index=0和index=1 的offset是一样的，即图层范围是一样的，YELLOW 完全覆盖 CYAN。
+        int saveCount2 = canvas.saveLayer(OFFSET * 2, OFFSET * 2, getWidth() - OFFSET * 2, getHeight() - OFFSET * 2, paint);    // 保存的是index=1的图层
         canvas.drawColor(Color.YELLOW); //  绘制到图层 index=2
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 3
 
-        canvas.restoreToCount(saveCount1);  // 切换到图形index=0
+        canvas.restoreToCount(saveCount1);  // 切换到图层index=0，即把图层index=2和index=3退栈，在图层index=0，继续绘制。
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
-        canvas.drawCircle(300, 300, 300, paint);//  绘制到图层 index=0
+        canvas.drawCircle(100, 100, 100, paint);//  绘制到图层 index=0
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
+
+//        canvas.restore();
     }
 }

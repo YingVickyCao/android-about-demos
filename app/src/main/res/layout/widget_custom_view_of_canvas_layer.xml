@@ -4,29 +4,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <TextView
         style="@style/topic"
         android:text="@string/page_CustomView_canvas_layer" />
 
-    <!--    <com.hades.example.android.widget.custom_view.Xfermode.CanvasLayerExample0View-->
+    <!--    <com.hades.example.android.widget.custom_view.layer.CanvasLayerExample0View-->
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="match_parent" />-->
 
-    <!--    <com.hades.example.android.widget.custom_view.Xfermode.CanvasLayerExample1View-->
+    <!--    <com.hades.example.android.widget.custom_view.layer.CanvasLayerExample1View-->
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="match_parent" />-->
 
-    <!--    <com.hades.example.android.widget.custom_view.Xfermode.CanvasLayerExample2View-->
+    <!--    <com.hades.example.android.widget.custom_view.layer.CanvasLayerExample2View-->
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="match_parent" />-->
 
-    <com.hades.example.android.widget.custom_view.Xfermode.CanvasLayerExample3View
+    <!--    <com.hades.example.android.widget.custom_view.layer.CanvasLayerExample3View-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
+
+
+    <com.hades.example.android.widget.custom_view.layer.CanvasLayerExample4View
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <!--    <com.hades.example.android.widget.custom_view.Xfermode.CanvasLayerExample4View-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:visibility="gone" />-->
 </LinearLayout>

@@ -490,6 +490,11 @@
         <item name="fontFamily">@font/consola</item>
     </style>
 
+    <style name="AppTheme_font_6" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="fontFamily">@font/consola</item>
+        <item name="android:fontFamily">@font/digital_7</item>
+    </style>
+
     <attr name="levelListDrawable" format="reference" />
 
     <style name="AppTheme_level_list_drawable" parent="Theme.AppCompat.Light.DarkActionBar">

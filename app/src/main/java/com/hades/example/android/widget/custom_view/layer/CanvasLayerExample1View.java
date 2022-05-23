@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.custom_view.Xfermode;
+package com.hades.example.android.widget.custom_view.layer;
 
 import android.content.Context;
 import android.graphics.Canvas;

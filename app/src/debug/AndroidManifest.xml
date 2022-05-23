@@ -5,7 +5,7 @@
 
     <application tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".data_storage.DataStorageActivity"
+            android:name=".widget.custom_view.CustomViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

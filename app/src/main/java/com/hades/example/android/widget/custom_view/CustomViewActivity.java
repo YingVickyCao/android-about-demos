@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.PermissionActivity;
-import com.hades.example.android.widget.custom_view.Xfermode.CanvasLayerExampleFragment;
+import com.hades.example.android.widget.custom_view.layer.CanvasLayerExampleFragment;
 import com.hades.example.android.widget.custom_view.ball.FingerMovedBallFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.example.android.widget.custom_view.drawing_board.DrawingBoardFragment;

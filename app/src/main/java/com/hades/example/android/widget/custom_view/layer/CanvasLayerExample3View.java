@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.custom_view.Xfermode;
+package com.hades.example.android.widget.custom_view.layer;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -12,16 +12,14 @@ import androidx.annotation.Nullable;
 
 /**
  * 结论：
- * 当形参 count 大于 实际count时，切换失败，仍旧停留在当前图层
- * canvas.restoreToCount(10);
  */
-public class CanvasLayerExample2View extends View {
+public class CanvasLayerExample3View extends View {
     private static final String TAG = "CanvasLayerExampleView";
     // FILTER_BITMAP_FLAG 对位图进行滤波
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
     private final int OFFSET = 100;
 
-    public CanvasLayerExample2View(Context context, @Nullable AttributeSet attrs) {
+    public CanvasLayerExample3View(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.FILL);
@@ -31,10 +29,10 @@ public class CanvasLayerExample2View extends View {
     protected void onDraw(Canvas canvas) {
 //        super.onDraw(canvas);
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
-        canvas.drawColor(Color.BLACK);  //  默认图形 index=0
+        canvas.drawColor(Color.BLACK);  //  默认图层 index=0
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
 
-        int saveCount1 = canvas.saveLayer(OFFSET, OFFSET, getWidth() - OFFSET, getHeight() - OFFSET, paint);    // 保存的是index=0的图层
+        int saveCount1 = canvas.saveLayer(OFFSET, OFFSET, getWidth() - OFFSET, getHeight() - OFFSET, paint); // 保存的是index=0的图层
         canvas.drawColor(Color.CYAN);   //  绘制到图层 index=1
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 2
 
@@ -42,10 +40,9 @@ public class CanvasLayerExample2View extends View {
         canvas.drawColor(Color.YELLOW); //  绘制到图层 index=2
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 3
 
-        // 当形参 count 大于 实际count时，切换失败，仍旧停留在当前图层
-        canvas.restoreToCount(10);
-
-        canvas.drawCircle(300, 300, 300, paint);    //  绘制到图层 index=2
-        Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 3
+        canvas.restoreToCount(saveCount1);  // 切换到图层index=0，即把图层index=2和index=3退栈，在图层index=0，继续绘制。
+        Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
+        canvas.drawCircle(300, 300, 300, paint);//  绘制到图层 index=0
+        Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
     }
 }
