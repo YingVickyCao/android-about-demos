@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.data_storage.database.TestSQLiteActivity;
 import com.hades.example.android.data_storage.io.TestIOFragment;
+import com.hades.example.android.data_storage.io.TestZipFragment;
 import com.hades.example.android.data_storage.shared_preferences.TestSharedPreferencesFragment;
 import com.hades.example.android.lib.base.PermissionActivity;
 
@@ -27,18 +28,18 @@ public class DataStorageActivity extends PermissionActivity {
         findViewById(R.id.pageSharedPreferences).setOnClickListener(v -> pageSharedPreferences());
         findViewById(R.id.pageDatabase).setOnClickListener(v -> pageDatabase());
         findViewById(R.id.pageIO).setOnClickListener(v -> pageIO());
+        findViewById(R.id.pageIO_Zip).setOnClickListener(v -> pageIO_Zip());
     }
 
     @Override
     protected void requestPermission() {
         super.requestPermission();
-
         checkPermission("Request SD card permission", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
     @Override
     protected void showCurrentTest() {
-        pageSharedPreferences();
+        pageIO_Zip();
     }
 
     private void pageSharedPreferences() {
@@ -52,5 +53,9 @@ public class DataStorageActivity extends PermissionActivity {
 
     private void pageIO() {
         showFragment(new TestIOFragment());
+    }
+
+    private void pageIO_Zip() {
+        showFragment(new TestZipFragment());
     }
 }

@@ -10,6 +10,9 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+/**
+ * 结论：
+ */
 public class CanvasLayerExample3View extends View {
     private static final String TAG = "CanvasLayerExampleView";
     // FILTER_BITMAP_FLAG 对位图进行滤波
@@ -37,7 +40,7 @@ public class CanvasLayerExample3View extends View {
         canvas.drawColor(Color.YELLOW); //  绘制到图层 index=2
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 3
 
-        canvas.restoreToCount(saveCount1);  // 切换到图形index=0
+        canvas.restoreToCount(saveCount1);  // 切换到图层index=0，即把图层index=2和index=3退栈，在图层index=0，继续绘制。
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
         canvas.drawCircle(300, 300, 300, paint);//  绘制到图层 index=0
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1

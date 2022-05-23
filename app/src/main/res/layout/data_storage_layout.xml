@@ -37,6 +37,11 @@
                 style="@style/btn"
                 android:text="@string/page_io" />
 
+            <Button
+                android:id="@+id/pageIO_Zip"
+                style="@style/btn"
+                android:text="@string/page_io_zip" />
+
         </LinearLayout>
     </ScrollView>
 

@@ -11,7 +11,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 /**
- * 结论：Canvas 默认下只有一个图层。
+ * 结论：Canvas 默认下只有一个Layer。
  */
 public class CanvasLayerExample0View extends View {
     private static final String TAG = "CanvasLayerExampleView";

@@ -10,6 +10,11 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+/**
+ * 结论：
+ * 当形参 count 大于 实际count时，切换失败，仍旧停留在当前图层
+ * canvas.restoreToCount(10);
+ */
 public class CanvasLayerExample2View extends View {
     private static final String TAG = "CanvasLayerExampleView";
     // FILTER_BITMAP_FLAG 对位图进行滤波
@@ -30,17 +35,17 @@ public class CanvasLayerExample2View extends View {
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
 
         int saveCount1 = canvas.saveLayer(OFFSET, OFFSET, getWidth() - OFFSET, getHeight() - OFFSET, paint);    // 保存的是index=0的图层
-        canvas.drawColor(Color.CYAN);   //  绘制到图形 index=1
+        canvas.drawColor(Color.CYAN);   //  绘制到图层 index=1
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 2
 
         int saveCount2 = canvas.saveLayer(OFFSET * 2, OFFSET * 2, getWidth() - OFFSET * 2, getHeight() - OFFSET * 2, paint);    // 保存的是index=1的图层
-        canvas.drawColor(Color.YELLOW); //  绘制到图形 index=2
+        canvas.drawColor(Color.YELLOW); //  绘制到图层 index=2
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 3
 
-        // 当形参 count 大于 实际count时，默认切换到最层图层，即还是停留在index=2，
+        // 当形参 count 大于 实际count时，切换失败，仍旧停留在当前图层
         canvas.restoreToCount(10);
 
-        canvas.drawCircle(300, 300, 300, paint);    //  绘制到图形 index=2
+        canvas.drawCircle(300, 300, 300, paint);    //  绘制到图层 index=2
         Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 3
     }
 }
