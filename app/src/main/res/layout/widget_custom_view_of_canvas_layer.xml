@@ -24,12 +24,19 @@
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="match_parent" />-->
 
-
-    <com.hades.example.android.widget.custom_view.layer.CanvasLayerExample4View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+<!--    <com.hades.example.android.widget.custom_view.layer.CanvasLayerExample4View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
 
 <!--    <com.hades.example.android.widget.custom_view.layer.CanvasLayerExample5View-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent" />-->
+
+<!--    <com.hades.example.android.widget.custom_view.layer.SaveExample1View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+
+    <com.hades.example.android.widget.custom_view.layer.SaveExample2View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

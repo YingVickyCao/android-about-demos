@@ -11,7 +11,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 /**
- * 结论：
+ * 结论：canvas.restoreToCount(count-1)作用是退栈，index=count-1
  */
 public class CanvasLayerExample4View extends View {
     private static final String TAG = "CanvasLayerExampleView";
@@ -43,8 +43,8 @@ public class CanvasLayerExample4View extends View {
         Log.d(TAG, "onDraw: saveCount2:" + saveCount2); // 2
 
         canvas.restoreToCount(saveCount2);  // 切换到图层index=2
-        Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
-        canvas.drawCircle(100, 100, 100, paint);//  绘制到图层 index=0
-        Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 1
+        Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 2
+        canvas.drawCircle(100, 100, 100, paint);//  绘制到图层 index=2
+        Log.d(TAG, "onDraw: " + canvas.getSaveCount()); // 2
     }
 }

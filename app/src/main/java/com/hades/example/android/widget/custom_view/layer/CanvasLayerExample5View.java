@@ -11,7 +11,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 /**
- * 结论：
+ * 结论：canvas.restoreToCount(count-1)作用是退栈，index=count-1
  */
 public class CanvasLayerExample5View extends View {
     private static final String TAG = "CanvasLayerExampleView";
