@@ -2,11 +2,13 @@ package com.hades.example.android.other_ui._dialog;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.hades.example.android.R;
@@ -26,6 +28,10 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
     private static final String TAG = TestDialogActivity.class.getSimpleName();
 
     boolean mIsLargeLayout;
+
+    private TestBottomSheetDialogFragment bottomSheetDialogFragment;
+    private String MOCK_BOTTOM_SHEET_BEAN_1 = "bean 1";
+    private String MOCK_BOTTOM_SHEET_BEAN_2 = "bean 2";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,9 +72,7 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
     @Override
     protected void onResume() {
         super.onResume();
-
-//        pageHalfWidthDialogFragment();
-        pageProgressDialog();
+        //        pageBottomSheetDialogFragment();
     }
 
     private void firstRemoveDialogFragment() {
@@ -127,7 +131,45 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
 
     private void pageBottomSheetDialogFragment() {
 //        showFragment(new TestBottomSheetDialogFragment()); // embedded : added as content in a view hierarchy
-        new TestBottomSheetDialogFragment().show(getSupportFragmentManager(), "dialog"); // be created and shown as a dialog
+//        new TestBottomSheetDialogFragment().show(getSupportFragmentManager(), "dialog"); // be created and shown as a dialog
+
+        fix_IllegalStateException_FragmentAlreadyAdded();
+        fix_IllegalStateException_FragmentAlreadyAdded();
+    }
+
+    // java.lang.IllegalStateException: Fragment already added
+    private void fix_IllegalStateException_FragmentAlreadyAdded() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if (null == bottomSheetDialogFragment) {
+            Log.d(TAG, "fix_IllegalStateException_FragmentAlreadyAdded: new TestBottomSheetDialogFragment");
+            bottomSheetDialogFragment = new TestBottomSheetDialogFragment();
+            bottomSheetDialogFragment.setUniqueKey(MOCK_BOTTOM_SHEET_BEAN_1);
+        } else {
+//            Log.d(TAG, "fix_IllegalStateException_FragmentAlreadyAdded: setData-FragmentManager@" + fragmentManager.hashCode());
+            Log.d(TAG, "fix_IllegalStateException_FragmentAlreadyAdded: setData");
+            if (bottomSheetDialogFragment.getUniqueKey().equalsIgnoreCase(MOCK_BOTTOM_SHEET_BEAN_1)) {
+                if (bottomSheetDialogFragment.getDialog() != null && bottomSheetDialogFragment.getDialog().isShowing()) {
+                    Log.d(TAG, "fix_IllegalStateException_FragmentAlreadyAdded: same data, already showing");
+                    return;
+                } else {
+//                    Log.d(TAG, "fix_IllegalStateException_FragmentAlreadyAdded:isAdded:" + bottomSheetDialogFragment.isAdded());
+//                    Log.d(TAG, "fix_IllegalStateException_FragmentAlreadyAdded:isResumed:" + bottomSheetDialogFragment.isResumed());
+//                    Log.d(TAG, "fix_IllegalStateException_FragmentAlreadyAdded:isHidden:" + bottomSheetDialogFragment.isHidden());
+//                    Log.d(TAG, "fix_IllegalStateException_FragmentAlreadyAdded:isVisible:" + bottomSheetDialogFragment.isVisible());
+//                    Log.d(TAG, "fix_IllegalStateException_FragmentAlreadyAdded:isStateSaved:" + bottomSheetDialogFragment.isStateSaved());
+//                    Log.d(TAG, "fix_IllegalStateException_FragmentAlreadyAdded:isInLayout:" + bottomSheetDialogFragment.isInLayout());
+//                    Log.d(TAG, "fix_IllegalStateException_FragmentAlreadyAdded:isRemoving:" + bottomSheetDialogFragment.isRemoving());
+                    Fragment fragment = getSupportFragmentManager().findFragmentByTag(TestBottomSheetDialogFragment.TAG);
+                    Log.d(TAG, "fix_IllegalStateException_FragmentAlreadyAdded: " + (null != fragment ? fragment.hashCode() : "null"));
+                    Log.d(TAG, "fix_IllegalStateException_FragmentAlreadyAdded: same data,but not showing");
+                    getSupportFragmentManager().beginTransaction().remove(bottomSheetDialogFragment).commit();
+                }
+            } else {
+                Log.d(TAG, "fix_IllegalStateException_FragmentAlreadyAdded: no data, added");
+                bottomSheetDialogFragment.setUniqueKey(String.valueOf(MOCK_BOTTOM_SHEET_BEAN_2));
+            }
+        }
+        bottomSheetDialogFragment.show(fragmentManager, TestBottomSheetDialogFragment.TAG);
     }
 
     private void pageHalfWidthDialogFragment() {
