@@ -42,7 +42,7 @@ public class CanvasLayerExample6View extends View {
 
         canvas.restore();
         // restore()次数大于 save() 次数会报错：java.lang.IllegalStateException: Underflow in restore - more restores than saves
-        canvas.restore();
+//        canvas.restore();
 //        canvas.restoreToCount(count);
         Log.d(TAG, "onDraw: " + canvas.getSaveCount());
         paint.setColor(Color.YELLOW);
