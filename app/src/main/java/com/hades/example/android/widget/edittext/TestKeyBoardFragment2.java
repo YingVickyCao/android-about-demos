@@ -18,7 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.ButtonUtils;
+import com.hades.example.android.lib.utils.BlockQuickTap;
 
 public class TestKeyBoardFragment2 extends Fragment {
     private static final String TAG = "TestKeyBoardFragment2";
@@ -43,7 +43,7 @@ public class TestKeyBoardFragment2 extends Fragment {
                 Log.d(TAG, "onTouch: ");
                 // Fix：反复点击EditText，点击的太快，键盘会闪。
                 // 解决：增加200ms的重复事件的过滤
-                if (ButtonUtils.isFastClick()) {
+                if (BlockQuickTap.isUserFastOperation()) {
                     return false;
                 }
                 toggleKeyboardViewVisible();
@@ -56,7 +56,7 @@ public class TestKeyBoardFragment2 extends Fragment {
             @Override
             public void onClick(View v) {
                 // 解决：增加200ms的重复事件的过滤
-                if (ButtonUtils.isFastClick()) {
+                if (BlockQuickTap.isUserFastOperation()) {
                     return;
                 }
                 hideKeyboard();
