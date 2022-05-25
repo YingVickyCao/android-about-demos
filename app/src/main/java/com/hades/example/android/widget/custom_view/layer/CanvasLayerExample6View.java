@@ -18,7 +18,7 @@ import com.hades.example.android.R;
 public class CanvasLayerExample6View extends View {
     private static final String TAG = CanvasLayerExample6View.class.getSimpleName();
     // FILTER_BITMAP_FLAG 对位图进行滤波
-    Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
+    Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     public CanvasLayerExample6View(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);

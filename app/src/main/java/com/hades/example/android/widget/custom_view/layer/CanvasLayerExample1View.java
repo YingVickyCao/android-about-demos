@@ -17,7 +17,7 @@ import androidx.annotation.Nullable;
 public class CanvasLayerExample1View extends View {
     private static final String TAG = "CanvasLayerExampleView";
     // FILTER_BITMAP_FLAG 对位图进行滤波
-    Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
+    Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final int OFFSET = 100;
 
     public CanvasLayerExample1View(Context context, @Nullable AttributeSet attrs) {
