@@ -15,22 +15,20 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 
-public class PorterDuffModeExampleView_Source extends View {
-    private static final String TAG = PorterDuffModeExampleView_Source.class.getSimpleName();
+public class PorterDuffModeExampleView_DestinationOut extends View {
+    private static final String TAG = PorterDuffModeExampleView_DestinationOut.class.getSimpleName();
 
     private final Paint paint = new Paint();
     private Bitmap destinationImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_dst);
     private Bitmap sourceImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_src);
-    private Xfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC);
+    private Xfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
 
-
-    public PorterDuffModeExampleView_Source(Context context, @Nullable AttributeSet attrs) {
+    public PorterDuffModeExampleView_DestinationOut(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        // 不加Layer，背景色是黑色
         int saveCount = canvas.saveLayer(0, 0, getWidth(), getHeight(), paint);
 
         canvas.drawBitmap(destinationImage, 0, 0, paint);

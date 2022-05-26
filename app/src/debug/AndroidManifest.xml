@@ -4,6 +4,8 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
+<!--        android:name=".widget.custom_view.CustomViewActivity"-->
+<!--        android:name=".other_ui._dialog.TestDialogActivity"-->
         <activity
             android:name=".widget.custom_view.CustomViewActivity"
             android:exported="true">

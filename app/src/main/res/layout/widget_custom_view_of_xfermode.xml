@@ -31,13 +31,17 @@
                 android:background="@color/dark_bg_0"
                 android:src="@drawable/ic_composite_dst" />
 
+            <View style="@style/div" />
+
             <TextView
                 style="@style/tv"
                 android:text="Alpha compositing modes - Source" />
 
             <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_Source
-                android:layout_width="260dp"
-                android:layout_height="260dp" />
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
+
+            <View style="@style/div" />
 
             <TextView
                 style="@style/tv"
@@ -47,13 +51,75 @@
                 android:layout_width="256dp"
                 android:layout_height="256dp" />
 
+            <View style="@style/div" />
+
             <TextView
                 style="@style/tv"
                 android:text="Alpha compositing modes - Source In" />
 
             <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_SourceIn
-                android:layout_width="260dp"
-                android:layout_height="260dp" />
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Alpha compositing modes - Destination" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_Destination
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Alpha compositing modes - Destination Over" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_DestinationOver
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Alpha compositing modes - Destination In" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_DestinationIn
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Alpha compositing modes - Clear" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_Clear
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Alpha compositing modes - Source Out" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_SourceOut
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Alpha compositing modes - Destination Out" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_DestinationOut
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
