@@ -27,6 +27,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_tiny"
                 android:background="@color/dark_bg_0"
                 android:src="@drawable/ic_composite_dst" />
 

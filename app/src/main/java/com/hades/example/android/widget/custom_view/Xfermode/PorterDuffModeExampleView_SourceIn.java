@@ -33,10 +33,13 @@ public class PorterDuffModeExampleView_SourceIn extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawColor(Color.WHITE);
-        setLayerType(LAYER_TYPE_SOFTWARE, null);
+        int saveCount = canvas.saveLayer(0, 0, getWidth(), getHeight(), paint);
+
         canvas.drawBitmap(destinationImage, 0, 0, paint);
         paint.setXfermode(xfermode);
         canvas.drawBitmap(sourceImage, 0, 0, paint);
+        paint.setXfermode(null);
+
+        canvas.restoreToCount(saveCount);
     }
 }
