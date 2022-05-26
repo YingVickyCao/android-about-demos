@@ -35,6 +35,12 @@
 
             <TextView
                 style="@style/tv"
+                android:text="Alpha compositing modes"
+                android:textColor="@color/red"
+                android:textSize="30sp" />
+
+            <TextView
+                style="@style/tv"
                 android:text="Alpha compositing modes - Source" />
 
             <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_Source
@@ -120,6 +126,55 @@
             <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_DestinationOut
                 android:layout_width="256dp"
                 android:layout_height="256dp" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Blending modes"
+                android:textColor="@color/red"
+                android:textSize="30sp" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Blending modes - Darken" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_Darken
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Blending modes - Lighten" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_Lighten
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Blending modes - Multiply" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_Multiply
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Blending modes - Screen" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_Screen
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Blending modes - Overlay" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_Overlay
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
