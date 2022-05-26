@@ -19,8 +19,14 @@ public class PorterDuffModeExampleView_Source extends View {
     private static final String TAG = PorterDuffModeExampleView_Source.class.getSimpleName();
 
     private final Paint paint = new Paint();
+    // 和Google 保持一致
     private Bitmap destinationImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_dst);
     private Bitmap sourceImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_src);
+
+    // 和Google 保持一致
+//    private Bitmap destinationImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_dst_2);
+//    private Bitmap sourceImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_src_2);
+
     private Xfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC);
 
 

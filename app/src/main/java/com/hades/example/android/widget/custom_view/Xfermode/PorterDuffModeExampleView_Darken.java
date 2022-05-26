@@ -19,12 +19,14 @@ public class PorterDuffModeExampleView_Darken extends View {
     private static final String TAG = PorterDuffModeExampleView_Darken.class.getSimpleName();
 
     private final Paint paint = new Paint();
-    // ok
+    // 效果和 Google Doc 保持一致
 //    private Bitmap destinationImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_dst);
 //    private Bitmap sourceImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_src);
-    // ok
+
+    // 效果和 Google Doc 不一致
     private Bitmap destinationImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_dst_2);
     private Bitmap sourceImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_src_2);
+
     private Xfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.DARKEN);
 
     public PorterDuffModeExampleView_Darken(Context context, @Nullable AttributeSet attrs) {

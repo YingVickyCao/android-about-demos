@@ -20,13 +20,13 @@ public class PorterDuffModeExampleView_Screen extends View {
 
     private final Paint paint = new Paint();
 
-    // 和 Google Doc 一致
-//    private Bitmap destinationImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_dst);
-//    private Bitmap sourceImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_src);
+    // 效果和 Google Doc 保持一致
+    private Bitmap destinationImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_dst);
+    private Bitmap sourceImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_src);
 
-    // 和 Google Doc 不一致
-    private Bitmap destinationImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_dst_2);
-    private Bitmap sourceImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_src_2);
+    // 效果和 Google Doc 不一致
+//    private Bitmap destinationImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_dst_2);
+//    private Bitmap sourceImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_src_2);
 
     private Xfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.SCREEN);
 
