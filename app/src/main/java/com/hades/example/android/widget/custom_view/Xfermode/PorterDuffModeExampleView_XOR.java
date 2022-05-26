@@ -15,8 +15,8 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 
-public class PorterDuffModeExampleView_Add extends View {
-    private static final String TAG = PorterDuffModeExampleView_Add.class.getSimpleName();
+public class PorterDuffModeExampleView_XOR extends View {
+    private static final String TAG = PorterDuffModeExampleView_XOR.class.getSimpleName();
 
     private final Paint paint = new Paint();
 
@@ -28,9 +28,9 @@ public class PorterDuffModeExampleView_Add extends View {
 //    private Bitmap destinationImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_dst_2);
 //    private Bitmap sourceImage = BitmapFactory.decodeResource(getResources(), R.drawable.ic_composite_src_2);
 
-    private Xfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.ADD);
+    private Xfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.XOR);
 
-    public PorterDuffModeExampleView_Add(Context context, @Nullable AttributeSet attrs) {
+    public PorterDuffModeExampleView_XOR(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 

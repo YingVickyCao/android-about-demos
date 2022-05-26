@@ -18,26 +18,26 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/dark_bg_0"
-                android:src="@drawable/ic_composite_src" />
+                android:background="@android:color/darker_gray">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_tiny"
-                android:background="@color/dark_bg_0"
-                android:src="@drawable/ic_composite_dst" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_composite_src" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_tiny"
+                    android:src="@drawable/ic_composite_dst" />
+
+            </RelativeLayout>
 
             <View style="@style/div" />
 
-            <TextView
-                style="@style/tv"
-                android:text="Alpha compositing modes"
-                android:textColor="@color/red"
-                android:textSize="30sp" />
 
             <TextView
                 style="@style/tv"
@@ -65,6 +65,13 @@
                 android:layout_width="256dp"
                 android:layout_height="256dp" />
 
+            <TextView
+                style="@style/tv"
+                android:text="Alpha compositing modes - Source At Top" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_SourceAtTop
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
 
             <TextView
                 style="@style/tv"
@@ -73,7 +80,6 @@
             <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_Destination
                 android:layout_width="256dp"
                 android:layout_height="256dp" />
-
 
             <TextView
                 style="@style/tv"
@@ -92,15 +98,21 @@
                 android:layout_width="256dp"
                 android:layout_height="256dp" />
 
+            <TextView
+                style="@style/tv"
+                android:text="Alpha compositing modes - Destination At Top" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_DestinationAtTop
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
 
             <TextView
                 style="@style/tv"
-                android:text="Alpha compositing modes - Clear" />
+                android:text="CLEAR" />
 
             <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_Clear
                 android:layout_width="256dp"
                 android:layout_height="256dp" />
-
 
             <TextView
                 style="@style/tv"
@@ -170,15 +182,17 @@
 
             <TextView
                 style="@style/tv"
-                android:text="Enum"
-                android:textColor="@color/red"
-                android:textSize="30sp" />
+                android:text="ADD" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_Add
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
 
             <TextView
                 style="@style/tv"
-                android:text="Enum - Add" />
+                android:text="XOR" />
 
-            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_Add
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_XOR
                 android:layout_width="256dp"
                 android:layout_height="256dp" />
         </LinearLayout>
