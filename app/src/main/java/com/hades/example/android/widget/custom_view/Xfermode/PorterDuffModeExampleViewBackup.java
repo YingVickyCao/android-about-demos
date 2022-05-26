@@ -14,8 +14,8 @@ import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 
-public class PorterDuffXfermodeExampleView extends View {
-    private static final String TAG = "PorterDuffXferModeExamp";
+public class PorterDuffModeExampleViewBackup extends View {
+    private static final String TAG = PorterDuffModeExampleViewBackup.class.getSimpleName();
     private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG); // 抗锯齿标志
 
     private final PorterDuffXfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER);
@@ -26,7 +26,7 @@ public class PorterDuffXfermodeExampleView extends View {
 //        super(context);
 //    }
 
-    public PorterDuffXfermodeExampleView(Context context, @Nullable AttributeSet attrs) {
+    public PorterDuffModeExampleViewBackup(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         screenWidth = setScreenWidth();
         srcBitap = setSrcBitmap(screenWidth / 3f, screenWidth / 3f);

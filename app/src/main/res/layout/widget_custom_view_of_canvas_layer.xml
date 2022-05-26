@@ -6,7 +6,7 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_CustomView_canvas_layer" />
+        android:text="@string/page_CustomView_of_Layer" />
 
     <!--    <com.hades.example.android.widget.custom_view.layer.CanvasLayerExample0View-->
     <!--        android:layout_width="match_parent"-->

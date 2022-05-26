@@ -65,7 +65,12 @@
             <Button
                 android:id="@+id/page_CustomView_canvas_layer"
                 style="@style/btn"
-                android:text="@string/page_CustomView_canvas_layer" />
+                android:text="@string/page_CustomView_of_Layer" />
+
+            <Button
+                android:id="@+id/page_CustomView_of_Xfermode"
+                style="@style/btn"
+                android:text="@string/page_CustomView_of_Xfermode" />
 
             <com.hades.example.android.widget.custom_view.RequiredTextView
                 android:layout_width="wrap_content"

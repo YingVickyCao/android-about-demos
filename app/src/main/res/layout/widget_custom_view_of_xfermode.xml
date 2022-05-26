@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_CustomView_of_Xfermode" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_topic">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/dark_bg_0"
+                android:src="@drawable/ic_composite_src" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/dark_bg_0"
+                android:src="@drawable/ic_composite_dst" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Alpha compositing modes - Source" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_Source
+                android:layout_width="260dp"
+                android:layout_height="260dp" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Alpha compositing modes - Source Over" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_SourceOver
+                android:layout_width="256dp"
+                android:layout_height="256dp" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Alpha compositing modes - Source In" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.PorterDuffModeExampleView_SourceIn
+                android:layout_width="260dp"
+                android:layout_height="260dp" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

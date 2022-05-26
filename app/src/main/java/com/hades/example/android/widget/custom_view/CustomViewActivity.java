@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.lib.base.PermissionActivity;
+import com.hades.example.android.widget.custom_view.Xfermode.XfermodeFragment;
 import com.hades.example.android.widget.custom_view.layer.CanvasLayerExampleFragment;
 import com.hades.example.android.widget.custom_view.ball.FingerMovedBallFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
@@ -39,6 +40,7 @@ public class CustomViewActivity extends PermissionActivity {
         findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
         findViewById(R.id.page_CustomVew_ShadowView).setOnClickListener(v -> page_CustomVew_ShadowView());
         findViewById(R.id.page_CustomView_canvas_layer).setOnClickListener(v -> page_CustomView_canvas_layer());
+        findViewById(R.id.page_CustomView_of_Xfermode).setOnClickListener(v -> page_CustomView_of_Xfermode());
     }
 
     @Override
@@ -49,7 +51,7 @@ public class CustomViewActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        page_CustomView_canvas_layer();
+        page_CustomView_of_Xfermode();
     }
 
     private void pageCustomVew() {
@@ -86,5 +88,9 @@ public class CustomViewActivity extends PermissionActivity {
 
     private void page_CustomView_canvas_layer() {
         showFragment(new CanvasLayerExampleFragment());
+    }
+
+    private void page_CustomView_of_Xfermode() {
+        showFragment(new XfermodeFragment());
     }
 }
