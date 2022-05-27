@@ -61,6 +61,7 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
         findViewById(R.id.showAsEmbeddedFragment).setOnClickListener(v -> showAsEmbeddedFragment());
 
         findViewById(R.id.pageBottomSheetDialogFragment).setOnClickListener(v -> pageBottomSheetDialogFragment());
+        findViewById(R.id.page_BottomSheetDialogFragment_mock_app_crash).setOnClickListener(v -> fixCrash());
 
         findViewById(R.id.pageDialogStyleActivity).setOnClickListener(v -> pageDialogStyleActivity());
 
@@ -139,8 +140,9 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
         fixCrash();
     }
 
-    // java.lang.IllegalStateException: Fragment already added
+    // Fixed:快速多次show dialog fragment，app crashed：java.lang.IllegalStateException: Fragment already added
     private void fixCrash() {
+        // https://www.jianshu.com/p/1068f9f75fe4
         FragmentManager fragmentManager = getSupportFragmentManager();
         if (null == bottomSheetDialogFragment) {
             Log.d(TAG, "fixCrash: new TestBottomSheetDialogFragment");
@@ -149,6 +151,7 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
         } else {
 //            Log.d(TAG, "fixCrash: setData-FragmentManager@" + fragmentManager.hashCode());
             if (bottomSheetDialogFragment.getUniqueKey().equalsIgnoreCase(MOCK_BOTTOM_SHEET_BEAN_1)) {
+                // 判断dialog 是否正在showing
                 if (bottomSheetDialogFragment.getDialog() != null && bottomSheetDialogFragment.getDialog().isShowing()) {
                     Log.d(TAG, "fixCrash: same data, already showing");
                     return;

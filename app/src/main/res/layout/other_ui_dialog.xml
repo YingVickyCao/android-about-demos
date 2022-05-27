@@ -116,6 +116,11 @@
                     android:text="@string/page_BottomSheetDialogFragment" />
 
                 <Button
+                    android:id="@+id/page_BottomSheetDialogFragment_mock_app_crash"
+                    style="@style/btn"
+                    android:text="@string/page_BottomSheetDialogFragment_mock_app_crash" />
+
+                <Button
                     android:id="@+id/pageHalfWidthDialogFragment"
                     style="@style/btn"
                     android:text="@string/page_half_width_DialogFragment" />
