@@ -33,24 +33,24 @@ public class TestBottomSheetDialogFragment extends BottomSheetDialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Log.d(TAG, "onCreateDialog: " + printDialog()); // onCreateView:  dialog is hide
+//        Log.d(TAG, "onCreateDialog: " + printDialog()); // onCreateView:  dialog is hide
         return new BottomSheetDialog(getContext(), R.style.CustomBottomSheetDialogFragmentStyle);
     }
 
     public void setUniqueKey(String uniqueKey) {
-        Log.d(TAG, "setUniqueKey: " + uniqueKey + "," + printDialog());
+//        Log.d(TAG, "setUniqueKey: " + uniqueKey + "," + printDialog());
         this.uniqueKey = uniqueKey;
     }
 
     public String getUniqueKey() {
-        Log.d(TAG, "getUniqueKey: " + uniqueKey + "," + printDialog());
+//        Log.d(TAG, "getUniqueKey: " + uniqueKey + "," + printDialog());
         return uniqueKey;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        Log.d(TAG, "onStart: " + printDialog());// onStart:  dialog is show
+//        Log.d(TAG, "onStart: " + printDialog());// onStart:  dialog is show
     }
 
     @Override
@@ -68,7 +68,7 @@ public class TestBottomSheetDialogFragment extends BottomSheetDialogFragment {
     @Override
     public void onStop() {
         super.onStop();
-        Log.d(TAG, "onStop: " + printDialog()); // dialog is hide
+//        Log.d(TAG, "onStop: " + printDialog()); // dialog is hide
     }
 
     @Override
@@ -80,7 +80,7 @@ public class TestBottomSheetDialogFragment extends BottomSheetDialogFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d(TAG, "onDestroy: " + printDialog());  // dialog is null
+//        Log.d(TAG, "onDestroy: " + printDialog());  // dialog is null
     }
 
     private String printDialog() {

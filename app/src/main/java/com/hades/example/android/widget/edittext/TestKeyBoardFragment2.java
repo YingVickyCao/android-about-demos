@@ -43,7 +43,7 @@ public class TestKeyBoardFragment2 extends Fragment {
                 Log.d(TAG, "onTouch: ");
                 // Fix：反复点击EditText，点击的太快，键盘会闪。
                 // 解决：增加200ms的重复事件的过滤
-                if (BlockQuickTap.isUserFastOperation()) {
+                if (BlockQuickTap.isRepeatShowKeyboard()) {
                     return false;
                 }
                 toggleKeyboardViewVisible();
@@ -56,7 +56,7 @@ public class TestKeyBoardFragment2 extends Fragment {
             @Override
             public void onClick(View v) {
                 // 解决：增加200ms的重复事件的过滤
-                if (BlockQuickTap.isUserFastOperation()) {
+                if (BlockQuickTap.isRepeatShowKeyboard()) {
                     return;
                 }
                 hideKeyboard();
