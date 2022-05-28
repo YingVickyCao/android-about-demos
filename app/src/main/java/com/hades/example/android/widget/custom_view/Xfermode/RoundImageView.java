@@ -58,11 +58,9 @@ public class RoundImageView extends View {
         // 不加Layer，画不出圆形的图片
         int savedCount = canvas.saveLayer(0, 0, usedWidth, usedHeight, paint);
 
-        // 移动坐标轴，否则画出的圆形图片不在中间
-        int radius = (usedWidth + usedHeight) / 2 / 2;
         // Circle 作为 Destination
+        int radius = (usedWidth + usedHeight) / 2 / 2;
         canvas.drawCircle(usedWidth / 2, usedHeight / 2, radius, paint);
-
         paint.setXfermode(xfermode);
         // 画出圆形图片
         canvas.drawBitmap(dest, 0, 0, paint);
