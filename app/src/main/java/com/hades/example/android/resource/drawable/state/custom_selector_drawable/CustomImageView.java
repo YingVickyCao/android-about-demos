@@ -17,9 +17,6 @@ public class CustomImageView extends ImageView {
      */
     private static final int[] STATE_MESSAGE_READ = {R.attr.state_message_read};
 
-    public CustomImageView(Context context) {
-        super(context);
-    }
 
     public CustomImageView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);

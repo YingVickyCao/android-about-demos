@@ -18,6 +18,33 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                style="@style/tv"
+                android:text="PorterDuff.Mode 应用 - 圆形圆角"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="30sp" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.RoundImageView
+                android:layout_width="228dp"
+                android:layout_height="228dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/green" />
+
+            <com.hades.example.android.widget.custom_view.Xfermode.RadiusImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_tiny"
+                android:background="@color/red" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="PorterDuff.Mode"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="30sp" />
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,7 +68,6 @@
             <TextView
                 style="@style/tv"
                 android:text="Alpha compositing modes"
-                android:textColor="@android:color/holo_red_dark"
                 android:textSize="30sp" />
 
             <TextView
@@ -138,7 +164,6 @@
             <TextView
                 style="@style/tv"
                 android:text="Blending modes"
-                android:textColor="@color/red"
                 android:textSize="30sp" />
 
             <TextView
@@ -194,7 +219,6 @@
             <TextView
                 style="@style/tv"
                 android:text="Other Enums"
-                android:textColor="@color/red"
                 android:textSize="30sp" />
 
             <TextView

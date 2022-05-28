@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
@@ -36,8 +37,10 @@ public class PorterDuffModeExampleView_Multiply extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        canvas.drawColor(Color.GREEN);
         int saveCount = canvas.saveLayer(0, 0, getWidth(), getHeight(), paint);
 
+        paint.setColor(Color.GREEN);
         canvas.drawBitmap(destinationImage, 0, 0, paint);
         paint.setXfermode(xfermode);
         canvas.drawBitmap(sourceImage, 0, 0, paint);
