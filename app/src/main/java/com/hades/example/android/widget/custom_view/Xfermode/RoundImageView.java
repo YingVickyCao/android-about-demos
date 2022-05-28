@@ -19,9 +19,12 @@ import com.hades.example.android.R;
 public class RoundImageView extends View {
     private static final String TAG = RoundImageView.class.getSimpleName();
     Paint paint = new Paint();
-    Bitmap dest = BitmapFactory.decodeResource(getResources(), R.drawable.ic_2);
-    //    Bitmap dest = BitmapFactory.decodeResource(getResources(), R.drawable.ic_grid);
+//        Bitmap dest = BitmapFactory.decodeResource(getResources(), R.drawable.ic_2);
+    Bitmap dest = BitmapFactory.decodeResource(getResources(), R.drawable.ic_grid);
     Xfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
+
+    int viewWith = -1;
+    int viewHeight = -1;
 
     public RoundImageView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -45,13 +48,18 @@ public class RoundImageView extends View {
         Log.d(TAG, "onDraw:[dest]width:" + destWidth + ",height:" + destHeight);
 
         int usedWidth = Math.min(with, destWidth);
-        int usedHeight = Math.min(height, destHeight);
+        int usedHeight;
+        if (height == 0) {
+            usedHeight = destHeight;
+        } else {
+            usedHeight = Math.min(height, destHeight);
+        }
 
         // 不加Layer，画不出圆形的图片
         int savedCount = canvas.saveLayer(0, 0, usedWidth, usedHeight, paint);
 
         // 移动坐标轴，否则画出的圆形图片不在中间
-        int radius = Math.min(usedWidth, usedHeight) / 2;
+        int radius = (usedWidth + usedHeight) / 2 / 2;
         // Circle 作为 Destination
         canvas.drawCircle(usedWidth / 2, usedHeight / 2, radius, paint);
 
@@ -61,10 +69,21 @@ public class RoundImageView extends View {
         paint.setXfermode(null);
 
         canvas.restoreToCount(savedCount);
+
+        if (viewWith == -1) {
+            Log.d(TAG, "onDraw: call requestLayout");
+            viewWith = usedWidth;
+            viewHeight = usedHeight;
+            requestLayout();
+        }
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        if (viewWith != -1) {
+            Log.d(TAG, "onMeasure: viewWith:" + viewWith + ",viewHeight:" + viewHeight);
+            setMeasuredDimension(viewWith, viewHeight);
+        }
     }
 }

@@ -25,8 +25,8 @@
                 android:textSize="30sp" />
 
             <com.hades.example.android.widget.custom_view.Xfermode.RoundImageView
-                android:layout_width="228dp"
-                android:layout_height="228dp"
+                android:layout_width="@dimen/size_200"
+                android:layout_height="@dimen/size_200"
                 android:layout_gravity="center_horizontal"
                 android:background="@color/green" />
 
