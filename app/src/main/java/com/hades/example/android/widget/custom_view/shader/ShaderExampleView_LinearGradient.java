@@ -13,7 +13,7 @@ import android.view.View;
 import com.hades.example.android.R;
 
 /**
- * paint.setShader Paint设置渐变器 - LinearGradient（线性渐变）
+ * LinearGradient（线性渐变）
  */
 public class ShaderExampleView_LinearGradient extends View {
     private Paint paint;

@@ -14,7 +14,7 @@ import android.view.View;
 import com.hades.example.android.R;
 
 /**
- * paint.setShader Paint设置渐变器 - LinearGradient（线性渐变）
+ * BitmapShader（位图平铺）
  */
 public class ShaderExampleView_BitmapShader extends View {
     private Paint paint;
@@ -63,7 +63,6 @@ public class ShaderExampleView_BitmapShader extends View {
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         paint.setStrokeWidth(4);
 
-        // 绘制圆形
         /**
          * drawRect 绘制矩形
          */
