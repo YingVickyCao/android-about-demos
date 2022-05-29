@@ -15,7 +15,7 @@ import com.hades.example.android.R;
  * RadialGradient (圆角渐变)
  */
 public class ShaderExampleView_RadialGradient extends View {
-    private Paint paint;
+    private Paint paint = new Paint();
     private int colors[] = new int[]{Color.RED, Color.GREEN, Color.YELLOW};
 
     private Shader shader;
@@ -31,15 +31,12 @@ public class ShaderExampleView_RadialGradient extends View {
     }
 
     private void init() {
-        paint = new Paint();
-        if (null == shader) {
-            // 圆角渐变
-            // （centerX，centerY）是圆心的坐标，radius是半径，centerColor是边缘的颜色，edgeColor是外围的颜色
-//            shader = new RadialGradient(centerX, centerY, radius, Color.RED, Color.GREEN, Shader.TileMode.CLAMP);
+        // 圆角渐变
+        // （centerX，centerY）是圆心的坐标，radius是半径，centerColor是边缘的颜色，edgeColor是外围的颜色
+//      shader = new RadialGradient(centerX, centerY, radius, Color.RED, Color.GREEN, Shader.TileMode.CLAMP);
 
-            // colors:多个颜色。stops:色彩的位置。
-            shader = new RadialGradient(centerX, centerY, radius, new int[]{Color.RED, Color.GREEN, Color.YELLOW}, new float[]{0.1f, 0.5f, 0.8f}, Shader.TileMode.CLAMP);
-        }
+        // colors:多个颜色。stops:色彩的位置。
+        shader = new RadialGradient(centerX, centerY, radius, new int[]{Color.RED, Color.GREEN, Color.YELLOW}, new float[]{0.1f, 0.5f, 0.8f}, Shader.TileMode.CLAMP);
     }
 
     @Override

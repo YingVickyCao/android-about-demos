@@ -15,7 +15,7 @@ import com.hades.example.android.R;
  * SweepGradient（角度渐变）
  */
 public class ShaderExampleView_SweepGradient extends View {
-    private Paint paint;
+    private Paint paint = new Paint();
     private Shader shader;
 
     int right = (int) getResources().getDimension(R.dimen.size_200);
@@ -27,15 +27,12 @@ public class ShaderExampleView_SweepGradient extends View {
     }
 
     private void init() {
-        paint = new Paint();
-        if (null == shader) {
-            // 角度渐变
-            // 产生从color0到color1的渐变
-//            shader = new SweepGradient(right / 2, right / 2, Color.RED, Color.GREEN);
+        // 角度渐变
+        // 产生从color0到color1的渐变
+//       shader = new SweepGradient(right / 2, right / 2, Color.RED, Color.GREEN);
 
-            // 产生从colors[0]-colors[count-1]渐变
-            shader = new SweepGradient(right / 2, right / 2, new int[]{Color.RED, Color.GREEN, Color.YELLOW}, null);
-        }
+        // 产生从colors[0]-colors[count-1]渐变
+        shader = new SweepGradient(right / 2, right / 2, new int[]{Color.RED, Color.GREEN, Color.YELLOW}, null);
     }
 
     @Override

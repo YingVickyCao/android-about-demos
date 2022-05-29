@@ -15,7 +15,7 @@ import com.hades.example.android.R;
  * LinearGradient（线性渐变）
  */
 public class ShaderExampleView_LinearGradient extends View {
-    private Paint paint;
+    private Paint paint = new Paint();
     private Shader shader;
 
     int right = (int) getResources().getDimension(R.dimen.size_200);
@@ -29,30 +29,27 @@ public class ShaderExampleView_LinearGradient extends View {
     }
 
     private void init() {
-        paint = new Paint();
-        if (null == shader) {
-            // 线性渐变
-            /**
-             * 渐变的起点：(x0,y0)
-             * 渐变的终点：(x1,y1)
-             * color0:  起点的颜色
-             * color1:  终点的颜色
-             * TileMode：模式不能为空
-             */
-//            shader = new LinearGradient(0, 0, right, bottom, Color.RED, Color.YELLOW, Shader.TileMode.REPEAT);
+        // 线性渐变
+        /**
+         * 渐变的起点：(x0,y0)
+         * 渐变的终点：(x1,y1)
+         * color0:  起点的颜色
+         * color1:  终点的颜色
+         * TileMode：模式不能为空
+         */
+        //  shader = new LinearGradient(0, 0, right, bottom, Color.RED, Color.YELLOW, Shader.TileMode.REPEAT);
 
-            /**
-             * 渐变的起点：(x0,y0)
-             * 渐变的终点：(x1,y1)
-             * colors:      包含多个颜色
-             * positions:   包含多个颜色的位置。 可以为null。
-             * TileMode：模式不能为空
-             */
-            // 等于null时，颜色均匀地填充整个渐变区域
-            shader = new LinearGradient(0, 0, right, bottom, colors, null, Shader.TileMode.MIRROR);
-            // 颜色从红色到黄色的渐变起点是整个渐变区域（left, top, right, bottom定义了渐变区域）的起点，终点是渐变区域长度*10%的地方。例如，绿色到黄色是从渐变区域50%到80%。
-//            shader = new LinearGradient(0, 0, right, bottom, colors, positions, Shader.TileMode.REPEAT);
-        }
+        /**
+         * 渐变的起点：(x0,y0)
+         * 渐变的终点：(x1,y1)
+         * colors:      包含多个颜色
+         * positions:   包含多个颜色的位置。 可以为null。
+         * TileMode：模式不能为空
+         */
+        // 等于null时，颜色均匀地填充整个渐变区域
+        shader = new LinearGradient(0, 0, right, bottom, colors, null, Shader.TileMode.MIRROR);
+        // 颜色从红色到黄色的渐变起点是整个渐变区域（left, top, right, bottom定义了渐变区域）的起点，终点是渐变区域长度*10%的地方。例如，绿色到黄色是从渐变区域50%到80%。
+        // shader = new LinearGradient(0, 0, right, bottom, colors, positions, Shader.TileMode.REPEAT);
     }
 
     @Override

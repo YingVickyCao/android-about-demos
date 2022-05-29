@@ -49,8 +49,21 @@
 
             <View style="@style/div" />
 
+            <TextView
+                style="@style/tv"
+                android:text="圆角渐变" />
+
             <com.hades.example.android.widget.custom_view.shader.ShaderExampleView_RadialGradient
-                android:id="@+id/rectWithShader"
+                android:layout_width="@dimen/size_200"
+                android:layout_height="@dimen/size_200" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="组合模式" />
+
+            <com.hades.example.android.widget.custom_view.shader.ShaderExampleView_ComposeShader
                 android:layout_width="@dimen/size_200"
                 android:layout_height="@dimen/size_200" />
 
