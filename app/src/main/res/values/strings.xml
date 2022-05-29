@@ -78,7 +78,7 @@
     <string name="page_CustomView_of_FingerMovedBall">Custom View - 小球跟着手指动</string>
     <string name="page_CustomView_of_matrix_on_bitmap">Custom View - Matrix 处理Bitmap对象</string>
     <string name="page_CustomView_of_bitmap_mesh">Custom View - Bitmap Mesh</string>
-    <string name="page_CustomView_of_shader">Custom View - Shader（颜色渐变器）</string>
+    <string name="page_CustomView_of_shader">Custom View - Shader</string>
     <string name="page_CustomView_of_Layer">Custom View - Canvas Layer(图层)</string>
     <string name="page_CustomView_of_Xfermode">Custom View - Xfermode</string>
     <string name="page_ConstraintLayout">ConstraintLayout</string>

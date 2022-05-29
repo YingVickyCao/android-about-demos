@@ -1,7 +1,6 @@
 package com.hades.example.android.widget.custom_view.shader;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
@@ -70,10 +69,7 @@ public class ShaderExampleView_LinearGradient extends View {
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         paint.setStrokeWidth(4);
 
-        // 绘制圆形
-        /**
-         * drawRect 绘制矩形
-         */
+        // 绘制矩形
         canvas.drawRect(0, 0, right, bottom, paint);
     }
 }

@@ -63,9 +63,7 @@ public class ShaderExampleView_BitmapShader extends View {
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         paint.setStrokeWidth(4);
 
-        /**
-         * drawRect 绘制矩形
-         */
+        // 绘制矩形
         canvas.drawRect(0, 0, right, bottom, paint);
     }
 }

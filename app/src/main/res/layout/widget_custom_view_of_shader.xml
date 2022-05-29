@@ -19,27 +19,6 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/radialGradient"
-                    style="@style/btn_small"
-                    android:text="圆角渐变" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/sweepGradient"
-                    style="@style/btn_small"
-                    android:text="角度渐变" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/composeShader"
-                    style="@style/btn_small"
-                    android:text="组合渲染" />
-            </LinearLayout>
-
             <TextView
                 style="@style/tv"
                 android:text="位图平铺" />
@@ -66,16 +45,14 @@
 
             <com.hades.example.android.widget.custom_view.shader.ShaderExampleView_SweepGradient
                 android:layout_width="@dimen/size_200"
-                android:layout_height="@dimen/size_200"
-                android:visibility="visible" />
+                android:layout_height="@dimen/size_200" />
 
             <View style="@style/div" />
 
-            <com.hades.example.android.widget.custom_view.shader.RectWithShader
+            <com.hades.example.android.widget.custom_view.shader.ShaderExampleView_RadialGradient
                 android:id="@+id/rectWithShader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone" />
+                android:layout_width="@dimen/size_200"
+                android:layout_height="@dimen/size_200" />
 
             <com.hades.example.android.widget.custom_view.shader.ReflectionImageView
                 android:layout_width="wrap_content"
