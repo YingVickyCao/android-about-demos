@@ -51,7 +51,7 @@ public class CustomViewActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        page_CustomView_of_Xfermode();
+        pageShader();
     }
 
     private void pageCustomVew() {

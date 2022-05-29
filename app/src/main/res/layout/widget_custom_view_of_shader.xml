@@ -9,43 +9,70 @@
         style="@style/topic"
         android:text="@string/page_CustomView_of_shader" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bitmapShader"
-            style="@style/btn_small"
-            android:text="位图平铺" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/linearGradient"
-            style="@style/btn_small"
-            android:text="线性渐变" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/radialGradient"
-            style="@style/btn_small"
-            android:text="圆角渐变" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/radialGradient"
+                    style="@style/btn_small"
+                    android:text="圆角渐变" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/sweepGradient"
-            style="@style/btn_small"
-            android:text="角度渐变" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sweepGradient"
+                    style="@style/btn_small"
+                    android:text="角度渐变" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/composeShader"
-            style="@style/btn_small"
-            android:text="组合渲染" />
-    </LinearLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/composeShader"
+                    style="@style/btn_small"
+                    android:text="组合渲染" />
+            </LinearLayout>
 
-    <com.hades.example.android.widget.custom_view.shader.RectWithShader
-        android:id="@+id/rectWithShader"
-        android:layout_width="wrap_content"
-        android:visibility="gone"
-        android:layout_height="wrap_content" />
+            <TextView
+                style="@style/tv"
+                android:text="位图平铺" />
 
-    <com.hades.example.android.widget.custom_view.shader.ReflectionImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <com.hades.example.android.widget.custom_view.shader.ShaderExampleView_BitmapShader
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="线性渐变" />
+
+            <com.hades.example.android.widget.custom_view.shader.ShaderExampleView_LinearGradient
+                android:layout_width="@dimen/size_200"
+                android:layout_height="@dimen/size_200"
+                android:visibility="visible" />
+
+            <View style="@style/div" />
+
+            <com.hades.example.android.widget.custom_view.shader.RectWithShader
+                android:id="@+id/rectWithShader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <com.hades.example.android.widget.custom_view.shader.ReflectionImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
