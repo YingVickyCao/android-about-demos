@@ -21,6 +21,12 @@
 
             <TextView
                 style="@style/tv"
+                android:text="Shader"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_30" />
+
+            <TextView
+                style="@style/tv"
                 android:text="位图平铺" />
 
             <com.hades.example.android.widget.custom_view.shader.ShaderExampleView_BitmapShader
@@ -64,6 +70,18 @@
                 android:text="组合模式" />
 
             <com.hades.example.android.widget.custom_view.shader.ShaderExampleView_ComposeShader
+                android:layout_width="@dimen/size_200"
+                android:layout_height="@dimen/size_200" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="Shader 引入Matrix"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_30" />
+
+            <com.hades.example.android.widget.custom_view.shader.ShaderExampleView_BitmapShader_Matrix
                 android:layout_width="@dimen/size_200"
                 android:layout_height="@dimen/size_200" />
 

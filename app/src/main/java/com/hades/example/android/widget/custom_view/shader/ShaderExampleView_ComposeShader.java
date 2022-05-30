@@ -47,7 +47,7 @@ public class ShaderExampleView_ComposeShader extends View {
         linearGradient = new LinearGradient(0, 0, right, bottom, Color.RED, Color.YELLOW, Shader.TileMode.REPEAT);
         // 圆角渐变
         radialGradient = new RadialGradient(100, 100, 80, new int[]{Color.RED, Color.GREEN, Color.YELLOW}, null, Shader.TileMode.REPEAT);
-        
+
         // 组合渲染
         composeShader = new ComposeShader(linearGradient, radialGradient, PorterDuff.Mode.DARKEN);
     }
@@ -56,13 +56,7 @@ public class ShaderExampleView_ComposeShader extends View {
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawColor(Color.WHITE);
         paint.setShader(composeShader);
-
-        paint.setAntiAlias(true); // 去锯齿
-        paint.setColor(Color.GREEN);
-        paint.setStyle(Paint.Style.FILL_AND_STROKE);
-        paint.setStrokeWidth(4);
 
         // 绘制矩形
         canvas.drawRect(0, 0, right, bottom, paint);

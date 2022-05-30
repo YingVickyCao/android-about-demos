@@ -43,13 +43,7 @@ public class ShaderExampleView_RadialGradient extends View {
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawColor(Color.WHITE);
         paint.setShader(shader);
-
-        paint.setAntiAlias(true); // 去锯齿
-        paint.setColor(Color.GREEN);
-        paint.setStyle(Paint.Style.FILL_AND_STROKE);
-        paint.setStrokeWidth(4);
 
         // 绘制矩形
         canvas.drawRect(0, 0, right, bottom, paint);
