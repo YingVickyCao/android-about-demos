@@ -282,15 +282,15 @@
         <activity android:name=".app_component._fragment.book.BookDetailActivity" />
 
         <provider
-            android:name=".app_component.cp.dict.DictContentProvider"
+            android:name=".app_component.content_provider.dict.DictContentProvider"
             android:authorities=".app_component.cp.dict.DictContentProvider"
             android:exported="false" />
 
-        <activity android:name=".app_component.cp.dict.DictActivity" />
-        <activity android:name=".app_component.cp.dict.DictSearchResultActivity" />
-        <activity android:name=".app_component.cp.system.contact.ContactContentProviderActivity" />
-        <activity android:name=".app_component.cp.system.media.MediaActivity" />
-        <activity android:name=".app_component.cp.system.sms.SMSActivity" />
+        <activity android:name=".app_component.content_provider.dict.DictActivity" />
+        <activity android:name=".app_component.content_provider.dict.DictSearchResultActivity" />
+        <activity android:name=".app_component.content_provider.system.contact.ContactContentProviderActivity" />
+        <activity android:name=".app_component.content_provider.system.media.MediaActivity" />
+        <activity android:name=".app_component.content_provider.system.sms.SMSActivity" />
 
         <service android:name=".app_component.service.unbounservice.FirstService" />
         <service android:name=".app_component.service.boundservice.LocalBoundedService" />

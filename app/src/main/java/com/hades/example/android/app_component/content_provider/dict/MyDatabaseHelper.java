@@ -1,4 +1,4 @@
-package com.hades.example.android.app_component.cp.dict;
+package com.hades.example.android.app_component.content_provider.dict;
 
 import android.content.ContentValues;
 import android.content.Context;

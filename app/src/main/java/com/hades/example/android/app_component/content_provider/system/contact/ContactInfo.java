@@ -1,4 +1,4 @@
-package com.hades.example.android.app_component.cp.system.contact;
+package com.hades.example.android.app_component.content_provider.system.contact;
 
 import java.util.List;
 

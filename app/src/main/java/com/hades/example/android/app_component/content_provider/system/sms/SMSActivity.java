@@ -1,4 +1,4 @@
-package com.hades.example.android.app_component.cp.system.sms;
+package com.hades.example.android.app_component.content_provider.system.sms;
 
 
 import android.Manifest;

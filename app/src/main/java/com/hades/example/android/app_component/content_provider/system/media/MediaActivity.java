@@ -1,4 +1,4 @@
-package com.hades.example.android.app_component.cp.system.media;
+package com.hades.example.android.app_component.content_provider.system.media;
 
 import android.Manifest;
 import android.app.Activity;
