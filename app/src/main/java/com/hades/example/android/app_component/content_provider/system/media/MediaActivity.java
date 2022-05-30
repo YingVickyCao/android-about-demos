@@ -49,7 +49,7 @@ public class MediaActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cp_media);
+        setContentView(R.layout.content_provider_media);
 
         rxPermissions = new RxPermissions(this);
         rxPermissions.setLogging(true);
@@ -61,7 +61,7 @@ public class MediaActivity extends Activity {
 
         mShowListView = findViewById(R.id.tableContentList);
         mShowListView.setOnItemClickListener(this::onItemClick);
-        mAdapter = new SimpleAdapter(MediaActivity.this, listItems, R.layout.cp_media_resarch_result, new String[]{"name", "desc"}, new int[]{R.id.name, R.id.desc});
+        mAdapter = new SimpleAdapter(MediaActivity.this, listItems, R.layout.content_provider_media_resarch_result, new String[]{"name", "desc"}, new int[]{R.id.name, R.id.desc});
         mShowListView.setAdapter(mAdapter);
 
         mRoot = findViewById(R.id.root);
@@ -127,7 +127,7 @@ public class MediaActivity extends Activity {
     }
 
     public void onItemClick(AdapterView<?> parent, View source, int position, long id) {
-        View viewDialog = getLayoutInflater().inflate(R.layout.cp_media_view_one_image, null);
+        View viewDialog = getLayoutInflater().inflate(R.layout.content_provider_media_view_one_image, null);
         ImageView image = viewDialog.findViewById(R.id.imageView);
         image.setImageBitmap(BitmapFactory.decodeFile(mData.get(position).getFileName()));
         new AlertDialog.Builder(MediaActivity.this).setView(viewDialog).setPositiveButton("确定", null).show();

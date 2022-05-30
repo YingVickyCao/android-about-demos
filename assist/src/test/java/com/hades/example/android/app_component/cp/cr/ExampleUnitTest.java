@@ -1,4 +1,4 @@
-package com.hades.example.android.app_component.cp.cr;
+package com.hades.example.android.app_component.content_provider.cr;
 
 import org.junit.Test;
 

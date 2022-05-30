@@ -7,7 +7,7 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/test_system_ContactContentProvider" />
+        android:text="@string/page_content_provider_system_Contact" />
 
     <LinearLayout
         android:layout_width="match_parent"

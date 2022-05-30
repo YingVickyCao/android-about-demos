@@ -28,7 +28,7 @@ public class SMSActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
-        setContentView(R.layout.cp_sms);
+        setContentView(R.layout.content_provider_sms);
 
         rxPermissions = new RxPermissions(this);
         rxPermissions.setLogging(true);

@@ -6,7 +6,7 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/test_ContentProvider" />
+        android:text="@string/page_content_provider" />
 
     <EditText
         android:id="@+id/word"

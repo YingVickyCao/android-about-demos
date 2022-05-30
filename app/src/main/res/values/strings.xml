@@ -4,6 +4,9 @@
     <string name="page_app_component">App Components</string>
     <string name="page_bond_service">Bound service</string>
     <string name="page_content_provider">Content Provider</string>
+    <string name="page_content_provider_open_gallery">Content Provider - Open Gallery</string>
+    <string name="page_content_provider_system_Contact">Content Provider - System Contact</string>
+    <string name="test_service_StartService">StartService</string>
     <string name="page_activity">Activity</string>
     <string name="page_activity_save_and_restore_state">Saving and restoring transient UI state</string>
     <string name="page_activity_ExpandableListActivity">ExpandableListActivity</string>

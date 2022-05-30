@@ -5,7 +5,7 @@ import android.provider.BaseColumns;
 
 public final class Dict {
     // 定义该ContentProvider的Authority
-    public static final String AUTHORITY = "com.hades.example.android.app_component.cp.dict.DictContentProvider";
+    public static final String AUTHORITY = "com.hades.example.android.app_component.content_provider.dict.DictContentProvider";
 
     // 定义一个静态内部类，定义该ContentProvider所包含的数据列的列名
     public static final class Word implements BaseColumns {

@@ -20,7 +20,7 @@ public class DictSearchResultActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cp_dict_search_result_popup);
+        setContentView(R.layout.content_provider_dict_search_result_popup);
 
         listView = findViewById(R.id.tableContentList);
         showDictSearchResult();
@@ -28,7 +28,7 @@ public class DictSearchResultActivity extends Activity {
 
     private void showDictSearchResult() {
         List<Map<String, String>> list = getDictSearchResultData();
-        SimpleAdapter adapter = new SimpleAdapter(DictSearchResultActivity.this, list, R.layout.cp_dict_search_result_popup_item_view, new String[]{"word", "detail"}, new int[]{R.id.word, R.id.detail});
+        SimpleAdapter adapter = new SimpleAdapter(DictSearchResultActivity.this, list, R.layout.content_provider_dict_search_result_popup_item_view, new String[]{"word", "detail"}, new int[]{R.id.word, R.id.detail});
         listView.setAdapter(adapter);
     }
 

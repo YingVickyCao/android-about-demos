@@ -46,7 +46,7 @@ public class ContactContentProviderActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cp_system_contact_cp);
+        setContentView(R.layout.content_provider_system_contact_cp);
 
         mRoot = findViewById(R.id.root);
         list = findViewById(R.id.list);

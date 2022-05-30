@@ -11,8 +11,4 @@
     <string name="test_DatePicker_and_TimePicker">Test DatePicker and TimePicker</string>
     <string name="test_NumberPicker">Test NumberPicker</string>
     <string name="test_SearchView">Test SearchView</string>
-
-    <string name="test_ContentProvider">ContentProvider</string>
-    <string name="test_system_ContactContentProvider">Test System Contact ContentProvider</string>
-    <string name="test_service_StartService">StartService</string>
 </resources>
