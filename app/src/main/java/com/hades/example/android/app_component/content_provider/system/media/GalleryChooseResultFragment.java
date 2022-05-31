@@ -53,6 +53,12 @@ public class GalleryChooseResultFragment extends Fragment {
             try {
                 Bitmap bitmap = null;
                 if (null != bean.uri) {
+                    //显示图片所使用的uri：
+                    //String imageUri = "http://site.com/image.png"; // from Web
+                    //String imageUri = "file:///mnt/sdcard/image.png"; // from SD card
+                    //String imageUri = "content://media/external/audio/albumart/13"; // from content provider
+                    //String imageUri = "assets://image.png"; // from assets
+                    //String imageUri = "drawable://" + R.drawable.image; // from drawables (only images, non-9patch)
                     bitmap = BitmapFactory.decodeStream(getActivity().getContentResolver().openInputStream(bean.uri));
                 } else {
                     bitmap = BitmapFactory.decodeFile(bean.path);
