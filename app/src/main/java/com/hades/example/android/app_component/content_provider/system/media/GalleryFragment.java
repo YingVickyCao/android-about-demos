@@ -1,6 +1,5 @@
 package com.hades.example.android.app_component.content_provider.system.media;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

@@ -181,9 +181,6 @@
     <string name="page_multi_window">Multi-Window</string>
 
     <!-- ========================= -->
-    <string name="content_provider_open_system_gallery">Content Provider - Open System Gallery</string>
-    <string name="content_provider_choose_system_gallery">Content Provider - Choose System Gallery</string>
-
     <string name="runt_time_permission">Runtime Permission</string>
     <string name="runt_time_permission_topic">通过发送和接收短信测试Runtime Permission</string>
     <string name="rxPermissions_topic">RxPermissions lib demo</string>
