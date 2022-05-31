@@ -6,11 +6,5 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         style="@style/topic"
-        android:text="@string/page_content_provider_open_gallery" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/openGallery"
-        style="@style/btn_small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:text="@string/content_provider_choose_system_gallery" />
 </LinearLayout>

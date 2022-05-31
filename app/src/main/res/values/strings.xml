@@ -4,7 +4,7 @@
     <string name="page_app_component">App Components</string>
     <string name="page_bond_service">Bound service</string>
     <string name="page_content_provider">Content Provider</string>
-    <string name="page_content_provider_open_gallery">Content Provider - Open Gallery</string>
+    <string name="page_content_provider_gallery">Content Provider - Gallery</string>
     <string name="page_content_provider_system_Contact">Content Provider - System Contact</string>
     <string name="test_service_StartService">StartService</string>
     <string name="page_activity">Activity</string>
@@ -181,6 +181,8 @@
     <string name="page_multi_window">Multi-Window</string>
 
     <!-- ========================= -->
+    <string name="content_provider_open_system_gallery">Content Provider - Open System Gallery</string>
+    <string name="content_provider_choose_system_gallery">Content Provider - Choose System Gallery</string>
 
     <string name="runt_time_permission">Runtime Permission</string>
     <string name="runt_time_permission_topic">通过发送和接收短信测试Runtime Permission</string>
@@ -188,6 +190,7 @@
     <string name="send_message">Send info</string>
     <string name="receive_message">Receive info</string>
     <string name="send_receive_message">Send and receive info</string>
+    <string name="request_permission_storage">Request permission - Read and Write External Storage</string>
     <string name="permission_rationale_4_send_message">Send info permission is needed to send info.</string>
     <string name="permission_rationale_4_receive_message">Receive info permission is needed to receive info. </string>
     <string name="permission_rationale_4_send_receive_message">Send and receive info are needed to use info. </string>
