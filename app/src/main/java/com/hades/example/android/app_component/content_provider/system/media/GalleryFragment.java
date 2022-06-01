@@ -84,7 +84,7 @@ public class GalleryFragment extends Fragment {
         Cursor cursor = null;
         try {
             // https://blog.csdn.net/weixin_39612023/article/details/117578376
-            String[] attrs = {MediaStore.Images.ImageColumns._ID, MediaStore.Images.Media.DISPLAY_NAME};
+            String[] attrs = {MediaStore.Images.ImageColumns._ID, MediaStore.Images.Media.DISPLAY_NAME, MediaStore.Images.ImageColumns.WIDTH, MediaStore.Images.ImageColumns.HEIGHT};
 
             ContentResolver contentResolver = getActivity().getContentResolver();
             cursor = contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, attrs, null, null, MediaStore.Images.ImageColumns._ID + " DESC");
@@ -96,12 +96,43 @@ public class GalleryFragment extends Fragment {
                 int id = cursor.getColumnIndexOrThrow(MediaStore.Images.ImageColumns._ID);
                 String name = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DISPLAY_NAME));
                 Uri uri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cursor.getLong(id));
+                String width = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.ImageColumns.WIDTH));
+                String height = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.ImageColumns.HEIGHT));
 
                 GalleryItem item = new GalleryItem(uri);
                 item.name = name;
                 item.id = id;
-                // GalleryItem{id=0, name='Screenshot_20220530-191619_Android Demos.jpg', uri=content://media/external/images/media/4399, path='null'}
-                Log.d(TAG, "browserPhoto_android29: " + item.toString());
+                // browserPhoto_android29: GalleryItem{id=0, name='20220529_170946.jpg', uri=content://media/external/images/media/4338, path='null'},width:4032,height:3024
+                // browserPhoto_android29: GalleryItem{id=0, name='ic_pic.svg', uri=content://media/external/images/media/4028, path='null'},width:null,height:null
+                /**
+                 * W/MediaStore: Failed to obtain thumbnail for content://media/external/images/media/4028
+                 *     java.io.FileNotFoundException: Failed to create image decoder with message 'unimplemented'Input contained an error.
+                 *         at android.database.DatabaseUtils.readExceptionWithFileNotFoundExceptionFromParcel(DatabaseUtils.java:151)
+                 *         at android.content.ContentProviderProxy.openTypedAssetFile(ContentProviderNative.java:781)
+                 *         at android.content.ContentResolver.openTypedAssetFileDescriptor(ContentResolver.java:1993)
+                 *         at android.content.ContentResolver.openTypedAssetFile(ContentResolver.java:1898)
+                 *         at android.content.ContentResolver.lambda$loadThumbnail$0(ContentResolver.java:4078)
+                 *         at android.content.-$$Lambda$ContentResolver$7ILY1SWNxC2xhk-fQUG6tAXW9Ik.call(Unknown Source:10)
+                 *         at android.graphics.ImageDecoder$CallableSource.createImageDecoder(ImageDecoder.java:692)
+                 *         at android.graphics.ImageDecoder.decodeBitmapImpl(ImageDecoder.java:2007)
+                 *         at android.graphics.ImageDecoder.decodeBitmap(ImageDecoder.java:2000)
+                 *         at android.content.ContentResolver.loadThumbnail(ContentResolver.java:4077)
+                 *         at android.content.ContentResolver.loadThumbnail(ContentResolver.java:4061)
+                 *         at android.provider.MediaStore$InternalThumbnails.getThumbnail(MediaStore.java:1911)
+                 *         at android.provider.MediaStore$Images$Thumbnails.getThumbnail(MediaStore.java:2308)
+                 *         at com.squareup.picasso.MediaStoreRequestHandler.load(MediaStoreRequestHandler.java:84)
+                 *         at com.squareup.picasso.BitmapHunter.hunt(BitmapHunter.java:206)
+                 *         at com.squareup.picasso.BitmapHunter.run(BitmapHunter.java:159)
+                 *         at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:462)
+                 *         at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+                 *         at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+                 *         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+                 *         at java.lang.Thread.run(Thread.java:923)
+                 *         at com.squareup.picasso.Utils$PicassoThread.run(Utils.java:411)
+                 *
+                 * D/skia: --- Failed to create image decoder with message 'unimplemented'
+                 */
+                Log.d(TAG, "browserPhoto_android29: " + item.toString() + ",width:" + width + ",height:" + height);
                 list.add(item);
 
                 adapter.notifyDataSetChanged();
