@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.keyboard;
+package com.hades.example.android.widget.custom_view.keyboard;
 
 import android.os.Bundle;
 import android.text.Editable;

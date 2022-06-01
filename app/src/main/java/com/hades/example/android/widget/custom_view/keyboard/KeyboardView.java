@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.hades.example.android.widget.keyboard;
+package com.hades.example.android.widget.custom_view.keyboard;
 
 import android.compat.annotation.UnsupportedAppUsage;
 import android.content.Context;

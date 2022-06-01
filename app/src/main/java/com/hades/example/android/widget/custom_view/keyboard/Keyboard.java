@@ -14,10 +14,9 @@
  * the License.
  */
 
-package com.hades.example.android.widget.keyboard;
+package com.hades.example.android.widget.custom_view.keyboard;
 
 import android.annotation.XmlRes;
-import android.compat.annotation.UnsupportedAppUsage;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -117,21 +116,18 @@ public class Keyboard {
     private int mKeyHeight;
     
     /** Total height of the keyboard, including the padding and keys */
-    @UnsupportedAppUsage
     private int mTotalHeight;
     
     /** 
      * Total width of the keyboard, including left side gaps and keys, but not any gaps on the
      * right side.
      */
-    @UnsupportedAppUsage
     private int mTotalWidth;
     
     /** List of keys in this keyboard */
     private List<Key> mKeys;
     
     /** List of modifier keys such as Shift & Alt, if any */
-    @UnsupportedAppUsage
     private List<Key> mModifierKeys;
     
     /** Width of the screen available to fit the keyboard */
