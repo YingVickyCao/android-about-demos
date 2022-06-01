@@ -72,7 +72,6 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
     public static class GalleryViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         ImageView image;
-        ProgressBar progressBar;
         View itemViewRoot;
 
         public GalleryViewHolder(View itemView) {
