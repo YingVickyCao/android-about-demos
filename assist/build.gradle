@@ -30,8 +30,8 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "androidx.appcompat:appcompat:$appcompat_version"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "androidx.appcompat:appcompat:1.4.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test:runner:$androidTestRunner_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCore_version"
