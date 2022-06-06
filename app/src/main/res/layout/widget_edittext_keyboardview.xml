@@ -49,7 +49,7 @@
 
     <com.hades.example.android.widget.custom_view.keyboard.KeyboardView
         android:id="@+id/keyboardView"
-        style="@style/custom_keyboard"
+        style="@style/keyboardView"
         android:layout_alignParentBottom="true"
         android:visibility="visible" />
     <!--    </RelativeLayout>-->
