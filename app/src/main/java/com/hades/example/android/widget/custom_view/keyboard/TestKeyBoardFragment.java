@@ -1,7 +1,5 @@
 package com.hades.example.android.widget.custom_view.keyboard;
 
-import android.inputmethodservice.Keyboard;
-import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
@@ -172,6 +170,7 @@ public class TestKeyBoardFragment extends Fragment {
         if (visibility == View.GONE || visibility == View.INVISIBLE) {
             // 隐藏键盘时，添加动画，增加流畅度
             keyboardView.setVisibility(View.VISIBLE);
+            Log.d(TAG, "showKeyboard: " + keyboardView.getWidth() + "," + keyboardView.getHeight());
         }
     }
 

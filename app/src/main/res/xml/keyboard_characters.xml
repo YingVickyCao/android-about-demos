@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-    android:horizontalGap="2dp"
-    android:keyWidth="25%p"
-    android:keyHeight="50dp"
-    android:verticalGap="2dp">
+<Keyboard xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:horizontalGap="2dp"
+    app:keyHeight="50dp"
+    app:keyWidth="25%p"
+    app:verticalGap="2dp">
     <!-- horizontalGap,verticalGap 实现键盘key 之间的分割线   -->
 
     <Row>
-        <!--        android:keyEdgeFlags="left"-->
+        <!--        app:keyEdgeFlags="left"-->
         <Key
-            android:codes="113"
-            android:keyLabel="q" />
+            app:codes="113"
+            app:keyLabel="q" />
         <Key
-            android:codes="119"
-            android:keyLabel="w" />
+            app:codes="119"
+            app:keyLabel="w" />
 
         <Key
-            android:codes="111"
-            android:keyLabel="o" />
+            app:codes="111"
+            app:keyLabel="o" />
 
         <Key
-            android:codes="112"
-            android:keyLabel="p" />
+            app:codes="112"
+            app:keyLabel="p" />
     </Row>
     <Row>
         <Key
-            android:codes="97"
-            android:keyLabel="a" />
+            app:codes="97"
+            app:keyLabel="a" />
         <Key
-            android:codes="115"
-            android:keyLabel="s" />
+            app:codes="115"
+            app:keyLabel="s" />
         <Key
-            android:codes="100"
-            android:keyLabel="d" />
+            app:codes="100"
+            app:keyLabel="d" />
 
         <Key
-            android:codes="108"
-            android:keyLabel="l" />
+            app:codes="108"
+            app:keyLabel="l" />
     </Row>
-    <Row android:rowEdgeFlags="bottom">
+    <Row app:rowEdgeFlags="bottom">
         <!-- Space -->
         <Key
-            android:codes="32"
-            android:keyLabel="Space" />
+            app:codes="32"
+            app:keyLabel="Space" />
 
         <!--  Delete  -->
         <Key
-            android:codes="-5"
-            android:keyIcon="@drawable/ic_delete" />
+            app:codes="-5"
+            app:keyIcon="@drawable/ic_delete" />
 
         <!--  Done     -->
         <Key
-            android:codes="-3"
-            android:keyWidth="50%"
-            android:keyEdgeFlags="right"
-            android:keyLabel="Done" />
+            app:codes="-3"
+            app:keyEdgeFlags="right"
+            app:keyLabel="Done"
+            app:keyWidth="50%" />
     </Row>
 </Keyboard>

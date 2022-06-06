@@ -40,10 +40,17 @@
          android:visibility="invisible" ：一般时gone 或 invisible
          button 在上面？没有translationZ，btn 会在键盘上面
     -->
-    <android.inputmethodservice.KeyboardView
+
+    <Button
+        android:id="@+id/closeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.hades.example.android.widget.custom_view.keyboard.KeyboardView
         android:id="@+id/keyboardView"
         style="@style/custom_keyboard"
         android:layout_alignParentBottom="true"
-        android:visibility="invisible" />
+        android:visibility="visible" />
     <!--    </RelativeLayout>-->
 </RelativeLayout>

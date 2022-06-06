@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources translatable="false">
     <declare-styleable name="KeyboardView">
         <!-- Default KeyboardView style.-->
         <attr name="keyboardViewStyle" format="reference" />
@@ -108,4 +108,16 @@
         <item name="backgroundDimAmount">0.6</item>
     </style>
 
+
+    <attr name="config_ui_enableFadingMarquee" type="bool" />
+    <!-- Enables swipe versus poly-finger touch disambiguation in the KeyboardView -->
+    <bool name="config_swipeDisambiguation">true</bool>
+
+    <string name="keyboardview_keycode_alt">"Alt"</string>
+    <string name="keyboardview_keycode_cancel">"Anuluj"</string>
+    <string name="keyboardview_keycode_delete">"Delete"</string>
+    <string name="keyboardview_keycode_done">"Gotowe"</string>
+    <string name="keyboardview_keycode_mode_change">"Zmiana trybu"</string>
+    <string name="keyboardview_keycode_shift">"Shift"</string>
+    <string name="keyboardview_keycode_enter">"Enter"</string>
 </resources>
