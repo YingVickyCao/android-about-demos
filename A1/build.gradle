@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    compileSdkVersion 31
     buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {

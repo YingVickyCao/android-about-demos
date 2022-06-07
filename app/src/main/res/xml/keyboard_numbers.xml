@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-    android:horizontalGap="2dp"
-    android:keyWidth="20%p"
-    android:keyHeight="50dp"
-    android:verticalGap="2dp">
+<Keyboard xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:horizontalGap="2dp"
+    app:keyHeight="50dp"
+    app:keyWidth="20%p"
+    app:verticalGap="2dp">
 
     <!-- Fix：字母键盘可以显示，为啥这个数字键盘不能显示？
     Keyboard，Row、Key必须首字母大写，如果是写成小写，虽然不报错，但是自定义数字键盘不会显示。
@@ -11,60 +11,60 @@
 
     <Row>
         <Key
-            android:codes="49"
-            android:keyLabel="1" />
+            app:codes="49"
+            app:keyLabel="1" />
 
         <Key
-            android:codes="50"
-            android:keyLabel="2" />
+            app:codes="50"
+            app:keyLabel="2" />
 
         <Key
-            android:codes="51"
-            android:keyLabel="3" />
+            app:codes="51"
+            app:keyLabel="3" />
 
         <Key
-            android:codes="52"
-            android:keyLabel="4" />
+            app:codes="52"
+            app:keyLabel="4" />
 
         <Key
-            android:codes="53"
-            android:keyLabel="5" />
+            app:codes="53"
+            app:keyLabel="5" />
     </Row>
 
     <Row>
         <Key
-            android:codes="54"
-            android:keyLabel="6" />
+            app:codes="54"
+            app:keyLabel="6" />
 
         <Key
-            android:codes="55"
-            android:keyLabel="7" />
+            app:codes="55"
+            app:keyLabel="7" />
 
         <Key
-            android:codes="56"
-            android:keyLabel="8" />
+            app:codes="56"
+            app:keyLabel="8" />
 
         <Key
-            android:codes="57"
-            android:keyLabel="9" />
+            app:codes="57"
+            app:keyLabel="9" />
 
         <Key
-            android:codes="48"
-            android:keyLabel="0" />
+            app:codes="48"
+            app:keyLabel="0" />
 
     </Row>
 
-    <Row android:rowEdgeFlags="bottom">
+    <Row app:rowEdgeFlags="bottom">
         <!--  Delete  -->
         <Key
-            android:codes="-5"
-            android:keyWidth="50%"
-            android:keyLabel="Delete" />
+            app:codes="-5"
+            app:keyWidth="50%"
+            app:keyLabel="Delete" />
         <!--  Done     -->
         <Key
-            android:codes="-3"
-            android:keyWidth="50%"
-            android:keyEdgeFlags="right"
-            android:keyLabel="Done" />
+            app:codes="-3"
+            app:keyWidth="50%"
+            app:keyEdgeFlags="right"
+            app:keyLabel="Done" />
     </Row>
 </Keyboard>

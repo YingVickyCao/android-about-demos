@@ -1,7 +1,5 @@
-package com.hades.example.android.widget.edittext;
+package com.hades.example.android.widget.custom_view.keyboard;
 
-import android.inputmethodservice.Keyboard;
-import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
@@ -12,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -21,19 +20,18 @@ import androidx.fragment.app.Fragment;
 import com.hades.example.android.R;
 import com.hades.example.android.lib.utils.BlockQuickTap;
 
-public class TestKeyBoardFragment extends Fragment {
-    private static final String TAG = "TestKeyBoardFragment";
+public class TestKeyBoardFragment2 extends Fragment {
+    private static final String TAG = "TestKeyBoardFragment2";
 
     private EditText editText;
-    private KeyboardView keyboardView;
-    private Keyboard keyboard;
+    private ViewGroup keyboardView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_edittext_keyboardview, container, false);
+        View view = inflater.inflate(R.layout.widget_keyboardview_2, container, false);
         editText = (EditText) view.findViewById(R.id.editText);
-        keyboardView = (KeyboardView) view.findViewById(R.id.keyboardView);
+        keyboardView = view.findViewById(R.id.keyboardView);
 
         hideKeyboard();
         forbidSystemKeyBoard();
@@ -42,6 +40,7 @@ public class TestKeyBoardFragment extends Fragment {
         editText.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                Log.d(TAG, "onTouch: ");
                 // Fix：反复点击EditText，点击的太快，键盘会闪。
                 // 解决：增加200ms的重复事件的过滤
                 if (BlockQuickTap.isRepeatShowKeyboard()) {
@@ -63,6 +62,7 @@ public class TestKeyBoardFragment extends Fragment {
                 hideKeyboard();
             }
         });
+
         return view;
     }
 
@@ -108,69 +108,50 @@ public class TestKeyBoardFragment extends Fragment {
     }
 
     private void initKeyboard() {
-//        keyboard = new Keyboard(editText.getContext(), R.xml.keyboard_characters);
-        keyboard = new Keyboard(editText.getContext(), R.xml.keyboard_numbers);
-        keyboardView.setKeyboard(keyboard);
-        keyboardView.setEnabled(true);
-        keyboardView.setPreviewEnabled(false); // 开启和关闭点击Key的预览效果
-        keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
-            @Override
-            public void swipeUp() {
+        for (int i = 0; i < keyboardView.getChildCount(); i++) {
+            ViewGroup view = (ViewGroup) keyboardView.getChildAt(i);
+            for (int j = 0; j < view.getChildCount(); j++) {
+                Button btn = (Button) view.getChildAt(j);
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onKeyPressed(v);
+                    }
+                });
             }
+        }
+    }
 
-            @Override
-            public void swipeRight() {
-            }
-
-            @Override
-            public void swipeLeft() {
-            }
-
-            @Override
-            public void swipeDown() {
-            }
-
-            @Override
-            public void onText(CharSequence text) {
-            }
-
-            @Override
-            public void onRelease(int primaryCode) {
-            }
-
-            @Override
-            public void onPress(int primaryCode) {
-            }
-
-            @Override
-            public void onKey(int primaryCode, int[] keyCodes) {
-                Editable editable = editText.getText();
-                int start = editText.getSelectionStart();
-                switch (primaryCode) {
-                    case Keyboard.KEYCODE_DELETE:
-                        if (editable != null && editable.length() > 0) {
-                            if (start > 0) {
-                                editable.delete(start - 1, start);
-                            }
-                        }
-                        break;
-                    case Keyboard.KEYCODE_CANCEL:
-                        hideKeyboard();
-                        break;
-
-                    default:
-                        editable.insert(start, Character.toString((char) primaryCode));
-                        break;
+    private void onKeyPressed(View v) {
+        Log.d(TAG, "onClick: " + ((Button) v).getText());
+        String label = ((Button) v).getText().toString();
+        Editable editable = editText.getText();
+        int start = editText.getSelectionStart();
+        switch (label) {
+            case "Delete":
+                if (editable != null && editable.length() > 0) {
+                    if (start > 0) {
+                        editable.delete(start - 1, start);
+                    }
                 }
-            }
-        });
+                break;
+            case "Done":
+                hideKeyboard();
+                break;
+
+            default:
+                editable.insert(start, label);
+                break;
+
+        }
     }
 
     // Activity中获取焦点时调用，显示出键盘
     public void showKeyboard() {
         int visibility = keyboardView.getVisibility();
         if (visibility == View.GONE || visibility == View.INVISIBLE) {
-            // 隐藏键盘时，添加动画，增加流畅度
+            // 显示键盘时，添加动画，增加流畅度
+            anim_slide_in_up();
             keyboardView.setVisibility(View.VISIBLE);
         }
     }
@@ -179,6 +160,7 @@ public class TestKeyBoardFragment extends Fragment {
         int visibility = keyboardView.getVisibility();
         if (visibility == View.VISIBLE) {
             // 隐藏键盘时，添加动画，增加流畅度
+            anim_slide_out_down();
             keyboardView.setVisibility(View.INVISIBLE);
         }
     }

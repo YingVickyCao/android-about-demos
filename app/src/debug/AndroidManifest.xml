@@ -5,7 +5,7 @@
 
     <application tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".app_component.content_provider.system.media.GalleryActivity"
+            android:name=".widget.WidgetActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
