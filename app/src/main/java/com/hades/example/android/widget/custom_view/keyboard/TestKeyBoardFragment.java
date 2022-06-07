@@ -29,7 +29,7 @@ public class TestKeyBoardFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_edittext_keyboardview, container, false);
+        View view = inflater.inflate(R.layout.widget_keyboardview, container, false);
         editText = (EditText) view.findViewById(R.id.editText);
         keyboardView = (KeyboardView) view.findViewById(R.id.keyboardView);
 
@@ -110,7 +110,7 @@ public class TestKeyBoardFragment extends Fragment {
         keyboard = new Keyboard(editText.getContext(), R.xml.keyboard_numbers);
         keyboardView.setKeyboard(keyboard);
         keyboardView.setEnabled(true);
-        keyboardView.setPreviewEnabled(false); // 开启和关闭点击Key的预览效果
+        keyboardView.setPreviewEnabled(true); // 开启和关闭点击Key的预览效果
         keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
             @Override
             public void swipeUp() {

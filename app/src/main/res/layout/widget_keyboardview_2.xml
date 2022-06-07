@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/topic"
+        android:text="@string/page_KeyboardView" />
     <!-- android:inputType="none" 通常设置为none。也设置成别的类型，但是因为使用自定义键盘，设置成其他类型也没啥意义   -->
     <EditText
         android:id="@+id/editText"
@@ -21,7 +24,7 @@
 
         <include
             android:id="@+id/keyboardView"
-            layout="@layout/widget_edittext_keyboardview_2_keys"
+            layout="@layout/widget_keyboardview_2_keys"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

@@ -109,7 +109,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.page_ToggleButton).setOnClickListener(v -> page_ToggleButton());
         findViewById(R.id.pageEditText).setOnClickListener(v -> pageEditText());
         findViewById(R.id.pageKeyBoardView).setOnClickListener(v -> pageKeyBoardView());
-        findViewById(R.id.pageKeyBoardView2).setOnClickListener(v -> pageKeyBoardView2());
         findViewById(R.id.pageZAxis).setOnClickListener(v -> page_z_axis());
         findViewById(R.id.pageTextClock).setOnClickListener(v -> pageTextClock());
     }
@@ -289,10 +288,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void pageKeyBoardView() {
         showFragment(new TestKeyBoardFragment());
-    }
-
-    private void pageKeyBoardView2() {
-        showFragment(new TestKeyBoardFragment2());
+//        showFragment(new TestKeyBoardFragment2());
     }
 
     private void page_z_axis() {

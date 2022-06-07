@@ -23,14 +23,14 @@
     android:background="@drawable/keyboard_popup_panel_background"
     android:orientation="horizontal">
 
-    <android.inputmethodservice.KeyboardView
+    <com.hades.example.android.widget.custom_view.keyboard.KeyboardView
         android:id="@android:id/keyboardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@android:color/transparent"
-        android:keyTextSize="22sp"
         app:keyPreviewLayout="@layout/keyboard_key_preview"
+        app:keyTextSize="22sp"
         app:popupLayout="@layout/keyboard_popup_keyboard" />
 
     <ImageButton

@@ -29,7 +29,7 @@ public class TestKeyBoardFragment2 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_edittext_keyboardview_2, container, false);
+        View view = inflater.inflate(R.layout.widget_keyboardview_2, container, false);
         editText = (EditText) view.findViewById(R.id.editText);
         keyboardView = view.findViewById(R.id.keyboardView);
 
