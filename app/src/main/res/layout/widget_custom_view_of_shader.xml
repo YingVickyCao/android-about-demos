@@ -103,7 +103,7 @@
 
             <TextView
                 style="@style/tv"
-                android:text="倒影-Shader + Xfermode + Matrix + Layer"
+                android:text="倒影图-Shader + Xfermode + Matrix + Layer"
                 android:textColor="@color/red"
                 android:textSize="@dimen/text_size_30" />
 
