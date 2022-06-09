@@ -12,6 +12,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Shader;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -23,7 +24,9 @@ import com.hades.example.android.R;
  * https://www.cnblogs.com/tianzhijiexian/p/4298660.html
  */
 public class ReflectionImageView extends View {
+    private static final String TAG = ReflectionImageView.class.getSimpleName();
     Paint paint = new Paint();
+    Bitmap source = BitmapFactory.decodeResource(getResources(), R.drawable.ic_grid_2);
 
     public ReflectionImageView(Context context) {
         super(context);
@@ -44,31 +47,31 @@ public class ReflectionImageView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        canvas.drawColor(getResources().getColor(R.color.reflection_bg_color, getContext().getTheme()));
 
-        canvas.drawColor(Color.GRAY);
-
-//        int x = 200, y = 200;
         int x = 0, y = 0;
+        // 绘制源图
+        canvas.drawBitmap(source, x, y, null);
+        Log.d(TAG, "onDraw: " + source.getWidth() + "," + source.getHeight());
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_grid);
-
+        // 创建到影图，和源图大小一样
         Matrix matrix = new Matrix();
         matrix.setScale(1F, -1F);
-        Bitmap reflectionBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        Bitmap reflection = Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
 
-        canvas.drawBitmap(bitmap, x, y, null);
+        // 新建图层，它的区域包含了到影图
+        int savedCount = canvas.saveLayer(x, y + source.getHeight(), x + source.getWidth(), y + source.getHeight() * 2, null);
+        // 绘制倒影图
+        canvas.drawBitmap(reflection, x, y + source.getHeight(), null);
 
-        int sc = canvas.saveLayer(x, y + bitmap.getHeight(), x + bitmap.getWidth(), y + bitmap.getHeight() * 2, null, Canvas.ALL_SAVE_FLAG);
-
-        canvas.drawBitmap(reflectionBitmap, x, y + bitmap.getHeight(), null);
-
+        // 设置混合模式
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-        paint.setShader(new LinearGradient(x, y + bitmap.getHeight(), x, y + bitmap.getHeight() + bitmap.getHeight() / 4, Color.BLACK, Color.TRANSPARENT, Shader.TileMode.CLAMP));
-
-        canvas.drawRect(x, y + bitmap.getHeight(), x + reflectionBitmap.getWidth(), y + bitmap.getHeight() * 2, paint);
-
+        // Shader 用于填充混合目标，颜色从Color.BLACK到透明。
+        paint.setShader(new LinearGradient(x, y + source.getHeight(), x, y + source.getHeight() * 1.5f, Color.BLACK, Color.TRANSPARENT, Shader.TileMode.CLAMP));
+        // 使用矩形，作为混合目标，用来裁剪到影图
+        canvas.drawRect(x, y + source.getHeight(), x + reflection.getWidth(), y + source.getHeight() * 2, paint);
         paint.setXfermode(null);
 
-        canvas.restoreToCount(sc);
+        canvas.restoreToCount(savedCount);
     }
 }

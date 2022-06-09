@@ -51,7 +51,7 @@ public class CustomViewActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageMatrixOnBitmap();
+        pageShader();
     }
 
     private void pageCustomVew() {
