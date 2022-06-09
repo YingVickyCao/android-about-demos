@@ -38,25 +38,28 @@ public class MatrixOnBitmapView extends View {
 
     public void bitmapScale() {
         action = ACTION_SCALE;
+        invalidate();
     }
 
     public void bitmapRotate() {
         action = ACTION_ROTATE;
+        invalidate();
     }
 
     public void bitmapTranslate() {
         action = ACTION_TRANSLATE;
+        invalidate();
     }
 
     public void bitmapSkew() {
         action = ACTION_SKEW;
+        invalidate();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        canvas.drawColor(Color.BLACK);
         matrix.reset();
+
         if (ACTION_SCALE == action) {
             // 缩放
             matrix.setScale(2.0f, 2.0f);

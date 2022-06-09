@@ -90,8 +90,7 @@ public class MatrixOnBitmapFragment extends Fragment {
      */
     protected void bitmapScale(float x, float y) {
         // 因为要将图片放大，所以要根据放大的尺寸重新创建Bitmap
-        Bitmap afterBitmap = Bitmap.createBitmap((int) (bitmap.getWidth() * x),
-                (int) (bitmap.getHeight() * y), bitmap.getConfig());
+        Bitmap afterBitmap = Bitmap.createBitmap((int) (bitmap.getWidth()), (int) (bitmap.getHeight()), bitmap.getConfig());
         Canvas canvas = new Canvas(afterBitmap);
         // 初始化Matrix对象
         Matrix matrix = new Matrix();
@@ -140,13 +139,11 @@ public class MatrixOnBitmapFragment extends Fragment {
      */
     protected void bitmapRotate(float degrees) {
         // 创建一个和原图一样大小的图片
-        Bitmap afterBitmap = Bitmap.createBitmap(bitmap.getWidth(),
-                bitmap.getHeight(), bitmap.getConfig());
+        Bitmap afterBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), bitmap.getConfig());
         Canvas canvas = new Canvas(afterBitmap);
         Matrix matrix = new Matrix();
         // 根据原图的中心位置旋转
-        matrix.setRotate(degrees, bitmap.getWidth() / 2,
-                bitmap.getHeight() / 2);
+        matrix.setRotate(degrees, bitmap.getWidth() / 2, bitmap.getHeight() / 2);
         canvas.drawBitmap(bitmap, matrix, paint);
 
         image_after.setImageBitmap(afterBitmap);
