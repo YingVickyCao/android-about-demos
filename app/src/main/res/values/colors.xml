@@ -7,5 +7,5 @@
     <color name="text_color_convert_2">#ff00ff00</color>
     <color name="color_green_alpha_10">#1A00FF00</color>
 
-    <color name="reflection_bg_color">#BF000000</color>
+    <color name="reflection_bg_color">#80000000</color>
 </resources>

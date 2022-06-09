@@ -26,7 +26,7 @@ import com.hades.example.android.R;
 public class ReflectionImageView extends View {
     private static final String TAG = ReflectionImageView.class.getSimpleName();
     Paint paint = new Paint();
-    Bitmap source = BitmapFactory.decodeResource(getResources(), R.drawable.ic_grid_2);
+    Bitmap source = BitmapFactory.decodeResource(getResources(), R.drawable.ic_grid_3);
 
     public ReflectionImageView(Context context) {
         super(context);
@@ -68,7 +68,8 @@ public class ReflectionImageView extends View {
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
         // Shader 用于填充混合目标，颜色从Color.BLACK到透明。
         // 倒影的高度是源图的1/2
-        paint.setShader(new LinearGradient(x, y + source.getHeight(), x, y + source.getHeight() * 1.5f, Color.BLACK, Color.TRANSPARENT, Shader.TileMode.CLAMP));
+        // 模式是MIRROR模式，这里没用到
+        paint.setShader(new LinearGradient(x, y + source.getHeight(), x, y + source.getHeight() * 1.5f, Color.BLACK, Color.TRANSPARENT, Shader.TileMode.MIRROR));
         // 使用矩形，作为混合目标，用来裁剪到倒影
         canvas.drawRect(x, y + source.getHeight(), x + reflection.getWidth(), y + source.getHeight() * 2, paint);
         paint.setXfermode(null);
