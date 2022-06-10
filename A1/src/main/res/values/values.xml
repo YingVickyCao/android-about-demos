@@ -9,10 +9,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-
     <string name="app_name">A1</string>
     <string name="page_access_remote_activity_use_implicit_intent">Access Remote Activity using ImplicitIntent</string>
 </resources>
