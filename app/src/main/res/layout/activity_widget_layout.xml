@@ -31,7 +31,7 @@
                 android:text="@string/page_ListView" />
 
             <Button
-                android:id="@+id/pageCustomVew"
+                android:id="@+id/page_CustomVew"
                 style="@style/btn"
                 android:text="@string/page_CustomView" />
 

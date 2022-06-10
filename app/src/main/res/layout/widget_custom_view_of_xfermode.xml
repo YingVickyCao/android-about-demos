@@ -6,7 +6,7 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_CustomView_of_Xfermode" />
+        android:text="@string/page_Xfermode" />
 
     <ScrollView
         android:layout_width="match_parent"

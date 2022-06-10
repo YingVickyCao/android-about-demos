@@ -6,7 +6,7 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_CustomView_of_FingerMovedBall" />
+        android:text="@string/page_FingerMovedBall" />
 
     <com.hades.example.android.widget.custom_view.ball.FingerMovedBallView
         android:id="@+id/ball"

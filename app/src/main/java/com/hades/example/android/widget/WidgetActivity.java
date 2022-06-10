@@ -11,7 +11,6 @@ import com.hades.example.android.widget.button.TestButtonActivity;
 import com.hades.example.android.widget.checkbox.CheckBoxFragment;
 import com.hades.example.android.widget.edittext.TestEditTextFragment;
 import com.hades.example.android.widget.custom_view.keyboard.TestKeyBoardFragment;
-import com.hades.example.android.widget.custom_view.keyboard.TestKeyBoardFragment2;
 import com.hades.example.android.widget.layout._constraintlayout.TestConstraintLayoutFragment;
 import com.hades.example.android.widget.layout._framelayout.TestFrameLayoutFragment;
 import com.hades.example.android.widget.layout._viewgroup.TestViewGroupFragment;
@@ -64,7 +63,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
         initViews();
 
-        findViewById(R.id.pageCustomVew).setOnClickListener(v -> pageCustomVew());
+        findViewById(R.id.page_CustomVew).setOnClickListener(v -> pageCustomVew());
         findViewById(R.id.pageListView).setOnClickListener(v -> pageListView());
         findViewById(R.id.pageViewLocation).setOnClickListener(v -> pageViewLocation());
         findViewById(R.id.pageConstraintLayout).setOnClickListener(v -> pageConstraintLayout());

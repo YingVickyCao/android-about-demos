@@ -6,19 +6,7 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_CustomView_Canvas_and_Paint" />
-
-    <!-- Canvas and Paint   -->
-    <com.hades.example.android.widget.custom_view.MyView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
-
-    <!--  paint.setPathEffect  -->
-    <com.hades.example.android.widget.custom_view.PathWithPathEffect
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_200"
-        android:visibility="gone" />
+        android:text="@string/page_Canvas_and_Paint" />
 
     <!--
         Path
@@ -33,7 +21,7 @@
     <com.hades.example.android.widget.custom_view.Circle4Fill
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <!-- paint.setStyle(Paint.Style.STROKE)   -->
     <com.hades.example.android.widget.custom_view.Circle4Stroke

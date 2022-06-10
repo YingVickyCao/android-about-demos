@@ -23,54 +23,59 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/pageCustomVew"
+                android:id="@+id/page_Canvas_and_Paint"
                 style="@style/btn"
-                android:text="@string/page_CustomView_Canvas_and_Paint" />
+                android:text="@string/page_Canvas_and_Paint" />
 
             <Button
-                android:id="@+id/pageDrawingBoard"
+                android:id="@+id/page_PathEffect"
                 style="@style/btn"
-                android:text="@string/page_CustomView_of_drawing_board" />
+                android:text="@string/page_PathEffect" />
 
             <Button
-                android:id="@+id/pageFingerMovedBall"
+                android:id="@+id/page_DrawingBoard"
                 style="@style/btn"
-                android:text="@string/page_CustomView_of_FingerMovedBall" />
+                android:text="@string/page_drawing_board" />
 
             <Button
-                android:id="@+id/pageMatrixOnBitmap"
+                android:id="@+id/page_FingerMovedBall"
                 style="@style/btn"
-                android:text="@string/page_CustomView_of_matrix_on_bitmap" />
+                android:text="@string/page_FingerMovedBall" />
 
             <Button
-                android:id="@+id/pageBitmapMesh"
+                android:id="@+id/page_MatrixOnBitmap"
                 style="@style/btn"
-                android:text="@string/page_CustomView_of_bitmap_mesh" />
+                android:text="@string/page_Matrix_on_bitmap" />
 
             <Button
-                android:id="@+id/pageShader"
+                android:id="@+id/page_BitmapMesh"
                 style="@style/btn"
-                android:text="@string/page_CustomView_of_shader" />
+                android:text="@string/page_BitmapMesh" />
 
             <Button
-                android:id="@+id/page_CustomVew4CascadeLayout"
+                android:id="@+id/page_Shader"
                 style="@style/btn"
-                android:text="@string/page_CustomView_CascadeLayout" />
+                android:text="@string/page_Shader" />
 
             <Button
-                android:id="@+id/page_CustomVew_ShadowView"
+                android:id="@+id/page_CascadeLayout"
                 style="@style/btn"
-                android:text="@string/page_CustomView_ShadowView" />
+                android:text="@string/page_CascadeLayout" />
 
             <Button
-                android:id="@+id/page_CustomView_canvas_layer"
+                android:id="@+id/page_ShadowLayer"
                 style="@style/btn"
-                android:text="@string/page_CustomView_of_Layer" />
+                android:text="@string/page_ShadowView" />
 
             <Button
-                android:id="@+id/page_CustomView_of_Xfermode"
+                android:id="@+id/page_Layer"
                 style="@style/btn"
-                android:text="@string/page_CustomView_of_Xfermode" />
+                android:text="@string/page_Layer" />
+
+            <Button
+                android:id="@+id/page_Xfermode"
+                style="@style/btn"
+                android:text="@string/page_Xfermode" />
 
             <com.hades.example.android.widget.custom_view.RequiredTextView
                 android:layout_width="wrap_content"

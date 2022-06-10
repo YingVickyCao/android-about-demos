@@ -6,7 +6,7 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_CustomView_of_matrix_on_bitmap" />
+        android:text="@string/page_Matrix_on_bitmap" />
 
     <LinearLayout
         android:layout_width="wrap_content"

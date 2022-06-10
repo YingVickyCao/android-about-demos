@@ -15,6 +15,7 @@ import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutA
 import com.hades.example.android.widget.custom_view.drawing_board.DrawingBoardFragment;
 import com.hades.example.android.widget.custom_view.matrix.MatrixOnBitmapFragment;
 import com.hades.example.android.widget.custom_view.mesh.BitmapMeshFragment;
+import com.hades.example.android.widget.custom_view.path_effect.TestPathEffectFragment;
 import com.hades.example.android.widget.custom_view.shader.ShaderFragment;
 import com.hades.example.android.widget.custom_view.shadow.TestShadowViewFragment;
 
@@ -31,16 +32,17 @@ public class CustomViewActivity extends PermissionActivity {
         setContentView(R.layout.widget_custom_view_layout);
         Log.d(TAG, "onCreate: ");
         initViews(R.id.root);
-        findViewById(R.id.pageCustomVew).setOnClickListener(v -> pageCustomVew());
-        findViewById(R.id.pageDrawingBoard).setOnClickListener(v -> pageDrawingBoard());
-        findViewById(R.id.pageFingerMovedBall).setOnClickListener(v -> pageFingerMovedBall());
-        findViewById(R.id.pageMatrixOnBitmap).setOnClickListener(v -> pageMatrixOnBitmap());
-        findViewById(R.id.pageBitmapMesh).setOnClickListener(v -> pageBitmapMesh());
-        findViewById(R.id.pageShader).setOnClickListener(v -> pageShader());
-        findViewById(R.id.page_CustomVew4CascadeLayout).setOnClickListener(v -> pageCustomView4CascadeLayout());
-        findViewById(R.id.page_CustomVew_ShadowView).setOnClickListener(v -> page_CustomVew_ShadowView());
-        findViewById(R.id.page_CustomView_canvas_layer).setOnClickListener(v -> page_CustomView_canvas_layer());
-        findViewById(R.id.page_CustomView_of_Xfermode).setOnClickListener(v -> page_CustomView_of_Xfermode());
+        findViewById(R.id.page_Canvas_and_Paint).setOnClickListener(v -> page_Canvas_and_Paint());
+        findViewById(R.id.page_PathEffect).setOnClickListener(v -> page_PathEffect());
+        findViewById(R.id.page_DrawingBoard).setOnClickListener(v -> page_DrawingBoard());
+        findViewById(R.id.page_FingerMovedBall).setOnClickListener(v -> page_FingerMovedBall());
+        findViewById(R.id.page_MatrixOnBitmap).setOnClickListener(v -> page_MatrixOnBitmap());
+        findViewById(R.id.page_BitmapMesh).setOnClickListener(v -> page_BitmapMesh());
+        findViewById(R.id.page_Shader).setOnClickListener(v -> page_Shader());
+        findViewById(R.id.page_CascadeLayout).setOnClickListener(v -> page_CascadeLayout());
+        findViewById(R.id.page_ShadowLayer).setOnClickListener(v -> page_ShadowLayer());
+        findViewById(R.id.page_Layer).setOnClickListener(v -> page_Layer());
+        findViewById(R.id.page_Xfermode).setOnClickListener(v -> page_Xfermode());
     }
 
     @Override
@@ -51,46 +53,50 @@ public class CustomViewActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageShader();
+        page_ShadowLayer();
     }
 
-    private void pageCustomVew() {
+    private void page_Canvas_and_Paint() {
         showFragment(new TestCanvasPaintFragment());
     }
 
-    private void pageDrawingBoard() {
+    private void page_PathEffect() {
+        showFragment(new TestPathEffectFragment());
+    }
+
+    private void page_DrawingBoard() {
         showFragment(new DrawingBoardFragment());
     }
 
-    private void pageFingerMovedBall() {
+    private void page_FingerMovedBall() {
         showFragment(new FingerMovedBallFragment());
     }
 
-    private void pageMatrixOnBitmap() {
+    private void page_MatrixOnBitmap() {
         showFragment(new MatrixOnBitmapFragment());
     }
 
-    private void pageBitmapMesh() {
+    private void page_BitmapMesh() {
         showFragment(new BitmapMeshFragment());
     }
 
-    private void pageShader() {
+    private void page_Shader() {
         showFragment(new ShaderFragment());
     }
 
-    private void pageCustomView4CascadeLayout() {
+    private void page_CascadeLayout() {
         showActivity(CascadeLayoutActivity.class);
     }
 
-    private void page_CustomVew_ShadowView() {
+    private void page_ShadowLayer() {
         showFragment(new TestShadowViewFragment());
     }
 
-    private void page_CustomView_canvas_layer() {
+    private void page_Layer() {
         showFragment(new CanvasLayerExampleFragment());
     }
 
-    private void page_CustomView_of_Xfermode() {
+    private void page_Xfermode() {
         showFragment(new XfermodeFragment());
     }
 }
