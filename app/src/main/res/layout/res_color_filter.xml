@@ -12,7 +12,7 @@
 
         <TextView
             style="@style/topic"
-            android:text="@string/page_Drawable" />
+            android:text="@string/page_ColorFilter" />
 
         <TextView
             style="@style/tv"

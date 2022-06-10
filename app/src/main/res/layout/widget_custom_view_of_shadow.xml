@@ -1,317 +1,344 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="2"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/topic"
+        android:text="@string/page_Shadow_and_ShadowLayer" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <!-- outlineSpotShadowColor -->
-        <View style="@style/div" />
-
-        <TextView
-            style="@style/tv.small"
-            android:text="outlineSpotShadowColor" />
-
-        <!--  outlineAmbientShadowColor,outlineSpotShadowColor 基本上看不到颜色  -->
-        <Button
-            android:id="@+id/view_1"
-            style="@style/btn"
-            android:layout_gravity="center_horizontal"
-            android:elevation="20dp"
-            android:gravity="center"
-            android:outlineAmbientShadowColor="@color/green"
-            android:outlineSpotShadowColor="@color/green"
-            android:shadowColor="@color/red"
-            android:shadowDy="4"
-            android:shadowRadius="4"
-            android:text="内容1" />
-
-        <!-- .9.png -->
-        <View style="@style/div" />
-
-        <TextView
-            style="@style/tv.small"
-            android:text=".9.png" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/shadow_1"
-            android:src="@drawable/drawable_vector_4_placeholder_svg" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/shadow_1_2"
-            android:src="@drawable/drawable_vector_4_placeholder_svg" />
-
-        <!--  TODO: 使用levelListDrawable 画出的 shadow 不像 shadow，像border   -->
-        <TextView
-            style="@style/tv.small"
-            android:text="@string/page_LevelListDrawable" />
-
-        <ImageView
-            android:layout_width="168dp"
-            android:layout_height="274dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/size_5"
-            android:layout_marginBottom="@dimen/size_5"
-            android:background="@drawable/shadow_2"
-            android:elevation="@dimen/size_5"
-            android:padding="5dp"
-            android:src="@drawable/drawable_vector_4_placeholder_svg" />
-
-
-        <!-- CustomView - setShadowLayer  -->
-        <View style="@style/div" />
-
-        <TextView
-            style="@style/tv.small"
-            android:text="CustomView - setShadowLayer" />
+        android:layout_marginTop="@dimen/size_topic">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@color/bg_0_light"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+            <!-- Way 1：带阴影的Text  View
+                 android:shadowColor 阴影颜色
+                 android:shadowDx 阴影的水平偏移量
+                 android:shadowDy 阴影的垂直偏移量
+                 android:shadowRadius 阴影的范围
+            -->
+            <TextView
+                style="@style/tv.small"
+                android:text="shadowColor" />
 
-                <!-- shadow_radius + shadow_*tSize 共同决定 shadow 扩展度-->
-                <!-- shadow_radius 决定圆角 -->
-                <com.hades.example.android.widget.custom_view.shadow.ShadowedFrameLayout
-                    style="@style/viewgroup_with_box_shadow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_gravity="center_horizontal">
-
-                    <ImageView
-                        android:id="@+id/imageView"
-                        style="@style/img_with_box_shadow"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="false"
-                        android:elevation="4dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/drawable_vector_4_placeholder_svg" />
-
-                </com.hades.example.android.widget.custom_view.shadow.ShadowedFrameLayout>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <com.hades.example.android.widget.custom_view.shadow.ShadowedViewGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    app:child_base_margin="8dp"
-                    app:container_cornerRadius="0dp"
-                    app:shadow_bottomRadius="8dp"
-                    app:shadow_color="@color/s_0_light_red"
-                    app:shadow_enable="true"
-                    app:shadow_leftRadius="8dp"
-                    app:shadow_radius="8dp"
-                    app:shadow_rightRadius="4dp"
-                    app:shadow_topRadius="2dp">
-
-                    <ImageView
-                        style="@style/img_with_box_shadow"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="false"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/drawable_vector_4_placeholder_svg" />
-                </com.hades.example.android.widget.custom_view.shadow.ShadowedViewGroup>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <ImageView
-                    style="@style/img_with_box_shadow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/drawable_vector_4_placeholder_svg" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <!--  TranslateZ use animation - objectAnimator -->
-        <TextView
-            style="@style/tv.small"
-            android:text="TranslateZ use animation - objectAnimator" />
-
-        <!-- shadow没有效果 -->
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/drawable_vector_4_placeholder_svg"
-            android:stateListAnimator="@animator/shadow_3" />
-
-        <!-- 点击时，shadow增加 -->
-        <Button
-            style="@style/btn"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/size_5"
-            android:stateListAnimator="@animator/shadow_3" />
-
-        <!-- 多了灰色。 点击时，加深了shadow        -->
-        <!-- android:stateListAnimator="@animator/shadow_3" -->
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/size_5"
-            android:clickable="true"
-            android:focusable="true"
-            android:src="@drawable/drawable_vector_4_placeholder_svg"
-            android:stateListAnimator="@animator/shadow_3" />
-
-        <!--  android:elevation -->
-        <View style="@style/div" />
-
-        <TextView
-            style="@style/tv.small"
-            android:text="android:elevation" />
-
-        <Button
-            android:id="@+id/button4"
-            style="@style/btn"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/size_5" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/elevationPlus"
-                style="@style/btn"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/view_1"
+                style="@style/tv.small"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/size_5"
-                android:text="Elevation +" />
+                android:elevation="20dp"
+                android:gravity="center"
+                android:shadowColor="#ff000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3.0"
+                android:text="内容1" />
+
+            <!-- outlineSpotShadowColor -->
+            <View style="@style/div" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="@style/btn"
+                android:background="@color/red"
+                android:text="内容1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="@style/btn"
+                android:background="@color/red"
+                android:elevation="@dimen/size_10"
+                android:outlineAmbientShadowColor="#F00"
+                android:outlineSpotShadowColor="#0f0"
+                android:text="内容1"
+                android:translationZ="@dimen/size_10" />
+
+            <!-- .9.png -->
+            <View style="@style/div" />
 
             <TextView
-                android:id="@+id/elevationNum"
-                style="@style/btn"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/size_5"
-                android:text="Elevation +" />
-
-            <Button
-                android:id="@+id/elevationMinus"
-                style="@style/btn"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/size_5"
-                android:text="Elevation -" />
-        </RelativeLayout>
-
-        <!--  OutlineProvider  -->
-        <View style="@style/div" />
-
-        <TextView
-            style="@style/tv.small"
-            android:text="OutlineProvider" />
-
-        <!-- 没有shadow -->
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/drawable_vector_4_placeholder_svg" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-            <!-- 有shadow，但四边多了留白-->
-            <Button
-                android:id="@+id/button1"
-                style="@style/btn"
-                android:layout_gravity="center_horizontal" />
-
-            <!-- 没有shadow -->
-            <Button
-                android:id="@+id/button2"
-                style="@style/btn"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="@dimen/margin_tiny"
-                android:layout_marginTop="@dimen/margin_tiny"
-                android:background="#f00" />
-
-            <Button
-                style="@style/btn"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="@dimen/margin_tiny"
-                android:layout_marginTop="@dimen/margin_tiny" />
-        </LinearLayout>
-
-        <!-- CardView -->
-        <View style="@style/div" />
-
-        <TextView
-            style="@style/tv.small"
-            android:text="CardView" />
-
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="@dimen/size_20"
-            app:cardElevation="@dimen/size_10">
+                style="@style/tv.small"
+                android:text=".9.png" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:background="@drawable/shadow_1"
+                android:src="@drawable/drawable_vector_4_placeholder_svg" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/shadow_1_2"
+                android:src="@drawable/drawable_vector_4_placeholder_svg" />
+
+            <!--  TODO: 使用levelListDrawable 画出的 shadow 不像 shadow，像border   -->
+            <TextView
+                style="@style/tv.small"
+                android:text="@string/page_LevelListDrawable" />
+
+            <ImageView
+                android:layout_width="168dp"
+                android:layout_height="274dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/size_5"
+                android:layout_marginBottom="@dimen/size_5"
+                android:background="@drawable/shadow_2"
+                android:elevation="@dimen/size_5"
+                android:padding="5dp"
+                android:src="@drawable/drawable_vector_4_placeholder_svg" />
+
+
+            <!-- CustomView - setShadowLayer  -->
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv.small"
+                android:text="CustomView - setShadowLayer" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/bg_0_light"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <!-- shadow_radius + shadow_*tSize 共同决定 shadow 扩展度-->
+                    <!-- shadow_radius 决定圆角 -->
+                    <com.hades.example.android.widget.custom_view.shadow.ShadowedFrameLayout
+                        style="@style/viewgroup_with_box_shadow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            style="@style/img_with_box_shadow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="false"
+                            android:elevation="4dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/drawable_vector_4_placeholder_svg" />
+
+                    </com.hades.example.android.widget.custom_view.shadow.ShadowedFrameLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.hades.example.android.widget.custom_view.shadow.ShadowedViewGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        app:child_base_margin="8dp"
+                        app:container_cornerRadius="0dp"
+                        app:shadow_bottomRadius="8dp"
+                        app:shadow_color="@color/s_0_light_red"
+                        app:shadow_enable="true"
+                        app:shadow_leftRadius="8dp"
+                        app:shadow_radius="8dp"
+                        app:shadow_rightRadius="4dp"
+                        app:shadow_topRadius="2dp">
+
+                        <ImageView
+                            style="@style/img_with_box_shadow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="false"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/drawable_vector_4_placeholder_svg" />
+                    </com.hades.example.android.widget.custom_view.shadow.ShadowedViewGroup>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        style="@style/img_with_box_shadow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/drawable_vector_4_placeholder_svg" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!--  TranslateZ use animation - objectAnimator -->
+            <TextView
+                style="@style/tv.small"
+                android:text="TranslateZ use animation - objectAnimator" />
+
+            <!-- shadow没有效果 -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/drawable_vector_4_placeholder_svg"
+                android:stateListAnimator="@animator/shadow_3" />
+
+            <!-- 点击时，shadow增加 -->
+            <Button
+                style="@style/btn"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/size_5"
+                android:stateListAnimator="@animator/shadow_3" />
+
+            <!-- 多了灰色。 点击时，加深了shadow        -->
+            <!-- android:stateListAnimator="@animator/shadow_3" -->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/size_5"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/drawable_vector_4_placeholder_svg"
+                android:stateListAnimator="@animator/shadow_3" />
+
+            <!--  android:elevation -->
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv.small"
+                android:text="android:elevation" />
+
+            <Button
+                android:id="@+id/button4"
+                style="@style/btn"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/size_5" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/elevationPlus"
+                    style="@style/btn"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/size_5"
+                    android:text="Elevation +" />
+
+                <TextView
+                    android:id="@+id/elevationNum"
+                    style="@style/btn"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/size_5"
+                    android:text="Elevation +" />
+
+                <Button
+                    android:id="@+id/elevationMinus"
+                    style="@style/btn"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/size_5"
+                    android:text="Elevation -" />
+            </RelativeLayout>
+
+            <!--  OutlineProvider  -->
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv.small"
+                android:text="OutlineProvider" />
+
+            <!-- 没有shadow -->
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:background="@drawable/drawable_vector_4_placeholder_svg" />
-        </com.google.android.material.card.MaterialCardView>
 
-        <!-- MaterialShapeDrawable -->
-        <View style="@style/div" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+                <!-- 有shadow，但四边多了留白-->
+                <Button
+                    android:id="@+id/button1"
+                    style="@style/btn"
+                    android:layout_gravity="center_horizontal" />
 
-        <TextView
-            style="@style/tv.small"
-            android:text="MaterialShapeDrawable" />
+                <!-- 没有shadow -->
+                <Button
+                    android:id="@+id/button2"
+                    style="@style/btn"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/margin_tiny"
+                    android:layout_marginTop="@dimen/margin_tiny"
+                    android:background="#f00" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/drawable_vector_4_placeholder_svg" />
+                <Button
+                    style="@style/btn"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/margin_tiny"
+                    android:layout_marginTop="@dimen/margin_tiny" />
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/button3"
-            style="@style/btn"
-            android:layout_gravity="center_horizontal" />
-    </LinearLayout>
-</ScrollView>
+            <!-- CardView -->
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv.small"
+                android:text="CardView" />
+
+
+            <!--        <com.google.android.material.card.MaterialCardView-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            style="@android:style/Theme.Material.Light.NoActionBar"-->
+            <!--            android:layout_gravity="center_horizontal"-->
+            <!--            android:layout_margin="@dimen/size_20"-->
+            <!--            app:cardElevation="@dimen/size_10">-->
+
+            <!--            <ImageView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="center_horizontal"-->
+            <!--                android:background="@drawable/drawable_vector_4_placeholder_svg" />-->
+            <!--        </com.google.android.material.card.MaterialCardView>-->
+
+            <!-- Way 5 : MaterialShapeDrawable, not work -->
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv.small"
+                android:text="MaterialShapeDrawable" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/drawable_vector_4_placeholder_svg" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button3"
+                style="@style/btn"
+                android:layout_gravity="center_horizontal"
+                android:text="button with MaterialShapeDrawable" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

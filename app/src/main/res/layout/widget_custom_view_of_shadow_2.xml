@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".widget.custom_view.CustomViewActivity">
+
+    <!--    使用默认的阴影，将view的颜色设置为白色.
+            view的在屏幕上的位置越靠下，阴影越重，但阴影都是黑色的
+     -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="40dp"
+            android:background="@drawable/btn_default_material"
+            android:backgroundTint="#fff"
+            android:elevation="10dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="40dp"
+            android:background="@drawable/btn_default_material"
+            android:backgroundTint="#fff"
+            android:elevation="10dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="40dp"
+            android:background="@drawable/btn_default_material"
+            android:backgroundTint="#fff"
+            android:elevation="10dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="40dp"
+            android:background="@drawable/btn_default_material"
+            android:backgroundTint="#fff"
+            android:elevation="10dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="40dp"
+            android:background="@drawable/btn_default_material"
+            android:backgroundTint="#fff"
+            android:elevation="10dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="40dp"
+            android:background="@drawable/btn_default_material"
+            android:backgroundTint="#fff"
+            android:elevation="10dp" />
+
+    </LinearLayout>
+</ScrollView>

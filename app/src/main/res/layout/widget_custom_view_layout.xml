@@ -63,9 +63,9 @@
                 android:text="@string/page_CascadeLayout" />
 
             <Button
-                android:id="@+id/page_ShadowLayer"
+                android:id="@+id/page_Shadow_and_ShadowLayer"
                 style="@style/btn"
-                android:text="@string/page_ShadowView" />
+                android:text="@string/page_Shadow_and_ShadowLayer" />
 
             <Button
                 android:id="@+id/page_Layer"

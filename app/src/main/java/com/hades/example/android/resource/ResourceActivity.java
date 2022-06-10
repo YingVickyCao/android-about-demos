@@ -63,9 +63,7 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.pageStateDrawable).setOnClickListener(v -> pageStateDrawable());
         findViewById(R.id.pageVectorDrawable).setOnClickListener(v -> pageVectorDrawable());
         findViewById(R.id.pageClipDrawable).setOnClickListener(v -> pageClipDrawable());
-
-        findViewById(R.id.pageDrawableFolder).setOnClickListener(v -> pageDrawableFolder());
-
+        
         findViewById(R.id.pageBitmap).setOnClickListener(v -> pageBitmap());
 
         findViewById(R.id.pageColor).setOnClickListener(v -> pageColor());
@@ -161,10 +159,6 @@ public class ResourceActivity extends PermissionActivity {
 
     private void pageLayerListDrawable() {
         showFragment(new TestLayerDrawableFragment());
-    }
-
-    private void pageDrawableFolder() {
-        showFragment(new TestDrawableFolderFragment());
     }
 
     private void pageTweenAnimation() {

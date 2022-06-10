@@ -28,7 +28,6 @@ public class CustomViewActivity extends PermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.AppTheme_Dark);
         setContentView(R.layout.widget_custom_view_layout);
         Log.d(TAG, "onCreate: ");
         initViews(R.id.root);
@@ -40,7 +39,7 @@ public class CustomViewActivity extends PermissionActivity {
         findViewById(R.id.page_BitmapMesh).setOnClickListener(v -> page_BitmapMesh());
         findViewById(R.id.page_Shader).setOnClickListener(v -> page_Shader());
         findViewById(R.id.page_CascadeLayout).setOnClickListener(v -> page_CascadeLayout());
-        findViewById(R.id.page_ShadowLayer).setOnClickListener(v -> page_ShadowLayer());
+        findViewById(R.id.page_Shadow_and_ShadowLayer).setOnClickListener(v -> page_Shadow_and_ShadowLayer());
         findViewById(R.id.page_Layer).setOnClickListener(v -> page_Layer());
         findViewById(R.id.page_Xfermode).setOnClickListener(v -> page_Xfermode());
     }
@@ -53,7 +52,7 @@ public class CustomViewActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        page_ShadowLayer();
+        page_Shadow_and_ShadowLayer();
     }
 
     private void page_Canvas_and_Paint() {
@@ -88,7 +87,7 @@ public class CustomViewActivity extends PermissionActivity {
         showActivity(CascadeLayoutActivity.class);
     }
 
-    private void page_ShadowLayer() {
+    private void page_Shadow_and_ShadowLayer() {
         showFragment(new TestShadowViewFragment());
     }
 

@@ -1,0 +1,18 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <!--   a darker variant of the primary color, used for the status bar (on Android 5.0+) and contextual app bars -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--   color for the app bar and other primary UI elements -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--   a secondary color for controls like checkboxes and text fields -->
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <string name="app_name">B</string>
+    <string name="bind">Bind</string>
+    <string name="unbind">unBind</string>
+    <string name="getServiceStatus">获取Service状态</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+</resources>

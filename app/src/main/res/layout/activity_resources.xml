@@ -122,11 +122,6 @@
                 android:text="@string/page_LayerListDrawable" />
 
             <Button
-                android:id="@+id/pageDrawableFolder"
-                style="@style/btn"
-                android:text="@string/page_DrawableFolder" />
-
-            <Button
                 android:id="@+id/pageClipDrawable"
                 style="@style/btn"
                 android:text="@string/page_ClipDrawable" />

@@ -42,6 +42,7 @@
     <string name="page_String_and_Integer_and_Array">String, Integer, and Array</string>
     <string name="page_Color">Color</string>
     <string name="page_ColorStateList">Color-Color State List</string>
+    <string name="page_ColorFilter">ColorFilter</string>
     <string name="page_Drawable">Drawable</string>
     <string name="page_StateDrawable">StateDrawable</string>
     <string name="page_VectorDrawable">VectorDrawable</string>
@@ -77,7 +78,7 @@
     <string name="page_CustomView">Custom View</string>
     <string name="page_Canvas_and_Paint" tools:ignore="ExtraTranslation">Canvas and Paint</string>
     <string name="page_CascadeLayout">CascadeLayout</string>
-    <string name="page_ShadowView">ShadowLayer</string>
+    <string name="page_Shadow_and_ShadowLayer">Shadow and ShadowLayer</string>
     <string name="page_drawing_board">采用双缓冲实现画图板</string>
     <string name="page_FingerMovedBall">小球跟着手指动</string>
     <string name="page_Matrix_on_bitmap">Matrix 处理Bitmap对象</string>

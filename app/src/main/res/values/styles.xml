@@ -478,4 +478,11 @@
         <item name="levelListDrawable">@drawable/drawable_level_list_1_1</item>
     </style>
 
+    <style name="view_use_default_shadow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_margin">40dp</item>
+        <item name="android:background">@drawable/btn_default_material</item>
+        <item name="android:backgroundTint">#fff</item>
+    </style>
 </resources>
