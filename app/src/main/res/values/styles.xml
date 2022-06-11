@@ -446,35 +446,35 @@
         <item name="android:textSize">@dimen/text_size_30</item>
     </style>
 
-    <style name="AppTheme_font_1" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme_font_1" parent="AppTheme">
         <item name="fontFamily">@font/digital_7</item>
     </style>
 
-    <style name="AppTheme_font_2" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme_font_2" parent="AppTheme">
         <item name="android:fontFamily">@font/digital_7</item>
     </style>
 
-    <style name="AppTheme_font_3" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme_font_3" parent="AppTheme">
         <item name="fontFamily">@font/digital_7</item>
         <item name="android:fontFamily">@font/consola</item>
     </style>
 
-    <style name="AppTheme_font_4" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme_font_4" parent="AppTheme">
         <item name="android:fontFamily">@font/consola</item>
     </style>
 
-    <style name="AppTheme_font_5" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme_font_5" parent="AppTheme">
         <item name="fontFamily">@font/consola</item>
     </style>
 
-    <style name="AppTheme_font_6" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme_font_6" parent="AppTheme">
         <item name="fontFamily">@font/consola</item>
         <item name="android:fontFamily">@font/digital_7</item>
     </style>
 
     <attr name="levelListDrawable" format="reference" />
 
-    <style name="AppTheme_level_list_drawable" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme_level_list_drawable" parent="AppTheme">
         <item name="levelListDrawable">@drawable/drawable_level_list_1_1</item>
     </style>
 
@@ -484,5 +484,15 @@
         <item name="android:layout_margin">40dp</item>
         <item name="android:background">@drawable/btn_default_material</item>
         <item name="android:backgroundTint">#fff</item>
+    </style>
+
+    <style name="RequiredTextView_dark">
+        <item name="prefix">*</item>
+        <item name="prefix_color">@android:color/holo_red_dark</item>
+    </style>
+
+    <style name="RequiredTextView_light">
+        <item name="prefix">*</item>
+        <item name="prefix_color">@android:color/holo_red_light</item>
     </style>
 </resources>

@@ -1,5 +1,6 @@
 package com.hades.example.android.resource._style_theme;
 
+import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
@@ -101,6 +102,40 @@ public class ThemeChoosePageAActivity extends BaseActivity {
             case Configuration.UI_MODE_NIGHT_YES:
                 setDarkTheme();
                 break;
+        }
+    }
+
+
+    protected void setLightTheme() {
+        boolean isRedTheme = com.hades.example.java.lib.MemoryCache.getInstance().isRedTheme();
+        if (isRedTheme) {
+            return;
+        }
+        com.hades.example.java.lib.MemoryCache.getInstance().useRedTheme(true);
+        applyTheme();
+    }
+
+    protected void setDarkTheme() {
+        boolean isRedTheme = com.hades.example.java.lib.MemoryCache.getInstance().isRedTheme();
+        if (!isRedTheme) {
+            return;
+        }
+        com.hades.example.java.lib.MemoryCache.getInstance().useRedTheme(false);
+
+        applyTheme();
+    }
+
+    protected void applyTheme() {
+        finish();
+        TaskStackBuilder.create(this).addNextIntent(getIntent()).startActivities();
+    }
+
+    protected void setTheme() {
+        boolean isLightTheme = com.hades.example.java.lib.MemoryCache.getInstance().isRedTheme();
+        if (isLightTheme) {
+            setTheme(R.style.AppTheme_Light);
+        } else {
+            setTheme(R.style.AppTheme_Dark);
         }
     }
 }
