@@ -35,7 +35,8 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="@dimen/margin_tiny"
-                    android:src="@drawable/drawable_level_list_1_2" />
+                    android:src="@drawable/drawable_level_list_1_2"
+                    android:theme="@style/Theme_level_list_drawable" />
 
                 <ImageView
                     android:id="@+id/image_1_3"
@@ -43,7 +44,7 @@
                     android:layout_height="40dp"
                     android:layout_margin="@dimen/margin_tiny"
                     android:src="?attr/levelListDrawable"
-                    android:theme="@style/AppTheme_level_list_drawable" />
+                    android:theme="@style/Theme_level_list_drawable" />
 
                 <ImageView
                     android:id="@+id/image_2_1"
@@ -52,20 +53,13 @@
                     android:layout_margin="@dimen/margin_tiny"
                     android:src="@drawable/drawable_level_list_2_1" />
 
-
-                <!--<ImageView-->
-                <!--android:id="@+id/image_1_2"-->
-                <!--android:layout_width="40dp"-->
-                <!--android:layout_height="40dp"-->
-                <!--android:layout_margin="@dimen/margin_tiny"-->
-                <!--android:src="@drawable/drawable_level_list_2_2_v1" />-->
-
                 <ImageView
                     android:id="@+id/image_2_2"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="@dimen/margin_tiny"
-                    android:src="@drawable/drawable_level_list_2_2" />
+                    android:src="@drawable/drawable_level_list_2_2"
+                    android:theme="@style/Theme_level_list_drawable" />
             </LinearLayout>
 
             <LinearLayout

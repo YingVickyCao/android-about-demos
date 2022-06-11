@@ -48,7 +48,7 @@
         style="@style/font_page_item"
         android:layout_width="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:theme="@style/AppTheme_font_1" />
+        android:theme="@style/Theme_font_1" />
 
     <LinearLayout
         style="@style/font_page_group_container"
@@ -68,28 +68,28 @@
         <!-- app:fontFamily > theme android:fontFamily  -->
         <TextView
             style="@style/font_page_item"
-            android:theme="@style/AppTheme_font_4"
+            android:theme="@style/Theme_font_4"
             app:fontFamily="@font/digital_7" />
 
         <!-- app:fontFamily > android:fontFamily > theme android:fontFamily -->
         <TextView
             style="@style/font_page_item"
             android:fontFamily="@font/consolas_italic"
-            android:theme="@style/AppTheme_font_4"
+            android:theme="@style/Theme_font_4"
             app:fontFamily="@font/digital_7" />
 
         <!--  app:fontFamily > theme app:fontFamily > android:fontFamily     -->
         <TextView
             style="@style/font_page_item"
             android:fontFamily="@font/consolas_italic"
-            android:theme="@style/AppTheme_font_1"
+            android:theme="@style/Theme_font_1"
             app:fontFamily="@font/consola" />
 
         <!-- theme app:fontFamily >  android:fontFamily     -->
         <TextView
             style="@style/font_page_item"
             android:fontFamily="@font/digital_7"
-            android:theme="@style/AppTheme_font_5" />
+            android:theme="@style/Theme_font_5" />
     </LinearLayout>
 
     <LinearLayout
@@ -98,19 +98,19 @@
 
         <TextView
             style="@style/font_page_item"
-            android:theme="@style/AppTheme_font_2" />
+            android:theme="@style/Theme_font_2" />
 
         <!-- android:fontFamily > theme android:fontFamily-->
         <TextView
             style="@style/font_page_item"
             android:fontFamily="@font/consola"
-            android:theme="@style/AppTheme_font_2" />
+            android:theme="@style/Theme_font_2" />
 
         <!-- app:fontFamily > android:fontFamily > theme android:fontFamily -->
         <TextView
             style="@style/font_page_item"
             android:fontFamily="@font/consola"
-            android:theme="@style/AppTheme_font_2"
+            android:theme="@style/Theme_font_2"
             app:fontFamily="@font/averia_regular" />
     </LinearLayout>
 
@@ -121,18 +121,18 @@
         <!-- theme app:fontFamily > theme android:fontFamily-->
         <TextView
             style="@style/font_page_item"
-            android:theme="@style/AppTheme_font_3" />
+            android:theme="@style/Theme_font_3" />
 
         <!--  theme app:fontFamily > android:fontFamily > theme android:fontFamily     -->
         <TextView
             style="@style/font_page_item"
             android:fontFamily="@font/averia_italic"
-            android:theme="@style/AppTheme_font_3" />
+            android:theme="@style/Theme_font_3" />
 
         <!-- app:fontFamily > theme app:fontFamily       -->
         <TextView
             style="@style/font_page_item"
-            android:theme="@style/AppTheme_font_1"
+            android:theme="@style/Theme_font_1"
             app:fontFamily="sans-serif" />
     </LinearLayout>
 </LinearLayout>

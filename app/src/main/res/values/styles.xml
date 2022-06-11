@@ -446,38 +446,45 @@
         <item name="android:textSize">@dimen/text_size_30</item>
     </style>
 
-    <style name="AppTheme_font_1" parent="AppTheme">
+    <!-- START, font  -->
+    <style name="Theme_font_1" parent="AppTheme">
         <item name="fontFamily">@font/digital_7</item>
     </style>
 
-    <style name="AppTheme_font_2" parent="AppTheme">
+    <style name="Theme_font_2" parent="AppTheme">
         <item name="android:fontFamily">@font/digital_7</item>
     </style>
 
-    <style name="AppTheme_font_3" parent="AppTheme">
+    <style name="Theme_font_3" parent="AppTheme">
         <item name="fontFamily">@font/digital_7</item>
         <item name="android:fontFamily">@font/consola</item>
     </style>
 
-    <style name="AppTheme_font_4" parent="AppTheme">
+    <style name="Theme_font_4" parent="AppTheme">
         <item name="android:fontFamily">@font/consola</item>
     </style>
 
-    <style name="AppTheme_font_5" parent="AppTheme">
+    <style name="Theme_font_5" parent="AppTheme">
         <item name="fontFamily">@font/consola</item>
     </style>
 
-    <style name="AppTheme_font_6" parent="AppTheme">
+    <style name="Theme_font_6" parent="AppTheme">
         <item name="fontFamily">@font/consola</item>
         <item name="android:fontFamily">@font/digital_7</item>
     </style>
-
+    <!-- END, font  -->
+    <!-- START, leve-list Drawable  -->
     <attr name="levelListDrawable" format="reference" />
 
-    <style name="AppTheme_level_list_drawable" parent="AppTheme">
+    <style name="Theme_level_list_drawable" parent="AppTheme">
         <item name="levelListDrawable">@drawable/drawable_level_list_1_1</item>
+        <item name="color1">@android:color/holo_red_light</item>
+        <item name="color2">@android:color/holo_blue_bright</item>
+        <item name="star_off">@android:drawable/star_big_off</item>
+        <item name="star_on">@android:drawable/star_big_on</item>
     </style>
 
+    <!-- END, leve-list Drawable  -->
     <style name="view_use_default_shadow">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">50dp</item>

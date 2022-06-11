@@ -1,14 +1,12 @@
 package com.hades.example.android.resource.drawable;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.resource.drawable._bitmap.BitmapActivity;
-import com.hades.example.android.resource.drawable._bitmap.TestBitmapMemoryAndScreenDensityFragment;
 import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
 import com.hades.example.android.resource.drawable.clip.TestClipDrawableFragment;
 import com.hades.example.android.resource.drawable.layer.TestLayerDrawableFragment;
@@ -23,10 +21,10 @@ public class TestDrawableActivity extends BaseActivity {
         setContentView(R.layout.res_drawable_activity_layout);
         initViews(R.id.root);
         findViewById(R.id.pageDrawableFolder).setOnClickListener(v -> pageDrawableFolder());
-        findViewById(R.id.pageShapeDrawable).setOnClickListener(v -> pageShapeDrawable());
         findViewById(R.id.pageStateDrawable).setOnClickListener(v -> pageStateDrawable());
         findViewById(R.id.pageVectorDrawable).setOnClickListener(v -> pageVectorDrawable());
         findViewById(R.id.pageBitmap).setOnClickListener(v -> pageBitmap());
+        findViewById(R.id.pageShapeDrawable).setOnClickListener(v -> pageShapeDrawable());
         findViewById(R.id.pageLevelListDrawable).setOnClickListener(v -> pageLevelListDrawable());
         findViewById(R.id.pageLayerListDrawable).setOnClickListener(v -> pageLayerListDrawable());
         findViewById(R.id.pageClipDrawable).setOnClickListener(v -> pageClipDrawable());
@@ -43,14 +41,13 @@ public class TestDrawableActivity extends BaseActivity {
     private void pageVectorDrawable() {
         showFragment(new TestVectorDrawableFragment());
     }
+    
+    private void pageBitmap() {
+        showActivity(BitmapActivity.class);
+    }
 
     private void pageShapeDrawable() {
         showFragment(new TestShapeDrawableFragment());
-    }
-
-
-    private void pageBitmap() {
-        showActivity(BitmapActivity.class);
     }
 
     private void pageLevelListDrawable() {

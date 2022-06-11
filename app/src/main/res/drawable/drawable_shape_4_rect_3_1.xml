@@ -7,10 +7,10 @@
 
         android:centerColor="#ff0000"
         android:centerX="0.5"
-        android:centerY="0.6"
-        android:endColor="#0000ff"
-        android:gradientRadius="0.9"
 
+        android:centerY="0.5"
+        android:endColor="#0000ff"
+        android:gradientRadius="10"
         android:startColor="#00ff00"
         android:type="radial" />
 
