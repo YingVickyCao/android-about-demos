@@ -18,14 +18,7 @@ import com.hades.example.android.resource.anim.TestFrameAnimationFragment;
 import com.hades.example.android.resource.anim.TestTweenAnimationFragment;
 import com.hades.example.android.resource.animator.TestPropertyAnimationFragment;
 import com.hades.example.android.resource.dimension.TestDimensionFragment;
-import com.hades.example.android.resource.drawable._bitmap.BitmapActivity;
 import com.hades.example.android.resource.drawable._bitmap.TestBitmapMemoryAndScreenDensityFragment;
-import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
-import com.hades.example.android.resource.drawable.clip.TestClipDrawableFragment;
-import com.hades.example.android.resource.drawable.layer.TestLayerDrawableFragment;
-import com.hades.example.android.resource.drawable.shape.TestShapeDrawableFragment;
-import com.hades.example.android.resource.drawable.state.TestStateDrawableFragment;
-import com.hades.example.android.resource.drawable.vector.TestVectorDrawableFragment;
 import com.hades.example.android.resource.font.TestFontFragment;
 import com.hades.example.android.resource.i18n.InternationalizationFragment;
 import com.hades.example.android.resource.material.TestMaterialFragment;
@@ -54,17 +47,6 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.pageXML).setOnClickListener(v -> pageXML());
         findViewById(R.id.pageScreenOrientation).setOnClickListener(v -> pageScreenOrientation());
         findViewById(R.id.pageScreenSize).setOnClickListener(v -> pageScreenSize());
-        findViewById(R.id.pageDrawableAndScreenDensity).setOnClickListener(v -> pageDrawableAndScreenDensity());
-
-        findViewById(R.id.pageShapeDrawable).setOnClickListener(v -> pageShapeDrawable());
-        findViewById(R.id.pageLevelListDrawable).setOnClickListener(v -> pageLevelListDrawable());
-        findViewById(R.id.pageLayerListDrawable).setOnClickListener(v -> pageLayerListDrawable());
-        findViewById(R.id.pageStateDrawable).setOnClickListener(v -> pageStateDrawable());
-        findViewById(R.id.pageVectorDrawable).setOnClickListener(v -> pageVectorDrawable());
-        findViewById(R.id.pageClipDrawable).setOnClickListener(v -> pageClipDrawable());
-
-        findViewById(R.id.pageBitmap).setOnClickListener(v -> pageBitmap());
-
         findViewById(R.id.pageColor).setOnClickListener(v -> pageColor());
         findViewById(R.id.pageColorStateListResource).setOnClickListener(v -> pageColorStateListResource());
 
@@ -126,38 +108,6 @@ public class ResourceActivity extends PermissionActivity {
 
     private void pageScreenSize() {
         showActivity(ScreenSizeActivity.class);
-    }
-
-    private void pageDrawableAndScreenDensity() {
-        showFragment(new TestBitmapMemoryAndScreenDensityFragment());
-    }
-
-    private void pageStateDrawable() {
-        showFragment(new TestStateDrawableFragment());
-    }
-
-    private void pageVectorDrawable() {
-        showFragment(new TestVectorDrawableFragment());
-    }
-
-    private void pageClipDrawable() {
-        showFragment(new TestClipDrawableFragment());
-    }
-
-    private void pageBitmap() {
-        showActivity(BitmapActivity.class);
-    }
-
-    private void pageShapeDrawable() {
-        showFragment(new TestShapeDrawableFragment());
-    }
-
-    private void pageLevelListDrawable() {
-        showFragment(new TestLevelListDrawableFragment());
-    }
-
-    private void pageLayerListDrawable() {
-        showFragment(new TestLayerDrawableFragment());
     }
 
     private void pageTweenAnimation() {

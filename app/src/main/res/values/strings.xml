@@ -63,6 +63,7 @@
     <string name="page_bitmap_4_managing_bitmap_memory">Managing Bitmap Memory</string>
     <string name="page_bitmap_three_level_cache">Bitmap three level cache</string>
     <string name="page_bitmap">Bitmap</string>
+    <string name="page_create_bitmap">createBitmap</string>
     <string name="page_bitmap_viewer">Bitmap 之 图片查看器</string>
     <string name="page_Tween_Animation">Tween animation</string>
     <string name="page_Frame_Animation">Frame animation</string>

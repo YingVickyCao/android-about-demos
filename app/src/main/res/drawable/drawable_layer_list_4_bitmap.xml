@@ -15,8 +15,16 @@
     <item
         android:left="50dp"
         android:top="50dp">
+        <!--  Fixed ERROR: app crash
+        Error： Caused by: org.xmlpull.v1.XmlPullParserException: Binary XML file line #18: <bitmap> requires a valid 'src' attribute
+        Fix：<bitmap>的src不允许为xml drawables，原因可能是为了避免循环引用
+        -->
+<!--        <bitmap-->
+<!--            android:gravity="center"-->
+<!--            android:src="@drawable/ic_back" />-->
+
         <bitmap
             android:gravity="center"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/ic_close" />
     </item>
 </layer-list>

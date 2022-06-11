@@ -1,20 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/topic"
         style="@style/topic"
         android:text="@string/page_Drawable" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/pageDrawableFolder"
-        style="@style/btn"
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
-        android:text="@string/page_DrawableFolder" />
+        android:layout_marginTop="@dimen/size_topic">
 
-    <androidx.appcompat.widget.AppCompatButton
-        style="@style/btn"
-        android:layout_gravity="center_horizontal" />
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/pageDrawableFolder"
+                style="@style/btn"
+                android:text="@string/page_DrawableFolder" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/pageStateDrawable"
+                style="@style/btn"
+                android:text="@string/page_StateDrawable" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/pageVectorDrawable"
+                style="@style/btn"
+                android:text="@string/page_drawable_vectorDrawable" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/pageBitmap"
+                style="@style/btn"
+                android:text="@string/page_bitmap" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/pageShapeDrawable"
+                style="@style/btn"
+                android:text="@string/page_ShapeDrawable" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/pageLevelListDrawable"
+                style="@style/btn"
+                android:text="@string/page_LevelListDrawable" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/pageLayerListDrawable"
+                style="@style/btn"
+                android:text="@string/page_LayerListDrawable" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/pageClipDrawable"
+                style="@style/btn"
+                android:text="@string/page_ClipDrawable" />
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/fragmentRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>

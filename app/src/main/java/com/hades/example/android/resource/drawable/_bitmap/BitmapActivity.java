@@ -22,10 +22,11 @@ public class BitmapActivity extends PermissionActivity {
         setContentView(R.layout.res_bitmap_activity_layout);
         Log.d(TAG, "onCreate: ");
         initViews(R.id.root);
-        findViewById(R.id.pageBitmap).setOnClickListener(v -> pageBitmap());
-        findViewById(R.id.pageBitmapViewer).setOnClickListener(v -> pageBitmapViewer());
-        findViewById(R.id.pageLoadBitmapPo).setOnClickListener(v -> pageLoadBitmapPo());
-        findViewById(R.id.pageMemoryCacheBitmap).setOnClickListener(v -> pageBitmapThreeLevelCache());
+        findViewById(R.id.page_Drawable_and_ScreenDensity).setOnClickListener(v -> page_Drawable_and_ScreenDensity());
+        findViewById(R.id.page_create_bitmap).setOnClickListener(v -> page_create_bitmap());
+        findViewById(R.id.page_BitmapViewer).setOnClickListener(v -> page_BitmapViewer());
+        findViewById(R.id.page_LoadBitmapPo).setOnClickListener(v -> page_LoadBitmapPo());
+        findViewById(R.id.page_MemoryCacheBitmap).setOnClickListener(v -> page_MemoryCacheBitmap());
     }
 
     @Override
@@ -36,22 +37,26 @@ public class BitmapActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageLoadBitmapPo();
+        page_LoadBitmapPo();
     }
 
-    private void pageBitmap() {
+    private void page_Drawable_and_ScreenDensity() {
+        showFragment(new TestBitmapMemoryAndScreenDensityFragment());
+    }
+
+    private void page_create_bitmap() {
         showFragment(new TestBitmapFragment());
     }
 
-    private void pageBitmapViewer() {
+    private void page_BitmapViewer() {
         showFragment(new TestBitmapViewerFragment());
     }
 
-    private void pageLoadBitmapPo() {
+    private void page_LoadBitmapPo() {
         showFragment(new TestDecodeSampledBitmapFragment());
     }
 
-    private void pageBitmapThreeLevelCache() {
+    private void page_MemoryCacheBitmap() {
         showActivity(ImageGridActivity.class);
     }
 }
