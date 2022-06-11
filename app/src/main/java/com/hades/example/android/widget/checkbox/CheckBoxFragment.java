@@ -11,7 +11,7 @@ import android.widget.CompoundButton;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.base.BaseFragment;
 
 public class CheckBoxFragment extends BaseFragment {
     private static final String TAG = CheckBoxFragment.class.getSimpleName();

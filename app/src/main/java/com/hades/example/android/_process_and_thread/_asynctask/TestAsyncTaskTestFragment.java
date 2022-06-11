@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.base.BaseFragment;
 
 public class TestAsyncTaskTestFragment extends BaseFragment implements ISum {
     private static final String TAG = TestAsyncTaskTestFragment.class.getSimpleName();

@@ -28,7 +28,7 @@ public class MyLog {
          *         at com.hades.example.android.MyLog.test(MyLog.java:24)
          *         at com.hades.example.android.QAActivity.temp(QAActivity.java:40)
          *         at com.hades.example.android.QAActivity.showCurrentTest(QAActivity.java:35)
-         *         at com.hades.example.android.lib.base.BaseActivity.initViews(BaseActivity.java:62)
+         *         at com.hades.example.android.base.BaseActivity.initViews(BaseActivity.java:62)
          *         at com.hades.example.android.QAActivity.onCreate(QAActivity.java:19)
          *         at android.app.Activity.performCreate(Activity.java:8000)
          *         at android.app.Activity.performCreate(Activity.java:7984)

@@ -14,7 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
 
 public class TestEditTextFragment extends Fragment {
     private static final String TAG = "TestEditTextFragment";

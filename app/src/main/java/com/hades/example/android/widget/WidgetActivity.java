@@ -6,7 +6,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.NoNeedPermissionActivity;
+import com.hades.example.android.base.NoNeedPermissionActivity;
 import com.hades.example.android.widget.button.TestButtonActivity;
 import com.hades.example.android.widget.checkbox.CheckBoxFragment;
 import com.hades.example.android.widget.edittext.TestEditTextFragment;

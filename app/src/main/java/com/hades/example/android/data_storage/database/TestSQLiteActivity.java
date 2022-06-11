@@ -15,11 +15,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.NoNeedPermissionActivity;
+import com.hades.example.android.base.NoNeedPermissionActivity;
 import com.hades.example.java.lib.DummyItems;
 import com.hades.example.java.lib.DummyItem;
 import com.hades.example.java.lib.DateUtil;
-import com.hades.example.android.lib.mock.DummyContentFragment;
+import com.hades.example.android.base.DummyContentFragment;
 
 import java.util.ArrayList;
 import java.util.List;

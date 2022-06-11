@@ -9,7 +9,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseActivity;
+import com.hades.example.android.base.BaseActivity;
 
 public class TestConfigurationActivity extends BaseActivity {
     private static final String TAG = TestConfigurationActivity.class.getSimpleName();

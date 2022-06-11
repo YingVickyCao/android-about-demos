@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.lib.mock.DummyFragment;
+import com.hades.example.android.base.NoNeedPermissionActivity;
+import com.hades.example.android.base.DummyFragment;
 
 public class TestActionBarNavigationActivity extends NoNeedPermissionActivity implements ActionBar.TabListener {
 

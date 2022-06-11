@@ -11,7 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseActivity;
+import com.hades.example.android.base.BaseActivity;
 
 public class TestCircleViewActivity extends BaseActivity {
     private static final String TAG = TestCircleViewActivity.class.getSimpleName();

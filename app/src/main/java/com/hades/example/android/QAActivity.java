@@ -4,8 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.lib.base.NoNeedPermissionActivity;
-import com.hades.example.android.tools.TestDensityUtil;
+import com.hades.example.android.base.NoNeedPermissionActivity;
 
 
 public class QAActivity extends NoNeedPermissionActivity {

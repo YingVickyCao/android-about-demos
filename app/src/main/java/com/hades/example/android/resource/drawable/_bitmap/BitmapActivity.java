@@ -7,7 +7,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.PermissionActivity;
+import com.hades.example.android.base.PermissionActivity;
 import com.hades.example.android.resource.drawable._bitmap.three_level_cache.ImageGridActivity;
 
 /**

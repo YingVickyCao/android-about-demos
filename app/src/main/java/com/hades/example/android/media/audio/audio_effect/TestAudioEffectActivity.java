@@ -23,7 +23,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hades.example.android.lib.base.PermissionActivity;
+import com.hades.example.android.base.PermissionActivity;
 import com.hades.example.android.R;
 
 import java.util.ArrayList;

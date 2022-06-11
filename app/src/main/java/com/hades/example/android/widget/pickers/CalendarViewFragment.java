@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.base.BaseFragment;
 import com.hades.example.android.R;
 
 public class CalendarViewFragment extends BaseFragment {

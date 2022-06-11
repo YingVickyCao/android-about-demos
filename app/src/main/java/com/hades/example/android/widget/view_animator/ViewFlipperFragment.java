@@ -17,7 +17,7 @@ import android.widget.ViewFlipper;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.base.BaseFragment;
 
 public class ViewFlipperFragment extends BaseFragment implements View.OnTouchListener {
     private static final String TAG = ViewFlipperFragment.class.getSimpleName();

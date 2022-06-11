@@ -3,7 +3,7 @@ package com.hades.example.android.data_storage.shared_preferences;
 import android.Manifest;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.PermissionActivity;
+import com.hades.example.android.base.PermissionActivity;
 
 public class TestSFProcess1Activity extends PermissionActivity {
     @Override

@@ -9,10 +9,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.base.BaseFragment;
 import com.hades.example.android.lib.utils.VersionUtil;
-import com.hades.example.android.lib.utils.bitmap.fetch.ImageFetcher;
-import com.hades.example.android.lib.utils.bitmap.fetch.OnImageLoadedListener;
+import com.hades.example.android.resource.drawable._bitmap.utils.fetch.ImageFetcher;
+import com.hades.example.android.resource.drawable._bitmap.utils.fetch.OnImageLoadedListener;
 
 public class ImageDetailFragment extends BaseFragment implements OnImageLoadedListener {
     private static final String IMAGE_DATA_EXTRA = "extra_image_data";

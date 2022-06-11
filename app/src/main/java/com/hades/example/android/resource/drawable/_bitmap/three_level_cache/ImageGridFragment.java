@@ -36,12 +36,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.base.BaseFragment;
 import com.hades.example.java.lib.Images;
 import com.hades.example.android.lib.utils.VersionUtil;
-import com.hades.example.android.lib.utils.bitmap.cache.ImageCacheParams;
-import com.hades.example.android.lib.utils.bitmap.fetch.IImageWorker;
-import com.hades.example.android.lib.utils.bitmap.fetch.ImageFetcher;
+import com.hades.example.android.resource.drawable._bitmap.utils.cache.ImageCacheParams;
+import com.hades.example.android.resource.drawable._bitmap.utils.fetch.IImageWorker;
+import com.hades.example.android.resource.drawable._bitmap.utils.fetch.ImageFetcher;
 
 public class ImageGridFragment extends BaseFragment implements IImageWorker {
     private static final String TAG = ImageGridFragment.class.getSimpleName();

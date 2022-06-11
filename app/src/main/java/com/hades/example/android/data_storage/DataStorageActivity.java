@@ -11,7 +11,7 @@ import com.hades.example.android.data_storage.database.TestSQLiteActivity;
 import com.hades.example.android.data_storage.io.TestIOFragment;
 import com.hades.example.android.data_storage.io.TestZipFragment;
 import com.hades.example.android.data_storage.shared_preferences.TestSharedPreferencesFragment;
-import com.hades.example.android.lib.base.PermissionActivity;
+import com.hades.example.android.base.PermissionActivity;
 
 public class DataStorageActivity extends PermissionActivity {
     private static final String TAG = DataStorageActivity.class.getSimpleName();

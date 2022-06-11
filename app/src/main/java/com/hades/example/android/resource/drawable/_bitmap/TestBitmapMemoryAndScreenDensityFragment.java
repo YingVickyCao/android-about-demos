@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.base.BaseFragment;
 
 public class TestBitmapMemoryAndScreenDensityFragment extends BaseFragment {
     private static final String TAG = TestBitmapMemoryAndScreenDensityFragment.class.getSimpleName();

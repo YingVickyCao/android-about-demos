@@ -14,7 +14,7 @@ import android.widget.PopupWindow;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.base.BaseFragment;
 
 /**
  * https://www.jianshu.com/p/799dbb86f908

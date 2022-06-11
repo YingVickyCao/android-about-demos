@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseActivity;
+import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.lib.utils.MemoryCache;
 
 public class ThemeChoosePageAActivity extends BaseActivity {

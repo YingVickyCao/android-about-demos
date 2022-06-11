@@ -9,7 +9,7 @@ import android.webkit.WebView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.base.BaseFragment;
 
 public class TestWebViewFragment extends BaseFragment {
     private WebView mWebView;

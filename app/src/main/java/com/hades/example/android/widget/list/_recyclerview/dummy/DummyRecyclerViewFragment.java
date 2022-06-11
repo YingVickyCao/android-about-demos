@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.base.BaseFragment;
 import com.hades.example.java.lib.DummyItems;
 import com.hades.example.java.lib.DummyItem;
 import com.hades.example.android.R;

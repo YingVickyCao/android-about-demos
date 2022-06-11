@@ -7,7 +7,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.PermissionActivity;
+import com.hades.example.android.base.PermissionActivity;
 import com.hades.example.android.resource._array.TestStringIntegerArrayFragment;
 import com.hades.example.android.resource._color_state_list.TestColorFragment;
 import com.hades.example.android.resource._color_state_list.TestColorStateListFragment;
@@ -18,7 +18,6 @@ import com.hades.example.android.resource.anim.TestFrameAnimationFragment;
 import com.hades.example.android.resource.anim.TestTweenAnimationFragment;
 import com.hades.example.android.resource.animator.TestPropertyAnimationFragment;
 import com.hades.example.android.resource.dimension.TestDimensionFragment;
-import com.hades.example.android.resource.drawable.TestDrawableFolderFragment;
 import com.hades.example.android.resource.drawable._bitmap.BitmapActivity;
 import com.hades.example.android.resource.drawable._bitmap.TestBitmapMemoryAndScreenDensityFragment;
 import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
@@ -63,7 +62,7 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.pageStateDrawable).setOnClickListener(v -> pageStateDrawable());
         findViewById(R.id.pageVectorDrawable).setOnClickListener(v -> pageVectorDrawable());
         findViewById(R.id.pageClipDrawable).setOnClickListener(v -> pageClipDrawable());
-        
+
         findViewById(R.id.pageBitmap).setOnClickListener(v -> pageBitmap());
 
         findViewById(R.id.pageColor).setOnClickListener(v -> pageColor());

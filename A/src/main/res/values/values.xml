@@ -1,0 +1,19 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <!--   a darker variant of the primary color, used for the status bar (on Android 5.0+) and contextual app bars -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--   color for the app bar and other primary UI elements -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--   a secondary color for controls like checkboxes and text fields -->
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <string name="app_name">A</string>
+    <string name="page_cross_app_access">Cross app access</string>
+    <string name="page_custom_permission">Custom permission</string>
+</resources>

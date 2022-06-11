@@ -37,8 +37,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.hades.example.java.lib.Images;
 import com.hades.example.android.lib.utils.VersionUtil;
-import com.hades.example.android.lib.utils.bitmap.cache.ImageCacheParams;
-import com.hades.example.android.lib.utils.bitmap.fetch.ImageFetcher;
+import com.hades.example.android.resource.drawable._bitmap.utils.cache.ImageCacheParams;
+import com.hades.example.android.resource.drawable._bitmap.utils.fetch.ImageFetcher;
 import com.hades.example.android.BuildConfig;
 import com.hades.example.android.R;
 

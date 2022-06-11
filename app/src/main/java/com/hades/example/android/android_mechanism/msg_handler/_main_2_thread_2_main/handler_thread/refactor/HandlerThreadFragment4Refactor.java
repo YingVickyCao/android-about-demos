@@ -13,7 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.base.BaseFragment;
+import com.hades.example.android.base.BaseFragment;
 import com.hades.example.java.lib.ThreadUtils;
 
 import static com.hades.example.android.android_mechanism.msg_handler._main_2_thread_2_main.handler_thread.refactor.SumThread.KEY_FINISH;
