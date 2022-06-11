@@ -30,20 +30,12 @@ public class LightMyView extends MyViewBase {
 
     @ColorInt
     protected int getColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return getResources().getColor(R.color.dark_m_0_opacity_80, getContext().getTheme());
-        } else {
-            return getResources().getColor(R.color.dark_m_0_opacity_80);
-        }
+        return getResources().getColor(R.color.dark_m_0_opacity_80, getContext().getTheme());
     }
 
     @ColorInt
     protected int getColor2() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return getResources().getColor(R.color.dark_m_0, getContext().getTheme());
-        } else {
-            return getResources().getColor(R.color.dark_m_0);
-        }
+        return getResources().getColor(R.color.dark_m_0, getContext().getTheme());
     }
 
     @Override

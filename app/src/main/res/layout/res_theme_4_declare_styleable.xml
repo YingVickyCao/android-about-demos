@@ -131,10 +131,4 @@
         android:gravity="center"
         android:minHeight="@dimen/size_50"
         android:textColor="@android:color/holo_red_light" />
-
-    <!--<include-->
-    <!--layout="@layout/res_theme_btns"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="60dp"-->
-    <!--android:layout_alignParentBottom="true" />-->
 </LinearLayout>

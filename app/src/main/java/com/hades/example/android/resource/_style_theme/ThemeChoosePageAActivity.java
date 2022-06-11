@@ -133,9 +133,9 @@ public class ThemeChoosePageAActivity extends BaseActivity {
     protected void setTheme() {
         boolean isLightTheme = com.hades.example.java.lib.MemoryCache.getInstance().isRedTheme();
         if (isLightTheme) {
-            setTheme(R.style.AppTheme_Light);
+            setTheme(R.style.ThemeChoose_Light);
         } else {
-            setTheme(R.style.AppTheme_Dark);
+            setTheme(R.style.ThemeChoose_Dark);
         }
     }
 }

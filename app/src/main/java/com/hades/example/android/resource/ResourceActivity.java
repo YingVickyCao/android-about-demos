@@ -40,7 +40,7 @@ public class ResourceActivity extends PermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.AppTheme_Light);
+//        setTheme(R.style.AppTheme_Light);
         setContentView(R.layout.activity_resources);
         Log.d(TAG, "onCreate: ");
         initViews(R.id.root);
@@ -81,7 +81,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageLevelListDrawable();
+//        pageLevelListDrawable();
     }
 
     private void pageColor() {

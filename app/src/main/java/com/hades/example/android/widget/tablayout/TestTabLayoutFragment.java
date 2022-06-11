@@ -11,11 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 
-import com.hades.example.android.base.ThemeBaseFragment;
+import com.hades.example.android.base.BaseFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.hades.example.android.R;
 
-public class TestTabLayoutFragment extends ThemeBaseFragment {
+public class TestTabLayoutFragment extends BaseFragment {
     private static final String TAG = TestTabLayoutFragment.class.getSimpleName();
 
     TabLayout tabLayout;

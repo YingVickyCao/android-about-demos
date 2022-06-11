@@ -19,7 +19,6 @@ public class BitmapActivity extends PermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.AppTheme_Light);
         setContentView(R.layout.res_bitmap_activity_layout);
         Log.d(TAG, "onCreate: ");
         initViews(R.id.root);
