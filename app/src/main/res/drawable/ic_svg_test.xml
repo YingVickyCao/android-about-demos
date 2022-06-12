@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="60dp"
+    android:height="60dp"
+    android:viewportWidth="60"
+    android:viewportHeight="60">
+<!--    <path-->
+<!--        android:pathData="M0,0H60V60H0Z"-->
+<!--        android:strokeWidth="1"-->
+<!--        android:strokeColor="#0000FF" />-->
+    <!-- 二阶贝赛尔曲线 Qx1,y1 x2,y2   -->
+    <path
+        android:pathData="M0,30Q30,0 60,30"
+        android:strokeWidth="1"
+        android:strokeColor="#FF0000" />
+    <!-- 二阶贝赛尔曲线 Qx1,y1 x2,y2  -->
+<!--    <path-->
+<!--        android:pathData="M0,60Q50,30 60,60"-->
+<!--        android:strokeWidth="1"-->
+<!--        android:strokeColor="#FF0000" />-->
+</vector>

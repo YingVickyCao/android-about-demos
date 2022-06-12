@@ -15,6 +15,10 @@
             style="@style/topic"
             android:text="@string/page_VectorDrawable" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/tv"
+            android:text="SVG basic" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,6 +61,41 @@
                 android:theme="@style/Theme_Vector_drawable"
                 app:srcCompat="@drawable/ic_svg_vd"
                 app:tint="@android:color/holo_green_dark" />
+        </LinearLayout>
+
+        <View style="@style/div" />
+
+        <TextView
+            style="@style/tv"
+            android:text="&lt;vector&gt;语法" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/size_20">
+
+            <!-- android:pathData : MLHV-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_svg_test_m_l_h_v" />
+
+            <!-- android:pathData : 二阶贝赛尔曲线 Qx1,y1 x2,y2 -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_svg_test_quadratic_bezier_curve" />
+
+            <!-- android:pathData :Cx1,y1 x2,y2 x3,y3 三阶贝塞尔曲线 -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/size_10"
+                android:src="@drawable/ic_svg_test_cubic_bezier_curve" />
+
         </LinearLayout>
 
         <View style="@style/div" />

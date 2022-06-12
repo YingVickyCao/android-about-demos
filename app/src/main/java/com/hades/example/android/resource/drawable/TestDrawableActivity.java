@@ -30,6 +30,11 @@ public class TestDrawableActivity extends BaseActivity {
         findViewById(R.id.pageClipDrawable).setOnClickListener(v -> pageClipDrawable());
     }
 
+    @Override
+    protected void showCurrentTest() {
+        pageVectorDrawable();
+    }
+
     private void pageDrawableFolder() {
         showFragment(new TestDrawableFolderFragment());
     }
@@ -41,7 +46,7 @@ public class TestDrawableActivity extends BaseActivity {
     private void pageVectorDrawable() {
         showFragment(new TestVectorDrawableFragment());
     }
-    
+
     private void pageBitmap() {
         showActivity(BitmapActivity.class);
     }

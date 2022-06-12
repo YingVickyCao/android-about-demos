@@ -1,0 +1,16 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="60dp"
+    android:height="60dp"
+    android:viewportWidth="60"
+    android:viewportHeight="60">
+    <path
+        android:pathData="M0,0H60V60H0Z"
+        android:strokeWidth="1"
+        android:strokeColor="#FF0000" />
+
+    <!-- android:pathData :Cx1,y1 x2,y2 x3,y3 三阶贝塞尔曲线 -->
+    <path
+        android:pathData="M0,30C20,0 40,0 60,30"
+        android:strokeWidth="1"
+        android:strokeColor="#0F0" />
+</vector>
