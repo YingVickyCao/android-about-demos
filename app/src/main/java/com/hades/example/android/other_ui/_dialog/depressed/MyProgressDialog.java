@@ -40,7 +40,7 @@ public class MyProgressDialog extends ProgressDialog {
         Log.d(TAG, "onCreate: ");
 
         ProgressBar progressBar = findViewById(android.R.id.progress);
-        progressBar.setIndeterminateDrawable(AppCompatResources.getDrawable(getContext(), R.drawable.drawable_rotate_loading_indeterminate));
+        progressBar.setIndeterminateDrawable(AppCompatResources.getDrawable(getContext(), R.drawable.drawable_animated_rotate_loading_indeterminate));
 
         FrameLayout frameLayout = findViewById(android.R.id.custom);
         TextView message = frameLayout.findViewById(android.R.id.message);

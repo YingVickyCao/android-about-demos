@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -14,21 +15,65 @@
             style="@style/topic"
             android:text="@string/page_VectorDrawable" />
 
-        <!-- vector: use attr  -->
-        <!--app:srcCompat="@drawable/drawable_vector_4_vd"-->
-        <ImageView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/drawable_vector_4_vd" />
+            android:gravity="center">
+
+            <!--
+                svg 支持attr
+                >=Android 5(21),android:src          -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_svg_vd"
+                android:theme="@style/Theme_Vector_drawable" />
+
+            <!-- svg支持tint           -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_svg_vd"
+                android:theme="@style/Theme_Vector_drawable"
+                android:tint="@android:color/holo_green_dark" />
+
+            <!--  app:srcCompat="@drawable/drawable_vector_4_vd"
+                  用支持库，使得 svg 支持 API<21。
+            -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:theme="@style/Theme_Vector_drawable"
+                app:srcCompat="@drawable/ic_svg_vd" />
+
+            <!-- svg支持tint           -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:theme="@style/Theme_Vector_drawable"
+                app:srcCompat="@drawable/ic_svg_vd"
+                app:tint="@android:color/holo_green_dark" />
+        </LinearLayout>
 
         <View style="@style/div" />
 
         <!-- animated-vector -->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_50"
+            android:layout_height="@dimen/size_100"
             android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/anim_vector_menu" />
+
 
             <Button
                 android:id="@+id/startAnimation"
@@ -37,13 +82,6 @@
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="bottom"
                 android:text="@string/start_animation" />
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/drawable_animated_vector_4_avd" />
 
             <Button
                 android:id="@+id/stopAnimation"
@@ -60,6 +98,7 @@
             style="@style/tv"
             android:text="@string/check_render_time" />
 
+        <!-- 图片越大，对比SVG，SVG渲染性能越优秀       -->
         <TextView
             android:id="@+id/checkRenderTime"
             style="@style/tv" />
@@ -91,6 +130,7 @@
             style="@style/tv"
             android:text="@string/change_view_size_when_using_svg" />
 
+        <!-- SVG，支持无损放大或缩小       -->
         <ImageView
             android:layout_width="50dp"
             android:layout_height="100dp"

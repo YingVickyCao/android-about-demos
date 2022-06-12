@@ -83,24 +83,24 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add" />
+            android:src="@drawable/ic_svg_add" />
 
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateDrawable="@drawable/ic_add" />
+            android:indeterminateDrawable="@drawable/ic_svg_add" />
 
         <!-- In Light theme, svg color = view tint. In dark, svg color = view tint -->
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add"
+            android:src="@drawable/ic_svg_add"
             android:tint="@color/green" />
 
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateDrawable="@drawable/ic_add"
+            android:indeterminateDrawable="@drawable/ic_svg_add"
             android:indeterminateTint="@color/green" />
 
         <View style="@style/div" />
@@ -112,19 +112,19 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_alpha" />
+            android:src="@drawable/ic_svg_add_alpha" />
 
         <!-- ✗ -->
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_alpha2" />
+            android:src="@drawable/ic_svg_add_alpha2" />
 
         <!-- ✔  -->
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_alpha"
+            android:src="@drawable/ic_svg_add_alpha"
             android:tint="#80FF0000" />
         <!-- END: tint in svg,alpha -->
     </LinearLayout>

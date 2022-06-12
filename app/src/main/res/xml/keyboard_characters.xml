@@ -47,7 +47,7 @@
         <!--  Delete  -->
         <Key
             app:codes="-5"
-            app:keyIcon="@drawable/ic_delete" />
+            app:keyIcon="@drawable/ic_svg_delete" />
 
         <!--  Done     -->
         <Key

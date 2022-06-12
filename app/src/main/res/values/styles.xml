@@ -483,8 +483,14 @@
         <item name="star_off">@android:drawable/star_big_off</item>
         <item name="star_on">@android:drawable/star_big_on</item>
     </style>
-
     <!-- END, leve-list Drawable  -->
+
+    <!-- START, vector Drawable  -->
+    <style name="Theme_Vector_drawable" parent="AppTheme">
+        <item name="color1">@android:color/holo_red_light</item>
+    </style>
+    <!-- END, vector Drawable  -->
+
     <style name="view_use_default_shadow">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">50dp</item>

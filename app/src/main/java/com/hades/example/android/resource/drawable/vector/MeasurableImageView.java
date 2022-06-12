@@ -24,8 +24,7 @@ public class MeasurableImageView extends ImageView {
         super(context, attrs);
     }
 
-    public MeasurableImageView(final Context context, final AttributeSet attrs,
-                               final int defStyleAttr) {
+    public MeasurableImageView(final Context context, final AttributeSet attrs, final int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

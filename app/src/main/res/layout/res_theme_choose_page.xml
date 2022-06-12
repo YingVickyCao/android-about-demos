@@ -122,13 +122,13 @@
                 <Button
                     style="@style/btn"
                     android:text="@string/selector_color"
-                    android:textColor="@drawable/color_v1_2_in_drawable" />
+                    android:textColor="@drawable/drawable_selector_color_v1_2_in_drawable" />
 
                 <!-- @Deprecated  -->
                 <Button
                     style="@style/btn"
                     android:text="@string/selector_color"
-                    android:textColor="@drawable/color_v1_2_in_drawable" />
+                    android:textColor="@drawable/drawable_selector_color_v1_2_in_drawable" />
 
                 <!-- @Recommend -->
                 <Button
@@ -172,13 +172,13 @@
                 <!-- @Deprecated  -->
                 <Button
                     style="@style/btn"
-                    android:backgroundTint="@drawable/color_v1_2_in_drawable"
+                    android:backgroundTint="@drawable/drawable_selector_color_v1_2_in_drawable"
                     android:text="@string/selector_color" />
 
                 <!-- @Recommend -->
                 <Button
                     style="@style/btn"
-                    android:background="@drawable/color_v2_in_drawable"
+                    android:background="@drawable/drawable_selector_color_v2_in_drawable"
                     android:text="@string/selector_color" />
             </LinearLayout>
 

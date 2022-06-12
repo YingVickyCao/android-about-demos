@@ -77,8 +77,5 @@ dependencies {
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
     testImplementation 'junit:junit:4.13.2'
 
-    androidTestImplementation("androidx.test.espresso:espresso-core:$espressoCore_version", {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 }

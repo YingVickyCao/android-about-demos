@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dip"
-            android:indeterminateDrawable="@drawable/drawable_rotate_loading_indeterminate"
+            android:indeterminateDrawable="@drawable/drawable_animated_rotate_loading_indeterminate"
             android:indeterminateTint="@android:color/holo_red_dark"
             android:max="10000" />
 

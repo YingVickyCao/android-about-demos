@@ -22,7 +22,7 @@
             android:layout_gravity="center_vertical"
             android:background="@android:color/transparent"
             android:duplicateParentState="false"
-            android:src="@drawable/ic_dashboard"
+            android:src="@drawable/ic_svg_dashboard"
             android:tint="@color/drag_icon_status" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:id="@+id/drag"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@drawable/ic_drag"
+            android:background="@drawable/ic_svg_drag"
             android:duplicateParentState="true"
             android:gravity="center" />
     </LinearLayout>

@@ -1,7 +1,5 @@
 package com.hades.example.android.network;
 
-import android.support.v4.os.IResultReceiver;
-
 public class Request {
     public void test() {
 

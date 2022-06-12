@@ -26,7 +26,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="@dimen/margin_small"
             android:background="@null"
-            android:src="@drawable/ic_add"
+            android:src="@drawable/ic_svg_add"
             android:textAllCaps="false"
             android:tint="@color/color_image_button_icon_color" />
 
@@ -39,7 +39,7 @@
             android:layout_marginTop="@dimen/margin_small"
             android:background="@null"
             android:clickable="false"
-            android:src="@drawable/ic_add"
+            android:src="@drawable/ic_svg_add"
             android:textAllCaps="false"
             android:tint="@color/color_image_button_icon_color" />
 
@@ -54,7 +54,7 @@
                 android:layout_height="50dp"
                 android:background="@null"
                 android:clickable="false"
-                android:src="@drawable/ic_add"
+                android:src="@drawable/ic_svg_add"
                 android:tint="@color/color_image_button_icon_color" />
 
             <Button
@@ -80,7 +80,7 @@
                 android:layout_height="50dp"
                 android:background="@null"
                 android:clickable="false"
-                android:src="@drawable/ic_add"
+                android:src="@drawable/ic_svg_add"
                 android:tint="@color/color_image_button_icon_color2" />
 
             <Button
@@ -107,7 +107,7 @@
             android:layout_marginTop="@dimen/margin_small"
             android:background="@drawable/xml_btn_bg"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_home"
+            android:src="@drawable/ic_svg_home"
             android:tint="@color/color_btn_text_color" />
 
         <ImageButton
@@ -115,7 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
             android:background="@drawable/xml_btn_bg"
-            android:src="@drawable/ic_home"
+            android:src="@drawable/ic_svg_home"
             android:tint="@color/color_btn_text_color" />
 
         <View style="@style/div" />
@@ -132,7 +132,7 @@
             android:layout_height="80dp"
             android:layout_marginTop="@dimen/margin_small"
             android:background="@drawable/xml_btn_bg"
-            android:src="@drawable/ic_home"
+            android:src="@drawable/ic_svg_home"
             android:tint="@color/color_btn_text_color" />
     </LinearLayout>
 </RelativeLayout>
