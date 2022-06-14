@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="60dp"
+    android:height="60dp"
+    android:viewportWidth="60"
+    android:viewportHeight="60">
+
+    <!--绘制红色可绘制正方形区域-->
+    <path
+        android:pathData="M0,0H60V60H0Z"
+        android:strokeWidth="1"
+        android:strokeColor="#F00" />
+
+    <clip-path android:pathData="M20,20 L40,40 L20,40" />
+
+    <!-- 假如把clip-path换成path：绿色三角   -->
+    <!--    <path-->
+    <!--        android:pathData="M20,20 L40,40 L20,40"-->
+    <!--        android:strokeWidth="1"-->
+    <!--        android:strokeColor="#0F0" />-->
+
+    <group>
+        <!-- 绘制蓝色正方形 -->
+        <path
+            android:pathData="M20,20h20v20h-20z"
+            android:strokeWidth="1"
+            android:strokeColor="#00F" />
+    </group>
+</vector>

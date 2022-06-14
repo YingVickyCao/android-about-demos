@@ -1,6 +1,16 @@
 <objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
     android:duration="500"
     android:propertyName="pathData"
-    android:valueFrom="M20,20L80,20"
-    android:valueTo="M50,20L80,50"
+    android:valueFrom="M20,80L80,80"
+    android:valueTo="M50,80L80,50"
     android:valueType="pathType" />
+
+    <!-- 属性动画-路径变换 -->
+
+<!--
+duration：       动画持续时间
+propertyName：   选择控制svg 的path-pathData属性
+valueFrom ：     开始位置, 与svg 的path 的pathData对应
+valueTo ：       结束位置
+valueType ：     告诉系统进行pathData变换:进行形状、位置变化。
+ -->

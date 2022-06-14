@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_svg_pause">
+
+    <!-- target的name与svg的pathname 对应   -->
+    <target
+        android:name="pausePath"
+        android:animation="@animator/anim_pause" />
+</animated-vector>

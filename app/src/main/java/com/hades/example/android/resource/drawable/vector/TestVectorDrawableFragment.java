@@ -2,6 +2,7 @@ package com.hades.example.android.resource.drawable.vector;
 
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.VectorDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,7 +19,9 @@ import com.hades.example.android.base.BaseFragment;
 public class TestVectorDrawableFragment extends BaseFragment {
     private static final String TAG = TestVectorDrawableFragment.class.getSimpleName();
 
-    private ImageView mImageView;
+    private ImageView imageView_changePath;
+    private ImageView imageView_changeColor;
+
     private MeasurableImageView mMeasurableImageView;
     private TextView checkRenderTime;
 
@@ -27,13 +30,15 @@ public class TestVectorDrawableFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.res_drawable_vector, container, false);
 
-        mImageView = view.findViewById(R.id.imageView);
+        imageView_changePath = view.findViewById(R.id.imageView_changePath);
+        imageView_changeColor = view.findViewById(R.id.imageView_changeColor);
+
         mMeasurableImageView = view.findViewById(R.id.measurableImageView);
         mMeasurableImageView.setViewRedrawnListener(milliseconds -> onDrawFinished(milliseconds));
         checkRenderTime = view.findViewById(R.id.checkRenderTime);
 
         view.findViewById(R.id.startAnimation).setOnClickListener(v -> startAnimation());
-        view.findViewById(R.id.stopAnimation).setOnClickListener(v -> stopAnimation());
+        view.findViewById(R.id.stop_reset_Animation).setOnClickListener(v -> stop_reset_Animation());
 
         view.findViewById(R.id.vector_drawable_button).setOnClickListener(v -> vectorDrawableSelected());
         view.findViewById(R.id.png_button).setOnClickListener(v -> pngSelected());
@@ -41,16 +46,27 @@ public class TestVectorDrawableFragment extends BaseFragment {
     }
 
     private void startAnimation() {
-        if (null != mImageView && null != mImageView.getDrawable() && mImageView.getDrawable() instanceof AnimatedVectorDrawable) {
-            AnimatedVectorDrawable drawable = (AnimatedVectorDrawable) mImageView.getDrawable();
+        startAnimation(imageView_changePath);
+        startAnimation(imageView_changeColor);
+    }
+
+    private void startAnimation(ImageView imageView) {
+        if (null != imageView && null != imageView.getDrawable() && imageView.getDrawable() instanceof AnimatedVectorDrawable) {
+            AnimatedVectorDrawable drawable = (AnimatedVectorDrawable) imageView.getDrawable();
             drawable.start();
         }
     }
 
-    private void stopAnimation() {
-        if (null != mImageView && null != mImageView.getDrawable() && mImageView.getDrawable() instanceof AnimatedVectorDrawable) {
-            AnimatedVectorDrawable drawable = (AnimatedVectorDrawable) mImageView.getDrawable();
+    private void stop_reset_Animation() {
+        stop_reset_Animation(imageView_changePath);
+        stop_reset_Animation(imageView_changeColor);
+    }
+
+    private void stop_reset_Animation(ImageView imageView) {
+        if (null != imageView && null != imageView.getDrawable() && imageView.getDrawable() instanceof AnimatedVectorDrawable) {
+            AnimatedVectorDrawable drawable = (AnimatedVectorDrawable) imageView.getDrawable();
             drawable.stop();
+            drawable.reset();
         }
     }
 

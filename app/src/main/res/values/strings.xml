@@ -263,6 +263,7 @@
     <string name="start">Start</string>
     <string name="start_animation">Start animation</string>
     <string name="stop_animation">Stop animation</string>
+    <string name="stop_reset_animation">Stop and Reset animation</string>
     <string name="jump">Jump</string>
     <string name="bind">Bind</string>
     <string name="unbind">unBind</string>

@@ -100,19 +100,27 @@
 
         <View style="@style/div" />
 
-        <!-- animated-vector -->
+        <!-- 矢量动画 animated-vector -->
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/tv"
+            android:text="矢量动画 animated-vector " />
+
+        <ImageView
+            android:id="@+id/imageView_changePath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_svg_anim_vector_of_menu" />
+
+        <ImageView
+            android:id="@+id/imageView_changeColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_svg_anim_vector_of_pause" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_100"
             android:gravity="center">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/anim_vector_menu" />
-
 
             <Button
                 android:id="@+id/startAnimation"
@@ -123,11 +131,11 @@
                 android:text="@string/start_animation" />
 
             <Button
-                android:id="@+id/stopAnimation"
+                android:id="@+id/stop_reset_Animation"
                 style="@style/btn"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:text="@string/stop_animation" />
+                android:text="@string/stop_reset_animation" />
 
         </RelativeLayout>
 
@@ -171,8 +179,8 @@
 
         <!-- SVG，支持无损放大或缩小       -->
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/drawable_vector_4_placeholder_svg" />
 
         <ImageView
