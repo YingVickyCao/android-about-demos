@@ -38,35 +38,27 @@
 
             <View style="@style/div" />
 
-            <TextView
-                style="@style/tv"
-                android:text="平移" />
-
             <Button
                 android:id="@+id/btn2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                style="@style/btn"
+                android:text="平移 this button" />
 
             <Button
-                android:id="@+id/AnimatorSet_translationXY_by_XML"
+                android:id="@+id/translationXY_XML_AnimatorSet"
                 style="@style/btn"
-                android:text="AnimatorSet（平移XY）- XML" />
+                android:text="XML - AnimatorSet" />
 
             <Button
-                android:id="@+id/AnimatorSet_translationXY_by_java"
+                android:id="@+id/translationXY_java_AnimatorSet"
                 style="@style/btn"
-                android:text="AnimatorSet（平移XY）- Java" />
+                android:text="Java-AnimatorSet" />
 
             <Button
-                android:id="@+id/PropertyValuesHolder_translationXY_by_java"
+                android:id="@+id/translationXY_java_PropertyValuesHolder"
                 style="@style/btn"
-                android:text="PropertyValuesHolder (平移XY) - Java" />
+                android:text="Java-PropertyValuesHolder" />
 
             <View style="@style/div" />
-
-            <TextView
-                style="@style/tv"
-                android:text="旋转" />
 
             <ImageView
                 android:id="@+id/imageview2"
@@ -81,10 +73,6 @@
 
             <View style="@style/div" />
 
-            <TextView
-                style="@style/tv"
-                android:text="缩放" />
-
             <ImageView
                 android:id="@+id/imageview3"
                 android:layout_width="wrap_content"
@@ -95,6 +83,19 @@
                 android:id="@+id/scale"
                 style="@style/btn"
                 android:text="缩放" />
+
+            <View style="@style/div" />
+
+            <ImageView
+                android:id="@+id/imageview4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launcher_round" />
+
+            <Button
+                android:id="@+id/alpha"
+                style="@style/btn"
+                android:text="透明度" />
         </LinearLayout>
 
     </ScrollView>
