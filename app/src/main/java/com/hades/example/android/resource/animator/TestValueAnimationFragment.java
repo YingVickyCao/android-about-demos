@@ -46,10 +46,10 @@ public class TestValueAnimationFragment extends Fragment {
         animator.setDuration(3000);
         animator.setRepeatCount(0);
         animator.setRepeatMode(ValueAnimator.REVERSE);
-        animator.setEvaluator(new ArgbEvaluator());             // 渐变，否则 一闪一闪
+        animator.setEvaluator(new ArgbEvaluator());                         // 渐变，否则 一闪一闪
         setAnimatorListener(animator);
         animator.addUpdateListener(animation -> {
-            Integer value = (Integer) animation.getAnimatedValue(); // 动态的获取当前运行到的属性值
+            Integer value = (Integer) animation.getAnimatedValue();         // 动态的获取当前运行到的属性值
             btn.setBackgroundColor(value);
         });
         animator.start(); // 开始播放动画

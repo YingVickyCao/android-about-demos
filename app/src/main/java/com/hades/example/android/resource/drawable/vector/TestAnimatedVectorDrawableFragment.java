@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
 
-// 适量动画
+// 矢量动画
 public class TestAnimatedVectorDrawableFragment extends Fragment {
     private static final String TAG = "TestAnimatedVectorDrawableFragment";
 
