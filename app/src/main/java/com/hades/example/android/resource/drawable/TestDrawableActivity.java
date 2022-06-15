@@ -12,6 +12,7 @@ import com.hades.example.android.resource.drawable.clip.TestClipDrawableFragment
 import com.hades.example.android.resource.drawable.layer.TestLayerDrawableFragment;
 import com.hades.example.android.resource.drawable.shape.TestShapeDrawableFragment;
 import com.hades.example.android.resource.drawable.state.TestStateDrawableFragment;
+import com.hades.example.android.resource.drawable.vector.TestAnimatedVectorDrawableFragment;
 import com.hades.example.android.resource.drawable.vector.TestVectorDrawableFragment;
 
 public class TestDrawableActivity extends BaseActivity {
@@ -23,6 +24,7 @@ public class TestDrawableActivity extends BaseActivity {
         findViewById(R.id.pageDrawableFolder).setOnClickListener(v -> pageDrawableFolder());
         findViewById(R.id.pageStateDrawable).setOnClickListener(v -> pageStateDrawable());
         findViewById(R.id.pageVectorDrawable).setOnClickListener(v -> pageVectorDrawable());
+        findViewById(R.id.page_AnimatedVectorDrawable).setOnClickListener(v -> page_AnimatedVectorDrawable());
         findViewById(R.id.pageBitmap).setOnClickListener(v -> pageBitmap());
         findViewById(R.id.pageShapeDrawable).setOnClickListener(v -> pageShapeDrawable());
         findViewById(R.id.pageLevelListDrawable).setOnClickListener(v -> pageLevelListDrawable());
@@ -32,7 +34,7 @@ public class TestDrawableActivity extends BaseActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageVectorDrawable();
+        page_AnimatedVectorDrawable();
     }
 
     private void pageDrawableFolder() {
@@ -45,6 +47,10 @@ public class TestDrawableActivity extends BaseActivity {
 
     private void pageVectorDrawable() {
         showFragment(new TestVectorDrawableFragment());
+    }
+
+    private void page_AnimatedVectorDrawable() {
+        showFragment(new TestAnimatedVectorDrawableFragment());
     }
 
     private void pageBitmap() {

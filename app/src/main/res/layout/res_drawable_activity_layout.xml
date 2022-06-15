@@ -36,7 +36,12 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/pageVectorDrawable"
                 style="@style/btn"
-                android:text="@string/page_drawable_vectorDrawable" />
+                android:text="@string/page_VectorDrawable" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/page_AnimatedVectorDrawable"
+                style="@style/btn"
+                android:text="@string/page_AnimatedVectorDrawable" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/pageBitmap"

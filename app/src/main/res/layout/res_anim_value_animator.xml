@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/page_value_animation" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn"
+                style="@style/btn"
+                android:background="@android:color/holo_red_dark"
+                android:text="Bg color" />
+
+            <Button
+                android:id="@+id/changeBgColor_by_valueAnimator_Java"
+                style="@style/btn"
+                android:text="Java - ValueAnimation" />
+
+
+            <View style="@style/div" />
+
+            <Button
+                android:id="@+id/btn2"
+                style="@style/btn"
+                android:text="Use animate() to change position of this button" />
+
+            <Button
+                android:id="@+id/moveOver"
+                style="@style/btn"
+                android:text="Move Over" />
+
+            <Button
+                android:id="@+id/moveBack"
+                style="@style/btn"
+                android:text="Move Back" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

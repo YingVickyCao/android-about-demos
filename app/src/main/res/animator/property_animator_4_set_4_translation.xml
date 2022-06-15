@@ -3,14 +3,14 @@
     android:ordering="sequentially">
 
     <objectAnimator
-        android:duration="5000"
+        android:duration="1000"
         android:propertyName="translationX"
         android:valueFrom="0"
         android:valueTo="500"
         android:valueType="floatType" />
 
     <objectAnimator
-        android:duration="2000"
+        android:duration="1000"
         android:propertyName="translationY"
         android:valueFrom="0"
         android:valueTo="200"

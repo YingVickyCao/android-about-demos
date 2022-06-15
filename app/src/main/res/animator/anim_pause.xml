@@ -3,8 +3,8 @@
     android:duration="1000"
     android:interpolator="@android:interpolator/overshoot"
     android:propertyName="fillColor"
-    android:valueFrom="#fff"
+    android:valueFrom="@android:color/holo_green_dark"
     android:valueTo="@android:color/holo_red_dark"
     android:valueType="intType" />
 
-    <!-- 属性动画 - 变色 -->
+    <!-- 属性动画-变色 -->

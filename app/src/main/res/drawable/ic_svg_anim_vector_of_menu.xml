@@ -3,6 +3,7 @@
     android:drawable="@drawable/ic_svg_menu">
 
     <!-- target的name与svg的pathname 对应   -->
+    <!-- 结合 属性动画-路径变换 -->
     <target
         android:name="path1"
         android:animation="@animator/anim_menu_path_1" />

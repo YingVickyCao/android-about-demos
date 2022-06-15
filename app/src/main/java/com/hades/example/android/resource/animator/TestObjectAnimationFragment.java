@@ -14,7 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -26,35 +26,43 @@ import com.hades.example.android.R;
  * https://developer.android.google.cn/guide/topics/graphics/prop-animation#choreography
  * https://developer.android.google.cn/reference/android/animation/ValueAnimator
  */
-public class TestPropertyAnimationFragment extends Fragment {
-    private static final String TAG = TestPropertyAnimationFragment.class.getSimpleName();
+
+// AnimatedVectorDrawable 结合ObjectAnimator 使用：TestAnimatedVectorDrawableFragment
+public class TestObjectAnimationFragment extends Fragment {
+    private static final String TAG = TestObjectAnimationFragment.class.getSimpleName();
 
     private Button btn;
 
     private Button btn2;
+    private ImageView imageview2;
+    private ImageView imageview3;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.res_property_animation, container, false);
+        View view = inflater.inflate(R.layout.res_anim_object_animator, container, false);
 
         btn = view.findViewById(R.id.btn);
-        view.findViewById(R.id.bg_color_1_objectAnimation_xml).setOnClickListener(v -> bg_color_1_objectAnimation_xml());
-        view.findViewById(R.id.bg_color_2_objectAnimation_java).setOnClickListener(v -> bg_color_2_objectAnimation_java());
-        view.findViewById(R.id.bg_color_3_valueAnimation_java).setOnClickListener(v -> bg_color_3_valueAnimation_java());
+        view.findViewById(R.id.change_bg_color_xml).setOnClickListener(v -> change_bg_color_xml());
+        view.findViewById(R.id.change_bg_color_java).setOnClickListener(v -> change_bg_color_java());
 
+        // 平移
         btn2 = view.findViewById(R.id.btn2);
-        btn2.setOnClickListener(v -> Toast.makeText(getContext(), "Btn 2 clicked", Toast.LENGTH_SHORT).show());
-        view.findViewById(R.id.xy_1_translation_xml).setOnClickListener(v -> xy_1_translation_xml());
-        view.findViewById(R.id.xy_2_translation_AnimatorSet).setOnClickListener(v -> xy_2_translation_AnimatorSet());
-        view.findViewById(R.id.xy_3_translation_PropertyValuesHolder).setOnClickListener(v -> xy_2_translation_PropertyValuesHolder());
-        view.findViewById(R.id.moveOver).setOnClickListener(v -> moveOver());
-        view.findViewById(R.id.moveBack).setOnClickListener(v -> moveBack());
+        view.findViewById(R.id.AnimatorSet_translationXY_by_XML).setOnClickListener(v -> AnimatorSet_translationXY_by_XML());
+        view.findViewById(R.id.AnimatorSet_translationXY_by_java).setOnClickListener(v -> AnimatorSet_translationXY_by_java());
+        view.findViewById(R.id.PropertyValuesHolder_translationXY_by_java).setOnClickListener(v -> PropertyValuesHolder_translationXY_by_java());
 
+        // 旋转
+        imageview2 = view.findViewById(R.id.imageview2);
+        view.findViewById(R.id.rotate).setOnClickListener(v -> rotate());
+
+        // 旋转
+        imageview3 = view.findViewById(R.id.imageview3);
+        view.findViewById(R.id.scale).setOnClickListener(v -> scale());
         return view;
     }
 
-    private void bg_color_1_objectAnimation_xml() {
+    private void change_bg_color_xml() {
         ObjectAnimator objectAnimator4Bg = (ObjectAnimator) AnimatorInflater.loadAnimator(getContext(), R.animator.property_animator_4_object_animation_4_bg_color);
         objectAnimator4Bg.setEvaluator(new ArgbEvaluator()); // 渐变，否则 一闪一闪
         objectAnimator4Bg.setTarget(btn);                       // 目标View
@@ -62,65 +70,69 @@ public class TestPropertyAnimationFragment extends Fragment {
         objectAnimator4Bg.start();
     }
 
-    private void bg_color_2_objectAnimation_java() {
+    private void change_bg_color_java() {
         ObjectAnimator objectAnimator4Bg = ObjectAnimator.ofInt(btn, "backgroundColor", 0xffff8800, 0xffcc0000); // 目标View，View set 属性名称，开始值（int），结束值（int）
+
         objectAnimator4Bg.setDuration(3000);                    // 动画持续时间
+        // 设置动画重复播放次数 = 重放次数+1
+        // 动画播放次数 = infinite时,动画无限重复
         objectAnimator4Bg.setRepeatCount(0);                    // 动画重复的次数
-        objectAnimator4Bg.setRepeatMode(ValueAnimator.REVERSE); // 播放模式
+        // ValueAnimator.RESTART(默认):正序重放
+        // ValueAnimator.REVERSE:倒序回放
+        objectAnimator4Bg.setRepeatMode(ValueAnimator.REVERSE); // 设置重复播放动画模式
         objectAnimator4Bg.setEvaluator(new ArgbEvaluator());    // 渐变，否则 一闪一闪
 //        objectAnimator4Bg.setStartDelay(1000);                // 动画延迟播放
         setAnimatorListener(objectAnimator4Bg);
+
         objectAnimator4Bg.start();                              // 开始运行动画
     }
 
-    private void bg_color_3_valueAnimation_java() {
-        ValueAnimator animator = ValueAnimator.ofInt(0xffff8800, 0xffcc0000); // 产生一个从0到100变化的整数的动画
-        animator.setDuration(3000);
-        animator.setRepeatCount(0);
-        animator.setRepeatMode(ValueAnimator.REVERSE);
-        animator.setEvaluator(new ArgbEvaluator());             // 渐变，否则 一闪一闪
-        setAnimatorListener(animator);
-        animator.addUpdateListener(animation -> {
-            Integer value = (Integer) animation.getAnimatedValue(); // 动态的获取当前运行到的属性值
-            btn.setBackgroundColor(value);
-        });
-        animator.start(); // 开始播放动画
-    }
 
-    private void xy_1_translation_xml() {
+    private void AnimatorSet_translationXY_by_XML() {
         Animator animator = AnimatorInflater.loadAnimator(getContext(), R.animator.property_animator_4_set_4_translation); // AnimatorSet
         animator.setTarget(btn2);
         setAnimatorListener(animator);
         animator.start();
     }
 
-    private void xy_2_translation_AnimatorSet() {
-        ObjectAnimator animatorX = ObjectAnimator.ofFloat(btn2, "translationX", 0f, 500f).setDuration(5000);
-        ObjectAnimator animatorY = ObjectAnimator.ofFloat(btn2, "translationY", 0f, 200f).setDuration(2000);
+    private void AnimatorSet_translationXY_by_java() {
+        ObjectAnimator animatorX = ObjectAnimator.ofFloat(btn2, "translationX", 0f, 500f).setDuration(1000);
+        ObjectAnimator animatorY = ObjectAnimator.ofFloat(btn2, "translationY", 0f, 200f).setDuration(1000);
+        ObjectAnimator color = ObjectAnimator.ofInt(btn, "backgroundColor", 0xf00, 0x0f0).setDuration(1000);
+
 
         AnimatorSet set = new AnimatorSet(); // 相对于父容器， X、Y轴 先后移动
-//        set.playSequentially(animatorX, animatorY);                                            // play x, play y
-//        set.play(animator3).before(animator2).after(animator1).with(animator4);
-//        set.play(animatorY).after(animatorX);                                                   // play x, play y
-        set.playTogether(animatorX,animatorY);                                                    // play (x,y)
+//        set.playSequentially(animatorX, animatorY);                                            // play x ->  play y
+        set.play(color);               // TODO:
+//        set.play(animatorX).with(color);               // TODO:
+//        set.play(animatorY).before(animatorX);                                                  // play x -> play y
+//        set.play(animatorY).after(animatorX);                                                 // play x, play y
+//        set.playTogether(animatorX, animatorY);                                                // play (x,y)
         setAnimatorListener(set);
 //        set.setDuration(500);
 //        set.setInterpolator(new BounceInterpolator());
         set.start();
     }
 
-    private void xy_2_translation_PropertyValuesHolder() {
+    private void PropertyValuesHolder_translationXY_by_java() {
         PropertyValuesHolder holder1 = PropertyValuesHolder.ofFloat("translationX", 0f, 500f);
         PropertyValuesHolder holder2 = PropertyValuesHolder.ofFloat("translationY", 0f, 200f);
-        ObjectAnimator.ofPropertyValuesHolder(btn2, holder1, holder2).setDuration(5000).start(); // play (x,y)
+        ObjectAnimator.ofPropertyValuesHolder(btn2, holder1, holder2).setDuration(1000)
+                .start(); // play (x,y)
     }
 
-    private void moveOver() {
-        btn2.animate().x(500f).y(200f); // // play (x,y)
+    //  旋转
+    private void rotate() {
+        ObjectAnimator rotation = ObjectAnimator.ofFloat(imageview2, "rotation", 0f, 360f).setDuration(1000);
+//        rotation.setDuration(1000);
+        rotation.start();
     }
 
-    private void moveBack(){
-        btn2.animate().x(0).y(0); // 按钮放回到它在容器中原来的位置 (0, 0)
+    // 缩放
+    private void scale() {
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(imageview3, "scaleX", 1f, 3f, 1f);
+        objectAnimator.setDuration(1000);
+        objectAnimator.start();
     }
 
     private void setAnimatorListener(Animator animator) {

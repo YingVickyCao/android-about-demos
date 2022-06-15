@@ -21,7 +21,7 @@
         -->
 <!--        <bitmap-->
 <!--            android:gravity="center"-->
-<!--            android:src="@drawable/ic_back" />-->
+<!--            android:src="@drawable/ic_svg_back" />-->
 
         <bitmap
             android:gravity="center"

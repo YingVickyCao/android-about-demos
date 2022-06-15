@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/topic"
+            android:text="@string/page_AnimatedVectorDrawable" />
+
+        <!-- 矢量动画 animated-vector -->
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/tv"
+            android:text="矢量动画 animated-vector " />
+
+        <!-- 结合 属性动画-路径变换 -->
+        <ImageView
+            android:id="@+id/imageView_changePath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_svg_anim_vector_of_menu" />
+
+        <!--  结合 属性动画-变色      -->
+        <ImageView
+            android:id="@+id/imageView_changeColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_svg_anim_vector_of_pause" />
+
+        <ImageView
+            android:id="@+id/imageView_rotate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_svg_anim_vector_of_pause_2" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_100"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/startAnimation"
+                style="@style/btn"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:text="@string/start_animation" />
+
+            <Button
+                android:id="@+id/stop_reset_Animation"
+                style="@style/btn"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:text="@string/stop_reset_animation" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

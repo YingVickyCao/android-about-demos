@@ -111,34 +111,6 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_svg_anim_vector_of_menu" />
 
-        <ImageView
-            android:id="@+id/imageView_changeColor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_svg_anim_vector_of_pause" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_100"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/startAnimation"
-                style="@style/btn"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="bottom"
-                android:text="@string/start_animation" />
-
-            <Button
-                android:id="@+id/stop_reset_Animation"
-                style="@style/btn"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:text="@string/stop_reset_animation" />
-
-        </RelativeLayout>
-
         <View style="@style/div" />
 
         <TextView

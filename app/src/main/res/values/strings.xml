@@ -46,11 +46,11 @@
     <string name="page_Drawable">Drawable</string>
     <string name="page_StateDrawable">StateDrawable</string>
     <string name="page_VectorDrawable">VectorDrawable</string>
+    <string name="page_AnimatedVectorDrawable">AnimatedVectorDrawable</string>
     <string name="page_ShapeDrawable">ShapeDrawable</string>
     <string name="page_LevelListDrawable">LevelList Drawable</string>
     <string name="page_LayerListDrawable">LayerList Drawable</string>
     <string name="page_ClipDrawable">Clip Drawable</string>
-    <string name="page_drawable_vectorDrawable">VectorDrawable</string>
     <string name="page_DrawableFolder">Drawable Folder</string>
     <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
     <string name="page_theme_choose">Theme Choose</string>
@@ -68,6 +68,8 @@
     <string name="page_Tween_Animation">Tween animation</string>
     <string name="page_Frame_Animation">Frame animation</string>
     <string name="page_Property_Animation">Property animation</string>
+    <string name="page_object_animation">Property animation - Object animation</string>
+    <string name="page_value_animation">Property animation - Value animation</string>
     <string name="page_Animation_when_activity_enter_exit"> Animation When activity enter/exit</string>
     <string name="page_activity_transitions_animation"> Start an activity using an animation</string>
     <string name="page_font">Font</string>

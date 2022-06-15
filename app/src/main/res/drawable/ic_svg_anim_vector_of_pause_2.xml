@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_svg_pause">
+
+    <!-- target的name与svg的pathname 对应   -->
+    <!--    结合 属性动画 - 变色-->
+
+    <!-- Fixed：   java.lang.IllegalArgumentException: Property: rotation is not supported for FullPath -->
+    <!-- <target-->
+    <!-- android:name="pause"-->
+    <!-- android:animation="@animator/anim_pause_2" />-->
+
+    <target
+        android:name="pause_group"
+        android:animation="@animator/anim_pause_2" />
+</animated-vector>

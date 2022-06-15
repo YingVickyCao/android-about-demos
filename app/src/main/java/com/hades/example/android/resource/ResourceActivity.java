@@ -16,9 +16,9 @@ import com.hades.example.android.resource.adapter_screen.ScreenSizeActivity;
 import com.hades.example.android.resource.adapter_screen.TestConfigurationActivity;
 import com.hades.example.android.resource.anim.TestFrameAnimationFragment;
 import com.hades.example.android.resource.anim.TestTweenAnimationFragment;
-import com.hades.example.android.resource.animator.TestPropertyAnimationFragment;
+import com.hades.example.android.resource.animator.TestObjectAnimationFragment;
+import com.hades.example.android.resource.animator.TestValueAnimationFragment;
 import com.hades.example.android.resource.dimension.TestDimensionFragment;
-import com.hades.example.android.resource.drawable._bitmap.TestBitmapMemoryAndScreenDensityFragment;
 import com.hades.example.android.resource.font.TestFontFragment;
 import com.hades.example.android.resource.i18n.InternationalizationFragment;
 import com.hades.example.android.resource.material.TestMaterialFragment;
@@ -52,7 +52,8 @@ public class ResourceActivity extends PermissionActivity {
 
         findViewById(R.id.pageTweenAnimation).setOnClickListener(v -> pageTweenAnimation());
         findViewById(R.id.pageFrameAnimation).setOnClickListener(v -> pageFrameAnimation());
-        findViewById(R.id.pagePropertyAnimation).setOnClickListener(v -> pagePropertyAnimation());
+        findViewById(R.id.page_ObjectAnimation).setOnClickListener(v -> page_ObjectAnimation());
+        findViewById(R.id.page_ValueAnimation).setOnClickListener(v -> page_ValueAnimation());
     }
 
     @Override
@@ -63,7 +64,7 @@ public class ResourceActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-//        pageLevelListDrawable();
+        page_ObjectAnimation();
     }
 
     private void pageColor() {
@@ -118,7 +119,11 @@ public class ResourceActivity extends PermissionActivity {
         showFragment(new TestFrameAnimationFragment());
     }
 
-    private void pagePropertyAnimation() {
-        showFragment(new TestPropertyAnimationFragment());
+    private void page_ObjectAnimation() {
+        showFragment(new TestObjectAnimationFragment());
+    }
+
+    private void page_ValueAnimation() {
+        showFragment(new TestValueAnimationFragment());
     }
 }

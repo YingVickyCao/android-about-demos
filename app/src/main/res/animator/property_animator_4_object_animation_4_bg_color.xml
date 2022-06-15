@@ -4,7 +4,6 @@
     android:propertyName="backgroundColor"
     android:repeatCount="0"
     android:repeatMode="reverse"
-
     android:valueFrom="@android:color/holo_orange_dark"
     android:valueTo="@android:color/holo_red_dark"
     android:valueType="intType" />

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/page_object_animation" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn"
+                style="@style/btn"
+                android:background="@android:color/holo_red_dark"
+                android:text="Change Bg color of this button" />
+
+            <Button
+                android:id="@+id/change_bg_color_xml"
+                style="@style/btn"
+                android:text="XML - objectAnimation" />
+
+            <Button
+                android:id="@+id/change_bg_color_java"
+                style="@style/btn"
+                android:text="Java - objectAnimation" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="平移" />
+
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/AnimatorSet_translationXY_by_XML"
+                style="@style/btn"
+                android:text="AnimatorSet（平移XY）- XML" />
+
+            <Button
+                android:id="@+id/AnimatorSet_translationXY_by_java"
+                style="@style/btn"
+                android:text="AnimatorSet（平移XY）- Java" />
+
+            <Button
+                android:id="@+id/PropertyValuesHolder_translationXY_by_java"
+                style="@style/btn"
+                android:text="PropertyValuesHolder (平移XY) - Java" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="旋转" />
+
+            <ImageView
+                android:id="@+id/imageview2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launcher_round" />
+
+            <Button
+                android:id="@+id/rotate"
+                style="@style/btn"
+                android:text="旋转" />
+
+            <View style="@style/div" />
+
+            <TextView
+                style="@style/tv"
+                android:text="缩放" />
+
+            <ImageView
+                android:id="@+id/imageview3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launcher_round" />
+
+            <Button
+                android:id="@+id/scale"
+                style="@style/btn"
+                android:text="缩放" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

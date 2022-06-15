@@ -27,17 +27,17 @@
                     android:text="Bg color" />
 
                 <Button
-                    android:id="@+id/bg_color_1_objectAnimation_xml"
+                    android:id="@+id/change_bg_color_xml"
                     style="@style/btn"
                     android:text="XML - objectAnimation" />
 
                 <Button
-                    android:id="@+id/bg_color_2_objectAnimation_java"
+                    android:id="@+id/change_bg_color_java"
                     style="@style/btn"
                     android:text="Java - objectAnimation" />
 
                 <Button
-                    android:id="@+id/bg_color_3_valueAnimation_java"
+                    android:id="@+id/change_bg_color_by_valueAnimation_java"
                     style="@style/btn"
                     android:text="Java - ValueAnimation" />
             </LinearLayout>
@@ -55,21 +55,21 @@
                     android:text="X Y" />
 
                 <Button
-                    android:id="@+id/xy_1_translation_xml"
+                    android:id="@+id/AnimatorSet_translationXY_by_XML"
                     style="@style/btn"
-                    android:layout_above="@+id/xy_2_translation_AnimatorSet"
+                    android:layout_above="@+id/AnimatorSet_translationXY_by_java"
                     android:layout_alignParentEnd="true"
                     android:text="XML" />
 
                 <Button
-                    android:id="@+id/xy_2_translation_AnimatorSet"
+                    android:id="@+id/AnimatorSet_translationXY_by_java"
                     style="@style/btn"
-                    android:layout_above="@+id/xy_3_translation_PropertyValuesHolder"
+                    android:layout_above="@+id/PropertyValuesHolder_translationXY_by_java"
                     android:layout_alignParentEnd="true"
                     android:text="Java - AnimatorSet" />
 
                 <Button
-                    android:id="@+id/xy_3_translation_PropertyValuesHolder"
+                    android:id="@+id/PropertyValuesHolder_translationXY_by_java"
                     style="@style/btn"
                     android:layout_above="@+id/moveOver"
                     android:layout_alignParentEnd="true"

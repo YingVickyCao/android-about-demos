@@ -3,7 +3,8 @@
     android:drawable="@drawable/ic_svg_pause">
 
     <!-- target的name与svg的pathname 对应   -->
+    <!--    结合 属性动画 - 变色-->
     <target
-        android:name="pausePath"
+        android:name="pause"
         android:animation="@animator/anim_pause" />
 </animated-vector>
