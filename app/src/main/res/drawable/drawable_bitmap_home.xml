@@ -3,7 +3,15 @@
     android:antialias="true"
     android:dither="true"
     android:filter="true"
-    android:gravity="center"
+    android:gravity="clip_vertical"
     android:mipMap="false"
-    android:src="@drawable/ic_svg_home"
+    android:alpha="0.5"
+    android:tint="@android:color/holo_red_dark"
+    android:tintMode="multiply"
+    android:autoMirrored="true"
+    android:src="@drawable/ic_home_png"
     android:tileMode="repeat"/>
+
+<!--    android:gravity="center"-->
+<!--    android:gravity="clip_horizontal"-->
+<!--    android:gravity="clip_vertical"-->

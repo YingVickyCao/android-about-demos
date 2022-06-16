@@ -46,6 +46,11 @@ public class ThemeChoosePageAActivity extends BaseActivity {
         setThemeName();
     }
 
+    @Override
+    protected void showCurrentTest() {
+        pageTint();
+    }
+
     protected void setThemeName() {
         boolean isLightTheme = MemoryCache.getInstance().isRedTheme();
         if (isLightTheme) {

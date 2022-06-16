@@ -1,5 +1,8 @@
 package com.hades.example.android.resource._style_theme;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.Constant;
@@ -27,6 +32,14 @@ public class TestTintFragment extends Fragment {
     private ImageView mImageView_svg21;
     private ImageView mImageView_svg3;
     private ImageView mImageView_svg4;
+
+    private ImageView imageview1;
+    private ImageView imageview2;
+    private ImageView imageview3;
+    private ImageView imageview4;
+    private ImageView imageview5;
+    private ImageView imageview6;
+
     private ViewGroup mImageView_svg4Container;
 
     private boolean isSelected = false;
@@ -35,8 +48,21 @@ public class TestTintFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.res_tint, container, false);
+
+        imageview1 = view.findViewById(R.id.imageview1);
+        imageview2 = view.findViewById(R.id.imageview2);
+        imageview3 = view.findViewById(R.id.imageview3);
+        imageview4 = view.findViewById(R.id.imageview4);
+        imageview5 = view.findViewById(R.id.imageview5);
+        imageview6 = view.findViewById(R.id.imageview6);
+
+        view.findViewById(R.id.testDrawableCompat).setOnClickListener(v -> testDrawableCompat());
+
+        view.findViewById(R.id.changeTintColor).setOnClickListener(v -> changeTintColor());
+
         test_selected(view);
         test_enable_pressed_state(view);
+
         return view;
     }
 
@@ -92,7 +118,7 @@ public class TestTintFragment extends Fragment {
         mImageView_svg21.setEnabled(true);
         mImageView_svg3.setEnabled(true);
         mImageView_svg4Container.setEnabled(true);
-        Log.d(TAG, "enableSvg: svg4 enable="+ mImageView_svg4.isEnabled());
+        Log.d(TAG, "enableSvg: svg4 enable=" + mImageView_svg4.isEnabled());
     }
 
     private void disableSvg() {
@@ -100,12 +126,58 @@ public class TestTintFragment extends Fragment {
         mImageView_svg21.setEnabled(false);
         mImageView_svg3.setEnabled(false);
         mImageView_svg4Container.setEnabled(false);
-        Log.d(TAG, "disableSvg: svg4 enable="+ mImageView_svg4.isEnabled());
+        Log.d(TAG, "disableSvg: svg4 enable=" + mImageView_svg4.isEnabled());
     }
 
     private void clickSvg4() {
         Toast.makeText(getActivity(), "Click svg", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "clickSvg4: svg4 enable="+ mImageView_svg4.isEnabled());
+        Log.d(TAG, "clickSvg4: svg4 enable=" + mImageView_svg4.isEnabled());
+    }
+
+    private void testDrawableCompat() {
+        useDrawableCompat(imageview1);
+//        useDrawableCompat(imageview2);
+        Drawable drawable = ContextCompat.getDrawable(getActivity(), R.drawable.ic_svg_adjust);
+        imageview2.setImageDrawable(drawable);
+    }
+
+    private void useDrawableCompat(ImageView imageView) {
+        Drawable originalDrawable = ContextCompat.getDrawable(getActivity(), R.drawable.ic_svg_adjust);
+        Drawable tintDrawable = DrawableCompat.wrap(originalDrawable);
+//        Drawable tintDrawable = DrawableCompat.wrap(originalDrawable).mutate();
+        DrawableCompat.setTint(tintDrawable, Color.parseColor("#FF0000"));
+        imageView.setImageDrawable(tintDrawable);
+    }
+
+    private void changeTintColor() {
+        // Android>6.0
+        Drawable drawable = getResources().getDrawable(R.drawable.ic_svg_adjust, getContext().getTheme());
+        imageview3.setImageDrawable(drawable);
+        // 设置单个颜色
+        imageview3.getDrawable().setTint(getResources().getColor(R.color.red, getContext().getTheme()));
+        // 假如imageview3 和 imageview4 的颜色变成了同一个，要mutate().
+//        imageview3.getDrawable().mutate();
+
+        // Android>6.0
+        Drawable drawable2 = getResources().getDrawable(R.drawable.ic_svg_adjust, getContext().getTheme());
+        imageview4.setImageDrawable(drawable2);
+        // 设置一组selector颜色
+        imageview4.getDrawable().setTintList(getResources().getColorStateList(R.color.textview_color_enable, getContext().getTheme()));
+        imageview4.setOnClickListener(v -> imageview4.setSelected(!imageview4.isSelected()));
+//        imageview4.getDrawable().mutate();
+
+        // 使用DrawableCompat兼容Android<6.0
+        Drawable drawable3 = ContextCompat.getDrawable(getContext(), R.drawable.ic_svg_adjust);
+        Drawable tintDrawable3 = DrawableCompat.wrap(drawable3).mutate();
+        DrawableCompat.setTint(tintDrawable3, getResources().getColor(R.color.red, getContext().getTheme()));
+        imageview5.setImageDrawable(tintDrawable3);
+
+        // 使用DrawableCompat兼容Android<6.0
+        Drawable drawable4 = ContextCompat.getDrawable(getContext(), R.drawable.ic_svg_adjust);
+        Drawable tintDrawable4 = DrawableCompat.wrap(drawable4).mutate();
+        DrawableCompat.setTintList(tintDrawable4, ContextCompat.getColorStateList(getContext(), R.color.textview_color_enable));
+        imageview6.setImageDrawable(tintDrawable4);
+        imageview6.setOnClickListener(v -> imageview6.setSelected(!imageview6.isSelected()));
     }
 
 }

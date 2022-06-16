@@ -12,7 +12,7 @@
     android:minHeight="100dp"
     android:minResizeWidth="@dimen/size_30"
     android:minResizeHeight="@dimen/size_30"
-    android:previewImage="@drawable/home"
+    android:previewImage="@drawable/ic_home_png"
     android:resizeMode="vertical|horizontal"
     android:updatePeriodMillis="1000"
     android:widgetCategory="home_screen" />

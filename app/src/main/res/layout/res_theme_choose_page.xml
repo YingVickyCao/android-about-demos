@@ -228,7 +228,7 @@
             <Button
                 android:id="@+id/pageTint"
                 style="@style/btn"
-                android:text="@string/page_theme_tint" />
+                android:text="@string/page_tint" />
 
         </LinearLayout>
     </ScrollView>
