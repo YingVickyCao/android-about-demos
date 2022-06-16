@@ -7,7 +7,7 @@
     <Button
         android:id="@+id/switchMenuColor"
         style="@style/btn"
-        android:text="Switch Menu color" />
+        android:text="切换 state_selected 状态" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,6 +20,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@null"
+            android:theme="@style/AppTheme.TintTest"
             android:tint="@color/menu_icon_color" />
 
         <ImageView
@@ -27,6 +28,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@null"
+            android:theme="@style/AppTheme.TintTest"
             android:tint="@color/menu_icon_color" />
 
         <ImageView
@@ -34,6 +36,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@null"
+            android:theme="@style/AppTheme.TintTest"
             android:tint="@color/menu_icon_color" />
     </LinearLayout>
 </LinearLayout>

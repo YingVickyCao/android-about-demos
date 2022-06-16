@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:alpha="1"
     android:antialias="true"
+    android:autoMirrored="true"
     android:dither="true"
     android:filter="true"
     android:gravity="clip_vertical"
     android:mipMap="false"
-    android:alpha="0.5"
-    android:tint="@android:color/holo_red_dark"
-    android:tintMode="multiply"
-    android:autoMirrored="true"
     android:src="@drawable/ic_home_png"
-    android:tileMode="repeat"/>
+    android:tileMode="repeat"
+    android:tint="@android:color/holo_red_dark"
+    android:tintMode="multiply" />
 
-<!--    android:gravity="center"-->
-<!--    android:gravity="clip_horizontal"-->
-<!--    android:gravity="clip_vertical"-->
+    <!--    android:gravity="center"-->
+    <!--    android:gravity="clip_horizontal"-->
+    <!--    android:gravity="clip_vertical"-->

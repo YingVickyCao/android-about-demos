@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/topic"
         style="@style/topic"
-        android:text="@string/page_bitmap" />
+        android:text="@string/page_BitmapDrawable" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -23,29 +23,19 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/page_Drawable_and_ScreenDensity"
+                android:id="@+id/page_BitmapDrawable"
                 style="@style/btn"
-                android:text="@string/page_bitmap_4_screen_density_and_drawable_memory" />
+                android:text="@string/page_BitmapDrawable" />
 
             <Button
-                android:id="@+id/page_create_bitmap"
+                android:id="@+id/pageColorFilter"
                 style="@style/btn"
-                android:text="@string/page_create_bitmap" />
+                android:text="@string/page_theme_ColorFilter" />
 
             <Button
-                android:id="@+id/page_BitmapViewer"
+                android:id="@+id/pageTint"
                 style="@style/btn"
-                android:text="@string/page_bitmap_viewer" />
-
-            <Button
-                android:id="@+id/page_LoadBitmapPo"
-                style="@style/btn"
-                android:text="@string/page_decode_sampled_bitmap" />
-
-            <Button
-                android:id="@+id/page_MemoryCacheBitmap"
-                style="@style/btn"
-                android:text="@string/page_bitmap_three_level_cache" />
+                android:text="@string/page_tint" />
 
         </LinearLayout>
 

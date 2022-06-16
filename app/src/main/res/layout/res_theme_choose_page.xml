@@ -220,16 +220,6 @@
                 style="@style/btn"
                 android:text="@string/page_theme_DeclareStyleable" />
 
-            <Button
-                android:id="@+id/pageColorFilter"
-                style="@style/btn"
-                android:text="@string/page_theme_ColorFilter" />
-
-            <Button
-                android:id="@+id/pageTint"
-                style="@style/btn"
-                android:text="@string/page_tint" />
-
         </LinearLayout>
     </ScrollView>
 

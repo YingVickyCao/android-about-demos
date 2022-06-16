@@ -40,15 +40,11 @@ public class ThemeChoosePageAActivity extends BaseActivity {
         findViewById(R.id.toggleEnable).setOnClickListener(v -> toggleEnable());
         findViewById(R.id.pageThemeAndStyle).setOnClickListener(v -> pageThemeAndStyle());
         findViewById(R.id.pageDeclareStyleable).setOnClickListener(v -> pageDeclareStyleable());
-        findViewById(R.id.pageColorFilter).setOnClickListener(v -> pageColorFilter());
-        findViewById(R.id.pageTint).setOnClickListener(v -> pageTint());
-
         setThemeName();
     }
 
     @Override
     protected void showCurrentTest() {
-        pageTint();
     }
 
     protected void setThemeName() {
@@ -84,14 +80,6 @@ public class ThemeChoosePageAActivity extends BaseActivity {
 
     private void pageDeclareStyleable() {
         showFragment(new TestDeclareStyleableInThemeFragment());
-    }
-
-    private void pageColorFilter() {
-        showFragment(new TestColorFilterFragment());
-    }
-
-    private void pageTint() {
-        showFragment(new TestTintFragment());
     }
 
     @Override

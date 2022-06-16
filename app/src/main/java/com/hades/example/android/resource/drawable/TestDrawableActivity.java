@@ -6,7 +6,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseActivity;
-import com.hades.example.android.resource.drawable._bitmap.BitmapActivity;
+import com.hades.example.android.resource.bitmap.BitmapActivity;
 import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
 import com.hades.example.android.resource.drawable.clip.TestClipDrawableFragment;
 import com.hades.example.android.resource.drawable.layer.TestLayerDrawableFragment;

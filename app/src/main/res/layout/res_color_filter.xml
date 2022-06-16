@@ -28,31 +28,68 @@
                 android:text="@string/red" />
 
             <Button
-                android:id="@+id/clear"
-                style="@style/btn"
-                android:layout_centerInParent="true"
-                android:text="@string/clear" />
-
-            <Button
                 android:id="@+id/green"
                 style="@style/btn"
-                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
                 android:text="@string/green" />
+
+            <Button
+                android:id="@+id/clear"
+                style="@style/btn"
+                android:layout_alignParentEnd="true"
+                android:text="@string/clear" />
         </RelativeLayout>
 
-        <!--android:src="@drawable/drawable_vector_4_ic_adjust_48px"-->
-        <!--android:src="@drawable/ic_adjust_black_18dp"-->
-        <ImageView
-            android:id="@+id/tintImageView"
-            android:layout_width="50dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_svg_adjust" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/size_20">
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_svg_adjust" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="对比图" />
 
-        <View style="@style/div" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:text="Use Tint" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:gravity="center_horizontal"
+                android:text="Use Color Filter" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/size_20">
+
+            <ImageView
+                android:id="@+id/tintImageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_svg_adjust" />
+
+            <ImageView
+                android:id="@+id/colorFilterImageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_svg_adjust" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_svg_adjust" />
+        </RelativeLayout>
     </LinearLayout>
 </ScrollView>

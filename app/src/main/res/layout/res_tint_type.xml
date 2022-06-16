@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Button
+        style="@style/btn"
+        android:drawableRight="@drawable/ic_launcher"
+        android:text="No Tint" />
+
+    <!-- drawableTint -->
+    <Button
+        style="@style/btn"
+        android:drawableRight="@drawable/ic_launcher"
+        android:drawableTint="@color/color_v3"
+        android:text="Tint - drawableRight（drawableTint）"
+        android:theme="@style/AppTheme.TintTest" />
+
+    <!-- backgroundTint -->
+    <Button
+        style="@style/btn"
+        android:backgroundTint="@color/color_v3"
+        android:drawableRight="@drawable/ic_launcher"
+        android:text="Tint - backgroundTint"
+        android:theme="@style/AppTheme.TintTest" />
+
+    <!-- foregroundTint -->
+    <Button
+        style="@style/btn"
+        android:drawableRight="@drawable/ic_launcher"
+        android:foregroundTint="@color/color_v3"
+        android:text="Tint - foregroundTint"
+        android:theme="@style/AppTheme.TintTest" />
+</LinearLayout>

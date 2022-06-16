@@ -79,4 +79,13 @@
         <item name="RequiredTextView_style">@style/RequiredTextView_dark</item>
     </style>
     <!-- APPLY_THEME_END -->
+
+    <style name="AppTheme.TintTest">
+        <item name="color1">@android:color/holo_red_light</item>
+        <item name="color2">@android:color/holo_blue_bright</item>
+        <item name="link_0">@android:color/holo_blue_bright</item>
+        <item name="link_0_active">@android:color/holo_red_light</item>
+        <item name="textDisable">@android:color/darker_gray</item>
+        <item name="warning">@android:color/holo_red_dark</item>
+    </style>
 </resources>

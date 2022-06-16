@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <!-- START: tint in svg -->
+    <!--
+        View tint > svg tint > svg fillColor  -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <!--  svg icon 中包含了 android:tint="?attr/warning"，同时设置了包含 attr warning color 的theme，则最终渲染颜色是 attr warning color -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_svg_add"
+            android:theme="@style/AppTheme.TintTest" />
+
+        <!--  svg icon 中包含了 android:tint="?attr/warning"，没有theme，或theme中不包含attr warning 属性，则最终渲染颜色是 svg fillColor -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_svg_add" />
+
+        <!--  view 中设置了 android:tint="@color/green"，最终渲染颜色是green-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_svg_add"
+            android:tint="@color/green" />
+    </LinearLayout>
+    <!-- END: tint in svg -->
+
+    <!-- START: tint in svg,alpha -->
+    <!-- If svg has alpha, tint of svg can not be used, but tint of ImageView can .-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <!-- ✔ alpha 0.9 （Recommend）-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_svg_add"
+            android:tint="#E6FF0000" />
+
+        <!-- ✔  -->
+        <!-- svg 中 android:fillAlpha="0.9" 生效       -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_svg_add_alpha" />
+
+        <!-- ✗ -->
+        <!--  svg 中 android:tint="#E6FF0000" 中 alpha 0.9 没有起作用，android:fillAlpha="0.1" 起作用      -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_svg_add_alpha2" />
+
+        <!-- ✔  -->
+        <!--  ImageView 中 android:tint="#E6FF0000" 中 alpha 0.9 起作用 （Recommend）     -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_svg_add_alpha"
+            android:tint="#E6FF0000" />
+    </LinearLayout>
+    <!-- END: tint in svg,alpha -->
+</LinearLayout>
