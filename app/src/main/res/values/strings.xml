@@ -52,6 +52,8 @@
     <string name="page_LayerListDrawable">LayerList Drawable</string>
     <string name="page_ClipDrawable">Clip Drawable</string>
     <string name="page_DrawableFolder">Drawable Folder</string>
+    <string name="page_ColorDrawable">ColorDrawable</string>
+    <string name="page_BitmapDrawable">BitmapDrawable</string>
     <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
     <string name="page_theme_choose">Theme Choose</string>
     <string name="page_theme_and_style">Theme and Style</string>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/topic"
+        android:text="@string/page_ColorDrawable" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/tv"
+            android:text="Java" />
+
+        <TextView
+            android:id="@+id/tv"
+            style="@style/tv"
+            android:layout_height="@dimen/size_50"
+            android:text="Use ColorDrawable as background - Java" />
+
+        <View style="@style/div" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/tv"
+            android:text="XML" />
+
+        <TextView
+            style="@style/tv"
+            android:layout_height="@dimen/size_50"
+            android:background="@drawable/drawable_color_red"
+            android:text="Use ColorDrawable as background" />
+
+        <!-- Fixed ERROR：Caused by: android.content.res.Resources$NotFoundException: Can't find ColorStateList from drawable resource ID #0x7f0801c2
+        ColorDrawable 作为 textColor 时报错。
+        Fix ： ColorDrawable 只能用作 background 或 src 出现，不能用作 text color。
+           -->
+        <!--    <TextView-->
+        <!--        style="@style/tv"-->
+        <!--        android:layout_height="@dimen/size_50"-->
+        <!--        android:layout_alignParentBottom="true"-->
+        <!--        android:text="Use ColorDrawable as text color"-->
+        <!--        android:textColor="@drawable/drawable_color_red" />-->
+
+        <!-- Use ColorDrawable as background -->
+        <ImageView
+            style="@style/tv"
+            android:layout_height="@dimen/size_50"
+            android:background="@drawable/drawable_color_red" />
+
+        <!-- Use ColorDrawable as src -->
+        <ImageView
+            style="@style/tv"
+            android:layout_height="@dimen/size_50"
+            android:src="@drawable/drawable_color_red" />
+    </LinearLayout>
+</RelativeLayout>
