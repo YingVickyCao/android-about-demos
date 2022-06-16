@@ -28,14 +28,19 @@
                 android:text="@string/page_BitmapDrawable" />
 
             <Button
-                android:id="@+id/pageColorFilter"
+                android:id="@+id/page_ColorFilter"
                 style="@style/btn"
                 android:text="@string/page_theme_ColorFilter" />
 
             <Button
-                android:id="@+id/pageTint"
+                android:id="@+id/page_Tint"
                 style="@style/btn"
                 android:text="@string/page_tint" />
+
+            <Button
+                android:id="@+id/page_TileMode"
+                style="@style/btn"
+                android:text="@string/page_TileMode" />
 
         </LinearLayout>
 

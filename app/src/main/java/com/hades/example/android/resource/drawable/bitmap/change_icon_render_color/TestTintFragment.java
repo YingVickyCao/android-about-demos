@@ -43,7 +43,7 @@ public class TestTintFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.res_tint, container, false);
+        View view = inflater.inflate(R.layout.res_drawable_bitmap_tint, container, false);
         imageview3 = view.findViewById(R.id.imageview3);
         imageview4 = view.findViewById(R.id.imageview4);
         imageview5 = view.findViewById(R.id.imageview5);

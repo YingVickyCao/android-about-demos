@@ -24,7 +24,7 @@ public class TestColorFilterFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.res_color_filter, container, false);
+        View view = inflater.inflate(R.layout.res_bitmap_drawable_color_filter, container, false);
 
         mTintImageView = view.findViewById(R.id.tintImageView);
         mColorFilterImageView = view.findViewById(R.id.colorFilterImageView);

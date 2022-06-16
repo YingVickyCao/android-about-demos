@@ -31,8 +31,8 @@ public class BitmapActivity extends PermissionActivity {
         findViewById(R.id.page_BitmapViewer).setOnClickListener(v -> page_BitmapViewer());
         findViewById(R.id.page_LoadBitmapPo).setOnClickListener(v -> page_LoadBitmapPo());
         findViewById(R.id.page_MemoryCacheBitmap).setOnClickListener(v -> page_MemoryCacheBitmap());
-        findViewById(R.id.pageColorFilter).setOnClickListener(v -> pageColorFilter());
-        findViewById(R.id.pageTint).setOnClickListener(v -> pageTint());
+        findViewById(R.id.page_ColorFilter).setOnClickListener(v -> pageColorFilter());
+        findViewById(R.id.page_Tint).setOnClickListener(v -> pageTint());
     }
 
     @Override

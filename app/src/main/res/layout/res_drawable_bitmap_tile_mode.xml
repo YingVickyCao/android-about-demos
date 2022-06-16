@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/topic"
+        android:text="@string/page_TileMode" />
+
+    <!-- Bitmap 作为 background时，android:tileMode 有效 -->
+    <ImageView
+        style="@style/tv"
+        android:layout_width="@dimen/size_100"
+        android:layout_height="@dimen/size_100"
+        android:background="@drawable/drawable_bitmap_home" />
+
+    <!-- Bitmap 作为 src 时，android:tileMode 无效 -->
+    <ImageView
+        style="@style/tv"
+        android:layout_width="@dimen/size_100"
+        android:layout_height="@dimen/size_100"
+        android:src="@drawable/drawable_bitmap_home" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/tv.small"
+            android:layout_alignParentStart="true"
+            android:text="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/tv.small"
+            android:layout_centerInParent="true"
+            android:text="size &gt; bitmap" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/tv.small"
+            android:layout_alignParentEnd="true"
+            android:text="size &lt; bitmap" />
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/tv"
+        android:text="android:tileMode=disable" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20">
+
+        <ImageView
+            style="@style/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/drawable_bitmap_home_tile_mode_disable" />
+
+        <ImageView
+            style="@style/tv"
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/drawable_bitmap_home_tile_mode_disable" />
+
+        <ImageView
+            style="@style/tv"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/drawable_bitmap_home_tile_mode_disable" />
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/tv"
+        android:text="android:tileMode=clamp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20">
+
+        <ImageView
+            style="@style/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/drawable_bitmap_home_tile_mode_clamp" />
+
+        <ImageView
+            style="@style/tv"
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/drawable_bitmap_home_tile_mode_clamp" />
+
+        <ImageView
+            style="@style/tv"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/drawable_bitmap_home_tile_mode_clamp" />
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/tv"
+        android:text="android:tileMode=repeat" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20">
+
+        <ImageView
+            style="@style/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/drawable_bitmap_home_tile_mode_repeat" />
+
+        <ImageView
+            style="@style/tv"
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/drawable_bitmap_home_tile_mode_repeat" />
+
+        <ImageView
+            style="@style/tv"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/drawable_bitmap_home_tile_mode_repeat" />
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/tv"
+        android:text="android:tileMode=mirror" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20">
+
+        <ImageView
+            style="@style/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/drawable_bitmap_home_tile_mode_mirror" />
+
+        <ImageView
+            style="@style/tv"
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/drawable_bitmap_home_tile_mode_mirror" />
+
+        <ImageView
+            style="@style/tv"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/drawable_bitmap_home_tile_mode_mirror" />
+    </RelativeLayout>
+
+</LinearLayout>

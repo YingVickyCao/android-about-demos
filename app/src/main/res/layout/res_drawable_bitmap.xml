@@ -4,30 +4,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <androidx.appcompat.widget.AppCompatTextView
         style="@style/topic"
         android:text="@string/page_BitmapDrawable" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <!-- Bitmap 作为 background时，android:tileMode="repeat" 有效：ic_close会被平铺       -->
-        <ImageView
-            style="@style/tv"
-            android:layout_width="@dimen/size_100"
-            android:layout_height="@dimen/size_100"
-            android:background="@drawable/drawable_bitmap_home" />
-
-        <!-- Bitmap 作为 background时，android:tileMode="repeat" 无效：ic_close 会被拉伸。       -->
-        <ImageView
-            style="@style/tv"
-            android:layout_width="@dimen/size_100"
-            android:layout_height="@dimen/size_100"
-            android:src="@drawable/drawable_bitmap_home" />
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"></LinearLayout>
+    </ScrollView>
 </RelativeLayout>
