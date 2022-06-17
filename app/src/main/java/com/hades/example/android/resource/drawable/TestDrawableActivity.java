@@ -31,11 +31,12 @@ public class TestDrawableActivity extends BaseActivity {
         findViewById(R.id.pageLayerListDrawable).setOnClickListener(v -> pageLayerListDrawable());
         findViewById(R.id.pageClipDrawable).setOnClickListener(v -> pageClipDrawable());
         findViewById(R.id.page_ColorDrawable).setOnClickListener(v -> page_ColorDrawable());
+        findViewById(R.id.page_NinePatchDrawable).setOnClickListener(v -> page_NinePatchDrawable());
     }
 
     @Override
     protected void showCurrentTest() {
-        page_ColorDrawable();
+        page_NinePatchDrawable();
     }
 
     private void pageDrawableFolder() {
@@ -76,5 +77,9 @@ public class TestDrawableActivity extends BaseActivity {
 
     private void page_ColorDrawable() {
         showFragment(new TestColorDrawableFragment());
+    }
+
+    private void page_NinePatchDrawable() {
+        showFragment(new TestNinePatchDrawableFragment());
     }
 }
