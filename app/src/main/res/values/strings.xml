@@ -55,6 +55,8 @@
     <string name="page_ColorDrawable">ColorDrawable</string>
     <string name="page_BitmapDrawable">BitmapDrawable</string>
     <string name="page_NinePatchDrawable">NinePatchDrawable</string>
+    <string name="page_InsetDrawable">InsetDrawable</string>
+    <string name="page_ScaleDrawable">ScaleDrawable</string>
     <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
     <string name="page_theme_choose">Theme Choose</string>
     <string name="page_theme_and_style">Theme and Style</string>

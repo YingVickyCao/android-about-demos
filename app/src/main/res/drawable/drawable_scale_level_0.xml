@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scale xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_launcher_origin"
+    android:scaleWidth="50%"
+    android:scaleHeight="50%"
+    android:scaleGravity="center" />
+    <!-- 默认 android:level="0"  -->

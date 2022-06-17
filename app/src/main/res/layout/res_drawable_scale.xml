@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_ScaleDrawable" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/red"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/ic_launcher_origin" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/red"
+                android:showDividers="middle">
+                <!-- drawable中 设置 android:level="0"               -->
+                <!-- 图片不显示。 -->
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:background="@drawable/drawable_scale_level_0" />
+
+                <!-- scale drawable 作为 bg： drawable中 设置 android:level="1"，图片显示              -->
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:background="@drawable/drawable_scale_level_1" />
+
+                <!-- scale drawable 作为 bg： drawable中 设置 android:level="10000"，图片显示，并且不放缩              -->
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:background="@drawable/drawable_scale_level_10000" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/red"
+                android:showDividers="middle">
+
+                <!-- drawable中 设置 android:level="0"               -->
+                <!-- 图片不显示。 -->
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:src="@drawable/drawable_scale_level_0" />
+
+                <!--scale drawable 作为 src： 设置 imageviewLevel.setImageLevel(1)，图片显示              -->
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageviewLevel_1"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:src="@drawable/drawable_scale_level_1" />
+
+                <!--scale drawable 作为 src： 设置 imageviewLevel.setImageLevel(10000)，图片显示,并且不放缩   -->
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageviewLevel_10000"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:src="@drawable/drawable_scale_level_10000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/red"
+                android:orientation="horizontal"
+                android:showDividers="middle"
+                android:weightSum="4">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/page_item"
+                    android:text="top" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/page_item"
+                    android:text="bottom" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/page_item"
+                    android:text="left" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/page_item"
+                    android:text="right" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/red"
+                android:showDividers="middle"
+                android:weightSum="4">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/top"
+                    style="@style/drawable_scale_test_item"
+                    android:background="@drawable/drawable_scale_scale_gravity_top" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/bottom"
+                    style="@style/drawable_scale_test_item"
+                    android:background="@drawable/drawable_scale_scale_gravity_bottom" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/left"
+                    style="@style/drawable_scale_test_item"
+                    android:background="@drawable/drawable_scale_scale_gravity_left" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/right"
+                    style="@style/drawable_scale_test_item"
+                    android:background="@drawable/drawable_scale_scale_gravity_right" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/red"
+                android:orientation="horizontal"
+                android:showDividers="middle"
+                android:weightSum="4">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/page_item"
+                    android:text="center_vertical" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/page_item"
+                    android:text="center_horizontal" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/page_item"
+                    android:text="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/red"
+                android:showDividers="middle"
+                android:weightSum="4">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/center_vertical"
+                    style="@style/drawable_scale_test_item"
+                    android:background="@drawable/drawable_scale_scale_gravity_center_vertical" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/center_horizontal"
+                    style="@style/drawable_scale_test_item"
+                    android:background="@drawable/drawable_scale_scale_gravity_center_horizontal" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/center"
+                    style="@style/drawable_scale_test_item"
+                    android:background="@drawable/drawable_scale_scale_gravity_center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/red"
+                android:orientation="horizontal"
+                android:showDividers="middle"
+                android:weightSum="4">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/page_item"
+                    android:text="fill_vertical" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/page_item"
+                    android:text="fill_horizontal" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/page_item"
+                    android:text="fill" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/red"
+                android:showDividers="middle"
+                android:weightSum="4">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/fill_vertical"
+                    style="@style/drawable_scale_test_item"
+                    android:background="@drawable/drawable_scale_scale_gravity_fill_vertical" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/fill_horizontal"
+                    style="@style/drawable_scale_test_item"
+                    android:background="@drawable/drawable_scale_scale_gravity_fill_horizontal" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/fill"
+                    style="@style/drawable_scale_test_item"
+                    android:background="@drawable/drawable_scale_scale_gravity_fill" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/red"
+                android:orientation="horizontal"
+                android:showDividers="middle"
+                android:weightSum="4">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/page_item"
+                    android:text="clip_horizontal" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/page_item"
+                    android:text="clip_vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/red"
+                android:showDividers="middle">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/clip_vertical"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:background="@drawable/drawable_scale_scale_gravity_clip_vertical" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/clip_horizontal"
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:background="@drawable/drawable_scale_scale_gravity_clip_horizontal" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

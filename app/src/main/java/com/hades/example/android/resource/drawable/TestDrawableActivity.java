@@ -7,10 +7,6 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.resource.bitmap.BitmapActivity;
-import com.hades.example.android.resource.drawable._level_list.TestLevelListDrawableFragment;
-import com.hades.example.android.resource.drawable.clip.TestClipDrawableFragment;
-import com.hades.example.android.resource.drawable.layer.TestLayerDrawableFragment;
-import com.hades.example.android.resource.drawable.shape.TestShapeDrawableFragment;
 import com.hades.example.android.resource.drawable.state.TestStateDrawableFragment;
 import com.hades.example.android.resource.drawable.vector.TestAnimatedVectorDrawableFragment;
 import com.hades.example.android.resource.drawable.vector.TestVectorDrawableFragment;
@@ -32,11 +28,13 @@ public class TestDrawableActivity extends BaseActivity {
         findViewById(R.id.pageClipDrawable).setOnClickListener(v -> pageClipDrawable());
         findViewById(R.id.page_ColorDrawable).setOnClickListener(v -> page_ColorDrawable());
         findViewById(R.id.page_NinePatchDrawable).setOnClickListener(v -> page_NinePatchDrawable());
+        findViewById(R.id.page_InsetDrawable).setOnClickListener(v -> page_InsetDrawable());
+        findViewById(R.id.page_ScaleDrawable).setOnClickListener(v -> page_ScaleDrawable());
     }
 
     @Override
     protected void showCurrentTest() {
-        page_NinePatchDrawable();
+        page_ScaleDrawable();
     }
 
     private void pageDrawableFolder() {
@@ -81,5 +79,13 @@ public class TestDrawableActivity extends BaseActivity {
 
     private void page_NinePatchDrawable() {
         showFragment(new TestNinePatchDrawableFragment());
+    }
+
+    private void page_InsetDrawable() {
+        showFragment(new TestInsetDrawableFragment());
+    }
+
+    private void page_ScaleDrawable() {
+        showFragment(new TestScaleDrawableFragment());
     }
 }

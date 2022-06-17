@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/topic"
+        android:text="@string/page_InsetDrawable" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_100"
+                android:background="@drawable/drawable_shape_4_shape_red_rect2" />
+
+            <View
+                style="@style/div.green"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_100"
+                android:background="@drawable/drawable_inset_bg" />
+
+            <View
+                style="@style/div.green"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_100"
+                android:background="@drawable/drawable_inset_bg_2" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

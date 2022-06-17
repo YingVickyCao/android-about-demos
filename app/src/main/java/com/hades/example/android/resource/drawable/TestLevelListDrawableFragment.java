@@ -1,4 +1,4 @@
-package com.hades.example.android.resource.drawable._level_list;
+package com.hades.example.android.resource.drawable;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

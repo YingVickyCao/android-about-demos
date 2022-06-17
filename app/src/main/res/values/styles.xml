@@ -437,11 +437,14 @@
         <item name="android:layout_width">@dimen/size_80</item>
     </style>
 
-    <style name="font_page_item">
+    <style name="page_item">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="font_page_item" parent="page_item">
         <item name="android:text">@string/test_string</item>
         <item name="android:textSize">@dimen/text_size_30</item>
     </style>
@@ -507,5 +510,11 @@
     <style name="RequiredTextView_light">
         <item name="prefix">*</item>
         <item name="prefix_color">@android:color/holo_red_light</item>
+    </style>
+
+    <style name="drawable_scale_test_item">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">96dp</item>
+        <item name="android:layout_weight">1</item>
     </style>
 </resources>

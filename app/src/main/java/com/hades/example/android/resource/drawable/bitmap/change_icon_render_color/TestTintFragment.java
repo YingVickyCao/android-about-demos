@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 
@@ -142,7 +143,7 @@ public class TestTintFragment extends Fragment {
         imageview4.setOnClickListener(v -> imageview4.setSelected(!imageview4.isSelected()));
 //        imageview4.getDrawable().mutate();
 
-        // 使用DrawableCompat兼容Android<6.0
+//         使用DrawableCompat兼容Android<6.0
         Drawable drawable3 = ContextCompat.getDrawable(getContext(), R.drawable.ic_svg_adjust);
         Drawable tintDrawable3 = DrawableCompat.wrap(drawable3).mutate();
         DrawableCompat.setTint(tintDrawable3, getResources().getColor(R.color.red, getContext().getTheme()));

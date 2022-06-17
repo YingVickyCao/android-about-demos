@@ -31,7 +31,7 @@ public class TestBitmapDrawableActivity extends BaseActivity {
 
     @Override
     protected void showCurrentTest() {
-        page_BitmapDrawable();
+        page_Tint();
     }
 
     private void page_BitmapDrawable() {

@@ -77,6 +77,16 @@
                 android:id="@+id/page_NinePatchDrawable"
                 style="@style/btn"
                 android:text="@string/page_NinePatchDrawable" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/page_InsetDrawable"
+                style="@style/btn"
+                android:text="@string/page_InsetDrawable" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/page_ScaleDrawable"
+                style="@style/btn"
+                android:text="@string/page_ScaleDrawable" />
         </LinearLayout>
     </ScrollView>
 

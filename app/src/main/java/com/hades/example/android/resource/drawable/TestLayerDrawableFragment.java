@@ -1,4 +1,4 @@
-package com.hades.example.android.resource.drawable.layer;
+package com.hades.example.android.resource.drawable;
 
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;

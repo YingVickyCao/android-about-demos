@@ -1,4 +1,4 @@
-package com.hades.example.android.resource.drawable.clip;
+package com.hades.example.android.resource.drawable;
 
 import android.graphics.drawable.ClipDrawable;
 import android.os.Bundle;
