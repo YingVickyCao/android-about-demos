@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.hades.example.android.lib.exoplayer2;
+package com.hades.example.android.test_libs.exoplayer2;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -91,11 +91,11 @@ import com.google.android.exoplayer2.util.Util;
 import com.google.android.exoplayer2.video.VideoListener;
 import com.hades.example.android.App;
 import com.hades.example.android.R;
-import com.hades.example.android.lib.exoplayer2.bean.DrmInfo;
-import com.hades.example.android.lib.exoplayer2.bean.PlaylistSample;
-import com.hades.example.android.lib.exoplayer2.bean.Sample;
-import com.hades.example.android.lib.exoplayer2.bean.SubtitleInfo;
-import com.hades.example.android.lib.exoplayer2.bean.UriSample;
+import com.hades.example.android.test_libs.exoplayer2.bean.DrmInfo;
+import com.hades.example.android.test_libs.exoplayer2.bean.PlaylistSample;
+import com.hades.example.android.test_libs.exoplayer2.bean.Sample;
+import com.hades.example.android.test_libs.exoplayer2.bean.SubtitleInfo;
+import com.hades.example.android.test_libs.exoplayer2.bean.UriSample;
 
 import java.lang.reflect.Constructor;
 import java.net.CookieHandler;

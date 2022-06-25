@@ -1,8 +1,8 @@
-package com.hades.example.android.lib.exoplayer2.bean;
+package com.hades.example.android.test_libs.exoplayer2.bean;
 
-import static com.hades.example.android.lib.exoplayer2.PlayerActivity.SUBTITLE_LANGUAGE_EXTRA;
-import static com.hades.example.android.lib.exoplayer2.PlayerActivity.SUBTITLE_MIME_TYPE_EXTRA;
-import static com.hades.example.android.lib.exoplayer2.PlayerActivity.SUBTITLE_URI_EXTRA;
+import static com.hades.example.android.test_libs.exoplayer2.PlayerActivity.SUBTITLE_LANGUAGE_EXTRA;
+import static com.hades.example.android.test_libs.exoplayer2.PlayerActivity.SUBTITLE_MIME_TYPE_EXTRA;
+import static com.hades.example.android.test_libs.exoplayer2.PlayerActivity.SUBTITLE_URI_EXTRA;
 
 import android.content.Intent;
 import android.net.Uri;

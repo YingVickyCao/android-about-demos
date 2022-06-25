@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.hades.example.android.lib.exoplayer2;
+package com.hades.example.android.test_libs.exoplayer2;
 
 import static com.hades.example.android.App.DOWNLOAD_NOTIFICATION_CHANNEL_ID;
 

@@ -1,16 +1,16 @@
-package com.hades.example.android.lib.exoplayer2.bean;
+package com.hades.example.android.test_libs.exoplayer2.bean;
 
-import static com.hades.example.android.lib.exoplayer2.PlayerActivity.AD_TAG_URI_EXTRA;
-import static com.hades.example.android.lib.exoplayer2.PlayerActivity.EXTENSION_EXTRA;
-import static com.hades.example.android.lib.exoplayer2.PlayerActivity.IS_LIVE_EXTRA;
-import static com.hades.example.android.lib.exoplayer2.PlayerActivity.URI_EXTRA;
+import static com.hades.example.android.test_libs.exoplayer2.PlayerActivity.AD_TAG_URI_EXTRA;
+import static com.hades.example.android.test_libs.exoplayer2.PlayerActivity.EXTENSION_EXTRA;
+import static com.hades.example.android.test_libs.exoplayer2.PlayerActivity.IS_LIVE_EXTRA;
+import static com.hades.example.android.test_libs.exoplayer2.PlayerActivity.URI_EXTRA;
 
 import android.content.Intent;
 import android.net.Uri;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.lib.exoplayer2.PlayerActivity;
+import com.hades.example.android.test_libs.exoplayer2.PlayerActivity;
 
 public final class UriSample extends Sample {
     public static UriSample createFromIntent(Uri uri, Intent intent, String extrasKeySuffix) {

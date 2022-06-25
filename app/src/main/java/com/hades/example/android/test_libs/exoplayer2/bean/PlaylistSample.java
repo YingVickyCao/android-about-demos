@@ -1,6 +1,6 @@
-package com.hades.example.android.lib.exoplayer2.bean;
+package com.hades.example.android.test_libs.exoplayer2.bean;
 
-import static com.hades.example.android.lib.exoplayer2.PlayerActivity.ACTION_VIEW_LIST;
+import static com.hades.example.android.test_libs.exoplayer2.PlayerActivity.ACTION_VIEW_LIST;
 
 import android.content.Intent;
 

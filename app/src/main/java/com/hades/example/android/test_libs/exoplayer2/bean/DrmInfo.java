@@ -1,10 +1,10 @@
-package com.hades.example.android.lib.exoplayer2.bean;
+package com.hades.example.android.test_libs.exoplayer2.bean;
 
-import static com.hades.example.android.lib.exoplayer2.PlayerActivity.DRM_KEY_REQUEST_PROPERTIES_EXTRA;
-import static com.hades.example.android.lib.exoplayer2.PlayerActivity.DRM_LICENSE_URL_EXTRA;
-import static com.hades.example.android.lib.exoplayer2.PlayerActivity.DRM_MULTI_SESSION_EXTRA;
-import static com.hades.example.android.lib.exoplayer2.PlayerActivity.DRM_SCHEME_EXTRA;
-import static com.hades.example.android.lib.exoplayer2.PlayerActivity.DRM_SCHEME_UUID_EXTRA;
+import static com.hades.example.android.test_libs.exoplayer2.PlayerActivity.DRM_KEY_REQUEST_PROPERTIES_EXTRA;
+import static com.hades.example.android.test_libs.exoplayer2.PlayerActivity.DRM_LICENSE_URL_EXTRA;
+import static com.hades.example.android.test_libs.exoplayer2.PlayerActivity.DRM_MULTI_SESSION_EXTRA;
+import static com.hades.example.android.test_libs.exoplayer2.PlayerActivity.DRM_SCHEME_EXTRA;
+import static com.hades.example.android.test_libs.exoplayer2.PlayerActivity.DRM_SCHEME_UUID_EXTRA;
 
 import android.content.Intent;
 

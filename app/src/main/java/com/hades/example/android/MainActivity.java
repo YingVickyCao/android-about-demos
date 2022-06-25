@@ -5,7 +5,7 @@ import android.view.View;
 
 import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.data_storage.DataStorageActivity;
-import com.hades.example.android.lib.TestLibsActivity;
+import com.hades.example.android.test_libs.TestLibsActivity;
 import com.hades.example.android.po.security.SecurityActivity;
 import com.hades.example.android.resource.ResourceActivity;
 import com.hades.example.android.widget.WidgetActivity;

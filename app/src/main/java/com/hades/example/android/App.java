@@ -26,7 +26,7 @@ import com.google.android.exoplayer2.upstream.cache.CacheDataSourceFactory;
 import com.google.android.exoplayer2.upstream.cache.NoOpCacheEvictor;
 import com.google.android.exoplayer2.upstream.cache.SimpleCache;
 import com.google.android.exoplayer2.util.Util;
-import com.hades.example.android.lib.exoplayer2.DownloadTracker;
+import com.hades.example.android.test_libs.exoplayer2.DownloadTracker;
 
 import java.io.File;
 import java.io.IOException;

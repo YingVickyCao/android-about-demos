@@ -1,10 +1,10 @@
-package com.hades.example.android.lib;
+package com.hades.example.android.test_libs;
 
 import android.os.Bundle;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseActivity;
-import com.hades.example.android.lib.exoplayer2.TestExoplayer2MainActivity;
+import com.hades.example.android.test_libs.exoplayer2.TestExoplayer2MainActivity;
 
 public class TestLibsActivity extends BaseActivity {
     @Override

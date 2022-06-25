@@ -580,7 +580,7 @@
 
         <!-- ExoPlayer2,START       -->
         <activity
-            android:name=".lib.exoplayer2.TestExoplayer2MainActivity"
+            android:name=".test_libs.exoplayer2.TestExoplayer2MainActivity"
             android:configChanges="keyboardHidden"
             android:label="@string/label_ExoPlayer2"
             android:exported="true"
@@ -608,7 +608,7 @@
         </activity>
 
         <activity
-            android:name=".lib.exoplayer2.PlayerActivity"
+            android:name=".test_libs.exoplayer2.PlayerActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:exported="true"
             android:label="@string/label_ExoPlayer2"
@@ -631,7 +631,7 @@
         </activity>
 
         <service
-            android:name=".lib.exoplayer2.DownloadService"
+            android:name=".test_libs.exoplayer2.DownloadService"
             android:exported="false"
             android:label="@string/label_ExoPlayer2">
             <intent-filter>
@@ -647,6 +647,6 @@
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <!-- ExoPlayer2,END       -->
 
-        <activity android:name=".lib.TestLibsActivity"/>
+        <activity android:name=".test_libs.TestLibsActivity"/>
     </application>
 </manifest>
