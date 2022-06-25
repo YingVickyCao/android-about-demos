@@ -36,6 +36,7 @@
     <string name="page_sqlitedatabase">SQLiteDatabase</string>
 
     <string name="page_resource">Resource</string>
+    <string name="page_Libs">Libs</string>
     <string name="page_dimension">Dimension</string>
     <string name="page_XML">XML</string>
     <string name="page_material">原始资源</string>
@@ -57,6 +58,7 @@
     <string name="page_NinePatchDrawable">NinePatchDrawable</string>
     <string name="page_InsetDrawable">InsetDrawable</string>
     <string name="page_ScaleDrawable">ScaleDrawable</string>
+    <string name="page_RotateDrawable">RotateDrawable</string>
     <string name="page_decode_sampled_bitmap">Decode sampled bitmap</string>
     <string name="page_theme_choose">Theme Choose</string>
     <string name="page_theme_and_style">Theme and Style</string>
@@ -137,6 +139,7 @@
 
 
     <string name="page_security">Security</string>
+    <string name="page_Exoplayer2">Exoplayer2</string>
 
     <string name="page_background_tasks">Background tasks</string>
     <string name="page_threadPoolExecutor">ThreadPoolExecutor</string>

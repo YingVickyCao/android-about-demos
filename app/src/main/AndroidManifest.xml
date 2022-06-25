@@ -27,8 +27,18 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
+
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
 
     <!--android:usesCleartextTraffic="true"-->
     <!-- android:requestLegacyExternalStorage = “true” Android 10 添加该属性，才能读取SDCard文件    -->
@@ -481,7 +491,7 @@
         <activity
             android:name=".resource.ResourceActivity"
             android:theme="@style/AppTheme.FullScreen" />
-        <activity android:name=".resource.drawable.bitmap.TestBitmapDrawableActivity"/>
+        <activity android:name=".resource.drawable.bitmap.TestBitmapDrawableActivity" />
         <activity android:name=".resource.adapter_screen.DipTestActivity" />
         <activity android:name=".resource.drawable.state.custom_selector_drawable.CustomSelectedStatusActivity" />
         <activity android:name=".resource.drawable.state.custom_selector_drawable.CustomSelectedStatusActivity2" />
@@ -567,6 +577,76 @@
             tools:targetApi="n"></activity>
         <activity android:name=".feature.multi_window.BActivity" />
         <!-- Feature,END -->
-    </application>
 
+        <!-- ExoPlayer2,START       -->
+        <activity
+            android:name=".lib.exoplayer2.TestExoplayer2MainActivity"
+            android:configChanges="keyboardHidden"
+            android:label="@string/label_ExoPlayer2"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:scheme="content" />
+                <data android:scheme="asset" />
+                <data android:scheme="file" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.exolist\\.json" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".lib.exoplayer2.PlayerActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:exported="true"
+            android:label="@string/label_ExoPlayer2"
+            android:launchMode="singleTop"
+            android:theme="@style/PlayerTheme">
+            <intent-filter>
+                <!--                <action android:name="com.google.android.exoplayer.demo.action.VIEW" />-->
+                <!--                <category android:name="android.intent.category.DEFAULT" />-->
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:scheme="content" />
+                <data android:scheme="asset" />
+                <data android:scheme="file" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.exoplayer.demo.action.VIEW_LIST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".lib.exoplayer2.DownloadService"
+            android:exported="false"
+            android:label="@string/label_ExoPlayer2">
+            <intent-filter>
+                <action android:name="com.google.android.exoplayer.downloadService.action.RESTART" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.google.android.exoplayer2.scheduler.PlatformScheduler$PlatformSchedulerService"
+            android:exported="true"
+            android:label="@string/label_ExoPlayer2"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <!-- ExoPlayer2,END       -->
+
+        <activity android:name=".lib.TestLibsActivity"/>
+    </application>
 </manifest>

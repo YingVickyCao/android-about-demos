@@ -40,6 +40,11 @@
                 android:text="@string/page_resource" />
 
             <Button
+                android:id="@+id/page_Libs"
+                style="@style/btn"
+                android:text="@string/page_Libs" />
+
+            <Button
                 android:id="@+id/pageQAAboutView"
                 style="@style/btn"
                 android:text="@string/page_qa_about_view" />

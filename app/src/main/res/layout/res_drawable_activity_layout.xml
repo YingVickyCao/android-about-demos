@@ -87,6 +87,11 @@
                 android:id="@+id/page_ScaleDrawable"
                 style="@style/btn"
                 android:text="@string/page_ScaleDrawable" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/page_RotateDrawable"
+                style="@style/btn"
+                android:text="@string/page_RotateDrawable" />
         </LinearLayout>
     </ScrollView>
 

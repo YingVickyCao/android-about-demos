@@ -3,13 +3,14 @@ package com.hades.example.android;
 import android.os.Bundle;
 import android.view.View;
 
-import com.hades.example.android.base.NoNeedPermissionActivity;
+import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.data_storage.DataStorageActivity;
+import com.hades.example.android.lib.TestLibsActivity;
 import com.hades.example.android.po.security.SecurityActivity;
 import com.hades.example.android.resource.ResourceActivity;
 import com.hades.example.android.widget.WidgetActivity;
 
-public class MainActivity extends NoNeedPermissionActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class MainActivity extends NoNeedPermissionActivity {
         findViewById(R.id.pageWidget).setOnClickListener(v -> pageWidget());
         findViewById(R.id.pageDateStorage).setOnClickListener(v -> pageDateStorage());
         findViewById(R.id.pageResource).setOnClickListener(v -> pageResource());
+        findViewById(R.id.page_Libs).setOnClickListener(v -> page_Libs());
         findViewById(R.id.pageQAAboutView).setOnClickListener(v -> pageQAAboutView());
     }
 
@@ -43,6 +45,10 @@ public class MainActivity extends NoNeedPermissionActivity {
 
     private void pageResource() {
         showActivity(ResourceActivity.class);
+    }
+
+    private void page_Libs() {
+        showActivity(TestLibsActivity.class);
     }
 
     private void pageQAAboutView() {

@@ -73,9 +73,9 @@ dependencies {
     implementation "com.google.code.gson:gson:2.8.6"
     implementation group: 'com.squareup.picasso', name: 'picasso', version: '2.5.2'
     implementation 'info.guardianproject.netcipher:netcipher:2.1.0'
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+    implementation 'com.google.android.exoplayer:exoplayer:2.11.3'
 
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
     testImplementation 'junit:junit:4.13.2'
-
-    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 }

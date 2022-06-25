@@ -30,11 +30,12 @@ public class TestDrawableActivity extends BaseActivity {
         findViewById(R.id.page_NinePatchDrawable).setOnClickListener(v -> page_NinePatchDrawable());
         findViewById(R.id.page_InsetDrawable).setOnClickListener(v -> page_InsetDrawable());
         findViewById(R.id.page_ScaleDrawable).setOnClickListener(v -> page_ScaleDrawable());
+        findViewById(R.id.page_RotateDrawable).setOnClickListener(v -> page_RotateDrawable());
     }
 
     @Override
     protected void showCurrentTest() {
-        page_ScaleDrawable();
+        page_RotateDrawable();
     }
 
     private void pageDrawableFolder() {
@@ -87,5 +88,9 @@ public class TestDrawableActivity extends BaseActivity {
 
     private void page_ScaleDrawable() {
         showFragment(new TestScaleDrawableFragment());
+    }
+
+    private void page_RotateDrawable() {
+        showFragment(new TestRotateDrawableFragment());
     }
 }
