@@ -22,11 +22,11 @@ buildscript {
         // google()
         maven { url 'https://maven.aliyun.com/repository/google' }
 
-//        mavenCentral()
         maven { url 'https://maven.aliyun.com/repository/central' }
+//        mavenCentral()
 
-        // jcenter()
         maven { url 'https://maven.aliyun.com/repository/public' }
+        // jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.1.2'

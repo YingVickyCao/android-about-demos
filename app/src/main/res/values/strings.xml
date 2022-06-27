@@ -139,7 +139,9 @@
 
 
     <string name="page_security">Security</string>
+
     <string name="page_Exoplayer2">Exoplayer2</string>
+    <string name="page_OkHttp">OkHttp</string>
 
     <string name="page_background_tasks">Background tasks</string>
     <string name="page_threadPoolExecutor">ThreadPoolExecutor</string>

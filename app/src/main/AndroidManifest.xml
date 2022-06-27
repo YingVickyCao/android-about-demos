@@ -586,9 +586,8 @@
             android:exported="true"
             android:theme="@style/Theme.AppCompat">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
             <intent-filter>
@@ -648,5 +647,7 @@
         <!-- ExoPlayer2,END       -->
 
         <activity android:name=".test_libs.TestLibsActivity"/>
+
+        <activity android:name=".test_libs.okhttp.TestOkHttpActivity"/>
     </application>
 </manifest>
