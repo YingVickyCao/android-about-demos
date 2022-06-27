@@ -34,6 +34,11 @@
                 android:id="@+id/async_get"
                 style="@style/btn"
                 android:text="异步的Get" />
+
+            <Button
+                android:id="@+id/header"
+                style="@style/btn"
+                android:text="Header" />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

@@ -18,6 +18,9 @@ public class TestSyncGet {
     private static final String TAG = "TestSyncGet";
     public void run(IOkHttpExampleView listener) {
         // Download a file, print its headers, and print its response body as a string.
+
+        Log.d(TAG, "run: "+Thread.currentThread().getName()); // Thread-4
+        
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(URL_1)
@@ -50,6 +53,7 @@ public class TestSyncGet {
              * 适合：小文件或小段文本，大小<1MB。否则使用流处理body，避免 OutOfMemoryErro。
              */
             Log.d(TAG, "run: body:"+ response.body().string());
+            Log.d(TAG, "run: "+Thread.currentThread().getName());   // Thread-4
             listener.hideLoading();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());

@@ -20,6 +20,7 @@ public class TestOkHttpActivity extends Activity implements IOkHttpExampleView{
 
         findViewById(R.id.sync_get).setOnClickListener(v -> sync_get());
         findViewById(R.id.async_get).setOnClickListener(v -> async_get());
+        findViewById(R.id.header).setOnClickListener(v -> header());
     }
 
     public void showLoading() {
@@ -51,5 +52,13 @@ public class TestOkHttpActivity extends Activity implements IOkHttpExampleView{
 
     private void async_get() {
         new TestAsyncGet().run(this);
+    }
+    private void header() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                new TestHeader().run(TestOkHttpActivity.this);
+            }
+        }).start();
     }
 }
