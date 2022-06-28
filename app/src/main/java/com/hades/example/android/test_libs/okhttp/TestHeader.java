@@ -11,15 +11,19 @@ import okhttp3.Response;
 public class TestHeader {
     private static final String TAG = "TestHeader";
 
-    public void run(IOkHttpExampleView listener){
+    public void run(IOkHttpExampleView listener) {
         Request request = new Request.Builder()
                 .url("https://api.github.com/repos/square/okhttp/issues")
-                // header(name, value): 同一个Key，只能有一个值
-                .header("User-Agent","OkHttp Headers.java")
-                .header("User-Agent","OkHttp Call.java")
-                // addHeader(name, value):同一个Key，可以有多个值
-                .addHeader("Accept","application/json; q=0.5")
-                .addHeader("Accept","application/vnd.github.v3+json")
+                /**
+                 * header(name, value): 同一个Key，只能有一个值
+                 */
+                .header("User-Agent", "OkHttp Headers.java")
+                .header("User-Agent", "OkHttp Call.java")
+                /**
+                 *addHeader(name, value):同一个Key，可以有多个值
+                 */
+                .addHeader("Accept", "application/json; q=0.5")
+                .addHeader("Accept", "application/vnd.github.v3+json")
                 .build();
 
         /*
@@ -27,7 +31,7 @@ public class TestHeader {
          Accept: application/json; q=0.5
          Accept: application/vnd.github.v3+json
          */
-        Log.d(TAG, "run: request header:"+request.headers());
+        Log.d(TAG, "run: request header:" + request.headers());
         OkHttpClient client = new OkHttpClient();
         Response response = null;
         try {
@@ -36,16 +40,25 @@ public class TestHeader {
             exception.printStackTrace();
             return;
         }
-        if (!response.isSuccessful()){
+        if (!response.isSuccessful()) {
             return;
         }
-        
-        Log.d(TAG, "All: "+response.headers()); // 获取所有header
+
+        /**
+         * 获取所有header
+         */
+        Log.d(TAG, "All: " + response.headers());
+        /**
+         * header(name):返回一个string 值
+         */
         // server: GitHub.com
-        Log.d(TAG, "Server:"+response.header("Server"));
+        Log.d(TAG, "Server:" + response.header("Server"));
         // Vary:Accept, Accept-Encoding, Accept, X-Requested-With
-        Log.d(TAG, "Vary:"+response.header("vary"));
+        Log.d(TAG, "Vary:" + response.header("vary"));
+        /**
+         * headers(name):返回一个值列表
+         */
         // Vary:[Accept, Accept-Encoding, Accept, X-Requested-With]
-        Log.d(TAG, "Vary:"+response.headers("vary"));
+        Log.d(TAG, "Vary:" + response.headers("vary"));
     }
 }
