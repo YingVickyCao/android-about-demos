@@ -69,11 +69,11 @@ public class TestActionBarActivity extends NoNeedPermissionActivity {
     }
 
     private void font_10() {
-        textView.setTextSize(getResources().getDimension(R.dimen.font_size_5));
+        textView.setTextSize(getResources().getDimension(R.dimen.text_size_5));
     }
 
     private void font_30() {
-        textView.setTextSize(getResources().getDimension(R.dimen.font_size_10));
+        textView.setTextSize(getResources().getDimension(R.dimen.text_size_10));
     }
 
     private void red() {

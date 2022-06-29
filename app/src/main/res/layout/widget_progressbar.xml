@@ -25,264 +25,264 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal" />
+<!--            <ProgressBar-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_horizontal" />-->
 
-            <TextView
-                style="@style/tv"
-                android:text="style = Middle(Default)" />
+<!--            <TextView-->
+<!--                style="@style/tv"-->
+<!--                android:text="style = Middle(Default)" />-->
 
-            <ProgressBar
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/margin_small" />
+<!--            <ProgressBar-->
+<!--                style="?android:attr/progressBarStyle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:layout_marginTop="@dimen/margin_small" />-->
 
-            <TextView
-                style="@style/tv"
-                android:text="style = Small" />
+<!--            <TextView-->
+<!--                style="@style/tv"-->
+<!--                android:text="style = Small" />-->
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/margin_small" />
+<!--            <ProgressBar-->
+<!--                style="?android:attr/progressBarStyleSmall"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:layout_marginTop="@dimen/margin_small" />-->
 
-            <TextView
-                style="@style/tv"
-                android:text="style = Large" />
+<!--            <TextView-->
+<!--                style="@style/tv"-->
+<!--                android:text="style = Large" />-->
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/margin_small" />
+<!--            <ProgressBar-->
+<!--                style="?android:attr/progressBarStyleLarge"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:layout_marginTop="@dimen/margin_small" />-->
 
-            <View style="@style/div" />
+<!--            <View style="@style/div" />-->
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_small"
-                android:max="100"
-                android:progress="20"
-                android:secondaryProgress="60" />
+<!--            <ProgressBar-->
+<!--                style="?android:attr/progressBarStyleHorizontal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="@dimen/margin_small"-->
+<!--                android:max="100"-->
+<!--                android:progress="20"-->
+<!--                android:secondaryProgress="60" />-->
 
-            <TextView
-                style="@style/tv"
-                android:text="style = Horizontal" />
+<!--            <TextView-->
+<!--                style="@style/tv"-->
+<!--                android:text="style = Horizontal" />-->
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_small"
-                android:max="100"
-                android:progress="20"
-                android:secondaryProgress="60" />
+<!--            <ProgressBar-->
+<!--                style="?android:attr/progressBarStyleHorizontal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="@dimen/margin_small"-->
+<!--                android:max="100"-->
+<!--                android:progress="20"-->
+<!--                android:secondaryProgress="60" />-->
 
-            <View style="@style/div" />
+<!--            <View style="@style/div" />-->
 
-            <TextView
-                style="@style/tv"
-                android:text="background" />
+<!--            <TextView-->
+<!--                style="@style/tv"-->
+<!--                android:text="background" />-->
 
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/margin_small"
-                android:background="@android:color/holo_red_light" />
+<!--            <ProgressBar-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:layout_marginTop="@dimen/margin_small"-->
+<!--                android:background="@android:color/holo_red_light" />-->
 
-            <View style="@style/div" />
+<!--            <View style="@style/div" />-->
 
-            <TextView
-                style="@style/tv"
-                android:text="进度条 Height" />
+<!--            <TextView-->
+<!--                style="@style/tv"-->
+<!--                android:text="进度条 Height" />-->
 
-            <ProgressBar
-                style="@style/progressbar_h"
-                android:layout_marginTop="@dimen/margin_small"
-                android:background="@android:color/holo_blue_light"
-                android:maxHeight="2dp"
-                android:minHeight="2dp" />
+<!--            <ProgressBar-->
+<!--                style="@style/progressbar_h"-->
+<!--                android:layout_marginTop="@dimen/margin_small"-->
+<!--                android:background="@android:color/holo_blue_light"-->
+<!--                android:maxHeight="2dp"-->
+<!--                android:minHeight="2dp" />-->
 
-            <ProgressBar
-                style="@style/progressbar_h"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/margin_small"
-                android:background="@android:color/holo_blue_light"
-                android:maxHeight="2dp"
-                android:minHeight="2dp" />
+<!--            <ProgressBar-->
+<!--                style="@style/progressbar_h"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="@dimen/margin_small"-->
+<!--                android:background="@android:color/holo_blue_light"-->
+<!--                android:maxHeight="2dp"-->
+<!--                android:minHeight="2dp" />-->
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small" />
+<!--            <Button-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/margin_small" />-->
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
-                android:maxHeight="20dp"
-                android:minHeight="20dp" />
+<!--            <Button-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/margin_small"-->
+<!--                android:maxHeight="20dp"-->
+<!--                android:minHeight="20dp" />-->
 
-            <ProgressBar
-                style="@style/progressbar_h"
-                android:layout_height="40dp"
-                android:layout_marginTop="@dimen/margin_small"
-                android:background="@android:color/holo_blue_light"
-                android:maxHeight="2dp"
-                android:minHeight="2dp" />
+<!--            <ProgressBar-->
+<!--                style="@style/progressbar_h"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginTop="@dimen/margin_small"-->
+<!--                android:background="@android:color/holo_blue_light"-->
+<!--                android:maxHeight="2dp"-->
+<!--                android:minHeight="2dp" />-->
 
-            <View style="@style/div" />
+<!--            <View style="@style/div" />-->
 
-            <TextView
-                style="@style/tv"
-                android:text="Tint" />
+<!--            <TextView-->
+<!--                style="@style/tv"-->
+<!--                android:text="Tint" />-->
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_small"
-                android:backgroundTint="@android:color/holo_green_light"
-                android:max="100"
-                android:progress="20"
-                android:progressBackgroundTint="#ff0000"
-                android:progressTint="#0000ff"
-                android:secondaryProgress="60"
-                android:secondaryProgressTint="#00ff00" />
+<!--            <ProgressBar-->
+<!--                style="?android:attr/progressBarStyleHorizontal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="@dimen/margin_small"-->
+<!--                android:backgroundTint="@android:color/holo_green_light"-->
+<!--                android:max="100"-->
+<!--                android:progress="20"-->
+<!--                android:progressBackgroundTint="#ff0000"-->
+<!--                android:progressTint="#0000ff"-->
+<!--                android:secondaryProgress="60"-->
+<!--                android:secondaryProgressTint="#00ff00" />-->
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:indeterminateTint="@android:color/holo_orange_dark" />
+<!--            <ProgressBar-->
+<!--                style="?android:attr/progressBarStyleLarge"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:indeterminateTint="@android:color/holo_orange_dark" />-->
 
-            <View style="@style/div" />
+<!--            <View style="@style/div" />-->
 
-            <TextView
-                style="@style/tv"
-                android:text="Custom 进度条的背景色、progress and secondaryProgress bg color" />
+<!--            <TextView-->
+<!--                style="@style/tv"-->
+<!--                android:text="Custom 进度条的背景色、progress and secondaryProgress bg color" />-->
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_small"
-                android:max="100"
-                android:progress="20"
-                android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_v2"
-                android:secondaryProgress="60" />
+<!--            <ProgressBar-->
+<!--                style="?android:attr/progressBarStyleHorizontal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="4dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="@dimen/margin_small"-->
+<!--                android:max="100"-->
+<!--                android:progress="20"-->
+<!--                android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_v2"-->
+<!--                android:secondaryProgress="60" />-->
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_small"
-                android:max="100"
-                android:progress="20"
-                android:progressBackgroundTint="@color/progressBackground2"
-                android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_v2"
-                android:progressTint="@color/progress2"
-                android:secondaryProgress="60"
-                android:secondaryProgressTint="@color/secondaryProgress2" />
+<!--            <ProgressBar-->
+<!--                style="?android:attr/progressBarStyleHorizontal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="@dimen/margin_small"-->
+<!--                android:max="100"-->
+<!--                android:progress="20"-->
+<!--                android:progressBackgroundTint="@color/progressBackground2"-->
+<!--                android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_v2"-->
+<!--                android:progressTint="@color/progress2"-->
+<!--                android:secondaryProgress="60"-->
+<!--                android:secondaryProgressTint="@color/secondaryProgress2" />-->
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_small"
-                android:backgroundTint="@android:color/holo_green_light"
-                android:max="100"
-                android:progress="20"
-                android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_material"
-                android:secondaryProgress="60" />
+<!--            <ProgressBar-->
+<!--                style="?android:attr/progressBarStyleHorizontal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="@dimen/margin_small"-->
+<!--                android:backgroundTint="@android:color/holo_green_light"-->
+<!--                android:max="100"-->
+<!--                android:progress="20"-->
+<!--                android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_material"-->
+<!--                android:secondaryProgress="60" />-->
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_small"
-                android:background="@android:color/holo_green_light"
-                android:max="100"
-                android:progress="20"
-                android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_material"
-                android:secondaryProgress="60" />
+<!--            <ProgressBar-->
+<!--                style="?android:attr/progressBarStyleHorizontal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="@dimen/margin_small"-->
+<!--                android:background="@android:color/holo_green_light"-->
+<!--                android:max="100"-->
+<!--                android:progress="20"-->
+<!--                android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_material"-->
+<!--                android:secondaryProgress="60" />-->
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_small"
-                android:background="@android:color/holo_green_light"
-                android:backgroundTint="@android:color/holo_red_light"
-                android:max="100"
-                android:progress="20"
-                android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_material"
-                android:secondaryProgress="60" />
+<!--            <ProgressBar-->
+<!--                style="?android:attr/progressBarStyleHorizontal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="@dimen/margin_small"-->
+<!--                android:background="@android:color/holo_green_light"-->
+<!--                android:backgroundTint="@android:color/holo_red_light"-->
+<!--                android:max="100"-->
+<!--                android:progress="20"-->
+<!--                android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_material"-->
+<!--                android:secondaryProgress="60" />-->
 
-            <View style="@style/div" />
+<!--            <View style="@style/div" />-->
 
-            <TextView
-                style="@style/tv"
-                android:text="indeterminate" />
+<!--            <TextView-->
+<!--                style="@style/tv"-->
+<!--                android:text="indeterminate" />-->
 
-            <ProgressBar
-                style="@style/progressbar_h"
-                android:layout_marginTop="@dimen/margin_small"
-                android:indeterminate="true" />
+<!--            <ProgressBar-->
+<!--                style="@style/progressbar_h"-->
+<!--                android:layout_marginTop="@dimen/margin_small"-->
+<!--                android:indeterminate="true" />-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/margin_small"-->
+<!--                android:orientation="horizontal">-->
 
-                <ProgressBar
-                    style="@style/progressbar"
-                    android:layout_marginTop="@dimen/margin_small" />
+<!--                <ProgressBar-->
+<!--                    style="@style/progressbar"-->
+<!--                    android:layout_marginTop="@dimen/margin_small" />-->
 
-                <ProgressBar
-                    style="@style/progressbar"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:indeterminate="true" />
-            </LinearLayout>
+<!--                <ProgressBar-->
+<!--                    style="@style/progressbar"-->
+<!--                    android:layout_marginTop="@dimen/margin_small"-->
+<!--                    android:indeterminate="true" />-->
+<!--            </LinearLayout>-->
 
-            <View style="@style/div" />
+<!--            <View style="@style/div" />-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
 
-                <TextView
-                    style="@style/tv"
-                    android:text="TBD:Inverse" />
+<!--                <TextView-->
+<!--                    style="@style/tv"-->
+<!--                    android:text="TBD:Inverse" />-->
 
-                <ProgressBar
-                    style="?android:attr/progressBarStyleLargeInverse"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small" />
-            </LinearLayout>
+<!--                <ProgressBar-->
+<!--                    style="?android:attr/progressBarStyleLargeInverse"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="@dimen/margin_small" />-->
+<!--            </LinearLayout>-->
 
-            <View style="@style/div" />
+<!--            <View style="@style/div" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -300,7 +300,35 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_small" />
 
+                <!-- 圆形进度，更新进度，而不是一直循环转圈             -->
+                <!--  https://juejin.cn/post/7073799279956983839              -->
+                <ProgressBar
+                    android:id="@+id/circleProgressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:max="100"
+                    android:progress="10"
+                    android:indeterminateTint="@color/colorAccent"
+                    android:indeterminate="false"
+                    android:indeterminateOnly="false"
+                    android:progressDrawable="@drawable/circle_progress_drawable"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/margin_small" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_margin="@dimen/margin_tiny"
+                    android:layout_height="wrap_content">
+
+                    <com.hades.example.android.widget.custom_view.CircleProgressBar
+                        android:layout_width="@dimen/size_100"
+                        android:layout_height="@dimen/size_100"/>
+                </LinearLayout>
+
                 <RelativeLayout
+                    android:layout_marginTop="@dimen/margin_small"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 

@@ -14,6 +14,7 @@ import com.hades.example.android.base.BaseFragment;
 // progress_medium
 public class TestProgressBarFragment extends BaseFragment {
     ProgressBar mProgressBar;
+    ProgressBar circleProgressBar;
 
     @Nullable
     @Override
@@ -21,6 +22,7 @@ public class TestProgressBarFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.widget_progressbar, container, false);
 
         mProgressBar = view.findViewById(R.id.progressBar);
+        circleProgressBar = view.findViewById(R.id.circleProgressBar);
 
         view.findViewById(R.id.add).setOnClickListener(v -> add());
         view.findViewById(R.id.reduce).setOnClickListener(v -> reduce());
@@ -29,22 +31,43 @@ public class TestProgressBarFragment extends BaseFragment {
     }
 
     private void add() {
-        if (mProgressBar.getProgress() <= 90) {
-//            mProgressBar.setProgress((int) (mProgressBar.getProgress() * 1.2));
-            mProgressBar.incrementProgressBy(10);
+      add(mProgressBar);
+      if (circleProgressBar.getProgress() ==0) {
+          circleProgressBar.setProgress(10);
+      }
+      else {
+          circleProgressBar.setProgress(circleProgressBar.getProgress()+10);
+      }
+    }
+
+    private void add(ProgressBar progressBar){
+        if (progressBar.getProgress() <= 90) {
+//            progressBar.setProgress((int) (mProgressBar.getProgress() * 1.2));
+            progressBar.incrementProgressBy(10);
         }
-        if (mProgressBar.getSecondaryProgress() < 90) {
-//            mProgressBar.setSecondaryProgress((int) (mProgressBar.getSecondaryProgress() * 1.2));
-            mProgressBar.incrementSecondaryProgressBy(10);
+        if (progressBar.getSecondaryProgress() < 90) {
+//            progressBar.setSecondaryProgress((int) (mProgressBar.getSecondaryProgress() * 1.2));
+            progressBar.incrementSecondaryProgressBy(10);
         }
     }
 
     private void reduce() {
-        if (mProgressBar.getProgress() > 10) {
-            mProgressBar.incrementProgressBy(-10);
+       reduce(mProgressBar);
+
+        if (circleProgressBar.getProgress() ==0) {
+            circleProgressBar.setProgress(0);
         }
-        if (mProgressBar.getSecondaryProgress() > 20) {
-            mProgressBar.incrementSecondaryProgressBy(-10);
+        else {
+            circleProgressBar.setProgress(circleProgressBar.getProgress()-10);
+        }
+    }
+    private void reduce(ProgressBar progressBar) {
+        if (progressBar.getProgress() > 10) {
+//            progressBar.setProgress(-10);
+            progressBar.incrementProgressBy(-10);
+        }
+        if (progressBar.getSecondaryProgress() > 20) {
+            progressBar.incrementSecondaryProgressBy(-10);
         }
     }
 }

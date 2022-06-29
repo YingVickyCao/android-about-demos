@@ -113,7 +113,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     @Override
     protected void showCurrentTest() {
-//        pageCustomVew();
+        pageProgressbar();
     }
 
     private void pageViewLocation() {

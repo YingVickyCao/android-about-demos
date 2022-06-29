@@ -93,7 +93,7 @@
                 <com.hades.example.android.widget.custom_view.shader.ShaderExampleView_Shader_with_Matrix
                     android:layout_width="@dimen/size_100"
                     android:layout_height="@dimen/size_100"
-                    android:layout_marginStart="@dimen/font_size_10" />
+                    android:layout_marginStart="@dimen/text_size_10" />
             </LinearLayout>
 
             <com.hades.example.android.widget.custom_view.shader.ReflectionImageView
