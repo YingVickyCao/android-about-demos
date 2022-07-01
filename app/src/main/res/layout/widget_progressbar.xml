@@ -324,6 +324,7 @@
 
                     <com.hades.example.android.widget.custom_view.CircleProgressBar
                         android:layout_width="@dimen/size_100"
+                        android:id="@+id/circleProgressBar2"
                         android:layout_height="@dimen/size_100"/>
                 </LinearLayout>
 

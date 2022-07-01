@@ -10,11 +10,14 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
+import com.hades.example.android.widget.custom_view.CircleProgressBar;
 
 // progress_medium
 public class TestProgressBarFragment extends BaseFragment {
     ProgressBar mProgressBar;
     ProgressBar circleProgressBar;
+    CircleProgressBar circleProgressBar2;
+
 
     @Nullable
     @Override
@@ -23,6 +26,7 @@ public class TestProgressBarFragment extends BaseFragment {
 
         mProgressBar = view.findViewById(R.id.progressBar);
         circleProgressBar = view.findViewById(R.id.circleProgressBar);
+        circleProgressBar2 = view.findViewById(R.id.circleProgressBar2);
 
         view.findViewById(R.id.add).setOnClickListener(v -> add());
         view.findViewById(R.id.reduce).setOnClickListener(v -> reduce());
@@ -38,6 +42,13 @@ public class TestProgressBarFragment extends BaseFragment {
       else {
           circleProgressBar.setProgress(circleProgressBar.getProgress()+10);
       }
+
+        if (circleProgressBar2.getProgress() ==0) {
+            circleProgressBar2.setProgress(10);
+        }
+        else {
+            circleProgressBar2.setProgress(circleProgressBar2.getProgress()+10);
+        }
     }
 
     private void add(ProgressBar progressBar){
@@ -59,6 +70,13 @@ public class TestProgressBarFragment extends BaseFragment {
         }
         else {
             circleProgressBar.setProgress(circleProgressBar.getProgress()-10);
+        }
+
+        if (circleProgressBar2.getProgress() ==0) {
+            circleProgressBar2.setProgress(0);
+        }
+        else {
+            circleProgressBar2.setProgress(circleProgressBar2.getProgress()-10);
         }
     }
     private void reduce(ProgressBar progressBar) {
