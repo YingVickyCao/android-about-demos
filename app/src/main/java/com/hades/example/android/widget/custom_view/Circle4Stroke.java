@@ -29,8 +29,7 @@ public class Circle4Stroke extends View {
         paint.setAntiAlias(true); // 去锯齿
         paint.setColor(Color.GREEN);
         paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(4);
-//        paint.setStrokeWidth(10);
+        paint.setStrokeWidth(10);
 
         // 绘制圆形
         int radius = (int) getResources().getDimension(R.dimen.size_50);

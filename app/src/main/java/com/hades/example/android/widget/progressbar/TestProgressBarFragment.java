@@ -16,12 +16,16 @@ import com.hades.example.android.widget.custom_view.CircleProgressBar;
 public class TestProgressBarFragment extends BaseFragment {
     ProgressBar mProgressBar;
     ProgressBar circleProgressBar;
+
     CircleProgressBar circleProgressBar2_1;
     CircleProgressBar circleProgressBar2_2;
     CircleProgressBar circleProgressBar2_3;
     CircleProgressBar circleProgressBar2_4;
     CircleProgressBar circleProgressBar2_5;
     CircleProgressBar circleProgressBar2_6;
+    CircleProgressBar circleProgressBar2_7;
+    CircleProgressBar circleProgressBar2_8;
+    CircleProgressBar circleProgressBar2_9;
 
     @Nullable
     @Override
@@ -38,6 +42,9 @@ public class TestProgressBarFragment extends BaseFragment {
         circleProgressBar2_4 = view.findViewById(R.id.circleProgressBar2_4);
         circleProgressBar2_5 = view.findViewById(R.id.circleProgressBar2_5);
         circleProgressBar2_6 = view.findViewById(R.id.circleProgressBar2_6);
+        circleProgressBar2_7 = view.findViewById(R.id.circleProgressBar2_7);
+        circleProgressBar2_8 = view.findViewById(R.id.circleProgressBar2_8);
+        circleProgressBar2_9 = view.findViewById(R.id.circleProgressBar2_9);
 
         view.findViewById(R.id.add).setOnClickListener(v -> add());
         view.findViewById(R.id.reduce).setOnClickListener(v -> reduce());
@@ -59,6 +66,9 @@ public class TestProgressBarFragment extends BaseFragment {
         add(circleProgressBar2_4);
         add(circleProgressBar2_5);
         add(circleProgressBar2_6);
+        add(circleProgressBar2_7);
+        add(circleProgressBar2_8);
+        add(circleProgressBar2_9);
     }
 
     private void add(ProgressBar progressBar){
@@ -96,6 +106,9 @@ public class TestProgressBarFragment extends BaseFragment {
         reduce(circleProgressBar2_4);
         reduce(circleProgressBar2_5);
         reduce(circleProgressBar2_6);
+        reduce(circleProgressBar2_7);
+        reduce(circleProgressBar2_8);
+        reduce(circleProgressBar2_9);
     }
     private void reduce(ProgressBar progressBar) {
         if (progressBar.getProgress() > 10) {
