@@ -26,7 +26,7 @@ public class CircleProgressBar extends View {
     private int MODE_STROKE_AND_TEXT = 1;   // 环形带文字
     private int MODE_STROKE_AND_FILL = 2;   // 环形，有扇形填充
 
-    private int mode = MODE_STROKE_AND_TEXT;
+    private int mode = MODE_STROKE_AND_FILL;
 
     private String color_default = "#87A2BD";
     //    private String color_progress = "#0076D4";
@@ -35,7 +35,6 @@ public class CircleProgressBar extends View {
     private int thickness = getResources().getDimensionPixelSize(R.dimen.size_1);
     private int textSize = getResources().getDimensionPixelSize(R.dimen.text_size_20);
     private int progress = 0;
-    private int oldProgress = 0;
 
     public CircleProgressBar(Context context) {
         super(context);
@@ -49,7 +48,13 @@ public class CircleProgressBar extends View {
         defaultPaint.setAntiAlias(true);
 
         progressPaint.setColor(Color.parseColor(color_progress));
-        progressPaint.setStyle(Paint.Style.STROKE);
+        if (mode == MODE_STROKE_AND_FILL){
+            progressPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        }
+        else {
+            progressPaint.setStyle(Paint.Style.STROKE);
+        }
+
         progressPaint.setStrokeWidth(thickness);
         progressPaint.setAntiAlias(true);
 
@@ -101,8 +106,8 @@ public class CircleProgressBar extends View {
 //        float startAngle = 270;
         float sweepAngle = 360 * (progress) / 100;
 //        float sweepAngle =90;
-        boolean useCenter = false;
-        Log.d(TAG, "drawProgress:progress="+progress+",startAngle="+startAngle+",sweepAngle="+sweepAngle);
+        boolean useCenter = (mode == MODE_STROKE_AND_FILL);
+        Log.d(TAG, "drawProgress:progress=" + progress + ",startAngle=" + startAngle + ",sweepAngle=" + sweepAngle);
         canvas.drawArc(oval, startAngle, sweepAngle, useCenter, progressPaint);
     }
 
@@ -113,31 +118,33 @@ public class CircleProgressBar extends View {
 
         String text = progress + "%";
         Paint.FontMetricsInt fontMetrics = textPaint.getFontMetricsInt();
-        int baseline = (targetRect.bottom + targetRect.top - fontMetrics.bottom - fontMetrics.top) / 2;
         textPaint.setColor(Color.parseColor(color_text));
         textPaint.setTextAlign(Paint.Align.CENTER);
-        canvas.drawText(text, targetRect.centerX(), baseline, textPaint);
+        int baseline = targetRect.centerY() - (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.top;
+        // 优化后
+//        int baseline = (targetRect.bottom + targetRect.top - fontMetrics.bottom - fontMetrics.top) / 2;
+        float x = targetRect.centerX();
+        float y = baseline;
+        canvas.drawText(text, x, y, textPaint);
     }
 
     public void setProgress(int progress) {
-        if (this.progress<0){
+        if (this.progress < 0) {
             this.progress = 0;
-            oldProgress = this.progress;
         }
-        if (this.progress == 100 && progress>100){
+        if (this.progress == 100 && progress > 100) {
             return;
         }
-        if (progress<0){
+        if (progress < 0) {
             return;
         }
-        oldProgress = this.progress;
         this.progress = progress;
-        Log.d(TAG, "setProgress: "+progress);
+        Log.d(TAG, "setProgress: " + progress);
         invalidate();
     }
 
     public int getProgress() {
-        Log.d(TAG, "getProgress: "+ progress);
+        Log.d(TAG, "getProgress: " + progress);
         return progress;
     }
 }
