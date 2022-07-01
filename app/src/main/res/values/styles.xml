@@ -517,4 +517,48 @@
         <item name="android:layout_height">96dp</item>
         <item name="android:layout_weight">1</item>
     </style>
+
+    <!-- Circle Progress,START   -->
+    <declare-styleable name="CircleProgress">
+        <attr name="mode" format="integer">
+            <!-- 环形           -->
+            <enum name="ring" value="-1" />
+            <!-- 环形带文字           -->
+            <enum name="ring_with_text" value="-2" />
+            <!-- 环形，有扇形填充           -->
+            <enum name="ring_with_fan" value="-3" />
+        </attr>
+        <attr name="thickness" format="dimension" />
+        <attr name="color_default" format="color" />
+        <attr name="color_progress" format="color" />
+        <!--        <attr name="android:max" format="color" />-->
+        <attr name="color_text" format="color" />
+        <attr name="android:textSize" format="color" />
+    </declare-styleable>
+
+    <attr name="circleProgressStyle" format="reference" />
+
+    <style name="CircleProgressStyle">
+        <item name="mode">ring</item>
+        <item name="color_default">#87A2BD</item>
+        <item name="color_progress">#0076D4</item>
+        <item name="thickness">@dimen/size_2</item>
+    </style>
+
+    <style name="CircleProgressStyle_2">
+        <item name="mode">ring_with_text</item>
+        <item name="color_default">#87A2BD</item>
+        <item name="color_progress">#f00</item>
+        <item name="color_text">#0f0</item>
+        <item name="android:textSize">10sp</item>
+        <item name="thickness">@dimen/size_2</item>
+    </style>
+
+    <style name="CircleProgressStyle_3">
+        <item name="mode">ring_with_fan</item>
+        <item name="color_default">#87A2BD</item>
+        <item name="color_progress">#f00</item>
+        <item name="thickness">@dimen/size_2</item>
+    </style>
+    <!-- Circle Progress,END   -->
 </resources>

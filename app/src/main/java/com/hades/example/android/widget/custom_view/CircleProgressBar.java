@@ -1,6 +1,7 @@
 package com.hades.example.android.widget.custom_view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -16,24 +17,22 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 
 public class CircleProgressBar extends View {
-    private static final String TAG = "CircleProgressBar";
+    private static final String TAG = CircleProgressBar.class.getSimpleName();
     private Paint defaultPaint = new Paint();
     private Paint progressPaint = new Paint();
     private Paint textPaint = new Paint();
     private RectF oval = new RectF();
 
-    private int MODE_STROKE = 0;            // 环形
-    private int MODE_STROKE_AND_TEXT = 1;   // 环形带文字
-    private int MODE_STROKE_AND_FILL = 2;   // 环形，有扇形填充
+    public static final int RING = -1;            // 环形
+    public static final int RING_WITH_TEXT = -2;   // 环形带文字
+    public static final int RING_WITH_FAN = -3;   // 环形，有扇形填充
+    public int mMode = RING;
 
-    private int mode = MODE_STROKE_AND_FILL;
-
-    private String color_default = "#87A2BD";
-    //    private String color_progress = "#0076D4";
-    private String color_progress = "#ff0000";
-    private String color_text = "#00ff00";
-    private int thickness = getResources().getDimensionPixelSize(R.dimen.size_1);
-    private int textSize = getResources().getDimensionPixelSize(R.dimen.text_size_20);
+    private int color_default ;
+    private int color_progress;
+    private int color_text;
+    private int thickness;
+    private int textSize ;
     private int progress = 0;
 
     public CircleProgressBar(Context context) {
@@ -41,36 +40,40 @@ public class CircleProgressBar extends View {
     }
 
     public CircleProgressBar(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        defaultPaint.setColor(Color.parseColor(color_default));
+        this(context, attrs, R.attr.circleProgressStyle);
+
+        defaultPaint.setColor(color_default);
         defaultPaint.setStyle(Paint.Style.STROKE);
         defaultPaint.setStrokeWidth(thickness);
         defaultPaint.setAntiAlias(true);
 
-        progressPaint.setColor(Color.parseColor(color_progress));
-        if (mode == MODE_STROKE_AND_FILL){
-            progressPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        }
-        else {
-            progressPaint.setStyle(Paint.Style.STROKE);
-        }
-
+        progressPaint.setColor(color_progress);
+        progressPaint.setStyle(mMode == RING_WITH_FAN ? Paint.Style.FILL_AND_STROKE : Paint.Style.STROKE);
         progressPaint.setStrokeWidth(thickness);
         progressPaint.setAntiAlias(true);
 
         textPaint.setStrokeWidth(0);
         textPaint.setStyle(Paint.Style.FILL);
-        textPaint.setColor(Color.parseColor(color_text));
+        textPaint.setColor(color_text);
         textPaint.setTextSize(textSize);
-        textPaint.setTypeface(Typeface.DEFAULT_BOLD);
+        textPaint.setTypeface(Typeface.DEFAULT);
+        textPaint.setAntiAlias(true);
     }
 
     public CircleProgressBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-    }
 
-    public CircleProgressBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs,  R.styleable.CircleProgress, defStyleAttr,R.style.CircleProgressStyle);
+        if (null != typedArray) {
+            mMode = typedArray.getInteger(R.styleable.CircleProgress_mode,RING);
+            thickness= typedArray.getDimensionPixelSize(R.styleable.CircleProgress_thickness,getResources().getDimensionPixelSize(R.dimen.size_2));
+            color_default = typedArray.getColor(R.styleable.CircleProgress_color_default,Color.parseColor("#87A2BD"));
+            color_progress = typedArray.getColor(R.styleable.CircleProgress_color_progress,Color.parseColor("#ff0000"));
+            if (mMode == RING_WITH_TEXT){
+                color_text = typedArray.getColor(R.styleable.CircleProgress_color_text,Color.parseColor("#00ff00"));
+                textSize = typedArray.getDimensionPixelSize(R.styleable.CircleProgress_android_textSize,getResources().getDimensionPixelSize(R.dimen.text_size_20));
+            }
+        }
     }
 
     @Override
@@ -88,7 +91,7 @@ public class CircleProgressBar extends View {
         if (progress >= 0) {
             drawProgress(canvas, radius, cx, cy);
         }
-        if (mode == MODE_STROKE_AND_TEXT) {
+        if (mMode == RING_WITH_TEXT) {
             drawText(canvas, radius, cx, cy);
         }
     }
@@ -106,7 +109,7 @@ public class CircleProgressBar extends View {
 //        float startAngle = 270;
         float sweepAngle = 360 * (progress) / 100;
 //        float sweepAngle =90;
-        boolean useCenter = (mode == MODE_STROKE_AND_FILL);
+        boolean useCenter = (mMode == RING_WITH_FAN);
         Log.d(TAG, "drawProgress:progress=" + progress + ",startAngle=" + startAngle + ",sweepAngle=" + sweepAngle);
         canvas.drawArc(oval, startAngle, sweepAngle, useCenter, progressPaint);
     }
@@ -118,7 +121,7 @@ public class CircleProgressBar extends View {
 
         String text = progress + "%";
         Paint.FontMetricsInt fontMetrics = textPaint.getFontMetricsInt();
-        textPaint.setColor(Color.parseColor(color_text));
+        textPaint.setColor(color_text);
         textPaint.setTextAlign(Paint.Align.CENTER);
         int baseline = targetRect.centerY() - (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.top;
         // 优化后
