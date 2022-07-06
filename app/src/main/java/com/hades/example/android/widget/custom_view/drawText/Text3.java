@@ -10,12 +10,12 @@ import android.view.View;
 /**
  * View 的大小 是 800x400
  * 设置baseline的起点坐标为（200，200）
- * Paint.setTextAlign(Paint.Align.LEFT);
+ * Paint.setTextAlign(Paint.Align.CENTER);
  */
-public class Text2 extends View {
+public class Text3 extends View {
     private Paint paint;
 
-    public Text2(Context context, AttributeSet set) {
+    public Text3(Context context, AttributeSet set) {
         super(context, set);
         paint = new Paint();
 
@@ -31,7 +31,7 @@ public class Text2 extends View {
         canvas.drawColor(Color.BLACK);
         paint.setColor(Color.RED);
 
-        paint.setTextAlign(Paint.Align.LEFT);
+        paint.setTextAlign(Paint.Align.CENTER);
         /**
          * baseline：（200，200）
          */
@@ -42,7 +42,7 @@ public class Text2 extends View {
         paint.setColor(Color.GREEN);
         canvas.drawLine(0, baseline_y, getWidth(), baseline_y, paint);
 
-        paint.setColor(Color.MAGENTA);
+        paint.setColor(Color.WHITE);
         canvas.drawLine(baseline_x, 0, baseline_x, getHeight(), paint);
     }
 }

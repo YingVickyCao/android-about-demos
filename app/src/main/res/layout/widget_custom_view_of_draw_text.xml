@@ -8,17 +8,27 @@
         style="@style/topic"
         android:text="@string/page_drawText" />
 
-    <!-- canvas.drawText   -->
-    <com.hades.example.android.widget.custom_view.drawText.Text1
-        android:layout_width="400px"
-        android:layout_height="400px"
-        android:layout_gravity="center_horizontal"
-        android:visibility="visible" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <com.hades.example.android.widget.custom_view.drawText.Text2
-        android:layout_width="400px"
-        android:layout_height="400px"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="@dimen/margin_tiny"
-        android:visibility="visible" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- canvas.drawText   -->
+            <!-- baseline 是文字开始绘制的地方           -->
+            <com.hades.example.android.widget.custom_view.drawText.Text1
+                android:layout_width="800px"
+                android:layout_height="400px"
+                android:layout_gravity="center_horizontal" />
+
+            <!--  Paint.setTextAlign(Paint.Align.LEFT); -->
+            <com.hades.example.android.widget.custom_view.drawText.Text2
+                android:layout_width="800px"
+                android:layout_height="400px"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/margin_tiny" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

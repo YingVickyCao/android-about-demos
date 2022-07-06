@@ -7,14 +7,20 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.hades.example.android.R;
-
+/**
+ * View 的大小 是 800x400
+ * 设置baseline的起点坐标为（200，200），是开始文字开始绘制的地方
+ */
 public class Text1 extends View {
-    Paint paint;
+    private Paint paint;
 
     public Text1(Context context, AttributeSet set) {
         super(context, set);
         paint = new Paint();
+
+        paint.setAntiAlias(true);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setTextSize(120);
     }
 
     @Override
@@ -22,19 +28,16 @@ public class Text1 extends View {
         super.onDraw(canvas);
 
         canvas.drawColor(Color.BLACK);
+        paint.setColor(Color.RED);
 
-        paint.setAntiAlias(true); // 去锯齿
-        paint.setColor(Color.GREEN);
-        paint.setStyle(Paint.Style.FILL);
-        paint.setStrokeWidth(getResources().getDimension(R.dimen.stroke_width));
-        paint.setTextAlign(Paint.Align.CENTER);
-
-        paint.setTextSize(getResources().getDimension(R.dimen.text_size_20));
-        int x = (int) getResources().getDimension(R.dimen.size_50);
-        int y = x;
         /**
-         * canvas.drawText 画字符串
+         * baseline：（200，200）
          */
-        canvas.drawText("测试drawText 1234", x, y, paint);
+        int baseline_x = 200;
+        int baseline_y = 200;
+        canvas.drawText("fGgA", baseline_x, baseline_y, paint);
+
+        paint.setColor(Color.GREEN);
+        canvas.drawLine(baseline_x, baseline_y, getWidth(), baseline_y, paint);
     }
 }
