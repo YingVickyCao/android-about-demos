@@ -561,4 +561,11 @@
         <item name="thickness">@dimen/size_2</item>
     </style>
     <!-- Circle Progress,END   -->
+
+    <style name="drawTextStyle">
+        <item name="android:layout_width">800px</item>
+        <item name="android:layout_height">400px</item>
+        <item name="android:layout_margin">@dimen/margin_tiny</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
 </resources>
