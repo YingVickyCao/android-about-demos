@@ -8,6 +8,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import com.hades.example.android.R;
+
 /**
  * View 的大小 是 800x400
  * FontMetric
@@ -38,7 +40,7 @@ public class Text4FontMetric extends View {
          */
         int baseline_x = 200;
         int baseline_y = 200;
-        canvas.drawText("fGgA", baseline_x, baseline_y, paint);
+        canvas.drawText(getResources().getString(R.string.drawText_text), baseline_x, baseline_y, paint);
 
         Paint.FontMetricsInt fontMetrics = paint.getFontMetricsInt();
         int top_y = fontMetrics.top + baseline_y;
@@ -55,23 +57,27 @@ public class Text4FontMetric extends View {
         Log.d(TAG, "onDraw: top_y:" + top_y + ",ascent_y:" + ascent_y + ",descent_y:" + descent_y + ",bottom_y:" + bottom_y + ",text_height_half_Y:" + y_of_half_text_height);
 
         // 绘制top
-        paint.setColor(Color.RED);
+        paint.setColor(Color.MAGENTA);
         canvas.drawLine(0, top_y, getWidth(), top_y, paint);
 
         // 绘制Ascent线
-        paint.setColor(Color.MAGENTA);
+        paint.setColor(Color.CYAN);
         canvas.drawLine(0, ascent_y, getWidth(), ascent_y, paint);
 
         // 绘制 Height/2
-        paint.setColor(Color.YELLOW);
+        paint.setColor(Color.BLACK);
         canvas.drawLine(0, y_of_half_text_height, getWidth(), y_of_half_text_height, paint);
 
         // 绘制Baseline
-        paint.setColor(Color.GREEN);
+        paint.setColor(Color.YELLOW);
         canvas.drawLine(0, baseline_y, getWidth(), baseline_y, paint);
 
         // 绘制descent
-        paint.setColor(Color.CYAN);
+        paint.setColor(Color.GREEN);
         canvas.drawLine(0, descent_y, getWidth(), descent_y, paint);
+
+        // 绘制bottom
+        paint.setColor(Color.MAGENTA);
+        canvas.drawLine(0, bottom_y, getWidth(), bottom_y, paint);
     }
 }
