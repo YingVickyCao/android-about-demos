@@ -11,10 +11,10 @@ import android.view.View;
  * View 的大小 是 800x400
  * 设置baseline的起点坐标为（200，200），是开始文字开始绘制的地方
  */
-public class Text1 extends View {
+public class Text4Default extends View {
     private Paint paint;
 
-    public Text1(Context context, AttributeSet set) {
+    public Text4Default(Context context, AttributeSet set) {
         super(context, set);
         paint = new Paint();
 

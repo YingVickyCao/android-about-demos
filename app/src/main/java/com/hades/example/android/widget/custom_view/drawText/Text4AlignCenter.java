@@ -9,13 +9,13 @@ import android.view.View;
 
 /**
  * View 的大小 是 800x400
- * 设置baseline的起点坐标为（200，200）
  * Paint.setTextAlign(Paint.Align.CENTER);
+ * XY (200，200）位于baseline的中间
  */
-public class Text3 extends View {
+public class Text4AlignCenter extends View {
     private Paint paint;
 
-    public Text3(Context context, AttributeSet set) {
+    public Text4AlignCenter(Context context, AttributeSet set) {
         super(context, set);
         paint = new Paint();
 
@@ -42,7 +42,7 @@ public class Text3 extends View {
         paint.setColor(Color.GREEN);
         canvas.drawLine(0, baseline_y, getWidth(), baseline_y, paint);
 
-        paint.setColor(Color.WHITE);
+        paint.setColor(Color.MAGENTA);
         canvas.drawLine(baseline_x, 0, baseline_x, getHeight(), paint);
     }
 }

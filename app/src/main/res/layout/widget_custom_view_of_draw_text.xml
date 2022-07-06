@@ -18,13 +18,27 @@
             android:orientation="vertical">
             <!-- canvas.drawText   -->
             <!-- baseline 是文字开始绘制的地方           -->
-            <com.hades.example.android.widget.custom_view.drawText.Text1
+            <com.hades.example.android.widget.custom_view.drawText.Text4Default
                 android:layout_width="800px"
                 android:layout_height="400px"
                 android:layout_gravity="center_horizontal" />
 
-            <!--  Paint.setTextAlign(Paint.Align.LEFT); -->
-            <com.hades.example.android.widget.custom_view.drawText.Text2
+            <!--  Paint.setTextAlign(Paint.Align.LEFT); （默认) -->
+            <com.hades.example.android.widget.custom_view.drawText.Text4AlignLeft
+                android:layout_width="800px"
+                android:layout_height="400px"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/margin_tiny" />
+
+            <!--  Paint.setTextAlign(Paint.Align.CENTER); -->
+            <com.hades.example.android.widget.custom_view.drawText.Text4AlignCenter
+                android:layout_width="800px"
+                android:layout_height="400px"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/margin_tiny" />
+
+            <!--  Paint.setTextAlign(Paint.Align.RIGHT); -->
+            <com.hades.example.android.widget.custom_view.drawText.Text4AlignRight
                 android:layout_width="800px"
                 android:layout_height="400px"
                 android:layout_gravity="center_horizontal"
