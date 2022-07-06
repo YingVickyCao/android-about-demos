@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.base.PermissionActivity;
 import com.hades.example.android.widget.custom_view.Xfermode.XfermodeFragment;
+import com.hades.example.android.widget.custom_view.drawText.TestDrawTextFragment;
 import com.hades.example.android.widget.custom_view.layer.CanvasLayerExampleFragment;
 import com.hades.example.android.widget.custom_view.ball.FingerMovedBallFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
@@ -31,6 +32,7 @@ public class CustomViewActivity extends PermissionActivity {
         setContentView(R.layout.widget_custom_view_layout);
         Log.d(TAG, "onCreate: ");
         initViews(R.id.root);
+        findViewById(R.id.page_drawText).setOnClickListener(v -> page_drawText());
         findViewById(R.id.page_Canvas_and_Paint).setOnClickListener(v -> page_Canvas_and_Paint());
         findViewById(R.id.page_PathEffect).setOnClickListener(v -> page_PathEffect());
         findViewById(R.id.page_DrawingBoard).setOnClickListener(v -> page_DrawingBoard());
@@ -52,7 +54,11 @@ public class CustomViewActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        page_Shadow_and_ShadowLayer();
+        page_drawText();
+    }
+
+    private void page_drawText() {
+        showFragment(new TestDrawTextFragment());
     }
 
     private void page_Canvas_and_Paint() {

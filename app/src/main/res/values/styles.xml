@@ -550,7 +550,7 @@
         <item name="color_default">#87A2BD</item>
         <item name="color_progress">#f00</item>
         <item name="color_text">#0f0</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="thickness">@dimen/size_2</item>
     </style>
 

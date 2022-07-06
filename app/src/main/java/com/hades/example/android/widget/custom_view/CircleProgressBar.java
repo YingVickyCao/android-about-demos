@@ -16,10 +16,12 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 
 /**
- *  难点：
- *  计算圆的radius
- *  计算字体的位置
+ * 难点：
+ * 计算圆的radius
+ * 计算弧的开始位置、结束位置
+ * 计算字体的位置
  */
+// https://www.cnblogs.com/kimmy/p/4833321.html
 public class CircleProgressBar extends View {
     private static final String TAG = CircleProgressBar.class.getSimpleName();
     private Paint defaultPaint = new Paint();
@@ -90,16 +92,16 @@ public class CircleProgressBar extends View {
         int width = getWidth();
         Log.d(TAG, "onDraw: " + width);
 
-        int cx = width/2;
-        int cy = width/2;
-        int radius = width/2 - (thickness / 2);
+        int cx = width / 2;
+        int cy = width / 2;
+        int radius = width / 2 - (thickness / 2);
         drawDefaultCircle(canvas, radius, cx, cy);
 
         if (progress >= 0) {
             drawProgress(canvas, radius, cx, cy);
         }
         if (mMode == RING_WITH_TEXT) {
-            drawText(canvas, radius, cx, cy);
+            drawText(canvas, cx, cy);
         }
     }
 
@@ -121,15 +123,21 @@ public class CircleProgressBar extends View {
         canvas.drawArc(oval, startAngle, sweepAngle, useCenter, progressPaint);
     }
 
-    private void drawText(Canvas canvas, int radius, int cx, int cy) {
+    private void drawText(Canvas canvas, int cx, int centerY) {
         String text = progress + "%";
         Paint.FontMetricsInt fontMetrics = textPaint.getFontMetricsInt();
         textPaint.setColor(color_text);
         textPaint.setTextAlign(Paint.Align.CENTER);
-        int baseline = cy - (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.top;
+        int baseline = centerY + (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
         float x = cx;
-        float y = baseline;
-        canvas.drawText(text, x, y, textPaint);
+        Log.d(TAG, "drawText: baseline=" + baseline);
+        Log.d(TAG, "drawText: bottom=" + fontMetrics.bottom);
+        Log.d(TAG, "drawText: top=" + fontMetrics.top);
+        Log.d(TAG, "drawText: ascent=" + fontMetrics.ascent);
+        Log.d(TAG, "drawText: descent=" + fontMetrics.descent);
+        Log.d(TAG, "drawText: leading=" + fontMetrics.leading);
+        Log.d(TAG, "drawText: y/2=" + centerY/2);
+        canvas.drawText(text, x, baseline, textPaint);
     }
 
     /**
@@ -151,7 +159,6 @@ public class CircleProgressBar extends View {
     }
 
     /**
-     *
      * @return 0 ~ 100
      */
     public int getProgress() {

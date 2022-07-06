@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="stroke_width">1dp</dimen>
+
+    <dimen name="shadow_padding">10dp</dimen>
+    <dimen name="shadow_radius">5dp</dimen>
+
+    <!-- 水平间距的默认值 -->
+    <dimen name="cascade_horizontal_spacing">10dp</dimen>
+    <!-- 垂直间距的默认值 -->
+    <dimen name="cascade_vertical_spacing">10dp</dimen>
+    <!-- Layout垂直方向的默认值 -->
+    <dimen name="cascade_layout_params_layout_vertical_spacing">10dp</dimen>
+
+    <!-- Semantic definitions -->
+    <dimen name="horizontal_page_margin">@dimen/margin_medium</dimen>
+    <dimen name="vertical_page_margin">@dimen/margin_medium</dimen>
+
+    <dimen name="image_thumbnail_size">100dp</dimen>
+    <dimen name="image_thumbnail_spacing">1dp</dimen>
+
+    <!-- Custom View   -->
+    <dimen name="paint_stroke_width">1dp</dimen>
+    <dimen name="paint_text_size">15sp</dimen>
+    <dimen name="paint_border_size">4dp</dimen>
+
+    <dimen name="radius_size">10dp</dimen>
+    <item name="alpha" format="float" type="dimen">0.30</item>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="constrain_layout_height">80dp</dimen>
+    <dimen name="constrain_layout_height2">160dp</dimen>
+
+    <dimen name="seekbar_thumb_width">18dp</dimen>
+</resources>

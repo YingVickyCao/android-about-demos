@@ -19,21 +19,21 @@
 
     <!-- paint.setStyle(Paint.Style.FILL)   -->
     <com.hades.example.android.widget.custom_view.Circle4Fill
-        android:layout_width="@dimen/size_100"
-        android:layout_height="@dimen/size_100"
-        android:visibility="visible" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <!-- paint.setStyle(Paint.Style.STROKE)   -->
     <com.hades.example.android.widget.custom_view.Circle4Stroke
-        android:layout_width="@dimen/size_100"
-        android:layout_height="@dimen/size_100"
-        android:visibility="visible" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <!-- paint.setStyle(Paint.Style.FILL_AND_STROKE)   -->
     <com.hades.example.android.widget.custom_view.Circle4FillStroke
-        android:layout_width="@dimen/size_100"
-        android:layout_height="@dimen/size_100"
-        android:visibility="visible" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <!-- canvas.drawBitmap   -->
     <com.hades.example.android.widget.custom_view.DrawBitmap
@@ -77,11 +77,6 @@
         android:layout_height="wrap_content"
         android:visibility="gone" />
 
-    <!-- canvas.drawText   -->
-    <com.hades.example.android.widget.custom_view.Text
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
 
     <!-- canvas.drawPoint   -->
     <com.hades.example.android.widget.custom_view.Point

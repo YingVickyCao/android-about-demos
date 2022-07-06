@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.custom_view;
+package com.hades.example.android.widget.custom_view.drawText;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,10 +9,10 @@ import android.view.View;
 
 import com.hades.example.android.R;
 
-public class Text extends View {
+public class Text1 extends View {
     Paint paint;
 
-    public Text(Context context, AttributeSet set) {
+    public Text1(Context context, AttributeSet set) {
         super(context, set);
         paint = new Paint();
     }
@@ -35,6 +35,6 @@ public class Text extends View {
         /**
          * canvas.drawText 画字符串
          */
-        canvas.drawText(getResources().getString(R.string.circle), x, y, paint);
+        canvas.drawText("测试drawText 1234", x, y, paint);
     }
 }

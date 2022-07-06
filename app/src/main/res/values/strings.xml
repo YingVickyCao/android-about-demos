@@ -98,6 +98,7 @@
     <string name="page_Layer">Layer(图层)</string>
     <string name="page_Xfermode">Xfermode</string>
     <string name="page_PathEffect">PathEffect</string>
+    <string name="page_drawText">drawText</string>
     <!-- END,Custom View   -->
     <string name="page_ConstraintLayout">ConstraintLayout</string>
     <string name="page_linearLayout">LinearLayout</string>
