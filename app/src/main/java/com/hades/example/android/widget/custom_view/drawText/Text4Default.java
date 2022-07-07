@@ -27,8 +27,8 @@ public class Text4Default extends View {
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawColor(Color.BLACK);
-        paint.setColor(Color.RED);
+        canvas.drawColor(Color.GRAY);
+        paint.setColor(Color.BLACK);
 
         /**
          * baseline：（200，200）
@@ -37,7 +37,7 @@ public class Text4Default extends View {
         int baseline_y = 200;
         canvas.drawText("fGgA", baseline_x, baseline_y, paint);
 
-        paint.setColor(Color.GREEN);
+        paint.setColor(Color.RED);
         canvas.drawLine(baseline_x, baseline_y, getWidth(), baseline_y, paint);
     }
 }

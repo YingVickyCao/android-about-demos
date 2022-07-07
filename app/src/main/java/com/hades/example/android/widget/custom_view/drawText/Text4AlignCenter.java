@@ -28,8 +28,8 @@ public class Text4AlignCenter extends View {
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawColor(Color.BLACK);
-        paint.setColor(Color.RED);
+        canvas.drawColor(Color.GRAY);
+        paint.setColor(Color.BLACK);
 
         paint.setTextAlign(Paint.Align.CENTER);
         /**
@@ -39,10 +39,10 @@ public class Text4AlignCenter extends View {
         int baseline_y = 200;
         canvas.drawText("fGgA", baseline_x, baseline_y, paint);
 
-        paint.setColor(Color.GREEN);
+        paint.setColor(Color.RED);
         canvas.drawLine(0, baseline_y, getWidth(), baseline_y, paint);
 
-        paint.setColor(Color.MAGENTA);
+        paint.setColor(Color.RED);
         canvas.drawLine(baseline_x, 0, baseline_x, getHeight(), paint);
     }
 }

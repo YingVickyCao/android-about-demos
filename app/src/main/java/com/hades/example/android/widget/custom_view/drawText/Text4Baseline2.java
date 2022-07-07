@@ -91,7 +91,7 @@ public class Text4Baseline2 extends View {
         canvas.drawLine(0, y_of_half_text_height, getWidth(), y_of_half_text_height, paint);
 
         // 绘制Baseline
-        paint.setColor(Color.YELLOW);
+        paint.setColor(Color.RED);
         canvas.drawLine(0, baseline_y, getWidth(), baseline_y, paint);
 
         // 绘制descent
