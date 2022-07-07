@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -63,7 +62,6 @@ public class Text4Baseline1 extends View {
         // 文字高度
         int text_height = bottom_y - top_y; // or fontMetrics.bottom - fontMetrics.top
         Log.d(TAG, "onDraw:text height:" + text_height);    // 160
-        Log.d(TAG, "onDraw:text height:" + getFontHeight(paint, text));// 118
         // 文字高度一半的y坐标
         int y_of_half_text_height = top_y + (text_height) / 2;
 
@@ -100,12 +98,6 @@ public class Text4Baseline1 extends View {
         // 文字宽度
         float textWidth = paint.measureText(text);
         paint.setColor(Color.parseColor("#20ff0000"));
-        canvas.drawRect(baseline_x, ascent_y, (baseline_y + textWidth), descent_y, paint);
-    }
-
-    public float getFontHeight(Paint paint, String str) {
-        Rect rect = new Rect();
-        paint.getTextBounds(str, 0, str.length(), rect);
-        return rect.height();
+        canvas.drawRect(baseline_x, ascent_y, (baseline_x + textWidth), descent_y, paint);
     }
 }

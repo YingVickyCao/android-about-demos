@@ -44,8 +44,8 @@ public class Text4Baseline2 extends View {
          */
         float center_X = getWidth()/2;
         int center_Y = getHeight()/2;
-        float baseline_x = center_X - paint.measureText(text) / 2;
 
+        float baseline_x = center_X - paint.measureText(text) / 2;
         Log.d(TAG, "onDraw:baseline_x=" + baseline_x); // 252
         // 通过绘制文字最小矩形，来获得baseline_y
         Rect targetRect = new Rect();
@@ -91,7 +91,7 @@ public class Text4Baseline2 extends View {
         canvas.drawLine(0, y_of_half_text_height, getWidth(), y_of_half_text_height, paint);
 
         // 绘制Baseline
-        paint.setColor(Color.RED);
+        paint.setColor(Color.YELLOW);
         canvas.drawLine(0, baseline_y, getWidth(), baseline_y, paint);
 
         // 绘制descent
@@ -106,7 +106,7 @@ public class Text4Baseline2 extends View {
         // 文字宽度
         float textWidth = paint.measureText(text);
         paint.setColor(Color.parseColor("#20ff0000"));
-        canvas.drawRect(baseline_x, ascent_y, (baseline_y + textWidth), descent_y, paint);
+        canvas.drawRect(baseline_x, ascent_y, (baseline_x + textWidth), descent_y, paint);
     }
 
     public float getFontHeight(Paint paint, String str) {

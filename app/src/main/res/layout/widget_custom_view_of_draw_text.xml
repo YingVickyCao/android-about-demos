@@ -22,50 +22,46 @@
                 style="@style/tv"
                 android:text="Baseline" />
 
-            <com.hades.example.android.widget.custom_view.drawText.Text4Default
-                style="@style/drawTextStyle" />
+            <com.hades.example.android.widget.custom_view.drawText.Text4Default style="@style/drawTextStyle" />
 
             <!--  Paint.setTextAlign(Paint.Align.LEFT); （默认) -->
             <TextView
                 style="@style/tv"
                 android:text="(x,y）: Align.LEFT" />
 
-            <com.hades.example.android.widget.custom_view.drawText.Text4AlignLeft
-                style="@style/drawTextStyle" />
+            <com.hades.example.android.widget.custom_view.drawText.Text4AlignLeft style="@style/drawTextStyle" />
 
             <!--  Paint.setTextAlign(Paint.Align.CENTER); -->
             <TextView
                 style="@style/tv"
                 android:text="(x,y）: Align.CENTER" />
 
-            <com.hades.example.android.widget.custom_view.drawText.Text4AlignCenter
-                style="@style/drawTextStyle" />
+            <com.hades.example.android.widget.custom_view.drawText.Text4AlignCenter style="@style/drawTextStyle" />
 
             <!--  Paint.setTextAlign(Paint.Align.RIGHT); -->
             <TextView
                 style="@style/tv"
                 android:text="(x,y）: Align.RIGHT" />
 
-            <com.hades.example.android.widget.custom_view.drawText.Text4AlignRight
-                style="@style/drawTextStyle" />
+            <com.hades.example.android.widget.custom_view.drawText.Text4AlignRight style="@style/drawTextStyle" />
 
             <!-- FontMetric, and 绘制ascent，descent，top，bottom线 -->
             <TextView
                 style="@style/tv"
                 android:text="ascent，descent，top，bottom" />
 
-            <com.hades.example.android.widget.custom_view.drawText.Text4FontMetric
-                style="@style/drawTextStyle"
-                android:visibility="visible" />
+            <com.hades.example.android.widget.custom_view.drawText.Text4FontMetric style="@style/drawTextStyle" />
 
             <TextView
                 style="@style/tv"
                 android:text="绘制文字最小矩形" />
+
             <com.hades.example.android.widget.custom_view.drawText.Text4DrawTextMinRect style="@style/drawTextStyle" />
 
             <TextView
                 style="@style/tv"
                 android:text="Baseline Y (Top and bottom)" />
+
             <com.hades.example.android.widget.custom_view.drawText.Text4Baseline1 style="@style/drawTextStyle" />
 
             <TextView
