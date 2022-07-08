@@ -70,6 +70,8 @@
 
             <com.hades.example.android.widget.custom_view.drawText.Text4Baseline2 style="@style/drawTextStyle" />
 
+            <com.hades.example.android.widget.custom_view.drawText.Text4Baseline3 style="@style/drawTextStyle" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

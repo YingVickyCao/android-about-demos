@@ -12,15 +12,15 @@ import com.hades.example.android.R;
 
 /**
  * View 的大小 是 800x400
- * 通过Top and bottom 得出的 Baseline Y
+ * 通过 Ascent和Descent 得出的 Baseline Y
  */
-public class Text4Baseline1 extends View {
-    private static final String TAG = Text4Baseline1.class.getSimpleName();
+public class Text4Baseline3 extends View {
+    private static final String TAG = Text4Baseline3.class.getSimpleName();
 
     private Paint paint;
     private String text = getResources().getString(R.string.drawText_text);
 
-    public Text4Baseline1(Context context, AttributeSet set) {
+    public Text4Baseline3(Context context, AttributeSet set) {
         super(context, set);
         paint = new Paint();
 
@@ -38,26 +38,30 @@ public class Text4Baseline1 extends View {
 
 
         /*
-        onDraw:baseline_x=252.0
-        onDraw:baseline_y=247
+        onDraw:baseline_X=252.0
+        onDraw:baseline_Y=241
         onDraw:text height:160
-        onDraw:fontMetrics:FontMetricsInt: top=-127 ascent=-111 descent=29 bottom=33 leading=0
-        onDraw:top_y:120,ascent_y:136,descent_y:276,bottom_y:280,text_height_half_Y:200
+        onDraw:text height:118.0
+        onDraw: fontMetrics:FontMetricsInt: top=-127 ascent=-111 descent=29 bottom=33 leading=0
+        onDraw: top_y:114,ascent_y:130,descent_y:270,bottom_y:274,text_height_half_Y:194
          */
         Paint.FontMetricsInt fontMetrics = paint.getFontMetricsInt();
-        float center_X = getWidth()/2;
-        int center_Y = getHeight()/2;
-        float baseline_x = center_X - paint.measureText(text) / 2;
+        float center_X = getWidth() / 2;
+        int center_Y = getHeight() / 2;
 
-        int baseline_y = center_Y + (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
-        Log.d(TAG, "onDraw:baseline_x=" + baseline_x); // 252
-        Log.d(TAG, "onDraw:baseline_y=" + baseline_y); // 247
-        canvas.drawText(text, baseline_x, baseline_y, paint);
+        float baseline_X = center_X - paint.measureText(text) / 2;
+        Log.d(TAG, "onDraw:baseline_X=" + baseline_X); // 252
 
-        int top_y = fontMetrics.top + baseline_y;
-        int ascent_y = fontMetrics.ascent + baseline_y;
-        int descent_y = fontMetrics.descent + baseline_y;
-        int bottom_y = fontMetrics.bottom + baseline_y;
+        int baseline_Y = center_Y + (fontMetrics.descent - fontMetrics.ascent) / 2 - fontMetrics.descent;
+        Log.d(TAG, "onDraw:baseline_Y=" + baseline_Y);  // 214
+
+        canvas.drawText(text, baseline_X, baseline_Y, paint);
+
+        int top_y = fontMetrics.top + baseline_Y;
+        int ascent_y = fontMetrics.ascent + baseline_Y;
+        int descent_y = fontMetrics.descent + baseline_Y;
+        int bottom_y = fontMetrics.bottom + baseline_Y;
+
 
         // 文字高度
         int text_height = bottom_y - top_y; // or fontMetrics.bottom - fontMetrics.top
@@ -65,9 +69,9 @@ public class Text4Baseline1 extends View {
         // 文字高度一半的y坐标
         int y_of_half_text_height = top_y + (text_height) / 2;
 
-        // fontMetrics:FontMetricsInt: top=-127 ascent=-111 descent=29 bottom=33 leading=0
+        // onDraw: fontMetrics:FontMetricsInt: top=-127 ascent=-111 descent=29 bottom=33 leading=0
         Log.d(TAG, "onDraw:fontMetrics:" + fontMetrics);
-        // top_y:120,ascent_y:136,descent_y:276,bottom_y:280,text_height_half_Y:200
+        // onDraw: top_y:87,ascent_y:103,descent_y:243,bottom_y:247,text_height_half_Y:167
         Log.d(TAG, "onDraw:top_y:" + top_y + ",ascent_y:" + ascent_y + ",descent_y:" + descent_y + ",bottom_y:" + bottom_y + ",text_height_half_Y:" + y_of_half_text_height);
 
         // 绘制top
@@ -83,8 +87,8 @@ public class Text4Baseline1 extends View {
         canvas.drawLine(0, y_of_half_text_height, getWidth(), y_of_half_text_height, paint);
 
         // 绘制Baseline
-        paint.setColor(Color.RED);
-        canvas.drawLine(0, baseline_y, getWidth(), baseline_y, paint);
+        paint.setColor(Color.YELLOW);
+        canvas.drawLine(0, baseline_Y, getWidth(), baseline_Y, paint);
 
         // 绘制descent
         paint.setColor(Color.GREEN);
@@ -98,6 +102,6 @@ public class Text4Baseline1 extends View {
         // 文字宽度
         float textWidth = paint.measureText(text);
         paint.setColor(Color.parseColor("#20ff0000"));
-        canvas.drawRect(baseline_x, ascent_y, (baseline_x + textWidth), descent_y, paint);
+        canvas.drawRect(baseline_X, ascent_y, (baseline_X + textWidth), descent_y, paint);
     }
 }

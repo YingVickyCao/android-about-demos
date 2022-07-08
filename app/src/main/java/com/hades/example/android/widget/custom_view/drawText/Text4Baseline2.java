@@ -39,22 +39,23 @@ public class Text4Baseline2 extends View {
 
 
         Paint.FontMetricsInt fontMetrics = paint.getFontMetricsInt();
-        /**
-         * baseline：（200，200）
+        /*
+        onDraw:baseline_x=252.0
+        onDraw:baseline_y=214
+        onDraw:text height:160
+        onDraw:text height:118.0
+        onDraw:fontMetrics:FontMetricsInt: top=-127 ascent=-111 descent=29 bottom=33 leading=0
+        onDraw:top_y:87,ascent_y:103,descent_y:243,bottom_y:247,text_height_half_Y:167
          */
         float center_X = getWidth()/2;
         int center_Y = getHeight()/2;
 
         float baseline_x = center_X - paint.measureText(text) / 2;
         Log.d(TAG, "onDraw:baseline_x=" + baseline_x); // 252
-        // 通过绘制文字最小矩形，来获得baseline_y
+
         Rect targetRect = new Rect();
         paint.getTextBounds(text, 0, text.length(), targetRect);
-        /**
-         * 屏幕 top线 Y     =1188
-         * 屏幕 baseline Y  =1388
-         * 屏幕 bottom 线 Y =1588
-         */
+
         int baseline_y = center_Y+ (targetRect.bottom + targetRect.top - fontMetrics.bottom - fontMetrics.top) / 2;
         Log.d(TAG, "onDraw:baseline_y=" + baseline_y);  // 214
 
@@ -69,14 +70,13 @@ public class Text4Baseline2 extends View {
         // 文字高度
         int text_height = bottom_y - top_y; // or fontMetrics.bottom - fontMetrics.top
         Log.d(TAG, "onDraw:text height:" + text_height);    // 160
-        Log.d(TAG, "onDraw:text height:" + getFontHeight(paint, text));// 118
         // 文字高度一半的y坐标
         int y_of_half_text_height = top_y + (text_height) / 2;
 
         // onDraw: fontMetrics:FontMetricsInt: top=-127 ascent=-111 descent=29 bottom=33 leading=0
-        Log.d(TAG, "onDraw: fontMetrics:" + fontMetrics);
+        Log.d(TAG, "onDraw:fontMetrics:" + fontMetrics);
         // onDraw: top_y:87,ascent_y:103,descent_y:243,bottom_y:247,text_height_half_Y:167
-        Log.d(TAG, "onDraw: top_y:" + top_y + ",ascent_y:" + ascent_y + ",descent_y:" + descent_y + ",bottom_y:" + bottom_y + ",text_height_half_Y:" + y_of_half_text_height);
+        Log.d(TAG, "onDraw:top_y:" + top_y + ",ascent_y:" + ascent_y + ",descent_y:" + descent_y + ",bottom_y:" + bottom_y + ",text_height_half_Y:" + y_of_half_text_height);
 
         // 绘制top
         paint.setColor(Color.MAGENTA);
@@ -107,11 +107,5 @@ public class Text4Baseline2 extends View {
         float textWidth = paint.measureText(text);
         paint.setColor(Color.parseColor("#20ff0000"));
         canvas.drawRect(baseline_x, ascent_y, (baseline_x + textWidth), descent_y, paint);
-    }
-
-    public float getFontHeight(Paint paint, String str) {
-        Rect rect = new Rect();
-        paint.getTextBounds(str, 0, str.length(), rect);
-        return rect.height();
     }
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_drawText" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- canvas.drawText   -->
+            <!-- baseline 是文字开始绘制的地方           -->
+            <TextView
+                style="@style/tv"
+                android:text="Baseline" />
+
+            <com.hades.example.android.widget.custom_view.drawText.Text4BaselineXY_1 style="@style/drawTextStyle" />
+
+            <com.hades.example.android.widget.custom_view.drawText.Text4BaselineXY_2 style="@style/drawTextStyle" />
+
+            <com.hades.example.android.widget.custom_view.drawText.Text4BaselineXY_3 style="@style/drawTextStyle" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

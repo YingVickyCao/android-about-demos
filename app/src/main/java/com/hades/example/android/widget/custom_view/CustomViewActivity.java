@@ -9,11 +9,11 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android.base.PermissionActivity;
 import com.hades.example.android.widget.custom_view.Xfermode.XfermodeFragment;
-import com.hades.example.android.widget.custom_view.drawText.TestDrawTextFragment;
-import com.hades.example.android.widget.custom_view.layer.CanvasLayerExampleFragment;
 import com.hades.example.android.widget.custom_view.ball.FingerMovedBallFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
+import com.hades.example.android.widget.custom_view.drawText.TestDrawTextFragment2;
 import com.hades.example.android.widget.custom_view.drawing_board.DrawingBoardFragment;
+import com.hades.example.android.widget.custom_view.layer.CanvasLayerExampleFragment;
 import com.hades.example.android.widget.custom_view.matrix.MatrixOnBitmapFragment;
 import com.hades.example.android.widget.custom_view.mesh.BitmapMeshFragment;
 import com.hades.example.android.widget.custom_view.path_effect.TestPathEffectFragment;
@@ -58,7 +58,7 @@ public class CustomViewActivity extends PermissionActivity {
     }
 
     private void page_drawText() {
-        showFragment(new TestDrawTextFragment());
+        showFragment(new TestDrawTextFragment2());
     }
 
     private void page_Canvas_and_Paint() {
