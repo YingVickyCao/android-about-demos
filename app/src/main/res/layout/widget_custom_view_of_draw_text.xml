@@ -58,20 +58,6 @@
 
             <com.hades.example.android.widget.custom_view.drawText.Text4DrawTextMinRect style="@style/drawTextStyle" />
 
-            <TextView
-                style="@style/tv"
-                android:text="Baseline Y (Top and bottom)" />
-
-            <com.hades.example.android.widget.custom_view.drawText.Text4Baseline1 style="@style/drawTextStyle" />
-
-            <TextView
-                style="@style/tv"
-                android:text="Baseline Y (绘制文字最小矩形)" />
-
-            <com.hades.example.android.widget.custom_view.drawText.Text4Baseline2 style="@style/drawTextStyle" />
-
-            <com.hades.example.android.widget.custom_view.drawText.Text4Baseline3 style="@style/drawTextStyle" />
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

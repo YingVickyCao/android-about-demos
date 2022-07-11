@@ -14,13 +14,13 @@ import com.hades.example.android.R;
  * View 的大小 是 800x400
  * 通过Top and bottom 得出的 Baseline Y
  */
-public class Text4BaselineXY_1 extends View {
-    private static final String TAG = Text4BaselineXY_1.class.getSimpleName();
+public class Text4BaselineX_1 extends View {
+    private static final String TAG = Text4BaselineX_1.class.getSimpleName();
 
     private Paint paint;
     private String text = getResources().getString(R.string.drawText_text);
 
-    public Text4BaselineXY_1(Context context, AttributeSet set) {
+    public Text4BaselineX_1(Context context, AttributeSet set) {
         super(context, set);
         paint = new Paint();
 
@@ -40,11 +40,18 @@ public class Text4BaselineXY_1 extends View {
         float center_X = getWidth() / 2;
         int center_Y = getHeight() / 2;
 
-        float baseline_X = center_X - paint.measureText(text) / 2;
+        float textWidth = getTextWidth();
+        float baseline_X = center_X - textWidth / 2;
+        // baseline_X=152.0,text width=296.0
+        Log.d(TAG, "onDraw: baseline_X=" + baseline_X + ",text width=" + textWidth);
 
         int baseline_Y = center_Y + (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
-        Log.d(TAG, "onDraw:baseline_X:" + baseline_X + ",baseline_y=" + baseline_Y);
+//        Log.d(TAG, "onDraw:,baseline_Y=" + baseline_Y);
 
         canvas.drawText(text, baseline_X, baseline_Y, paint);
+    }
+
+    private float getTextWidth() {
+        return paint.measureText(text);
     }
 }

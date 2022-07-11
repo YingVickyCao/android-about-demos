@@ -568,4 +568,11 @@
         <item name="android:layout_margin">@dimen/margin_tiny</item>
         <item name="android:layout_gravity">center_horizontal</item>
     </style>
+
+    <style name="drawTextStyle2">
+        <item name="android:layout_width">600px</item>
+        <item name="android:layout_height">300px</item>
+        <item name="android:layout_margin">@dimen/margin_tiny</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
 </resources>

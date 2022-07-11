@@ -15,13 +15,13 @@ import com.hades.example.android.R;
  * View 的大小 是 800x400
  * 通过 绘制文字最小矩形 得出的 Baseline Y
  */
-public class Text4BaselineXY_2 extends View {
-    private static final String TAG = Text4BaselineXY_2.class.getSimpleName();
+public class Text4BaselineY_2 extends View {
+    private static final String TAG = Text4BaselineY_2.class.getSimpleName();
 
     private Paint paint;
     private String text = getResources().getString(R.string.drawText_text);
 
-    public Text4BaselineXY_2(Context context, AttributeSet set) {
+    public Text4BaselineY_2(Context context, AttributeSet set) {
         super(context, set);
         paint = new Paint();
 
@@ -47,5 +47,7 @@ public class Text4BaselineXY_2 extends View {
         paint.getTextBounds(text, 0, text.length(), targetRect);
         int baseline_Y = center_Y + (targetRect.bottom + targetRect.top - fontMetrics.bottom - fontMetrics.top) / 2;
         Log.d(TAG, "onDraw:baseline_X:" + baseline_X + ",baseline_y=" + baseline_Y);
+
+        canvas.drawText(text, baseline_X, baseline_Y, paint);
     }
 }
