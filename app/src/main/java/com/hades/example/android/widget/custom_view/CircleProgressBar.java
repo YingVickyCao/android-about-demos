@@ -123,21 +123,18 @@ public class CircleProgressBar extends View {
         canvas.drawArc(oval, startAngle, sweepAngle, useCenter, progressPaint);
     }
 
-    private void drawText(Canvas canvas, int cx, int centerY) {
+    private void drawText(Canvas canvas, int centerX, int centerY) {
         String text = progress + "%";
         Paint.FontMetricsInt fontMetrics = textPaint.getFontMetricsInt();
         textPaint.setColor(color_text);
-        textPaint.setTextAlign(Paint.Align.CENTER);
-        int baseline = centerY + (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
-        float x = cx;
-        Log.d(TAG, "drawText: baseline=" + baseline);
-        Log.d(TAG, "drawText: bottom=" + fontMetrics.bottom);
-        Log.d(TAG, "drawText: top=" + fontMetrics.top);
-        Log.d(TAG, "drawText: ascent=" + fontMetrics.ascent);
-        Log.d(TAG, "drawText: descent=" + fontMetrics.descent);
-        Log.d(TAG, "drawText: leading=" + fontMetrics.leading);
-        Log.d(TAG, "drawText: y/2=" + centerY/2);
-        canvas.drawText(text, x, baseline, textPaint);
+        float baseline_Y = baseline_Y(centerY, textPaint);
+        float baseline_X = centerX - textPaint.measureText(text) / 2;
+        canvas.drawText(text, baseline_X, baseline_Y, textPaint);
+    }
+
+    private float baseline_Y(int center_Y, Paint paint) {
+        Paint.FontMetrics fontMetrics = paint.getFontMetrics();
+        return center_Y + (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
     }
 
     /**
