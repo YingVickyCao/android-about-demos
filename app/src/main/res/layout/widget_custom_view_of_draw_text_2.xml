@@ -33,6 +33,7 @@
 
                     <TextView
                         style="@style/drawTextStyle2"
+                        android:background="@android:color/darker_gray"
                         android:gravity="center"
                         android:text="@string/drawText_text"
                         android:textColor="@android:color/black"
