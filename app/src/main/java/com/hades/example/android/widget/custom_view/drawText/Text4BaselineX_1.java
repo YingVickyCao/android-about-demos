@@ -43,10 +43,9 @@ public class Text4BaselineX_1 extends View {
         float textWidth = getTextWidth();
         float baseline_X = center_X - textWidth / 2;
         // baseline_X=152.0,text width=296.0
-        Log.d(TAG, "onDraw: baseline_X=" + baseline_X + ",text width=" + textWidth);
+        Log.d(TAG, "onDraw:baseline_X=" + baseline_X + ",text width=" + textWidth);
 
         int baseline_Y = center_Y + (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
-//        Log.d(TAG, "onDraw:,baseline_Y=" + baseline_Y);
 
         canvas.drawText(text, baseline_X, baseline_Y, paint);
     }

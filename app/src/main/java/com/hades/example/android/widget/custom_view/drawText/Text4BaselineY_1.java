@@ -36,15 +36,21 @@ public class Text4BaselineY_1 extends View {
         canvas.drawColor(Color.GRAY);
         paint.setColor(Color.BLACK);
 
-        Paint.FontMetricsInt fontMetrics = paint.getFontMetricsInt();
         float center_X = getWidth() / 2;
         int center_Y = getHeight() / 2;
 
         float baseline_X = center_X - paint.measureText(text) / 2;
-
-        int baseline_Y = center_Y + (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
-        Log.d(TAG, "onDraw:baseline_X:" + baseline_X + ",baseline_y=" + baseline_Y);
+        float baseline_Y = baseline_Y(center_Y);
+        /**
+         * baseline_y=197.10938
+         */
+        Log.d(TAG, "onDraw:baseline_y=" + baseline_Y);
 
         canvas.drawText(text, baseline_X, baseline_Y, paint);
+    }
+
+    private float baseline_Y(int center_Y) {
+        Paint.FontMetrics fontMetrics = paint.getFontMetrics();
+        return center_Y + (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
     }
 }
