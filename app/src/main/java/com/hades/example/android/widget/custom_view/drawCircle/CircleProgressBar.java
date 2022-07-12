@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.custom_view;
+package com.hades.example.android.widget.custom_view.drawCircle;
 
 import android.content.Context;
 import android.content.res.TypedArray;

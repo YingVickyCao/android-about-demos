@@ -15,7 +15,9 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-
+/**
+ * paint.setShadowLayer
+ */
 public class ShadowedViewGroup extends ViewGroup {
     private float childBaseMargin;
     private float cornerRadius;

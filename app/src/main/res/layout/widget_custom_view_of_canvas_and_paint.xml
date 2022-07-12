@@ -18,19 +18,19 @@
         android:visibility="gone" />
 
     <!-- paint.setStyle(Paint.Style.FILL)   -->
-    <com.hades.example.android.widget.custom_view.Circle4Fill
+    <com.hades.example.android.widget.custom_view.drawCircle.Circle4Fill
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone" />
 
     <!-- paint.setStyle(Paint.Style.STROKE)   -->
-    <com.hades.example.android.widget.custom_view.Circle4Stroke
+    <com.hades.example.android.widget.custom_view.drawCircle.Circle4Stroke
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone" />
 
     <!-- paint.setStyle(Paint.Style.FILL_AND_STROKE)   -->
-    <com.hades.example.android.widget.custom_view.Circle4FillStroke
+    <com.hades.example.android.widget.custom_view.drawCircle.Circle4FillStroke
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone" />

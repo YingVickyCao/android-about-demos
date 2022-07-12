@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
-import com.hades.example.android.widget.custom_view.CircleProgressBar;
+import com.hades.example.android.widget.custom_view.drawCircle.CircleProgressBar;
 
 // progress_medium
 public class TestProgressBarFragment extends BaseFragment {

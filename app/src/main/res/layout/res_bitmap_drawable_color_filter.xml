@@ -72,6 +72,12 @@
             android:layout_marginHorizontal="@dimen/size_20">
 
             <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_svg_adjust" />
+
+            <ImageView
                 android:id="@+id/tintImageView"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -82,14 +88,9 @@
                 android:id="@+id/colorFilterImageView"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/ic_svg_adjust" />
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
                 android:src="@drawable/ic_svg_adjust" />
+
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>

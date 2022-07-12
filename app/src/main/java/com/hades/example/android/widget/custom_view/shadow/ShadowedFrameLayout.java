@@ -14,6 +14,10 @@ import com.hades.example.android.R;
 
 // TODO:右侧不真实
 // TODO：shadow 区域超出Image 太多
+
+/**
+ * paint.setShadowLayer
+ */
 public class ShadowedFrameLayout extends FrameLayout {
     private int mShadowColor;
     private int mBgColor;

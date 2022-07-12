@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.custom_view;
+package com.hades.example.android.widget.custom_view.drawCircle;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,13 +9,10 @@ import android.view.View;
 
 import com.hades.example.android.R;
 
-/**
- * paint.setStyle(Paint.Style.STROKE)
- */
-public class Circle4Stroke extends View {
+public class Circle4Fill extends View {
     Paint paint;
 
-    public Circle4Stroke(Context context, AttributeSet set) {
+    public Circle4Fill(Context context, AttributeSet set) {
         super(context, set);
         paint = new Paint();
     }
@@ -28,8 +25,7 @@ public class Circle4Stroke extends View {
 
         paint.setAntiAlias(true); // 去锯齿
         paint.setColor(Color.GREEN);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(10);
+        paint.setStyle(Paint.Style.FILL);
 
         // 绘制圆形
         int radius = (int) getResources().getDimension(R.dimen.size_50);

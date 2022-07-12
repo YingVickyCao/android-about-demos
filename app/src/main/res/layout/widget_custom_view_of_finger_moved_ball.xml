@@ -8,12 +8,12 @@
         style="@style/topic"
         android:text="@string/page_FingerMovedBall" />
 
-    <com.hades.example.android.widget.custom_view.ball.FingerMovedBallView
+    <com.hades.example.android.widget.custom_view.drawCircle.ball.FingerMovedBallView
         android:id="@+id/ball"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_200" />
 
-    <com.hades.example.android.widget.custom_view.ball.FingerMovedBallSurfaceView
+    <com.hades.example.android.widget.custom_view.drawCircle.ball.FingerMovedBallSurfaceView
         android:id="@+id/ball2"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_200"

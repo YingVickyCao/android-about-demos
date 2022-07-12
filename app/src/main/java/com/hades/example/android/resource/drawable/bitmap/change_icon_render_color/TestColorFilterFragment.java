@@ -1,6 +1,5 @@
 package com.hades.example.android.resource.drawable.bitmap.change_icon_render_color;
 
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -67,7 +66,7 @@ public class TestColorFilterFragment extends Fragment {
         Log.d(TAG, "setColorFilter:before mutate @Drawable" + mColorFilterImageView.getDrawable().hashCode()); // mutate @Drawable196558238
         mColorFilterImageView.getDrawable().mutate();
         Log.d(TAG, "setColorFilter:after  mutate @Drawable" + mColorFilterImageView.getDrawable().hashCode()); // mutate @Drawable196558238
-        mColorFilterImageView.getDrawable().setColorFilter(ContextCompat.getColor(getContext(), color), PorterDuff.Mode.SRC_IN);
+        mColorFilterImageView.setColorFilter(ContextCompat.getColor(getContext(), color));
     }
 
     private void setTint(int color) {

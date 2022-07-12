@@ -8,10 +8,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.PermissionActivity;
-import com.hades.example.android.resource.drawable.bitmap.change_icon_render_color.TestColorFilterFragment;
-import com.hades.example.android.resource.drawable.bitmap.change_icon_render_color.TestTintFragment;
 import com.hades.example.android.resource.bitmap.three_level_cache.ImageGridActivity;
-import com.hades.example.android.resource.drawable.bitmap.TestBitmapDrawableFragment;
 
 /**
  * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html
@@ -25,14 +22,11 @@ public class BitmapActivity extends PermissionActivity {
         setContentView(R.layout.res_bitmap_activity_layout);
         Log.d(TAG, "onCreate: ");
         initViews(R.id.root);
-        findViewById(R.id.page_BitmapDrawable).setOnClickListener(v -> page_BitmapDrawable());
         findViewById(R.id.page_Drawable_and_ScreenDensity).setOnClickListener(v -> page_Drawable_and_ScreenDensity());
         findViewById(R.id.page_create_bitmap).setOnClickListener(v -> page_create_bitmap());
         findViewById(R.id.page_BitmapViewer).setOnClickListener(v -> page_BitmapViewer());
         findViewById(R.id.page_LoadBitmapPo).setOnClickListener(v -> page_LoadBitmapPo());
         findViewById(R.id.page_MemoryCacheBitmap).setOnClickListener(v -> page_MemoryCacheBitmap());
-        findViewById(R.id.page_ColorFilter).setOnClickListener(v -> pageColorFilter());
-        findViewById(R.id.page_Tint).setOnClickListener(v -> pageTint());
     }
 
     @Override
@@ -43,19 +37,7 @@ public class BitmapActivity extends PermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        page_BitmapDrawable();
-    }
-
-    private void page_BitmapDrawable() {
-        showFragment(new TestBitmapDrawableFragment());
-    }
-
-    private void pageColorFilter() {
-        showFragment(new TestColorFilterFragment());
-    }
-
-    private void pageTint() {
-        showFragment(new TestTintFragment());
+        page_Drawable_and_ScreenDensity();
     }
 
     private void page_Drawable_and_ScreenDensity() {
