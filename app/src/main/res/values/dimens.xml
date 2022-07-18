@@ -34,4 +34,7 @@
     <dimen name="constrain_layout_height2">160dp</dimen>
 
     <dimen name="seekbar_thumb_width">18dp</dimen>
+
+    <dimen name="widget_margin">8dp</dimen>
+    <dimen name="big_size">3000dp</dimen>
 </resources>

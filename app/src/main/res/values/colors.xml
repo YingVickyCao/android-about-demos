@@ -10,8 +10,5 @@
     <color name="reflection_bg_color">#80000000</color>
 
     <color name="shadow_color">#f1f3f4</color>
-    <dimen name="widget_margin">8dp</dimen>
-    <dimen name="big_size">3000dp</dimen>
-
 
 </resources>
