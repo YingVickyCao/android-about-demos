@@ -87,11 +87,6 @@
                 android:text="@string/page_MediaPlayer_SurfaceView_play_video" />
 
             <Button
-                android:id="@+id/pageHighlightDigitalClock"
-                style="@style/btn"
-                android:text="@string/page_TextView_4_highlight_digital_clock" />
-
-            <Button
                 android:id="@+id/pageTextView"
                 style="@style/btn"
                 android:text="@string/page_TextView" />

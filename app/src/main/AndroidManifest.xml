@@ -374,6 +374,7 @@
         <activity android:name=".widget.videoview.VideoViewRotateScreenTipActivity" />
         <activity android:name=".widget.layout.relativelayout.TestRelativeLayoutActivity" />
         <activity android:name=".widget.custom_view.CustomViewActivity" />
+        <activity android:name=".widget.textview.TestTextViewActivity"/>
         <!-- Widget,END -->
 
         <activity android:name=".other_ui.OtherUIActivity" />

@@ -9,8 +9,13 @@ import com.hades.example.android.R;
 import com.hades.example.android.base.NoNeedPermissionActivity;
 import com.hades.example.android.widget.button.TestButtonActivity;
 import com.hades.example.android.widget.checkbox.CheckBoxFragment;
-import com.hades.example.android.widget.edittext.TestEditTextFragment;
+import com.hades.example.android.widget.custom_view.CustomViewActivity;
 import com.hades.example.android.widget.custom_view.keyboard.TestKeyBoardFragment;
+import com.hades.example.android.widget.drag_drop.DragDropFragment;
+import com.hades.example.android.widget.edittext.TestEditTextFragment;
+import com.hades.example.android.widget.imageview.KenBurnsImageFragment;
+import com.hades.example.android.widget.imageview.TestImageViewFragment;
+import com.hades.example.android.widget.imageview.TestImageViewScaleTypeFragment;
 import com.hades.example.android.widget.layout._constraintlayout.TestConstraintLayoutFragment;
 import com.hades.example.android.widget.layout._framelayout.TestFrameLayoutFragment;
 import com.hades.example.android.widget.layout._viewgroup.TestViewGroupFragment;
@@ -23,6 +28,9 @@ import com.hades.example.android.widget.list._recyclerview._dag_reorder_list.v1.
 import com.hades.example.android.widget.list._recyclerview._dag_reorder_list.v2.screen_size.TestViewLocationFragment;
 import com.hades.example.android.widget.list._recyclerview.dummy.DummyRecyclerViewFragment;
 import com.hades.example.android.widget.list._recyclerview.dummy.IItemClickAction;
+import com.hades.example.android.widget.pickers.CalendarViewFragment;
+import com.hades.example.android.widget.pickers.DateTimePickerFragment;
+import com.hades.example.android.widget.pickers.NumberPickerFragment;
 import com.hades.example.android.widget.progressbar.TestProgressBarFragment;
 import com.hades.example.android.widget.progressbar.TestRatingBarFragment;
 import com.hades.example.android.widget.progressbar.TestSeekBarFragment;
@@ -32,17 +40,8 @@ import com.hades.example.android.widget.spinner.TestSpinnerFragment;
 import com.hades.example.android.widget.surfaceview.TestSurfaceViewPlayVideoFragment;
 import com.hades.example.android.widget.switchBtn.TestSwitchFragment;
 import com.hades.example.android.widget.tablayout.TestTabLayoutFragment;
+import com.hades.example.android.widget.textview.TestTextViewActivity;
 import com.hades.example.android.widget.videoview.VideoViewRotateScreenTipActivity;
-import com.hades.example.android.widget.custom_view.CustomViewActivity;
-import com.hades.example.android.widget.drag_drop.DragDropFragment;
-import com.hades.example.android.widget.imageview.KenBurnsImageFragment;
-import com.hades.example.android.widget.imageview.TestImageViewFragment;
-import com.hades.example.android.widget.imageview.TestImageViewScaleTypeFragment;
-import com.hades.example.android.widget.pickers.CalendarViewFragment;
-import com.hades.example.android.widget.pickers.DateTimePickerFragment;
-import com.hades.example.android.widget.pickers.NumberPickerFragment;
-import com.hades.example.android.widget.textview.TestHighlightDigitalClockFragment;
-import com.hades.example.android.widget.textview.TestTextViewFragment;
 import com.hades.example.android.widget.view_animator.ImageSwitcherFragment;
 import com.hades.example.android.widget.view_animator.TextSwitcherFragment;
 import com.hades.example.android.widget.view_animator.ViewFlipperFragment;
@@ -75,7 +74,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.pageWebView).setOnClickListener(v -> pageWebView());
         findViewById(R.id.pageVideoView).setOnClickListener(v -> pageVideoView());
         findViewById(R.id.pageSurfaceViewPlayVideo).setOnClickListener(v -> pageSurfaceViewPlayVideo());
-        findViewById(R.id.pageHighlightDigitalClock).setOnClickListener(v -> pageHighlightDigitalClock());
         findViewById(R.id.pageTextView).setOnClickListener(v -> pageTextView());
         findViewById(R.id.pageButton).setOnClickListener(v -> pageButton());
         findViewById(R.id.page_ImageButton).setOnClickListener(v -> page_ImageButton());
@@ -113,7 +111,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     @Override
     protected void showCurrentTest() {
-        pageProgressbar();
+        pageImageView();
     }
 
     private void pageViewLocation() {
@@ -168,12 +166,8 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         showFragment(new TestSurfaceViewPlayVideoFragment());
     }
 
-    private void pageHighlightDigitalClock() {
-        showFragment(new TestHighlightDigitalClockFragment());
-    }
-
     private void pageTextView() {
-        showFragment(new TestTextViewFragment());
+        showActivity(TestTextViewActivity.class);
     }
 
     private void pageButton() {

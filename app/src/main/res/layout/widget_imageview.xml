@@ -10,70 +10,17 @@
         style="@style/topic"
         android:text="@string/page_imageView" />
 
-    <!-- android:src vs android:background -->
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_100"
-                android:src="@drawable/ic_launcher" />
-
-            <ImageView
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_100"
-                android:alpha="0.2"
-                android:src="@drawable/ic_launcher" />
-
-            <ImageView
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_100"
-                android:padding="@dimen/size_30"
-                android:src="@drawable/ic_launcher" />
-
+            <include layout="@layout/widget_imageview_of_src_vs_background" />
+            <include layout="@layout/widget_imageview_of_tint_src_vs_src_compat" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_100"
-                android:background="@drawable/ic_launcher" />
-
-            <ImageView
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_100"
-                android:alpha="0.2"
-                android:background="@drawable/ic_launcher" />
-
-            <ImageView
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_100"
-                android:background="@drawable/ic_launcher"
-                android:padding="@dimen/size_30" />
-
-            <ImageView
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_100"
-                android:background="@drawable/ic_launcher"
-                android:padding="@dimen/size_30"
-                android:src="@drawable/ic_launcher" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

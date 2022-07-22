@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- android:src vs android:background -->
+    <TextView
+        style="@style/tv"
+        android:text="android:src vs android:background" />
+
+    <!--
+    android:padding 作用的是内容，它对 android:src 有效，对 android:background" 无效
+    android:alpha, 它对 android:src 和 android:background 都有效
+    -->
+
+    <!-- android:src -->
+    <TextView
+        style="@style/tv"
+        android:gravity="start"
+        android:text="android:src" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:src="@drawable/ic_launcher" />
+
+        <ImageView
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:alpha="0.2"
+            android:src="@drawable/ic_launcher" />
+
+        <ImageView
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:padding="@dimen/size_30"
+            android:src="@drawable/ic_launcher" />
+    </LinearLayout>
+
+    <!--  android:background       -->
+    <TextView
+        style="@style/tv"
+        android:gravity="start"
+        android:text="android:background" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:background="@drawable/ic_launcher" />
+
+        <ImageView
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:alpha="0.2"
+            android:background="@drawable/ic_launcher" />
+
+        <ImageView
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:background="@drawable/ic_launcher"
+            android:padding="@dimen/size_30" />
+    </LinearLayout>
+
+
+    <!--    android:src + android:background-->
+    <TextView
+        style="@style/tv"
+        android:gravity="start"
+        android:text="android:src + android:background" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:background="@drawable/ic_launcher"
+            android:src="@drawable/ic_launcher_round" />
+
+        <ImageView
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:alpha="0.2"
+            android:background="@drawable/ic_launcher"
+            android:src="@drawable/ic_launcher_round" />
+
+        <ImageView
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:background="@drawable/ic_launcher"
+            android:padding="@dimen/size_30"
+            android:src="@drawable/ic_launcher_round" />
+    </LinearLayout>
+
+    <View style="@style/div" />
+</LinearLayout>

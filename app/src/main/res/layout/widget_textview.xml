@@ -25,45 +25,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- android:tint and android:tintMode
-             android:src, android:tint ,and app:srcCompat: 顺序与使用什么类型的图片无关
-             -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_adjust_black_18dp" />
-
-                <!-- (android:tint > android:src)✓ -->
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_adjust_black_18dp"
-                    android:tint="@color/colorAccent" />
-
-                <!-- android:src ✓ > app:srcCompat -->
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_adjust_black_18dp"
-                    app:srcCompat="@drawable/ic_svg_home" />
-
-                <!-- ( android:tint > android:src ) ✓ > app:srcCompat -->
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_adjust_black_18dp"
-                    android:tint="@android:color/holo_orange_dark"
-                    app:srcCompat="@drawable/ic_svg_home" />
-            </LinearLayout>
-
-            <View style="@style/div" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -105,11 +66,12 @@
             <View style="@style/div" />
 
             <include layout="@layout/widget_textview_4_click_action" />
+
             <!-- 底部文字对齐,START -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_100"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:id="@+id/left"
@@ -136,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_100"
                 android:layout_marginTop="@dimen/margin_tiny"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:id="@+id/left2"

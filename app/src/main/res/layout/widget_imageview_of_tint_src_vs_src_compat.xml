@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+    <TextView
+        style="@style/tv"
+        android:text="android:tint、 android:src 、app:srcCompat" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <!--
+            android:src, android:tint ,and app:srcCompat: 顺序与使用什么类型的图片无关
+          -->
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_adjust_black_18dp" />
+
+        <!-- (android:tint > android:src)✓ -->
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_adjust_black_18dp"
+            android:tint="@color/colorAccent" />
+
+        <!-- ImageView / AppCompatImageView: android:src ✓  > app:srcCompat , app:tint ✓ > android:tint-->
+        <!-- app:srcCompat Allows the use of vector drawable when running on older versions of the platform.   /-->
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_adjust_black_18dp"
+            android:tint="@android:color/holo_orange_dark"
+            app:srcCompat="@drawable/ic_svg_home"
+            app:tint="@android:color/holo_green_dark" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_adjust_black_18dp"
+            android:tint="@android:color/holo_orange_dark"
+            app:srcCompat="@drawable/ic_svg_home"
+            app:tint="@android:color/holo_green_dark" />
+
+        <!-- ( android:tint > android:src ) ✓ > app:srcCompat -->
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_adjust_black_18dp"
+            android:tint="@android:color/holo_orange_dark"
+            app:srcCompat="@drawable/ic_svg_home" />
+    </LinearLayout>
+
+    <View style="@style/div" />
+</LinearLayout>

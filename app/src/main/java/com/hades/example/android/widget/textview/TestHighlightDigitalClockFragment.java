@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.BaseFragment;
 
 import java.util.Calendar;
 import java.util.Locale;
 
-public class TestHighlightDigitalClockFragment extends BaseFragment {
+public class TestHighlightDigitalClockFragment extends Fragment {
     private static final String DATE_FORMAT = "%02d:%02d:%02d";
     private static final int REFRESH_DELAY = 500;
     private final Handler mHandler = new Handler();

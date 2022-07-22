@@ -8,13 +8,14 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.BaseFragment;
 
-public class TestTextViewFragment extends BaseFragment {
+public class TestTextViewFragment extends Fragment {
     private static final String TAG = TestTextViewFragment.class.getSimpleName();
     private TextView tv1;
 
@@ -162,6 +163,6 @@ public class TestTextViewFragment extends BaseFragment {
     }
 
     private void clickTextView(String msg) {
-        showToast(msg);
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
     }
 }
