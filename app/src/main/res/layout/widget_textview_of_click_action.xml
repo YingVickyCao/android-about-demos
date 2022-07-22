@@ -5,6 +5,7 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/tv"
         style="@style/tv"
         android:text="TextView setOnClickListener vs android:clickable=true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -15,21 +16,28 @@
         android:id="@+id/clickTextView"
         style="@style/tv.small"
         android:layout_height="60dp"
+        android:background="@color/red"
         android:clickable="false"
         android:text="@string/click_this_textview"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/div"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv" />
 
     <TextView
         android:id="@+id/clickTextView2"
         style="@style/tv.small"
         android:layout_height="60dp"
         android:layout_marginTop="@dimen/margin_small"
+        android:background="@color/blue"
         android:clickable="false"
         android:text="@string/click_this_textview"
+        app:layout_constraintBottom_toTopOf="@+id/div"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clickTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/tv" />
+
+    <View
+        android:id="@+id/div"
+        style="@style/div"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

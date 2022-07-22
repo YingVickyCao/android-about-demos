@@ -5,8 +5,12 @@
     android:orientation="vertical">
 
     <TextView
-        style="@style/topic"
-        android:text="@string/page_TextView_4_drawable" />
+        style="@style/tv"
+        android:gravity="start"
+        android:text="1 drawableStart/drawableTop/drawableEnd/drawableBottom\n
+    2 drawableTint\n
+    3 padding、drawablePadding
+" />
 
     <TextView
         android:layout_width="@dimen/size_200"
@@ -32,9 +36,9 @@
         android:text="This is an drawable example of TextView" />
 
     <!--
-        drawablePadding
         drawableTint
-        padding
+        drawablePadding ： Icon 与 文字之间
+        padding ：TextView 与 Icon 之间
         -->
     <TextView
         android:layout_width="@dimen/size_200"
@@ -45,14 +49,17 @@
         android:drawableTop="@drawable/blank"
         android:drawableEnd="@drawable/blank"
         android:drawableBottom="@drawable/blank"
-        android:drawablePadding="10dp"
+        android:drawablePadding="1dp"
         android:drawableTint="@android:color/holo_green_light"
         android:gravity="center"
         android:padding="10dp"
         android:text="This is an drawable example of TextView" />
 
     <View
+        android:layout_marginTop="@dimen/margin_tiny"
         android:layout_width="10dp"
         android:layout_height="50dp"
         android:background="@android:color/holo_red_light" />
+
+    <View style="@style/div" />
 </LinearLayout>
