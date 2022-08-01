@@ -15,12 +15,13 @@ public class TestTextViewActivity extends BaseActivity {
         initViews();
 
         findViewById(R.id.pageTextView).setOnClickListener(v -> pageTextView());
-        findViewById(R.id.pageHighlightDigitalClock).setOnClickListener(v -> pageHighlightDigitalClock());
+        findViewById(R.id.page_HighlightDigitalClock).setOnClickListener(v -> pageHighlightDigitalClock());
+        findViewById(R.id.page_link_in_text).setOnClickListener(v -> page_link_in_text());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageTextView();
+        page_link_in_text();
     }
 
     private void pageTextView() {
@@ -29,5 +30,9 @@ public class TestTextViewActivity extends BaseActivity {
 
     private void pageHighlightDigitalClock() {
         showFragment(new TestHighlightDigitalClockFragment());
+    }
+
+    private void page_link_in_text() {
+        showFragment(new LinkInTextViewFragment());
     }
 }

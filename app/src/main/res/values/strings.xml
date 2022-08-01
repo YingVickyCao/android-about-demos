@@ -111,7 +111,7 @@
     <string name="page_TextView">TextView</string>
     <string name="page_TextView_4_highlight_digital_clock">TextView - Highlight Digital Clock</string>
     <string name="page_TextView_4_drawable">TextView - Drawable</string>
-    <string name="page_TextView_4_link">TextView - Link in Text</string>
+    <string name="page_TextView_4_link_in_text">TextView - Link in Text</string>
     <string name="page_SeekBar">SeekBar</string>
     <string name="page_RatingBar">SeekBar</string>
     <string name="page_Progressbar">ProgressBar</string>

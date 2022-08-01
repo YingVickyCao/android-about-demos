@@ -26,14 +26,14 @@
                 android:text="@string/page_TextView" />
 
             <Button
-                android:id="@+id/pageHighlightDigitalClock"
+                android:id="@+id/page_HighlightDigitalClock"
                 style="@style/btn"
                 android:text="@string/page_TextView_4_highlight_digital_clock" />
 
             <Button
-                android:id="@+id/pageHighlightDigitalClock"
+                android:id="@+id/page_link_in_text"
                 style="@style/btn"
-                android:text="@string/page_TextView_4_highlight_digital_clock" />
+                android:text="@string/page_TextView_4_link_in_text" />
         </LinearLayout>
     </ScrollView>
 

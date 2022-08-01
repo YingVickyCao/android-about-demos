@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_TextView_4_link_in_text" />
+
+    <!--  Way 1 : android:autoLink  -->
+    <TextView
+        style="@style/tv.small"
+        android:layout_gravity="center_horizontal"
+        android:autoLink="web"
+        android:text="VisitPage www.baidu.com"
+        android:textColorLink="@android:color/holo_blue_light"
+        android:textSize="@dimen/size_20" />
+
+    <TextView
+        android:id="@+id/link2"
+        style="@style/tv.small"
+        android:layout_gravity="center_horizontal"
+        android:autoLink="web"
+        android:text="VisitPage www.baidu.com"
+        android:textColorLink="@android:color/holo_blue_light"
+        android:textSize="@dimen/size_20" />
+
+    <TextView
+        android:id="@+id/link3"
+        style="@style/tv.small"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/size_20" />
+
+</LinearLayout>

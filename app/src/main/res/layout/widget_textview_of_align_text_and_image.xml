@@ -78,8 +78,15 @@
     <!-- 底部文字对齐,END -->
 
     <!--   文字与图片对齐,START         -->
+
+    <!--   文字与图片底部对齐         -->
     <!--  默认          -->
+    <TextView
+        style="@style/tv"
+        android:gravity="start"
+        android:text="文字与图片中间对齐" />
     <RelativeLayout
+        android:layout_marginTop="@dimen/margin_tiny"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_100">
 
@@ -101,8 +108,6 @@
             android:src="@drawable/ic_launcher"
             android:text="100" />
     </RelativeLayout>
-
-    <!--   文字与图片底部对齐         -->
     <TextView
         style="@style/tv"
         android:gravity="start"
