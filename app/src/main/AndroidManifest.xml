@@ -650,5 +650,7 @@
         <activity android:name=".test_libs.TestLibsActivity"/>
 
         <activity android:name=".test_libs.okhttp.TestOkHttpActivity"/>
+
+        <activity android:name="._faq.penetrateClick.FaqPenetrateClickActivity"/>
     </application>
 </manifest>
