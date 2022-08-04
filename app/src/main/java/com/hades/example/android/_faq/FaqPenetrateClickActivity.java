@@ -1,4 +1,4 @@
-package com.hades.example.android._faq.penetrateClick;
+package com.hades.example.android._faq;
 
 import android.os.Bundle;
 import android.util.Log;

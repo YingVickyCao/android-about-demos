@@ -5,7 +5,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         style="@style/topic"
-        android:text="@string/page_penetrate_click" />
+        android:text="@string/page_faq_penetrate_click" />
 
     <FrameLayout
         android:id="@+id/parent"
@@ -18,20 +18,18 @@
 
         <View
             android:id="@+id/l2"
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/size_20"
             android:background="#F44336" />
 
-        <!-- 如何让透明层L2 透过Top 层 获得点击的？
+        <!-- 如何让透过Top 层，让L2 获得点击的？
         top 层 要加： android:clickable="false"
         即使parent 添加了 android:clickable="true"  和 click 事件，parent 也不会处理。
      -->
         <FrameLayout
             android:id="@+id/top"
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/size_20"
             android:background="#4CAF50"
             android:clickable="false">
 

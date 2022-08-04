@@ -374,7 +374,7 @@
         <activity android:name=".widget.videoview.VideoViewRotateScreenTipActivity" />
         <activity android:name=".widget.layout.relativelayout.TestRelativeLayoutActivity" />
         <activity android:name=".widget.custom_view.CustomViewActivity" />
-        <activity android:name=".widget.textview.TestTextViewActivity"/>
+        <activity android:name=".widget.textview.TestTextViewActivity" />
         <!-- Widget,END -->
 
         <activity android:name=".other_ui.OtherUIActivity" />
@@ -583,12 +583,12 @@
         <activity
             android:name=".test_libs.exoplayer2.TestExoplayer2MainActivity"
             android:configChanges="keyboardHidden"
-            android:label="@string/label_ExoPlayer2"
             android:exported="true"
+            android:label="@string/label_ExoPlayer2"
             android:theme="@style/Theme.AppCompat">
             <intent-filter>
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+                <!--                <action android:name="android.intent.action.MAIN" />-->
+                <!--                <category android:name="android.intent.category.LAUNCHER" />-->
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
             <intent-filter>
@@ -647,10 +647,11 @@
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <!-- ExoPlayer2,END       -->
 
-        <activity android:name=".test_libs.TestLibsActivity"/>
+        <activity android:name=".test_libs.TestLibsActivity" />
 
-        <activity android:name=".test_libs.okhttp.TestOkHttpActivity"/>
+        <activity android:name=".test_libs.okhttp.TestOkHttpActivity" />
 
-        <activity android:name="._faq.penetrateClick.FaqPenetrateClickActivity"/>
+        <activity android:name="._faq.FaqPenetrateClickActivity" />
+        <activity android:name="._faq.FaqPlayerControllerPlayerActivity" />
     </application>
 </manifest>
