@@ -15,6 +15,8 @@ import com.hades.example.android.base.BaseFragment;
 public class TestSeekBarFragment extends BaseFragment {
     private static final String TAG = TestSeekBarFragment.class.getName();
 
+    SeekBar seekBar;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -32,7 +34,8 @@ public class TestSeekBarFragment extends BaseFragment {
          onStopTrackingTouch: progress=26
          <pre/>
          */
-        ((SeekBar) view.findViewById(R.id.seekBar)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        seekBar = view.findViewById(R.id.seekBar);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 Log.d(TAG, "onProgressChanged: progress=" + progress + ",fromUser=" + fromUser);
@@ -48,6 +51,17 @@ public class TestSeekBarFragment extends BaseFragment {
                 Log.d(TAG, "onStopTrackingTouch: progress=" + seekBar.getProgress());
             }
         });
+
+        view.findViewById(R.id.showThumb).setOnClickListener(v -> showThumb());
+        view.findViewById(R.id.hideThumb).setOnClickListener(v -> hideThumb());
         return view;
+    }
+
+    private void showThumb() {
+        seekBar.setThumbOffset(0);
+    }
+
+    private void hideThumb() {
+        seekBar.setThumbOffset(10000);
     }
 }

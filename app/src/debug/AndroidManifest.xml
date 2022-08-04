@@ -6,7 +6,7 @@
     <application tools:ignore="GoogleAppIndexingWarning">
 <!--        android:name=".widget.textview.TestTextViewActivity"-->
         <activity
-            android:name="._faq.FaqPlayerControllerPlayerActivity"
+            android:name=".widget.WidgetActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

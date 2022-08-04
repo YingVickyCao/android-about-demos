@@ -38,6 +38,29 @@
                 android:progress="40"
                 android:secondaryProgress="60" />
 
+            <TextView
+                style="@style/tv.small"
+                android:text="如何隐藏 thumb" />
+
+            <RelativeLayout
+                android:layout_width="@dimen/size_200"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/showThumb"
+                    style="@style/btn"
+                    android:text="Show thumb" />
+
+                <Button
+                    android:id="@+id/hideThumb"
+                    style="@style/btn"
+                    android:layout_alignParentEnd="true"
+                    android:text="Hide thumb" />
+            </RelativeLayout>
+
+            <View style="@style/div" />
+
             <SeekBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
