@@ -11,3 +11,4 @@ include ':A1'
 
 include ':assist'
 include ':B'
+include ':test'
