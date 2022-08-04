@@ -32,6 +32,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
     private float swipeThreshold = 0.5f;
     private Map<Integer, List<MyButton>> buttonBuffer;
     private Queue<Integer> removeQueue;
+    private Rect tRect = new Rect();
 
     public SwipeHelper(Context context, RecyclerView recyclerView, int buttonWidth) {
         super(0, ItemTouchHelper.LEFT);
@@ -170,11 +171,17 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
 
             if (swipeViewHolder != null) {
                 View swipedItem = swipeViewHolder.itemView;
-                Rect rect = new Rect();
-                swipedItem.getGlobalVisibleRect(rect);
+
+                tRect.top = 0;
+                tRect.right=0;
+                tRect.bottom = 0;
+                tRect.left = 0;
+
+                swipedItem.getGlobalVisibleRect(tRect);
 
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN || motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
-                    if (rect.top < motionEvent.getRawY() && rect.bottom > motionEvent.getRawY()) {
+                    if (tRect.top < motionEvent.getRawY() && tRect.bottom > motionEvent.getRawY()) {
+                        Log.d(TAG, "onTouch: ");
                         gestureDetector.onTouchEvent(motionEvent);
                     } else {
                         removeQueue.add(swipePosition);
