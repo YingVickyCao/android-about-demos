@@ -85,7 +85,7 @@ public class DummyRecyclerViewFragment extends Fragment implements IItemClickAct
                             @Override
                             public void onClick(int pos) {
 //                                mAdapter.callDeleteFunction(pos);
-                                Toast.makeText(getContext(), "Click delete btn", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getContext(), "Click delete btn", Toast.LENGTH_SHORT).show();
                             }
                         }
                 ));
@@ -95,7 +95,7 @@ public class DummyRecyclerViewFragment extends Fragment implements IItemClickAct
                             @Override
                             public void onClick(int pos) {
 //                                mAdapter.callEditFunction(pos);
-                                Toast.makeText(getContext(), "Click Edit btn", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getContext(), "Click Edit btn", Toast.LENGTH_SHORT).show();
                             }
                         }
                 ));
