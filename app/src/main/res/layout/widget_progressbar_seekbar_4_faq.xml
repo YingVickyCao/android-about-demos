@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="FAQ" />
+
+    <!-- 如何隐藏 thumb ?   -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_80"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/showThumb"
+            style="@style/btn"
+            android:text="Show thumb" />
+
+        <TextView
+            style="@style/tv.small"
+            android:layout_centerHorizontal="true"
+            android:text="如何隐藏 thumb" />
+
+        <Button
+            android:id="@+id/hideThumb"
+            style="@style/btn"
+            android:layout_alignParentEnd="true"
+            android:text="Hide thumb" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:max="100"
+            android:progress="40"
+            android:secondaryProgress="60" />
+    </RelativeLayout>
+
+    <View style="@style/div" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="40"
+        android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal"
+        android:secondaryProgress="60"
+        android:thumb="@drawable/seek_thumb" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:progress="40"
+        android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_holo_light"
+        android:secondaryProgress="60"
+        android:thumb="@drawable/scrubber_control_selector_holo" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 解决thumb和progress相接有间隔?
+            android:splitTrack="true" -> false
+        -->
+
+        <TextView
+            style="@style/tv"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="FIX thumb和progress相接有间隔" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/control_background_32dp_material_app"
+            android:max="100"
+            android:progress="40"
+            android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_material"
+            android:secondaryProgress="60"
+            android:splitTrack="true"
+            android:thumb="@drawable/drawable_animated_selector_4_seekbar_thumb_material_anim" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:background="@drawable/control_background_32dp_material_app"
+            android:max="100"
+            android:progress="40"
+            android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_material"
+            android:secondaryProgress="60"
+            android:splitTrack="false"
+            android:thumb="@drawable/drawable_animated_selector_4_seekbar_thumb_material_anim" />
+    </LinearLayout>
+
+    <View
+        style="@style/div"
+        android:background="@android:color/holo_red_light" />
+
+
+    <!-- 如何调整seekbar的高度?
+        android:maxHeight="1dp"
+        android:minHeight="1dp"
+        android:layout_height="60dp" -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/tv"
+            android:text="修改进步条的粗细" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:max="100"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:progress="40"
+            android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_v2"
+            android:secondaryProgress="60"
+            android:thumb="@drawable/drawable_shape_4_circular" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:max="100"
+            android:maxHeight="3dp"
+            android:minHeight="3dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:progress="40"
+            android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_v2"
+            android:secondaryProgress="60"
+            android:thumb="@drawable/drawable_shape_4_circular" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/tv"
+            android:text="去掉拖动过程中thumb周围产生的圆形阴影/白色圆圈" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:max="100"
+            android:maxHeight="3dp"
+            android:minHeight="3dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:progress="40"
+            android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_v2"
+            android:secondaryProgress="60"
+            android:thumb="@drawable/drawable_shape_4_circular" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:background="@null"
+            android:max="100"
+            android:maxHeight="3dp"
+            android:minHeight="3dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:progress="40"
+            android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_v2"
+            android:secondaryProgress="60"
+            android:thumb="@drawable/drawable_shape_4_circular" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/tv"
+            android:text="TBD:thumb带status，拖动松快后，不能变回默认的大小" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:max="100"
+            android:maxHeight="3dp"
+            android:minHeight="3dp"
+            android:mirrorForRtl="true"
+            android:progress="40"
+            android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_v2"
+            android:secondaryProgress="60"
+            android:thumb="@drawable/drawable_selector_4_seekbar_thumb_with_status" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:max="100"
+            android:maxHeight="3dp"
+            android:minHeight="3dp"
+            android:mirrorForRtl="true"
+            android:progress="40"
+            android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_v2"
+            android:secondaryProgress="60"
+            android:thumb="@drawable/drawable_selector_4_seekbar_thumb_with_status_v2" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/tv"
+            android:text="Thumb滑动到最左/右显示不全" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:background="@null"
+            android:max="100"
+            android:maxHeight="3dp"
+            android:minHeight="3dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:progress="0"
+            android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_v2"
+            android:secondaryProgress="60"
+            android:thumb="@drawable/drawable_shape_4_circular"
+            android:thumbOffset="10dp" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:background="@null"
+            android:max="100"
+            android:maxHeight="3dp"
+            android:minHeight="3dp"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:progress="0"
+            android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_v2"
+            android:secondaryProgress="60"
+            android:thumb="@drawable/drawable_shape_4_circular"
+            android:thumbOffset="0dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/tv"
+            android:text="Thumb上下显示不全" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:max="100"
+            android:progress="40"
+            android:secondaryProgress="60" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:max="100"
+            android:progress="40"
+            android:secondaryProgress="60" />
+
+        <!-- 设置 Track的高度：
+        android:maxHeight="@dimen/size_15"
+        android:progressDrawable
+        android:minHeight="@dimen/size_15"               -->
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:max="100"
+            android:maxHeight="4dp"
+            android:minHeight="4dp"
+            android:progress="40"
+            android:progressDrawable="@drawable/drawable_layerlist_4_progress_horizontal_v2"
+            android:secondaryProgress="60" />
+    </LinearLayout>
+</LinearLayout>

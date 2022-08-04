@@ -43,7 +43,7 @@
         <item name="android:textColor">@color/primary_text_disable_only_material_light_app</item>
     </style>
 
-    <style name="seekbar">
+    <style name="seekbar" parent="android:Widget.SeekBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:max">100</item>

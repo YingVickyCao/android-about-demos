@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="backgroundMode and backgroundTintMode" />
+
+    <TextView
+        style="@style/tv"
+        android:text="backgroundTintMode=add" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:backgroundTintMode="add"
+        android:max="100"
+        android:progress="40" />
+
+    <TextView
+        style="@style/tv"
+        android:text="backgroundTintMode=multiply" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:backgroundTintMode="multiply"
+        android:max="100"
+        android:progress="40"
+        android:secondaryProgress="60" />
+
+    <TextView
+        style="@style/tv"
+        android:text="backgroundTintMode=screen" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:backgroundTintMode="screen"
+        android:max="100"
+        android:progress="40"
+        android:secondaryProgress="60" />
+
+    <TextView
+        style="@style/tv"
+        android:text="backgroundTintMode=src_atop" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:backgroundTintMode="src_atop"
+        android:max="100"
+        android:progress="40"
+        android:secondaryProgress="60" />
+
+    <TextView
+        style="@style/tv"
+        android:text="backgroundTintMode=src_in" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:backgroundTintMode="src_in"
+        android:max="100"
+        android:progress="40"
+        android:secondaryProgress="60" />
+
+    <TextView
+        style="@style/tv"
+        android:text="No progressTintMode" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:max="100"
+        android:progress="40"
+        android:secondaryProgress="60" />
+
+    <TextView
+        style="@style/tv"
+        android:text="backgroundTintMode=src_over" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:backgroundTintMode="src_over"
+        android:max="100"
+        android:progress="40"
+        android:secondaryProgress="60" />
+
+</LinearLayout>
