@@ -7,6 +7,11 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.base.NoNeedPermissionActivity;
 import com.hades.example.android.R;
 
+/**
+ * RecyclerView进阶：使用ItemTouchHelper实现拖拽和侧滑删除效果
+ * http://www.codebaoku.com/tech/tech-yisu-217065.html
+ * https://en.proft.me/2017/12/14/how-add-swipe-and-dragdrop-support-recyclerview/
+ */
 public class DragAndReorderListActivity extends NoNeedPermissionActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

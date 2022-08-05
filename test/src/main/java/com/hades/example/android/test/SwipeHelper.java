@@ -2,7 +2,6 @@ package com.hades.example.android.test;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.Log;
@@ -165,7 +164,6 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
             if (swipePosition < 0) {
                 return false;
             }
-            Point point2 = new Point((int) motionEvent.getRawX(), (int) motionEvent.getRawY());
 
             RecyclerView.ViewHolder swipeViewHolder = recyclerView.findViewHolderForAdapterPosition(swipePosition);
 
@@ -173,7 +171,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
                 View swipedItem = swipeViewHolder.itemView;
 
                 tRect.top = 0;
-                tRect.right=0;
+                tRect.right = 0;
                 tRect.bottom = 0;
                 tRect.left = 0;
 
@@ -181,7 +179,7 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
 
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN || motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
                     if (tRect.top < motionEvent.getRawY() && tRect.bottom > motionEvent.getRawY()) {
-                        Log.d(TAG, "onTouch: ");
+                        Log.d(TAG, "onTouch:Rect.top=" + tRect.top + ",motionEvent.getRawY=" + motionEvent.getRawY() + ",Rect.bottom=" + tRect.bottom);
                         gestureDetector.onTouchEvent(motionEvent);
                     } else {
                         removeQueue.add(swipePosition);

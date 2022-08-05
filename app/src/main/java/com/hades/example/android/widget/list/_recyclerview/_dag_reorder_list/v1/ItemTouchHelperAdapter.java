@@ -71,6 +71,9 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         return list.size();
     }
 
+    /**
+     * Drag时 交换数据
+     */
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
         Collections.swap(list, fromPosition, toPosition);
@@ -78,6 +81,9 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         return true;
     }
 
+    /**
+     * 移除数据
+     */
     @Override
     public void onItemDismiss(int position) {
         list.remove(position);

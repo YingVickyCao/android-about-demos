@@ -35,15 +35,18 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     @Override
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+//        int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN; // 允许上下的拖动
+//        int swipeFlags = ItemTouchHelper.LEFT;// 只允许从右向左侧滑
+//        return makeMovementFlags(dragFlags, swipeFlags);
         return makeMovementFlags(getDragDirectionsFlags(viewHolder), swipeFlags());
     }
 
     private boolean isFirst(RecyclerView.ViewHolder viewHolder) {
-        return viewHolder.getAdapterPosition() == 0;
+        return viewHolder.getBindingAdapterPosition() == 0;
     }
 
     private boolean isLast(RecyclerView.ViewHolder viewHolder) {
-        return viewHolder.getAdapterPosition() == (mAdapter.list.size() - 1);
+        return viewHolder.getBindingAdapterPosition() == (mAdapter.list.size() - 1);
     }
 
     private int dragFlags4Last() {
@@ -58,12 +61,9 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
         return ItemTouchHelper.UP | ItemTouchHelper.DOWN;
     }
 
-    private int dragFlags4Default() {
-        return ItemTouchHelper.UP | ItemTouchHelper.DOWN;
-    }
-
     private int swipeFlags() {
-        return ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
+//        return ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;  // 允许向左、向右滑
+        return ItemTouchHelper.LEFT;    // 只允许从右向左侧滑
     }
 
     private int getDragDirectionsFlags(RecyclerView.ViewHolder viewHolder) {
@@ -192,9 +192,9 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     // |
     @Override
-    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-        Log.d(TAG, "onMove: origin=" + viewHolder.getAdapterPosition() + ",target pos=" + target.getAdapterPosition());
-        return mAdapter.onItemMove(viewHolder.getAdapterPosition(), target.getAdapterPosition());
+    public boolean onMove(@NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+        Log.d(TAG, "onMove: origin=" + viewHolder.getBindingAdapterPosition() + ",target pos=" + target.getBindingAdapterPosition());
+        return mAdapter.onItemMove(viewHolder.getBindingAdapterPosition(), target.getBindingAdapterPosition());
     }
 
     @Override
@@ -210,7 +210,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     // ---
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-        mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
+        mAdapter.onItemDismiss(viewHolder.getBindingAdapterPosition());
     }
 
     // QA: Only drag btn can drag =  When long click item view, cannot drag. => false
