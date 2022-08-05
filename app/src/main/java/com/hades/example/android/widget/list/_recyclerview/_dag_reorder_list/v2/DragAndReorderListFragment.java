@@ -78,16 +78,16 @@ public class DragAndReorderListFragment extends Fragment {
 
         view.findViewById(R.id.moreOrLess).setOnClickListener(v -> moreOrLess());
 
-        SimpleItemTouchHelperCallback simpleItemTouchHelperCallback = new SimpleItemTouchHelperCallback();
-        SimpleItemTouchHelperCallback simpleItemTouchHelperCallback2 = new SimpleItemTouchHelperCallback();
-        mItemTouchHelper1 = new ItemTouchHelper(simpleItemTouchHelperCallback);
-        mItemTouchHelper2 = new ItemTouchHelper(simpleItemTouchHelperCallback2);
+        SimpleItemTouchHelper simpleItemTouchHelper = new SimpleItemTouchHelper();
+        SimpleItemTouchHelper simpleItemTouchHelper2 = new SimpleItemTouchHelper();
+        mItemTouchHelper1 = new ItemTouchHelper(simpleItemTouchHelper);
+        mItemTouchHelper2 = new ItemTouchHelper(simpleItemTouchHelper2);
 
-        mAdapter1 = setViews(rv1, list1, mItemTouchHelper1, simpleItemTouchHelperCallback);
+        mAdapter1 = setViews(rv1, list1, mItemTouchHelper1, simpleItemTouchHelper);
         mAdapter1.setType(TYPE_1);
         mAdapter1.setLimitMode(true);
 
-        mAdapter2 = setViews(rv2, list2, mItemTouchHelper2, simpleItemTouchHelperCallback2);
+        mAdapter2 = setViews(rv2, list2, mItemTouchHelper2, simpleItemTouchHelper2);
         mAdapter2.setType(TYPE_2);
 
         moreOrLess();
@@ -107,7 +107,7 @@ public class DragAndReorderListFragment extends Fragment {
         mAdapter2.notifyDataSetChanged();
     }
 
-    private ItemTouchHelperAdapter setViews(RecyclerView rv, List<Group> list1, ItemTouchHelper itemTouchHelper, SimpleItemTouchHelperCallback callback) {
+    private ItemTouchHelperAdapter setViews(RecyclerView rv, List<Group> list1, ItemTouchHelper itemTouchHelper, SimpleItemTouchHelper callback) {
         rv.setLayoutManager(getLinearLayoutManager());
         rv.setHasFixedSize(true);// PO
         ItemTouchHelperAdapter adapter = new ItemTouchHelperAdapter(list1, getActivity());

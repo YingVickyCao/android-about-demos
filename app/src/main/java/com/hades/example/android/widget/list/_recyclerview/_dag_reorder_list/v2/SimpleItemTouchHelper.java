@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
-    private static final String TAG = SimpleItemTouchHelperCallback.class.getSimpleName();
+public class SimpleItemTouchHelper extends ItemTouchHelper.Callback {
+    private static final String TAG = SimpleItemTouchHelper.class.getSimpleName();
 
     private ItemTouchHelperAdapter mAdapter;
     private IDragView mStartDragListener;
 
-    public SimpleItemTouchHelperCallback() {
+    public SimpleItemTouchHelper() {
     }
 
     public void setAdapter(ItemTouchHelperAdapter adapter) {

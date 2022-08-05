@@ -23,13 +23,13 @@ import com.hades.example.android.R;
 /**
  * https://en.proft.me/2017/12/14/how-add-swipe-and-dragdrop-support-recyclerview/
  */
-public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
-    private static final String TAG = SimpleItemTouchHelperCallback.class.getSimpleName();
+public class SimpleItemTouchHelper extends ItemTouchHelper.Callback {
+    private static final String TAG = SimpleItemTouchHelper.class.getSimpleName();
 
     private ItemTouchHelperAdapter mAdapter;
     private Paint p;
 
-    SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter) {
+    SimpleItemTouchHelper(ItemTouchHelperAdapter adapter) {
         mAdapter = adapter;
     }
 
@@ -96,6 +96,9 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
         return bitmap;
     }
 
+    /**
+     * 实现我们自定义的交互规则或者自定义的动画效果
+     */
     @Override
     public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
 //        super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
@@ -190,6 +193,9 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
         }*/
     }
 
+    /**
+     * 实现上下方向拖拽时，交换位置
+     */
     // |
     @Override
     public boolean onMove(@NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
@@ -207,23 +213,38 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
         return super.getBoundingBoxMargin();
     }
 
+    /**
+     * 当用户左右滑动Item达到删除条件时，会调用该方法，一般手指触摸滑动的距离达到RecyclerView宽度的一半时，再松开手指，此时该Item会继续向原先滑动方向滑过去并且调用onSwiped方法进行删除，否则会反向滑回原来的位置
+     */
     // ---
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+        // 如果在onSwiped方法内我们没有进行任何操作，即不删除已经滑过去的Item，那么就会留下空白的地方，因为实际上该ItemView还占据着该位置，只是移出了我们的可视范围内罢了
         mAdapter.onItemDismiss(viewHolder.getBindingAdapterPosition());
     }
 
+    /**
+     * 支持长按拖动
+     *
+     * @return
+     */
     // QA: Only drag btn can drag =  When long click item view, cannot drag. => false
     @Override
     public boolean isLongPressDragEnabled() {
         return true;
     }
 
+    /**
+     * 支持左右滑动
+     */
     @Override
     public boolean isItemViewSwipeEnabled() {
         return true;
     }
 
+    /**
+     * 从静止状态变为拖拽或者滑动的时候会回调该方法，参数actionState表示当前的状态
+     */
     @Override
     public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
         super.onSelectedChanged(viewHolder, actionState);
@@ -234,6 +255,9 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
         }
     }
 
+    /**
+     * 当用户操作完毕某个item并且其动画也结束后会调用该方法，用来恢复ItemView的初始状态，防止由于复用而产生的显示错乱问题。
+     */
     @Override
     public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
         super.clearView(recyclerView, viewHolder);

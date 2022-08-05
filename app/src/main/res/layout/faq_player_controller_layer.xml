@@ -8,86 +8,18 @@
         style="@style/topic"
         android:text="@string/page_faq_player_controller_layer" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@android:color/darker_gray"
-        android:clickable="true"
-        android:focusable="true"
-        android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <!-- 爱奇艺的控制层效果 -->
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/aiqiyi_payer_controller" />
-
-        <!-- 问题1：当video 是白色时，如何把白色的Icon btn 显示出来？
-        Fix ：
-        方法1 ： Controller  加暗色的透明色
-        方法2 ： Controller 的Icon btn 把暗色的透明色
-         -->
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="false">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <!-- SurfaceView -->
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/aiqiyi_payer" />
+            <include layout="@layout/faq_player_controller_layer_1_show_icons" />
 
-            <!-- Mock SurfaceView 内容是白色 -->
-<!--            <ImageView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:src="@android:color/white" />-->
-
-            <!-- Controller -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#33000000">
-
-                <!--  问题2：正中间的Play Icon 遮住了正中间的Loading Icon？
-                Fix ：
-                Loading Icon 不要放在正中间，例如： 可以放在Play Icon
-                -->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:weightSum="10">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center_horizontal|top"
-                        android:layout_weight="4">
-
-                        <ProgressBar
-                            android:layout_width="@dimen/size_50"
-                            android:layout_height="@dimen/size_50"
-                            android:layout_gravity="center" />
-                    </LinearLayout>
-                </LinearLayout>
-                <!-- Play Icon    -->
-                <!--   android:background="#33000000"              -->
-                <FrameLayout
-                    android:layout_width="@dimen/size_100"
-                    android:layout_height="@dimen/size_100"
-                    android:layout_gravity="center">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_svg_play" />
-                </FrameLayout>
-            </FrameLayout>
-        </FrameLayout>
-    </LinearLayout>
+            <include layout="@layout/faq_player_controller_layer_2" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="600dp"
+    android:layout_height="270dp"
+    android:clickable="false">
+
+    <!-- SurfaceView -->
+    <ImageView
+        android:layout_width="600dp"
+        android:layout_height="270dp"
+        android:src="@drawable/aiqiyi_payer" />
+
+    <!-- Mock SurfaceView 内容是白色 -->
+    <!--            <ImageView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:src="@android:color/white" />-->
+
+    <!-- Controller -->
+    <!-- 为了任何情况下能显示Icon，Controller 增加带透明度的Mask-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/video_pay_controller_mask">
+
+        <ImageView
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_svg_play" />
+    </FrameLayout>
+</FrameLayout>
