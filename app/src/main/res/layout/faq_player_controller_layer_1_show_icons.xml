@@ -14,10 +14,10 @@
         android:layout_width="600dp"
         android:layout_height="270dp"
         android:src="@drawable/aiqiyi_payer_controller" />
-    <!-- 问题1：如何任何情况下能显示Icon？ 例如： 当video 是白色时，如何把白色的Icon btn 显示出来？
+    <!-- 问题1：如何任何情况下能显示Icon？ 例如： 当video 是白色时，白色Icon 也能显出出来。
     Fix ：
     方法1 ： Controller  加暗色的透明色
-    方法2 ： Controller 的Icon btn 把暗色的透明色, 或 使用带边框的Icon
+    方法2 ： Controller 的Icon btn 把暗色的透明色
      -->
     <include layout="@layout/faq_player_controller_layer_1_show_icons_way1" />
 
