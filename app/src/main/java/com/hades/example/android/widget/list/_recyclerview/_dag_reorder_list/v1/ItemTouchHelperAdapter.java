@@ -91,7 +91,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
     }
 
     static class ItemViewHolder extends RecyclerView.ViewHolder implements IItemTouchHelperViewHolder {
-        private View root;
+        public View root;
         private TextView info;
         private Button drag;
         private ImageView check;
@@ -99,7 +99,7 @@ public class ItemTouchHelperAdapter extends RecyclerView.Adapter<ItemTouchHelper
         ItemViewHolder(View itemView) {
             super(itemView);
             root = itemView.findViewById(R.id.root);
-            info = itemView.findViewById(R.id.phone);
+            info = itemView.findViewById(R.id.info);
             drag = itemView.findViewById(R.id.drag);
             check = itemView.findViewById(R.id.check);
         }

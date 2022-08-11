@@ -7,8 +7,17 @@
         style="@style/topic"
         android:text="@string/page_faq_penetrate_click" />
 
+    <!-- 如何让透过Top 层，让下面一层 获得点击？
+
+  playController : top
+  下面一层： slideView / userTap
+
+    Fix :
+  top 层 要加： android:clickable="false"
+  即使parent 添加了 android:clickable="true"  和 click 事件，parent 也不会处理。
+-->
     <FrameLayout
-        android:id="@+id/parent"
+        android:id="@+id/surfaceViewContainer"
         android:layout_width="@dimen/size_400"
         android:layout_height="@dimen/size_400"
         android:layout_gravity="center"
@@ -16,28 +25,58 @@
         android:clickable="true"
         android:focusable="true">
 
+        <!-- SurfaceView       -->
         <View
-            android:id="@+id/l2"
+            android:id="@+id/surfaceView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#F44336" />
 
-        <!-- 如何让透过Top 层，让L2 获得点击的？
-        top 层 要加： android:clickable="false"
-        即使parent 添加了 android:clickable="true"  和 click 事件，parent 也不会处理。
-     -->
-        <FrameLayout
-            android:id="@+id/top"
+        <View
+            android:id="@+id/userTap"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#4CAF50"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <!--  Slide View      -->
+        <RelativeLayout
+            android:id="@+id/slideViewContainer"
+            android:layout_width="250dp"
+            android:layout_height="@dimen/size_200"
+            android:layout_gravity="end|bottom">
+
+            <ImageView
+                android:id="@+id/slideView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:layout_gravity="center_vertical|end"
+                android:src="@drawable/img_2" />
+        </RelativeLayout>
+        <!-- PlayController      -->
+        <FrameLayout
+            android:id="@+id/playController"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
             android:clickable="false">
 
-            <Button
-                android:id="@+id/btn_in_top"
-                android:layout_width="@dimen/size_50"
-                android:layout_height="@dimen/size_50"
-                android:layout_gravity="center" />
+            <ImageView
+                android:id="@+id/play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:src="@drawable/ic_svg_play" />
+
+            <ImageView
+                android:id="@+id/pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:src="@drawable/ic_svg_pause"
+                android:visibility="gone" />
         </FrameLayout>
     </FrameLayout>
+
 </FrameLayout>

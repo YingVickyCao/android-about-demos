@@ -112,7 +112,7 @@
                 android:weightSum="4">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/top"
+                    android:id="@+id/playController"
                     style="@style/drawable_scale_test_item"
                     android:background="@drawable/drawable_scale_scale_gravity_top" />
 

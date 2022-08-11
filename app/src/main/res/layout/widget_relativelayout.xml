@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/top"
+        android:id="@+id/playController"
         style="@style/topic"
         android:layout_alignParentTop="true"
         android:text="@string/page_RelativeView" />
@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/top"
+        android:layout_below="@+id/playController"
         android:background="@android:color/holo_red_dark"
         android:baselineAligned="false"
         android:gravity="center"

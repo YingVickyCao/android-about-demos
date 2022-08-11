@@ -3,19 +3,15 @@ package com.hades.example.android.widget.list._recyclerview._dag_reorder_list.v1
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hades.example.android.R;
@@ -28,6 +24,8 @@ public class SimpleItemTouchHelper extends ItemTouchHelper.Callback {
 
     private ItemTouchHelperAdapter mAdapter;
     private Paint p;
+
+    int removeBtnWidth;
 
     SimpleItemTouchHelper(ItemTouchHelperAdapter adapter) {
         mAdapter = adapter;
@@ -96,18 +94,43 @@ public class SimpleItemTouchHelper extends ItemTouchHelper.Callback {
         return bitmap;
     }
 
+
     /**
      * 实现我们自定义的交互规则或者自定义的动画效果
      */
     @Override
     public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+        if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+            if (removeBtnWidth == 0) {
+                removeBtnWidth = recyclerView.getResources().getDimensionPixelSize(R.dimen.size_80);
+            }
+            if (dX == 0) { //有时候点击也会被触发成swipe,这里判断不发生偏移量就跳过
+                return;
+            }
+
+            ItemTouchHelperAdapter.ItemViewHolder itemViewHolder = (ItemTouchHelperAdapter.ItemViewHolder) viewHolder;
+            if (dX < 0) {
+                Log.d(TAG, "onChildDraw:[1]" + dX + ",removeBtnWidth=" + removeBtnWidth);
+//                itemViewHolder.root.setScrollX(Math.min((int) Math.abs(dX), removeBtnWidth));
+                itemViewHolder.root.setScrollX(removeBtnWidth);
+            } else {
+                Log.d(TAG, "onChildDraw:[2]" + dX + ",removeBtnWidth=" + removeBtnWidth);
+                itemViewHolder.root.setScrollX(Math.max((int) (removeBtnWidth), 0));
+            }
+        } else {
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        }
+    }
+
+    /*
+    @Override
+    public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
 //        super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         Log.d(TAG, "onChildDraw: getAdapterPosition=" + viewHolder.getAdapterPosition() + ",getOldPosition=" + viewHolder.getOldPosition() + ",dx=" + dX + ",dy=" + dY + ",actionState=" + actionState + ",isCurrentlyActive=" + isCurrentlyActive);
 
-
         if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
-
             Bitmap icon;
+
             if (p == null) {
                 p = new Paint();
             }
@@ -131,6 +154,7 @@ public class SimpleItemTouchHelper extends ItemTouchHelper.Callback {
 
                 c.drawBitmap(icon, null, iconDest, p);
             } else if (dX < 0) {
+                Log.d(TAG, "onChildDraw:draw Delete ");
                 p.setColor(Color.parseColor("#D32F2F"));
                 RectF background = new RectF((float) itemView.getRight() + dX, (float) itemView.getTop(), (float) itemView.getRight(), (float) itemView.getBottom());
                 c.drawRect(background, p);
@@ -143,6 +167,7 @@ public class SimpleItemTouchHelper extends ItemTouchHelper.Callback {
                 RectF iconDest = new RectF(left, top, right, bottom);
 
                 c.drawBitmap(icon, null, iconDest, p);
+                viewHolder.itemView.findViewById(R.id.remove).setVisibility(View.VISIBLE);
             }
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
@@ -153,7 +178,7 @@ public class SimpleItemTouchHelper extends ItemTouchHelper.Callback {
 //            Log.d(TAG, "onChildDraw: left=" + itemView.getLeft() + ",top=" + (float) itemView.getTop() + ",right=" + itemView.getRight() + ",bottom=" + (float) itemView.getBottom());
             Log.d(TAG, "onChildDraw: top=" + itemView.getTop() + ",bottom=" + (float) itemView.getBottom() + ",height=" + recyclerView.getHeight());
 
-            if (itemView.getTop() == 0 && viewHolder.getAdapterPosition() == 0) {
+            if (itemView.getTop() == 0 && viewHolder.getBindingAdapterPosition() == 0) {
                 // If Drag (bottom -> top) to  fist , stop drop continue
                 Log.d(TAG, "onChildDraw: top");
 //            } else if (itemView.getBottom() == recyclerView.getHeight() && viewHolder.getAdapterPosition() == (recyclerView.getChildCount() - 1)) {
@@ -163,10 +188,11 @@ public class SimpleItemTouchHelper extends ItemTouchHelper.Callback {
                 Log.d(TAG, "onChildDraw:findLastCompletelyVisibleItemPosition= " + layoutManager.findLastCompletelyVisibleItemPosition() + ",findLastVisibleItemPosition=" + layoutManager.findLastVisibleItemPosition());
 //                boolean notAllVisible = layoutManager.findLastVisibleItemPosition() < recyclerView.getChildCount() - 1;
             } else {
-                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+//                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
             }
         }
     }
+    */
 
     @Override
     public void onChildDrawOver(@NonNull Canvas c, @NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
@@ -204,21 +230,24 @@ public class SimpleItemTouchHelper extends ItemTouchHelper.Callback {
     }
 
     @Override
-    public boolean canDropOver(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder current, @NonNull RecyclerView.ViewHolder target) {
-        return super.canDropOver(recyclerView, current, target);
+    public void onMoved(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, int fromPos, @NonNull RecyclerView.ViewHolder target, int toPos, int x, int y) {
+        super.onMoved(recyclerView, viewHolder, fromPos, target, toPos, x, y);
     }
 
     @Override
-    public int getBoundingBoxMargin() {
-        return super.getBoundingBoxMargin();
+    public boolean canDropOver(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder current, @NonNull RecyclerView.ViewHolder target) {
+//        return super.canDropOver(recyclerView, current, target);
+        return false;
     }
 
     /**
+     * 侧滑判定成功后 , 会调用该方法
      * 当用户左右滑动Item达到删除条件时，会调用该方法，一般手指触摸滑动的距离达到RecyclerView宽度的一半时，再松开手指，此时该Item会继续向原先滑动方向滑过去并且调用onSwiped方法进行删除，否则会反向滑回原来的位置
      */
     // ---
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+        Log.d(TAG, "onSwiped: ");
         // 如果在onSwiped方法内我们没有进行任何操作，即不删除已经滑过去的Item，那么就会留下空白的地方，因为实际上该ItemView还占据着该位置，只是移出了我们的可视范围内罢了
         mAdapter.onItemDismiss(viewHolder.getBindingAdapterPosition());
     }
@@ -265,5 +294,41 @@ public class SimpleItemTouchHelper extends ItemTouchHelper.Callback {
         if (viewHolder instanceof IItemTouchHelperViewHolder) {
             ((IItemTouchHelperViewHolder) viewHolder).onItemClear();
         }
+    }
+
+    @Override
+    public int getBoundingBoxMargin() {
+        return super.getBoundingBoxMargin();
+    }
+
+    /**
+     * swipe 到 距离的比例后，才触发侧滑 onSwiped 方法
+     */
+    @Override
+    public float getSwipeThreshold(@NonNull RecyclerView.ViewHolder viewHolder) {
+        return super.getSwipeThreshold(viewHolder);
+//        return 0.2f;
+    }
+
+    /**
+     * 针对swipe状态，swipe滑动的阻尼系数,设置最大滑动速度
+     */
+    public float getSwipeVelocityThreshold(float defaultValue) {
+        return super.getSwipeVelocityThreshold(defaultValue);
+    }
+
+    /**
+     * 针对swipe状态，swipe的逃逸速度，换句话说就算没达到getSwipeThreshold设置的距离，达到了这个逃逸速度item也会被swipe消失掉
+     */
+    public float getSwipeEscapeVelocity(float defaultValue) {
+        return super.getSwipeEscapeVelocity(defaultValue);
+    }
+
+    /**
+     * 设置用户的手指离开后的动画持续时间 , 单位 毫秒 ms
+     */
+    @Override
+    public long getAnimationDuration(@NonNull RecyclerView recyclerView, int animationType, float animateDx, float animateDy) {
+        return super.getAnimationDuration(recyclerView, animationType, animateDx, animateDy);
     }
 }
