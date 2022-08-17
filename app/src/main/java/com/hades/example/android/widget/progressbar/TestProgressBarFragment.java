@@ -26,6 +26,7 @@ public class TestProgressBarFragment extends BaseFragment {
     CircleProgressBar circleProgressBar2_7;
     CircleProgressBar circleProgressBar2_8;
     CircleProgressBar circleProgressBar2_9;
+    CircleProgressBar circleProgressBar3;
 
     @Nullable
     @Override
@@ -45,6 +46,7 @@ public class TestProgressBarFragment extends BaseFragment {
         circleProgressBar2_7 = view.findViewById(R.id.circleProgressBar2_7);
         circleProgressBar2_8 = view.findViewById(R.id.circleProgressBar2_8);
         circleProgressBar2_9 = view.findViewById(R.id.circleProgressBar2_9);
+        circleProgressBar3 = view.findViewById(R.id.circleProgressBar3);
 
         view.findViewById(R.id.add).setOnClickListener(v -> add());
         view.findViewById(R.id.reduce).setOnClickListener(v -> reduce());
@@ -69,6 +71,7 @@ public class TestProgressBarFragment extends BaseFragment {
         add(circleProgressBar2_7);
         add(circleProgressBar2_8);
         add(circleProgressBar2_9);
+        add(circleProgressBar3);
     }
 
     private void add(ProgressBar progressBar){
@@ -109,6 +112,7 @@ public class TestProgressBarFragment extends BaseFragment {
         reduce(circleProgressBar2_7);
         reduce(circleProgressBar2_8);
         reduce(circleProgressBar2_9);
+        reduce(circleProgressBar3);
     }
     private void reduce(ProgressBar progressBar) {
         if (progressBar.getProgress() > 10) {

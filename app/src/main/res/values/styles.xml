@@ -542,7 +542,7 @@
         <item name="mode">ring</item>
         <item name="color_default">#87A2BD</item>
         <item name="color_progress">#0076D4</item>
-        <item name="thickness">@dimen/size_2</item>
+        <item name="thickness">2dp</item>
     </style>
 
     <style name="CircleProgressStyle_2">

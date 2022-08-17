@@ -90,12 +90,16 @@ public class CircleProgressBar extends View {
         super.onDraw(canvas);
 
         int width = getWidth();
-        Log.d(TAG, "onDraw: " + width);
+        int cx = (width) / 2;
+        int cy = cx;
+        int radius = (width / 2 - thickness / 2);
+//        int cx = 70;
+//        int cy = 70;
+//        int radius = 65;
+        Log.d(TAG, "onDraw: width=" + width + ",height=" + getHeight() + ",cx=" + cx + ",cy=" + cy + ",radius=" + radius);
 
-        int cx = width / 2;
-        int cy = width / 2;
-        int radius = width / 2 - (thickness / 2);
-        drawDefaultCircle(canvas, radius, cx, cy);
+        // default circle
+        canvas.drawCircle(cx, cy, radius, defaultPaint);
 
         if (progress >= 0) {
             drawProgress(canvas, radius, cx, cy);
@@ -103,10 +107,6 @@ public class CircleProgressBar extends View {
         if (mMode == RING_WITH_TEXT) {
             drawText(canvas, cx, cy);
         }
-    }
-
-    private void drawDefaultCircle(Canvas canvas, int radius, int cx, int cy) {
-        canvas.drawCircle(cx, cy, radius, defaultPaint);
     }
 
     private void drawProgress(Canvas canvas, int radius, int cx, int cy) {
