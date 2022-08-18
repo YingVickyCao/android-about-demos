@@ -35,7 +35,7 @@ public class TestDrawableActivity extends BaseActivity {
 
     @Override
     protected void showCurrentTest() {
-        page_RotateDrawable();
+        pageVectorDrawable();
     }
 
     private void pageDrawableFolder() {

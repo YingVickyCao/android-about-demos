@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/tv"
+        android:text="SVG 放大或缩小" />
+
+    <!-- wrap_content 等于 原始尺寸    -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/size_50"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Icon 大小=6x8, View大小=6x8 -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_svg_pause_6x8" />
+
+        <!-- Icon 大小=6x8, View大小=6x8 -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_5"
+            android:layout_marginEnd="@dimen/size_5"
+            android:src="@drawable/icon_svg_play_6x8" />
+
+        <!-- Icon 大小=24x24, View大小=24x24 -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_svg_play_24x24" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/size_50"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="6dp"
+            android:layout_height="8dp"
+            android:src="@drawable/ic_svg_pause_6x8" />
+
+        <ImageView
+            android:layout_width="6dp"
+            android:layout_height="8dp"
+            android:layout_marginStart="@dimen/size_5"
+            android:layout_marginEnd="@dimen/size_5"
+            android:src="@drawable/icon_svg_play_6x8" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/icon_svg_play_24x24" />
+    </LinearLayout>
+
+    <!-- SVG，支持无损放大或缩小. 当设置宽和高，与原始宽和高放缩比例不同时，那么会按最小的比例，同比例放缩原始宽和高 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/size_100"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <!-- Icon 大小=48x48, View大小=48x48 -->
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="@dimen/size_5"
+            android:layout_marginEnd="@dimen/size_5"
+            android:src="@drawable/icon_svg_play_24x24" />
+
+        <!-- Icon 大小=48x48, View大小=48x56 -->
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="56dp"
+            android:src="@drawable/icon_svg_play_24x24" />
+    </LinearLayout>
+
+    <View style="@style/div" />
+</LinearLayout>

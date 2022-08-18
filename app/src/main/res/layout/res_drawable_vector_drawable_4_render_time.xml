@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/tv"
+        android:text="@string/check_render_time" />
+
+    <!-- 图片越大，对比SVG，SVG渲染性能越优秀       -->
+    <TextView
+        android:id="@+id/checkRenderTime"
+        style="@style/tv" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/vector_drawable_button"
+            style="@style/btn"
+            android:text="@string/vector_drawable" />
+
+        <Button
+            android:id="@+id/png_button"
+            style="@style/btn"
+            android:layout_alignParentEnd="true"
+            android:text="@string/png" />
+    </RelativeLayout>
+
+    <com.hades.example.android.resource.drawable.vector.MeasurableImageView
+        android:id="@+id/measurableImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <View style="@style/div" />
+</LinearLayout>
