@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Androidaboutdemos" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,5 +12,58 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme.DisplayEdgeToEdge">
+        <!--Step 2: Change the color of the system bars  -->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@android:color/transparent</item>
+
+        <!--        step 2 : way 1 -->
+        <!--        <item name="android:windowLightStatusBar">true</item>-->
+        <!--        <item name="android:windowLightNavigationBar">true</item>-->
+        <!--        <item name="android:enforceStatusBarContrast">false</item>-->
+        <!--        <item name="android:enforceNavigationBarContrast">false</item>-->
+    </style>
+
+    <style name="AppTheme.VideoPage">
+        <!--Step 2: Change the color of the system bars  -->
+        <item name="android:navigationBarColor">@android:color/holo_blue_light</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@android:color/holo_purple</item>
+
+        <!--  刘海儿 ： 不起作用     -->
+<!--        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>-->
+    </style>
+
+    <attr name="bg_color_0" format="color" />
+
+    <style name="AppTheme.SystemBar_Support_Theme_Light">
+        <!--Step 2: Change the color of the system bars  -->
+        <!--        <item name="android:statusBarColor">@android:color/holo_blue_light</item>-->
+        <!--        <item name="android:navigationBarColor">@android:color/holo_orange_light</item>-->
+        <item name="android:navigationBarColor">?attr/bg_color_0</item>
+        <item name="android:statusBarColor">?attr/bg_color_0</item>
+
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+
+        <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
+
+        <item name="bg_color_0">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.SystemBar_Support_Theme_Dark">
+        <!--Step 2: Change the color of the system bars  -->
+        <item name="android:navigationBarColor">?attr/bg_color_0</item>
+        <item name="android:statusBarColor">?attr/bg_color_0</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+
+        <item name="android:enforceStatusBarContrast" tools:targetApi="q">true</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">true</item>
+        <item name="bg_color_0">#172021</item>
     </style>
 </resources>

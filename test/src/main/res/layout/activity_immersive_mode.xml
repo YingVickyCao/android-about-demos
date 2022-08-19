@@ -6,19 +6,12 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ImmersiveModeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn"
-            android:layout_width="@dimen/size_100"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/green" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/dim"
@@ -50,34 +43,6 @@
             android:textAllCaps="false" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/showStatusBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/size_5"
-            android:text="Show StatusBar"
-            android:textAllCaps="false" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/show_StatusBar_NavigationBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/size_5"
-            android:text="Show StatusBar and NavigationBar"
-            android:textAllCaps="false" />
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/showNavigationBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/size_5"
-            android:text="Show NavigationBar"
-            android:textAllCaps="false" />
-
-        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/hideNavigationBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,6 +59,17 @@
             android:layout_marginTop="@dimen/size_5"
             android:text="隐藏导航栏,让内容显示在导航栏后面,并保持界面稳定"
             android:textAllCaps="false" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/show_StatusBar_NavigationBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/size_5"
+            android:background="@color/green"
+            android:text="Show StatusBar and NavigationBar"
+            android:textAllCaps="false" />
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/fullscreen_1"
@@ -125,14 +101,46 @@
             android:text="全屏-粘性沉浸模式"
             android:textAllCaps="false" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/fullscreen_in_video_page"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/size_5"
-            android:text="Video Page 启动全屏模式"
-            android:textAllCaps="false" />
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Portrait"
+                android:textColor="@android:color/holo_purple"
+                android:textSize="@dimen/size_30" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/enterFullScreen"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_50"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/size_10"
+                android:backgroundTint="@color/red"
+                android:gravity="center"
+                android:minWidth="@dimen/size_100"
+                android:text="Enter Full Screen"
+                android:textAllCaps="false"
+                android:textSize="@dimen/size_15" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/exitFullScreen"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_50"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/size_10"
+                android:backgroundTint="@color/green"
+                android:gravity="center"
+                android:minWidth="@dimen/size_100"
+                android:text="Exit Full Screen"
+                android:textAllCaps="false"
+                android:textSize="@dimen/size_15" />
+        </LinearLayout>
     </LinearLayout>
 
     <TextView
