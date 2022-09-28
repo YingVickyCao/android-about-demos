@@ -58,10 +58,10 @@ public class TestSeekBarFragment extends BaseFragment {
     }
 
     private void showThumb() {
-        seekBar.setThumbOffset(0);
+        seekBar.getThumb().mutate().setAlpha(255);
     }
 
     private void hideThumb() {
-        seekBar.setThumbOffset(10000);
+        seekBar.getThumb().mutate().setAlpha(0);
     }
 }
