@@ -12,18 +12,18 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity
-            android:name=".app_component.Intent_and_intent_filter.TestAccessRemoteActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <!--        <activity-->
+        <!--            android:name=".app_component.Intent_and_intent_filter.TestAccessRemoteActivity"-->
+        <!--            android:exported="true">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
 
         <activity
-            android:name=".app_component.Intent_and_intent_filter.DeepLinksExample2Activity"
+            android:name=".app_component.Intent_and_intent_filter.DeepActivity"
             android:exported="true">
             <!--  规则1 -->
             <intent-filter>
@@ -38,18 +38,6 @@
             </intent-filter>
 
             <!--  规则2 -->
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="github.com"
-                    android:pathPrefix="/YingVickyCao/"
-                    android:scheme="http" />
-                <data android:scheme="https" />
-            </intent-filter>
         </activity>
     </application>
 

@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">deeplink</string>
+
+    <string name="host_name">192.168.71.15</string>
+    <string name="host_name_2">192.168.71.20</string>
+</resources>

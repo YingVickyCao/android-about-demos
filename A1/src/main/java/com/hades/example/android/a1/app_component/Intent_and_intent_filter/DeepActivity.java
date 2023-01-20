@@ -10,13 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.hades.example.android.a1.R;
 
 //  web_open_app3.html
-public class DeepLinksExample2Activity extends AppCompatActivity {
+public class DeepActivity extends AppCompatActivity {
     private static final String TAG = "DeepLinksActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_app_link);
+        setContentView(R.layout.activity_test_deep_link);
         // ATTENTION: This was auto-generated to handle app links.
         Intent appLinkIntent = getIntent();
         String appLinkAction = appLinkIntent.getAction();
