@@ -30,37 +30,37 @@
             android:exported="true">
 
             <!--   Deep links are URIs of any scheme          -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.VIEW" />-->
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--                <category android:name="android.intent.category.BROWSABLE" />-->
 
-                <data android:scheme="my" />
-                <data
-                    android:host="go"
-                    android:scheme="deeplinkdemo" />
-                <data
-                    android:host="qrscan"
-                    android:scheme="deeplinkdemo" />
-            </intent-filter>
+<!--                <data android:scheme="my" />-->
+<!--                <data-->
+<!--                    android:host="go"-->
+<!--                    android:scheme="deeplinkdemo" />-->
+<!--                <data-->
+<!--                    android:host="qrscan"-->
+<!--                    android:scheme="deeplinkdemo" />-->
+<!--            </intent-filter>-->
 
             <!-- Web links are deep links that use the HTTP and HTTPS schemes.           -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+<!--            <intent-filter android:autoVerify="true">-->
+<!--                <action android:name="android.intent.action.VIEW" />-->
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <!-- scheme is https, only support https,not support http               -->
-                <data
-                    android:host="github.com"
-                    android:pathPrefix="/YingVickyCao/"
-                    android:scheme="https" />
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--                <category android:name="android.intent.category.BROWSABLE" />-->
+<!--                &lt;!&ndash; scheme is https, only support https,not support http               &ndash;&gt;-->
+<!--                <data-->
+<!--                    android:host="github.com"-->
+<!--                    android:pathPrefix="/YingVickyCao/"-->
+<!--                    android:scheme="https" />-->
 
-            </intent-filter>
+<!--            </intent-filter>-->
 
             <!--  Android App Links, available on Android 6.0 (API level 23) and higher, are web links that use the HTTP and HTTPS schemes and contain the autoVerify attribute.           -->
-            <intent-filter>
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -70,6 +70,12 @@
                     android:host="@string/host_name"
                     android:pathPrefix="/video"
                     android:scheme="http" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
                     android:host="@string/host_name"
