@@ -5,6 +5,9 @@ import android.webkit.WebView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * other_app_having_app_links 作为第三方app，点击它的link，测试
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override

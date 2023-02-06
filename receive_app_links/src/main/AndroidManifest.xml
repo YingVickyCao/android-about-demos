@@ -71,6 +71,7 @@
         <!--            </intent-filter>-->
         <!--        </activity>-->
 
+        <!--  测试用例：adb shell am start -a android.intent.action.VIEW -d "https://6c04-114-87-148-43.ngrok.io/recipe/"      -->
         <activity
             android:name=".DisplayAndroidAppLinkActivity"
             android:exported="true">
@@ -82,10 +83,9 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:scheme="http" />
-                <data
-                    android:host="192.168.8.102"
-                    android:pathPrefix="/recipe"
-                    android:port="8080" />
+                <data android:scheme="https" />
+                <!--                android:pathPrefix="/recipe"-->
+                <data android:host="6c04-114-87-148-43.ngrok.io" />
             </intent-filter>
         </activity>
 

@@ -12,4 +12,4 @@ project :
 | B           | 为 app 测试 BoundedService 时提供监听状态的 Remote Bounded Service      |
 | JavaLib     | java libary module                                                      |
 | lib-android | android libary module                                                   |
-| receive_app_links、other_app_having_app_links | 测试 app links（deep links、web link、Android App Links），以及Spash page                                                  |
+| receive_app_links、other_app_having_app_links | 测试 app links（deep links、web link、Android App Links)

@@ -35,6 +35,37 @@ public class DisplayDeeplinkActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: data:" + intent.getData());
 
         parseLink(intent.getDataString());
+
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+//            try {
+//                Context context = this;
+//                DomainVerificationManager manager = context.getSystemService(DomainVerificationManager.class);
+//                DomainVerificationUserState userState =
+//                        manager.getDomainVerificationUserState(context.getPackageName());
+//
+//                Map<String, Integer> hostToStateMap = userState.getHostToStateMap();
+//                List<String> verifiedDomains = new ArrayList<>();
+//                List<String> selectedDomains = new ArrayList<>();
+//                List<String> unapprovedDomains = new ArrayList<>();
+//                for (String key : hostToStateMap.keySet()) {
+//                    Integer stateValue = hostToStateMap.get(key);
+//                    if (stateValue == DomainVerificationUserState.DOMAIN_STATE_VERIFIED) {
+//                        // Domain has passed Android App Links verification.
+//                        verifiedDomains.add(key);
+//                    } else if (stateValue == DomainVerificationUserState.DOMAIN_STATE_SELECTED) {
+//                        // Domain hasn't passed Android App Links verification, but the user has
+//                        // associated it with an app.
+//                        selectedDomains.add(key);
+//                    } else {
+//                        // All other domains.
+//                        unapprovedDomains.add(key);
+//                    }
+//                }
+//            } catch (Exception ex) {
+//                Log.d(TAG, "onCreate: " + ex.getMessage());
+//            }
+//
+//        }
     }
 
     private void parseLink(String link) {
