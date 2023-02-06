@@ -18,51 +18,77 @@
         </activity>
 
         <!--   test if can receive deep links      -->
-        <activity
-            android:name=".DisplayDeeplinkActivity"
-            android:exported="true">
+        <!--        <activity-->
+        <!--            android:name=".DisplayDeeplinkActivity"-->
+        <!--            android:exported="true">-->
 
-            <!--  https://developer.android.google.cn/training/app-links/deep-linking ok           -->
-            <!--  app://open.my.app           ok   -->
-            <!--  app://developer.android.google.cn/training/app-links/deep-linking   ok           -->
-            <!--  https://open.my.app     ok         -->
+        <!--  Test case          -->
+        <!--  https://developer.android.google.cn/training/app-links/deep-linking           -->
+        <!--  app://open.my.app -->
+        <!--  app://developer.android.google.cn/training/app-links/deep-linking         -->
+        <!--  https://open.my.app          -->
 
-            <intent-filter>
-                <!-- ACTION_VIEW:intent filter can be reached from Google Search               -->
-                <action android:name="android.intent.action.VIEW" />
+        <!--            <intent-filter>-->
+        <!--                &lt;!&ndash; ACTION_VIEW:intent filter can be reached from Google Search               &ndash;&gt;-->
+        <!--                <action android:name="android.intent.action.VIEW" />-->
 
-                <!-- DEFAULT : respond to implicit intents. Without this, only respond to intent specifying the app component name                -->
-                <category android:name="android.intent.category.DEFAULT" />
-                <!-- BROWSABLE : intent filter to be accessible from a web browser. Without it, clicking a a link in browser cannot resolve to the app             -->
-                <category android:name="android.intent.category.BROWSABLE" />
-                <!-- data tags >= 1               -->
-                <!-- data tag at lease include android:scheme,other is optional               -->
-                <!--  For example , https://developer.android.google.cn/training/app-links/deep-linking              -->
-                <data
-                    android:host="developer.android.google.cn"
-                    android:scheme="https" />
-                <!--  For example , app://open.my.app              -->
-                <data
-                    android:host="open.my.app"
-                    android:scheme="app" />
-                <!--                <data-->
-                <!--                    android:host="developer.android.google.cn"-->
-                <!--                    android:pathPrefix="/studio"-->
-                <!--                    android:scheme="https" />-->
-            </intent-filter>
-            <!--  https://www.bing.com/images/trending?form=Z9LH          -->
-        </activity>
+        <!--                &lt;!&ndash; DEFAULT : respond to implicit intents. Without this, only respond to intent specifying the app component name                &ndash;&gt;-->
+        <!--                <category android:name="android.intent.category.DEFAULT" />-->
+        <!--                &lt;!&ndash; BROWSABLE : intent filter to be accessible from a web browser. Without it, clicking a a link in browser cannot resolve to the app             &ndash;&gt;-->
+        <!--                <category android:name="android.intent.category.BROWSABLE" />-->
+        <!--                &lt;!&ndash; data tags >= 1               &ndash;&gt;-->
+        <!--                &lt;!&ndash; data tag at lease include android:scheme,other is optional               &ndash;&gt;-->
+        <!--                <data-->
+        <!--                    android:host="developer.android.google.cn"-->
+        <!--                    android:scheme="https" />-->
+        <!--                <data-->
+        <!--                    android:host="open.my.app"-->
+        <!--                    android:scheme="app" />-->
+        <!--                &lt;!&ndash;                <data&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:host="developer.android.google.cn"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:pathPrefix="/studio"&ndash;&gt;-->
+        <!--                &lt;!&ndash;                    android:scheme="https" />&ndash;&gt;-->
+        <!--            </intent-filter>-->
+        <!--            &lt;!&ndash;  https://www.bing.com/images/trending?form=Z9LH          &ndash;&gt;-->
+        <!--        </activity>-->
+
+        <!--        <activity-->
+        <!--            android:name=".DisplayWeblinkActivity"-->
+        <!--            android:exported="true">-->
+
+        <!--            <intent-filter>-->
+
+        <!--                <action android:name="android.intent.action.VIEW" />-->
+
+        <!--                <category android:name="android.intent.category.DEFAULT" />-->
+        <!--                <category android:name="android.intent.category.BROWSABLE" />-->
+
+        <!--                <data android:scheme="https" />-->
+
+        <!--                <data android:scheme="http" />-->
+        <!--                <data android:host="developer.android.google.cn" />-->
+
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
 
         <activity
             android:name=".DisplayAndroidAppLinkActivity"
-            android:exported="false"></activity>
+            android:exported="true">
 
-        <activity
-            android:name=".DisplayWeblinkActivity"
-            android:exported="false">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
 
-            <!--            <intent-filter></intent-filter>-->
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data
+                    android:host="192.168.8.102"
+                    android:pathPrefix="/recipe"
+                    android:port="8080" />
+            </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">deeplink</string>
-
-    <string name="host_name">192.168.71.15:8080</string>
-
-    <string name="asset_statement">192.168.71.15:8080</string>
-</resources>
