@@ -84,8 +84,12 @@
 
                 <data android:scheme="http" />
                 <data android:scheme="https" />
+
+                <!-- 测试 Android App Links verification.              -->
                 <!--                android:pathPrefix="/recipe"-->
                 <data android:host="6c04-114-87-148-43.ngrok.io" />
+                <!-- 测试 Open by default            -->
+                <data android:host="developer.android.google.cn" />
             </intent-filter>
         </activity>
 
