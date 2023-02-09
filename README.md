@@ -13,3 +13,7 @@ project :
 | JavaLib     | java libary module                                                      |
 | lib-android | android libary module                                                   |
 | receive_app_links、other_app_having_app_links | 测试 app links（deep links、web link、Android App Links)
+
+
+# Case
+- [app内部版本升级](app/src/main/java/com/hades/example/android/_case/apk_upgrade)

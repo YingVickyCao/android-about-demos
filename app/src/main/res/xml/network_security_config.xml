@@ -5,7 +5,7 @@
     <debug-overrides>
         <trust-anchors>
             <!-- Trust user added CAs while debuggable only -->
-            <certificates src="user"/>
+            <certificates src="user" />
         </trust-anchors>
     </debug-overrides>
     <!-- 配置7.0抓包,end -->
@@ -13,5 +13,9 @@
     <!-- 配置9.0明文请求,start -->
     <base-config cleartextTrafficPermitted="true" />
     <!-- 配置9.0明文请求,end -->
+
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">http://59.110.162.30/</domain>
+    </domain-config>
 
 </network-security-config>

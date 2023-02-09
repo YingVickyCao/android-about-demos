@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+    QUERY_ALL_PACKAGES:表示查询所有应用
+    tools:ignore="QueryAllPackagesPermission" 忽略QueryAllPackagesPermission 警告
+     tools:remove 移除app中由第三方sdk中QUERY_ALL_PACKAGES引入的权限
+     https://juejin.cn/post/6904922007297916936
+      -->
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission"
+        tools:remove="remove" />
 
     <application
         android:allowBackup="true"
@@ -7,6 +19,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Androidaboutdemos">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -92,7 +105,41 @@
                 <data android:host="developer.android.google.cn" />
             </intent-filter>
         </activity>
-
     </application>
+
+    <!-- queries:how to make those other apps visible to your app
+    比如，想用其他app来打开一个pdf文件
+   -->
+    <queries>
+
+        <!--  Packages that match an intent filter signature      -->
+        <!-- 查询手机中安装了哪些可以打开 https://的应用？   -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="http" />
+        </intent>
+
+        <!-- 查询手机中安装了哪些可以打开 https://的应用？   -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+
+        <!-- 查询手机中安装了哪些可以打开 app://的应用？   -->
+        <!--  app://open.my.app      -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="app" />
+        </intent>
+
+        <!-- 查询手机中安装了哪些可以打开 jpeg 的应用？   -->
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+            <data android:mimeType="image/jpeg" />
+        </intent>
+
+        <!-- 查询手机是否安装了Chrome？Specific package names    -->
+        <package android:name="com.android.chrome" />
+    </queries>
 
 </manifest>

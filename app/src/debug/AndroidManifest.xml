@@ -7,7 +7,7 @@
         <!--        android:name=".widget.textview.TestTextViewActivity"-->
         <!--        android:name=".widget.list._recyclerview._dag_reorder_list.v1.DragAndReorderListActivity"-->
         <activity
-            android:name=".resource.drawable.TestDrawableActivity"
+            android:name="._case.apk_upgrade.AppVersionUpgradeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

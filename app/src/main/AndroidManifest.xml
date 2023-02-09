@@ -14,7 +14,6 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" /> <!-- 授予程序访问振动器的权限 -->
     <uses-permission android:name="android.permission.VIBRATE" /> <!-- END_CONTENT_PROVIDER -->
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.BODY_SENSORS" />
@@ -26,13 +25,12 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
-
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
-
-
     <uses-feature
         android:name="android.software.leanback"
         android:required="false" />
@@ -40,8 +38,6 @@
         android:name="android.hardware.touchscreen"
         android:required="false" />
 
-    <!--android:usesCleartextTraffic="true"-->
-    <!-- android:requestLegacyExternalStorage = “true” Android 10 添加该属性，才能读取SDCard文件    -->
     <application
         android:name=".App"
         android:allowBackup="false"
@@ -53,6 +49,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".AppVersionUpgradeActivity"
+            android:exported="false" />
         <!-- <activity android:namAActivityvity"> -->
         <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN"/> -->
@@ -65,17 +64,13 @@
         <activity android:name=".app_component.TestAppComponentActivity" />
         <activity android:name=".app_component._activity.TestActivityActivity" />
         <activity android:name=".app_component._fragment.TestFragmentActivity" />
-
         <activity android:name=".app_component._activity._start_close.AActivity" />
         <activity android:name=".app_component._activity._start_close.BActivity" />
-
         <activity
             android:name=".app_component._intent_and_intent_filter._launch_mode.D"
             android:launchMode="singleTask" />
-
         <activity android:name=".app_component._intent_and_intent_filter._component.FirstActivity" />
         <activity android:name=".app_component._intent_and_intent_filter._component.SecondActivity" />
-
         <activity android:name=".app_component._intent_and_intent_filter._launch_mode.E" />
         <activity android:name=".app_component._intent_and_intent_filter._action_category.A" />
         <activity
@@ -95,11 +90,11 @@
             android:exported="false">
             <intent-filter>
                 <action android:name="com.hades.example.android.app_component._intent_and_intent_filter._action_category.C.ACTION_3" />
+
                 <category android:name="com.hades.example.android.app_component._intent_and_intent_filter._action_category.C.CATEGORY_3" />
             </intent-filter>
         </activity>
         <activity android:name=".app_component._intent_and_intent_filter._action_category.SystemActionActivity" />
-
         <activity android:name=".app_component._intent_and_intent_filter._data_type.A" />
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B1"
@@ -109,13 +104,13 @@
                 <data android:scheme="@string/scheme_1" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B2"
             android:exported="false"
             android:label="B2">
             <intent-filter>
                 <action android:name="action1" />
+
                 <data android:scheme="@string/scheme_1" />
             </intent-filter>
         </activity>
@@ -125,6 +120,7 @@
             android:label="B3">
             <intent-filter>
                 <category android:name="category1" />
+
                 <data android:scheme="@string/scheme_1" />
             </intent-filter>
         </activity>
@@ -134,6 +130,7 @@
             android:label="B4">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="@string/scheme_1" />
             </intent-filter>
         </activity>
@@ -143,29 +140,33 @@
             android:label="B5">
             <intent-filter>
                 <action android:name="action1" />
+
                 <category android:name="category_1" />
+
                 <data android:scheme="@string/scheme_1" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B6"
             android:exported="false"
             android:label="B6">
             <intent-filter>
                 <action android:name="action1" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="@string/scheme_1" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B7"
             android:exported="false"
             android:label="B7">
             <intent-filter>
                 <action android:name="action2" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="@string/scheme_2" />
             </intent-filter>
         </activity>
@@ -175,20 +176,23 @@
             android:label="B8">
             <intent-filter>
                 <action android:name="action2" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="@string/host_1"
                     android:scheme="@string/scheme_2" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B9"
             android:exported="false"
             android:label="B9">
             <intent-filter>
                 <action android:name="action2" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="@string/host_1"
                     android:scheme="@string/scheme_2" />
@@ -200,7 +204,9 @@
             android:label="B10">
             <intent-filter>
                 <action android:name="action2" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="@string/host_1"
                     android:port="@string/port_1"
@@ -213,7 +219,9 @@
             android:label="B11">
             <intent-filter>
                 <action android:name="action2" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="@string/host_1"
                     android:path="@string/path_1"
@@ -227,7 +235,9 @@
             android:label="B12">
             <intent-filter>
                 <action android:name="action2" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="@string/host_1"
                     android:path="@string/path_2"
@@ -235,14 +245,15 @@
                     android:scheme="@string/scheme_2" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B13"
             android:exported="false"
             android:label="B13">
             <intent-filter>
                 <action android:name="action3" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="@string/host_1"
                     android:mimeType="@string/mime_type_1"
@@ -250,14 +261,15 @@
                     android:scheme="@string/scheme_3" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".app_component._intent_and_intent_filter._data_type.B14"
             android:exported="false"
             android:label="B14">
             <intent-filter>
                 <action android:name="action3" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="@string/host_1"
                     android:mimeType="@string/mime_type_1"
@@ -265,10 +277,8 @@
                     android:scheme="@string/scheme_3" />
             </intent-filter>
         </activity>
-
         <activity android:name=".app_component._intent_and_intent_filter._flag.D" />
         <activity android:name=".app_component._intent_and_intent_filter._flag.E" />
-
         <activity android:name=".resource.adapter_screen.TestSaveAndRestoreStateActivity" />
         <activity
             android:name=".app_component._activity._life_cycle.A"
@@ -280,14 +290,11 @@
         <activity
             android:name=".app_component._activity._life_cycle.FloatB"
             android:theme="@android:style/Theme.Dialog" />
-
         <activity android:name=".app_component._activity._life_cycle.C" />
         <activity android:name=".app_component._activity.GetViewSizeActivity" />
-
         <activity android:name=".app_component._activity._children.TestLauncherActivity" />
         <activity android:name=".app_component._activity._children.TestPreferenceActivity" />
         <activity android:name=".app_component._activity._children.TestExpandableListActivity" />
-
         <activity android:name=".app_component._fragment.book.BookListActivity" />
         <activity android:name=".app_component._fragment.book.BookDetailActivity" />
 
@@ -359,8 +366,6 @@
         <!-- </intent-filter> -->
         <!-- </receiver> -->
         <!-- END_RUNTIME_PERMISSION -->
-
-
         <!-- Widget,START -->
         <activity android:name=".widget.WidgetActivity" /> <!-- START_WIDGET -->
         <!-- SPLASH_NOTIFY_ICON_START -->
@@ -374,9 +379,7 @@
         <activity android:name=".widget.videoview.VideoViewRotateScreenTipActivity" />
         <activity android:name=".widget.layout.relativelayout.TestRelativeLayoutActivity" />
         <activity android:name=".widget.custom_view.CustomViewActivity" />
-        <activity android:name=".widget.textview.TestTextViewActivity" />
-        <!-- Widget,END -->
-
+        <activity android:name=".widget.textview.TestTextViewActivity" /> <!-- Widget,END -->
         <activity android:name=".other_ui.OtherUIActivity" />
         <activity android:name=".other_ui._notification.TestNotificationDescActivity" />
         <activity android:name=".other_ui._actionbar.TestActionBarActivity" />
@@ -385,24 +388,24 @@
         <activity android:name=".other_ui._dialog.TestDialogActivity" />
         <activity
             android:name=".other_ui._navigation.TestBottomNavigationActivity"
-            android:label="@string/bottom_navigation" />
-
-        <!--<activity-->
-        <!--android:name=".other_ui._dialog.DialogStyleActivity"-->
-        <!--android:theme="@android:style/Theme.Material.Dialog" />-->
-
+            android:label="@string/bottom_navigation" /> <!-- <activity -->
+        <!-- android:name=".other_ui._dialog.DialogStyleActivity" -->
+        <!-- android:theme="@android:style/Theme.Material.Dialog" /> -->
         <activity
             android:name=".other_ui._dialog.good.activity.DialogStyleActivity"
             android:theme="@android:style/Theme.Material.DialogWhenLarge" />
+
         <receiver
             android:name=".other_ui.manager_phone_desktop._app_widget.base.AppWidgetProvider4Base"
             android:exported="false"
             android:icon="@drawable/ic_launcher"
             android:label="@string/basic_app_widget">
             <intent-filter>
+
                 <!-- action specifies that the AppWidgetProvider accepts the ACTION_APPWIDGET_UPDATE broadcast -->
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/appwidget_provider_info_4_base" />
@@ -425,6 +428,7 @@
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/appwidget_provider_info_4_clock" />
@@ -437,6 +441,7 @@
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/appwidget_provider_info_4_list" />
@@ -446,8 +451,8 @@
             android:name=".other_ui.manager_phone_desktop._app_widget.list.ExampleRemoteViewsService4Collections"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
-        <activity android:name=".other_ui.manager_phone_desktop.TestManagerPhoneDesktopActivity" />
-        <!-- 配置动态壁纸Service -->
+
+        <activity android:name=".other_ui.manager_phone_desktop.TestManagerPhoneDesktopActivity" /> <!-- 配置动态壁纸Service -->
         <service
             android:name=".other_ui.manager_phone_desktop.wallpaper.live_wallpaper.LiveWallpaper"
             android:exported="false"
@@ -463,31 +468,23 @@
         </service>
 
         <activity android:name=".other_ui.manager_phone_desktop.shortcuts.dynamic.AddDynamicShortcutsActivity" />
-        <activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.StaticShortcutsActionResponseActivity" />
-        <!--<activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.StaticShortcutsActionResponseActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN" />-->
-
-        <!--<category android:name="android.intent.category.LAUNCHER" />-->
-        <!--</intent-filter>-->
-
-        <!--<meta-data-->
-        <!--android:name="android.app.shortcuts"-->
-        <!--android:resource="@xml/static_shortcuts" />-->
-        <!--</activity>-->
-
-        <activity android:name=".other_ui.manager_phone_desktop.shortcuts.pinned.AddPinndedShortcutsActivity" />
-
-        <!-- START_EVENT_HANDLER -->
+        <activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.StaticShortcutsActionResponseActivity" /> <!-- <activity android:name=".other_ui.manager_phone_desktop.shortcuts._static.StaticShortcutsActionResponseActivity"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.app.shortcuts" -->
+        <!-- android:resource="@xml/static_shortcuts" /> -->
+        <!-- </activity> -->
+        <activity android:name=".other_ui.manager_phone_desktop.shortcuts.pinned.AddPinndedShortcutsActivity" /> <!-- START_EVENT_HANDLER -->
         <activity android:name=".android_mechanism.event_handle.TestEventHandlerActivity" />
         <activity android:name=".android_mechanism.event_handle.base_on_listener.plane.TestCircleViewActivity" />
         <activity android:name=".android_mechanism.event_handle.base_on_listener.event_listener_type.EventListenerTypeActivity" />
         <activity android:name=".android_mechanism.event_handle.base_on_listener.event_listener_type.activity_itself.ActivityItselfListenerActivity" />
         <activity android:name=".android_mechanism.event_handle.base_on_listener.event_listener_type.xml.XmlListenerActivity" />
         <activity android:name=".android_mechanism.event_handle.base_on_callback.EventHandlerBaseOnCallbackActivity" />
-        <activity android:name=".android_mechanism.msg_handler.MessageHandlerActivity" />
-        <!-- END_EVENT_HANDLER -->
-
+        <activity android:name=".android_mechanism.msg_handler.MessageHandlerActivity" /> <!-- END_EVENT_HANDLER -->
         <!-- START_RESOURCES -->
         <activity
             android:name=".resource.ResourceActivity"
@@ -496,8 +493,7 @@
         <activity android:name=".resource.adapter_screen.DipTestActivity" />
         <activity android:name=".resource.drawable.state.custom_selector_drawable.CustomSelectedStatusActivity" />
         <activity android:name=".resource.drawable.state.custom_selector_drawable.CustomSelectedStatusActivity2" />
-        <activity android:name=".resource.bitmap.BitmapActivity" />
-        <!--android:configChanges="screenSize|orientation"-->
+        <activity android:name=".resource.bitmap.BitmapActivity" /> <!-- android:configChanges="screenSize|orientation" -->
         <activity
             android:name=".resource.adapter_screen.TestConfigurationActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -519,20 +515,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".resource.bitmap.three_level_cache.ImageGridActivity" />
         </activity>
-
         <activity android:name=".resource.anim._activity_enter_exit_anim.TestAnimActivity" />
         <activity android:name=".resource.anim._activity_enter_exit_anim.Activity1" />
         <activity
             android:name=".resource.anim._activity_enter_exit_anim.Activity2"
             android:theme="@style/ActivityWithAnimation" />
         <activity android:name=".resource.anim._activity_enter_exit_anim.Activity3" />
-
         <activity android:name=".resource.anim._activity_transition_animation.TransitionMainActivity" />
         <activity android:name=".resource.anim._activity_transition_animation.FirstPageActivity" />
-
-        <activity android:name=".resource._layout.LoadDiffLayoutActivity" />
-        <!-- END_RESOURCES -->
-
+        <activity android:name=".resource._layout.LoadDiffLayoutActivity" /> <!-- END_RESOURCES -->
         <activity android:name=".data_storage.DataStorageActivity" />
         <activity
             android:name=".data_storage.shared_preferences.TestSFProcess1Activity"
@@ -541,25 +532,19 @@
         <activity android:name=".data_storage.database.TestSQLiteActivity" />
         <activity android:name=".po.security.SecurityActivity" />
         <activity android:name="._process_and_thread.TestBackgroundTasksActivity" />
-
         <activity android:name=".sensor.TestSensorActivity" />
-
         <activity android:name=".gps.TestGpsActivity" />
-
         <activity android:name=".network.TestNetworkActivity" />
         <activity android:name=".network.tcp_ip.one_thread_client.SimpleClientActivity" />
         <activity android:name=".network.tcp_ip.multi_thread_client.MultiThreadClientActivity" />
-
         <activity android:name=".media.TestMediaActivity" />
         <activity android:name=".media.audio.audio_effect.TestAudioEffectActivity" />
         <activity android:name=".media.camera.TestCameraActivity" />
         <activity
             android:name="._faq.black_screen.LoginActivity"
             android:theme="@style/LoginIn_RemoveSplash2" />
-        <activity android:name="._faq.black_screen.MockMainActivity" />
-
-        <!-- Feature,START -->
-        <!--  Multi Window  -->
+        <activity android:name="._faq.black_screen.MockMainActivity" /> <!-- Feature,START -->
+        <!-- Multi Window -->
         <activity
             android:name=".feature.multi_window.MultiWindowRootActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
@@ -575,11 +560,9 @@
         <activity
             android:name=".feature.multi_window.AActivity"
             android:resizeableActivity="true"
-            tools:targetApi="n"></activity>
-        <activity android:name=".feature.multi_window.BActivity" />
-        <!-- Feature,END -->
-
-        <!-- ExoPlayer2,START       -->
+            tools:targetApi="n" />
+        <activity android:name=".feature.multi_window.BActivity" /> <!-- Feature,END -->
+        <!-- ExoPlayer2,START -->
         <activity
             android:name=".test_libs.exoplayer2.TestExoplayer2MainActivity"
             android:configChanges="keyboardHidden"
@@ -587,8 +570,9 @@
             android:label="@string/label_ExoPlayer2"
             android:theme="@style/Theme.AppCompat">
             <intent-filter>
-                <!--                <action android:name="android.intent.action.MAIN" />-->
-                <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+
+                <!-- <action android:name="android.intent.action.MAIN" /> -->
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
             <intent-filter>
@@ -598,9 +582,9 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="content"
                     android:host="*"
-                    android:pathPattern=".*\\.exolist\\.json" />
+                    android:pathPattern=".*\\.exolist\\.json"
+                    android:scheme="content" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -609,9 +593,9 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="asset"
                     android:host="*"
-                    android:pathPattern=".*\\.exolist\\.json" />
+                    android:pathPattern=".*\\.exolist\\.json"
+                    android:scheme="asset" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -620,12 +604,11 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="file"
                     android:host="*"
-                    android:pathPattern=".*\\.exolist\\.json" />
+                    android:pathPattern=".*\\.exolist\\.json"
+                    android:scheme="file" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".test_libs.exoplayer2.PlayerActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
@@ -634,8 +617,9 @@
             android:launchMode="singleTop"
             android:theme="@style/PlayerTheme">
             <intent-filter>
-                <!--                <action android:name="com.google.android.exoplayer.demo.action.VIEW" />-->
-                <!--                <category android:name="android.intent.category.DEFAULT" />-->
+
+                <!-- <action android:name="com.google.android.exoplayer.demo.action.VIEW" /> -->
+                <!-- <category android:name="android.intent.category.DEFAULT" /> -->
 
                 <data android:scheme="http" />
                 <data android:scheme="https" />
@@ -645,6 +629,7 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="com.google.android.exoplayer.demo.action.VIEW_LIST" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -655,22 +640,21 @@
             android:label="@string/label_ExoPlayer2">
             <intent-filter>
                 <action android:name="com.google.android.exoplayer.downloadService.action.RESTART" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
-
         <service
             android:name="com.google.android.exoplayer2.scheduler.PlatformScheduler$PlatformSchedulerService"
             android:exported="true"
             android:label="@string/label_ExoPlayer2"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
-        <!-- ExoPlayer2,END       -->
-
+            android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- ExoPlayer2,END -->
         <activity android:name=".test_libs.TestLibsActivity" />
-
         <activity android:name=".test_libs.okhttp.TestOkHttpActivity" />
-
         <activity android:name="._faq.FaqPenetrateClickActivity" />
         <activity android:name="._faq.FaqPlayerControllerPlayerActivity" />
+
+        <activity android:name="._case.apk_upgrade.AppVersionUpgradeActivity" />
     </application>
+
 </manifest>

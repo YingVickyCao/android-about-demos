@@ -26,7 +26,7 @@ android {
 
         ndk {
             // FIXED_Warning:ABIs [arm64-v8a,armeabi-v7a,armeabi] set by 'android.injected.build.abi' gradle flag contained 'ARMEABI, ARM64_V8A' not targeted by this project.
-            abiFilters "arm64-v8a", "armeabi-v7a", "x86_84", "x86"
+            abiFilters "arm64-v8a", "armeabi-v7a", "x86_64", "x86"
         }
     }
     buildTypes {
@@ -78,6 +78,7 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.11.3'
 
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
+
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
 
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'

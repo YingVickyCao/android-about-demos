@@ -2,6 +2,8 @@ package com.example.receive_app_links;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.content.pm.verify.domain.DomainVerificationManager;
 import android.content.pm.verify.domain.DomainVerificationUserState;
 import android.net.Uri;
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         findViewById(R.id.checkAppApprovedDomain).setOnClickListener(v -> checkAppApprovedDomain());
         findViewById(R.id.openByDefault).setOnClickListener(v -> openByDefault());
+        findViewById(R.id.testPackageVisibility).setOnClickListener(v -> testPackageVisibility());
     }
 
     private void checkAppApprovedDomain() {
@@ -104,5 +107,34 @@ public class MainActivity extends AppCompatActivity {
     private void openByDefault() {
         Intent intent = new Intent(Settings.ACTION_APP_OPEN_BY_DEFAULT_SETTINGS, Uri.parse("package:" + getPackageName()));
         startActivity(intent);
+    }
+
+    private void testPackageVisibility() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                {
+                    PackageManager packageManager = getPackageManager();
+                    List<ApplicationInfo> allApps = packageManager.getInstalledApplications(0);
+                    for (ApplicationInfo info : allApps) {
+                        Log.d(TAG, "package name:" + info.packageName);
+                    }
+                }
+
+                // Check whether a browser is available
+                {
+                    openWebPage("https://developer.android.google.cn/guide/components/intents-common#ViewUrl");
+                }
+            }
+        }).start();
+    }
+
+    // <queries>
+    public void openWebPage(String url) {
+        Uri webpage = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 }
