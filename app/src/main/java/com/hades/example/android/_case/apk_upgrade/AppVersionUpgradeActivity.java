@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
 
-import java.io.File;
-
 public class AppVersionUpgradeActivity extends AppCompatActivity {
     private static final String TAG = AppVersionUpgradeActivity.class.getSimpleName();
     /*
@@ -69,24 +67,24 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
 
                 showVersionUpdateDialog();
 
-                File targetFile = new File(getCacheDir(), "target.apk");
-                AppVersionUpgrade.getInstance().getNetManager().download(GET_APP_VERSION_URL, targetFile, new INetDownloadCallBack() {
-                    @Override
-                    public void success(File apkFile) {
-                        // 安装代码
-                    }
-
-                    @Override
-                    public void progress(int progress) {
-                        // 更新界面的代码
-                        Log.d(TAG, "progress: " + progress);
-                    }
-
-                    @Override
-                    public void fail() {
-                        Toast.makeText(AppVersionUpgradeActivity.this, "", Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                File targetFile = new File(getCacheDir(), "target.apk");
+//                AppVersionUpgrade.getInstance().getNetManager().download(GET_APP_VERSION_URL, targetFile, new INetDownloadCallBack() {
+//                    @Override
+//                    public void success(File apkFile) {
+//                        // 安装代码
+//                    }
+//
+//                    @Override
+//                    public void progress(int progress) {
+//                        // 更新界面的代码
+//                        Log.d(TAG, "progress: " + progress);
+//                    }
+//
+//                    @Override
+//                    public void fail() {
+//                        Toast.makeText(AppVersionUpgradeActivity.this, "", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
             }
 
             @Override
