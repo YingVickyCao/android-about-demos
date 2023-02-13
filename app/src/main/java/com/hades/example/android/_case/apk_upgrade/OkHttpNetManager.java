@@ -7,7 +7,10 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -67,6 +70,7 @@ public class OkHttpNetManager implements INetManager {
                         }
                     });
                 } catch (Exception ex) {
+                    Log.e(TAG, "onResponse: failed" + ex.getMessage());
                     callback.fail();
                 }
             }
@@ -74,6 +78,52 @@ public class OkHttpNetManager implements INetManager {
     }
 
     @Override
-    public void download(String url, File targetFile, INetDownloadCallBack callbBack) {
+    public void download(String url, File targetFile, INetDownloadCallBack callBack) {
+        Request.Builder builder = new Request.Builder();
+        Request request = builder.url(url).build();
+        sOkHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.e(TAG, "onFailure: ", e);
+                callBack.fail();
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                try {
+                    // SonarQube：脆弱性
+                    if (!targetFile.exists()) {
+                        targetFile.getParentFile().mkdirs();
+                    }
+
+                    try (InputStream is = response.body().byteStream();
+                         OutputStream os = new FileOutputStream(targetFile);) {
+                        long totalLength = response.body().contentLength();
+                        long currentLength = 0;
+                        int bufferLength = 0;
+//                        byte[] buffer = new byte[8 * 1024]; // 这个apk太小了，一个循环就下载完了，看不出进度更新，因此，把buffer改小一点/
+                        byte[] buffer = new byte[8];
+                        int oldProgress = 0;
+                        while (-1 != (bufferLength = is.read(buffer))) {
+                            os.write(buffer, 0, bufferLength);
+                            os.flush();
+                            currentLength += bufferLength;
+                            int progress = (int) (currentLength * 1.0f / totalLength * 100); // 1.0 f ?  一个小数 除以 一个大数会为0。加上1.0f,得到的值就不是0了。
+                            if (progress > oldProgress) {// 防止同一个progress，被UI更新了多次
+                                oldProgress = progress;
+                                sHandler.post(() -> callBack.progress(progress));
+                            }
+                        }
+                        // 若存在sdcard，不需要这三个权限申请
+                        targetFile.setExecutable(true, false);
+                        targetFile.setReadable(true, false);
+                        targetFile.setWritable(true, false);
+                        sHandler.post(() -> callBack.success(targetFile));
+                    }
+                } catch (Exception exception) {
+                    callBack.fail();
+                }
+            }
+        });
     }
 }

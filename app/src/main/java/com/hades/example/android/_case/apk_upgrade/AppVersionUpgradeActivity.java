@@ -37,7 +37,7 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
             public void success(String versionData) {
                 Log.d(TAG, "success: " + versionData);
 
-                Toast.makeText(AppVersionUpgradeActivity.this, "check app version success. ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AppVersionUpgradeActivity.this, "success. ", Toast.LENGTH_SHORT).show();
 
                 // 1 解析json
                 // 2 做版本匹配
@@ -46,15 +46,18 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
 
                 if (isNeedUpdateVersion(versionData)) {
                     showVersionUpdateDialog();
-                    AppVersionUpgrade.getInstance().getNetManager().download(GET_APP_VERSION_URL, null, new INetDownloadCallBack() {
+
+                    File targetFile = new File(getCacheDir(), "target.apk");
+                    AppVersionUpgrade.getInstance().getNetManager().download(GET_APP_VERSION_URL, targetFile, new INetDownloadCallBack() {
                         @Override
                         public void success(File apkFile) {
-
+                            // 安装代码
                         }
 
                         @Override
                         public void progress(int progress) {
-
+                            // 更新界面的代码
+                            Log.d(TAG, "progress: " + progress);
                         }
 
                         @Override
@@ -68,13 +71,13 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
             @Override
             public void fail() {
                 Log.e(TAG, "fail: ");
-                Toast.makeText(AppVersionUpgradeActivity.this, "check app version failed. ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AppVersionUpgradeActivity.this, "failed. ", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private boolean isNeedUpdateVersion(String versionData) {
-        return false;
+        return true;
     }
 
     private void showVersionUpdateDialog() {
