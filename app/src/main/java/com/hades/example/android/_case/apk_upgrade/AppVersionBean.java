@@ -2,7 +2,9 @@ package com.hades.example.android._case.apk_upgrade;
 
 import org.json.JSONObject;
 
-public class AppVersionBean {
+import java.io.Serializable;
+
+public class AppVersionBean implements Serializable {
     private String tittle;
     private String content;
     private String url;
@@ -47,6 +49,11 @@ public class AppVersionBean {
 
     public void setVersionCode(String versionCode) {
         this.versionCode = versionCode;
+    }
+
+    public boolean isValid() {
+        // TODO:
+        return true;
     }
 
     public static AppVersionBean parse(String response) {

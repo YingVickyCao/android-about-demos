@@ -34,8 +34,8 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
         Log.d(TAG, "checkVersionUpdate: ");
         AppVersionUpgrade.getInstance().getNetManager().get(GET_APP_VERSION_URL, new INetCallback() {
             @Override
-            public void success(String versionData) {
-                Log.d(TAG, "success: " + versionData);
+            public void success(String response) {
+                Log.d(TAG, "success: " + response);
 
                 Toast.makeText(AppVersionUpgradeActivity.this, "success. ", Toast.LENGTH_SHORT).show();
 
@@ -44,28 +44,49 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
                 // 3 做版本更新： 如果需要更新，则弹窗
                 // 4 点击下载
 
-                if (isNeedUpdateVersion(versionData)) {
-                    showVersionUpdateDialog();
 
-                    File targetFile = new File(getCacheDir(), "target.apk");
-                    AppVersionUpgrade.getInstance().getNetManager().download(GET_APP_VERSION_URL, targetFile, new INetDownloadCallBack() {
-                        @Override
-                        public void success(File apkFile) {
-                            // 安装代码
-                        }
-
-                        @Override
-                        public void progress(int progress) {
-                            // 更新界面的代码
-                            Log.d(TAG, "progress: " + progress);
-                        }
-
-                        @Override
-                        public void fail() {
-
-                        }
-                    });
+                AppVersionBean bean = AppVersionBean.parse(response);
+                if (!bean.isValid()) {
+                    fail();
+                    return;
                 }
+                if (!isNeedUpdateApp(response)) {
+                    return;
+                }
+
+                try {
+                    long versionCode = Long.parseLong(bean.getVersionCode());
+                    if (versionCode <= AppUtils.getVersionCode(AppVersionUpgradeActivity.this)) {
+                        return;
+                    }
+                    UpdateVersionDialog.show(AppVersionUpgradeActivity.this, bean);
+
+                } catch (Exception exception) {
+                    Log.d(TAG, "success: " + exception);
+                    Toast.makeText(AppVersionUpgradeActivity.this, "Version code is invalid", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                showVersionUpdateDialog();
+
+                File targetFile = new File(getCacheDir(), "target.apk");
+                AppVersionUpgrade.getInstance().getNetManager().download(GET_APP_VERSION_URL, targetFile, new INetDownloadCallBack() {
+                    @Override
+                    public void success(File apkFile) {
+                        // 安装代码
+                    }
+
+                    @Override
+                    public void progress(int progress) {
+                        // 更新界面的代码
+                        Log.d(TAG, "progress: " + progress);
+                    }
+
+                    @Override
+                    public void fail() {
+                        Toast.makeText(AppVersionUpgradeActivity.this, "", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
 
             @Override
@@ -76,7 +97,7 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
         });
     }
 
-    private boolean isNeedUpdateVersion(String versionData) {
+    private boolean isNeedUpdateApp(String versionData) {
         return true;
     }
 
