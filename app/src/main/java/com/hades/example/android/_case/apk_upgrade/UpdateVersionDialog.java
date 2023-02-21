@@ -70,18 +70,26 @@ public class UpdateVersionDialog extends DialogFragment {
             public void onClick(View v) {
                 versionUpdateBtn.setEnabled(false);
 
-                File targetFile = new File(getActivity().getCacheDir(), "target.apk");
+                File targetFile = new File(getActivity().getCacheDir(), "target2.apk");
+//                File targetFile = new File(getActivity().getCacheDir(), "target.apk");
+//                File targetFile = new File(getActivity().getCacheDir(), "app-debug.apk");
                 AppVersionUpgrade.getInstance().getNetManager().download(GET_APP_VERSION_URL, targetFile, new INetDownloadCallBack() {
                     @Override
                     public void success(File apkFile) {
-                        // 安装代码
                         versionUpdateBtn.setEnabled(true);
+                        // 安装代码
+                        dismiss();
+
+                        File file = new File("target.apk");
+//                        AppUtils.installApk(getActivity(), apkFile);
+                        AppUtils.checkInstallApk(getActivity(), file);
                     }
 
                     @Override
                     public void progress(int progress) {
                         // 更新界面的代码
                         Log.d(TAG, "progress: " + progress);
+                        versionUpdateBtn.setText(progress + " %");
                     }
 
                     @Override
