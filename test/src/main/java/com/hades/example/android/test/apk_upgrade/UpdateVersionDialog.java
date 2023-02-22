@@ -36,7 +36,6 @@ public class UpdateVersionDialog extends DialogFragment {
         dialog.show(activity.getSupportFragmentManager(), dialog.getClass().getSimpleName());
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,34 +61,54 @@ public class UpdateVersionDialog extends DialogFragment {
         TextView title = view.findViewById(R.id.title);
         TextView content = view.findViewById(R.id.content);
         Button versionUpdateBtn = view.findViewById(R.id.versionUpdate);
+        versionUpdateBtn.setOnClickListener(v -> clickVersionUpdate((Button) v));
+    }
 
-        versionUpdateBtn.setOnClickListener(new View.OnClickListener() {
+    private boolean isMD5Valid(@NonNull File targetFile) {
+        String fileMD5 = AppUtils.getFileMD5(targetFile);
+        return fileMD5 != null && fileMD5.equals(mBean.getMd5());
+    }
+
+    private void clickVersionUpdate(Button versionUpdateBtn) {
+        versionUpdateBtn.setEnabled(false);
+        File targetFile = AppUtils.getApkFile(getActivity());
+        if (targetFile.exists()) {
+            if (isMD5Valid(targetFile)) {
+                AppUtils.checkInstallApk(getActivity(), targetFile);
+            } else {
+                downloadApk(versionUpdateBtn, targetFile);
+            }
+        } else {
+            downloadApk(versionUpdateBtn, targetFile);
+        }
+    }
+
+    private void downloadApk(Button versionUpdateBtn, File targetFile) {
+        AppVersionUpgrade.getInstance().getNetManager().download(mBean.getUrl(), targetFile, new INetDownloadCallBack() {
             @Override
-            public void onClick(View v) {
-                versionUpdateBtn.setEnabled(false);
-                File targetFile = AppUtils.getApkFile(getActivity());
-                AppVersionUpgrade.getInstance().getNetManager().download(mBean.getUrl(), targetFile, new INetDownloadCallBack() {
-                    @Override
-                    public void success(File apkFile) {
-                        versionUpdateBtn.setEnabled(true);
-                        dismiss();
-                        // 安装代码
-                        AppUtils.checkInstallApk(getActivity(), targetFile);
-                    }
+            public void success(File apkFile) {
+                versionUpdateBtn.setEnabled(true);
+                dismiss();
+                // todo check md5 : 不一致，说明被修改了，或 没有下载完全。大多数时，md5一样，说明文件一样
+                if (isMD5Valid(apkFile)) {
+                    // 安装代码
+                    AppUtils.checkInstallApk(getActivity(), targetFile);
+                } else {
+                    Toast.makeText(getActivity(), "MD5 file is wrong", Toast.LENGTH_SHORT).show();
+                }
+            }
 
-                    @Override
-                    public void progress(int progress) {
-                        // 更新界面的代码
-                        Log.d(TAG, "progress: " + progress);
-                        versionUpdateBtn.setText(progress + " %");
-                    }
+            @Override
+            public void progress(int progress) {
+                // 更新界面的代码
+                Log.d(TAG, "progress: " + progress);
+                versionUpdateBtn.setText(progress + " %");
+            }
 
-                    @Override
-                    public void fail() {
-                        versionUpdateBtn.setEnabled(true);
-                        Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
-                    }
-                });
+            @Override
+            public void fail() {
+                versionUpdateBtn.setEnabled(true);
+                Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
             }
         });
     }
