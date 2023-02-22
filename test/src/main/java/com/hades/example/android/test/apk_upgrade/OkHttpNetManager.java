@@ -101,8 +101,8 @@ public class OkHttpNetManager implements INetManager {
                         long totalLength = response.body().contentLength();
                         long currentLength = 0;
                         int bufferLength = 0;
-//                        byte[] buffer = new byte[8 * 1024]; // 这个apk太小了，一个循环就下载完了，看不出进度更新，因此，把buffer改小一点/
-                        byte[] buffer = new byte[8];
+                        byte[] buffer = new byte[8 * 1024]; // 这个apk太小了，一个循环就下载完了，看不出进度更新，因此，把buffer改小一点/
+//                        byte[] buffer = new byte[8];
                         int oldProgress = 0;
                         while (-1 != (bufferLength = is.read(buffer))) {
                             os.write(buffer, 0, bufferLength);

@@ -1,32 +1,26 @@
 package com.hades.example.android.test.apk_upgrade;
 
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.test.R;
 
-import java.io.File;
-
 public class AppVersionUpgradeActivity extends AppCompatActivity {
     private static final String TAG = AppVersionUpgradeActivity.class.getSimpleName();
+
     /*
-        {
-            "title":"4.5.0更新啦！",
-            "content":"1. 优化了阅读体验；\n2. 上线了 hyman 的课程；\n3. 修复了一些已知问题。",
-            "url":"http://59.110.162.30/v450_imooc_updater.apk",
-            "md5":"14480fc08932105d55b9217c6d2fb90b",
-            "versionCode":"450"
-        }
-     */
-    public static String GET_APP_VERSION_URL = "http://59.110.162.30/app_updater_version.json";
+         {
+           "title": "2.0",
+           "content": "1. 优化了阅读体验；\n2. 上线了 hyman 的课程；\n3. 修复了一些已知问题。",
+           "url": "http://192.168.71.62:8080/app_updater_version/test-debug.apk",
+           "md5": "cfcde2bec44e2ce3e4770686768ae3cb",
+           "versionCode": "450"
+           }
+          */
+    public static String GET_APP_VERSION_URL = "http://192.168.71.62:8080/app_updater_version/version.json";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +44,6 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
                 // 4 点击下载
 
                 AppVersionBean bean = AppVersionBean.parse(response);
-                bean.setUrl("http://192.168.71.62:8080/test-debug.apk");
                 if (!bean.isValid()) {
                     fail();
                     return;
@@ -71,24 +64,6 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
                     Toast.makeText(AppVersionUpgradeActivity.this, "Version code is invalid", Toast.LENGTH_SHORT).show();
                     return;
                 }
-//                File targetFile = new File(getCacheDir(), "target.apk");
-//                AppVersionUpgrade.getInstance().getNetManager().download(GET_APP_VERSION_URL, targetFile, new INetDownloadCallBack() {
-//                    @Override
-//                    public void success(File apkFile) {
-//                        // 安装代码
-//                    }
-//
-//                    @Override
-//                    public void progress(int progress) {
-//                        // 更新界面的代码
-//                        Log.d(TAG, "progress: " + progress);
-//                    }
-//
-//                    @Override
-//                    public void fail() {
-//                        Toast.makeText(AppVersionUpgradeActivity.this, "", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
             }
 
             @Override
@@ -103,40 +78,7 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
         return true;
     }
 
-    private void showVersionUpdateDialog() {
-
-    }
-
     private void test_installApk() {
         AppUtils.checkInstallApk(this, AppUtils.getApkFile_test(this));
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case AppUtils.INSTALL_PACKAGES_REQUEST_CODE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {  //如果已经有这个权限 则直接安装 否则跳转到授权界面
-                    AppUtils.installApk(this, new File("target.apk"));
-                } else {
-                    Uri packageURI = Uri.parse("package:" + getPackageName());   //获取包名，直接跳转到对应App授权界面
-                    Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, packageURI);
-                    startActivityForResult(intent, AppUtils.GET_UNKNOWN_APP_SOURCES);
-                }
-                break;
-        }
-    }
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        //8.0 以上系统 强更新授权 界面
-        switch (requestCode) {
-            case AppUtils.GET_UNKNOWN_APP_SOURCES:
-                AppUtils.checkInstallApk(this, AppUtils.getApkFile(this));
-                break;
-            default:
-                break;
-        }
-
     }
 }
