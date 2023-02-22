@@ -82,4 +82,4 @@ doc/.DS_Store
 .idea/dictionaries
 
 # Keystore files
-*.jks
+#*.jks
