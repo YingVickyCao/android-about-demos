@@ -1,6 +1,4 @@
-package com.hades.example.android._case.apk_upgrade;
-
-import static com.hades.example.android._case.apk_upgrade.AppUtils.GET_UNKNOWN_APP_SOURCES;
+package com.hades.example.android.test.apk_upgrade;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,7 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.hades.example.android.R;
+import com.hades.example.android.test.R;
 
 import java.io.File;
 
@@ -44,7 +42,6 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
             @Override
             public void success(String response) {
                 Log.d(TAG, "success: " + response);
-
                 Toast.makeText(AppVersionUpgradeActivity.this, "success. ", Toast.LENGTH_SHORT).show();
 
                 // 1 解析json
@@ -52,8 +49,8 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
                 // 3 做版本更新： 如果需要更新，则弹窗
                 // 4 点击下载
 
-
                 AppVersionBean bean = AppVersionBean.parse(response);
+                bean.setUrl("http://192.168.71.62:8080/test-debug.apk");
                 if (!bean.isValid()) {
                     fail();
                     return;
@@ -74,9 +71,6 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
                     Toast.makeText(AppVersionUpgradeActivity.this, "Version code is invalid", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                showVersionUpdateDialog();
-
 //                File targetFile = new File(getCacheDir(), "target.apk");
 //                AppVersionUpgrade.getInstance().getNetManager().download(GET_APP_VERSION_URL, targetFile, new INetDownloadCallBack() {
 //                    @Override
@@ -127,7 +121,7 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
                 } else {
                     Uri packageURI = Uri.parse("package:" + getPackageName());   //获取包名，直接跳转到对应App授权界面
                     Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, packageURI);
-                    startActivityForResult(intent, GET_UNKNOWN_APP_SOURCES);
+                    startActivityForResult(intent, AppUtils.GET_UNKNOWN_APP_SOURCES);
                 }
                 break;
         }
@@ -137,7 +131,7 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         //8.0 以上系统 强更新授权 界面
         switch (requestCode) {
-            case GET_UNKNOWN_APP_SOURCES:
+            case AppUtils.GET_UNKNOWN_APP_SOURCES:
                 AppUtils.checkInstallApk(this, AppUtils.getApkFile(this));
                 break;
             default:

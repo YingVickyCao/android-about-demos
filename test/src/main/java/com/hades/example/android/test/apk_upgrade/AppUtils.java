@@ -1,4 +1,4 @@
-package com.hades.example.android._case.apk_upgrade;
+package com.hades.example.android.test.apk_upgrade;
 
 import android.app.Activity;
 import android.content.Context;
@@ -23,7 +23,7 @@ public class AppUtils {
     }
 
     public static File getApkFile_test(Activity activity) {
-        return new File(activity.getCacheDir(), "app-release.apk");
+        return new File(activity.getCacheDir(), "test-debug.apk");
     }
 
     public static long getVersionCode(Context context) {
@@ -89,12 +89,7 @@ public class AppUtils {
         }
         // end
         intent.setDataAndType(uri, "application/vnd.android.package-archive");
-//        List<ResolveInfo> resInfoList = activity.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
-//        for (ResolveInfo resolveInfo : resInfoList) {
-//            activity.grantUriPermission(resolveInfo.activityInfo.packageName, uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//        }
         activity.startActivity(intent);
-
         // Error: Requesting uid 10155 needs to declare permission android.permission.REQUEST_INSTALL_PACKAGES
         // Reason : Since O,request  install permission
         // Fix:<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
