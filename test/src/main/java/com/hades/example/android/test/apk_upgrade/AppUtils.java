@@ -75,8 +75,10 @@ public class AppUtils {
     public static void checkInstallApk(Activity activity, File apkFile) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             if (activity.getPackageManager().canRequestPackageInstalls()) {
+                Log.d(TAG, "checkInstallApk: installApk");
                 installApk(activity, apkFile);
             } else {
+                Log.d(TAG, "checkInstallApk: openInstallPermission");
                 openInstallPermission(activity);
             }
         } else {

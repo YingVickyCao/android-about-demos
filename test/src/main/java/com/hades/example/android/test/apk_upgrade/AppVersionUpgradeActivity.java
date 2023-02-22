@@ -85,6 +85,7 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.d(TAG, "onActivityResult: ");
         //8.0 以上系统 强更新授权 界面
         switch (requestCode) {
             case AppUtils.GET_UNKNOWN_APP_SOURCES:
@@ -98,6 +99,7 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
 //    @Override
 //    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 //        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//    Log.d(TAG, "onRequestPermissionsResult: ");
 //        switch (requestCode) {
 //            case AppUtils.INSTALL_PACKAGES_REQUEST_CODE:
 //                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {  //如果已经有这个权限 则直接安装 否则跳转到授权界面
