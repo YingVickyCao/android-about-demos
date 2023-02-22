@@ -12,6 +12,9 @@ import android.util.Log;
 import androidx.core.content.FileProvider;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 
 public class AppUtils {
     private static final String TAG = "AppUtils";
@@ -19,11 +22,32 @@ public class AppUtils {
     public static final int GET_UNKNOWN_APP_SOURCES = 10012;
 
     public static File getApkFile(Activity activity) {
-        return new File(activity.getCacheDir(), "target.apk");
+        return new File(activity.getCacheDir(), "test-debug.apk");
     }
 
-    public static File getApkFile_test(Activity activity) {
-        return new File(activity.getCacheDir(), "test-debug.apk");
+    public static String getFileMD5(File targetFile) {
+        if (null == targetFile || !targetFile.isFile()) {
+            return null;
+        }
+
+        MessageDigest digest = null;
+        byte[] buffer = new byte[1024];
+        int len = 0;
+        try {
+            digest = MessageDigest.getInstance("MD5");
+            try (FileInputStream in = new FileInputStream(targetFile);) {
+                while ((len = in.read(buffer)) != -1) {
+                    digest.update(buffer, 0, len);
+                }
+            }
+            // 2 -> 16
+            byte[] result = digest.digest();
+            BigInteger bigInteger = new BigInteger(1, result);
+            return bigInteger.toString(16);
+        } catch (Exception exception) {
+            Log.e(TAG, "getFileMD5: ", exception);
+            return null;
+        }
     }
 
     public static long getVersionCode(Context context) {
