@@ -1,7 +1,5 @@
 package com.hades.example.android.test.apk_upgrade;
 
-import static com.hades.example.android.test.apk_upgrade.AppVersionUpgradeActivity.GET_APP_VERSION_URL;
-
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -70,7 +68,7 @@ public class UpdateVersionDialog extends DialogFragment {
             public void onClick(View v) {
                 versionUpdateBtn.setEnabled(false);
                 File targetFile = AppUtils.getApkFile(getActivity());
-                AppVersionUpgrade.getInstance().getNetManager().download(GET_APP_VERSION_URL, targetFile, new INetDownloadCallBack() {
+                AppVersionUpgrade.getInstance().getNetManager().download(mBean.getUrl(), targetFile, new INetDownloadCallBack() {
                     @Override
                     public void success(File apkFile) {
                         versionUpdateBtn.setEnabled(true);

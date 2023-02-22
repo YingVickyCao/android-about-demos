@@ -75,13 +75,13 @@ public class AppUtils {
         Uri uri;
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         // ERROR:  android.os.FileUriExposedException: file:///data/user/0/com.hades.example.android/cache/target.apk exposed beyond app through Intent.getData()
         // Reason : Since N, Android don't allow expose file:// to other app
         // Fix : (1) Since N, use N FieProvider
 //        uri = Uri.fromFile(apkFile);
         // start
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             uri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".fileprovider", apkFile);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         } else {
