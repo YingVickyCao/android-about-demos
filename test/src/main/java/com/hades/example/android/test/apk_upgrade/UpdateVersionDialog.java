@@ -91,7 +91,7 @@ public class UpdateVersionDialog extends DialogFragment {
             public void success(File apkFile) {
                 versionUpdateBtn.setEnabled(true);
                 dismiss();
-                // todo check md5 : 不一致，说明被修改了，或 没有下载完全。大多数时，md5一样，说明文件一样
+                // check md5 : 不一致，说明被修改了，或 没有下载完全。大多数时，md5一样，说明文件一样
                 if (isMD5Valid(apkFile)) {
                     Log.d(TAG, "success: download success");
                     // 安装代码
