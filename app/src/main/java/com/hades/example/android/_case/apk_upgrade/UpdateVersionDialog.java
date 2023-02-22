@@ -69,20 +69,14 @@ public class UpdateVersionDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 versionUpdateBtn.setEnabled(false);
-
-                File targetFile = new File(getActivity().getCacheDir(), "target2.apk");
-//                File targetFile = new File(getActivity().getCacheDir(), "target.apk");
-//                File targetFile = new File(getActivity().getCacheDir(), "app-debug.apk");
+                File targetFile = AppUtils.getApkFile(getActivity());
                 AppVersionUpgrade.getInstance().getNetManager().download(GET_APP_VERSION_URL, targetFile, new INetDownloadCallBack() {
                     @Override
                     public void success(File apkFile) {
                         versionUpdateBtn.setEnabled(true);
-                        // 安装代码
                         dismiss();
-
-                        File file = new File("target.apk");
-//                        AppUtils.installApk(getActivity(), apkFile);
-                        AppUtils.checkInstallApk(getActivity(), file);
+                        // 安装代码
+                        AppUtils.checkInstallApk(getActivity(), targetFile);
                     }
 
                     @Override

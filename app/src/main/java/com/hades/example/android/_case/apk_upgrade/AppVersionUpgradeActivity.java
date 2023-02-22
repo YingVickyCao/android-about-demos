@@ -33,6 +33,7 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_version_upgrade);
         findViewById(R.id.checkVersionUpdate).setOnClickListener(v -> checkVersionUpdate());
+        findViewById(R.id.installApk).setOnClickListener(v -> test_installApk());
     }
 
     private void checkVersionUpdate() {
@@ -110,6 +111,10 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
 
     }
 
+    private void test_installApk() {
+        AppUtils.checkInstallApk(this, AppUtils.getApkFile_test(this));
+    }
+
     private static final int GET_UNKNOWN_APP_SOURCES = 10012;
 
     @Override
@@ -133,7 +138,7 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
         //8.0 以上系统 强更新授权 界面
         switch (requestCode) {
             case GET_UNKNOWN_APP_SOURCES:
-                AppUtils.checkInstallApk(this, new File("target.apk"));
+                AppUtils.checkInstallApk(this, AppUtils.getApkFile(this));
                 break;
             default:
                 break;
