@@ -5,15 +5,15 @@
     "kind": "Directory"
   },
   "applicationId": "com.hades.example.android.test",
-  "variantName": "release",
+  "variantName": "debug",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 2,
-      "versionName": "2.0",
-      "outputFile": "test-release.apk"
+      "versionCode": 1,
+      "versionName": "1.0",
+      "outputFile": "test-debug.apk"
     }
   ],
   "elementType": "File"
