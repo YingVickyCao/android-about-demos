@@ -21,7 +21,9 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
            "versionCode": "450"
            }
           */
-    public static String GET_APP_VERSION_URL = "http://192.168.71.62:8080/app_updater_version/version.json";
+
+    //    public static String GET_APP_VERSION_URL = "http://192.168.71.62:8080/app_updater_version/version.json";
+    public static String GET_APP_VERSION_URL = "http://59.110.162.30/app_updater_version.json";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +74,7 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
                 Log.e(TAG, "fail: ");
                 Toast.makeText(AppVersionUpgradeActivity.this, "failed. ", Toast.LENGTH_SHORT).show();
             }
-        });
+        }, AppVersionUpgradeActivity.this);
     }
 
     private boolean isNeedUpdateApp(String versionData) {
@@ -113,4 +115,10 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
 //        }
 //    }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppVersionUpgrade.getInstance().getNetManager().cancel(AppVersionUpgradeActivity.this);
+    }
 }

@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -36,10 +37,10 @@ public class OkHttpNetManager implements INetManager {
     }
 
     @Override
-    public void get(String url, INetCallback callback) {
+    public void get(String url, INetCallback callback, Object tag) {
         // Request.Builder -> Request -> Call -> execute / enqueue -> UI
         Request.Builder builder = new Request.Builder();
-        Request request = builder.url(url).get().build(); // Get 请求
+        Request request = builder.url(url).get().tag(tag).build(); // Get 请求
         Call call = sOkHttpClient.newCall(request);
 //            Response response = call.execute(); // 同步操作：在当前线程中，返回请求
         call.enqueue(new Callback() { // 异步操作：入队列，每一个请求建立一个线程，然后入队。
@@ -78,9 +79,9 @@ public class OkHttpNetManager implements INetManager {
     }
 
     @Override
-    public void download(String url, File targetFile, INetDownloadCallBack callBack) {
+    public void download(String url, File targetFile, INetDownloadCallBack callBack, Object tag) {
         Request.Builder builder = new Request.Builder();
-        Request request = builder.url(url).build();
+        Request request = builder.url(url).tag(tag).build();
         sOkHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
@@ -96,13 +97,12 @@ public class OkHttpNetManager implements INetManager {
                         targetFile.getParentFile().mkdirs();
                     }
 
-                    try (InputStream is = response.body().byteStream();
-                         OutputStream os = new FileOutputStream(targetFile);) {
+                    try (InputStream is = response.body().byteStream(); OutputStream os = new FileOutputStream(targetFile);) {
                         long totalLength = response.body().contentLength();
                         long currentLength = 0;
                         int bufferLength = 0;
-                        byte[] buffer = new byte[8 * 1024]; // 这个apk太小了，一个循环就下载完了，看不出进度更新，因此，把buffer改小一点/
-//                        byte[] buffer = new byte[8];
+//                        byte[] buffer = new byte[8 * 1024]; // 这个apk太小了，一个循环就下载完了，看不出进度更新，因此，把buffer改小一点/
+                        byte[] buffer = new byte[8];
                         int oldProgress = 0;
                         while (-1 != (bufferLength = is.read(buffer))) {
                             os.write(buffer, 0, bufferLength);
@@ -121,9 +121,30 @@ public class OkHttpNetManager implements INetManager {
                         sHandler.post(() -> callBack.success(targetFile));
                     }
                 } catch (Exception exception) {
-                    callBack.fail();
+                    sHandler.post(() -> callBack.fail());
                 }
             }
         });
+    }
+
+    @Override
+    public void cancel(Object tag) {
+        List<Call> queuedCalls = sOkHttpClient.dispatcher().queuedCalls();
+        cancelCall(queuedCalls, tag);
+        List<Call> runningCalls = sOkHttpClient.dispatcher().runningCalls();
+        cancelCall(runningCalls, tag);
+    }
+
+    private void cancelCall(List<Call> calls, Object tag) {
+        if (null == calls || calls.isEmpty()) {
+            Log.d(TAG, "cancelCall: call list is empty ");
+            return;
+        }
+        for (Call call : calls) {
+            if (call.request().tag().equals(tag)) {
+                Log.d(TAG, "cancel: queued call,tag:" + tag);
+                call.cancel();
+            }
+        }
     }
 }
