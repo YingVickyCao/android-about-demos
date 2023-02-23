@@ -121,4 +121,21 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
         super.onDestroy();
         AppVersionUpgrade.getInstance().getNetManager().cancel(AppVersionUpgradeActivity.this);
     }
+
+    // TODO: 2023/2/23 check  downloaded？
+    // 1 断点续下，利用多线程下载apk
+    // 首先：http请求支持这个功能。返回中RANGE属性指定一个文件的开始字节、终止字节
+    // 线程 1 ： 0，100
+    // 线程 2 ： 101，200
+    // 线程 3 ： 201，300
+    // 其次：合并 RandomeAccessFile - seek
+
+    // 2 增量更新
+    // apk很大，如何让下载的内容尽可能小
+    // apk1 本地
+    // apk2 server
+    // apk diff apk2 -> patch
+    // download patch, apk1 -> apk2
+    // 开源的bsdiff算法
+
 }

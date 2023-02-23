@@ -114,6 +114,7 @@ public class UpdateVersionDialog extends DialogFragment {
             public void fail() {
                 versionUpdateBtn.setEnabled(true);
                 // cancel后： Error:java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String android.content.Context.getPackageName()' on a null object reference
+                // Fix : check call.isCanceled()
                 Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
             }
         }, UpdateVersionDialog.this);
