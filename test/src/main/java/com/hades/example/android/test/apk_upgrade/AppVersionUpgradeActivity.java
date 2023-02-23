@@ -138,4 +138,12 @@ public class AppVersionUpgradeActivity extends AppCompatActivity {
     // download patch, apk1 -> apk2
     // 开源的bsdiff算法
 
+    // 1 做一个独立功能的时候，提供一个模块类 AppVersionUpgrade
+    // 2 实现模块：网络模块。通过接口屏蔽具体的实现 INetManager
+    // 3 https 接口，okhttp证书的配置，okhttp
+    // 4 DialogFragment instead of Dialog
+    // 5 apk 安装。 N ： FileProvider ， O： Install Permission
+    // 6 Android P 访问 http
+    // 7 cancel
+
 }
