@@ -104,7 +104,7 @@ public class OkHttpNetManager implements INetManager {
 //                        byte[] buffer = new byte[8 * 1024]; // 这个apk太小了，一个循环就下载完了，看不出进度更新，因此，把buffer改小一点/
                         byte[] buffer = new byte[8];
                         int oldProgress = 0;
-                        while (-1 != (bufferLength = is.read(buffer))) {
+                        while (!call.isCanceled() && -1 != (bufferLength = is.read(buffer))) {
                             os.write(buffer, 0, bufferLength);
                             os.flush();
                             currentLength += bufferLength;
@@ -114,6 +114,10 @@ public class OkHttpNetManager implements INetManager {
                                 sHandler.post(() -> callBack.progress(progress));
                             }
                         }
+
+                        if (call.isCanceled()) {
+                            return;
+                        }
                         // 若存在sdcard，不需要这三个权限申请
                         targetFile.setExecutable(true, false);
                         targetFile.setReadable(true, false);
@@ -121,6 +125,9 @@ public class OkHttpNetManager implements INetManager {
                         sHandler.post(() -> callBack.success(targetFile));
                     }
                 } catch (Exception exception) {
+                    if (call.isCanceled()) {
+                        return;
+                    }
                     sHandler.post(() -> callBack.fail());
                 }
             }
