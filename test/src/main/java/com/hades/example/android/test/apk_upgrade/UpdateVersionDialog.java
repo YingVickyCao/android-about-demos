@@ -1,5 +1,6 @@
 package com.hades.example.android.test.apk_upgrade;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -112,19 +113,20 @@ public class UpdateVersionDialog extends DialogFragment {
             @Override
             public void fail() {
                 versionUpdateBtn.setEnabled(true);
+                // cancel后： Error:java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String android.content.Context.getPackageName()' on a null object reference
                 Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
             }
-        });
+        }, UpdateVersionDialog.this);
     }
 
     /**
      * Error:
      * FATAL EXCEPTION: main
-     *   Process: com.hades.example.android, PID: 13784
-     *   android.util.AndroidRuntimeException: requestFeature() must be called before adding content
-     *     at com.android.internal.policy.PhoneWindow.requestFeature(PhoneWindow.java:388)
-     *     at android.app.Dialog.requestWindowFeature(Dialog.java:1205)
-     *     at com.hades.example.android._case.apk_upgrade.UpdateVersionDialog.onViewCreated(UpdateVersionDialog.java:68)
+     * Process: com.hades.example.android, PID: 13784
+     * android.util.AndroidRuntimeException: requestFeature() must be called before adding content
+     * at com.android.internal.policy.PhoneWindow.requestFeature(PhoneWindow.java:388)
+     * at android.app.Dialog.requestWindowFeature(Dialog.java:1205)
+     * at com.hades.example.android._case.apk_upgrade.UpdateVersionDialog.onViewCreated(UpdateVersionDialog.java:68)
      */
 //    @Override
 //    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -132,4 +134,11 @@ public class UpdateVersionDialog extends DialogFragment {
 //        getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
 //        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // 不需要有背景
 //    }
+    
+    @Override
+    public void onDismiss(@NonNull DialogInterface dialog) {
+        super.onDismiss(dialog);
+        Log.d(TAG, "onDismiss: ");
+        AppVersionUpgrade.getInstance().getNetManager().cancel(UpdateVersionDialog.this);
+    }
 }
