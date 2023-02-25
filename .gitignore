@@ -83,3 +83,4 @@ doc/.DS_Store
 
 # Keystore files
 #*.jks
+/skin-plugin/debug/
