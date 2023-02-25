@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace 'com.hades.example.android.cases.change_skin.skin_plugin'
+    namespace 'com.hades.example.android.cases.change_skin'
 
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.hades.example.android.cases.change_skin.skin_plugin"
+        applicationId "com.hades.example.android.cases.change_skin"
         minSdk 26
         targetSdk 33
         versionCode 1
@@ -17,22 +17,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        config {
-            storeFile file("$rootProject.projectDir/release.jks")
-            storePassword '123456'
-            keyAlias '123456'
-            keyPassword '123456'
-        }
-    }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            signingConfig signingConfigs.config
         }
     }
     compileOptions {
@@ -42,7 +30,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.4.1'
 
     testImplementation 'junit:junit:4.13.2'

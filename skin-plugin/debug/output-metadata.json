@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.hades.example.android.cases.change_theme.skin_plugin",
+  "applicationId": "com.hades.example.android.cases.change_skin.skin_plugin",
   "variantName": "debug",
   "elements": [
     {

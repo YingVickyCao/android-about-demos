@@ -9,7 +9,7 @@ android {
 //            storePassword '123456'
 //        }
 //    }
-    compileSdkVersion 31
+    compileSdkVersion 33
     buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
