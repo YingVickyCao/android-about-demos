@@ -9,18 +9,37 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Animation since 21"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerInParent="true"
+        android:text="First Page"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/open_one_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:text="Open one Video"
+        android:textAllCaps="false" />
 
     <RelativeLayout
+        android:id="@+id/media_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_red_light">
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/holo_red_light">
 
         <Button
+            android:id="@+id/expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Expand"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
