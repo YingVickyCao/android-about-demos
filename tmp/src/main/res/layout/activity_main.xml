@@ -17,18 +17,29 @@
         android:id="@+id/open_one_video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/open_one_audio"
+        android:layout_centerHorizontal="true"
+        android:text="Open Video item"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/open_one_audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="100dp"
-        android:text="Open one Video"
+        android:text="Open Audio item"
         android:textAllCaps="false" />
+
 
     <RelativeLayout
         android:id="@+id/media_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@android:color/holo_red_light">
+        android:background="@android:color/holo_red_light"
+        android:visibility="gone">
 
         <Button
             android:id="@+id/expand"
