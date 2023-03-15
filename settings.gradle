@@ -1,9 +1,43 @@
+//search or download the Gradle plugins and their transitive dependencies.
+//pluginManagement {
+//    repositories {
+//        maven {
+//            url 'https://maven.aliyun.com/repository/gradle-plugin'
+//        }
+//        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'https://maven.aliyun.com/repository/central' }
+//        maven { url 'https://maven.aliyun.com/repository/public' }
+//        google()
+//        mavenCentral()
+//
+//        gradlePluginPortal()
+//    }
+//}
+//
+//// configure the repositories and dependencies used by all modules in your project,
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        maven {
+//            url 'https://maven.aliyun.com/repository/gradle-plugin'
+//        }
+//        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'https://maven.aliyun.com/repository/central' }
+//        maven { url 'https://maven.aliyun.com/repository/public' }
+//        google()
+//        mavenCentral()
+//    }
+//}
+
+rootProject.name = "android-about-demos"
+include ':app'
+
+
 include ':app'
 include ':JavaLib'
 include ':lib-android'
 
 // When not use below modules, mark them to improve build speed
-
 include ':A'
 include ':B1'
 

@@ -2,15 +2,16 @@ apply plugin: 'com.android.application'
 
 android {
 
-    compileSdkVersion 31
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    compileSdk rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.hades.example.android.b1"
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -28,10 +29,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':JavaLib')
 
-    implementation "androidx.appcompat:appcompat:1.4.0"
-    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
+    implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompat_version}"
+    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintlayout_version}"
 
-    testImplementation "junit:junit:$junit_version"
-    androidTestImplementation "androidx.test:runner:$androidTestRunner_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCore_version"
+    testImplementation "junit:junit:${rootProject.ext.junit_version}"
+    androidTestImplementation "androidx.test:runner:$testRunner_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espressoCore_version}"
 }

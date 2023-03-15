@@ -1,4 +1,7 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
+
 
 android {
     signingConfigs {
@@ -10,15 +13,16 @@ android {
         }
     }
 
-    compileSdkVersion 31
-    buildToolsVersion '30.0.3'
+    compileSdk rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.hades.example.android"
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion 31
-        versionCode 1
-        versionName "1.0"
+
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -42,8 +46,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     sourceSets {
@@ -59,32 +63,32 @@ dependencies {
     implementation project(':JavaLib')
     implementation project(':lib-android')
 
-    implementation "androidx.appcompat:appcompat:1.4.0"
+    implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompat_version}"
 //    implementation 'androidx.resourceinspection:resourceinspection-annotation:1.0.1'
-    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
-    implementation "androidx.recyclerview:recyclerview:1.2.1"
-    implementation "androidx.core:core:1.7.0"
-    implementation "androidx.core:core-ktx:1.6.0"
-    implementation "com.google.android.material:material:1.4.0"
-    implementation "com.google.android.gms:play-services-location:18.0.0"
-    implementation "com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar"
-    implementation "io.reactivex.rxjava2:rxjava:2.2.19"
-    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
-    implementation "com.nineoldandroids:library:2.4.0"
-    implementation "com.google.code.gson:gson:2.8.6"
-    implementation group: 'com.squareup.picasso', name: 'picasso', version: '2.5.2'
-    implementation 'info.guardianproject.netcipher:netcipher:2.1.0'
-    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintlayout_version}"
+    implementation "androidx.recyclerview:recyclerview:${rootProject.ext.recyclerview_version}"
+    implementation "androidx.core:core:${rootProject.ext.core_version}"
+    implementation "androidx.core:core-ktx:${rootProject.ext.core_ktx_version}"
+    implementation "androidx.localbroadcastmanager:localbroadcastmanager:${rootProject.ext.localbroadcastmanager_version}"
 
-    implementation 'com.google.android.exoplayer:exoplayer:2.11.3'
+    implementation "com.google.android.material:material:${rootProject.ext.material_version}"
+    implementation "com.google.android.gms:play-services-location:${rootProject.ext.play_services_location_version}"
+    implementation "com.google.code.gson:gson:${rootProject.ext.gson_version}"
+    implementation "com.google.android.exoplayer:exoplayer:${rootProject.ext.exoplayer_version}"
 
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation "com.tbruyelle.rxpermissions2:rxpermissions:${rootProject.ext.rxpermissions_version}"
+    implementation "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxjava2_version}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxandroid2_version}"
+    implementation "com.nineoldandroids:library:${rootProject.ext.nineoldandroids_version}"
+    implementation "com.squareup.picasso:picasso:${rootProject.ext.picasso_version}"
+    implementation "info.guardianproject.netcipher:netcipher:${rootProject.ext.netcipher_version}"
 
-    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    implementation "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttp3_version}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.okhttp3_logging_interceptor_version}"
 
-    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
-    testImplementation 'junit:junit:4.13.2'
+    debugImplementation "com.amitshekhar.android:debug-db:${rootProject.ext.debug_db_version}"
+    testImplementation "junit:junit:${rootProject.ext.junit_version}"
 
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation "androidx.test.ext:junit:${rootProject.ext.test_junit_version}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espressoCore_version}"
 }
