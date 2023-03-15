@@ -8,21 +8,28 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
+import com.hades.example.android.tools.permission.internal.PermissionTools;
 
 import java.util.List;
 
 public class PermissionToolsTest {
     public void test(AppCompatActivity activity) {
         PermissionTools permissionTools = new PermissionTools(activity);
-        permissionTools.request(new IRequestPermissionCallback() {
+        permissionTools.request(new IRequestPermissionsCallback() {
             @Override
-            public void showRationaleContextUI(List<String> rationalePermissions, IRequestPermissionRationaleResult callback) {
+            public void showRationaleContextUI(List<String> rationalePermissions, IRationaleOnClickListener rationaleOnClickListener) {
                 if (null == rationalePermissions || rationalePermissions.isEmpty()) {
                     return;
                 }
-                Log.d(PermissionTools.TAG, "showRationaleContextUI: " + rationalePermissions.toString());
+                Log.d(PermissionTools.TAG, "showRationaleContextUI: " + rationalePermissions);
                 AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                builder.setTitle("Request permission").setMessage("Permission " + rationalePermissions.toString()).setPositiveButton(activity.getString(R.string.ok), (dialog, which) -> callback.allow()).setNegativeButton(activity.getString(R.string.cancel), (dialog, which) -> callback.notAllow()).setNeutralButton(activity.getString(R.string.skip), (dialog, which) -> callback.skip()).create().show();
+                builder.setTitle("Request permission")
+                        .setMessage("Permission " + rationalePermissions)
+                        .setPositiveButton(activity.getString(R.string.ok), (dialog, which) -> rationaleOnClickListener.allow())
+                        .setNegativeButton(activity.getString(R.string.cancel), (dialog, which) -> rationaleOnClickListener.notAllow())
+                        .setNeutralButton(activity.getString(R.string.skip), (dialog, which) -> rationaleOnClickListener.skip())
+                        .create()
+                        .show();
             }
 
             @Override
@@ -59,7 +66,7 @@ public class PermissionToolsTest {
     }
 
     void requestPermission(AppCompatActivity activity, PermissionTools permissionTools, final String... permissions) {
-        permissionTools.requestPermission(new IRequestPermissionsResult() {
+        permissionTools.requestPermission(new IPermissionsResult() {
             @Override
             public void granted() {
                 Toast.makeText(activity, "Granted", Toast.LENGTH_SHORT).show();

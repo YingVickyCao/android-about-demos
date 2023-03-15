@@ -1,17 +1,17 @@
-package com.hades.example.android.tools.permission;
+package com.hades.example.android.tools.permission.internal;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.util.List;
+import com.hades.example.android.tools.permission.internal.IRequestMultiplePermissions;
+import com.hades.example.android.tools.permission.internal.PermissionTools;
+
 import java.util.Map;
 
 public class PermissionsFragment extends Fragment {
@@ -19,13 +19,13 @@ public class PermissionsFragment extends Fragment {
     private boolean mLogging;
 
     ActivityResultLauncher<String[]> mResultLauncher;
-    IPermissionsResult mCallback;
+    IRequestMultiplePermissions mCallback;
 
     public void setLogging(boolean logging) {
         mLogging = logging;
     }
 
-    public void setCallback(IPermissionsResult callback) {
+    public void setCallback(IRequestMultiplePermissions callback) {
         this.mCallback = callback;
     }
 
@@ -34,11 +34,6 @@ public class PermissionsFragment extends Fragment {
         mResultLauncher = requestPermissions();
         super.onCreate(savedInstanceState);
     }
-
-    //    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//    }
 
     public ActivityResultLauncher<String[]> getResultLauncher() {
         return mResultLauncher;
@@ -65,21 +60,6 @@ Fix :https://blog.csdn.net/jingzz1/article/details/108142784
             @Override
             public void onActivityResult(Map<String, Boolean> permissionsResult) {
                 mCallback.onResult(permissionsResult);
-            }
-        });
-    }
-
-    //    ActivityResultLauncher<String> requestPermissions(@NonNull String permission) {
-    ActivityResultLauncher<String> requestPermission(final IPermissionResult callback) {
-        return registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback<Boolean>() {
-            @Override
-            public void onActivityResult(Boolean granted) {
-                callback.onResult(granted);
-//                if (granted) {
-//                    permissionsResultCallback.granted();
-//                } else {
-//                    permissionsResultCallback.denied();
-//                }
             }
         });
     }

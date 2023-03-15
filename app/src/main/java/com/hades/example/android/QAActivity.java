@@ -45,7 +45,7 @@ public class QAActivity extends PermissionActivity {
 //        new MyLog().test();
 //        startActivity(new Intent(this, TestCameraActivity.class));
         PermissionToolsTest toolsTest = new PermissionToolsTest();
-//        toolsTest.test(this);
+        toolsTest.test(this);
         toolsTest.test2(this);
 
 //        checkPermission("Request permission for Record", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO);
