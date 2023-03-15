@@ -545,4 +545,6 @@
     <!--    <string name="test_string">Studio类型</string>-->
     <string name="test_string">ABC</string>
     <string name="drawText_text">AGfgj</string>
+
+    <string name="CHANNEL_ID_OF_FIRST_SERVICE">FIRST_SERVICE_CHANNEL_ID</string>
 </resources>

@@ -6,4 +6,6 @@
     <integer name="edittext_bg_drawable_level_focus">2</integer>
     <integer name="edittext_bg_drawable_level_default">1</integer>
     <integer name="edittext_bg_drawable_level_disable">0</integer>
+
+    <integer name="NOTIFICATION_ID_OF_FIRST_SERVICE">1</integer>
 </resources>

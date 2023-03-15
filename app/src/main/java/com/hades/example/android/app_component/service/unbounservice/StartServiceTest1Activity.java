@@ -27,7 +27,8 @@ public class StartServiceTest1Activity extends Activity {
         Log.d(TAG, "start: startService");
         mStartCount++;
         intent.putExtra(KEY_COUNT, mStartCount);
-        startService(intent);
+//        startService(intent);
+        startForegroundService(intent);
     }
 
     private void stop() {

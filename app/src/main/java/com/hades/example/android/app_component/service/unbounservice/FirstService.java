@@ -15,6 +15,7 @@ import com.hades.example.java.lib.ThreadUtils;
 import static com.hades.example.android.app_component.service.unbounservice.StartServiceTest1Activity.KEY_COUNT;
 
 import androidx.core.app.NotificationChannelCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import java.util.concurrent.Executor;
@@ -25,7 +26,6 @@ public class FirstService extends Service {
     private int MAX_NUM = 1000;
     //    private int MAX_NUM = 100;
     private boolean mIsForceStop;
-    private final static String FIRST_SERVICE_CHANNEL_ID = "FIRST_SERVICE_CHANNEL_ID";
 
     @Override
     public IBinder onBind(Intent arg0) {
@@ -47,17 +47,36 @@ public class FirstService extends Service {
 //            NotificationChannel channel = new NotificationChannel(FIRST_SERVICE_CHANNEL_ID, "Test Notification", NotificationManager.IMPORTANCE_HIGH);
 //            ((NotificationManager) getSystemService(NOTIFICATION_SERVICE)).createNotificationChannel(channel);
 
-            NotificationChannelCompat channel = new NotificationChannelCompat.Builder(FIRST_SERVICE_CHANNEL_ID, NotificationManager.IMPORTANCE_HIGH)
+            NotificationChannelCompat channel = new NotificationChannelCompat.Builder(getChannelId(), NotificationManagerCompat.IMPORTANCE_LOW)
+                    .setName("First Service")
                     .build();
             NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
             notificationManagerCompat.createNotificationChannel(channel);
         }
     }
 
-    private void sendNotification() {
-        Notification.Builder builder = new Notification.Builder(getApplicationContext(), FIRST_SERVICE_CHANNEL_ID).
-                setSmallIcon(R.drawable.ic_launcher_round);
-        
+    private NotificationCompat.Builder createBuilder() {
+        return new NotificationCompat
+                .Builder(this, getChannelId())
+                .setOngoing(true)// let user cannot swipe away from the notification banner
+                .setSmallIcon(R.drawable.ic_launcher_round)
+                .setContentTitle("First Service is a counter");
+    }
+
+    private void setNotification(int num) {
+        NotificationCompat.Builder builder = createBuilder();
+        builder.setContentText(String.valueOf(num));
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(getNotificationId(), builder.build());
+    }
+
+    private int getNotificationId() {
+        return getResources().getInteger(R.integer.NOTIFICATION_ID_OF_FIRST_SERVICE);
+    }
+
+    private String getChannelId() {
+        return getResources().getString(R.string.CHANNEL_ID_OF_FIRST_SERVICE);
     }
 
     /**
@@ -67,11 +86,13 @@ public class FirstService extends Service {
         if (!VersionUtil.isAndroid8()) {
             return;
         }
-        Notification.Builder builder = new Notification
-                .Builder(getApplicationContext(), FIRST_SERVICE_CHANNEL_ID)
-                .setOngoing(true)
-                .setSmallIcon(R.drawable.ic_launcher_round)
-                .setContentTitle("Count");
+//        Notification.Builder builder = new Notification
+//                .Builder(getApplicationContext(), FIRST_SERVICE_CHANNEL_ID)
+//                .setOngoing(true)
+//                .setSmallIcon(R.drawable.ic_launcher_round)
+//                .setContentTitle("Count");
+
+        NotificationCompat.Builder builder = createBuilder();
         /*
         FIXED_ERROR: java.lang.SecurityException: Permission Denial: startForeground from pid=20342, uid=10228 requires android.permission.FOREGROUND_SERVICE
 
@@ -79,7 +100,7 @@ public class FirstService extends Service {
         targetSdkVersion >= 28
             <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
          */
-        startForeground(1000, builder.build());
+        startForeground(getNotificationId(), builder.build());
     }
 
 //    // Service被启动时回调该方法
@@ -120,6 +141,7 @@ public class FirstService extends Service {
                     Log.d(TAG, "mockHeavyWork" + ",i=" + i);
                     Log.d(TAG, "run: " + ThreadUtils.getThreadInfo());
                     try {
+                        setNotification(i);
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -139,6 +161,7 @@ public class FirstService extends Service {
                         Log.d(TAG, "mockHeavyWork,force stop" + ",i=" + i);
                         return;
                     }
+                    setNotification(i);
                     Log.d(TAG, "mockHeavyWork" + ",i=" + i);
                     Log.d(TAG, "run: " + ThreadUtils.getThreadInfo());
                     try {
@@ -157,6 +180,7 @@ public class FirstService extends Service {
             Log.d(TAG, "mockHeavyWork" + ",i=" + i);
             Log.d(TAG, "mockHeavyWorkInUIThread: " + ThreadUtils.getThreadInfo());
             try {
+                setNotification(i);
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
