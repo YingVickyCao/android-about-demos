@@ -15,9 +15,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.BaseFragment;
 import com.hades.example.android.lib.utils.VersionUtil;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
@@ -25,8 +25,8 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 /**
  * https://blog.csdn.net/w804518214/article/details/51231946
  */
-public class TestNotificationFragment extends BaseFragment {
-    private static final String TAG = TestNotificationFragment.class.getSimpleName();
+public class TestNotificationFragment extends Fragment {
+    public static final String TAG = TestNotificationFragment.class.getSimpleName();
 
     NotificationManager mNotificationManager;
 
@@ -143,7 +143,7 @@ public class TestNotificationFragment extends BaseFragment {
         //builder.setContentInfo(mProgress+"%");
 
         builder.setShowWhen(false);
-        
+
         mNotificationManager.notify(PROGRESS_NOTIFICATION_ID, builder.build());
     }
 
@@ -173,8 +173,14 @@ public class TestNotificationFragment extends BaseFragment {
     }
 
     private PendingIntent getPendingIntent4Click() {
-        Intent intent = new Intent(getUsedContext(), TestNotificationDescActivity.class);
-        return PendingIntent.getActivity(getActivity(), 0, intent, 0);
+        Intent intent = new Intent(getUsedContext(), TestNotificationActivity.class);
+        /**
+         * ERROR:java.lang.IllegalArgumentException: com.hades.example.android: Targeting S+ (version 31 and above) requires that one of FLAG_IMMUTABLE or FLAG_MUTABLE be specified when creating a PendingIntent.
+         *                                                                                                     Strongly consider using FLAG_IMMUTABLE, only use FLAG_MUTABLE if some functionality depends on the PendingIntent being mutable, e.g. if it needs to be used with inline replies or bubbles.
+         Fix : add FLAG_IMMUTABLE or FLAG_MUTABLE
+         */
+//        return PendingIntent.getActivity(getActivity(), 0, intent, 0);
+        return PendingIntent.getActivity(getActivity(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
     }
 
     public void delete(View v) {

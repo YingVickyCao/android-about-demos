@@ -315,6 +315,7 @@
         <activity android:name=".app_component.content_provider.system.media.MediaActivity" />
         <activity android:name=".app_component.content_provider.system.sms.SMSActivity" />
 
+        <!-- android:foregroundServiceType : show notification immediately in startForeground on Android 13(33)       -->
         <service android:name=".app_component.service.unbounservice.FirstService" />
         <service android:name=".app_component.service.boundservice.LocalBoundedService" />
         <service android:name=".app_component.service.unbounservice.intent_service.MyService" />
@@ -387,7 +388,7 @@
         <activity android:name=".widget.custom_view.CustomViewActivity" />
         <activity android:name=".widget.textview.TestTextViewActivity" /> <!-- Widget,END -->
         <activity android:name=".other_ui.OtherUIActivity" />
-        <activity android:name=".other_ui._notification.TestNotificationDescActivity" />
+        <activity android:name=".other_ui._notification.TestNotificationActivity" />
         <activity android:name=".other_ui._actionbar.TestActionBarActivity" />
         <activity android:name=".other_ui._navigation.TestActionBarNavigationActivity" />
         <activity android:name=".other_ui._navigation.TestSwipeViewPagerActivity" />
