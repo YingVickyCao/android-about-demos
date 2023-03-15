@@ -134,11 +134,11 @@ public class PermissionActivity extends BaseActivity {
 
     private boolean shouldShowRequestPermissionRationale(final String... permissions) {
         for (String p : permissions) {
-            if (!isGranted(p) && !ActivityCompat.shouldShowRequestPermissionRationale(this, p)) {
-                return false;
+            if (!isGranted(p) && ActivityCompat.shouldShowRequestPermissionRationale(this, p)) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     @Override

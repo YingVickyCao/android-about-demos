@@ -1,23 +1,21 @@
 package com.hades.example.android.tools.permission;
 
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
-import android.os.Build;
-import android.view.View;
+import android.util.Log;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.hades.example.android.R;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 public class PermissionTools {
     public static final String TAG = "PermissionTools";
     IRequestPermissionCallback mCallback;
-    private String[] permissions;
 
     private AppCompatActivity mActivity;
     private PermissionsFragment mPermissionsFragment;
@@ -28,48 +26,118 @@ public class PermissionTools {
     }
 
     private PermissionsFragment getRxPermissionsFragment(AppCompatActivity activity) {
-        PermissionsFragment rxPermissionsFragment = findPermissionsFragment(activity);
-        boolean isNewInstance = (rxPermissionsFragment == null);
+        PermissionsFragment permissionsFragment = findPermissionsFragment(activity);
+        boolean isNewInstance = (permissionsFragment == null);
         if (isNewInstance) {
-            rxPermissionsFragment = new PermissionsFragment();
+            permissionsFragment = new PermissionsFragment();
             FragmentManager fragmentManager = activity.getSupportFragmentManager();
-            fragmentManager
-                    .beginTransaction()
-                    .add(rxPermissionsFragment, TAG)
-                    .commitAllowingStateLoss();
+            fragmentManager.beginTransaction().add(permissionsFragment, TAG).commitAllowingStateLoss();
             fragmentManager.executePendingTransactions();
         }
-        return rxPermissionsFragment;
+        return permissionsFragment;
     }
 
     private PermissionsFragment findPermissionsFragment(AppCompatActivity activity) {
         return (PermissionsFragment) activity.getSupportFragmentManager().findFragmentByTag(TAG);
     }
 
-    private static final int REQUEST_CODE_4_REQUEST_PERMISSIONS = 2000;
-
-    public void checkPermission(IRequestPermissionCallback callback) {
+    public void request(IRequestPermissionCallback callback, final String... permissions) {
         mCallback = callback;
-        if (isGranted(callback.getPermissions())) {
-            mCallback.allow();
-            return;
+
+        List<Permission> list = new ArrayList<>(permissions.length);
+        String[] unrequestedPermissions = new String[permissions.length];
+        int indexOfUnrequestedPermissions = 0;
+        List<String> rationalePermissions = new ArrayList<>(permissions.length);
+
+        for (String permission : permissions) {
+            mPermissionsFragment.log("Requesting permission " + permission);
+            if (isGranted(permission)) {
+                list.add(new Permission(permission, true, false));
+            } else if (isRevoked(permission)) {
+                list.add(new Permission(permission, false, false));
+            } else if (shouldShowRequestPermissionRationale()) {
+                rationalePermissions.add(permission);
+                unrequestedPermissions[indexOfUnrequestedPermissions] = permission;
+                indexOfUnrequestedPermissions++;
+            } else {
+                unrequestedPermissions[indexOfUnrequestedPermissions] = permission;
+                indexOfUnrequestedPermissions++;
+//                rationalePermissions.add(permission);
+            }
         }
 
-        if (shouldShowRequestPermissionRationale(callback.getPermissions())) {
-//            Snackbar.make(, permissionRationale, Snackbar.LENGTH_INDEFINITE)
-//                    .setAction(com.hades.example.android.lib.R.string.ok, view -> requestPermission(permissions))
-//                    .show();
-            showRationaleContextUI();
+        if (isShowRationale(rationalePermissions)) {
+            mCallback.showRationaleContextUI(rationalePermissions, new IRequestPermissionRationaleResult() {
+                @Override
+                public void allow() {
+                    requestPermissions(unrequestedPermissions, list, mCallback);
+                }
+
+                @Override
+                public void notAllow() {
+                    mCallback.denied();
+                }
+
+                @Override
+                public void skip() {
+                    mCallback.denied();
+                }
+            });
         } else {
-            requestPermission(callback.getPermissions());
+            if (!isShouldRequestPermissions(unrequestedPermissions)) {
+                requestPermissions(unrequestedPermissions, list, mCallback);
+            } else {
+                check(list, mCallback);
+            }
         }
     }
 
-    protected boolean isGranted(final String... permissions) {
+    private boolean isShowRationale(List<String> rationalePermissions) {
+        return null != rationalePermissions && !rationalePermissions.isEmpty();
+//        return true;
+    }
+
+    private boolean isShouldRequestPermissions(String[] unrequestedPermissions) {
+        return null != unrequestedPermissions && unrequestedPermissions.length > 0;
+    }
+
+    private void requestPermissions(String[] unrequestedPermissions, List<Permission> list, IRequestPermissionsResult callback) {
+        if (isShouldRequestPermissions(unrequestedPermissions)) {
+            mPermissionsFragment.setCallback(new IPermissionsResult() {
+                @Override
+                public void onResult(Map<String, Boolean> permissionsResult) {
+                    permissionsResult.forEach((permission, isGranted) -> {
+                        Log.d(TAG, "accept: " + permission + "," + isGranted);
+                        mPermissionsFragment.log(permission + "--" + isGranted);
+                        list.add(new Permission(permission, isGranted));
+                    });
+                    for (Permission v : list) {
+                        if (!v.granted) {
+                            callback.denied();
+                            return;
+                        }
+                    }
+                    callback.granted();
+                }
+            });
+            mPermissionsFragment.getResultLauncher().launch(unrequestedPermissions);
+        }
+    }
+
+    private void check(List<Permission> list, IRequestPermissionsResult callback) {
+        for (Permission v : list) {
+            if (!v.granted) {
+                callback.denied();
+                return;
+            }
+        }
+        callback.granted();
+    }
+
+    public boolean isGranted(final String... permissions) {
         if (permissions == null) {
             throw new RuntimeException("permissions is null");
         }
-
         for (String permission : permissions) {
             if (!isGranted(permission)) {
                 return false;
@@ -79,69 +147,28 @@ public class PermissionTools {
     }
 
     private boolean isGranted(final String permission) {
-        return (Build.VERSION.SDK_INT < Build.VERSION_CODES.M || PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(mCallback.getContext(), permission));
+        return PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(mActivity, permission);
     }
 
-    private boolean shouldShowRequestPermissionRationale(final String... permissions) {
+    private boolean isRevoked(String permission) {
+        return mActivity.getPackageManager().isPermissionRevokedByPolicy(permission, mActivity.getPackageName());
+    }
+
+    public boolean shouldShowRequestPermissionRationale(final String... permissions) {
         for (String p : permissions) {
-            if (!isGranted(p) && !ActivityCompat.shouldShowRequestPermissionRationale(mCallback.getContext(), p)) {
-                return false;
+            if (shouldShowPermissionRequestPermissionRationale(p)) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
-    void showRationaleContextUI() {
-        Snackbar.make(, mCallback.getPermissionRationale(), Snackbar.LENGTH_INDEFINITE
-                ).setAction(com.hades.example.android.lib.R.string.ok, view -> requestPermission(permissions))
-                .show();
+    private boolean shouldShowPermissionRequestPermissionRationale(final String permission) {
+        return !isGranted() && ActivityCompat.shouldShowRequestPermissionRationale(mActivity, permission);
     }
 
-    public void showSnackBarAsRationale(View rootView) {
-        Snackbar.make(rootView, mCallback.getPermissionRationale(), Snackbar.LENGTH_INDEFINITE)
-                .setAction(mActivity.getString(R.string.ok), view -> requestPermission(permissions))
-                .setAction(mActivity.getString(R.string.cancel), view -> notAllow())
-                .show();
+    public void requestPermission(IRequestPermissionsResult callback, final String... permissions) {
+        List<Permission> results = new ArrayList<>();
+        requestPermissions(permissions, results, callback);
     }
-
-    public void showDialogAsRationale(String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-        builder.setTitle("Request permission")
-                .setMessage(message)
-                .setPositiveButton(mActivity.getString(R.string.ok), (dialog, which) -> requestPermission(permissions))
-                .setNegativeButton(mActivity.getString(R.string.cancel), (dialog, which) -> notAllow())
-                .create()
-                .show();
-    }
-
-    private void allow() {
-        mCallback.allow();
-    }
-
-    private void notAllow() {
-        mCallback.notAllow();
-    }
-
-    protected void requestPermission(final String... permissions) {
-        mPermissionsFragment.requestPermissions(createPermissionResult()).launch(permissions);
-    }
-
-    protected void requestPermission(final String permission) {
-        mPermissionsFragment.requestPermission(createPermissionResult()).launch(permission);
-    }
-
-    private IPermissionResult createPermissionResult() {
-        return new IPermissionResult() {
-            @Override
-            public void granted() {
-                allow();
-            }
-
-            @Override
-            public void denied() {
-                notAllow();
-            }
-        };
-    }
-
 }
