@@ -9,8 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.hades.example.android.tools.permission.internal.IRequestMultiplePermissions;
-import com.hades.example.android.tools.permission.internal.PermissionTools;
+import com.hades.example.android.tools.permission.PermissionTools;
 
 import java.util.Map;
 
@@ -64,7 +63,7 @@ Fix :https://blog.csdn.net/jingzz1/article/details/108142784
         });
     }
 
-    void log(String message) {
+    public void log(String message) {
         if (mLogging) {
             Log.d(PermissionTools.TAG, message);
         }

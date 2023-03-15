@@ -1,4 +1,4 @@
-package com.hades.example.android.tools.permission.internal;
+package com.hades.example.android.tools.permission;
 
 import android.content.pm.PackageManager;
 import android.util.Log;
@@ -12,6 +12,9 @@ import com.hades.example.android.tools.permission.IPermissionTools;
 import com.hades.example.android.tools.permission.IPermissionsResult;
 import com.hades.example.android.tools.permission.IRationaleOnClickListener;
 import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
+import com.hades.example.android.tools.permission.internal.IRequestMultiplePermissions;
+import com.hades.example.android.tools.permission.internal.Permission;
+import com.hades.example.android.tools.permission.internal.PermissionsFragment;
 
 import java.util.ArrayList;
 import java.util.List;

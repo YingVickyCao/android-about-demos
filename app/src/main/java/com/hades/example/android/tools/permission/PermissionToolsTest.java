@@ -8,7 +8,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
-import com.hades.example.android.tools.permission.internal.PermissionTools;
 
 import java.util.List;
 
