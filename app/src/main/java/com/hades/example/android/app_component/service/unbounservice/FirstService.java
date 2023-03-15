@@ -14,6 +14,11 @@ import com.hades.example.java.lib.ThreadUtils;
 
 import static com.hades.example.android.app_component.service.unbounservice.StartServiceTest1Activity.KEY_COUNT;
 
+import androidx.core.app.NotificationChannelCompat;
+import androidx.core.app.NotificationManagerCompat;
+
+import java.util.concurrent.Executor;
+
 public class FirstService extends Service {
     private static final String TAG = FirstService.class.getSimpleName();
     private int mNum = 0;
@@ -34,10 +39,25 @@ public class FirstService extends Service {
 //        Log.d(TAG, "onCreate");
         Log.d(TAG, "onCreate: " + ThreadUtils.getThreadInfo());
 
+        setNotificationChannel();
+    }
+
+    private void setNotificationChannel() {
         if (VersionUtil.isAndroid8()) {
-            NotificationChannel channel = new NotificationChannel(FIRST_SERVICE_CHANNEL_ID, "Test Notification", NotificationManager.IMPORTANCE_HIGH);
-            ((NotificationManager) getSystemService(NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+//            NotificationChannel channel = new NotificationChannel(FIRST_SERVICE_CHANNEL_ID, "Test Notification", NotificationManager.IMPORTANCE_HIGH);
+//            ((NotificationManager) getSystemService(NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+
+            NotificationChannelCompat channel = new NotificationChannelCompat.Builder(FIRST_SERVICE_CHANNEL_ID, NotificationManager.IMPORTANCE_HIGH)
+                    .build();
+            NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+            notificationManagerCompat.createNotificationChannel(channel);
         }
+    }
+
+    private void sendNotification() {
+        Notification.Builder builder = new Notification.Builder(getApplicationContext(), FIRST_SERVICE_CHANNEL_ID).
+                setSmallIcon(R.drawable.ic_launcher_round);
+        
     }
 
     /**
@@ -47,7 +67,11 @@ public class FirstService extends Service {
         if (!VersionUtil.isAndroid8()) {
             return;
         }
-        Notification.Builder builder = new Notification.Builder(getApplicationContext(), FIRST_SERVICE_CHANNEL_ID).setSmallIcon(R.drawable.ic_launcher_round);
+        Notification.Builder builder = new Notification
+                .Builder(getApplicationContext(), FIRST_SERVICE_CHANNEL_ID)
+                .setOngoing(true)
+                .setSmallIcon(R.drawable.ic_launcher_round)
+                .setContentTitle("Count");
         /*
         FIXED_ERROR: java.lang.SecurityException: Permission Denial: startForeground from pid=20342, uid=10228 requires android.permission.FOREGROUND_SERVICE
 
