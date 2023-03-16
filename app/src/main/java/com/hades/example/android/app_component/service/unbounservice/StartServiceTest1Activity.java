@@ -42,12 +42,12 @@ public class StartServiceTest1Activity extends AppCompatActivity {
             }
 
             @Override
-            public void granted() {
+            public void allow() {
                 Toast.makeText(StartServiceTest1Activity.this, "Granted the notification permission", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void denied() {
+            public void notAllow() {
                 Toast.makeText(StartServiceTest1Activity.this, "Deny the notification permission", Toast.LENGTH_SHORT).show();
             }
         }, Manifest.permission.POST_NOTIFICATIONS);

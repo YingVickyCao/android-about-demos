@@ -1,7 +1,15 @@
 package com.hades.example.android.tools.permission;
 
-public interface IPermissionsResult {
-    void granted();
+import android.util.Log;
 
-    void denied();
+public interface IPermissionsResult {
+    void allow();
+
+    default void notAllow() {
+
+    }
+
+    default void error(Exception ex, String... permissions) {
+        Log.d(PermissionTools.TAG, permissions.toString() + ",error:" + ex);
+    }
 }
