@@ -14,8 +14,8 @@ import java.util.Map;
 public class PermissionTools implements IPermissionTools {
     public static final String TAG = "PermissionTools";
 
-    final private AppCompatActivity mActivity;
-    final private PermissionsFragment mPermissionsFragment;
+    private final AppCompatActivity mActivity;
+    private final PermissionsFragment mPermissionsFragment;
 
     public PermissionTools(AppCompatActivity activity) {
         mActivity = activity;
