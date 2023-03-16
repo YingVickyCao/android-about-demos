@@ -88,7 +88,7 @@ public class PermissionTools implements IPermissionTools {
                 }
             });
         } else {
-            if (!isShouldRequestPermissions(unrequestedPermissions)) {
+            if (isShouldRequestPermissions(unrequestedPermissions)) {
                 requestPermissions(unrequestedPermissions, list, callback);
             } else {
                 check(list, callback);
