@@ -10,6 +10,6 @@ public interface IPermissionsResult {
     }
 
     default void error(Exception ex, String... permissions) {
-        Log.d(PermissionTools.TAG, permissions.toString() + ",error:" + ex);
+        Log.d(PermissionTools.TAG, permissions + ",error:" + ex);
     }
 }

@@ -16,14 +16,11 @@ public class PermissionToolsTest {
         PermissionTools permissionTools = new PermissionTools(activity);
         permissionTools.request(new IRequestPermissionsCallback() {
             @Override
-            public void showRationaleContextUI(List<String> rationalePermissions, IRationaleOnClickListener rationaleOnClickListener) {
-                if (null == rationalePermissions || rationalePermissions.isEmpty()) {
-                    return;
-                }
-                Log.d(PermissionTools.TAG, "showRationaleContextUI: " + rationalePermissions);
+            public void showRationaleContextUI(IRationaleOnClickListener rationaleOnClickListener) {
+                Log.d(PermissionTools.TAG, "showRationaleContextUI: ");
                 AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                 builder.setTitle("Request permission")
-                        .setMessage("Permission " + rationalePermissions)
+                        .setMessage("Permission Audio / SD")
                         .setPositiveButton(activity.getString(R.string.ok), (dialog, which) -> rationaleOnClickListener.clickOK())
                         .setNegativeButton(activity.getString(R.string.cancel), (dialog, which) -> rationaleOnClickListener.clickCancel())
                         .setNeutralButton(activity.getString(R.string.skip), (dialog, which) -> rationaleOnClickListener.clickSkip())
@@ -71,7 +68,7 @@ public class PermissionToolsTest {
     }
 
     void requestPermission(AppCompatActivity activity, PermissionTools permissionTools, final String... permissions) {
-        permissionTools.requestPermission(new IPermissionsResult() {
+        permissionTools.request(new IPermissionsResult() {
             @Override
             public void allow() {
                 Toast.makeText(activity, "Granted", Toast.LENGTH_SHORT).show();

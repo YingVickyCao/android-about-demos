@@ -1,7 +1,6 @@
 package com.hades.example.android.app_component.service.unbounservice;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,7 +8,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.hades.example.android.App;
 import com.hades.example.android.R;
 import com.hades.example.android.tools.permission.IRationaleOnClickListener;
 import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
@@ -37,8 +35,8 @@ public class StartServiceTest1Activity extends AppCompatActivity {
         PermissionTools tools = new PermissionTools(this);
         tools.request(new IRequestPermissionsCallback() {
             @Override
-            public void showRationaleContextUI(List<String> rationalePermissions, IRationaleOnClickListener callback) {
-                System.out.println(rationalePermissions);
+            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+                Log.d(TAG, "showRationaleContextUI: ");
             }
 
             @Override
