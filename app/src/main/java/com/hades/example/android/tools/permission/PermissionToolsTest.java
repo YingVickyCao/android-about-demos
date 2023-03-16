@@ -29,6 +29,12 @@ public class PermissionToolsTest {
                         .setNeutralButton(activity.getString(R.string.skip), (dialog, which) -> rationaleOnClickListener.clickSkip())
                         .create()
                         .show();
+
+
+                //        Snackbar.make(rootView, mCallback.getPermissionRationale(), Snackbar.LENGTH_INDEFINITE)
+//                .setAction(mActivity.getString(R.string.ok), view -> requestPermission(permissions))
+//                .setAction(mActivity.getString(R.string.cancel), view -> notAllow())
+//                .show();
             }
 
             @Override
