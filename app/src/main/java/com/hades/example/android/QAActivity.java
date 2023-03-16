@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
+import com.hades.example.android.app_component.service.unbounservice.StartServiceTest1Activity;
 import com.hades.example.android.base.PermissionActivity;
 import com.hades.example.android.other_ui._notification.TestNotificationActivity;
 
@@ -40,7 +41,7 @@ public class QAActivity extends PermissionActivity {
     private void temp() {
 //        new TestDensityUtil().temp(this);
 //        new MyLog().test();
-        startActivity(new Intent(this, TestNotificationActivity.class));
+        startActivity(new Intent(this, StartServiceTest1Activity.class));
 //        PermissionToolsTest toolsTest = new PermissionToolsTest();
 //        toolsTest.test(this);
 //        toolsTest.test2(this);

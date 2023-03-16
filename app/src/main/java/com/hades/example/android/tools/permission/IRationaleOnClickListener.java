@@ -1,9 +1,9 @@
 package com.hades.example.android.tools.permission;
 
 public interface IRationaleOnClickListener {
-    void allow();
+    void clickOK();
 
-    void notAllow();
+    void clickCancel();
 
-    void skip();
+    void clickSkip();
 }

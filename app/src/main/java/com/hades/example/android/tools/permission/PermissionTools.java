@@ -1,34 +1,80 @@
 package com.hades.example.android.tools.permission;
 
 import android.content.pm.PackageManager;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
-import com.hades.example.android.tools.permission.IPermissionTools;
-import com.hades.example.android.tools.permission.IPermissionsResult;
-import com.hades.example.android.tools.permission.IRationaleOnClickListener;
-import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
-import com.hades.example.android.tools.permission.internal.IRequestMultiplePermissions;
-import com.hades.example.android.tools.permission.internal.Permission;
 import com.hades.example.android.tools.permission.internal.PermissionsFragment;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class PermissionTools implements IPermissionTools {
     public static final String TAG = "PermissionTools";
 
-    private AppCompatActivity mActivity;
-    private PermissionsFragment mPermissionsFragment;
+    final private AppCompatActivity mActivity;
+    final private PermissionsFragment mPermissionsFragment;
 
     public PermissionTools(AppCompatActivity activity) {
         mActivity = activity;
         mPermissionsFragment = getRxPermissionsFragment(activity);
+    }
+
+    @Override
+    public void request(IRequestPermissionsCallback callback, String... permissions) {
+        request(false, callback, permissions);
+    }
+
+    @Override
+    public void request4AlwaysRationale(IRequestPermissionsCallback callback, String... permissions) {
+        request(true, callback, permissions);
+    }
+
+    @Override
+    public void request4IgnoreRationale(IPermissionsResult callback, String... permissions) {
+        try {
+            if (isGranted(permissions)) {
+                callback.allow();
+                return;
+            }
+            requestMultiplePermissions(callback, permissions);
+        } catch (Exception ex) {
+            callback.error(ex, permissions);
+        }
+    }
+
+    @Override
+    public boolean isGranted(final String... permissions) {
+        if (permissions == null) {
+            throw new RuntimeException("permissions is null");
+        }
+        for (String permission : permissions) {
+            if (!isGranted(permission)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean shouldShowRequestPermissionRationale(final String... permissions) {
+        for (String p : permissions) {
+            if (shouldShowPermissionRequestPermissionRationale(p)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void request(IPermissionsResult callback, final String... permissions) {
+        try {
+            requestMultiplePermissions(callback, permissions);
+        } catch (Exception ex) {
+            callback.error(ex, permissions);
+        }
     }
 
     private PermissionsFragment getRxPermissionsFragment(AppCompatActivity activity) {
@@ -47,102 +93,67 @@ public class PermissionTools implements IPermissionTools {
         return (PermissionsFragment) activity.getSupportFragmentManager().findFragmentByTag(TAG);
     }
 
-    @Override
-    public void request(IRequestPermissionsCallback callback, final String... permissions) {
-        List<Permission> list = new ArrayList<>(permissions.length);
-        String[] unrequestedPermissions = new String[permissions.length];
-        int indexOfUnrequestedPermissions = 0;
-        List<String> rationalePermissions = new ArrayList<>(permissions.length);
-
-        for (String permission : permissions) {
-            mPermissionsFragment.log("Requesting permission " + permission);
-            if (isGranted(permission)) {
-                list.add(new Permission(permission, true));
-            } else if (isRevoked(permission)) {
-                list.add(new Permission(permission, false));
-            } else if (shouldShowRequestPermissionRationale()) {
-                rationalePermissions.add(permission);
-                unrequestedPermissions[indexOfUnrequestedPermissions] = permission;
-                indexOfUnrequestedPermissions++;
-            } else {
-                unrequestedPermissions[indexOfUnrequestedPermissions] = permission;
-                indexOfUnrequestedPermissions++;
+    private void request(boolean isAlwaysRationale, IRequestPermissionsCallback callback, final String... permissions) {
+        try {
+            if (isGranted(permissions)) {
+                callback.allow();
+                return;
             }
-        }
+            if (isWillShowRationale(isAlwaysRationale, permissions)) {
+                callback.showRationaleContextUI(new IRationaleOnClickListener() {
+                    @Override
+                    public void clickOK() {
+                        requestMultiplePermissions(callback, permissions);
+                    }
 
-        if (isShowRationale(rationalePermissions)) {
-            callback.showRationaleContextUI(rationalePermissions, new IRationaleOnClickListener() {
-                @Override
-                public void allow() {
-                    requestPermissions(unrequestedPermissions, list, callback);
-                }
+                    @Override
+                    public void clickCancel() {
+                        callback.cancel();
+                    }
 
-                @Override
-                public void notAllow() {
-                    callback.denied();
-                }
-
-                @Override
-                public void skip() {
-                    callback.denied();
-                }
-            });
-        } else {
-            if (!isShouldRequestPermissions(unrequestedPermissions)) {
-                requestPermissions(unrequestedPermissions, list, callback);
-            } else {
-                check(list, callback);
+                    @Override
+                    public void clickSkip() {
+                        callback.cancel();
+                    }
+                });
+                return;
             }
+            requestMultiplePermissions(callback, permissions);
+        } catch (Exception ex) {
+            callback.error(ex, permissions);
         }
     }
 
-    private boolean isShowRationale(List<String> rationalePermissions) {
-        return null != rationalePermissions && !rationalePermissions.isEmpty();
+    private boolean isWillShowRationale(boolean isAlwaysRationale, final String... permissions) {
+        return isAlwaysRationale || shouldShowRequestPermissionRationale(permissions);
     }
 
-    private boolean isShouldRequestPermissions(String[] unrequestedPermissions) {
+    private boolean isPermissionsNotEmpty(String[] unrequestedPermissions) {
         return null != unrequestedPermissions && unrequestedPermissions.length > 0;
     }
 
-    private void requestPermissions(String[] unrequestedPermissions, List<Permission> list, IPermissionsResult callback) {
-        if (isShouldRequestPermissions(unrequestedPermissions)) {
-            mPermissionsFragment.setCallback(new IRequestMultiplePermissions() {
-                @Override
-                public void onResult(Map<String, Boolean> permissionsResult) {
-                    permissionsResult.forEach((permission, isGranted) -> {
-                        Log.d(TAG, "accept: " + permission + "," + isGranted);
-                        mPermissionsFragment.log(permission + "--" + isGranted);
-                        list.add(new Permission(permission, isGranted));
-                    });
-                    for (Permission v : list) {
-                        if (!v.granted) {
-                            callback.denied();
-                            return;
-                        }
-                    }
-                    callback.granted();
-                }
-            });
-            mPermissionsFragment.getResultLauncher().launch(unrequestedPermissions);
+    private void requestMultiplePermissions(IPermissionsResult callback, String... unrequestedPermissions) {
+        if (!isPermissionsNotEmpty(unrequestedPermissions)) {
+            callback.error(new Exception("Not permission to request"), null);
+            return;
         }
-    }
-
-    private void check(List<Permission> list, IPermissionsResult callback) {
-        for (Permission v : list) {
-            if (!v.granted) {
-                callback.denied();
-                return;
+        mPermissionsFragment.setCallback(permissionsResult -> {
+            if (isAllGranted(permissionsResult)) {
+                callback.allow();
+            } else {
+                callback.notAllow();
             }
-        }
-        callback.granted();
+        });
+        mPermissionsFragment.getResultLauncher().launch(unrequestedPermissions);
     }
 
-    public boolean isGranted(final String... permissions) {
-        if (permissions == null) {
-            throw new RuntimeException("permissions is null");
+    private boolean isAllGranted(Map<String, Boolean> permissionsResult) {
+        if (null == permissionsResult || permissionsResult.isEmpty()) {
+            return false;
         }
-        for (String permission : permissions) {
-            if (!isGranted(permission)) {
+
+        for (Boolean value : permissionsResult.values()) {
+            if (Boolean.FALSE.equals(value)) {
                 return false;
             }
         }
@@ -157,21 +168,7 @@ public class PermissionTools implements IPermissionTools {
         return mActivity.getPackageManager().isPermissionRevokedByPolicy(permission, mActivity.getPackageName());
     }
 
-    public boolean shouldShowRequestPermissionRationale(final String... permissions) {
-        for (String p : permissions) {
-            if (shouldShowPermissionRequestPermissionRationale(p)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     private boolean shouldShowPermissionRequestPermissionRationale(final String permission) {
         return !isGranted() && ActivityCompat.shouldShowRequestPermissionRationale(mActivity, permission);
-    }
-
-    public void requestPermission(IPermissionsResult callback, final String... permissions) {
-        List<Permission> results = new ArrayList<>();
-        requestPermissions(permissions, results, callback);
     }
 }

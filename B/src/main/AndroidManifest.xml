@@ -62,7 +62,9 @@
             <!--</intent-filter>-->
         </service>
 
-        <activity android:name=".bound_service.TestRemoteBoundServiceActivity" />
+        <activity
+            android:name=".bound_service.TestRemoteBoundServiceActivity"
+            android:exported="false" />
 
         <!-- Even add intent-filter, it can not be accessed from other app -->
         <service

@@ -1,13 +1,21 @@
 package com.hades.example.android.app_component.service.unbounservice;
 
-import android.app.Activity;
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
+import com.hades.example.android.tools.permission.IRationaleOnClickListener;
+import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
+import com.hades.example.android.tools.permission.PermissionTools;
 
-public class StartServiceTest1Activity extends Activity {
+import java.util.List;
+
+public class StartServiceTest1Activity extends AppCompatActivity {
     private static final String TAG = StartServiceTest1Activity.class.getSimpleName();
     private int mStartCount = 0;
     public final static String KEY_COUNT = "COUNT";
@@ -17,9 +25,30 @@ public class StartServiceTest1Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_start_service_test);
 
+        findViewById(R.id.request_notification_permission).setOnClickListener(v -> requestNotificationPermission());
         findViewById(R.id.start).setOnClickListener(v -> start());
         findViewById(R.id.stopRecord).setOnClickListener(v -> stop());
         findViewById(R.id.jump).setOnClickListener(v -> jump());
+    }
+
+    private void requestNotificationPermission() {
+        PermissionTools tools = new PermissionTools(this);
+        tools.request(new IRequestPermissionsCallback() {
+            @Override
+            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+                Log.d(TAG, "showRationaleContextUI: ");
+            }
+
+            @Override
+            public void allow() {
+                Toast.makeText(StartServiceTest1Activity.this, "Granted the notification permission", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void notAllow() {
+                Toast.makeText(StartServiceTest1Activity.this, "Deny the notification permission", Toast.LENGTH_SHORT).show();
+            }
+        }, Manifest.permission.POST_NOTIFICATIONS);
     }
 
     private void start() {
@@ -27,7 +56,8 @@ public class StartServiceTest1Activity extends Activity {
         Log.d(TAG, "start: startService");
         mStartCount++;
         intent.putExtra(KEY_COUNT, mStartCount);
-        startService(intent);
+//        startService(intent);
+        startForegroundService(intent);
     }
 
     private void stop() {
