@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.hades.example.android.tools.permission.internal.PermissionsFragment;
@@ -12,10 +13,10 @@ import com.hades.example.android.tools.permission.internal.PermissionsFragment;
 public class PermissionTools implements IPermissionTools {
     public static final String TAG = "PermissionTools";
 
-    private final AppCompatActivity mActivity;
+    private final FragmentActivity mActivity;
     private final PermissionsFragment mPermissionsFragment;
 
-    public PermissionTools(AppCompatActivity activity) {
+    public PermissionTools(FragmentActivity activity) {
         mActivity = activity;
         mPermissionsFragment = getRxPermissionsFragment(activity);
     }
@@ -75,7 +76,7 @@ public class PermissionTools implements IPermissionTools {
         }
     }
 
-    private PermissionsFragment getRxPermissionsFragment(AppCompatActivity activity) {
+    private PermissionsFragment getRxPermissionsFragment(FragmentActivity activity) {
         PermissionsFragment permissionsFragment = findPermissionsFragment(activity);
         boolean isNewInstance = (permissionsFragment == null);
         if (isNewInstance) {
@@ -87,7 +88,7 @@ public class PermissionTools implements IPermissionTools {
         return permissionsFragment;
     }
 
-    private PermissionsFragment findPermissionsFragment(AppCompatActivity activity) {
+    private PermissionsFragment findPermissionsFragment(FragmentActivity activity) {
         return (PermissionsFragment) activity.getSupportFragmentManager().findFragmentByTag(TAG);
     }
 

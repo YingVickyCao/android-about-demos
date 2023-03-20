@@ -1,7 +1,6 @@
 package com.hades.example.android.app_component.content_provider.system.media;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -17,8 +16,13 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
+import com.hades.example.android.tools.permission.IRationaleOnClickListener;
+import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
+import com.hades.example.android.tools.permission.PermissionTools;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.IOException;
@@ -28,36 +32,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
-
 /*
  <!-- 授予读取外部存储设备的的访问权限 -->
  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
  <!-- 授予写入外部存储设备的的访问权限 -->
  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
  */
-public class MediaActivity extends Activity {
+public class MediaActivity extends AppCompatActivity {
     private ListView mShowListView;
     private List<MediaInfo> mData = new ArrayList<>();
     List<Map<String, Object>> listItems = new ArrayList<>();
     private SimpleAdapter mAdapter;
 
     private View mRoot;
-    private RxPermissions rxPermissions;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_provider_media);
 
-        rxPermissions = new RxPermissions(this);
-        rxPermissions.setLogging(true);
-
-        checkPermission();
-
-        findViewById(R.id.add).setOnClickListener(v -> add());
-        findViewById(R.id.view).setOnClickListener(v -> view());
+        findViewById(R.id.add).setOnClickListener(v -> clickAdd());
+        findViewById(R.id.view).setOnClickListener(v -> clickView());
 
         mShowListView = findViewById(R.id.tableContentList);
         mShowListView.setOnItemClickListener(this::onItemClick);
@@ -65,6 +60,30 @@ public class MediaActivity extends Activity {
         mShowListView.setAdapter(mAdapter);
 
         mRoot = findViewById(R.id.root);
+    }
+
+    private void clickView() {
+        PermissionTools permissionTools = new PermissionTools(this);
+        permissionTools.request(new IRequestPermissionsCallback() {
+            @Override
+            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+                Snackbar.make(mRoot, R.string.permission_rationale_4_send_message, Snackbar.LENGTH_INDEFINITE)
+                        .setAction(R.string.ok, view -> callback.clickOK())
+                        .setAction(R.string.cancel, view -> callback.clickCancel())
+                        .show();
+            }
+
+            @Override
+            public void granted() {
+                Toast.makeText(MediaActivity.this, "permission available", Toast.LENGTH_SHORT).show();
+                view();
+            }
+
+            @Override
+            public void denied() {
+                Toast.makeText(MediaActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
+            }
+        }, Manifest.permission.READ_EXTERNAL_STORAGE);
     }
 
     private void view() {
@@ -97,6 +116,30 @@ public class MediaActivity extends Activity {
             listItem.put("desc", mData.get(i).getDesc());
             listItems.add(listItem);
         }
+    }
+
+    private void clickAdd() {
+        PermissionTools permissionTools = new PermissionTools(this);
+        permissionTools.request(new IRequestPermissionsCallback() {
+            @Override
+            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+                Snackbar.make(mRoot, R.string.permission_rationale_4_send_message, Snackbar.LENGTH_INDEFINITE)
+                        .setAction(R.string.ok, view -> callback.clickOK())
+                        .setAction(R.string.cancel, view -> callback.clickCancel())
+                        .show();
+            }
+
+            @Override
+            public void granted() {
+                Toast.makeText(MediaActivity.this, "permission available", Toast.LENGTH_SHORT).show();
+                add();
+            }
+
+            @Override
+            public void denied() {
+                Toast.makeText(MediaActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
+            }
+        }, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
     private void add() {
@@ -132,53 +175,4 @@ public class MediaActivity extends Activity {
         image.setImageBitmap(BitmapFactory.decodeFile(mData.get(position).getFileName()));
         new AlertDialog.Builder(MediaActivity.this).setView(viewDialog).setPositiveButton("确定", null).show();
     }
-
-    private void checkPermission() {
-        if (!rxPermissions.isGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE) || !rxPermissions.isGranted(Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            askUser2GrantPermissions();
-            return;
-        }
-    }
-
-    private void requestPermission() {
-        rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE).subscribe(new Observer<Boolean>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-            }
-
-            @Override
-            public void onNext(Boolean granted) {
-                if (granted) {
-                    Toast.makeText(MediaActivity.this, "permission available", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MediaActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
-    }
-
-    private void askUser2GrantPermissions() {
-        rxPermissions.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .subscribe(shouldShowRequestPermissionRationale -> {
-                    if (shouldShowRequestPermissionRationale) {
-                        Snackbar.make(mRoot, R.string.permission_rationale_4_send_message,
-                                Snackbar.LENGTH_INDEFINITE)
-                                .setAction(R.string.ok, view -> requestPermission())
-                                .show();
-                    } else {
-                        requestPermission();
-                    }
-                });
-    }
-
 }
