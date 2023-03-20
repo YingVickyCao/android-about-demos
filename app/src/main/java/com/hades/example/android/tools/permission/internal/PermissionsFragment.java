@@ -62,7 +62,7 @@ Fix :https://blog.csdn.net/jingzz1/article/details/108142784
                 if (isAllGranted(permissionsResult)) {
                     mCallback.granted();
                 } else {
-                    mCallback.notAllow();
+                    mCallback.denied();
                 }
             }
         });

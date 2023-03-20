@@ -5,7 +5,7 @@ import android.util.Log;
 public interface IPermissionsResult {
     void granted();
 
-    default void notAllow() {
+    default void denied() {
 
     }
 

@@ -17,6 +17,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.hades.example.android.R;
+import com.hades.example.android.tools.FragmentUtils;
+import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
+import com.hades.example.android.tools.permission.PermissionTools;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 
@@ -37,9 +40,6 @@ public class GalleryActivity extends AppCompatActivity {
         findViewById(R.id.openSystemGallery).setOnClickListener(v -> openSystemGallery());
         findViewById(R.id.chooseSystemGallery).setOnClickListener(v -> chooseSystemGallery());
         findViewById(R.id.browserSystemGallery).setOnClickListener(v -> browserSystemGallery());
-
-        rxPermissions = new RxPermissions(this);
-        rxPermissions.setLogging(true);
     }
 
     // 直接打开系统相册查看照片 不是选择图片
@@ -52,23 +52,18 @@ public class GalleryActivity extends AppCompatActivity {
 
     @SuppressLint("CheckResult")
     private void chooseSystemGallery() {
-        // Android <=6.0 不需要request 权限
-        rxPermissions.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .subscribe(shouldShowRequestPermissionRationale -> {
-                    if (shouldShowRequestPermissionRationale) {
-                        rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-                                .subscribe(granted -> {
-                                    if (granted) {
-                                        doChooseGallery();
-                                    } else {
-                                        Toast.makeText(GalleryActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                    } else {
-                        doChooseGallery();
-                    }
-                });
+        PermissionTools permissionTools = new PermissionTools(this);
+        permissionTools.request(new IRequestPermissionsCallback() {
+            @Override
+            public void granted() {
+                doChooseGallery();
+            }
 
+            @Override
+            public void denied() {
+                Toast.makeText(GalleryActivity.this, "READ_MEDIA_IMAGES not granted", Toast.LENGTH_SHORT).show();
+            }
+        }, Manifest.permission.READ_MEDIA_IMAGES);
     }
 
     private void doChooseGallery() {
@@ -99,28 +94,23 @@ public class GalleryActivity extends AppCompatActivity {
     }
 
     private void browserSystemGallery() {
-        // Android <=6.0 不需要request 权限
-        rxPermissions.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .subscribe(shouldShowRequestPermissionRationale -> {
-                    if (shouldShowRequestPermissionRationale) {
-                        rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-                                .subscribe(granted -> {
-                                    if (granted) {
-                                        doBrowserSystemGallery();
-                                    } else {
-                                        Toast.makeText(GalleryActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                    } else {
-                        doBrowserSystemGallery();
-                    }
-                });
+        PermissionTools permissionTools = new PermissionTools(this);
+        permissionTools.request(new IRequestPermissionsCallback() {
+            @Override
+            public void granted() {
+                doBrowserSystemGallery();
+            }
+
+            @Override
+            public void denied() {
+                Toast.makeText(GalleryActivity.this, "READ_MEDIA_IMAGES not granted", Toast.LENGTH_SHORT).show();
+            }
+        }, Manifest.permission.READ_MEDIA_IMAGES);
     }
 
     private void doBrowserSystemGallery() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
         GalleryFragment galleryFragment = new GalleryFragment();
         galleryFragment.setGallerySelectedListener(this::showSelectedPicture);
-        fragmentManager.beginTransaction().replace(R.id.fragmentRoot, galleryFragment, GalleryChooseResultFragment.TAG).commit();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, galleryFragment, GalleryChooseResultFragment.TAG);
     }
 }

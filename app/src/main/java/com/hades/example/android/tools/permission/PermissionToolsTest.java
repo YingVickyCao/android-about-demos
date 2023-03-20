@@ -40,7 +40,7 @@ public class PermissionToolsTest {
             }
 
             @Override
-            public void notAllow() {
+            public void denied() {
                 Toast.makeText(activity, "Denied", Toast.LENGTH_SHORT).show();
             }
         }, Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -75,7 +75,7 @@ public class PermissionToolsTest {
             }
 
             @Override
-            public void notAllow() {
+            public void denied() {
                 Toast.makeText(activity, "Denied", Toast.LENGTH_SHORT).show();
             }
         }, permissions);
