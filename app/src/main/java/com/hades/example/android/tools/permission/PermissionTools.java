@@ -128,36 +128,9 @@ public class PermissionTools implements IPermissionTools {
         return isAlwaysRationale || shouldShowRequestPermissionRationale(permissions);
     }
 
-    private boolean isPermissionsNotEmpty(String[] unrequestedPermissions) {
-        return null != unrequestedPermissions && unrequestedPermissions.length > 0;
-    }
-
     private void requestMultiplePermissions(IPermissionsResult callback, String... unrequestedPermissions) {
-        if (!isPermissionsNotEmpty(unrequestedPermissions)) {
-            callback.error(new Exception("Not permission to request"), null);
-            return;
-        }
-        mPermissionsFragment.setCallback(permissionsResult -> {
-            if (isAllGranted(permissionsResult)) {
-                callback.allow();
-            } else {
-                callback.notAllow();
-            }
-        });
-        mPermissionsFragment.getResultLauncher().launch(unrequestedPermissions);
-    }
-
-    private boolean isAllGranted(Map<String, Boolean> permissionsResult) {
-        if (null == permissionsResult || permissionsResult.isEmpty()) {
-            return false;
-        }
-
-        for (Boolean value : permissionsResult.values()) {
-            if (Boolean.FALSE.equals(value)) {
-                return false;
-            }
-        }
-        return true;
+        mPermissionsFragment.setCallback(callback);
+        mPermissionsFragment.requestMultiplePermissions(unrequestedPermissions);
     }
 
     private boolean isGranted(final String permission) {
