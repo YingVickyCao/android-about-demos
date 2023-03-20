@@ -35,7 +35,7 @@ public class PermissionToolsTest {
             }
 
             @Override
-            public void allow() {
+            public void granted() {
                 Toast.makeText(activity, "Granted", Toast.LENGTH_SHORT).show();
             }
 
@@ -70,7 +70,7 @@ public class PermissionToolsTest {
     void requestPermission(AppCompatActivity activity, PermissionTools permissionTools, final String... permissions) {
         permissionTools.request(new IPermissionsResult() {
             @Override
-            public void allow() {
+            public void granted() {
                 Toast.makeText(activity, "Granted", Toast.LENGTH_SHORT).show();
             }
 

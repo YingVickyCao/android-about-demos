@@ -60,7 +60,7 @@ Fix :https://blog.csdn.net/jingzz1/article/details/108142784
             @Override
             public void onActivityResult(Map<String, Boolean> permissionsResult) {
                 if (isAllGranted(permissionsResult)) {
-                    mCallback.allow();
+                    mCallback.granted();
                 } else {
                     mCallback.notAllow();
                 }

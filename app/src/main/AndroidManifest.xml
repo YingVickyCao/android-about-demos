@@ -337,7 +337,7 @@
         <activity android:name=".app_component.service.system.telephony_service.MonitorPhoneActivity" />
         <activity android:name=".app_component.service.system.sms_manager.SendSmsActivity" />
         <activity android:name=".app_component.service.system.audio_manager.AudioServiceActivity" />
-        <activity android:name=".app_component.service.system.vibrator.VibratorActivityWithFragmentActivity" />
+        <activity android:name=".app_component.service.system.vibrator.VibratorActivity" />
         <activity android:name=".app_component.broadcast.normal.TestNormalBroadcastActivity" />
         <activity android:name=".app_component.broadcast.ordered.TestOrderedBroadcastActivity" />
         <!--

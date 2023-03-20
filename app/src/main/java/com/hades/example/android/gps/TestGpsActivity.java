@@ -14,6 +14,9 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.base.RxPermissionsActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -22,6 +25,8 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.hades.example.android.R;
+import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
+import com.hades.example.android.tools.permission.PermissionTools;
 
 import java.util.List;
 
@@ -32,7 +37,7 @@ import java.util.List;
  * https://www.samsung.com/cn/smartphones/galaxy-s10/specs/
  */
 
-public class TestGpsActivity extends RxPermissionsActivity {
+public class TestGpsActivity extends AppCompatActivity {
     private static final String TAG = TestGpsActivity.class.getSimpleName();
 
     LocationManager mLocationManager;
@@ -52,8 +57,6 @@ public class TestGpsActivity extends RxPermissionsActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gps);
 
-        initViews();
-
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE); // 获取系统的LocationManager对象
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this); // Google play store Location
@@ -68,11 +71,18 @@ public class TestGpsActivity extends RxPermissionsActivity {
 
         initLocationUpdates();
         initLocationUpdates_4_GooglePlayServices();
+
+        requestPermission();
     }
 
-    @Override
     protected void requestPermission() {
-        checkPermission("Request permission for GPS", Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION);
+        PermissionTools permissionTools = new PermissionTools(this);
+        permissionTools.request(new IRequestPermissionsCallback() {
+            @Override
+            public void granted() {
+                Toast.makeText(TestGpsActivity.this, "ACCESS_FINE_LOCATION/ACCESS_COARSE_LOCATION granted", Toast.LENGTH_SHORT).show();
+            }
+        }, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION);
     }
 
     @Override

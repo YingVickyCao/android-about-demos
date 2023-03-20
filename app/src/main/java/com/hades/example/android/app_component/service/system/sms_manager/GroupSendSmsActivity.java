@@ -17,8 +17,14 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
-import com.hades.example.android.base.PermissionActivity;
+import com.hades.example.android.base.BaseActivity;
+import com.hades.example.android.tools.permission.IRationaleOnClickListener;
+import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
+import com.hades.example.android.tools.permission.PermissionTools;
 
 import java.util.ArrayList;
 
@@ -28,8 +34,9 @@ import java.util.ArrayList;
 	<!-- 授予发送短信的权限 -->
 	<uses-permission android:name="android.permission.SEND_SMS"/>
  */
-public class GroupSendSmsActivity extends PermissionActivity {
+public class GroupSendSmsActivity extends BaseActivity {
     EditText numbers, content;
+    private View mRoot;
     ArrayList<String> toSendPhoneList = new ArrayList<String>();
 
     @Override
@@ -37,19 +44,33 @@ public class GroupSendSmsActivity extends PermissionActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_system_sms_group_send_sms);
 
-        initViews(R.id.root);
+        mRoot = findViewById(R.id.root);
 
         numbers = findViewById(R.id.numbers);
         content = findViewById(R.id.content);
-        setRoot(findViewById(R.id.root));
 
         findViewById(R.id.select).setOnClickListener(v -> selectContacts());
         findViewById(R.id.sendImplicitBroadcast).setOnClickListener(v -> groupSendSms());
+
+        requestPermission();
     }
 
-    @Override
     protected void requestPermission() {
-        checkPermission("Request permission for group send sms", Manifest.permission.READ_CONTACTS, Manifest.permission.SEND_SMS);
+        PermissionTools permissionTools = new PermissionTools(this);
+        permissionTools.request(new IRequestPermissionsCallback() {
+            @Override
+            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+                Snackbar.make(mRoot, "Request permission for group send sms", Snackbar.LENGTH_INDEFINITE)
+                        .setAction(getString(R.string.ok), view -> callback.clickOK())
+                        .setAction(getString(R.string.cancel), view -> callback.clickCancel())
+                        .show();
+            }
+
+            @Override
+            public void granted() {
+                Toast.makeText(GroupSendSmsActivity.this, "READ_CONTACTS and SEND_SMS granted", Toast.LENGTH_SHORT).show();
+            }
+        }, Manifest.permission.READ_CONTACTS, Manifest.permission.SEND_SMS);
     }
 
     private void selectContacts() {

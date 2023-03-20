@@ -9,8 +9,6 @@ import androidx.fragment.app.FragmentManager;
 
 import com.hades.example.android.tools.permission.internal.PermissionsFragment;
 
-import java.util.Map;
-
 public class PermissionTools implements IPermissionTools {
     public static final String TAG = "PermissionTools";
 
@@ -36,7 +34,7 @@ public class PermissionTools implements IPermissionTools {
     public void request4IgnoreRationale(IPermissionsResult callback, String... permissions) {
         try {
             if (isGranted(permissions)) {
-                callback.allow();
+                callback.granted();
                 return;
             }
             requestMultiplePermissions(callback, permissions);
@@ -96,7 +94,7 @@ public class PermissionTools implements IPermissionTools {
     private void request(boolean isAlwaysRationale, IRequestPermissionsCallback callback, final String... permissions) {
         try {
             if (isGranted(permissions)) {
-                callback.allow();
+                callback.granted();
                 return;
             }
             if (isWillShowRationale(isAlwaysRationale, permissions)) {

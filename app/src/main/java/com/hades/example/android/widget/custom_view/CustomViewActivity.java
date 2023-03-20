@@ -3,11 +3,16 @@ package com.hades.example.android.widget.custom_view;
 import android.Manifest;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
-import com.hades.example.android.base.PermissionActivity;
+import com.hades.example.android.base.BaseActivity;
+import com.hades.example.android.tools.permission.IRationaleOnClickListener;
+import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
+import com.hades.example.android.tools.permission.PermissionTools;
 import com.hades.example.android.widget.custom_view.Xfermode.XfermodeFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.example.android.widget.custom_view.drawCircle.ball.FingerMovedBallFragment;
@@ -23,7 +28,7 @@ import com.hades.example.android.widget.custom_view.shadow.TestShadowViewFragmen
 /**
  * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html
  */
-public class CustomViewActivity extends PermissionActivity {
+public class CustomViewActivity extends BaseActivity {
     private static final String TAG = CustomViewActivity.class.getSimpleName();
 
     @Override
@@ -44,12 +49,24 @@ public class CustomViewActivity extends PermissionActivity {
         findViewById(R.id.page_Shadow_and_ShadowLayer).setOnClickListener(v -> page_Shadow_and_ShadowLayer());
         findViewById(R.id.page_Layer).setOnClickListener(v -> page_Layer());
         findViewById(R.id.page_Xfermode).setOnClickListener(v -> page_Xfermode());
+
+        requestPermission();
     }
 
-    @Override
-    protected void requestPermission() {
-        Log.d(TAG, "requestPermission: ");
-        checkPermission("Request permission for operate storage", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+    private void requestPermission() {
+        // FIXED_ERROR:java.io.FileNotFoundException: /sdcard/bg004.JPG: open failed: EACCES (Permission denied)
+        PermissionTools permissionTools = new PermissionTools(this);
+        permissionTools.request(new IRequestPermissionsCallback() {
+            @Override
+            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+                Snackbar.make(findViewById(R.id.root), "Request SD Card permission", Snackbar.LENGTH_INDEFINITE).setAction(getString(R.string.ok), view -> callback.clickOK()).setAction(getString(R.string.cancel), view -> callback.clickCancel()).show();
+            }
+
+            @Override
+            public void granted() {
+                Toast.makeText(CustomViewActivity.this, "SD Card permission granted", Toast.LENGTH_SHORT).show();
+            }
+        }, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE);
     }
 
     @Override
