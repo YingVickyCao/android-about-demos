@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".app_component._fragment.back.TestBackActivity">
+
+    <TextView
+        style="@style/topic"
+        android:text="Back event on Fragment" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_100"
+        android:layout_marginStart="@dimen/size_10"
+        android:layout_marginEnd="@dimen/size_10">
+
+        <Button
+            android:id="@+id/add_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add fragment which can handle back itself"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/add_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/add_1"
+            android:layout_alignParentBottom="true"
+            android:text="Add fragment which not handle back itself"
+            android:textAllCaps="false" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

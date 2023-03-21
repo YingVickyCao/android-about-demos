@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.hades.example.android.app_component._fragment.back.TestBackActivity;
 import com.hades.example.android.app_component.content_provider.system.media.GalleryActivity;
 import com.hades.example.android.app_component.service.unbounservice.StartServiceTest1Activity;
 
@@ -21,6 +22,6 @@ public class QAActivity extends AppCompatActivity {
     }
 
     private void temp() {
-        startActivity(new Intent(this, GalleryActivity.class));
+        startActivity(new Intent(this, TestBackActivity.class));
     }
 }

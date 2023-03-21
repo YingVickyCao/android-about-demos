@@ -9,7 +9,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -28,18 +27,11 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- install apk,start   -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- install apk,start -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
-    <!-- install apk,end   -->
-
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <!-- Target SDK     Android 14   -->
-    <!--    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />-->
-
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" /> <!-- install apk,end -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- Target SDK     Android 14 -->
+    <!-- <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" /> -->
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-feature
@@ -48,7 +40,6 @@
     <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="false" />
-
 
     <application
         android:name=".App"
@@ -62,9 +53,11 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".AppVersionUpgradeActivity"
+            android:name=".TestBackActivity"
             android:exported="false" />
-        <!-- <activity android:namAActivityvity"> -->
+        <activity
+            android:name=".AppVersionUpgradeActivity"
+            android:exported="false" /> <!-- <activity android:namAActivityvity"> -->
         <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN"/> -->
         <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
@@ -106,7 +99,6 @@
                 <category android:name="com.hades.example.android.app_component._intent_and_intent_filter._action_category.C.CATEGORY_3" />
             </intent-filter>
         </activity>
-
         <activity android:name=".app_component.content_provider.system.media.GalleryActivity" />
         <activity android:name=".app_component._intent_and_intent_filter._action_category.SystemActionActivity" />
         <activity android:name=".app_component._intent_and_intent_filter._data_type.A" />
@@ -321,9 +313,7 @@
         <activity android:name=".app_component.content_provider.dict.DictSearchResultActivity" />
         <activity android:name=".app_component.content_provider.system.contact.ContactContentProviderActivity" />
         <activity android:name=".app_component.content_provider.system.media.MediaActivity" />
-        <activity android:name=".app_component.content_provider.system.sms.SMSActivity" />
-
-        <!-- android:foregroundServiceType : show notification immediately in startForeground on Android 13(33)       -->
+        <activity android:name=".app_component.content_provider.system.sms.SMSActivity" /> <!-- android:foregroundServiceType : show notification immediately in startForeground on Android 13(33) -->
         <service
             android:name=".app_component.service.unbounservice.FirstService"
             android:foregroundServiceType="mediaPlayback" />
@@ -670,8 +660,8 @@
         <activity android:name=".test_libs.okhttp.TestOkHttpActivity" />
         <activity android:name="._faq.FaqPenetrateClickActivity" />
         <activity android:name="._faq.FaqPlayerControllerPlayerActivity" />
-
         <activity android:name="._case.apk_upgrade.AppVersionUpgradeActivity" />
+        <activity android:name=".app_component._fragment.back.TestBackActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -682,7 +672,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
     </application>
 
 </manifest>

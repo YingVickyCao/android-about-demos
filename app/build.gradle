@@ -63,7 +63,9 @@ dependencies {
     implementation project(':JavaLib')
     implementation project(':lib-android')
 
-    implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompat_version}"
+//    implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompat_version}"
+    implementation rootProject.ext.appcompat_lib
+
 //    implementation 'androidx.resourceinspection:resourceinspection-annotation:1.0.1'
     implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintlayout_version}"
     implementation "androidx.recyclerview:recyclerview:${rootProject.ext.recyclerview_version}"
