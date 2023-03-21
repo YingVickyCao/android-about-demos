@@ -83,7 +83,7 @@ Fix :https://blog.csdn.net/jingzz1/article/details/108142784
 
     public void requestMultiplePermissions(String... unrequestedPermissions) {
         if (!isPermissionsNotEmpty(unrequestedPermissions)) {
-            mCallback.error(new Exception("Not permission to request"), null);
+            mCallback.error(new Exception("Not permission to request"), unrequestedPermissions);
             return;
         }
         mResultLauncher.launch(unrequestedPermissions);

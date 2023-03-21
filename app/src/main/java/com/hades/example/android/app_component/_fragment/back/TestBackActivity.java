@@ -22,16 +22,16 @@ public class TestBackActivity extends AppCompatActivity {
                 NotHandleBackFragment.TAG));
     }
 
-    @Override
-    public void onBackPressed() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentContainer);
-        if (fragment instanceof IBack) {
-            boolean flag = ((IBack) fragment).handleBack();
-            if (flag) {
-                return;
-            }
-        }
-        super.onBackPressed();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentContainer);
+//        if (fragment instanceof IBack) {
+//            boolean flag = ((IBack) fragment).handleBack();
+//            if (flag) {
+//                return;
+//            }
+//        }
+//        super.onBackPressed();
+//    }
 }
