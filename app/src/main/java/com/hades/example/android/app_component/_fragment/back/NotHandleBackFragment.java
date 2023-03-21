@@ -46,10 +46,11 @@ public class NotHandleBackFragment extends Fragment implements IBack {
                 FragmentUtils.removedFromBackstack(NotHandleBackFragment.this);
             }
         };
-        requireActivity().getOnBackPressedDispatcher().addCallback(mOnBackPressedCallback);
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), mOnBackPressedCallback);
     }
 
-//    private void clickBack() {
+
+    //    private void clickBack() {
     // // requireActivity().onBackPressed() is depressed
 //        requireActivity().onBackPressed();
 //    }
