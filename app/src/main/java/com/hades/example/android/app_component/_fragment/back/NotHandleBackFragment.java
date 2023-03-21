@@ -38,12 +38,21 @@ public class NotHandleBackFragment extends Fragment implements IBack {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Way 1 :
         mOnBackPressedCallback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                // If consumed event, not need to setEnabled(false)
-                //    mOnBackPressedCallback.setEnabled(false);
-                FragmentUtils.removedFromBackstack(NotHandleBackFragment.this);
+                // Click back button or Press back of system os, then this method invoked
+                {// NotHandleBackFragment will handle completely
+                    // If consumed event, not need to setEnabled(false)
+                    FragmentUtils.popBackStack(requireActivity());
+                }
+                // or
+//                {// Finally TestBackActivity will use OnBackPressedCallback to pop this fragment
+//                    mOnBackPressedCallback.setEnabled(false);
+//                    requireActivity().getOnBackPressedDispatcher().onBackPressed();
+//                }
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), mOnBackPressedCallback);

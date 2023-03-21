@@ -26,7 +26,7 @@ public class FragmentUtils {
         fragment.getParentFragmentManager().beginTransaction().remove(fragment).commit();
     }
 
-    public static void removedFromBackstack(Fragment fragment) {
-        fragment.requireActivity().getSupportFragmentManager().popBackStack();
+    public static void popBackStack(FragmentActivity activity) {
+        activity.getSupportFragmentManager().popBackStack();
     }
 }

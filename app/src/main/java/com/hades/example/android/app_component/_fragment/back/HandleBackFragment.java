@@ -31,12 +31,15 @@ public class HandleBackFragment extends Fragment implements IBack {
     }
 
     private void clickBack() {
-        Toast.makeText(requireActivity(), "Click Back", Toast.LENGTH_SHORT).show();
-        FragmentUtils.removedFromParent(this);
+        requireActivity().getOnBackPressedDispatcher().onBackPressed();
+//        Toast.makeText(requireActivity(), "Click Back", Toast.LENGTH_SHORT).show();
+//        FragmentUtils.removedFromParent(this);
     }
 
     @Override
     public boolean handleBack() {
+        Toast.makeText(requireActivity(), "Green page Backd", Toast.LENGTH_SHORT).show();
+        FragmentUtils.removedFromParent(this);
         return true;
     }
 }
