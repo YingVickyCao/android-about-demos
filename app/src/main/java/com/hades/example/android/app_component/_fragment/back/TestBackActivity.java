@@ -34,24 +34,24 @@ public class TestBackActivity extends AppCompatActivity {
 
         // Way 2 :
 
-//        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
-//            @Override
-//            public void handleOnBackPressed() {
-//                FragmentUtils.popBackStack(TestBackActivity.this);
-//                FragmentManager fragmentManager = getSupportFragmentManager();
-//                Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentContainer);
-//                if (fragment instanceof IBack) {
-//                    boolean flag = ((IBack) fragment).handleBack();
-//                    if (flag) {
-//                        // we have consumed the test
-//                        this.setEnabled(true);
-//                        return;
-//                    }
-//                }
-//                this.setEnabled(false);
-//                getOnBackPressedDispatcher().onBackPressed();
-//            }
-//        });
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                FragmentUtils.popBackStack(TestBackActivity.this);
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentContainer);
+                if (fragment instanceof IBack) {
+                    boolean flag = ((IBack) fragment).handleBack();
+                    if (flag) {
+                        // we have consumed the test
+                        this.setEnabled(true);
+                        return;
+                    }
+                }
+                this.setEnabled(false);
+                getOnBackPressedDispatcher().onBackPressed();
+            }
+        });
     }
 
 //    @Override
