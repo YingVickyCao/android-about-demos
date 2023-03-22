@@ -25,10 +25,6 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        if (isNeedCheckPermission()) {
-//            requestPermission();
-//        }
     }
 
     protected void showActionBar() {
@@ -46,10 +42,6 @@ public class BaseActivity extends AppCompatActivity {
             return;
         }
         actionBar.hide();
-    }
-
-    protected void requestPermission() {
-
     }
 
     protected boolean isNeedCheckPermission() {

@@ -23,13 +23,18 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hades.example.android.base.PermissionActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
+import com.hades.example.android.tools.permission.IRationaleOnClickListener;
+import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
+import com.hades.example.android.tools.permission.PermissionTools;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestAudioEffectActivity extends PermissionActivity {
+public class TestAudioEffectActivity extends AppCompatActivity {
     private MediaPlayer mPlayer;
 
     // 示波器
@@ -58,8 +63,6 @@ public class TestAudioEffectActivity extends PermissionActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.audio_effect_layout);
 
-        initViews(R.id.root);
-
         // 设置控制音乐声音
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
         mPlayer = MediaPlayer.create(this, R.raw.mp3_2);
@@ -75,9 +78,22 @@ public class TestAudioEffectActivity extends PermissionActivity {
         mPlayer.start();
     }
 
-    @Override
-    protected void requestPermission() {
-        checkPermission("Request permission for Audio Visualizer", Manifest.permission.RECORD_AUDIO, Manifest.permission.MODIFY_AUDIO_SETTINGS);
+    private void requestPermission() {
+        PermissionTools permissionTools = new PermissionTools(this);
+        permissionTools.request(new IRequestPermissionsCallback() {
+            @Override
+            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+                Snackbar.make(findViewById(R.id.root), "Request Audio Visualizer", Snackbar.LENGTH_INDEFINITE)
+                        .setAction(getString(R.string.ok), view -> callback.clickOK())
+                        .setAction(getString(R.string.cancel), view -> callback.clickCancel())
+                        .show();
+            }
+
+            @Override
+            public void granted() {
+                Toast.makeText(TestAudioEffectActivity.this, "Audio Visualizer permission granted", Toast.LENGTH_SHORT).show();
+            }
+        }, Manifest.permission.RECORD_AUDIO);
     }
 
     private void setupVisualizer() {

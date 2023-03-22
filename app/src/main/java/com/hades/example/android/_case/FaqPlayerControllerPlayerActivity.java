@@ -1,4 +1,4 @@
-package com.hades.example.android._faq;
+package com.hades.example.android._case;
 
 import android.os.Bundle;
 

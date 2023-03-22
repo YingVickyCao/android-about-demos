@@ -1,15 +1,32 @@
 package com.hades.example.android.tools;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import com.hades.example.android.other_ui._notification.TestNotificationFragment;
+import androidx.fragment.app.FragmentActivity;
 
 public class FragmentUtils {
     public FragmentUtils() {
     }
 
-    public void addFragment(AppCompatActivity activity, Fragment fragment, String tag) {
+    public static void addFragment(FragmentActivity activity, Fragment fragment, String tag) {
         activity.getSupportFragmentManager().beginTransaction().add(fragment, tag).commit();
+    }
+
+    public static void replaceFragment(FragmentActivity activity, @IdRes int containerViewId, @NonNull Fragment fragment, @Nullable String tag) {
+        activity.getSupportFragmentManager().beginTransaction().replace(containerViewId, fragment, tag).commit();
+    }
+
+    public static void replaceFragment(FragmentActivity activity, String backStackName, @IdRes int containerViewId, @NonNull Fragment fragment, @Nullable String tag) {
+        activity.getSupportFragmentManager().beginTransaction().addToBackStack(backStackName).replace(containerViewId, fragment, tag).commit();
+    }
+
+    public static void removedFromParent(Fragment fragment) {
+        fragment.getParentFragmentManager().beginTransaction().remove(fragment).commit();
+    }
+
+    public static void popBackStack(FragmentActivity activity) {
+        activity.getSupportFragmentManager().popBackStack();
     }
 }

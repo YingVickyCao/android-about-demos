@@ -2,38 +2,56 @@ package com.hades.example.android.network;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.base.PermissionActivity;
+import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
+import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.network.tcp_ip.multi_thread_client.MultiThreadClientActivity;
 import com.hades.example.android.network.tcp_ip.one_thread_client.SimpleClientActivity;
 import com.hades.example.android.network.url.http_url_connection.MultiThreadDownFragment;
 import com.hades.example.android.network.url.url.TestURLFragment;
 import com.hades.example.android.network.url.url_connection.TestURLConnectionFragment;
+import com.hades.example.android.tools.permission.IRationaleOnClickListener;
+import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
+import com.hades.example.android.tools.permission.PermissionTools;
 
-public class TestNetworkActivity extends PermissionActivity {
+public class TestNetworkActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.network_layout);
 
-        initViews(R.id.root);
-
         findViewById(R.id.pageSimpleSocketClient).setOnClickListener(v -> pageSimpleSocketClient());
         findViewById(R.id.pageMultiThreadSocketClient).setOnClickListener(v -> pageMultiThreadSocketClient());
         findViewById(R.id.pageURL).setOnClickListener(v -> pageURL());
         findViewById(R.id.pageURLConnection).setOnClickListener(v -> pageURLConnection());
         findViewById(R.id.pageHttpURLConnection).setOnClickListener(v -> pageHttpURLConnection());
+        requestPermission();
     }
 
-    @Override
-    protected void requestPermission() {
+    private void requestPermission() {
         // FIXED_ERROR:java.io.FileNotFoundException: /sdcard/bg004.JPG: open failed: EACCES (Permission denied)
-        checkPermission("Request permission for Storage", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE);
+        PermissionTools permissionTools = new PermissionTools(this);
+        permissionTools.request(new IRequestPermissionsCallback() {
+            @Override
+            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+                Snackbar.make(findViewById(R.id.root), "Request SD Card permission", Snackbar.LENGTH_INDEFINITE)
+                        .setAction(getString(R.string.ok), view -> callback.clickOK())
+                        .setAction(getString(R.string.cancel), view -> callback.clickCancel())
+                        .show();
+            }
+
+            @Override
+            public void granted() {
+                Toast.makeText(TestNetworkActivity.this, "SD Card permission granted", Toast.LENGTH_SHORT).show();
+            }
+        }, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE);
     }
+
 
     @Override
     protected void showCurrentTest() {
@@ -43,11 +61,6 @@ public class TestNetworkActivity extends PermissionActivity {
     @Override
     protected boolean isNeedCheckPermission() {
         return true;
-    }
-
-    @Override
-    protected void requestPermission(String... permissions) {
-        super.requestPermission(permissions);
     }
 
     private void pageSimpleSocketClient() {

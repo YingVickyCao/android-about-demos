@@ -5,19 +5,18 @@ import android.content.pm.PackageManager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.hades.example.android.tools.permission.internal.PermissionsFragment;
 
-import java.util.Map;
-
 public class PermissionTools implements IPermissionTools {
     public static final String TAG = "PermissionTools";
 
-    final private AppCompatActivity mActivity;
-    final private PermissionsFragment mPermissionsFragment;
+    private final FragmentActivity mActivity;
+    private final PermissionsFragment mPermissionsFragment;
 
-    public PermissionTools(AppCompatActivity activity) {
+    public PermissionTools(FragmentActivity activity) {
         mActivity = activity;
         mPermissionsFragment = getRxPermissionsFragment(activity);
     }
@@ -36,7 +35,7 @@ public class PermissionTools implements IPermissionTools {
     public void request4IgnoreRationale(IPermissionsResult callback, String... permissions) {
         try {
             if (isGranted(permissions)) {
-                callback.allow();
+                callback.granted();
                 return;
             }
             requestMultiplePermissions(callback, permissions);
@@ -77,7 +76,7 @@ public class PermissionTools implements IPermissionTools {
         }
     }
 
-    private PermissionsFragment getRxPermissionsFragment(AppCompatActivity activity) {
+    private PermissionsFragment getRxPermissionsFragment(FragmentActivity activity) {
         PermissionsFragment permissionsFragment = findPermissionsFragment(activity);
         boolean isNewInstance = (permissionsFragment == null);
         if (isNewInstance) {
@@ -89,14 +88,14 @@ public class PermissionTools implements IPermissionTools {
         return permissionsFragment;
     }
 
-    private PermissionsFragment findPermissionsFragment(AppCompatActivity activity) {
+    private PermissionsFragment findPermissionsFragment(FragmentActivity activity) {
         return (PermissionsFragment) activity.getSupportFragmentManager().findFragmentByTag(TAG);
     }
 
     private void request(boolean isAlwaysRationale, IRequestPermissionsCallback callback, final String... permissions) {
         try {
             if (isGranted(permissions)) {
-                callback.allow();
+                callback.granted();
                 return;
             }
             if (isWillShowRationale(isAlwaysRationale, permissions)) {
@@ -128,36 +127,9 @@ public class PermissionTools implements IPermissionTools {
         return isAlwaysRationale || shouldShowRequestPermissionRationale(permissions);
     }
 
-    private boolean isPermissionsNotEmpty(String[] unrequestedPermissions) {
-        return null != unrequestedPermissions && unrequestedPermissions.length > 0;
-    }
-
     private void requestMultiplePermissions(IPermissionsResult callback, String... unrequestedPermissions) {
-        if (!isPermissionsNotEmpty(unrequestedPermissions)) {
-            callback.error(new Exception("Not permission to request"), null);
-            return;
-        }
-        mPermissionsFragment.setCallback(permissionsResult -> {
-            if (isAllGranted(permissionsResult)) {
-                callback.allow();
-            } else {
-                callback.notAllow();
-            }
-        });
-        mPermissionsFragment.getResultLauncher().launch(unrequestedPermissions);
-    }
-
-    private boolean isAllGranted(Map<String, Boolean> permissionsResult) {
-        if (null == permissionsResult || permissionsResult.isEmpty()) {
-            return false;
-        }
-
-        for (Boolean value : permissionsResult.values()) {
-            if (Boolean.FALSE.equals(value)) {
-                return false;
-            }
-        }
-        return true;
+        mPermissionsFragment.setCallback(callback);
+        mPermissionsFragment.requestMultiplePermissions(unrequestedPermissions);
     }
 
     private boolean isGranted(final String permission) {

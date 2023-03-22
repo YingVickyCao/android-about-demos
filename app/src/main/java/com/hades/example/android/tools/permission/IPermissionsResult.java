@@ -3,9 +3,9 @@ package com.hades.example.android.tools.permission;
 import android.util.Log;
 
 public interface IPermissionsResult {
-    void allow();
+    void granted();
 
-    default void notAllow() {
+    default void denied() {
 
     }
 

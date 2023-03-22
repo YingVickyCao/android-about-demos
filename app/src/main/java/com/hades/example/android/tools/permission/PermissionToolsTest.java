@@ -35,12 +35,12 @@ public class PermissionToolsTest {
             }
 
             @Override
-            public void allow() {
+            public void granted() {
                 Toast.makeText(activity, "Granted", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void notAllow() {
+            public void denied() {
                 Toast.makeText(activity, "Denied", Toast.LENGTH_SHORT).show();
             }
         }, Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -70,12 +70,12 @@ public class PermissionToolsTest {
     void requestPermission(AppCompatActivity activity, PermissionTools permissionTools, final String... permissions) {
         permissionTools.request(new IPermissionsResult() {
             @Override
-            public void allow() {
+            public void granted() {
                 Toast.makeText(activity, "Granted", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void notAllow() {
+            public void denied() {
                 Toast.makeText(activity, "Denied", Toast.LENGTH_SHORT).show();
             }
         }, permissions);

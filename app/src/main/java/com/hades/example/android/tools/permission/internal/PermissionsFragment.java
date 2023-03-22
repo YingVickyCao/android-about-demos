@@ -9,6 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.hades.example.android.tools.permission.IPermissionsResult;
 import com.hades.example.android.tools.permission.PermissionTools;
 
 import java.util.Map;
@@ -18,13 +19,13 @@ public class PermissionsFragment extends Fragment {
     private boolean mLogging;
 
     ActivityResultLauncher<String[]> mResultLauncher;
-    IRequestMultiplePermissions mCallback;
+    IPermissionsResult mCallback;
 
     public void setLogging(boolean logging) {
         mLogging = logging;
     }
 
-    public void setCallback(IRequestMultiplePermissions callback) {
+    public void setCallback(IPermissionsResult callback) {
         this.mCallback = callback;
     }
 
@@ -58,9 +59,38 @@ Fix :https://blog.csdn.net/jingzz1/article/details/108142784
         return registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
             @Override
             public void onActivityResult(Map<String, Boolean> permissionsResult) {
-                mCallback.onResult(permissionsResult);
+                if (isAllGranted(permissionsResult)) {
+                    mCallback.granted();
+                } else {
+                    mCallback.denied();
+                }
             }
         });
+    }
+
+    private boolean isAllGranted(Map<String, Boolean> permissionsResult) {
+        if (null == permissionsResult || permissionsResult.isEmpty()) {
+            return false;
+        }
+
+        for (Boolean value : permissionsResult.values()) {
+            if (Boolean.FALSE.equals(value)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void requestMultiplePermissions(String... unrequestedPermissions) {
+        if (!isPermissionsNotEmpty(unrequestedPermissions)) {
+            mCallback.error(new Exception("Not permission to request"), unrequestedPermissions);
+            return;
+        }
+        mResultLauncher.launch(unrequestedPermissions);
+    }
+
+    private boolean isPermissionsNotEmpty(String[] unrequestedPermissions) {
+        return null != unrequestedPermissions && unrequestedPermissions.length > 0;
     }
 
     public void log(String message) {

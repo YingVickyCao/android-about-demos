@@ -3,17 +3,22 @@ package com.hades.example.android.resource.bitmap;
 import android.Manifest;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
-import com.hades.example.android.base.PermissionActivity;
+import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.resource.bitmap.three_level_cache.ImageGridActivity;
+import com.hades.example.android.tools.permission.IRationaleOnClickListener;
+import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
+import com.hades.example.android.tools.permission.PermissionTools;
 
 /**
  * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html
  */
-public class BitmapActivity extends PermissionActivity {
+public class BitmapActivity extends BaseActivity {
     private static final String TAG = BitmapActivity.class.getSimpleName();
 
     @Override
@@ -27,12 +32,24 @@ public class BitmapActivity extends PermissionActivity {
         findViewById(R.id.page_BitmapViewer).setOnClickListener(v -> page_BitmapViewer());
         findViewById(R.id.page_LoadBitmapPo).setOnClickListener(v -> page_LoadBitmapPo());
         findViewById(R.id.page_MemoryCacheBitmap).setOnClickListener(v -> page_MemoryCacheBitmap());
+
+        requestPermission();
     }
 
-    @Override
-    protected void requestPermission() {
-        Log.d(TAG, "requestPermission: ");
-        checkPermission("Request permission for operate storage", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+    private void requestPermission() {
+        // FIXED_ERROR:java.io.FileNotFoundException: /sdcard/bg004.JPG: open failed: EACCES (Permission denied)
+        PermissionTools permissionTools = new PermissionTools(this);
+        permissionTools.request(new IRequestPermissionsCallback() {
+            @Override
+            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+                Snackbar.make(findViewById(R.id.root), "Request SD Card permission", Snackbar.LENGTH_INDEFINITE).setAction(getString(R.string.ok), view -> callback.clickOK()).setAction(getString(R.string.cancel), view -> callback.clickCancel()).show();
+            }
+
+            @Override
+            public void granted() {
+                Toast.makeText(BitmapActivity.this, "SD Card permission granted", Toast.LENGTH_SHORT).show();
+            }
+        }, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE);
     }
 
     @Override

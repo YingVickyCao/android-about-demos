@@ -9,32 +9,23 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.PermissionActivity;
+import com.hades.example.android.base.BaseActivity;
 
-public class AddPinndedShortcutsActivity extends PermissionActivity {
+public class AddPinndedShortcutsActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        initViews(R.id.root);
 
         setContentView(R.layout.add_dynamic_shorts_layout);
 
         findViewById(R.id.createDynamicShortcuts).setOnClickListener(v -> createPinnedShortcuts());
     }
 
-    @Override
-    protected void requestPermission() {
-//        checkPermission("Request permission for operate storage", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-    }
 
     private void createPinnedShortcuts() {
-        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.O) {
-            return;
-        }
-
         ShortcutManager shortcutManager = this.getSystemService(ShortcutManager.class);
         //  Android >=26. But Support library APIs, Android >=7.1 (API level 25).
         if (shortcutManager.isRequestPinShortcutSupported()) {

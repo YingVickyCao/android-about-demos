@@ -3,11 +3,13 @@ package com.hades.example.android.resource;
 import android.Manifest;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
-import com.hades.example.android.base.PermissionActivity;
+import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.resource._array.TestStringIntegerArrayFragment;
 import com.hades.example.android.resource._color_state_list.TestColorFragment;
 import com.hades.example.android.resource._color_state_list.TestColorStateListFragment;
@@ -23,11 +25,14 @@ import com.hades.example.android.resource.font.TestFontFragment;
 import com.hades.example.android.resource.i18n.InternationalizationFragment;
 import com.hades.example.android.resource.material.TestMaterialFragment;
 import com.hades.example.android.resource.xml.TestXMLFragment;
+import com.hades.example.android.tools.permission.IRationaleOnClickListener;
+import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
+import com.hades.example.android.tools.permission.PermissionTools;
 
 /**
  * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html
  */
-public class ResourceActivity extends PermissionActivity {
+public class ResourceActivity extends BaseActivity {
     private static final String TAG = ResourceActivity.class.getSimpleName();
 
     @Override
@@ -54,12 +59,27 @@ public class ResourceActivity extends PermissionActivity {
         findViewById(R.id.pageFrameAnimation).setOnClickListener(v -> pageFrameAnimation());
         findViewById(R.id.page_ObjectAnimation).setOnClickListener(v -> page_ObjectAnimation());
         findViewById(R.id.page_ValueAnimation).setOnClickListener(v -> page_ValueAnimation());
+
+        requestPermission();
     }
 
-    @Override
-    protected void requestPermission() {
-        Log.d(TAG, "requestPermission: ");
-        checkPermission("Request permission for operate storage", Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+    private void requestPermission() {
+        PermissionTools permissionTools = new PermissionTools(this);
+        permissionTools.request(new IRequestPermissionsCallback() {
+            @Override
+            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+                Snackbar.make(findViewById(R.id.root), "Request SD card permission", Snackbar.LENGTH_INDEFINITE)
+                        .setAction(getString(R.string.ok), view -> callback.clickOK())
+                        .setAction(getString(R.string.cancel), view -> callback.clickCancel())
+                        .show();
+            }
+
+            @Override
+            public void granted() {
+                Toast.makeText(ResourceActivity.this, "SD card permission granted", Toast.LENGTH_SHORT).show();
+            }
+        }, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
     @Override
