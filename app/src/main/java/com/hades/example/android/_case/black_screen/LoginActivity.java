@@ -1,4 +1,4 @@
-package com.hades.example.android._faq.black_screen;
+package com.hades.example.android._case.black_screen;
 
 import android.app.Activity;
 import android.content.Intent;

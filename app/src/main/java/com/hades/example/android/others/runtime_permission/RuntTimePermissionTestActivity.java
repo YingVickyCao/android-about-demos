@@ -1,4 +1,4 @@
-package com.hades.example.android.runtime_permission;
+package com.hades.example.android.others.runtime_permission;
 
 import android.Manifest;
 import android.app.Activity;

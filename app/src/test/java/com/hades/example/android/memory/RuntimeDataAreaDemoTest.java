@@ -1,6 +1,6 @@
 package com.hades.example.android.memory;
 
-import com.hades.example.android.memory.runtime_data_area_demo.RuntimeDataAreaDemo;
+import com.hades.example.android.others.runtime_data_area_demo.RuntimeDataAreaDemo;
 
 import org.junit.Test;
 

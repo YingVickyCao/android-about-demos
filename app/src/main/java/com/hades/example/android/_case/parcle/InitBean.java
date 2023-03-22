@@ -1,4 +1,4 @@
-package com.hades.example.android._faq.parcle;
+package com.hades.example.android._case.parcle;
 
 import android.os.Parcel;
 import android.os.Parcelable;
