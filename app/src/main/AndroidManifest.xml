@@ -53,6 +53,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".TestBiometricActivity"
+            android:exported="false" />
+        <activity
             android:name=".TestBackActivity"
             android:exported="false" />
         <activity
@@ -539,11 +542,15 @@
         <activity android:name=".data_storage.database.TestSQLiteActivity" />
         <activity android:name=".po.security.SecurityActivity" />
         <activity android:name="._process_and_thread.TestBackgroundTasksActivity" />
+
         <activity android:name=".others.sensor.TestSensorActivity" />
         <activity android:name=".others.gps.TestGpsActivity" />
+        <activity android:name=".others.biometric.TestBiometricActivity" />
+
         <activity android:name=".network.TestNetworkActivity" />
         <activity android:name=".network.tcp_ip.one_thread_client.SimpleClientActivity" />
         <activity android:name=".network.tcp_ip.multi_thread_client.MultiThreadClientActivity" />
+
         <activity android:name=".media.TestMediaActivity" />
         <activity android:name=".media.audio.audio_effect.TestAudioEffectActivity" />
         <activity android:name=".media.camera.TestCameraActivity" />

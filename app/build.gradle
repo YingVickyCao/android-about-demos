@@ -91,6 +91,10 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttp3_version}"
     implementation "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.okhttp3_logging_interceptor_version}"
 
+    implementation rootProject.ext.biometric_lib
+    implementation rootProject.ext.lifecycle_lib
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+
     debugImplementation "com.amitshekhar.android:debug-db:${rootProject.ext.debug_db_version}"
     testImplementation "junit:junit:${rootProject.ext.junit_version}"
 
