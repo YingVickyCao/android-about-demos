@@ -43,8 +43,6 @@ public class TestBackActivity extends AppCompatActivity {
                 if (fragment instanceof IBack) {
                     boolean flag = ((IBack) fragment).handleBack();
                     if (flag) {
-                        // we have consumed the test
-                        this.setEnabled(true);
                         return;
                     }
                 }

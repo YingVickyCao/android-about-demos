@@ -61,8 +61,8 @@ public class NotHandleBackFragment extends Fragment implements IBack {
 //    }
 
     private void clickBack() {
-        // requireActivity().onBackPressed() is depressed
-        requireActivity().getOnBackPressedDispatcher().onBackPressed();
+        requireActivity().onBackPressed(); // requireActivity().onBackPressed() is depressed
+//        requireActivity().getOnBackPressedDispatcher().onBackPressed();
     }
 
     @Override
