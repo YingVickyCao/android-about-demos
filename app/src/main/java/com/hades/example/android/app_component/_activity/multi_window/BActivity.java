@@ -1,6 +1,5 @@
-package com.hades.example.android.feature.multi_window;
+package com.hades.example.android.app_component._activity.multi_window;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,27 +16,17 @@ import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
 import static android.content.res.Configuration.ORIENTATION_UNDEFINED;
 
-public class MultiWindowRootActivity extends BaseActivity {
-    private static final String TAG = "MultiWindowRootActivity";
+public class BActivity extends BaseActivity {
+    private static final String TAG = "BActivity";
 
     private View pageRoot;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate: ");
-        setContentView(R.layout.multi_window_root_activity);
+        setContentView(R.layout.multi_window_b_activity);
+
         pageRoot = findViewById(R.id.pageRoot);
-
-        findViewById(R.id.openA).setOnClickListener(v -> openA());
-    }
-
-    private void openA() {
-//        showActivity(AActivity.class);
-        Intent intent = new Intent(this, AActivity.class);
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.addFlags(Intent.FLAG_ACTIVITY_LAUNCH_ADJACENT);
-        finish();
     }
 
     @Override
@@ -77,9 +66,9 @@ public class MultiWindowRootActivity extends BaseActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             if (isInMultiWindowMode()) {
-                pageRoot.setBackgroundColor(getColor(android.R.color.holo_blue_dark));
+                pageRoot.setBackgroundColor(getColor(android.R.color.holo_orange_dark));
             } else {
-                pageRoot.setBackgroundColor(getColor(android.R.color.holo_blue_light));
+                pageRoot.setBackgroundColor(getColor(android.R.color.holo_orange_light));
             }
         }
     }

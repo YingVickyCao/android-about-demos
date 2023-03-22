@@ -42,7 +42,7 @@
             android:scaleType="fitCenter"
             android:src="@drawable/compress" />
 
-        <com.hades.example.android.sensor.GradienterView
+        <com.hades.example.android.others.sensor.GradienterView
             android:id="@+id/gradienterView"
             android:layout_gravity="center_horizontal"
             android:layout_width="200dp"

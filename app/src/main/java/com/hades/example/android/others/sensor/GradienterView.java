@@ -1,4 +1,4 @@
-package com.hades.example.android.sensor;
+package com.hades.example.android.others.sensor;
 
 import android.content.Context;
 import android.graphics.Bitmap;

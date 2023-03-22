@@ -1,5 +1,6 @@
-package com.hades.example.android.feature.multi_window;
+package com.hades.example.android.app_component._activity.multi_window;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,8 +17,8 @@ import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
 import static android.content.res.Configuration.ORIENTATION_UNDEFINED;
 
-public class AActivity extends BaseActivity {
-    private static final String TAG = "AActivity";
+public class MultiWindowRootActivity extends BaseActivity {
+    private static final String TAG = "MultiWindowRootActivity";
 
     private View pageRoot;
 
@@ -25,14 +26,18 @@ public class AActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
-        setContentView(R.layout.multi_window_a_activity);
+        setContentView(R.layout.multi_window_root_activity);
         pageRoot = findViewById(R.id.pageRoot);
 
-        findViewById(R.id.openB).setOnClickListener(v -> openB());
+        findViewById(R.id.openA).setOnClickListener(v -> openA());
     }
 
-    private void openB() {
-        showActivity(BActivity.class);
+    private void openA() {
+//        showActivity(AActivity.class);
+        Intent intent = new Intent(this, AActivity.class);
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.addFlags(Intent.FLAG_ACTIVITY_LAUNCH_ADJACENT);
+        finish();
     }
 
     @Override
@@ -72,9 +77,9 @@ public class AActivity extends BaseActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             if (isInMultiWindowMode()) {
-                pageRoot.setBackgroundColor(getColor(android.R.color.holo_red_dark));
+                pageRoot.setBackgroundColor(getColor(android.R.color.holo_blue_dark));
             } else {
-                pageRoot.setBackgroundColor(getColor(android.R.color.holo_red_light));
+                pageRoot.setBackgroundColor(getColor(android.R.color.holo_blue_light));
             }
         }
     }

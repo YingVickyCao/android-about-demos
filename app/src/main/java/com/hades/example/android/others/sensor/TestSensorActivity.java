@@ -1,4 +1,4 @@
-package com.hades.example.android.sensor;
+package com.hades.example.android.others.sensor;
 
 import android.app.Activity;
 import android.hardware.Sensor;

@@ -1,4 +1,4 @@
-package com.hades.example.android.feature.multi_window;
+package com.hades.example.android.app_component._activity.multi_window;
 
 import android.content.res.Configuration;
 import android.os.Build;
@@ -16,17 +16,23 @@ import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
 import static android.content.res.Configuration.ORIENTATION_UNDEFINED;
 
-public class BActivity extends BaseActivity {
-    private static final String TAG = "BActivity";
+public class AActivity extends BaseActivity {
+    private static final String TAG = "AActivity";
 
     private View pageRoot;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.multi_window_b_activity);
-
+        Log.d(TAG, "onCreate: ");
+        setContentView(R.layout.multi_window_a_activity);
         pageRoot = findViewById(R.id.pageRoot);
+
+        findViewById(R.id.openB).setOnClickListener(v -> openB());
+    }
+
+    private void openB() {
+        showActivity(BActivity.class);
     }
 
     @Override
@@ -66,9 +72,9 @@ public class BActivity extends BaseActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             if (isInMultiWindowMode()) {
-                pageRoot.setBackgroundColor(getColor(android.R.color.holo_orange_dark));
+                pageRoot.setBackgroundColor(getColor(android.R.color.holo_red_dark));
             } else {
-                pageRoot.setBackgroundColor(getColor(android.R.color.holo_orange_light));
+                pageRoot.setBackgroundColor(getColor(android.R.color.holo_red_light));
             }
         }
     }

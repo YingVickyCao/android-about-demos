@@ -539,8 +539,8 @@
         <activity android:name=".data_storage.database.TestSQLiteActivity" />
         <activity android:name=".po.security.SecurityActivity" />
         <activity android:name="._process_and_thread.TestBackgroundTasksActivity" />
-        <activity android:name=".sensor.TestSensorActivity" />
-        <activity android:name=".gps.TestGpsActivity" />
+        <activity android:name=".others.sensor.TestSensorActivity" />
+        <activity android:name=".others.gps.TestGpsActivity" />
         <activity android:name=".network.TestNetworkActivity" />
         <activity android:name=".network.tcp_ip.one_thread_client.SimpleClientActivity" />
         <activity android:name=".network.tcp_ip.multi_thread_client.MultiThreadClientActivity" />
@@ -553,7 +553,7 @@
         <activity android:name="._case.black_screen.MockMainActivity" /> <!-- Feature,START -->
         <!-- Multi Window -->
         <activity
-            android:name=".feature.multi_window.MultiWindowRootActivity"
+            android:name=".app_component._activity.multi_window.MultiWindowRootActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:resizeableActivity="true"
             tools:targetApi="n">
@@ -565,10 +565,10 @@
                 android:minHeight="450dp" />
         </activity>
         <activity
-            android:name=".feature.multi_window.AActivity"
+            android:name=".app_component._activity.multi_window.AActivity"
             android:resizeableActivity="true"
             tools:targetApi="n" />
-        <activity android:name=".feature.multi_window.BActivity" /> <!-- Feature,END -->
+        <activity android:name=".app_component._activity.multi_window.BActivity" /> <!-- Feature,END -->
         <!-- ExoPlayer2,START -->
         <activity
             android:name=".test_libs.exoplayer2.TestExoplayer2MainActivity"

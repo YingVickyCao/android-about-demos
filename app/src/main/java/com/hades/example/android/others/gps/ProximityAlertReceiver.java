@@ -1,4 +1,4 @@
-package com.hades.example.android.gps;
+package com.hades.example.android.others.gps;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
