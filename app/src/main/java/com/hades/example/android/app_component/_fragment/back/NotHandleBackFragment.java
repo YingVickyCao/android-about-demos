@@ -17,9 +17,6 @@ import com.hades.example.android.tools.FragmentUtils;
 public class NotHandleBackFragment extends Fragment implements IBack {
     public static final String TAG = "NotHandleBackFragment";
 
-
-    OnBackPressedCallback mOnBackPressedCallback;
-
     public NotHandleBackFragment() {
     }
 
@@ -35,28 +32,27 @@ public class NotHandleBackFragment extends Fragment implements IBack {
         return view;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        // Way 1 :
-        mOnBackPressedCallback = new OnBackPressedCallback(true) {
-            @Override
-            public void handleOnBackPressed() {
-                // Click back button or Press back of system os, then this method invoked
-                {// NotHandleBackFragment will handle completely
-                    // If consumed event, not need to setEnabled(false)
-                    FragmentUtils.popBackStack(requireActivity());
-                }
-                // or
-//                {// Finally TestBackActivity will use OnBackPressedCallback to pop this fragment
-//                    mOnBackPressedCallback.setEnabled(false);
-//                    requireActivity().getOnBackPressedDispatcher().onBackPressed();
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//
+//        // Way 1 :
+//        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+//            @Override
+//            public void handleOnBackPressed() {
+//                // Click back button or Press back of system os, then this method invoked
+//                {// NotHandleBackFragment will handle completely
+//                    // If consumed event, not need to setEnabled(false)
+//                    FragmentUtils.popBackStack(requireActivity());
 //                }
-            }
-        };
-        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), mOnBackPressedCallback);
-    }
+//                // or
+////                {// Finally TestBackActivity will use OnBackPressedCallback to pop this fragment
+////                    this.setEnabled(false);
+////                    requireActivity().getOnBackPressedDispatcher().onBackPressed();
+////                }
+//            }
+//        });
+//    }
 
 
     //    private void clickBack() {
