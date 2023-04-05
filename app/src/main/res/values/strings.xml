@@ -201,6 +201,7 @@
     <string name="page_Screen_Capture">Screen Capture</string>
 
     <string name="page_multi_window">Multi-Window</string>
+    <string name="page_recognizer_speech_google">Recognizer Speech - Google</string>
 
     <!-- ========================= -->
     <string name="runt_time_permission">Runtime Permission</string>
@@ -550,4 +551,6 @@
     <string name="CHANNEL_ID_OF_FIRST_SERVICE">FIRST_SERVICE_CHANNEL_ID</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="check_enable_recognizer_speech">Check enable recognizer speech</string>
+    <string name="stop_voice">Stop voice</string>
 </resources>

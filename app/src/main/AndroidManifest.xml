@@ -551,6 +551,9 @@
             android:name="._case.black_screen.LoginActivity"
             android:theme="@style/LoginIn_RemoveSplash2" />
         <activity android:name="._case.black_screen.MockMainActivity" /> <!-- Feature,START -->
+        <activity android:name="._case.recognize_speech.google.TestRecognizerSpeechGoogleActivity" />
+        <activity android:name="._case.recognize_speech.google.TestRecognizerSpeechGoogleActivity2" />
+
         <!-- Multi Window -->
         <activity
             android:name=".feature.multi_window.MultiWindowRootActivity"
@@ -673,5 +676,15 @@
                 android:resource="@xml/file_paths" />
         </provider>
     </application>
+
+    <queries>
+        <intent>
+            <action android:name="android.speech.action.RECOGNIZE_SPEECH" />
+        </intent>
+
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
 
 </manifest>

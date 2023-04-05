@@ -10,11 +10,10 @@ buildscript {
         maven { url 'https://maven.aliyun.com/repository/central' }
         mavenCentral()
         maven { url 'https://maven.aliyun.com/repository/public' }
-        jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.0'
+        classpath 'com.android.tools.build:gradle:7.4.1'
     }
 }
 
@@ -31,7 +30,6 @@ allprojects {
         maven { url 'https://maven.aliyun.com/repository/google' }
         mavenCentral()
         maven { url 'https://maven.aliyun.com/repository/central' }
-        jcenter()
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://jitpack.io' }
     }
@@ -90,6 +88,7 @@ ext {
     xFragment_lib = "androidx.fragment:fragment:1.5.5"
     xActivity_lib = "androidx.activity:activity:1.6.0"
     xAnnotation_lib = 'androidx.annotation:annotation:1.6.0'
+    simplePermissions_lib = 'com.github.yingvickycao:SimplePermissions:0.1'
 }
 task clean(type: Delete) {
     delete rootProject.buildDir

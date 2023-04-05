@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_recognizer_speech_google" />
+
+
+    <TextView
+        android:id="@+id/voice"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/ic_voice"
+        android:backgroundTint="@color/color_edittext_text_color_hint"
+        android:enabled="true" />
+
+    <Button
+        android:id="@+id/stopVoice"
+        style="@style/btn"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/size_50"
+        android:layout_toEndOf="@+id/voice"
+        android:text="@string/stop_voice" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/voice"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/size_10" />
+
+    <Button
+        android:id="@+id/checkIsEnableRecognizerSpeech"
+        style="@style/btn"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/size_50"
+        android:text="@string/check_enable_recognizer_speech" />
+
+</RelativeLayout>
