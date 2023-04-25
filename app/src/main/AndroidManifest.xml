@@ -41,6 +41,15 @@
         android:name="android.hardware.touchscreen"
         android:required="false" />
 
+    <queries>
+        <intent>
+            <action android:name="android.speech.action.RECOGNIZE_SPEECH" />
+        </intent>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
+
     <application
         android:name=".App"
         android:allowBackup="false"
@@ -52,6 +61,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".ExoPlayerActivity"
+            android:exported="false" />
         <activity
             android:name=".TestBackActivity"
             android:exported="false" />
@@ -547,6 +559,7 @@
         <activity android:name=".media.TestMediaActivity" />
         <activity android:name=".media.audio.audio_effect.TestAudioEffectActivity" />
         <activity android:name=".media.camera.TestCameraActivity" />
+        <activity android:name=".media.audio.exoplayer.ExoPlayerActivity" />
         <activity
             android:name="._case.black_screen.LoginActivity"
             android:theme="@style/LoginIn_RemoveSplash2" />
