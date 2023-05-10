@@ -1,8 +1,7 @@
 plugins {
     id 'com.android.application'
 }
-
-
+apply from: '../scripts/install-pre-push.gradle'
 android {
     signingConfigs {
         config {

@@ -1,0 +1,12 @@
+task copyPrePush(type: Copy) {
+    from(file("$rootDir/scripts/pre-push"))
+    into(file("$rootDir/test/pre-push"))
+    fileMode 0775
+}
+// ok
+//afterEvaluate {
+//    preBuild.dependsOn copyPrePush
+//}
+
+// ok
+preBuild.dependsOn copyPrePush
