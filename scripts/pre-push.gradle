@@ -1,7 +1,18 @@
 task copyPrePush(type: Copy) {
-    from(file("$rootDir/scripts/pre-push"))
-    into(file("$rootDir/test/pre-push"))
-    fileMode 0775
+    String fileName = "pre-push"
+    String fromDir = "$rootDir/scripts/";
+    String destDir = "$rootDir/test/";
+    if (!file(destDir + fileName).exists()) {
+        println("No exist file : " + destDir + fileName)
+
+        println("so, copy file " + fileName + "from dir " + fromDir + ",to dir " + destDir)
+        from(file(fromDir + fileName))
+        into(file(destDir + fileName))
+        fileMode 0775
+    } else {
+        println("Already existed file : " + destDir + fileName)
+        println("so skip task " + getName())
+    }
 }
 // ok
 //afterEvaluate {
