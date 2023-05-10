@@ -10,6 +10,13 @@ task copyPrePush(type: Copy) {
     } else {
         println("Already existed file : " + destFile + "so skip task " + getName())
     }
+
+    String gitHooksDirPath = "$rootDir/.githooks/pre-push"
+    File gitHooksDir = new File(gitHooksDirPath)
+    if (!gitHooksDir.exists()) {
+        println("create folder " + gitHooksDirPath)
+        gitHooksDir.mkdirs()
+    }
 }
 // ok
 //afterEvaluate {
