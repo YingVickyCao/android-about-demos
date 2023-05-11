@@ -1,0 +1,14 @@
+1 create folder .githook on root project
+mkdir .githooks
+
+2 Run command terminal to configure .githooks folder
+git config core.hooksPath .githooks
+
+3 create new file pre-push
+.githooks/pre-push
+chmod +x .githooks/pre-push
+
+# git push
+hint: The '.githooks/pre-push' hook was ignored because it's not set as executable.
+hint: You can disable this warning with `git config advice.ignoredHook false`.
+because  '.githooks/pre-push' hook was missing executable right. run comand 'chmod +x .githooks/pre-push' to fix this issue

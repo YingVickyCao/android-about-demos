@@ -12,7 +12,7 @@ import org.junit.Test;
 public class ExampleUnitTest {
     @Test
     public void test_addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+        assertEquals(4, 3 + 2);
 
         String s = "uat";
         System.out.println(s.toUpperCase());

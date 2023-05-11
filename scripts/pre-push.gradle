@@ -1,15 +1,15 @@
 task copyPrePush(type: Copy) {
-    String sourceFile = "$rootDir/scripts/pre-push"
-    String destDir = "$rootDir/.git/hooks/";
-    String destFile = destDir + "pre-push";
-    if (!file(destFile).exists()) {
-        println("copy file " + sourceFile + " to dir " + destDir)
-        from(file(sourceFile))
-        into(file(destDir))
-        fileMode 0775
-    } else {
-        println("Already existed file : " + destFile + "so skip task " + getName())
-    }
+//    String sourceFile = "$rootDir/scripts/pre-push"
+//    String destDir = "$rootDir/.git/hooks/";
+//    String destFile = destDir + "pre-push";
+//    if (!file(destFile).exists()) {
+//        println("copy file " + sourceFile + " to dir " + destDir)
+//        from(file(sourceFile))
+//        into(file(destDir))
+//        fileMode 0775
+//    } else {
+//        println("Already existed file : " + destFile + "so skip task " + getName())
+//    }
 
     String gitHooksDirPath = "$rootDir/.githooks/pre-push"
     File gitHooksDir = new File(gitHooksDirPath)
