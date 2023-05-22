@@ -33,6 +33,19 @@ public class J2v8Fragment extends Fragment {
         String js = "var hello = \"hello world\";\n"
                 + "hello.length;";
 
+        try (V8 runtime = V8.createV8Runtime()) {
+            int result = runtime.executeIntegerScript(js);
+            runtime.release(true);
+            Log.i(TAG, "V8,result:length is " + result);
+        } catch (Exception ex) {
+            Log.e(TAG, "V8: ex:" + ex);
+        }
+    }
+
+    private void example_1_backup() {
+        String js = "var hello = \"hello world\";\n"
+                + "hello.length;";
+
         V8 runtime = null;
         try {
             runtime = V8.createV8Runtime();
@@ -44,7 +57,7 @@ public class J2v8Fragment extends Fragment {
                     runtime.close();
                     runtime.release(true);
                 } catch (Exception exception) {
-                    Log.e(TAG, "example_1: ex:" + runtime);
+                    Log.e(TAG, "V8: ex:" + runtime);
                 }
             }
         }
