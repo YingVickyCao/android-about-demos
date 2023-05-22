@@ -1,4 +1,4 @@
-package com.hades.example.android._case;
+package com.hades.example.android._feature;
 
 import android.os.Bundle;
 

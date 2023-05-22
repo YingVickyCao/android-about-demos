@@ -1,6 +1,6 @@
-package com.hades.example.android._case.apk_upgrade;
+package com.hades.example.android._feature.apk_upgrade;
 
-import static com.hades.example.android._case.apk_upgrade.AppUtils.GET_UNKNOWN_APP_SOURCES;
+import static com.hades.example.android._feature.apk_upgrade.AppUtils.GET_UNKNOWN_APP_SOURCES;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;

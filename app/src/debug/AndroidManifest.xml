@@ -4,10 +4,8 @@
     package="com.hades.example.android">
 
     <application tools:ignore="GoogleAppIndexingWarning">
-        <!--        android:name=".widget.textview.TestTextViewActivity"-->
-        <!--        android:name=".widget.list._recyclerview._dag_reorder_list.v1.DragAndReorderListActivity"-->
         <activity
-            android:name=".QAActivity"
+            android:name=".MenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.hades.example.android._case.apk_upgrade;
+package com.hades.example.android._feature.apk_upgrade;
 
 import android.app.Activity;
 import android.content.Context;
