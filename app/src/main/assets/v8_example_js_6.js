@@ -2,7 +2,7 @@ function merge(left, right) {
     var result = [];
     var il = 0;
     var ir = 0;
-    while(il < left.length && ir.right.length){
+    while(il < left.length && ir < right.length){
         if(left[il] < right[ir]){
             result.push(left[il++]);
         }

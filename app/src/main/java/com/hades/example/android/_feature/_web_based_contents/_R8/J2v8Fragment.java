@@ -16,15 +16,15 @@ import com.eclipsesource.v8.Releasable;
 import com.eclipsesource.v8.V8;
 import com.eclipsesource.v8.V8Array;
 import com.eclipsesource.v8.V8Object;
+import com.eclipsesource.v8.utils.V8ObjectUtils;
 import com.hades.example.android.R;
-import com.hades.example.android.app_component._activity._life_cycle.C;
 import com.hades.example.java.lib.FileUtils;
 
-import java.io.Console;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
+import java.util.List;
 
 public class J2v8Fragment extends Fragment {
     public static final String TAG = J2v8Fragment.class.getSimpleName();
@@ -39,20 +39,20 @@ public class J2v8Fragment extends Fragment {
     }
 
     private void test() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
+        new Thread(() -> {
+            try {
 //                    example_1();
+//                example_1_backup();
 //                    example_2();
 //                    example_3();
 //                    example_4();
-                    example_5();
-                } catch (Exception ex) {
-                    Log.d(TAG, "V8, ex:" + ex);
-                }
+                example_5();
+            } catch (Exception ex) {
+                Log.d(TAG, "V8, ex:" + ex);
             }
         }).start();
+
+        example_6();
     }
 
     // 标准做法：
@@ -104,7 +104,7 @@ public class J2v8Fragment extends Fragment {
 
     // Java to access Javascript Objects
     private void example_2() throws IOException {
-        try (V8 runtime = V8.createV8Runtime();) {
+        try (V8 runtime = V8.createV8Runtime()) {
             runtime.executeVoidScript(getJs2("v8_example_js_2.js"));
             try (V8Object person = runtime.getObject("person"); V8Object team = person.getObject("team")) {
                 String firstName = person.getString("firstName");
@@ -123,10 +123,7 @@ public class J2v8Fragment extends Fragment {
         try (V8 runtime = V8.createV8Runtime()) {
             runtime.executeVoidScript(getJs2("v8_example_js_3.js"));
 
-            try (V8Object team = runtime.getObject("team"); V8Object name1 = new V8Object(runtime).add("name", "Chris");
-                 V8Object name2 = new V8Object(runtime).add("name", "Jerry");
-                 V8Array array = new V8Array(runtime).push(name1).push(name2);
-                 V8Object newTeam = team.add("players", array)) {
+            try (V8Object team = runtime.getObject("team"); V8Object name1 = new V8Object(runtime).add("name", "Chris"); V8Object name2 = new V8Object(runtime).add("name", "Jerry"); V8Array array = new V8Array(runtime).push(name1).push(name2); V8Object newTeam = team.add("players", array)) {
                 String[] key = newTeam.getKeys();
                 Log.d(TAG, "example_3: " + Arrays.toString(key)); //  [players]
             }
@@ -146,8 +143,7 @@ public class J2v8Fragment extends Fragment {
         }
 
         // case 2 :
-        try (V8 runtime = V8.createV8Runtime();
-             V8Array parameters = new V8Array(runtime).push(100).push(200)) {
+        try (V8 runtime = V8.createV8Runtime(); V8Array parameters = new V8Array(runtime).push(100).push(200)) {
             runtime.executeVoidScript(getJs2("v8_example_js_4.js"));
             int result = runtime.executeIntegerFunction("sum", parameters); // 300
             Log.d(TAG, "example_4: " + result);
@@ -166,7 +162,7 @@ public class J2v8Fragment extends Fragment {
     // Register Java Callbacks with J2V8.
     // Java callback allow JavaScript to invoke Java methods.
     // With J2V8, JavaScript function can be mapped to a Java method. When the function is invoked, J2V8 will call the Java method instead, passing the JS arguments to Java.
-    private void example_5() throws IOException {
+    private void example_5() {
 //        example_5_1();
         example_5_2();
         example_5_3();
@@ -174,20 +170,17 @@ public class J2v8Fragment extends Fragment {
 
     private void example_5_1() {
         // Example : register Java method using JavaVoidCallback
-        JavaVoidCallback callback = new JavaVoidCallback() {
-            @Override
-            public void invoke(V8Object receiver, V8Array parameters) {
-                if (parameters.length() > 0) {
-                    Object arg1 = parameters.get(0);
-                    Log.d(TAG, "example_5,invoke: " + arg1);
-                    if (arg1 instanceof Releasable) {
-                        ((Releasable) arg1).release();
-                    }
+        JavaVoidCallback callback = (receiver, parameters) -> {
+            if (parameters.length() > 0) {
+                Object arg1 = parameters.get(0);
+                Log.d(TAG, "example_5,invoke: " + arg1);
+                if (arg1 instanceof Releasable) {
+                    ((Releasable) arg1).release();
                 }
             }
         };
-        try (V8 runtime = V8.createV8Runtime();
-             V8Object v8Object = runtime.registerJavaMethod(callback, "print")) {
+        try (V8 runtime = V8.createV8Runtime()) {
+            runtime.registerJavaMethod(callback, "print");
             runtime.executeScript("print('hello world');");
         }
     }
@@ -195,46 +188,43 @@ public class J2v8Fragment extends Fragment {
     private void example_5_2() {
         // Example : register Java method using JavaCallback
         // This example was registered on the V8 runtime itself.
-        JavaCallback callback = new JavaCallback() {
-            @Override
-            public Object invoke(V8Object receiver, V8Array parameters) {
-                /**
-                 * Arguments:
-                 * Arguments is passed from Javascript to Java method. => V8Array parameters
-                 * parameters should be released because they were returned to you as a result of a method call.
-                 * The receiver : The Javascript object on which the function was called is passed as the first parameter.
-                 */
-                if (parameters.length() > 1) {
-                    Object arg1 = parameters.get(0);
-                    if (arg1 instanceof Releasable) {
-                        ((Releasable) arg1).release();
-                    }
-
-                    Object arg2 = parameters.get(1);
-                    if (arg2 instanceof Releasable) {
-                        ((Releasable) arg2).release();
-                    }
-                    int sum = Integer.parseInt(arg1.toString()) + Integer.parseInt(arg2.toString());
-                    Log.d(TAG, "example_5,sum=: " + sum);
-
-                    if (!parameters.isReleased()) {
-                        parameters.close();
-                    }
-
-                    if (!receiver.isReleased()) {
-                        receiver.close();
-                    }
-                    return sum;
+        JavaCallback callback = (receiver, parameters) -> {
+            /**
+             * Arguments:
+             * Arguments is passed from Javascript to Java method. => V8Array parameters
+             * parameters should be released because they were returned to you as a result of a method call.
+             * The receiver : The Javascript object on which the function was called is passed as the first parameter.
+             */
+            if (parameters.length() > 1) {
+                Object arg1 = parameters.get(0);
+                if (arg1 instanceof Releasable) {
+                    ((Releasable) arg1).release();
                 }
+
+                Object arg2 = parameters.get(1);
+                if (arg2 instanceof Releasable) {
+                    ((Releasable) arg2).release();
+                }
+                int sum = Integer.parseInt(arg1.toString()) + Integer.parseInt(arg2.toString());
+                Log.d(TAG, "example_5,sum=: " + sum);
 
                 if (!parameters.isReleased()) {
                     parameters.close();
                 }
+
                 if (!receiver.isReleased()) {
                     receiver.close();
                 }
-                return 0;
+                return sum;
             }
+
+            if (!parameters.isReleased()) {
+                parameters.close();
+            }
+            if (!receiver.isReleased()) {
+                receiver.close();
+            }
+            return 0;
         };
         try (V8 runtime = V8.createV8Runtime()) {
             runtime.registerJavaMethod(callback, "sum");
@@ -257,8 +247,7 @@ public class J2v8Fragment extends Fragment {
 
 
         // This example were registered on an not-existing JavaScript object (console)
-        try (V8 runtime = V8.createV8Runtime();
-             V8Object v8Console = new V8Object(runtime)) {
+        try (V8 runtime = V8.createV8Runtime(); V8Object v8Console = new V8Object(runtime)) {
             runtime.add("CustomConsole", v8Console);
             v8Console.registerJavaMethod(console, "log", "log", new Class[]{String.class});
             v8Console.registerJavaMethod(console, "error", "error", new Class[]{String.class});
@@ -277,10 +266,102 @@ public class J2v8Fragment extends Fragment {
     }
 
 
-    // Implement WebWorkers with J2V8.
     // Multithreaded Javascript with J2V8
+    // you can now interact with J2V8 from different threads, with one rule:All interactions with a V8Runtime must be from the thread that instantiates the Runtime.
+    // This means that you can create a V8Runtime for each thread in the system, and each thread can interact with its own V8Runtime independent of each other
     private void example_6() {
+        try {
+            Log.d(TAG, "example_6: " + Thread.currentThread().getName());
+            int threadSize = 4;
+            final List<Thread> threads = new ArrayList<>();
+            List<Object> mergeSortResults = new ArrayList<>();
+            for (int i = 0; i < threadSize; i++) {
+                Thread t = new Thread(() -> {
+                    Log.d(TAG, "example_6,new thread: " + Thread.currentThread().getName());
+                    V8 runtime = V8.createV8Runtime();      // 1 Closeable
+                    runtime.registerJavaMethod(new Sort(), "_sort");
+                    String sortAlgorithm = null;
+                    try {
+                        sortAlgorithm = getJs2("v8_example_js_6.js");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    runtime.executeScript(sortAlgorithm);
 
+                    V8Array data = new V8Array(runtime); // 2 Closeable
+                    int max = 50;
+                    for (int j = 0; j < max; j++) {
+                        data.push(max - j);
+                    }
+                    V8Array parameters = new V8Array(runtime).push(data);   // 3 Closeable
+                    V8Array result = runtime.executeArrayFunction("sort", parameters);  // 4 Closeable
+                    synchronized (threads) {
+                        mergeSortResults.add(V8ObjectUtils.toList(result));
+                    }
+                    result.close();
+                    parameters.close();
+                    data.close();
+                    runtime.close();
+
+                });
+                threads.add(t);
+            }
+
+            for (Thread thread : threads) {
+                thread.start();
+            }
+            for (Thread thread : threads) {
+                thread.join();
+            }
+
+            for (int i = 0; i < threadSize; i++) {
+                List<Integer> result = (List<Integer>) mergeSortResults.get(i);
+                System.out.print("example_6,result:" + Thread.currentThread().getName());
+                for (int j = 0; j < result.size(); j++) {
+                    System.out.print(result.get(j) + " ");
+                }
+                System.out.println();
+            }
+        } catch (Exception ex) {
+            Log.d(TAG, "example_6: ex:" + ex);
+        }
     }
 
+    class Sort implements JavaCallback {
+        List<Object> result = null;
+
+        @Override
+        public Object invoke(V8Object receiver, V8Array parameters) {
+            final List<Object> data = V8ObjectUtils.toList(parameters);
+
+            Thread t = new Thread(() -> {
+                Log.d(TAG, "example_6,invoke[1]: " + Thread.currentThread().getName());
+                V8 runtime = V8.createV8Runtime(); // 1 Closeable
+                runtime.registerJavaMethod(new Sort(), "_sort");
+                String sortAlgorithm;
+                try {
+                    sortAlgorithm = getJs2("v8_example_js_6.js");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                runtime.executeVoidScript(sortAlgorithm);
+                V8Array _parameters = V8ObjectUtils.toV8Array(runtime, data);  // 2 Closeable
+                V8Array _result = runtime.executeArrayFunction("sort", _parameters);  // 3 Closeable
+                result = V8ObjectUtils.toList(_result);
+                _result.close();
+                _parameters.close();
+                runtime.close();
+            });
+            t.start();
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            Log.d(TAG, "example_6,invoke[2]: " + Thread.currentThread().getName());
+            return V8ObjectUtils.toV8Array(parameters.getRuntime(), result);
+        }
+    }
+
+    // Implement WebWorkers with J2V8.
 }
