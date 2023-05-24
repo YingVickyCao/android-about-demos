@@ -201,6 +201,7 @@
     <string name="page_Screen_Capture">Screen Capture</string>
 
     <string name="page_multi_window">Multi-Window</string>
+    <string name="page_j2v8">j2v8 (R8 wrappered)</string>
 
     <!-- ========================= -->
     <string name="runt_time_permission">Runtime Permission</string>

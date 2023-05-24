@@ -548,9 +548,9 @@
         <activity android:name=".media.audio.audio_effect.TestAudioEffectActivity" />
         <activity android:name=".media.camera.TestCameraActivity" />
         <activity
-            android:name="._case.black_screen.LoginActivity"
+            android:name="._feature.black_screen.LoginActivity"
             android:theme="@style/LoginIn_RemoveSplash2" />
-        <activity android:name="._case.black_screen.MockMainActivity" /> <!-- Feature,START -->
+        <activity android:name="._feature.black_screen.MockMainActivity" /> <!-- Feature,START -->
         <!-- Multi Window -->
         <activity
             android:name=".feature.multi_window.MultiWindowRootActivity"
@@ -658,9 +658,9 @@
             android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- ExoPlayer2,END -->
         <activity android:name=".test_libs.TestLibsActivity" />
         <activity android:name=".test_libs.okhttp.TestOkHttpActivity" />
-        <activity android:name="._case.FaqPenetrateClickActivity" />
-        <activity android:name="._case.FaqPlayerControllerPlayerActivity" />
-        <activity android:name="._case.apk_upgrade.AppVersionUpgradeActivity" />
+        <activity android:name="._feature.FaqPenetrateClickActivity" />
+        <activity android:name="._feature.FaqPlayerControllerPlayerActivity" />
+        <activity android:name="._feature.apk_upgrade.AppVersionUpgradeActivity" />
         <activity android:name=".app_component._fragment.back.TestBackActivity" />
 
         <provider
