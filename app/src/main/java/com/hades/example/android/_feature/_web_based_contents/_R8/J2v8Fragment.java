@@ -42,12 +42,12 @@ public class J2v8Fragment extends Fragment {
     private void test() {
         new Thread(() -> {
             try {
-//                example_1();
-//                example_1_backup();
-//                example_2();
-//                example_3();
-//                example_4();
-//                example_5();
+                example_1();
+                example_1_backup();
+                example_2();
+                example_3();
+                example_4();
+                example_5();
                 example_7();
 
             } catch (Exception ex) {
@@ -55,7 +55,7 @@ public class J2v8Fragment extends Fragment {
             }
         }).start();
 
-//        example_6();
+        example_6();
     }
 
     // 标准做法：
@@ -193,10 +193,9 @@ public class J2v8Fragment extends Fragment {
     // Java callback allow JavaScript to invoke Java methods.
     // With J2V8, JavaScript function can be mapped to a Java method. When the function is invoked, J2V8 will call the Java method instead, passing the JS arguments to Java.
     private void example_7() {
-//        example_5_1();
-//        example_7_2();
-//        example_7_3();
-        example_7_4();
+        example_7_1();
+        example_7_2();
+        example_7_3();
     }
 
     // Js 调用 Java，方式1 ： JavaVoidCallback
