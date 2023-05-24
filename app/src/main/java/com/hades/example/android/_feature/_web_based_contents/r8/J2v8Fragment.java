@@ -1,4 +1,4 @@
-package com.hades.example.android._feature._web_based_contents._R8;
+package com.hades.example.android._feature._web_based_contents.r8;
 
 import android.os.Bundle;
 import android.util.Log;
