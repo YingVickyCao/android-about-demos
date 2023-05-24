@@ -15,6 +15,7 @@ import com.eclipsesource.v8.JavaVoidCallback;
 import com.eclipsesource.v8.Releasable;
 import com.eclipsesource.v8.V8;
 import com.eclipsesource.v8.V8Array;
+import com.eclipsesource.v8.V8Function;
 import com.eclipsesource.v8.V8Object;
 import com.eclipsesource.v8.utils.V8ObjectUtils;
 import com.hades.example.android.R;
@@ -41,23 +42,27 @@ public class J2v8Fragment extends Fragment {
     private void test() {
         new Thread(() -> {
             try {
-//                    example_1();
+//                example_1();
 //                example_1_backup();
-//                    example_2();
-//                    example_3();
-//                    example_4();
-                example_5();
+//                example_2();
+//                example_3();
+//                example_4();
+//                example_5();
+                example_7();
+
             } catch (Exception ex) {
                 Log.d(TAG, "V8, ex:" + ex);
             }
         }).start();
 
-        example_6();
+//        example_6();
     }
 
     // 标准做法：
     // 1 Release java resource
     // 2 Release native resource
+
+    // Java 调用 Js - 方式1 ： 直接执行一个String，这个String是JS脚本。
     private void example_1() {
         // V8 is Closeable
         try (V8 runtime = V8.createV8Runtime()) {
@@ -102,36 +107,9 @@ public class J2v8Fragment extends Fragment {
         }
     }
 
-    // Java to access Javascript Objects
-    private void example_2() throws IOException {
-        try (V8 runtime = V8.createV8Runtime()) {
-            runtime.executeVoidScript(getJs2("v8_example_js_2.js"));
-            try (V8Object person = runtime.getObject("person"); V8Object team = person.getObject("team")) {
-                String firstName = person.getString("firstName");
-                int id = team.getInteger("id");
-                Log.d(TAG, "example_2:firstName=" + firstName + ",id=" + id);
-                try (V8Object newTeam = team.add("id", 10)) {
-                    Log.d(TAG, "example_2:,updated id =" + team.getInteger("id"));
-                }
-            }
-        }
-    }
-
-
-    // Java to access V8 Arrays
-    private void example_3() throws IOException {
-        try (V8 runtime = V8.createV8Runtime()) {
-            runtime.executeVoidScript(getJs2("v8_example_js_3.js"));
-
-            try (V8Object team = runtime.getObject("team"); V8Object name1 = new V8Object(runtime).add("name", "Chris"); V8Object name2 = new V8Object(runtime).add("name", "Jerry"); V8Array array = new V8Array(runtime).push(name1).push(name2); V8Object newTeam = team.add("players", array)) {
-                String[] key = newTeam.getKeys();
-                Log.d(TAG, "example_3: " + Arrays.toString(key)); //  [players]
-            }
-        }
-    }
-
+    // Java 调用 Js - 方式2:    通过函数名。
     // Java to call Javascript function
-    private void example_4() throws IOException {
+    private void example_2() throws IOException {
         // case 1 :
         try (V8 runtime = V8.createV8Runtime()) {
             runtime.executeVoidScript(getJs2("v8_example_js_4.js"));
@@ -152,30 +130,84 @@ public class J2v8Fragment extends Fragment {
         // case 3 :
         try (V8 runtime = V8.createV8Runtime()) {
             runtime.executeVoidScript(getJs2("v8_example_js_5.js"));
-            try (V8Object v8Object = runtime.getObject("team"); V8Array parameters = new V8Array(runtime).push(10).push(20)) {
+            try (V8Object v8Object = runtime.getObject("team");
+                 V8Array parameters = new V8Array(runtime).push(10).push(20)) {
                 int result = v8Object.executeIntegerFunction("addPlayer", parameters); // 30
                 Log.d(TAG, "example_4: " + result);
             }
         }
     }
 
+    // Java 调用 Js - 方式3 ：通过V8Function对象调用。
+    private void example_3() throws IOException {
+        try (V8 runtime = V8.createV8Runtime()) {
+            runtime.executeVoidScript(getJs2("v8_example_js_4.js"));
+            if (V8.V8_FUNCTION == runtime.getType("sum")) { // sum是一个函数
+                try (V8Function sumFunction = (V8Function) runtime.getObject("sum");
+                     V8Array parameters = new V8Array(runtime).push(1000).push(2000)) {
+                    Object result = sumFunction.call(null, parameters);
+                    Log.d(TAG, "example_3: " + result);
+                    if (result instanceof Releasable) {
+                        ((Releasable) result).close();
+                    }
+                }
+            }
+        }
+    }
+
+    // Java to access Javascript Objects
+    private void example_4() throws IOException {
+        try (V8 runtime = V8.createV8Runtime()) {
+            runtime.executeVoidScript(getJs2("v8_example_js_2.js"));
+            try (V8Object person = runtime.getObject("person");
+                 V8Object team = person.getObject("team")) {
+                String firstName = person.getString("firstName");
+                int id = team.getInteger("id");
+                Log.d(TAG, "example_2:firstName=" + firstName + ",id=" + id);
+                try (V8Object newTeam = team.add("id", 10)) {
+                    Log.d(TAG, "example_2:,updated id =" + team.getInteger("id"));
+                }
+            }
+        }
+    }
+
+
+    // Java to access V8 Arrays
+    private void example_5() throws IOException {
+        try (V8 runtime = V8.createV8Runtime()) {
+            runtime.executeVoidScript(getJs2("v8_example_js_3.js"));
+
+            try (V8Object team = runtime.getObject("team");
+                 V8Object name1 = new V8Object(runtime).add("name", "Chris");
+                 V8Object name2 = new V8Object(runtime).add("name", "Jerry");
+                 V8Array array = new V8Array(runtime).push(name1).push(name2);
+                 V8Object newTeam = team.add("players", array)) {
+                String[] key = newTeam.getKeys();
+                Log.d(TAG, "example_3: " + Arrays.toString(key)); //  [players]
+            }
+        }
+    }
+
+    // Js 调用 Java
     // Register Java Callbacks with J2V8.
     // Java callback allow JavaScript to invoke Java methods.
     // With J2V8, JavaScript function can be mapped to a Java method. When the function is invoked, J2V8 will call the Java method instead, passing the JS arguments to Java.
-    private void example_5() {
+    private void example_7() {
 //        example_5_1();
-        example_5_2();
-        example_5_3();
+//        example_7_2();
+//        example_7_3();
+        example_7_4();
     }
 
-    private void example_5_1() {
+    // Js 调用 Java，方式1 ： JavaVoidCallback
+    private void example_7_1() {
         // Example : register Java method using JavaVoidCallback
         JavaVoidCallback callback = (receiver, parameters) -> {
             if (parameters.length() > 0) {
                 Object arg1 = parameters.get(0);
                 Log.d(TAG, "example_5,invoke: " + arg1);
                 if (arg1 instanceof Releasable) {
-                    ((Releasable) arg1).release();
+                    ((Releasable) arg1).close();
                 }
             }
         };
@@ -185,7 +217,8 @@ public class J2v8Fragment extends Fragment {
         }
     }
 
-    private void example_5_2() {
+    // Js 调用 Java，方式1 ： JavaCallback
+    private void example_7_2() {
         // Example : register Java method using JavaCallback
         // This example was registered on the V8 runtime itself.
         JavaCallback callback = (receiver, parameters) -> {
@@ -198,12 +231,12 @@ public class J2v8Fragment extends Fragment {
             if (parameters.length() > 1) {
                 Object arg1 = parameters.get(0);
                 if (arg1 instanceof Releasable) {
-                    ((Releasable) arg1).release();
+                    ((Releasable) arg1).close();
                 }
 
                 Object arg2 = parameters.get(1);
                 if (arg2 instanceof Releasable) {
-                    ((Releasable) arg2).release();
+                    ((Releasable) arg2).close();
                 }
                 int sum = Integer.parseInt(arg1.toString()) + Integer.parseInt(arg2.toString());
                 Log.d(TAG, "example_5,sum=: " + sum);
@@ -232,7 +265,8 @@ public class J2v8Fragment extends Fragment {
         }
     }
 
-    private void example_5_3() {
+    // Js 调用 Java，方式2 ： 反射
+    private void example_7_3() {
         // Register method reflectively
         // This example were registered on an existing JavaScript object (console)
         Console console = new Console();
@@ -363,5 +397,5 @@ public class J2v8Fragment extends Fragment {
         }
     }
 
-    // Implement WebWorkers with J2V8.
+    // Implementing WebWorkers with J2V8
 }
