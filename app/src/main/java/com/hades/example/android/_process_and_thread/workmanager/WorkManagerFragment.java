@@ -66,8 +66,8 @@ public class WorkManagerFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.work_manager_layout, container, false);
         root.findViewById(R.id.scheduleOneTimeWork).setOnClickListener(view -> scheduleOneTimeWork());
-        root.findViewById(R.id.uniqueWork).setOnClickListener(view -> uniqueWork());
         root.findViewById(R.id.scheduleExpeditedWork).setOnClickListener(view -> scheduleExpeditedWork());
+        root.findViewById(R.id.uniqueWork).setOnClickListener(view -> uniqueWork());
         root.findViewById(R.id.schedulePeriodicWork).setOnClickListener(view -> schedulePeriodicWork());
         root.findViewById(R.id.cancelWork).setOnClickListener(view -> cancelWork());
         root.findViewById(R.id.chainingWork).setOnClickListener(view -> chainedWork());
@@ -179,7 +179,7 @@ public class WorkManagerFragment extends Fragment {
     // Submit work request to system
     private void singleWork() {
         // thread id:2,thread name:main
-        Log.d(TAG, "submitWorkRequestToSystem: thread id:" + Thread.currentThread().getId() + ",thread name:" + Thread.currentThread().getName());
+        Log.d(TAG, "singleWork: thread id:" + Thread.currentThread().getId() + ",thread name:" + Thread.currentThread().getName());
 
         Data.Builder dataBuilder = new Data.Builder();
         dataBuilder.putString("k1", "value1");
@@ -195,10 +195,11 @@ public class WorkManagerFragment extends Fragment {
         WorkRequest workRequest = new OneTimeWorkRequest.Builder(SingleWorker.class)
                 .setInputData(dataBuilder.build())
                 // 直到所有限制条件满足，才执行，否则终止本次执行，等待下次重试。
-                .setConstraints(constraints)
+//                .setConstraints(constraints)
                 //  没有限制或所有限制条件满足，当Work进入系统队列，默认系统立即执行work。可以设置 InitialDelay 时间，阻止立即执行。
 //                .setInitialDelay(0, TimeUnit.MINUTES)
-                // 当Work 失败返回Result.retry()表示重试时.(1)retry interval 递增规律：EXPONENTIAL：10，20，40，80；LINEAR：10，20，30，40。
+                // 当Work 失败返回Result.retry()表示重试时.
+                // (1)retry interval 递增规律：EXPONENTIAL：10，20，40，80；LINEAR：10，20，30，40。
                 // (3)重试等待时间最短为10s，最长为1小时。实际等待时间大于或等于设定等待时间。
                 // WM-WorkSpec: Backoff delay duration exceeds maximum value
 //                .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, WorkRequest.MAX_BACKOFF_MILLIS, TimeUnit.DAYS)
@@ -209,7 +210,7 @@ public class WorkManagerFragment extends Fragment {
 
         WorkManager instance = getInstance();
         instance.enqueue(workRequest);
-        instance.cancelWorkById(workRequest.getId());
+//        instance.cancelWorkById(workRequest.getId());
     }
 
     WorkManager getInstance() {
@@ -402,11 +403,11 @@ public class WorkManagerFragment extends Fragment {
     }
 
     private void testCoroutineWorker() {
-//        OneTimeWorkRequest request = new OneTimeWorkRequest.Builder(SingleWorker4Kotlin.class)
-//                .addTag("SingleWorker4Kotlin")
-//                .build();
-//        WorkManager instance = getInstance();
-//        instance.enqueueUniqueWork("testCoroutineWorker", ExistingWorkPolicy.KEEP, request);
+        OneTimeWorkRequest request = new OneTimeWorkRequest.Builder(SingleWorker4Kotlin.class)
+                .addTag("SingleWorker4Kotlin")
+                .build();
+        WorkManager instance = getInstance();
+        instance.enqueueUniqueWork("testCoroutineWorker", ExistingWorkPolicy.KEEP, request);
     }
 
     private void testRxWorker() {
