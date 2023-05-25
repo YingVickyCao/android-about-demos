@@ -5,6 +5,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.work.Configuration;
+
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.RenderersFactory;
 import com.google.android.exoplayer2.database.DatabaseProvider;
@@ -30,8 +33,9 @@ import com.hades.example.android.test_libs.exoplayer2.DownloadTracker;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.Executors;
 
-public class App extends Application {
+public class App extends Application implements Configuration.Provider {
     private static final String TAG = "App";
 
     // ExoPlayer2,STAT
@@ -48,6 +52,7 @@ public class App extends Application {
     private DownloadManager downloadManager;
     private DownloadTracker downloadTracker;
     private DownloadNotificationHelper downloadNotificationHelper;
+
     // ExoPlayer2,END
     @Override
     public void onCreate() {
@@ -191,4 +196,22 @@ public class App extends Application {
                 /* eventListener= */ null);
     }
     // ExoPlayer2,END
+
+    /*
+        Work Manager :
+        Enable Logging
+        Step 2 : Provide custom WorkManager Configuration
+
+        Step 3 : see logs with log-tag prefix WM-
+        adb shell dumpsys jobscheduler > log.txt
+    */
+    @NonNull
+    @Override
+    public Configuration getWorkManagerConfiguration() {
+        // WorkManager will be init when call WorkManager.getInstance(Context) rather than auto at application startup.
+        return new Configuration.Builder()
+                .setMinimumLoggingLevel(Log.DEBUG)
+                .setExecutor(Executors.newFixedThreadPool(8))
+                .build();
+    }
 }

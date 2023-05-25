@@ -196,7 +196,7 @@ public class J2v8Fragment extends Fragment {
 //        example_5_1();
 //        example_7_2();
 //        example_7_3();
-        example_7_4();
+//        example_7_4();
     }
 
     // Js 调用 Java，方式1 ： JavaVoidCallback
