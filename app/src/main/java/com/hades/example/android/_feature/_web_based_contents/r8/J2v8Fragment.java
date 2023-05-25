@@ -188,6 +188,106 @@ public class J2v8Fragment extends Fragment {
         }
     }
 
+
+    // Multithreaded Javascript with J2V8
+    // you can now interact with J2V8 from different threads, with one rule:All interactions with a V8Runtime must be from the thread that instantiates the Runtime.
+    // This means that you can create a V8Runtime for each thread in the system, and each thread can interact with its own V8Runtime independent of each other
+    private void example_6() {
+        try {
+            Log.d(TAG, "example_6: " + Thread.currentThread().getName());
+            int threadSize = 4;
+            final List<Thread> threads = new ArrayList<>();
+            List<Object> mergeSortResults = new ArrayList<>();
+            for (int i = 0; i < threadSize; i++) {
+                Thread t = new Thread(() -> {
+                    Log.d(TAG, "example_6,new thread: " + Thread.currentThread().getName());
+                    V8 runtime = V8.createV8Runtime();      // 1 Closeable
+                    runtime.registerJavaMethod(new Sort(), "_sort");
+                    String sortAlgorithm = null;
+                    try {
+                        sortAlgorithm = getJs2("v8_example_js_6.js");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    runtime.executeScript(sortAlgorithm);
+
+                    V8Array data = new V8Array(runtime); // 2 Closeable
+                    int max = 50;
+                    for (int j = 0; j < max; j++) {
+                        data.push(max - j);
+                    }
+                    V8Array parameters = new V8Array(runtime).push(data);   // 3 Closeable
+                    V8Array result = runtime.executeArrayFunction("sort", parameters);  // 4 Closeable
+                    synchronized (threads) {
+                        mergeSortResults.add(V8ObjectUtils.toList(result));
+                    }
+                    result.close();
+                    parameters.close();
+                    data.close();
+                    runtime.close();
+
+                });
+                threads.add(t);
+            }
+
+            for (Thread thread : threads) {
+                thread.start();
+            }
+            for (Thread thread : threads) {
+                thread.join();
+            }
+
+            for (int i = 0; i < threadSize; i++) {
+                List<Integer> result = (List<Integer>) mergeSortResults.get(i);
+                System.out.print("example_6,result:" + Thread.currentThread().getName());
+                for (int j = 0; j < result.size(); j++) {
+                    System.out.print(result.get(j) + " ");
+                }
+                System.out.println();
+            }
+        } catch (Exception ex) {
+            Log.d(TAG, "example_6: ex:" + ex);
+        }
+    }
+
+    class Sort implements JavaCallback {
+        List<Object> result = null;
+
+        @Override
+        public Object invoke(V8Object receiver, V8Array parameters) {
+            final List<Object> data = V8ObjectUtils.toList(parameters);
+
+            Thread t = new Thread(() -> {
+                Log.d(TAG, "example_6,invoke[1]: " + Thread.currentThread().getName());
+                V8 runtime = V8.createV8Runtime(); // 1 Closeable
+                runtime.registerJavaMethod(new Sort(), "_sort");
+                String sortAlgorithm;
+                try {
+                    sortAlgorithm = getJs2("v8_example_js_6.js");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                runtime.executeVoidScript(sortAlgorithm);
+                V8Array _parameters = V8ObjectUtils.toV8Array(runtime, data);  // 2 Closeable
+                V8Array _result = runtime.executeArrayFunction("sort", _parameters);  // 3 Closeable
+                result = V8ObjectUtils.toList(_result);
+                _result.close();
+                _parameters.close();
+                runtime.close();
+            });
+            t.start();
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            Log.d(TAG, "example_6,invoke[2]: " + Thread.currentThread().getName());
+            return V8ObjectUtils.toV8Array(parameters.getRuntime(), result);
+        }
+    }
+
+    // Implementing WebWorkers with J2V8
+
     // Js 调用 Java
     // Register Java Callbacks with J2V8.
     // Java callback allow JavaScript to invoke Java methods.
@@ -297,104 +397,4 @@ public class J2v8Fragment extends Fragment {
             Log.e(TAG, "error: " + message);
         }
     }
-
-
-    // Multithreaded Javascript with J2V8
-    // you can now interact with J2V8 from different threads, with one rule:All interactions with a V8Runtime must be from the thread that instantiates the Runtime.
-    // This means that you can create a V8Runtime for each thread in the system, and each thread can interact with its own V8Runtime independent of each other
-    private void example_6() {
-        try {
-            Log.d(TAG, "example_6: " + Thread.currentThread().getName());
-            int threadSize = 4;
-            final List<Thread> threads = new ArrayList<>();
-            List<Object> mergeSortResults = new ArrayList<>();
-            for (int i = 0; i < threadSize; i++) {
-                Thread t = new Thread(() -> {
-                    Log.d(TAG, "example_6,new thread: " + Thread.currentThread().getName());
-                    V8 runtime = V8.createV8Runtime();      // 1 Closeable
-                    runtime.registerJavaMethod(new Sort(), "_sort");
-                    String sortAlgorithm = null;
-                    try {
-                        sortAlgorithm = getJs2("v8_example_js_6.js");
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    runtime.executeScript(sortAlgorithm);
-
-                    V8Array data = new V8Array(runtime); // 2 Closeable
-                    int max = 50;
-                    for (int j = 0; j < max; j++) {
-                        data.push(max - j);
-                    }
-                    V8Array parameters = new V8Array(runtime).push(data);   // 3 Closeable
-                    V8Array result = runtime.executeArrayFunction("sort", parameters);  // 4 Closeable
-                    synchronized (threads) {
-                        mergeSortResults.add(V8ObjectUtils.toList(result));
-                    }
-                    result.close();
-                    parameters.close();
-                    data.close();
-                    runtime.close();
-
-                });
-                threads.add(t);
-            }
-
-            for (Thread thread : threads) {
-                thread.start();
-            }
-            for (Thread thread : threads) {
-                thread.join();
-            }
-
-            for (int i = 0; i < threadSize; i++) {
-                List<Integer> result = (List<Integer>) mergeSortResults.get(i);
-                System.out.print("example_6,result:" + Thread.currentThread().getName());
-                for (int j = 0; j < result.size(); j++) {
-                    System.out.print(result.get(j) + " ");
-                }
-                System.out.println();
-            }
-        } catch (Exception ex) {
-            Log.d(TAG, "example_6: ex:" + ex);
-        }
-    }
-
-    class Sort implements JavaCallback {
-        List<Object> result = null;
-
-        @Override
-        public Object invoke(V8Object receiver, V8Array parameters) {
-            final List<Object> data = V8ObjectUtils.toList(parameters);
-
-            Thread t = new Thread(() -> {
-                Log.d(TAG, "example_6,invoke[1]: " + Thread.currentThread().getName());
-                V8 runtime = V8.createV8Runtime(); // 1 Closeable
-                runtime.registerJavaMethod(new Sort(), "_sort");
-                String sortAlgorithm;
-                try {
-                    sortAlgorithm = getJs2("v8_example_js_6.js");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                runtime.executeVoidScript(sortAlgorithm);
-                V8Array _parameters = V8ObjectUtils.toV8Array(runtime, data);  // 2 Closeable
-                V8Array _result = runtime.executeArrayFunction("sort", _parameters);  // 3 Closeable
-                result = V8ObjectUtils.toList(_result);
-                _result.close();
-                _parameters.close();
-                runtime.close();
-            });
-            t.start();
-            try {
-                t.join();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            Log.d(TAG, "example_6,invoke[2]: " + Thread.currentThread().getName());
-            return V8ObjectUtils.toV8Array(parameters.getRuntime(), result);
-        }
-    }
-
-    // Implementing WebWorkers with J2V8
 }

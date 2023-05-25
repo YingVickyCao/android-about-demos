@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_WorkManager" />
+    
+    <Button
+        android:id="@+id/scheduleOneTimeWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Schedule one-time work"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/scheduleExpeditedWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Schedule expedited work : TBD"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/schedulePeriodicWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Schedule periodic work"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/cancelWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel Work"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/uniqueWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unique Work"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/chainingWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chaining Work"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/observeWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Observe Work"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/testCoroutineWorker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CoroutineWorker"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/testRxWorker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RxWorker"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/longRunningWorkers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Support for long-running workers"
+        android:textAllCaps="false" />
+</LinearLayout>

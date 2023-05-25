@@ -91,6 +91,9 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttp3_version}"
     implementation "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.okhttp3_logging_interceptor_version}"
     implementation rootProject.ext.j2v8
+    implementation rootProject.ext.work_runtime
+    implementation rootProject.ext.work_runtime_ktx
+    implementation rootProject.ext.work_rxjava2
 
     debugImplementation "com.amitshekhar.android:debug-db:${rootProject.ext.debug_db_version}"
     testImplementation "junit:junit:${rootProject.ext.junit_version}"
