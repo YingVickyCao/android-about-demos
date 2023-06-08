@@ -32,6 +32,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * WorkManager
+ * https://github.com/yingvickycao/YingVickyCao.github.io/blob/master/tech/android/process_and_thread/WorkManager/WorkManager.md
  */
 public class WorkManagerFragment extends Fragment {
     public static final String TAG = WorkManagerFragment.class.getSimpleName();
