@@ -12,5 +12,35 @@
     <color name="shadow_color">#f1f3f4</color>
     <color name="video_pay_controller_mask">#4D000000</color>
 
+    <color name="bg_0_light">#fff</color>
+    <color name="bg_0_dark">#22272c</color>
 
+    <color name="s_0_light">#26000000</color>
+    <color name="s_0_light_red">#80FF0000</color>
+    <color name="s_0_dark">#CC22272C</color>
+    <color name="light_bg_1">#ffffff</color>
+    <color name="dark_bg_1">#2e3438</color>
+
+    <color name="light_bg_2">#f1f3f4</color>
+
+    <color name="dark_text_0">#CADACA</color>
+    <color name="dark_s_0">#33191E19</color>
+
+    <color name="item_view_highlight_bg">@android:color/holo_green_dark</color>
+    <color name="item_view_default_bg">@android:color/holo_orange_light</color>
+
+    <color name="dark_bg_0">#18212B</color>
+    <color name="dark_m_0">#171A1C</color>
+    <color name="dark_m_0_opacity_80">#cc171a1c</color>
+
+    <color name="light_bg_0">#fff</color>
+    <color name="light_bg_hover">#F2F6F7</color>
+    <color name="light_m_0">#abb4ba</color>
+    <color name="light_m_0_opacity_30">#4Dabb4ba</color>
+    <color name="light_border">#EDEFF1</color>
+
+    <color name="light_m_1">#ff0000</color>
+    <color name="light_m_1_opacity_30">#4Dff0000</color>
+    <color name="light_shadow">#26FF0000</color>
+    <color name="light_text_0">#9C27B0</color>
 </resources>

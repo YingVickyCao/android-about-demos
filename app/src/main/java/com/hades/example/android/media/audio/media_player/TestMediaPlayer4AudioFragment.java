@@ -25,7 +25,7 @@ import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
 import com.hades.example.android.lib.timer.ITimerView;
 import com.hades.example.android.lib.timer.TimerHandler;
-import com.hades.example.android.lib.utils.FileUtil;
+import com.hades.example.android.lib.utils.AndroidStorageUtils;
 
 import java.io.IOException;
 
@@ -202,7 +202,7 @@ public class TestMediaPlayer4AudioFragment extends BaseFragment implements IMedi
     private void loadSD() {
         mPlayer = new MediaPlayer();
         try {
-            mPlayer.setDataSource(FileUtil.buildFileNameInSD(Constant.MP3_NAME));
+            mPlayer.setDataSource(AndroidStorageUtils.buildFileNameInSD(Constant.MP3_NAME));
 //            mPlayer.setDataSource("/sdcard/mp3_1.mp3");
             setMediaPlayerListener();
             prepare();

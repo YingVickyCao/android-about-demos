@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.webview;
+package com.hades.example.android._feature._web_based_contents.webview;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

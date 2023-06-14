@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/groupContainer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_45"
+        android:background="@drawable/drawable_selector_4_drag_reorder_item_view"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/check"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:background="@android:color/transparent"
+            android:duplicateParentState="false"
+            android:src="@drawable/ic_svg_home"
+            android:tint="@color/drag_icon_status" />
+
+        <TextView
+            android:id="@+id/groupTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="123"
+            android:textColor="@color/light_text_0" />
+    </LinearLayout>
+
+    <com.hades.example.android._feature.menu_manager.menu_page.ToggleChildContainer
+        android:id="@+id/childContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/div"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_border"
+        android:visibility="visible" />
+</LinearLayout>

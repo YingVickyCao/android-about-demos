@@ -85,7 +85,7 @@ public class J2v8Fragment extends Fragment {
 
     private String getJs2(String fileName) throws IOException {
         InputStream inputStream = getContext().getResources().getAssets().open(fileName);
-        return new FileUtils().convertStreamToStr(inputStream);
+        return new FileUtils().convert(inputStream);
     }
 
     private void example_1_backup() {
