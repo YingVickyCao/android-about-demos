@@ -46,7 +46,7 @@ import com.hades.example.android.widget.view_animator.ImageSwitcherFragment;
 import com.hades.example.android.widget.view_animator.TextSwitcherFragment;
 import com.hades.example.android.widget.view_animator.ViewFlipperFragment;
 import com.hades.example.android.widget.view_animator.ViewSwitcherFragment;
-import com.hades.example.android.widget.webview.TestWebViewFragment;
+import com.hades.example.android._feature._web_based_contents.webview.TestWebViewFragment;
 import com.hades.example.java.lib.DummyItem;
 
 public class WidgetActivity extends NoNeedPermissionActivity implements IItemClickAction {

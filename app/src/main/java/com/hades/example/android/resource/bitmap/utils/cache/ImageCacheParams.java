@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
 
-import com.hades.example.android.lib.utils.FileUtil;
+import com.hades.example.android.lib.utils.AndroidStorageUtils;
 import com.hades.example.android.resource.bitmap.utils.cache.disk.DiskCache;
 import com.hades.example.android.resource.bitmap.utils.cache.mememory.BitmapMemoryCache;
 import com.tbruyelle.rxpermissions.BuildConfig;
@@ -30,7 +30,7 @@ public class ImageCacheParams {
     public boolean diskCacheEnabled = DiskCache.DEFAULT_DISK_CACHE_ENABLED;
     public boolean initDiskCacheOnCreate = DiskCache.DEFAULT_INIT_DISK_CACHE_ON_CREATE;
 
-    FileUtil fileUtil = new FileUtil();
+    AndroidStorageUtils fileUtil = new AndroidStorageUtils();
 
     public ImageCacheParams(Context context, String diskCacheDirectoryName) {
         diskCacheDir = fileUtil.getDiskCacheDir(context, diskCacheDirectoryName);

@@ -1,7 +1,7 @@
 package com.hades.example.android;
 
 
-import com.hades.example.android.lib.utils.FileUtil;
+import com.hades.example.android.lib.utils.AndroidStorageUtils;
 
 public class Constant {
     public final static int KEY_SEND = 0x345;
@@ -13,7 +13,7 @@ public class Constant {
     public final static String SHARED_PREFERENCES_KEY_DOWNLOAD = "DOWNLOAD";
 
     public final static String IMAGE_FILE_NAME = "house.jpg";
-    public final static String IMAGE_PATH = FileUtil.buildFileNameInSD(Constant.IMAGE_FILE_NAME);
+    public final static String IMAGE_PATH = AndroidStorageUtils.buildFileNameInSD(Constant.IMAGE_FILE_NAME);
     public final static String IMAGE_URL = "https://YingVickyCao.github.io/img/resources/house.jpg";
     public final static String IMAGE_URL2 = "https://yingvickycao.github.io/img/resources/ic_adjust_black_18dp.png";
 

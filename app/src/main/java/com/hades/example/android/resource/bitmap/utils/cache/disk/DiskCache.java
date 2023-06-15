@@ -5,7 +5,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 
 import com.hades.example.android.lib.BuildConfig;
-import com.hades.example.android.lib.utils.FileUtil;
+import com.hades.example.android.lib.utils.AndroidStorageUtils;
 import com.hades.example.android.lib.utils.ImageUtil;
 import com.hades.example.android.resource.bitmap.utils.cache.ImageCacheParams;
 import com.hades.example.android.lib.utils.IInBitmapListener;
@@ -32,7 +32,7 @@ public class DiskCache {
     private boolean mDiskCacheStarting = true;
     private ImageCacheParams mCacheParams;
 
-    FileUtil fileUtil = new FileUtil();
+    AndroidStorageUtils fileUtil = new AndroidStorageUtils();
     FileUtils fileUtils = new FileUtils();
     ImageUtil imageUtil = new ImageUtil();
 

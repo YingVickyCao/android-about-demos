@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.hades.example.android.lib.BuildConfig;
 import com.hades.example.android.lib.R;
-import com.hades.example.android.lib.utils.FileUtil;
+import com.hades.example.android.lib.utils.AndroidStorageUtils;
 import com.hades.example.android.lib.utils.ImageUtil;
 import com.hades.example.android.resource.bitmap.utils.cache.ImageCacheParams;
 import com.hades.example.android.resource.bitmap.utils.cache.disk.DiskLruCache;
@@ -41,7 +41,7 @@ public class ImageFetcher extends ImageResize {
     private boolean mHttpDiskCacheStarting = true;
     private final Object mHttpDiskCacheLock = new Object();
 
-    private FileUtil fileUtil = new FileUtil();
+    private AndroidStorageUtils fileUtil = new AndroidStorageUtils();
     private FileUtils fileUtils = new FileUtils();
     private ImageUtil imageUtil = new ImageUtil();
 
