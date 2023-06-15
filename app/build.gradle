@@ -95,6 +95,8 @@ dependencies {
     implementation rootProject.ext.work_runtime_ktx
     implementation rootProject.ext.work_rxjava2
 
+    implementation rootProject.ext.kotlin_stdlib
+
     debugImplementation "com.amitshekhar.android:debug-db:${rootProject.ext.debug_db_version}"
     testImplementation "junit:junit:${rootProject.ext.junit_version}"
 

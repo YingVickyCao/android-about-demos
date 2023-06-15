@@ -1,20 +1,24 @@
 {
-  "title": "Web based contents",
-  "code": "web_category",
-  "type": "",
-  "desc": "",
   "items": [
     {
-      "title": "R8",
-      "code": "r8",
-      "type": "fragment",
-      "desc": ""
-    },
-    {
-      "title": "WebView",
-      "code": "WebView",
-      "type": "fragment",
-      "desc": ""
+      "title": "Web based contents",
+      "code": "web_category",
+      "type": "",
+      "desc": "",
+      "items": [
+        {
+          "title": "R8",
+          "code": "r8",
+          "type": "fragment",
+          "desc": ""
+        },
+        {
+          "title": "WebView",
+          "code": "webview",
+          "type": "fragment",
+          "desc": ""
+        }
+      ]
     }
   ]
 }

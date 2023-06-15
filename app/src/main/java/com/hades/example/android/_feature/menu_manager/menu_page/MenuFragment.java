@@ -14,24 +14,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hades.example.android.R;
+import com.hades.example.android._feature.cache.GlobalCache;
+import com.hades.example.android._feature.menu_manager.Menu;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class MenuFragment extends DialogFragment {
+public class MenuFragment extends DialogFragment implements onMenuClick {
     private static final String TAG = "MenuFragment";
 
-    private List<Group> menuData;
-
     private MenuAdapter mAdapter;
-    private OpenedPage mOpenedPage = new OpenedPage();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogFragmentShowAsFullDialog);
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.menu_page);
 
-        initList1Data();
+        initListData();
     }
 
     @Nullable
@@ -39,7 +37,7 @@ public class MenuFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.menu_page, container, false);
         RecyclerView listView = view.findViewById(R.id.listView);
-        mAdapter = createAdapter(menuData);
+        mAdapter = createAdapter(initListData());
         listView.setAdapter(mAdapter);
         listView.setLayoutManager(getLinearLayoutManager());
         return view;
@@ -77,10 +75,11 @@ public class MenuFragment extends DialogFragment {
         }
     }
 
-    private MenuAdapter createAdapter(List<Group> list1) {
-        MenuAdapter adapter = new MenuAdapter(list1, getActivity());
-        adapter.setOpenedPage(mOpenedPage);
+    private MenuAdapter createAdapter(List<Menu> list) {
+        MenuAdapter adapter = new MenuAdapter(getActivity());
+        adapter.setList(list);
         adapter.setHasStableIds(true);
+        adapter.setClickListener(this);
         return adapter;
     }
 
@@ -90,23 +89,24 @@ public class MenuFragment extends DialogFragment {
         return linearLayoutManager;
     }
 
-    private void initList1Data() {
-        menuData = initListData("Group 1 - Child ", 20);
+    private List<Menu> initListData() {
+        return GlobalCache.getInstance().getMenuTree().getItems();
     }
 
-    private List<Group> initListData(String childPre, int num) {
-        List<Group> list = new ArrayList<>();
-        for (int i = 0; i < num; i++) {
-            List<Child> childList = new ArrayList<>();
-            for (int j = 0; j < i; j++) {
-                childList.add(new Child(childPre + (i + 1) + "_" + (j + 1)));
-                if (j >= 4) {
-                    break;
-                }
-            }
-            Group message = new Group(String.valueOf(i + 1), (i + 1), childList);
-            list.add(message);
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (null != mAdapter) {
+            mAdapter.setList(null);
+            mAdapter.setClickListener(null);
         }
-        return list;
+    }
+
+    @Override
+    public void openPage(Menu bean) {
+        if (getActivity() instanceof MenuActivity) {
+            ((MenuActivity) getActivity()).openMenu(bean);
+        }
+        dismiss();
     }
 }

@@ -4,10 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fragment
-        android:id="@+id/book_list"
-        android:name="com.hades.example.android._feature.menu_manager.menu_page.MenuFragment"
+    <FrameLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:tag="com.hades.example.android._feature.menu_manager.menu_page.MenuFragment" />
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/menu"
+        android:layout_width="@dimen/size_30"
+        android:layout_height="@dimen/size_30"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ic_svg_menu" />
 </FrameLayout>
