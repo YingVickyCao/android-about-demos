@@ -35,6 +35,7 @@ android {
         targetCompatibility JavaVersion.VERSION_11
         sourceCompatibility JavaVersion.VERSION_11
     }
+    namespace 'com.hades.example.android.a'
 }
 
 dependencies {

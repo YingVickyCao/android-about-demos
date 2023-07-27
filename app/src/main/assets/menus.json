@@ -1,20 +1,45 @@
 {
-  "title": "Web based contents",
-  "code": "web_category",
-  "type": "",
-  "desc": "",
   "items": [
     {
-      "title": "R8",
-      "code": "r8",
-      "type": "fragment",
-      "desc": ""
+      "title": "Web based contents",
+      "code": "web_category",
+      "type": "",
+      "desc": "",
+      "items": [
+        {
+          "title": "R8",
+          "code": "r8",
+          "type": "fragment",
+          "desc": ""
+        },
+        {
+          "title": "WebView",
+          "code": "webview",
+          "type": "fragment",
+          "desc": ""
+        }
+      ]
     },
+
     {
-      "title": "WebView",
-      "code": "WebView",
-      "type": "fragment",
-      "desc": ""
+      "title": "Date Storage",
+      "code": "date_storage",
+      "type": "",
+      "desc": "",
+      "items": [
+        {
+          "title": "Internal Storage",
+          "code": "internal_storage",
+          "type": "fragment",
+          "desc": "Access from internal storage"
+        },
+        {
+          "title": "External Storage",
+          "code": "External_storage",
+          "type": "fragment",
+          "desc": "Access from external storage"
+        }
+      ]
     }
   ]
 }

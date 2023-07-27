@@ -10,11 +10,10 @@ buildscript {
         maven { url 'https://maven.aliyun.com/repository/central' }
         mavenCentral()
         maven { url 'https://maven.aliyun.com/repository/public' }
-        jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.0'
+        classpath 'com.android.tools.build:gradle:8.0.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
     }
 }
@@ -32,7 +31,6 @@ allprojects {
         maven { url 'https://maven.aliyun.com/repository/google' }
         mavenCentral()
         maven { url 'https://maven.aliyun.com/repository/central' }
-        jcenter()
         maven { url 'https://maven.aliyun.com/repository/public' }
     }
 }
@@ -103,7 +101,7 @@ ext {
     work_multiprocess = "androidx.work:work-multiprocess:$work_manager_version"
     //  WorkManager,END
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.22"
+    kotlin_stdlib =  "org.jetbrains.kotlin:kotlin-stdlib:1.8.22"
 }
 task clean(type: Delete) {
     delete rootProject.buildDir

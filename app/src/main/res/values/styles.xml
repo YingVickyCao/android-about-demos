@@ -139,6 +139,10 @@
         <item name="android:windowExitAnimation">@anim/slide_out_down2</item> <!-- 加速-->
     </style>
 
+    <style name="menu_page" parent="DialogFragmentShowAsFullDialog">
+        <item name="android:windowBackground">@color/light_bg_0</item>
+    </style>
+
     <style name="MyPopupWindowStyle" parent="Widget.AppCompat.PopupWindow">
         <item name="android:popupBackground">@android:color/holo_green_dark</item>
     </style>
