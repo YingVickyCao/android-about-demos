@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import com.hades.example.android.R;
 import com.hades.example.android._feature._web_based_contents.r8.J2v8Fragment;
 import com.hades.example.android._feature._web_based_contents.webview.TestWebViewFragment;
+import com.hades.example.android.data_storage.InternalStorageExampleFragment;
 import com.hades.example.android.tools.FragmentUtils;
 
 import java.util.HashMap;
@@ -37,6 +38,10 @@ public class MenuHandler extends Handler {
         });
         mActions.put("webview", () -> {
             Fragment fragment = new TestWebViewFragment();
+            show(fragment);
+        });
+        mActions.put("internal_storage", () -> {
+            Fragment fragment = new InternalStorageExampleFragment();
             show(fragment);
         });
     }
