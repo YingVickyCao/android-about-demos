@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.hades.example.android.b">
+    xmlns:tools="http://schemas.android.com/tools">
     <!--android:sharedUserId="android_about_demos.test.AcrossAPPJump"-->
     <!--android:protectionLevel="normal"-->
     <!--<permission-->

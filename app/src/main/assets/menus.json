@@ -19,6 +19,27 @@
           "desc": ""
         }
       ]
+    },
+
+    {
+      "title": "Date Storage",
+      "code": "date_storage",
+      "type": "",
+      "desc": "",
+      "items": [
+        {
+          "title": "Internal Storage",
+          "code": "internal_storage",
+          "type": "fragment",
+          "desc": "Access from internal storage"
+        },
+        {
+          "title": "External Storage",
+          "code": "External_storage",
+          "type": "fragment",
+          "desc": "Access from external storage"
+        }
+      ]
     }
   ]
 }
