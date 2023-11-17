@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace 'com.hades.example.android.b'
+
     signingConfigs {
         config {
             keyAlias 'debug_key'
@@ -31,21 +33,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
-        targetCompatibility JavaVersion.VERSION_17
-        sourceCompatibility JavaVersion.VERSION_17
+        sourceCompatibility rootProject.ext.sourceCompatibility
+        targetCompatibility rootProject.ext.targetCompatibility
     }
-    namespace 'com.hades.example.android.b'
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':lib-android')
 
-    implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompat_version}"
-    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintlayout_version}"
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.constraintlayout
 
-    testImplementation "junit:junit:${rootProject.ext.junit_version}"
-    androidTestImplementation "androidx.test:runner:$testRunner_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espressoCore_version}"
+    androidTestImplementation libs.androidTest.junit
+    androidTestImplementation libs.androidTest.espressoCore
 }

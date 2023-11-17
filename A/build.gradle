@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace 'com.hades.example.android.a'
+
 //    signingConfigs {
 //        debug_key {
 //            keyAlias 'debug_key'
@@ -18,8 +20,9 @@ android {
         targetSdk rootProject.ext.targetSdkVersion
         minSdk rootProject.ext.minSdkVersion
 
-        versionCode 1
-        versionName "1.0"
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -32,21 +35,21 @@ android {
         }
     }
     compileOptions {
-        targetCompatibility JavaVersion.VERSION_17
-        sourceCompatibility JavaVersion.VERSION_17
+        sourceCompatibility rootProject.ext.sourceCompatibility
+        targetCompatibility rootProject.ext.targetCompatibility
     }
-    namespace 'com.hades.example.android.a'
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':lib-android')
 
-    implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompat_version}"
-    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintlayout_version}"
-    implementation "com.google.android.material:material:${rootProject.ext.material_version}"
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.constraintlayout
+    implementation libs.google.material
 
-    testImplementation "junit:junit:${rootProject.ext.junit_version}"
-    androidTestImplementation "androidx.test:runner:${rootProject.ext.testRunner_version}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espressoCore_version}"
+    testImplementation libs.test.junit
+
+    androidTestImplementation libs.androidTest.runner
+    androidTestImplementation libs.androidTest.espressoCore
 }

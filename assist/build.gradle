@@ -24,17 +24,19 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility rootProject.ext.sourceCompatibility
+        targetCompatibility rootProject.ext.targetCompatibility
     }
     namespace 'com.hades.example.android.app_component.assist'
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompat_version}"
-    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintlayout_version}"
-    testImplementation "junit:junit:${rootProject.ext.junit_version}"
-    androidTestImplementation "androidx.test:runner:${rootProject.ext.testRunner_version}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espressoCore_version}"
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.constraintlayout
+
+    testImplementation libs.test.junit
+
+    androidTestImplementation libs.androidTest.runner
+    androidTestImplementation libs.androidTest.espressoCore
 }

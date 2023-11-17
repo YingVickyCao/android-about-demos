@@ -1,42 +1,15 @@
-//search or download the Gradle plugins and their transitive dependencies.
-pluginManagement {
-    repositories {
-        mavenLocal()
-        maven {
-            url 'https://repo.nju.edu.cn/repository/maven-public/'
-        }
-//        google()
-//        mavenCentral()
-
-//        gradlePluginPortal()
-    }
-}
-//
-// configure the repositories and dependencies used by all modules in your project,
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        mavenLocal()
-        maven {
-            url 'https://repo.nju.edu.cn/repository/maven-public/'
-        }
-//        google()
-//        mavenCentral()
-    }
-}
-
 rootProject.name = "android-about-demos"
 include ':app'      //  application
 include ':JavaLib'
 include ':lib-android'
 // When not use below modules, mark them to improve build speed
-//include ':A'        // application
-//include ':B1'       // application
-//include ':A1'       // application
-//include ':assist'   // application
-//include ':B'        // application
-//include ':receive_app_links'              // application
-//include ':other_app_having_app_links'     // application
+include ':A'        // application
+include ':B1'       // application
+include ':A1'       // application
+include ':assist'   // application
+include ':B'        // application
+include ':receive_app_links'              // application
+include ':other_app_having_app_links'     // application
 
 include ':data-binding-example' // application
 project(':data-binding-example').projectDir = new File('lib-examples/data-binding-example')
