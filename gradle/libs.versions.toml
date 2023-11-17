@@ -84,6 +84,7 @@ thirdparty-rxpermissions = { group = "com.tbruyelle.rxpermissions2", name = "rxp
 thirdparty-rxjava2 = { group = "io.reactivex.rxjava2", name = "rxjava", version.ref = "rxjava2" }
 thirdparty-rxandroid2 = { group = "io.reactivex.rxjava2", name = "rxandroid", version.ref = "rxjava2" }
 thirdparty-nineoldandroids = { group = "com.nineoldandroids", name = "library", version.ref = "nineoldandroids" }
+# https://mvnrepository.com/artifact/com.eclipsesource.j2v8/j2v8
 thirdparty-j2v8 = { group = "com.eclipsesource.j2v8", name = "j2v8", version.ref = "j2v8" }
 thirdparty-picasso = { group = "com.squareup.picasso", name = "picasso", version.ref = "picasso" }
 thirdparty-netcipher = { group = "info.guardianproject.netcipher", name = "netcipher", version.ref = "netcipher" }
@@ -103,10 +104,10 @@ test-junit = { group = "junit", name = "junit", version.ref = "junit" }
 # test, END
 
 # androidTest, START
-androidTest_androidx_junit = { group = "androidx.test.ext", name = "junit", version.ref = "android_test_junit" }
-androidTest_androidx_core = { group = "androidx.test", name = "core", version.ref = "android_test_core" }
-androidTest_androidx_espressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "android_test_espresso_core" }
-androidTest_androidx_runner = { group = "androidx.test", name = "runner", version.ref = "android_test_runner" }
+androidTest_junit = { group = "androidx.test.ext", name = "junit", version.ref = "android_test_junit" }
+androidTest_core = { group = "androidx.test", name = "core", version.ref = "android_test_core" }
+androidTest_espressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "android_test_espresso_core" }
+androidTest_runner = { group = "androidx.test", name = "runner", version.ref = "android_test_runner" }
 # androidTest, END
 
 [plugins]

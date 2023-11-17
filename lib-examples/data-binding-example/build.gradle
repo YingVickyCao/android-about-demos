@@ -46,15 +46,10 @@ android {
 
 dependencies {
     implementation libs.androidx.ktx
-    implementation rootProject.appcompat
+    implementation libs.androidx.appcompat
 
-    // to support Data Binding
-    implementation rootProject.databinding_runtime
-    implementation rootProject.databinding_adapters
-    implementation rootProject.databinding_ktx
+    testImplementation libs.test.junit
 
-    testImplementation rootProject.junit
-
-    androidTestImplementation libs.androidTest.androidx.junit
-    androidTestImplementation libs.androidTest.androidx.espressoCore
+    androidTestImplementation libs.androidTest.junit
+    androidTestImplementation libs.androidTest.espressoCore
 }

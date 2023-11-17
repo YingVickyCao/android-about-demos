@@ -35,9 +35,8 @@ dependencies {
     implementation libs.androidx.appcompat
     implementation libs.androidx.constraintlayout
 
+    testImplementation libs.test.junit
 
-    testImplementation "junit:junit:${rootProject.ext.junit_version}"
-
-    androidTestImplementation "androidx.test:runner:${rootProject.ext.testRunner_version}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espressoCore_version}"
+    androidTestImplementation libs.androidTest.runner
+    androidTestImplementation libs.androidTest.espressoCore
 }

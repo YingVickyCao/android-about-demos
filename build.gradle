@@ -31,12 +31,6 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-configurations.all {
-//    resolutionStrategy.force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.0'
-//    resolutionStrategy.force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0'
-//    resolutionStrategy.force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0'
-}
-
 ext {
     sdkVersion = 33
     compileSdkVersion = 33
@@ -46,75 +40,4 @@ ext {
 
     versionCode = 1
     versionName = "1.0"
-
-    // You can also create properties to specify versions for dependencies.
-    // Having consistent versions between modules can avoid conflicts with behavior.
-
-    //  好处：保持统一版本统一，因此程序更稳定。不会因为依赖不同被迫自动隐式升级依赖版本
-
-    // Android
-    rxfragment_version = "1.5.1"
-    constraintlayout_version = "2.1.3"
-    core_version = "1.0.2"
-    core_ktx_version = "1.6.0"
-    material_version = "1.8.0"
-    support_annotations_version = "1.3.0"
-    recyclerview_version = "1.2.1"
-
-    // Google
-    gms_version = '17.0.0'
-    play_services_location_version = "18.0.0"
-    gson_version = "2.8.6"
-
-    // third party
-    nineoldandroids_version = '2.4.0'
-    rxpermissions_version = "0.9.4@aar"
-    picasso_version = "2.5.2"
-    netcipher_version = "2.1.0"
-    localbroadcastmanager_version = "1.0.0"
-    exoplayer_version = "2.11.3"
-    okhttp3_version = "4.10.0"
-    okhttp3_logging_interceptor_version = "4.10.0"
-    debug_db_version = "1.0.6"
-    rxjava2_version = "2.2.19"
-    rxandroid2_version = "2.1.1"
-
-    appcompat = "androidx.appcompat:appcompat:1.6.1" // ok
-    xFragment_lib = "androidx.fragment:fragment:1.5.5" // ok
-    xActivity_lib = "androidx.activity:activity:1.6.0" // ok
-    xAnnotation_lib = 'androidx.annotation:annotation:1.6.0' // ok
-    // https://mvnrepository.com/artifact/com.eclipsesource.j2v8/j2v8
-    j2v8 = 'com.eclipsesource.j2v8:j2v8:6.2.1@aar' // ok
-
-    def work_manager_version = "2.8.0"
-    //  WorkManager,START
-    work_runtime = "androidx.work:work-runtime:$work_manager_version" // ok
-    work_runtime_ktx = "androidx.work:work-runtime-ktx:$work_manager_version" // ok
-    work_rxjava2 = "androidx.work:work-rxjava2:$work_manager_version" // ok
-    work_testing = "androidx.work:work-testing:$work_manager_version" // ok
-    work_gcm = "androidx.work:work-gcm:$work_manager_version" // ok
-    work_multiprocess = "androidx.work:work-multiprocess:$work_manager_version" // ok
-    //  WorkManager,END
-
-    kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:1.8.22" // ok
-
-    def databinding_version = "8.1.3"
-    databinding_runtime = "androidx.databinding:databinding-runtime:$databinding_version" // ok
-    databinding_adapters = "androidx.databinding:databinding-adapters:$databinding_version" // ok
-    databinding_ktx = "androidx.databinding:databinding-ktx:$databinding_version" // ok
-
-    // test
-    junit_version = '4.12'
-    test_junit_version = "1.1.3"
-    testRunner_version = '1.1.1'
-    espressoCore_version = '3.1.0'
-
-    junit = 'junit:junit:4.13.2'
-    // debug
-
-//    androidTest{
-//        android_test_junit = 'androidx.test.ext:junit:1.1.5'
-//        junit = 'junit:junit:4.13.2'
-//        espresso_core = 'androidx.test.espresso:espresso-core:3.5.1'
-//    }
 }

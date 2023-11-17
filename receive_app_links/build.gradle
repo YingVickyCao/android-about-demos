@@ -31,11 +31,12 @@ android {
 }
 
 dependencies {
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.constraintlayout
+    implementation libs.google.material
 
-    implementation rootProject.appcompat
-    implementation "com.google.android.material:material:${rootProject.ext.material_version}"
-    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintlayout_version}"
-    testImplementation "junit:junit:${rootProject.ext.junit_version}"
-    androidTestImplementation "androidx.test.ext:junit:${rootProject.ext.test_junit_version}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espressoCore_version}"
+    testImplementation libs.test.junit
+
+    androidTestImplementation libs.androidTest.junit
+    androidTestImplementation libs.androidTest.espressoCore
 }

@@ -40,6 +40,6 @@ dependencies {
 
     testImplementation libs.test.junit
 
-    androidTestImplementation libs.androidTest.androidx.runner
-    androidTestImplementation libs.androidTest.androidx.espressoCore
+    androidTestImplementation libs.androidTest.runner
+    androidTestImplementation libs.androidTest.espressoCore
 }

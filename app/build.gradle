@@ -98,33 +98,14 @@ dependencies {
     implementation libs.thirdparty.okhttp
     implementation libs.thirdparty.loggingInterceptor
     implementation libs.thirdparty.j2v8
-
-    // Error : Duplicate class kotlin.collections.jdk8.CollectionsJDK8Kt found in modules jetified-kotlin-stdlib-1.8.0 (org.jetbrains.kotlin:kotlin-stdlib:1.8.0) and jetified-kotlin-stdlib-jdk8-1.6.10 (org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10)
-    //Duplicate class kotlin.internal.jdk7.JDK7PlatformImplementations found in modules jetified-kotlin-stdlib-1.8.0 (org.jetbrains.kotlin:kotlin-stdlib:1.8.0) and jetified-kotlin-stdlib-jdk7-1.6.10 (org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.10)
-    //Duplicate class kotlin.internal.jdk8.JDK8PlatformImplementations found in modules jetified-kotlin-stdlib-1.8.0 (org.jetbrains.kotlin:kotlin-stdlib:1.8.0) and jetified-kotlin-stdlib-jdk8-1.6.10 (org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10)
-    // Fix : https://juejin.cn/post/7195113801035808823
-    constraints {
-        add("implementation", "org.jetbrains.kotlin:kotlin-stdlib-jdk7") {
-            version {
-                require("1.8.0")
-            }
-        }
-        add("implementation", "org.jetbrains.kotlin:kotlin-stdlib-jdk8") {
-            version {
-                require("1.8.0")
-            }
-        }
-    }
-
     implementation libs.kotlin.stdlib
-
     debugImplementation libs.debug.debugDb
 
     testImplementation libs.test.junit
 
-    androidTestImplementation libs.androidTest.androidx.junit
-    androidTestImplementation libs.androidTest.androidx.core
-    androidTestImplementation libs.androidTest.androidx.espressoCore
+    androidTestImplementation libs.androidTest.junit
+    androidTestImplementation libs.androidTest.core
+    androidTestImplementation libs.androidTest.espressoCore
 }
 
 // Allow references to generated code
