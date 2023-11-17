@@ -1,0 +1,13 @@
+# https://developer.android.google.cn/build/migrate-to-catalogs?hl=en#groovy
+[versions]
+ktx = "1.9.0"
+
+androidx_junit = "1.1.5"
+androidx_espresso_core = "3.5.1"
+
+[libraries]
+androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
+androidTest_androidx_junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx_junit" }
+androidTest_androidx_espressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx_espresso_core" }
+
+[plugins]
