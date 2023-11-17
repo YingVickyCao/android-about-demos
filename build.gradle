@@ -2,19 +2,18 @@
 
 buildscript {
     repositories {
+//        gradlePluginPortal()
         maven {
-            url 'https://maven.aliyun.com/repository/gradle-plugin'
+            url 'https://repo.nju.edu.cn/repository/maven-public/'
         }
-        google()
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'https://maven.aliyun.com/repository/central' }
-        mavenCentral()
-        maven { url 'https://maven.aliyun.com/repository/public' }
+//        google()
+//        mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.0.2'
+        classpath 'com.android.tools.build:gradle:8.1.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
+//        classpath "com.google.dagger:hilt-android-gradle-plugin:2.44"
     }
 }
 
@@ -24,14 +23,19 @@ buildscript {
 //    id 'org.jetbrains.kotlin.android' version '1.8.10' apply false
 //}
 
+//plugins {
+//    id 'com.google.dagger.hilt.android' version '2.44' apply false
+//}
+
+
 allprojects {
     repositories {
         mavenLocal()
-        google()
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        mavenCentral()
-        maven { url 'https://maven.aliyun.com/repository/central' }
-        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven {
+            url 'https://repo.nju.edu.cn/repository/maven-public/'
+        }
+//        google()
+//        mavenCentral()
     }
 }
 

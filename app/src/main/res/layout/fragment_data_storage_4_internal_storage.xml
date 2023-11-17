@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/page_internal_storage" />
+
+
+    <TextView
+        style="@style/tv"
+        android:text="Persistent files" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/access_persistent_files_using_filesdir"
+        style="@style/btn"
+        android:text="Access persistent files  using filesDir " />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/access_persistent_files_using_fileOutput"
+        style="@style/btn"
+        android:text="Access persistent files  using fileOutput " />
+
+    <View style="@style/div.red" />
+
+    <TextView
+        style="@style/tv"
+        android:text="Cache files" />
+</LinearLayout>
