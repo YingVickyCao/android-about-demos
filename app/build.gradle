@@ -68,8 +68,7 @@ dependencies {
     implementation project(':JavaLib')
     implementation project(':lib-android')
 
-//    implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompat_version}"
-//    implementation rootProject.ext.appcompat_lib
+    implementation rootProject.appcompat
     implementation rootProject.ext.xFragment_lib
     implementation rootProject.ext.xActivity_lib
     implementation rootProject.ext.xAnnotation_lib

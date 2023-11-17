@@ -1,0 +1,20 @@
+ext{
+
+    app={
+
+    }
+
+    plugin[
+
+    ]
+
+    dependencies{
+        test[
+
+        ]
+
+        androidTest[
+
+        ]
+    }
+}

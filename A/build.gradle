@@ -42,7 +42,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':lib-android')
 
-    implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompat_version}"
+    implementation rootProject.appcompat
     implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintlayout_version}"
     implementation "com.google.android.material:material:${rootProject.ext.material_version}"
 

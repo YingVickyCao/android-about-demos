@@ -30,7 +30,7 @@ android {
 
 dependencies {
 
-    implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompat_version}"
+    implementation rootProject.appcompat
     implementation "com.google.android.material:material:${rootProject.ext.material_version}"
     implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintlayout_version}"
     testImplementation "junit:junit:${rootProject.ext.junit_version}"

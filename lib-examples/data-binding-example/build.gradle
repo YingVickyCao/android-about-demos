@@ -1,11 +1,15 @@
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-}
+//plugins {
+//    id 'com.android.application'
+//    id 'org.jetbrains.kotlin.android'
+//    id 'kotlin-kapt' // kapt compiler plugin
+//}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     namespace 'com.hades.example.android.libexamples.data_binding'
-    compileSdk 34
+    compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
         applicationId "com.hades.example.android.libexamples.data_binding"
@@ -24,19 +28,32 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "17"
     }
+
+    dataBinding {
+        enabled true
+    }
+
+//    buildFeatures {
+//        dataBinding true
+//    }
 }
 
 dependencies {
     implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation rootProject.appcompat
 
-    testImplementation 'junit:junit:4.13.2'
+    // to support Data Binding
+    implementation rootProject.databinding_runtime
+    implementation rootProject.databinding_adapters
+    implementation rootProject.databinding_ktx
+
+    testImplementation rootProject.junit
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
