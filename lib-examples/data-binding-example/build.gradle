@@ -9,14 +9,15 @@ apply plugin: 'kotlin-kapt'
 
 android {
     namespace 'com.hades.example.android.libexamples.data_binding'
-    compileSdk rootProject.ext.compileSdkVersion
 
+    compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "com.hades.example.android.libexamples.data_binding"
-        minSdk 29
-        targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        minSdk rootProject.ext.compileSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -28,8 +29,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility rootProject.ext.sourceCompatibility
+        targetCompatibility rootProject.ext.targetCompatibility
     }
     kotlinOptions {
         jvmTarget = "17"

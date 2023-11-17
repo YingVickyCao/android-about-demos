@@ -15,7 +15,7 @@ buildscript {
 
     dependencies {
         classpath libs.plugin.androidGradle
-        classpath libs.kotlin.gradle.plugin
+        classpath libs.plugin.kotlinGradle
     }
 }
 
@@ -45,4 +45,7 @@ ext {
 
     versionCode = 1
     versionName = "1.0"
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
