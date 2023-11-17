@@ -38,13 +38,14 @@ include ':JavaLib'
 include ':lib-android'
 
 // When not use below modules, mark them to improve build speed
-include ':A'
-include ':B1'
-
-include ':A1'
-
-include ':assist'
-include ':B'
-include ':test'
-include ':receive_app_links'
-include ':other_app_having_app_links'
+//include ':A'
+//include ':B1'
+//
+//include ':A1'
+//
+//include ':assist'
+//include ':B'
+//include ':test'
+//include ':receive_app_links'
+//include ':other_app_having_app_links'
+//include ':hiltapp'
