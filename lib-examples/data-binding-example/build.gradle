@@ -33,7 +33,7 @@ android {
         targetCompatibility rootProject.ext.targetCompatibility
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = rootProject.ext.jvmTarget
     }
 
     dataBinding {
