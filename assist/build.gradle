@@ -32,9 +32,12 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation rootProject.appcompat
-    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintlayout_version}"
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.constraintlayout
+
+
     testImplementation "junit:junit:${rootProject.ext.junit_version}"
+
     androidTestImplementation "androidx.test:runner:${rootProject.ext.testRunner_version}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espressoCore_version}"
 }

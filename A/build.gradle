@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace 'com.hades.example.android.a'
+
 //    signingConfigs {
 //        debug_key {
 //            keyAlias 'debug_key'
@@ -35,18 +37,18 @@ android {
         targetCompatibility JavaVersion.VERSION_17
         sourceCompatibility JavaVersion.VERSION_17
     }
-    namespace 'com.hades.example.android.a'
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':lib-android')
 
-    implementation rootProject.appcompat
-    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintlayout_version}"
-    implementation "com.google.android.material:material:${rootProject.ext.material_version}"
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.constraintlayout
+    implementation libs.google.material
 
-    testImplementation "junit:junit:${rootProject.ext.junit_version}"
-    androidTestImplementation "androidx.test:runner:${rootProject.ext.testRunner_version}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espressoCore_version}"
+    testImplementation libs.test.junit
+
+    androidTestImplementation libs.androidTest.androidx.runner
+    androidTestImplementation libs.androidTest.androidx.espressoCore
 }

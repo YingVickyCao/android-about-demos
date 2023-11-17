@@ -79,29 +79,29 @@ ext {
     rxjava2_version = "2.2.19"
     rxandroid2_version = "2.1.1"
 
-    appcompat = "androidx.appcompat:appcompat:1.6.1"
-    xFragment_lib = "androidx.fragment:fragment:1.5.5"
-    xActivity_lib = "androidx.activity:activity:1.6.0"
-    xAnnotation_lib = 'androidx.annotation:annotation:1.6.0'
+    appcompat = "androidx.appcompat:appcompat:1.6.1" // ok
+    xFragment_lib = "androidx.fragment:fragment:1.5.5" // ok
+    xActivity_lib = "androidx.activity:activity:1.6.0" // ok
+    xAnnotation_lib = 'androidx.annotation:annotation:1.6.0' // ok
     // https://mvnrepository.com/artifact/com.eclipsesource.j2v8/j2v8
-    j2v8 = 'com.eclipsesource.j2v8:j2v8:6.2.1@aar'
+    j2v8 = 'com.eclipsesource.j2v8:j2v8:6.2.1@aar' // ok
 
     def work_manager_version = "2.8.0"
     //  WorkManager,START
-    work_runtime = "androidx.work:work-runtime:$work_manager_version"
-    work_runtime_ktx = "androidx.work:work-runtime-ktx:$work_manager_version"
-    work_rxjava2 = "androidx.work:work-rxjava2:$work_manager_version"
-    work_testing = "androidx.work:work-testing:$work_manager_version"
-    work_gcm = "androidx.work:work-gcm:$work_manager_version"
-    work_multiprocess = "androidx.work:work-multiprocess:$work_manager_version"
+    work_runtime = "androidx.work:work-runtime:$work_manager_version" // ok
+    work_runtime_ktx = "androidx.work:work-runtime-ktx:$work_manager_version" // ok
+    work_rxjava2 = "androidx.work:work-rxjava2:$work_manager_version" // ok
+    work_testing = "androidx.work:work-testing:$work_manager_version" // ok
+    work_gcm = "androidx.work:work-gcm:$work_manager_version" // ok
+    work_multiprocess = "androidx.work:work-multiprocess:$work_manager_version" // ok
     //  WorkManager,END
 
-    kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:1.8.22"
+    kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:1.8.22" // ok
 
     def databinding_version = "8.1.3"
-    databinding_runtime = "androidx.databinding:databinding-runtime:$databinding_version"
-    databinding_adapters = "androidx.databinding:databinding-adapters:$databinding_version"
-    databinding_ktx = "androidx.databinding:databinding-ktx:$databinding_version"
+    databinding_runtime = "androidx.databinding:databinding-runtime:$databinding_version" // ok
+    databinding_adapters = "androidx.databinding:databinding-adapters:$databinding_version" // ok
+    databinding_ktx = "androidx.databinding:databinding-ktx:$databinding_version" // ok
 
     // test
     junit_version = '4.12'

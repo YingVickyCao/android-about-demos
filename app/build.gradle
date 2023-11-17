@@ -68,42 +68,36 @@ dependencies {
     implementation project(':JavaLib')
     implementation project(':lib-android')
 
-    implementation rootProject.appcompat
-    implementation rootProject.ext.xFragment_lib
-    implementation rootProject.ext.xActivity_lib
-    implementation rootProject.ext.xAnnotation_lib
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.fragment
+    implementation libs.androidx.activity
+    implementation libs.androidx.annotation
+    implementation libs.androidx.constraintlayout
+    implementation libs.androidx.recyclerview
+    implementation libs.androidx.core
+    implementation libs.androidx.coreKtx
+    implementation libs.androidx.localbroadcastmanager
+    implementation libs.androidx.workRuntime
+    implementation libs.androidx.workRuntimeKtx
+    implementation libs.androidx.workRxJava
 
-//    implementation 'androidx.resourceinspection:resourceinspection-annotation:1.0.1'
-    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraintlayout_version}"
-    implementation "androidx.recyclerview:recyclerview:${rootProject.ext.recyclerview_version}"
-    implementation "androidx.core:core:${rootProject.ext.core_version}"
-    implementation "androidx.core:core-ktx:${rootProject.ext.core_ktx_version}"
-    implementation "androidx.localbroadcastmanager:localbroadcastmanager:${rootProject.ext.localbroadcastmanager_version}"
+    implementation libs.google.material
+    implementation libs.google.playServicesLocation
+    implementation libs.google.gson
+    implementation libs.google.exoplayer
+    // implementation libs.google.hiltAndroid
+    // kapt libs.google.hiltCompiler
+    // annotationProcessor libs.google.hiltAndroidCompiler
 
-    implementation "com.google.android.material:material:${rootProject.ext.material_version}"
-    implementation "com.google.android.gms:play-services-location:${rootProject.ext.play_services_location_version}"
-    implementation "com.google.code.gson:gson:${rootProject.ext.gson_version}"
-    implementation "com.google.android.exoplayer:exoplayer:${rootProject.ext.exoplayer_version}"
-
-    implementation "com.tbruyelle.rxpermissions2:rxpermissions:${rootProject.ext.rxpermissions_version}"
-    implementation "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxjava2_version}"
-    implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxandroid2_version}"
-    implementation "com.nineoldandroids:library:${rootProject.ext.nineoldandroids_version}"
-    implementation "com.squareup.picasso:picasso:${rootProject.ext.picasso_version}"
-    implementation "info.guardianproject.netcipher:netcipher:${rootProject.ext.netcipher_version}"
-
-    implementation "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttp3_version}"
-    implementation "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.okhttp3_logging_interceptor_version}"
-    implementation rootProject.ext.j2v8
-    implementation rootProject.ext.work_runtime
-    implementation rootProject.ext.work_runtime_ktx
-    implementation rootProject.ext.work_rxjava2
-
-    implementation rootProject.ext.kotlin_stdlib
-
-    debugImplementation "com.amitshekhar.android:debug-db:${rootProject.ext.debug_db_version}"
-    testImplementation "junit:junit:${rootProject.ext.junit_version}"
-
+    implementation libs.thirdparty.rxpermissions
+    implementation libs.thirdparty.rxjava2
+    implementation libs.thirdparty.rxandroid2
+    implementation libs.thirdparty.nineoldandroids
+    implementation libs.thirdparty.picasso
+    implementation libs.thirdparty.netcipher
+    implementation libs.thirdparty.okhttp
+    implementation libs.thirdparty.loggingInterceptor
+    implementation libs.thirdparty.j2v8
 
     // Error : Duplicate class kotlin.collections.jdk8.CollectionsJDK8Kt found in modules jetified-kotlin-stdlib-1.8.0 (org.jetbrains.kotlin:kotlin-stdlib:1.8.0) and jetified-kotlin-stdlib-jdk8-1.6.10 (org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10)
     //Duplicate class kotlin.internal.jdk7.JDK7PlatformImplementations found in modules jetified-kotlin-stdlib-1.8.0 (org.jetbrains.kotlin:kotlin-stdlib:1.8.0) and jetified-kotlin-stdlib-jdk7-1.6.10 (org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.10)
@@ -122,14 +116,15 @@ dependencies {
         }
     }
 
-//    implementation "com.google.dagger:hilt-android:2.44"
-//    kapt "com.google.dagger:hilt-compiler:2.44"
-//    annotationProcessor  "com.google.dagger:hilt-android-compiler:2.44"
+    implementation libs.kotlin.stdlib
 
-    androidTestImplementation "androidx.test.ext:junit:${rootProject.ext.test_junit_version}"
-    androidTestImplementation "androidx.test.ext:junit:1.1.3"
-    androidTestImplementation "androidx.test:core:1.5.0"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espressoCore_version}"
+    debugImplementation libs.debug.debugDb
+
+    testImplementation libs.test.junit
+
+    androidTestImplementation libs.androidTest.androidx.junit
+    androidTestImplementation libs.androidTest.androidx.core
+    androidTestImplementation libs.androidTest.androidx.espressoCore
 }
 
 // Allow references to generated code

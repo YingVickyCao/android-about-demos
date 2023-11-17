@@ -3,13 +3,13 @@ include ':app'      //  application
 include ':JavaLib'
 include ':lib-android'
 // When not use below modules, mark them to improve build speed
-//include ':A'        // application
-//include ':B1'       // application
-//include ':A1'       // application
-//include ':assist'   // application
-//include ':B'        // application
-//include ':receive_app_links'              // application
-//include ':other_app_having_app_links'     // application
+include ':A'        // application
+include ':B1'       // application
+include ':A1'       // application
+include ':assist'   // application
+include ':B'        // application
+include ':receive_app_links'              // application
+include ':other_app_having_app_links'     // application
 
 include ':data-binding-example' // application
 project(':data-binding-example').projectDir = new File('lib-examples/data-binding-example')
