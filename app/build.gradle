@@ -97,7 +97,11 @@ dependencies {
     implementation libs.thirdparty.netcipher
     implementation libs.thirdparty.okhttp
     implementation libs.thirdparty.loggingInterceptor
-    implementation libs.thirdparty.j2v8
+    implementation(libs.thirdparty.j2v8) {
+        artifact {
+            type = 'aar'
+        }
+    }
     implementation libs.kotlin.stdlib
     debugImplementation libs.debug.debugDb
 

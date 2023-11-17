@@ -1,6 +1,12 @@
 # https://developer.android.google.cn/build/migrate-to-catalogs?hl=en#groovy
+
+# How Gradle Version Catalog to support aar library?
+# https://stackoverflow.com/questions/69046247/gradle-version-catalog-specify-library-build-type
+# https://github.com/gradle/gradle/issues/16665
+
 [versions]
 # androidx, START
+kotlinGradlePlugin = "1.8.0"
 ktx = "1.9.0"
 appcompat = "1.6.1"
 fragment = "1.5.5"
@@ -11,12 +17,12 @@ recyclerview = "1.2.1"
 core = "1.0.2"
 core-ktx = "1.6.0"
 localbroadcastmanager = "1.0.0"
-work = "1.6.0"
+work = "2.8.1"
 # androidx, END
 
 # google, START
 material = "1.8.0"
-play-services-location = "18.0"
+play-services-location = "18.0.0"
 gson = "2.8.6"
 exoplayer = "2.11.3"
 hilt = "2.44"
@@ -26,10 +32,10 @@ hilt = "2.44"
 kotlin-stdlib = "1.8.22"
 
 # thirdy party. START
-rxpermissions = "0.9.4@aar"
-rxjava2 = "2.2.19"
+rxpermissions = "0.9.4"
+rxjava2 = "2.1.1"
 nineoldandroids = "2.4.0"
-j2v8 = "6.2.1@aar"
+j2v8 = "6.2.1"
 picasso = "2.5.2"
 netcipher = "2.1.0"
 okhttp = "4.10.0"
@@ -49,6 +55,10 @@ android_test_core = "1.5.0"
 android_test_espresso_core = "3.5.1"
 android_test_runner = "1.1.1"
 # androidTest, END
+
+# plugin, START
+androidGradlePlugin = "8.1.4"
+# plugin, END
 
 [libraries]
 androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
@@ -80,12 +90,13 @@ google-hiltAndroidCompiler = { group = "com.google.dagger", name = "hilt-android
 # google, END
 
 # thirdy party. START
-thirdparty-rxpermissions = { group = "com.tbruyelle.rxpermissions2", name = "rxpermissions", version.ref = "rxpermissions" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
+thirdparty-rxpermissions = { group = "com.tbruyelle.rxpermissions2", name = "rxpermissions", version.ref = "rxpermissions" }  # rxpermissions is "0.9.4@aar"
 thirdparty-rxjava2 = { group = "io.reactivex.rxjava2", name = "rxjava", version.ref = "rxjava2" }
 thirdparty-rxandroid2 = { group = "io.reactivex.rxjava2", name = "rxandroid", version.ref = "rxjava2" }
 thirdparty-nineoldandroids = { group = "com.nineoldandroids", name = "library", version.ref = "nineoldandroids" }
 # https://mvnrepository.com/artifact/com.eclipsesource.j2v8/j2v8
-thirdparty-j2v8 = { group = "com.eclipsesource.j2v8", name = "j2v8", version.ref = "j2v8" }
+thirdparty-j2v8 = { group = "com.eclipsesource.j2v8", name = "j2v8", version.ref = "j2v8" } # j2v8 is "6.2.1@aar"
 thirdparty-picasso = { group = "com.squareup.picasso", name = "picasso", version.ref = "picasso" }
 thirdparty-netcipher = { group = "info.guardianproject.netcipher", name = "netcipher", version.ref = "netcipher" }
 thirdparty-okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
@@ -109,5 +120,9 @@ androidTest_core = { group = "androidx.test", name = "core", version.ref = "andr
 androidTest_espressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "android_test_espresso_core" }
 androidTest_runner = { group = "androidx.test", name = "runner", version.ref = "android_test_runner" }
 # androidTest, END
+
+# plugin, START
+plugin-androidGradle = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
+# plugin, END
 
 [plugins]
