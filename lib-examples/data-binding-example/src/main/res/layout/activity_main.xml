@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.hades.example.android.libexamples.data_binding.User" />
+
+    </data>
+
+    <!--The Data Binding Library automatically generates the classes required to bind the views in the layout with your data objects.-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Data Binding Library Example"
+            android:textColor="@android:color/holo_purple"
+            android:textSize="25sp" />
+
+
+        <!--    <androidx.appcompat.widget.AppCompatTextView-->
+        <!--        android:id="@+id/sample_txt"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_centerInParent="true"-->
+        <!--        android:text="@{viewModel.userName}" />-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <!--        android:text="@{user.firstName}"-->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{user.firstName??user.lastName}" />
+
+            <!--  the TextView view references an EditText view in the same layout:          -->
+            <EditText
+                android:id="@+id/example_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Please input a value" />
+
+            <TextView
+                android:id="@+id/example_output"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{exampleText.text}" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/setData"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/clearData"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            android:text="Set data"
+            android:textAllCaps="false" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/clearData"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Clear data"
+            android:textAllCaps="false" />
+
+    </RelativeLayout>
+</layout>
