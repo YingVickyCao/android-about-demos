@@ -23,17 +23,17 @@ public class MyView extends TextView {
     int colorId;
     Paint paint = new Paint();
 
-    public MyView(Context context) {
+    public MyView(Context context) { // 用于直接new view
         super(context);
         Log.d(TAG, "MyView: 1");
     }
 
-    public MyView(Context context, @Nullable AttributeSet attrs) {
+    public MyView(Context context, @Nullable AttributeSet attrs) { // 在xml中设置一个view
         this(context, attrs, R.attr.MyViewStyle);
         Log.d(TAG, "MyView: 2");
     }
 
-    public MyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public MyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) { // style
         super(context, attrs, defStyleAttr, defStyleAttr);
         Log.d(TAG, "MyView: 3-------->");
 
@@ -52,10 +52,21 @@ public class MyView extends TextView {
         Log.d(TAG, "MyView: 3<--------");
     }
 
-    public MyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    /**
+     * 优先级：xml 直接定义 > xml中的style引用 > defStyleAttr > defStyleRes > theme 直接定义
+     * https://blog.csdn.net/tianjf0514/article/details/125822783
+     *
+     * @param context
+     * @param attrs        从xml中定义的参数
+     * @param defStyleAttr 主题中优先级较高的属性
+     * @param defStyleRes  优先级次之的View的内置style
+     */
+
+    public MyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) { // theme style
         super(context, attrs, defStyleAttr, defStyleRes);
         Log.d(TAG, "MyView: 4");
     }
+
 
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
