@@ -3,7 +3,7 @@
     android:shape="rectangle">
     <!--    <solid android:color="@color/light_bg_1" />-->
     <!-- When light_bg_1, toast 跟 body 区分 不明显，改为light_bg_2 -->
-    <solid android:color="@color/light_bg_1" />
+    <solid android:color="@color/bg_1_light" />
     <padding
         android:bottom="20dp"
         android:left="20dp"

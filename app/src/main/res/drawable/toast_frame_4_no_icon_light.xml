@@ -2,6 +2,6 @@
     android:shape="rectangle">
     <!-- background is material_grey_200 with .9 alpha -->
 <!--    <solid android:color="@color/light_bg_1" />-->
-    <solid android:color="@color/light_bg_2" />
+    <solid android:color="@color/bg_2_light" />
     <corners android:radius="22dp" />
 </shape>

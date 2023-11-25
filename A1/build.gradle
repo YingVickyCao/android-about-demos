@@ -4,7 +4,6 @@ android {
     namespace 'com.hades.example.android.a1'
 
     compileSdk rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.hades.example.android.a1"

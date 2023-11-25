@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
+import com.hades.example.android.lib.utils.ThemeTools;
 
 /*
 // Instance1
@@ -90,9 +91,8 @@ public class RectView extends TextView {
         Log.d(TAG, "RectView: 3,text=" + text + ",size=" + size + ",size_300_dp=" + size_300_dp + ",size_300_px=" + size_300_px);
         setText(text);
 
-        CustomViewTools tools = new CustomViewTools();
-        tools.printAttributeSet(TAG, attrs);
-        tools.printTypedArray(TAG, typedArray);
+        ThemeTools.printAttributeSet(TAG, attrs);
+        ThemeTools.printTypedArray(TAG, typedArray);
 
         typedArray.recycle();
         Log.d(TAG, "RectView: 3,<-------");

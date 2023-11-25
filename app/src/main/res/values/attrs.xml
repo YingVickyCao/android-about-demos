@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RequiredTextView">
+        <attr name="android:text" />
+        <attr name="prefix" format="string" />
+        <attr name="prefix_color" format="color" />
+    </declare-styleable>
+    <attr name="RequiredTextView_style" format="reference" />
+
+    <declare-styleable name="RectView">
+        <attr name="rvText" format="reference" />
+        <attr name="rvSize" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="MyView">
+        <attr name="bgColor" format="reference" />
+    </declare-styleable>
+
+    <attr name="bg_0" format="reference" />
+
+    <attr name="m_0" format="reference" />
+    <attr name="m_0_with_opacity" format="reference" />
+
+    <attr name="color1" format="reference" />
+    <attr name="color2" format="reference" />
+    <attr name="color3" format="reference" />
+    <attr name="color4" format="reference" />
+    <attr name="link_0" format="reference" />
+    <attr name="link_0_active" format="reference" />
+    <attr name="textDisable" format="reference" />
+    <attr name="star_off" format="reference" />
+    <attr name="star_on" format="reference" />
+    <attr name="warning" format="reference" />
+
+    <attr name="pageRootBg" format="color" />
+    <attr name="seekThumbColor" format="color" />
+    <attr name="seekProgressDrawableColor" format="color" />
+    <attr name="seekBg" format="color" />
+
+    <!--  阴影程度：由 shadow_radius，shadow_*Radius，child_base_margin，共同决定  -->
+    <declare-styleable name="ShadowViewGroup">
+        <attr name="bg_radius" format="dimension" />
+        <attr name="bg_color" format="color" />
+        <attr name="shadow_color" format="color" />
+        <attr name="shadow_radius" format="dimension" />
+        <attr name="shadow_leftRadius" format="dimension" />
+        <attr name="shadow_rightRadius" format="dimension" />
+        <attr name="shadow_topRadius" format="dimension" />
+        <attr name="shadow_bottomRadius" format="dimension" />
+        <!--         child_base_margin =  shadow_radius -->
+        <attr name="child_base_margin" format="dimension" />
+        <attr name="container_cornerRadius" format="dimension" />
+        <attr name="shadow_enable" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="MessageState">
+        <attr name="state_message_unread" format="boolean" />
+        <attr name="state_message_read" format="boolean" />
+    </declare-styleable>
+
+    <!-- 定义一个styleable对象来组合多个属性 -->
+    <declare-styleable name="AlphaImageView">
+        <attr name="duration" />
+    </declare-styleable>
+    <!-- 定义一个属性 -->
+    <!--<attr name="duration" />-->
+    <attr name="duration" format="integer" />
+
+    <item name="fragmentRoot" type="id" />
+
+    <declare-styleable name="CustomViews">
+        <attr name="MyViewStyle" format="reference" />
+        <attr name="rectViewStyle" format="reference" />
+        <attr name="ColorsIntegerArray" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="theme">
+        <attr name="ui_mode" format="enum" />
+    </declare-styleable>
+
+</resources>

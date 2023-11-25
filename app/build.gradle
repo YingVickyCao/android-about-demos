@@ -19,7 +19,6 @@ android {
     }
 
     compileSdk rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.hades.example.android"

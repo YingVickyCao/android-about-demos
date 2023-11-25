@@ -13,3 +13,4 @@ include ':other_app_having_app_links'     // application
 
 include ':data-binding-example' // application
 project(':data-binding-example').projectDir = new File('lib-examples/data-binding-example')
+include ':custom_theme'

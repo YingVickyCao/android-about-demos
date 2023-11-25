@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--    <style name="CustomTheme_dark">-->
+    <!--        <item name="theme_mode">dark</item>-->
+    <!--    </style>-->
+
+    <style name="originButton" parent="@style/Widget.AppCompat.Button">
+        <item name="android:background">@color/btn_dark</item>
+    </style>
+
+    <style name="nonButtonStyle">
+        <item name="buttonStyle">@style/originButton</item>
+    </style>
+</resources>

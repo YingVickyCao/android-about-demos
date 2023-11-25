@@ -84,7 +84,7 @@ public class TestToastFragment extends Fragment {
     }
 
     private void toastWithoutIconInDarkTheme() {
-        root.setBackgroundColor(getResources().getColor(R.color.dark_bg_0, null));
+        root.setBackgroundColor(getResources().getColor(R.color.bg_0_dark, null));
         Toast toast = new Toast(getUsedContext());
         toast.setGravity(Gravity.CENTER, 0, 0);
 
@@ -95,7 +95,7 @@ public class TestToastFragment extends Fragment {
 
 
     private void toastWithoutIconInLightTheme() {
-        root.setBackgroundColor(getResources().getColor(R.color.light_bg_0, null));
+        root.setBackgroundColor(getResources().getColor(R.color.bg_0_light, null));
 
         Toast toast = new Toast(getUsedContext());
         toast.setGravity(Gravity.CENTER, 0, 0);
@@ -106,7 +106,7 @@ public class TestToastFragment extends Fragment {
     }
 
     private void toastWithIconInDarkTheme() {
-        root.setBackgroundColor(getResources().getColor(R.color.dark_bg_0, null));
+        root.setBackgroundColor(getResources().getColor(R.color.bg_0_dark, null));
         Toast toast = new Toast(getUsedContext());
         toast.setGravity(Gravity.CENTER, 0, 0);
 
@@ -116,7 +116,7 @@ public class TestToastFragment extends Fragment {
     }
 
     private void toastWithIconInLightTheme() {
-        root.setBackgroundColor(getResources().getColor(R.color.light_bg_0, null));
+        root.setBackgroundColor(getResources().getColor(R.color.bg_0_light, null));
 
         Toast toast = new Toast(getUsedContext());
         toast.setGravity(Gravity.CENTER, 0, 0);
@@ -127,7 +127,7 @@ public class TestToastFragment extends Fragment {
     }
 
     private void toastWithIconInLightTheme2() {
-        root.setBackgroundColor(getResources().getColor(R.color.light_bg_0, null));
+        root.setBackgroundColor(getResources().getColor(R.color.bg_0_light, null));
 
         Toast toast = new Toast(getUsedContext());
         toast.setGravity(Gravity.CENTER, 0, 0);
@@ -138,7 +138,7 @@ public class TestToastFragment extends Fragment {
     }
 
     private void toastWithIconInLightTheme3() {
-        root.setBackgroundColor(getResources().getColor(R.color.light_bg_0, null));
+        root.setBackgroundColor(getResources().getColor(R.color.bg_0_light, null));
 
         Toast toast = new Toast(getUsedContext());
         toast.setGravity(Gravity.CENTER, 0, 0);

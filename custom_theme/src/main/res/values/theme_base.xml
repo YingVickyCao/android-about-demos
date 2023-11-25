@@ -1,0 +1,9 @@
+<resources>
+
+    <style name="OriginTheme" parent="Theme.AppCompat.DayNight.DarkActionBar" />
+
+    <style name="AppTheme" parent="OriginTheme">
+<!--        <item name="android:buttonStyle">@style/themeButton</item>-->
+        <item name="theme_mode">theme</item>
+    </style>
+</resources>

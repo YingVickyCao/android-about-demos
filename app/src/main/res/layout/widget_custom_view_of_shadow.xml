@@ -151,7 +151,7 @@
                         app:child_base_margin="8dp"
                         app:container_cornerRadius="0dp"
                         app:shadow_bottomRadius="8dp"
-                        app:shadow_color="@color/s_0_light_red"
+                        app:shadow_color="@color/s_0_red_light"
                         app:shadow_enable="true"
                         app:shadow_leftRadius="8dp"
                         app:shadow_radius="8dp"

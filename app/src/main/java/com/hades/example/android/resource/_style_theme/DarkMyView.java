@@ -31,18 +31,18 @@ public class DarkMyView extends MyViewBase {
     @ColorInt
     protected int getColor2() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return getResources().getColor(R.color.light_m_0_opacity_30, getContext().getTheme());
+            return getResources().getColor(R.color.m_0_opacity_30_light, getContext().getTheme());
         } else {
-            return getResources().getColor(R.color.light_m_0_opacity_30);
+            return getResources().getColor(R.color.m_0_opacity_30_light);
         }
     }
 
     @ColorInt
     protected int getColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return getResources().getColor(R.color.light_m_0, getContext().getTheme());
+            return getResources().getColor(R.color.m_0_light, getContext().getTheme());
         } else {
-            return getResources().getColor(R.color.light_m_0);
+            return getResources().getColor(R.color.m_0_light);
         }
     }
 

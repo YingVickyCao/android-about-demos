@@ -16,7 +16,7 @@
 <nine-patch xmlns:android="http://schemas.android.com/apk/res/android"
     android:dither="false"
     android:src="@drawable/shadow_3"
-    android:tint="@color/light_s_0" />
+    android:tint="@color/s_0_light" />
 
     <!--    android:src="@drawable/ab_solid_shadow_mtrl_alpha"-->
     <!--    android:tint="@color/light_s_0_E_red"-->

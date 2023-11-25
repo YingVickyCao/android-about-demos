@@ -29,7 +29,7 @@
             android:gravity="center"
             android:text="123"
             android:textSize="@dimen/text_size_20"
-            android:textColor="@color/light_text_0" />
+            android:textColor="@color/text_0_light" />
     </LinearLayout>
 
     <com.hades.example.android._feature.menu_manager.menu_page.ToggleChildContainer
@@ -43,6 +43,6 @@
         android:id="@+id/div"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/light_border"
+        android:background="@color/border_light"
         android:visibility="visible" />
 </LinearLayout>

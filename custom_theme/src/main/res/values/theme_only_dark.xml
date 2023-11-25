@@ -1,0 +1,7 @@
+<resources>
+
+    <style name="OnlyDarkAppTheme" parent="OriginTheme">
+<!--        <item name="android:buttonStyle">@style/darkButton</item>-->
+        <item name="theme_mode">dark</item>
+    </style>
+</resources>

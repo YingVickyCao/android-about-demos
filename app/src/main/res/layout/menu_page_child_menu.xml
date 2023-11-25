@@ -2,14 +2,14 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="31dp"
-    android:background="@color/light_bg_0"
+    android:background="@color/bg_0_light"
     android:gravity="center_vertical">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_1"
         android:layout_marginStart="@dimen/margin_huge"
-        android:background="@color/light_border" />
+        android:background="@color/border_light" />
 
     <TextView
         android:id="@+id/child_menu_title"

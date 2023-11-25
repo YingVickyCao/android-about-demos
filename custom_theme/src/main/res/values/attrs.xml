@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 如何通过继承View，来支持自定义样式？ -->
+    <!--    <declare-styleable name="CustomTheme">-->
+    <!--        <attr name="theme_mode" format="enum">-->
+    <!--            <enum name="theme" value="0" />-->
+    <!--            <enum name="light" value="1" />-->
+    <!--            <enum name="dark" value="2" />-->
+    <!--            <enum name="non" value="3" />-->
+    <!--        </attr>-->
+    <!--    </declare-styleable>-->
+    <attr name="theme_mode" format="enum">
+        <enum name="theme" value="0" />
+        <enum name="light" value="1" />
+        <enum name="dark" value="2" />
+        <enum name="non" value="3" />
+    </attr>
+    <!--    <attr name="CustomTheme_style" format="reference" />-->
+
+    <declare-styleable name="Button">
+        <attr name="android:buttonStyle" format="reference" />
+    </declare-styleable>
+
+    <attr name="btn_state_normal" />
+    <attr name="btn_state_focus" />
+    <attr name="btn_state_pressed" />
+    <attr name="btn_state_disable" />
+
+</resources>

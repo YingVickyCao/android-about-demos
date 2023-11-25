@@ -100,16 +100,16 @@ public class ThemeChoosePageAActivity extends BaseActivity {
 
 
     protected void setLightTheme() {
-        boolean isRedTheme = com.hades.example.java.lib.MemoryCache.getInstance().isRedTheme();
+        boolean isRedTheme = MemoryCache.getInstance().isRedTheme();
         if (isRedTheme) {
             return;
         }
-        com.hades.example.java.lib.MemoryCache.getInstance().useRedTheme(true);
+        MemoryCache.getInstance().useRedTheme(true);
         applyTheme();
     }
 
     protected void setDarkTheme() {
-        boolean isRedTheme = com.hades.example.java.lib.MemoryCache.getInstance().isRedTheme();
+        boolean isRedTheme = MemoryCache.getInstance().isRedTheme();
         if (!isRedTheme) {
             return;
         }
@@ -124,7 +124,7 @@ public class ThemeChoosePageAActivity extends BaseActivity {
     }
 
     protected void setTheme() {
-        boolean isLightTheme = com.hades.example.java.lib.MemoryCache.getInstance().isRedTheme();
+        boolean isLightTheme = MemoryCache.getInstance().isRedTheme();
         if (isLightTheme) {
             setTheme(R.style.ThemeChoose_Light);
         } else {
