@@ -1,18 +1,15 @@
 package com.hades.example.android.custom_theme;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.view.ViewCompat;
 
-import com.hades.example.android.lib.utils.CustomViewTools;
+import com.hades.example.android.lib.utils.ThemeTools;
 
 import java.util.Objects;
 
@@ -41,15 +38,15 @@ public class CustomAppCompatButton extends AppCompatButton {
 
     private void setStyle(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, new int[]{}, defStyleAttr, R.style.themeButtonStyle);
-        CustomViewTools.printAttributeSet("CustomAppCompatButton", attrs);
-        CustomViewTools.printTypedArray("CustomAppCompatButton", typedArray);
-        String themeMode = CustomViewTools.getValueFromAttributeSet("CustomAppCompatButton", attrs);
+        ThemeTools.printAttributeSet("CustomAppCompatButton", attrs);
+        ThemeTools.printTypedArray("CustomAppCompatButton", typedArray);
+        String themeMode = ThemeTools.getValueFromAttributeSet("CustomAppCompatButton", attrs);
         applyTheme(themeMode);
         typedArray.recycle();
     }
 
     private void setStyle(@Nullable AttributeSet attrs) {
-        String themeMode = CustomViewTools.getValueFromAttributeSet("CustomAppCompatButton", attrs);
+        String themeMode = ThemeTools.getValueFromAttributeSet("CustomAppCompatButton", attrs);
         applyTheme(themeMode);
     }
 

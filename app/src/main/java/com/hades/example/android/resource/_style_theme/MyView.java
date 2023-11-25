@@ -14,7 +14,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.CustomViewTools;
+import com.hades.example.android.lib.utils.ThemeTools;
 
 @SuppressLint("AppCompatCustomView")
 public class MyView extends TextView {
@@ -42,8 +42,8 @@ public class MyView extends TextView {
         if (null == typedArray) {
             return;
         }
-        CustomViewTools.printAttributeSet(TAG, attrs);
-        CustomViewTools.printTypedArray(TAG, typedArray);
+        ThemeTools.printAttributeSet(TAG, attrs);
+        ThemeTools.printTypedArray(TAG, typedArray);
 
         colorId = typedArray.getColor(R.styleable.MyView_bgColor, Color.RED);
         Log.d(TAG, "MyView: colorId=" + colorId);
