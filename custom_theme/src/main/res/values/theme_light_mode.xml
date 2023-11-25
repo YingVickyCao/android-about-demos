@@ -1,0 +1,10 @@
+<resources>
+
+    <style name="LightAppTheme" parent="AppTheme">
+        <!--        <item name="CustomTheme_style">@style/CustomTheme_light</item>-->
+        <item name="btn_state_normal">@android:color/holo_red_light</item>>
+        <item name="btn_state_focus">@android:color/holo_orange_dark</item>
+        <item name="btn_state_pressed">@android:color/holo_red_dark</item>
+        <item name="btn_state_disable">@android:color/darker_gray</item>>
+    </style>
+</resources>

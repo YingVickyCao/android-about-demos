@@ -5,11 +5,11 @@
     <!--        <item name="theme_mode">dark</item>-->
     <!--    </style>-->
 
-    <style name="darkButton" parent="@style/Widget.AppCompat.Button">
+    <style name="originButton" parent="@style/Widget.AppCompat.Button">
         <item name="android:background">@color/btn_dark</item>
     </style>
 
-    <style name="darkButtonStyle">
-        <item name="android:buttonStyle">@style/darkButton</item>
+    <style name="nonButtonStyle">
+        <item name="buttonStyle">@style/originButton</item>
     </style>
 </resources>
