@@ -26,6 +26,7 @@
         android:orientation="vertical">
 
         <com.hades.example.android.custom_theme.CustomAppCompatButton
+            android:id="@+id/themeBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -34,32 +35,35 @@
             android:textAllCaps="false"
             app:theme_mode="theme" />
 
-        <com.hades.example.android.custom_theme.CustomAppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="@dimen/size_8"
-            android:text="Only light button"
-            android:textAllCaps="false"
-            app:theme_mode="light" />
+<!--        <com.hades.example.android.custom_theme.CustomAppCompatButton-->
+<!--            android:id="@+id/lightBtn"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:layout_marginTop="@dimen/size_8"-->
+<!--            android:text="Only light button"-->
+<!--            android:textAllCaps="false"-->
+<!--            app:theme_mode="light" />-->
 
-        <com.hades.example.android.custom_theme.CustomAppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="@dimen/size_8"
-            android:text="Only dark button"
-            android:textAllCaps="false"
-            app:theme_mode="dark" />
+<!--        <com.hades.example.android.custom_theme.CustomAppCompatButton-->
+<!--            android:id="@+id/darkBtn"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:layout_marginTop="@dimen/size_8"-->
+<!--            android:text="Only dark button"-->
+<!--            android:textAllCaps="false"-->
+<!--            app:theme_mode="dark" />-->
 
-        <com.hades.example.android.custom_theme.CustomAppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="@dimen/size_8"
-            android:background="@android:color/holo_purple"
-            android:text="Non theme button"
-            android:textAllCaps="false"
-            app:theme_mode="non" />
+<!--        <com.hades.example.android.custom_theme.CustomAppCompatButton-->
+<!--            android:id="@+id/noThemeBtn"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:layout_marginTop="@dimen/size_8"-->
+<!--            android:background="@android:color/holo_purple"-->
+<!--            android:text="Non theme button"-->
+<!--            android:textAllCaps="false"-->
+<!--            app:theme_mode="non" />-->
     </LinearLayout>
 </RelativeLayout>

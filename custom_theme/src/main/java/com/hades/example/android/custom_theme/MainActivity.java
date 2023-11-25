@@ -17,12 +17,18 @@ public class MainActivity extends AppCompatActivity {
         setThemeMode();
 
         findViewById(R.id.changeTheme).setOnClickListener(view -> changeTheme());
+        findViewById(R.id.themeBtn).setOnClickListener(view -> changeColor());
     }
 
     private void changeTheme() {
         isLightTheme = !isLightTheme;
         finish();
         TaskStackBuilder.create(this).addNextIntent(getIntent()).startActivities();
+    }
+
+    private void changeColor() {
+//        findViewById(R.id.themeBtn).setBackgroundColor(getColor(android.R.color.holo_blue_bright));
+        findViewById(R.id.themeBtn).setBackgroundResource(R.color.btn_light);
     }
 
     private void setTheme() {

@@ -1,13 +1,15 @@
 package com.hades.example.android.custom_theme;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.view.ViewCompat;
 
 import com.hades.example.android.lib.utils.CustomViewTools;
 
@@ -23,17 +25,21 @@ public class CustomAppCompatButton extends AppCompatButton {
     public CustomAppCompatButton(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, R.attr.buttonStyle);
     }
-    
+
     public CustomAppCompatButton(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setTheme(context, attrs, defStyleAttr);
+//        setStyle(context, attrs, defStyleAttr);
     }
 
-    private void setTheme(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    private void setStyle(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, new int[]{}, defStyleAttr, R.style.themeButtonStyle);
+        CustomViewTools.printAttributeSet("CustomAppCompatButton", attrs);
+        CustomViewTools.printTypedArray("CustomAppCompatButton", typedArray);
         String themeMode = CustomViewTools.getValueFromAttributeSet("CustomAppCompatButton", attrs);
         if (Objects.equals(themeMode, ThemeModules.THEME)) {
             setBackgroundResource(R.color.btn);
+//            final ColorStateList backgroundTintList = AppCompatResources.getColorStateList(context, R.color.btn);
+//            ViewCompat.setBackgroundTintList(this, backgroundTintList);
         } else if (Objects.equals(themeMode, ThemeModules.DARK)) {
             setBackgroundResource(R.color.btn_dark);
         } else if (Objects.equals(themeMode, ThemeModules.LIGHT)) {
@@ -41,5 +47,4 @@ public class CustomAppCompatButton extends AppCompatButton {
         }
         typedArray.recycle();
     }
-
 }
