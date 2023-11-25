@@ -1,6 +1,6 @@
 <resources>
 
     <style name="DarkAppTheme" parent="AppTheme">
-<!--        <item name="CustomTheme_style">@style/CustomTheme_dark</item>-->
+        <item name="CustomTheme_style">@style/CustomTheme_dark</item>
     </style>
 </resources>

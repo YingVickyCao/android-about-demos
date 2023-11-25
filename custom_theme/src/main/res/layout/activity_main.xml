@@ -11,6 +11,12 @@
         android:text="Change Theme"
         android:textAllCaps="false" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/themeMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
