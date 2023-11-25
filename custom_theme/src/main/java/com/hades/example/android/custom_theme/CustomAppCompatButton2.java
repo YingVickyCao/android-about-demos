@@ -1,42 +1,34 @@
 package com.hades.example.android.custom_theme;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.content.res.AppCompatResources;
-import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.view.ViewCompat;
 
 import com.hades.example.android.lib.utils.CustomViewTools;
 
 import java.util.Objects;
 
-public class CustomAppCompatButton extends AppCompatButton {
+public class CustomAppCompatButton2 extends AppCompatButton {
     private static final String TAG = "CustomAppCompatButton";
 
-    public CustomAppCompatButton(@NonNull Context context) {
+    public CustomAppCompatButton2(@NonNull Context context) {
         this(context, ThemeModules.THEME);
     }
 
-    public CustomAppCompatButton(@NonNull Context context, @ThemeModules String mode) {
+    public CustomAppCompatButton2(@NonNull Context context, @ThemeModules String mode) {
         super(context, null);
         applyTheme(mode);
     }
 
-//    public CustomAppCompatButton(@NonNull Context context, @Nullable AttributeSet attrs) {
-//        this(context, attrs, R.attr.buttonStyle);
-//    }
-
-    public CustomAppCompatButton(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(new ContextThemeWrapper(context, R.style.themeButtonStyle), attrs, R.attr.buttonStyle);
+    public CustomAppCompatButton2(@NonNull Context context, @Nullable AttributeSet attrs) {
+        this(context, attrs, R.attr.buttonStyle);
     }
 
-    public CustomAppCompatButton(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CustomAppCompatButton2(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setStyle(context, attrs, defStyleAttr);
 //        setStyle(attrs);
@@ -57,12 +49,12 @@ public class CustomAppCompatButton extends AppCompatButton {
     }
 
     private void applyTheme(String themeMode) {
-//        if (Objects.equals(themeMode, ThemeModules.THEME)) {
-//            setBackgroundResource(R.color.btn);
-//        } else if (Objects.equals(themeMode, ThemeModules.DARK)) {
-//            setBackgroundResource(R.color.btn_dark);
-//        } else if (Objects.equals(themeMode, ThemeModules.LIGHT)) {
-//            setBackgroundResource(R.color.btn_light);
-//        }
+        if (Objects.equals(themeMode, ThemeModules.THEME)) {
+            setBackgroundResource(R.color.btn);
+        } else if (Objects.equals(themeMode, ThemeModules.DARK)) {
+            setBackgroundResource(R.color.btn_dark);
+        } else if (Objects.equals(themeMode, ThemeModules.LIGHT)) {
+            setBackgroundResource(R.color.btn_light);
+        }
     }
 }
