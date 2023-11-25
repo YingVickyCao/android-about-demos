@@ -23,6 +23,6 @@
         android:gravity="center"
         android:shadowRadius="2.75"
         android:text="@string/cv_toast_example"
-        android:textColor="@color/light_text_0"
+        android:textColor="@color/text_0_light"
         android:textSize="14sp" />
 </LinearLayout>

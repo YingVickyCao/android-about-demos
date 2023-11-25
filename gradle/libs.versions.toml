@@ -8,31 +8,32 @@
 # androidx, START
 ktx = "1.9.0"
 appcompat = "1.6.1"
-fragment = "1.5.5"
-activity = "1.6.0"
+fragment = "1.5.6"
+activity = "1.7.0"
 annotation = "1.6.0"
-constraintlayout = "2.1.3"
-recyclerview = "1.2.1"
-core = "1.0.2"
-core-ktx = "1.6.0"
-localbroadcastmanager = "1.0.0"
+constraintlayout = "2.1.4"
+recyclerview = "1.3.0"
+core = "1.9.0"
+core-ktx = "1.9.0"
+localbroadcastmanager = "1.1.0"
 work = "2.8.1"
 # androidx, END
 
 # google, START
 material = "1.8.0"
-play-services-location = "18.0.0"
-gson = "2.8.6"
+play-services-location = "21.0.1"
+gson = "2.10.1"
 exoplayer = "2.11.3"
 hilt = "2.44"
 
 # google, END
 
-kotlin-stdlib = "1.8.22"
+kotlin-stdlib = "1.9.20"
 
 # thirdy party. START
 rxpermissions = "0.9.4"
-rxjava2 = "2.1.1"
+rxjava2 = "2.2.19"
+rxAndroid2 = "2.1.1"
 nineoldandroids = "2.4.0"
 j2v8 = "6.2.1"
 picasso = "2.5.2"
@@ -57,7 +58,7 @@ android_test_runner = "1.1.1"
 
 # plugin, START
 androidGradlePlugin = "8.1.4"
-kotlinGradlePlugin = "1.8.0"
+kotlinGradlePlugin = "1.9.0"
 # plugin, END
 
 [libraries]
@@ -92,7 +93,7 @@ google-hiltAndroidCompiler = { group = "com.google.dagger", name = "hilt-android
 # thirdy party. START
 thirdparty-rxpermissions = { group = "com.tbruyelle.rxpermissions2", name = "rxpermissions", version.ref = "rxpermissions" }  # rxpermissions is "0.9.4@aar"
 thirdparty-rxjava2 = { group = "io.reactivex.rxjava2", name = "rxjava", version.ref = "rxjava2" }
-thirdparty-rxandroid2 = { group = "io.reactivex.rxjava2", name = "rxandroid", version.ref = "rxjava2" }
+thirdparty-rxandroid2 = { group = "io.reactivex.rxjava2", name = "rxandroid", version.ref = "rxAndroid2" }
 thirdparty-nineoldandroids = { group = "com.nineoldandroids", name = "library", version.ref = "nineoldandroids" }
 # https://mvnrepository.com/artifact/com.eclipsesource.j2v8/j2v8
 thirdparty-j2v8 = { group = "com.eclipsesource.j2v8", name = "j2v8", version.ref = "j2v8" } # j2v8 is "6.2.1@aar"

@@ -106,7 +106,7 @@
     <style name="ConstrainLayoutStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/constrain_layout_height</item>
-        <item name="android:background">@color/light_m_0_opacity_30</item>
+        <item name="android:background">@color/m_0_opacity_30_light</item>
         <item name="android:layout_marginTop">@dimen/margin_tiny</item>
     </style>
 
@@ -140,7 +140,7 @@
     </style>
 
     <style name="menu_page" parent="DialogFragmentShowAsFullDialog">
-        <item name="android:windowBackground">@color/light_bg_0</item>
+        <item name="android:windowBackground">@color/bg_0_light</item>
     </style>
 
     <style name="MyPopupWindowStyle" parent="Widget.AppCompat.PopupWindow">
@@ -391,7 +391,7 @@
         <item name="bg_radius">0dp</item>
         <item name="bg_color">@android:color/transparent</item>
         <item name="shadow_radius">10dp</item>
-        <item name="shadow_color">@color/s_0_light_red</item>
+        <item name="shadow_color">@color/s_0_red_light</item>
         <item name="shadow_topRadius">10dp</item>
         <item name="shadow_rightRadius">10dp</item>
         <item name="shadow_leftRadius">10dp</item>
@@ -422,7 +422,7 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowContentOverlay">@null</item>
 
-        <item name="android:colorBackground">@color/dark_bg_0</item>
+        <item name="android:colorBackground">@color/bg_0_dark</item>
         <item name="android:windowBackground">@drawable/xml_dialog_bg</item>
     </style>
 

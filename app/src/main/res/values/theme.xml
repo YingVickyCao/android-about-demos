@@ -46,9 +46,9 @@
         <item name="seekProgressDrawableColor">#2196F3</item>
         <item name="seekBg">#fff</item>
 
-        <item name="bg_0">@color/light_bg_0</item>
-        <item name="m_0">@color/light_m_0</item>
-        <item name="m_0_with_opacity">@color/light_m_0_opacity_30</item>
+        <item name="bg_0">@color/bg_0_light</item>
+        <item name="m_0">@color/m_0_light</item>
+        <item name="m_0_with_opacity">@color/m_0_opacity_30_light</item>
 
         <item name="color1">@android:color/holo_red_light</item>
         <item name="color2">@android:color/holo_blue_bright</item>
@@ -65,9 +65,9 @@
         <item name="seekProgressDrawableColor">#9C27B0</item>
         <item name="seekBg">#000</item>
 
-        <item name="bg_0">@color/dark_bg_0</item>
-        <item name="m_0">@color/dark_m_0</item>
-        <item name="m_0_with_opacity">@color/dark_m_0_opacity_80</item>
+        <item name="bg_0">@color/bg_0_dark</item>
+        <item name="m_0">@color/m_0_dark</item>
+        <item name="m_0_with_opacity">@color/m_0_opacity_80_dark</item>
 
         <item name="color1">@android:color/holo_orange_dark</item>
         <item name="color2">@android:color/holo_blue_dark</item>

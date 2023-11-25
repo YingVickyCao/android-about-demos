@@ -2,7 +2,6 @@ package com.hades.example.android.resource._style_theme;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Build;
 import android.util.AttributeSet;
 
 import androidx.annotation.ColorInt;
@@ -30,12 +29,12 @@ public class LightMyView extends MyViewBase {
 
     @ColorInt
     protected int getColor() {
-        return getResources().getColor(R.color.dark_m_0_opacity_80, getContext().getTheme());
+        return getResources().getColor(R.color.m_0_opacity_80_dark, getContext().getTheme());
     }
 
     @ColorInt
     protected int getColor2() {
-        return getResources().getColor(R.color.dark_m_0, getContext().getTheme());
+        return getResources().getColor(R.color.m_0_dark, getContext().getTheme());
     }
 
     @Override

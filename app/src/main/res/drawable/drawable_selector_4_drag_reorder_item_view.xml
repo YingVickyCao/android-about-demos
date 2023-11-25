@@ -5,7 +5,7 @@
     <!--<item android:drawable="?attr/itemViewHighlightBg" android:state_selected="true" />-->
     <!--<item android:drawable="?attr/itemViewDefaultBg" />-->
 
-    <item android:drawable="@color/light_bg_hover" android:state_pressed="true" />
-    <item android:drawable="@color/light_bg_hover" android:state_selected="true" />
+    <item android:drawable="@color/bg_hover_light" android:state_pressed="true" />
+    <item android:drawable="@color/bg_hover_light" android:state_selected="true" />
     <item android:drawable="@color/bg_0_light" />
 </selector>
