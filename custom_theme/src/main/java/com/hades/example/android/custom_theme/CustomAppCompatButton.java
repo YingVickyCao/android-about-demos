@@ -20,6 +20,12 @@ public class CustomAppCompatButton extends AppCompatButton {
 
     public CustomAppCompatButton(@NonNull Context context) {
         super(context);
+        applyTheme(ThemeModules.THEME);
+    }
+
+    public CustomAppCompatButton(@NonNull Context context, @ThemeModules String mode) {
+        super(context);
+        applyTheme(mode);
     }
 
     public CustomAppCompatButton(@NonNull Context context, @Nullable AttributeSet attrs) {
@@ -28,7 +34,7 @@ public class CustomAppCompatButton extends AppCompatButton {
 
     public CustomAppCompatButton(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-//        setStyle(context, attrs, defStyleAttr);
+        setStyle(context, attrs, defStyleAttr);
     }
 
     private void setStyle(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -36,15 +42,17 @@ public class CustomAppCompatButton extends AppCompatButton {
         CustomViewTools.printAttributeSet("CustomAppCompatButton", attrs);
         CustomViewTools.printTypedArray("CustomAppCompatButton", typedArray);
         String themeMode = CustomViewTools.getValueFromAttributeSet("CustomAppCompatButton", attrs);
+        applyTheme(themeMode);
+        typedArray.recycle();
+    }
+
+    private void applyTheme(String themeMode) {
         if (Objects.equals(themeMode, ThemeModules.THEME)) {
             setBackgroundResource(R.color.btn);
-//            final ColorStateList backgroundTintList = AppCompatResources.getColorStateList(context, R.color.btn);
-//            ViewCompat.setBackgroundTintList(this, backgroundTintList);
         } else if (Objects.equals(themeMode, ThemeModules.DARK)) {
             setBackgroundResource(R.color.btn_dark);
         } else if (Objects.equals(themeMode, ThemeModules.LIGHT)) {
             setBackgroundResource(R.color.btn_light);
         }
-        typedArray.recycle();
     }
 }
