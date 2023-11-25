@@ -28,12 +28,9 @@ public class CustomAppCompatButton extends AppCompatButton {
         applyTheme(mode);
     }
 
-//    public CustomAppCompatButton(@NonNull Context context, @Nullable AttributeSet attrs) {
-//        this(context, attrs, R.attr.buttonStyle);
-//    }
-
     public CustomAppCompatButton(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(new ContextThemeWrapper(context, R.style.themeButtonStyle), attrs, R.attr.buttonStyle);
+        //        this(context, attrs, R.attr.buttonStyle);
     }
 
     public CustomAppCompatButton(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -57,12 +54,12 @@ public class CustomAppCompatButton extends AppCompatButton {
     }
 
     private void applyTheme(String themeMode) {
-//        if (Objects.equals(themeMode, ThemeModules.THEME)) {
-//            setBackgroundResource(R.color.btn);
-//        } else if (Objects.equals(themeMode, ThemeModules.DARK)) {
-//            setBackgroundResource(R.color.btn_dark);
-//        } else if (Objects.equals(themeMode, ThemeModules.LIGHT)) {
-//            setBackgroundResource(R.color.btn_light);
-//        }
+        if (Objects.equals(themeMode, ThemeModules.THEME)) {
+            setBackgroundResource(R.color.btn);
+        } else if (Objects.equals(themeMode, ThemeModules.DARK)) {
+            setBackgroundResource(R.color.btn_dark);
+        } else if (Objects.equals(themeMode, ThemeModules.LIGHT)) {
+            setBackgroundResource(R.color.btn_light);
+        }
     }
 }

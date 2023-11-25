@@ -55,10 +55,11 @@
             app:theme_mode="theme" />
 
         <com.hades.example.android.custom_theme.CustomAppCompatButton
+            android:id="@+id/themeBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:id="@+id/themeBtn"
+            android:layout_marginTop="@dimen/size_8"
             android:background="@android:color/holo_purple"
             android:text="Theme button"
             android:textAllCaps="false"
