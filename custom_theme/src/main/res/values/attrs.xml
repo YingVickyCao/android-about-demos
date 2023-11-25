@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 如何通过继承View，来支持自定义样式？ -->
+    <declare-styleable name="custom_theme">
+        <attr name="theme_mode" format="enum">
+            <enum name="theme" value="0" />
+            <enum name="light" value="1" />
+            <enum name="dark" value="2" />
+            <enum name="non" value="3" />
+        </attr>
+    </declare-styleable>
+    <attr name="CustomTheme_style" format="reference" />
+</resources>

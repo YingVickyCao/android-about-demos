@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomTheme_light">
+        <item name="theme_mode">light</item>
+    </style>
+
+    <style name="lightButton" parent="@style/Widget.AppCompat.Button">
+
+    </style>
+
+    <style name="lightButtonStyle">
+        <item name="buttonStyle">@style/lightButton</item>
+    </style>
+</resources>

@@ -1,0 +1,5 @@
+<resources>
+    <style name="LightAppTheme" parent="AppTheme">
+        <item name="CustomTheme_style">@style/CustomTheme_light</item>
+    </style>
+</resources>
