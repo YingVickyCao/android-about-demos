@@ -33,7 +33,6 @@ object ThemeUtil {
             Log.d(TAG, "toTheme: ex:", ex)
             return this
         }
-
     }
 
     fun Context.setTheme3(
