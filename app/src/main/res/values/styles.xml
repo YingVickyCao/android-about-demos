@@ -516,6 +516,12 @@
         <item name="prefix_color">@android:color/holo_red_light</item>
     </style>
 
+
+    <style name="ThemMode">
+        <item name="prefix">*</item>
+        <item name="prefix_color">@android:color/holo_red_light</item>
+    </style>
+
     <style name="drawable_scale_test_item">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">96dp</item>

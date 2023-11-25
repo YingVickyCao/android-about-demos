@@ -113,7 +113,7 @@ public class ThemeChoosePageAActivity extends BaseActivity {
         if (!isRedTheme) {
             return;
         }
-        com.hades.example.java.lib.MemoryCache.getInstance().useRedTheme(false);
+        MemoryCache.getInstance().useRedTheme(false);
 
         applyTheme();
     }
