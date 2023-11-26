@@ -11,6 +11,8 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.hades.example.android.lib.utils.ThemeTools;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class CustomAppCompatButton extends AppCompatButton {
@@ -41,16 +43,35 @@ public class CustomAppCompatButton extends AppCompatButton {
         ThemeTools.printAttributeSet("CustomAppCompatButton", attrs);
         ThemeTools.printTypedArray("CustomAppCompatButton", typedArray);
         String themeMode = ThemeTools.getValueFromAttributeSet("CustomAppCompatButton", attrs);
-        applyTheme(themeMode);
+        applyTheme(themeMode, attrs);
         typedArray.recycle();
     }
 
     private void setStyle(@Nullable AttributeSet attrs) {
         String themeMode = ThemeTools.getValueFromAttributeSet("CustomAppCompatButton", attrs);
-        applyTheme(themeMode);
+        applyTheme(themeMode, attrs);
     }
 
     private void applyTheme(String themeMode) {
+        if (Objects.equals(themeMode, ThemeModules.THEME)) {
+            setBackgroundResource(R.color.btn);
+        } else if (Objects.equals(themeMode, ThemeModules.DARK)) {
+            setBackgroundResource(R.color.btn_dark);
+        } else if (Objects.equals(themeMode, ThemeModules.LIGHT)) {
+            setBackgroundResource(R.color.btn_light);
+        }
+    }
+
+    private void applyTheme(String themeMode, AttributeSet attributeSet) {
+        Map<String, String> target = new HashMap<>();
+        if (null != attributeSet) {
+            target.put("background", null);
+            target.put("backgroundTint", null);
+            ThemeTools.getValuesFromAttributeSet(attributeSet, target);
+        }
+        if (null != target.get("background") || null != target.get("backgroundTint")) {
+            return;
+        }
         if (Objects.equals(themeMode, ThemeModules.THEME)) {
             setBackgroundResource(R.color.btn);
         } else if (Objects.equals(themeMode, ThemeModules.DARK)) {
