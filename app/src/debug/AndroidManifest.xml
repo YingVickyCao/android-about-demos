@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application tools:ignore="GoogleAppIndexingWarning">
+<!--        android:name="._feature.menu_manager.menu_page.MenuActivity"-->
         <activity
-            android:name="._feature.menu_manager.menu_page.MenuActivity"
+            android:name=".widget.WidgetActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

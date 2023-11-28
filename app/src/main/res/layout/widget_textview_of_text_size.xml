@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_16">
+
+        <Button
+            android:id="@+id/getTextSize"
+            style="@style/btn"
+            android:text="@string/get_text_size" />
+
+        <Button
+            android:id="@+id/setTextSize"
+            style="@style/btn"
+            android:layout_alignParentEnd="true"
+            android:text="@string/set_text_size" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_16">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textSizeExample1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30sp"
+            android:textSize="@dimen/text_size_30" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textSizeExample2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="30sp" />
+    </RelativeLayout>
+
+    <View style="@style/div" />
+</LinearLayout>

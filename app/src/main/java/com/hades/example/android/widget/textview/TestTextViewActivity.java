@@ -21,7 +21,7 @@ public class TestTextViewActivity extends BaseActivity {
 
     @Override
     protected void showCurrentTest() {
-        page_link_in_text();
+        pageTextView();
     }
 
     private void pageTextView() {

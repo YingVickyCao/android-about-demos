@@ -488,6 +488,8 @@
     <string name="show_as_a_dialog">Show as a dialog</string>
     <string name="show_as_an_embedded_fragment">Show as an embedded fragment</string>
     <string name="request_view_size">Request view size</string>
+    <string name="get_text_size">Get text size</string>
+    <string name="set_text_size">Set text size</string>
     <string name="accelerometer">加速度传感器</string>
     <string name="orientation">方向传感器</string>
     <string name="gyro">陀螺仪传感器</string>

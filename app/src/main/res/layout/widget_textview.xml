@@ -29,6 +29,8 @@
 
             <include layout="@layout/widget_textview_of_request_size" />
 
+            <include layout="@layout/widget_textview_of_text_size" />
+
             <include layout="@layout/widget_textview_of_click_action" />
 
             <include layout="@layout/widget_textview_of_align_text_and_image" />

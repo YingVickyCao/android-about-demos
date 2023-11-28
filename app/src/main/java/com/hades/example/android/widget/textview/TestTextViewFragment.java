@@ -2,6 +2,7 @@ package com.hades.example.android.widget.textview;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,8 @@ public class TestTextViewFragment extends Fragment {
 
     TextView mTextView;
     TextView mTextView2;
+    TextView mTextSizeExample1;
+    TextView mTextSizeExample2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -31,6 +34,10 @@ public class TestTextViewFragment extends Fragment {
         getViewSize(view);
         setOnClickListener_vs_clickable(view);
 
+        mTextSizeExample1 = view.findViewById(R.id.textSizeExample1);
+        mTextSizeExample2 = view.findViewById(R.id.textSizeExample2);
+        view.findViewById(R.id.getTextSize).setOnClickListener(v -> getTextSize());
+        view.findViewById(R.id.setTextSize).setOnClickListener(v -> setTextSize());
         return view;
     }
 
@@ -164,5 +171,37 @@ public class TestTextViewFragment extends Fragment {
 
     private void clickTextView(String msg) {
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    private void getTextSize() {
+        // 说明getTextSize()返回的单位是px
+        Log.d(TAG, "getTextSize: mTextSizeExample1 30sp =" + mTextSizeExample1.getTextSize()); // 79, returned pixels of text size
+
+        // 说明getDimensionPixelSize() 无论对dp还是sp，返回的单位是px。 30dp = 30sp
+        // getDimensionPixelSize() vs getDimension() :返回的单位是px。 前者是四舍五入，返回为int。后者是返回为float。
+        Log.d(TAG, "getTextSize: size 30dp = " + getResources().getDimensionPixelSize(R.dimen.size_30));            // 79
+        Log.d(TAG, "getTextSize: text size 30sp = " + getResources().getDimensionPixelSize(R.dimen.text_size_30));  // 79
+        Log.d(TAG, "getTextSize: text size 30sp = " + getResources().getDimension(R.dimen.text_size_30));           // 78.75
+
+        Log.d(TAG, "getTextSize: mTextSizeExample2 textSize= " + mTextSizeExample2.getTextSize());
+    }
+
+    private void setTextSize() {
+        // 说明setTextSize()默认使用的单位是sp
+        // COMPLEX_UNIT_DIP / COMPLEX_UNIT_PX / COMPLEX_UNIT_SP : dp / px / sp
+
+        // error
+//        mTextSizeExample2.setTextSize(getResources().getDimension(R.dimen.text_size_30)); // error，getTextSize() = 206.71875
+//        mTextSizeExample2.setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimensionPixelSize(R.dimen.text_size_30)); // error，getTextSize() =207.375
+//        mTextSizeExample2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, getResources().getDimensionPixelSize(R.dimen.text_size_30)); // error，getTextSize() =207.375
+
+        // float scaledDensity = getResources().getDisplayMetrics().scaledDensity;
+//        mTextSizeExample2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30 / scaledDensity); //  error, 30
+
+        // ok
+//        mTextSizeExample2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.text_size_30)); // ok，getTextSize() =79 . Recommended
+        mTextSizeExample2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_30)); // ok，getTextSize() =78.75 . Recommended
+//        mTextSizeExample2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);  // ok. 78.75
+        Log.d(TAG, "getTextSize: mTextSizeExample1 textSize= " + mTextSizeExample2.getTextSize());
     }
 }
