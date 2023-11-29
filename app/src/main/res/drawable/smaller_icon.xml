@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- 调整图片的大小 -->
+    <!-- 调整图片的大小  https://qastack.cn/programming/23079355/android-bitmap-image-size-in-xml -->
     <item
         android:width="50dp"
         android:height="50dp"
