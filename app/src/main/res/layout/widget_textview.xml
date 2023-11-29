@@ -25,7 +25,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/widget_textview_of_drawable" />
+            <include
+                layout="@layout/widget_textview_of_drawable"
+                android:visibility="gone" />
+
+            <include layout="@layout/widget_textview_of_drawable_size" />
 
             <include layout="@layout/widget_textview_of_request_size" />
 

@@ -25,6 +25,7 @@ public class TestTextViewFragment extends Fragment {
     TextView mTextSizeExample1;
     TextView mTextSizeExample2;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.widget_textview, container, false);
@@ -203,5 +204,10 @@ public class TestTextViewFragment extends Fragment {
         mTextSizeExample2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_30)); // ok，getTextSize() =78.75 . Recommended
 //        mTextSizeExample2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);  // ok. 78.75
         Log.d(TAG, "getTextSize: mTextSizeExample1 textSize= " + mTextSizeExample2.getTextSize());
+    }
+
+
+    private void ff(){
+
     }
 }

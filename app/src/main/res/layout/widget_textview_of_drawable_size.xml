@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/set_drawable_size"
+        android:textSize="@dimen/text_size_30" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_16">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/shadow_light"
+            android:drawableLeft="@drawable/ic_launcher"
+            android:gravity="center"
+            android:src="@drawable/ic_launcher" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@color/shadow_light"
+            android:drawableLeft="@drawable/ic_launcher"
+            android:gravity="center"
+            android:text="30sp"
+            android:textSize="@dimen/text_size_30" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_100"
+        android:layout_marginHorizontal="@dimen/size_16"
+        android:layout_marginTop="@dimen/size_10"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/size_50"
+            android:layout_height="@dimen/size_50"
+            android:background="@color/shadow_light"
+            android:drawableLeft="@drawable/ic_launcher"
+            android:gravity="center"
+            android:src="@drawable/ic_launcher" />
+
+        <com.hades.example.android.widget.textview.CustomDrawableSizeAppCompatTextView
+            android:id="@+id/drawableSizeExample"
+            android:layout_width="@dimen/size_200"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            android:background="@color/shadow_light"
+            android:drawableLeft="@drawable/smaller_icon"
+            android:drawablePadding="0dp"
+            android:gravity="center_vertical"
+            android:text="30sp"
+            android:textSize="@dimen/text_size_30" />
+
+
+        <View
+            android:layout_width="200dp"
+            android:layout_height="5dp"
+            android:layout_alignParentEnd="true"
+            android:background="@color/red" />
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/red" />
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/blue" />
+    </RelativeLayout>
+
+    <View style="@style/div" />
+</LinearLayout>
