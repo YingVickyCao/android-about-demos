@@ -68,6 +68,8 @@ public class CustomDrawableSizeAppCompatTextView extends AppCompatTextView {
 //            int right = left + icon_size / 2;
 //            int bottom = height - top - icon_size;
 //
+
+            // TODO: 2023/11/29  leftDrawable.setBounds
 //            leftDrawable.setBounds(icon_size / 5, icon_size, icon_size / 5 + icon_size, icon_size * 2);
 //            leftDrawable.setBounds(0, icon_size, icon_size / 5 + icon_size, icon_size * 2);
         }
