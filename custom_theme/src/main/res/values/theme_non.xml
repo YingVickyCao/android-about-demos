@@ -1,6 +1,0 @@
-<resources>
-
-    <style name="NonTheme" parent="OriginTheme">
-        <item name="theme_mode">non</item>
-    </style>
-</resources>

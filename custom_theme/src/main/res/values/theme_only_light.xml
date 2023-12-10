@@ -1,7 +1,0 @@
-<resources>
-
-    <style name="OnlyLightAppTheme" parent="OriginTheme">
-<!--        <item name="android:buttonStyle">@style/lightButton</item>-->
-        <item name="theme_mode">light</item>
-    </style>
-</resources>
