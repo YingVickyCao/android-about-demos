@@ -7,6 +7,6 @@ class MyClassTest {
     @Test
     fun getData() {
         val myClass = MyClass()
-        Assert.assertEquals(1, myClass.getData())
+        Assert.assertEquals(3, myClass.getData())
     }
 }

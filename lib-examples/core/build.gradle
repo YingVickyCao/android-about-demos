@@ -1,18 +1,21 @@
-plugins {
-    id 'java-library'
-    id 'org.jetbrains.kotlin.jvm'
-}
+//plugins {
+//    id 'java-library'
+//    id 'org.jetbrains.kotlin.jvm'
+//}
 
-java {
-    sourceCompatibility  = rootProject.ext.sourceCompatibility
-    targetCompatibility  = rootProject.ext.targetCompatibility
-}
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation libs.google.gson
-//    implementation libs.kotlin.stdlib
+    implementation libs.kotlin.stdlib
 
     testImplementation libs.test.junit
+}
+
+java {
+    sourceCompatibility  = rootProject.ext.sourceCompatibility
+    targetCompatibility  = rootProject.ext.targetCompatibility
 }
