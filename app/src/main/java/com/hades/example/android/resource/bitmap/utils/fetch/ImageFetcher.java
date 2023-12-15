@@ -9,7 +9,6 @@ import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.hades.example.android.lib.BuildConfig;
 import com.hades.example.android.lib.R;
 import com.hades.example.android.lib.utils.AndroidStorageUtils;
 import com.hades.example.android.lib.utils.ImageUtil;
@@ -74,9 +73,6 @@ public class ImageFetcher extends ImageResize {
             if (fileUtil.getUsableSpace(mHttpCacheDir) > HTTP_CACHE_SIZE) {
                 try {
                     mHttpDiskCache = DiskLruCache.open(mHttpCacheDir, 1, 1, HTTP_CACHE_SIZE);
-                    if (BuildConfig.DEBUG) {
-                        Log.d(TAG, "HTTP cache initialized");
-                    }
                 } catch (IOException e) {
                     mHttpDiskCache = null;
                 }
@@ -93,9 +89,6 @@ public class ImageFetcher extends ImageResize {
             if (mHttpDiskCache != null && !mHttpDiskCache.isClosed()) {
                 try {
                     mHttpDiskCache.delete();
-                    if (BuildConfig.DEBUG) {
-                        Log.d(TAG, "HTTP cache cleared");
-                    }
                 } catch (IOException e) {
                     Log.e(TAG, "clearCacheInternal - " + e);
                 }
@@ -113,9 +106,6 @@ public class ImageFetcher extends ImageResize {
             if (mHttpDiskCache != null) {
                 try {
                     mHttpDiskCache.flush();
-                    if (BuildConfig.DEBUG) {
-                        Log.d(TAG, "HTTP cache flushed");
-                    }
                 } catch (IOException e) {
                     Log.e(TAG, "flush - " + e);
                 }
@@ -132,9 +122,6 @@ public class ImageFetcher extends ImageResize {
                     if (!mHttpDiskCache.isClosed()) {
                         mHttpDiskCache.close();
                         mHttpDiskCache = null;
-                        if (BuildConfig.DEBUG) {
-                            Log.d(TAG, "HTTP cache closed");
-                        }
                     }
                 } catch (IOException e) {
                     Log.e(TAG, "closeCacheInternal - " + e);
@@ -161,10 +148,6 @@ public class ImageFetcher extends ImageResize {
      * @return The downloaded and resized bitmap
      */
     private Bitmap processBitmap4DownloadResize(String data) {
-        if (BuildConfig.DEBUG) {
-            Log.d(TAG, "processBitmap4DownloadResize - " + data);
-        }
-
         final String key = fileUtils.hashKeyForDisk(data);
         FileDescriptor fileDescriptor = null;
         FileInputStream fileInputStream = null;
@@ -182,9 +165,6 @@ public class ImageFetcher extends ImageResize {
                 try {
                     snapshot = mHttpDiskCache.get(key);
                     if (snapshot == null) {
-                        if (BuildConfig.DEBUG) {
-                            Log.d(TAG, "processBitmap4DownloadResize, not found in http cache, downloading...");
-                        }
                         DiskLruCache.Editor editor = mHttpDiskCache.edit(key);
                         if (editor != null) {
                             if (downloadUrlToStream(data, editor.newOutputStream(DISK_CACHE_INDEX))) {
@@ -286,9 +266,6 @@ public class ImageFetcher extends ImageResize {
 //                publishProgress((int) (total * 100 / lengthOfFile));
                 // TODO:ImageFetcher: downloadUrlToStream: thread name= AsyncTask #3,thread id=13869,write 437916
                 // use threadpool fetch data.
-                if (BuildConfig.DEBUG) {
-                    Log.d(TAG, "downloadUrlToStream: thread name= " + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId() + ",write " + total);
-                }
                 out.write(data, 0, count);
             }
 

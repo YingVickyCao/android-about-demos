@@ -7,7 +7,6 @@ import android.util.Log;
 
 import androidx.collection.LruCache;
 
-import com.hades.example.android.lib.BuildConfig;
 import com.hades.example.android.lib.utils.ImageUtil;
 import com.hades.example.android.lib.utils.VersionUtil;
 import com.hades.example.android.resource.bitmap.utils.cache.ImageCacheParams;
@@ -72,9 +71,6 @@ public class BitmapMemoryCache {
     public void clearCache() {
         if (mCachedBitmapDrawableLruCache != null) {
             mCachedBitmapDrawableLruCache.evictAll();
-            if (BuildConfig.DEBUG) {
-                Log.d(TAG, "Memory cache cleared");
-            }
         }
     }
 

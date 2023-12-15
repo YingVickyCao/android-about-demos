@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 
-import com.hades.example.android.lib.BuildConfig;
 import com.hades.example.android.lib.utils.AndroidStorageUtils;
 import com.hades.example.android.lib.utils.ImageUtil;
 import com.hades.example.android.resource.bitmap.utils.cache.ImageCacheParams;
@@ -116,9 +115,6 @@ public class DiskCache {
                 try {
                     final DiskLruCache.Snapshot snapshot = mDiskLruCache.get(key);
                     if (snapshot != null) {
-                        if (BuildConfig.DEBUG) {
-                            Log.d(TAG, "getBitmap: Disk cache hit. ,url" + url + ",key=" + key);
-                        }
                         inputStream = snapshot.getInputStream(DISK_CACHE_INDEX);
                         if (inputStream != null) {
                             FileDescriptor fd = ((FileInputStream) inputStream).getFD();
@@ -162,9 +158,6 @@ public class DiskCache {
             if (mDiskLruCache != null) {
                 try {
                     mDiskLruCache.flush();
-                    if (BuildConfig.DEBUG) {
-                        Log.d(TAG, "flush,Disk cache flushed");
-                    }
                 } catch (IOException e) {
                     Log.e(TAG, "flush,e " + e);
                 }
@@ -179,9 +172,6 @@ public class DiskCache {
                     if (!mDiskLruCache.isClosed()) {
                         mDiskLruCache.close();
                         mDiskLruCache = null;
-                        if (BuildConfig.DEBUG) {
-                            Log.d(TAG, "close,Disk cache closed");
-                        }
                     }
                 } catch (IOException e) {
                     Log.e(TAG, "close," + e);

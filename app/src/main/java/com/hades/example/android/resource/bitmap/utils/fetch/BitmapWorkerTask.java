@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.hades.example.android.lib.BuildConfig;
 import com.hades.example.android.lib.utils.VersionUtil;
 
 import java.lang.ref.WeakReference;
@@ -40,9 +39,6 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
     }
 
     private BitmapDrawable loadBitmapInBackground(Void... params) {
-        if (BuildConfig.DEBUG) {
-            Log.d(TAG, "doInBackground - starting work");
-        }
         final String url = String.valueOf(mData);
         Bitmap bitmap = null;
         BitmapDrawable drawable = null;
@@ -61,9 +57,6 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
         bitmap = processBitmap(bitmap);
 
         if (null == bitmap) {
-            if (BuildConfig.DEBUG) {
-                Log.d(TAG, "doInBackground - finished work");
-            }
             return null;
         }
 
@@ -80,13 +73,6 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
     private Bitmap findBitmapInDishCache(String url) {
         if (imageWorker.mImageCache != null && !isCancelled() && getAttachedImageView() != null && !imageWorker.mExitTasksEarly) {
             Bitmap bitmap = imageWorker.mImageCache.getBitmapFromDiskCache(url);
-            if (BuildConfig.DEBUG) {
-                if (null == bitmap) {
-                    Log.d(TAG, "findBitmapInDishCache: [1]url=" + url + ",bitmap = null");
-                } else {
-                    Log.d(TAG, "findBitmapInDishCache: [2]url=" + url + ",bitmap hashcode=" + bitmap.hashCode());
-                }
-            }
             return bitmap;
         }
         Log.d(TAG, "findBitmapInDishCache: [3]url=" + url + ",bitmap = null");
@@ -108,9 +94,6 @@ class BitmapWorkerTask extends AsyncTask<Void, Void, BitmapDrawable> {
 
         final ImageView imageView = getAttachedImageView();
         if (isSuccess(value, imageView)) {
-            if (BuildConfig.DEBUG) {
-                Log.d(TAG, "onPostExecute - setting bitmap");
-            }
             imageWorker.setImageDrawable(imageView, value);
         }
         if (mOnImageLoadedListener != null) {

@@ -31,7 +31,6 @@ import android.widget.ImageView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
-import com.hades.example.android.lib.BuildConfig;
 import com.hades.example.android.lib.utils.ImageUtil;
 import com.hades.example.android.resource.bitmap.utils.cache.ImageCache;
 import com.hades.example.android.resource.bitmap.utils.cache.ImageCacheParams;
@@ -127,10 +126,6 @@ public abstract class ImageWorker implements IImageWorker {
         final BitmapWorkerTask bitmapWorkerTask = getBitmapWorkerTask(imageView);
         if (bitmapWorkerTask != null) {
             bitmapWorkerTask.cancel(true);
-            if (BuildConfig.DEBUG) {
-                final Object bitmapData = bitmapWorkerTask.mData;
-                Log.d(TAG, "cancelWork - cancelled work for " + bitmapData);
-            }
         }
     }
 
@@ -140,9 +135,6 @@ public abstract class ImageWorker implements IImageWorker {
             final Object bitmapData = bitmapWorkerTask.mData;
             if (bitmapData == null || !bitmapData.equals(data)) {
                 bitmapWorkerTask.cancel(true);
-                if (BuildConfig.DEBUG) {
-                    Log.d(TAG, "cancelPotentialWork - cancelled work for " + data);
-                }
             } else {
                 return false;
             }
