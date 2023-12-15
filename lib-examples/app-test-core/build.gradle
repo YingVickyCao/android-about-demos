@@ -1,0 +1,44 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.hades.example.app_test_core'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.hades.example.app_test_core"
+        minSdk 29
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation libs.androidx.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.google.material
+    implementation libs.androidx.constraintlayout
+    testImplementation libs.test.junit
+    androidTestImplementation libs.androidTest.junit
+    androidTestImplementation libs.androidTest.espressoCore
+}
