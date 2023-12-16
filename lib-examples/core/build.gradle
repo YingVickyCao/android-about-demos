@@ -6,11 +6,12 @@
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
+// add version
+version = '0.1.0'
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation libs.google.gson
-    implementation libs.kotlin.stdlib
+    api libs.google.gson
 
     testImplementation libs.test.junit
 }
@@ -20,9 +21,37 @@ java {
     targetCompatibility = rootProject.ext.targetCompatibility
 }
 
+//compileKotlin {
+//    kotlinOptions.jvmTarget = rootProject.ext.jvmTarget
+//}
 
-// add version
-version = '0.1.0'
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes('Implementation-Title': project.name, 'Implementation-Version': project.version)
+//        from {
+//            configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+//            configurations.runtime.collect { zipTree(it) }
+//        }
+//        exclude 'META-INF/*.RSA','META-INF/*.SF','META-INF/*.DSA'
+    }
+}
+
+
+//jar {
+//    manifest {
+//        attributes('Implementation-Title': project.name, 'Implementation-Version': project.version)
+//        from {
+////            configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+//            configurations.runtime.collect { zipTree(it) }
+//        }
+//        exclude 'META-INF/*.RSA','META-INF/*.SF','META-INF/*.DSA'
+//    }
+//}
 
 
 /**
@@ -40,4 +69,5 @@ version = '0.1.0'
  ./gradlew :core:jar
 
  output :  core/build/libs/core-0.1.0.jar
- */
+
+ jar tf lib-examples/core/build/libs/core-0.1.0.jar*/

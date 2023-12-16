@@ -5,14 +5,15 @@ plugins {
 
 android {
     namespace 'com.hades.example.app_test_core'
-    compileSdk 33
+    compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
         applicationId "com.hades.example.app_test_core"
-        minSdk 29
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
+
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -24,21 +25,25 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility rootProject.ext.sourceCompatibility
+        targetCompatibility rootProject.ext.targetCompatibility
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = rootProject.ext.jvmTarget
     }
 }
 
 dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+
+//    implementation project(':core')
 
     implementation libs.androidx.ktx
+    implementation libs.kotlin.stdlib
     implementation libs.androidx.appcompat
-    implementation libs.google.material
-    implementation libs.androidx.constraintlayout
+
     testImplementation libs.test.junit
+
     androidTestImplementation libs.androidTest.junit
     androidTestImplementation libs.androidTest.espressoCore
 }
