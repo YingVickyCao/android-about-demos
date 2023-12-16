@@ -85,5 +85,56 @@
         <attr name="border_color" format="color" />
         <attr name="fill_color" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="BadgeView">
+        <attr name="badge_mode" format="enum">
+            <!-- layout_width       -->
+            <!-- layout_height       -->
+            <enum name="dot" value="0" />
+
+            <enum name="indicator" value="1" />
+        </attr>
+        <attr name="dot_size" format="dimension" />
+
+        <attr name="size_when_indicator_no_value" format="dimension">
+            <enum name="wrap_content" value="-2" />
+            <enum name="match_parent" value="-2" />
+        </attr>
+        <attr name="layout_height_when_indicator_no_value" format="dimension">
+            <enum name="wrap_content" value="-2" />
+            <enum name="match_parent" value="-2" />
+        </attr>
+        <!--0<= <=9 -->
+        <attr name="layout_height_when_indicator_has_value" format="dimension">
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+
+        <attr name="layout_width_when_indicator_value_0_to_9" format="dimension">
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+
+        <!--10<= <=99 -->
+        <attr name="layout_width_when_indicator_value_10_to_99" format="dimension">
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <!--100<= <=999 -->
+        <attr name="layout_width_when_indicator_value_100_to_999" format="dimension">
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <!--999+ / 1000 / 10000-->
+        <attr name="layout_width_when_indicator_value_great_than_999" format="dimension">
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <attr name="android:textSize" />
+        <attr name="android:textColor" />
+        <attr name="android:backgroundTint" />
+    </declare-styleable>
+    <attr name="BadgeViewStyle" format="reference" />
+
     <!-- badge, end   -->
 </resources>

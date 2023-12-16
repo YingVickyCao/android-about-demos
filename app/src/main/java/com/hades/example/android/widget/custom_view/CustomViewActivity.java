@@ -14,6 +14,7 @@ import com.hades.example.android.tools.permission.IRationaleOnClickListener;
 import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
 import com.hades.example.android.tools.permission.PermissionTools;
 import com.hades.example.android.widget.custom_view.Xfermode.XfermodeFragment;
+import com.hades.example.android.widget.custom_view.badge.RedBadgeFragment;
 import com.hades.example.android.widget.custom_view.cascadelayout.CascadeLayoutActivity;
 import com.hades.example.android.widget.custom_view.drawCircle.ball.FingerMovedBallFragment;
 import com.hades.example.android.widget.custom_view.drawText.TestDrawTextFragment;

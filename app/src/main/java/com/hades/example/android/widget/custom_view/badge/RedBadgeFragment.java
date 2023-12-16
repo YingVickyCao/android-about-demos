@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.custom_view;
+package com.hades.example.android.widget.custom_view.badge;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

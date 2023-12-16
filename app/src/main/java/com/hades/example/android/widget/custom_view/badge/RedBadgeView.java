@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.custom_view;
+package com.hades.example.android.widget.custom_view.badge;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -36,8 +36,8 @@ public class RedBadgeView extends androidx.appcompat.widget.AppCompatTextView {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RedBadgeView);
         borderWidth = typedArray.getDimensionPixelSize(R.styleable.RedBadgeView_border_width, 0);
         padding = typedArray.getDimensionPixelSize(R.styleable.RedBadgeView_padding, 0);
-        borderColor = typedArray.getColor(R.styleable.RedBadgeView_border_color, Color.WHITE);
-        fillColor = typedArray.getColor(R.styleable.RedBadgeView_fill_color, Color.WHITE);
+        borderColor = typedArray.getColor(R.styleable.RedBadgeView_border_color, Color.RED);
+        fillColor = typedArray.getColor(R.styleable.RedBadgeView_fill_color, Color.RED);
         typedArray.recycle();
         setGravity(Gravity.CENTER);
         int i = DensityUtil.dp2px(context, 2);
