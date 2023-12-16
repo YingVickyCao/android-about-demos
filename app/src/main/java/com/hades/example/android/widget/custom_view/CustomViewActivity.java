@@ -49,6 +49,7 @@ public class CustomViewActivity extends BaseActivity {
         findViewById(R.id.page_Shadow_and_ShadowLayer).setOnClickListener(v -> page_Shadow_and_ShadowLayer());
         findViewById(R.id.page_Layer).setOnClickListener(v -> page_Layer());
         findViewById(R.id.page_Xfermode).setOnClickListener(v -> page_Xfermode());
+        findViewById(R.id.page_red_badge).setOnClickListener(v -> page_red_badge());
 
         requestPermission();
     }
@@ -71,7 +72,7 @@ public class CustomViewActivity extends BaseActivity {
 
     @Override
     protected void showCurrentTest() {
-        page_drawText();
+        page_red_badge();
     }
 
     private void page_drawText() {
@@ -120,5 +121,9 @@ public class CustomViewActivity extends BaseActivity {
 
     private void page_Xfermode() {
         showFragment(new XfermodeFragment());
+    }
+
+    private void page_red_badge() {
+        showFragment(new RedBadgeFragment());
     }
 }

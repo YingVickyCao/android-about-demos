@@ -19,13 +19,13 @@ public class TestDensityUtil {
      */
     public void temp(Context context) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
-        double scale = DensityUtil.getInstance().scale(context);
+        double scale = DensityUtil.scale(context);
 //        Log.e(TAG, "temp: scale=" + scale);
         Log.e(TAG, "temp: density=" + dm.density);
         Log.e(TAG, "temp: scaledDensity=" + dm.scaledDensity);
 
-        Log.e(TAG, "temp:dm.densityDpi with,px=" + dm.widthPixels + ",dp=" + DensityUtil.getInstance().px2dp(context, dm.widthPixels) + ",px=" + DensityUtil.getInstance().dp2px(context, 711));
-        Log.e(TAG, "temp: height,px=" + dm.heightPixels + ",dp=" + DensityUtil.getInstance().px2dp(context, dm.heightPixels));
+        Log.e(TAG, "temp:dm.densityDpi with,px=" + dm.widthPixels + ",dp=" + DensityUtil.px2dp(context, dm.widthPixels) + ",px=" + DensityUtil.dp2px(context, 711));
+        Log.e(TAG, "temp: height,px=" + dm.heightPixels + ",dp=" + DensityUtil.px2dp(context, dm.heightPixels));
 
         Log.e(TAG, "temp: densityDpi=" + dm.densityDpi);
         Log.e(TAG, "temp: xdpi=" + dm.xdpi);

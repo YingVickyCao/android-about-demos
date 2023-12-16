@@ -78,4 +78,12 @@
         <attr name="ui_mode" format="enum" />
     </declare-styleable>
 
+    <!-- badge, start   -->
+    <declare-styleable name="RedBadgeView">
+        <attr name="border_width" format="dimension" />
+        <attr name="padding" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="fill_color" format="color" />
+    </declare-styleable>
+    <!-- badge, end   -->
 </resources>

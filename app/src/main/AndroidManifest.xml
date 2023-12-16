@@ -47,6 +47,7 @@
     <application
         android:name=".App"
         android:allowBackup="false"
+        android:banner="@drawable/ic_launcher"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
@@ -55,18 +56,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-<!--        <activity-->
-<!--            android:name=".app_component._fragment.back.TestBackActivity"-->
-<!--            android:exported="false" />-->
-<!--        <activity-->
-<!--            android:name="._feature.apk_upgrade.AppVersionUpgradeActivity"-->
-<!--            android:exported="false" /> &lt;!&ndash; <activity android:namAActivityvity"> &ndash;&gt;-->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MAIN"/> -->
-        <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-        <!-- </intent-filter> -->
-        <!-- </activity> -->
-        <activity android:name=".MainActivity" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".QAActivity" />
         <activity android:name=".app_component._activity.ManageSystemUIActivity" />
         <activity android:name=".app_component.TestAppComponentActivity" />
@@ -377,7 +376,7 @@
         <!-- </receiver> -->
         <!-- END_RUNTIME_PERMISSION -->
         <!-- Widget,START -->
-        <activity android:name=".widget.WidgetActivity" /> <!-- START_WIDGET -->
+        <activity android:name=".widget.WidgetActivity" />
         <!-- SPLASH_NOTIFY_ICON_START -->
         <activity android:name=".widget.splash_notify_icon.SplashNotifyIconActivity" />
         <activity android:name=".widget.splash_notify_icon.SplashNotifyIconActivity2" /> <!-- SPLASH_NOTIFY_ICON_END -->
@@ -682,7 +681,7 @@
         <provider
             android:name="androidx.work.impl.WorkManagerInitializer"
             android:authorities="${applicationId}.workmanager-init"
-            tools:node="remove"/>
+            tools:node="remove" />
     </application>
 
 </manifest>

@@ -29,6 +29,13 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.pageResource).setOnClickListener(v -> pageResource());
         findViewById(R.id.page_Libs).setOnClickListener(v -> page_Libs());
         findViewById(R.id.pageQAAboutView).setOnClickListener(v -> pageQAAboutView());
+        showCurrentTest();
+
+    }
+
+    @Override
+    protected void showCurrentTest() {
+        pageWidget();
     }
 
     private void pageSecurity() {
