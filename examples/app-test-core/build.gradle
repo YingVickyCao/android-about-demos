@@ -36,7 +36,7 @@ android {
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
 
-//    implementation project(':core')
+    implementation "com.hades.example.android.libexamples:core:0.1.0"
 
     implementation libs.androidx.ktx
     implementation libs.kotlin.stdlib
