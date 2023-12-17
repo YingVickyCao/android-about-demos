@@ -619,7 +619,7 @@
         <item name="android:layout_height">17dp</item>
     </style>
 
-    <style name="BadgeView" parent="Widget.AppCompat.TextView">
+    <style name="BadgeView">
         <!--        <item name="badge_mode">dot</item>-->
         <item name="badge_mode">indicator</item>
         <item name="size_when_indicator_no_value">@dimen/size_10</item>
@@ -628,11 +628,12 @@
         <item name="layout_width_when_indicator_value_10_to_99">@dimen/size_25</item>
         <item name="layout_width_when_indicator_value_100_to_999">wrap_content</item>
         <item name="layout_width_when_indicator_value_great_than_999">wrap_content</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:gravity">center</item>
-        <item name="android:maxLines">1</item>
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@android:color/white</item>
+
+        <!--        <item name="android:ellipsize">end</item>-->
+        <!--        <item name="android:gravity">center</item>-->
+        <!--        <item name="android:maxLines">1</item>-->
     </style>
     <!-- badge, end   -->
 </resources>

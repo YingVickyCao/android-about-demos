@@ -3,8 +3,10 @@ package com.hades.example.android.widget.custom_view.badge;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.ViewGroup;
 
 import androidx.annotation.ColorInt;
@@ -59,6 +61,11 @@ public class BadgeView extends AppCompatTextView {
         mTextColor = typedArray.getColor(R.styleable.BadgeView_android_textColor, getResources().getColor(android.R.color.white, context.getTheme()));
         mTextSize = typedArray.getDimensionPixelSize(R.styleable.BadgeView_android_textSize, getResources().getDimensionPixelSize(R.dimen.text_size_10));
         typedArray.recycle();
+
+        setTextColor(mTextColor);
+        ThemeUtils.setTextSizeUnitPx(this, mTextSize);
+        setEllipsize(TextUtils.TruncateAt.END);
+        setGravity(Gravity.CENTER);
     }
 
     @Override
@@ -73,8 +80,6 @@ public class BadgeView extends AppCompatTextView {
         } else if (mBadgeMode.equals("1")) {
             setBg4IndicatorMde();
         }
-        setTextColor(mTextColor);
-        ThemeUtils.setTextSizeUnitPx(this, mTextSize);
     }
 
     private void setBg4DotMode() {
