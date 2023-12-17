@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val intValue: Int = tool1.fromJson<Int>("3", Int::class.java)
         println("fromJson,$intValue")
 
-        Toast.makeText(this, "Kotlin- toJson=$result1,fromJson=$intValue", Toast.LENGTH_SHORT)
+        Toast.makeText(this, "Kotlin-toJson=$result1,fromJson=$intValue", Toast.LENGTH_SHORT)
             .show()
     }
 
@@ -36,5 +36,7 @@ class MainActivity : AppCompatActivity() {
         println("toJson,$result1")
         val intValue: Int = tool1.fromJson<Int>("3", Int::class.java)
         println("fromJson,$intValue")
+        Toast.makeText(this, "Java-toJson=$result1,fromJson=$intValue", Toast.LENGTH_SHORT)
+            .show()
     }
 }
