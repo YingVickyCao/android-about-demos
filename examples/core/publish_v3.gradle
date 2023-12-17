@@ -87,10 +87,10 @@ publishing {
             url = layout.buildDirectory.dir('repos/releases')
         }
 
-//        maven {
-//            name = "debug"
-//            url = layout.buildDirectory.dir('repos/debug')
-//        }
+        maven {
+            name = "debug"
+            url = layout.buildDirectory.dir('repos/debug')
+        }
     }
 }
 

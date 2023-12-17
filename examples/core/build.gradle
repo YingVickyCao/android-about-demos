@@ -5,7 +5,8 @@ plugins {
 // 同样ok
 //apply plugin : 'java-library'
 //apply plugin : 'org.jetbrains.kotlin.jvm'
-apply from : 'publish_v3.gradle'
+//apply from : 'publish_v3.gradle'
+apply from : 'publish_v4.gradle'
 
 java {
     sourceCompatibility = rootProject.ext.sourceCompatibility
