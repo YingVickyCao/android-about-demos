@@ -93,22 +93,10 @@ tasks.withType(PublishToMavenLocal).configureEach {
     }
 }
 
+// 测试发现，新版maven-publish，不需要androidSourcesJar
+//task androidSourcesJar(type: Jar) {
+//    archiveClassifier.set('sources')
+//    from android.sourceSets.main.java.srcDirs
+//}
 
-//tasks.withType(PublishToMavenRepository) { it.dependsOn lint, test }
-
-task androidSourcesJar(type: Jar) {
-    archiveClassifier.set('sources')
-    from android.sourceSets.main.java.srcDirs
-}
-
-
-/**
- * maven-publish
- * gradle core:publish
- *
- * Ref :
- * https://developer.android.google.cn/studio/build/maven-publish-plugin?hl=zh-cn
- * https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:repositories
- * https://docs.gradle.org/current/userguide/publishing_customization.html
- * https://repo1.maven.org/maven2/com/squareup/okhttp3/okhttp/4.12.0/
- **/
+// 试发现，pom.withXml是指带上依赖信息. 其实新版本的maven-publish不需要指定依赖信息，那么pom文件也能包含依赖的dependency信息，那么当用户使用时，就能自动根据dependency信息下载所依赖的library。
