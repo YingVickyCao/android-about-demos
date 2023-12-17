@@ -12,12 +12,12 @@ android {
 //        }
 //    }
 
-    compileSdk rootProject.ext.compileSdkVersion
+    compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
         applicationId "com.hades.example.android.a"
-        targetSdk rootProject.ext.targetSdkVersion
-        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdk
+        minSdk rootProject.ext.minSdk
 
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName

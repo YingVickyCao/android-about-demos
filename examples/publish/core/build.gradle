@@ -1,0 +1,34 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+}
+// 同样ok
+//apply plugin : 'java-library'
+//apply plugin : 'org.jetbrains.kotlin.jvm'
+group = 'com.hades.example.android.libexamples'
+version = '0.1.0'
+
+java {
+    sourceCompatibility = rootProject.ext.sourceCompatibility
+    targetCompatibility = rootProject.ext.targetCompatibility
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // 不需要变成api，因为正式生成的pom中会带有 dependency gson的信息，自动下载
+//    api libs.google.gson
+    implementation libs.google.gson
+
+    testImplementation libs.test.junit
+}
+
+apply from : 'publish_v4.gradle'

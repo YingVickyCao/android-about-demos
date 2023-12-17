@@ -1,46 +1,51 @@
-rootProject.name = "android-about-demos"
-include ':app'      //  application
-include ':JavaLib'
-include ':lib-android'
+//rootProject.name = "android-about-demos"
+//include ':app'      //  application
+//include ':JavaLib'
+//include ':lib-android'
 
-include ':data-binding-example' // application
-project(':data-binding-example').projectDir = new File('lib-examples/data-binding-example')
+//include ':data-binding-example' // application
+//project(':data-binding-example').projectDir = new File('lib-examples/data-binding-example')
 
-include ':custom_theme'
-project(':custom_theme').projectDir = new File('examples/custom_theme')
+//include ':custom_theme'
+//project(':custom_theme').projectDir = new File('examples/custom_theme')
 
 include ':core'
-project(':core').projectDir = new File('examples/core')
+project(':core').projectDir = new File('examples/publish/core')
 
-include ':app-test-core'
-project(':app-test-core').projectDir = new File('examples/app-test-core')
+include ':widget'
+project(':widget').projectDir = new File('examples/publish/widget')
 
-include ':receive_app_links'
-project(':receive_app_links').projectDir = new File('examples/receive_app_links')
+include ':app-test-publish'
+project(':app-test-publish').projectDir = new File('examples/publish/app-test-publish')
 
-include ':other_app_having_app_links'
-project(':other_app_having_app_links').projectDir = new File('examples/other_app_having_app_links')
+//include ':receive_app_links'
+//project(':receive_app_links').projectDir = new File('examples/receive_app_links')
 
-
-include ':A'
-project(':A').projectDir = new File('examples/A')
-
-
-include ':B1'
-project(':B1').projectDir = new File('examples/B1')
+//include ':other_app_having_app_links'
+//project(':other_app_having_app_links').projectDir = new File('examples/other_app_having_app_links')
 
 
-include ':A1'
-project(':A1').projectDir = new File('examples/A1')
+//include ':A'
+//project(':A').projectDir = new File('examples/A')
 
 
-include ':B'
-project(':B').projectDir = new File('examples/B')
+//include ':B1'
+//project(':B1').projectDir = new File('examples/B1')
+
+
+//include ':A1'
+//project(':A1').projectDir = new File('examples/A1')
+
+
+//include ':B'
+//project(':B').projectDir = new File('examples/B')
 
 
 // When not use below modules, mark them to improve build speed
 //include ':A'        // application
 //include ':B1'       // application
 //include ':A1'       // application
-include ':assist'   // application
+//include ':assist'   // application
 //include ':B'        // application
+
+include ':widget'

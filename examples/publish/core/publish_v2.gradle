@@ -1,0 +1,236 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+    id 'maven-publish'
+}
+
+java {
+    sourceCompatibility = rootProject.ext.sourceCompatibility
+    targetCompatibility = rootProject.ext.targetCompatibility
+    withJavadocJar()
+    withSourcesJar()
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api libs.google.gson
+
+    testImplementation libs.test.junit
+}
+
+group = 'com.hades.example.android.libexamples'
+version = '0.1.0'
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            groupId = 'com.hades.example.android.libexamples'
+            artifactId = 'core'
+            version = '0.1.0'
+
+//            versionMapping {
+//                usage('java-api') {
+//                    fromResolutionOf('runtimeClasspath')
+//                }
+//                usage('java-runtime') {
+//                    fromResolutionResult()
+//                }
+//            }
+            pom {
+                name = 'core'
+                description = 'A concise description of my library'
+//                url = 'http://www.example.com/library'
+//                properties = [
+//                        myProp          : "value",
+//                        "prop.with.dots": "anotherValue"
+//                ]
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+//                developers {
+//                    developer {
+//                        id = 'johnd'
+//                        name = 'John Doe'
+//                        email = 'john.doe@example.com'
+//                    }
+//                }
+//                scm {
+//                    connection = 'scm:git:git://example.com/my-library.git'
+//                    developerConnection = 'scm:git:ssh://example.com/my-library.git'
+//                    url = 'http://example.com/my-library/'
+//                }
+            }
+        }
+
+        release(MavenPublication) {
+            from components.java
+            groupId = 'com.hades.example.android.libexamples'
+            artifactId = 'core'
+            version = '0.1.0'
+        }
+
+        debug(MavenPublication) {
+            from components.java
+            groupId = 'com.hades.example.android.libexamples'
+//            artifactId = 'core-debug'
+            artifactId = 'core'
+            version = '0.1.0'
+        }
+    }
+    repositories {
+        mavenLocal()
+//        maven {
+//            // change URLs to point to your repos, e.g. http://my.org/repo
+//            def releasesRepoUrl = layout.buildDirectory.dir('repos/releases')
+//            System.err.println("releasesRepoUrl=" + releasesRepoUrl)
+//            def snapshotsRepoUrl = layout.buildDirectory.dir('repos/snapshots')
+//            System.err.println("snapshotsRepoUrl=" + snapshotsRepoUrl)
+//            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+////            credentials {
+////                username = "xxx"
+////                password = "xxx"
+////            }
+//        }
+        maven {
+            name = "release"
+            url = layout.buildDirectory.dir('repos/releases')
+        }
+
+        maven {
+            name = "debug"
+            url = layout.buildDirectory.dir('repos/debug')
+        }
+    }
+}
+
+// :core:publish
+// output : repos/releases
+tasks.withType(PublishToMavenRepository).configureEach {
+    def predicate = provider {
+//        (repository == publishing.repositories.release && publication == publishing.publications.release)
+        (repository == publishing.repositories.release)
+    }
+    onlyIf("publishing binary to the release repository") {
+        predicate.get()
+    }
+}
+
+// :core:publishToMavenLocal
+// output : mavenLocal
+tasks.withType(PublishToMavenLocal).configureEach {
+    def predicate = provider {
+        (publication == publishing.publications.debug)
+    }
+    onlyIf("publishing binary and sources to the debug one") {
+        predicate.get()
+    }
+}
+
+/**
+ * maven-publish
+ * gradle core:publish
+ *
+ * Ref :
+ * https://developer.android.google.cn/studio/build/maven-publish-plugin?hl=zh-cn
+ * https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:repositories
+ * https://docs.gradle.org/current/userguide/publishing_customization.html
+ * https://repo1.maven.org/maven2/com/squareup/okhttp3/okhttp/4.12.0/
+ **/
+
+
+/**
+ * 17:34:48: Executing 'core:publish'...
+
+ Executing tasks: [core:publish] in project /Users/ying.cao/Documents/project/android-about-demos
+
+ Calculating task graph as configuration cache cannot be reused because file 'examples/core/build.gradle' has changed.
+ > Task :core:processResources NO-SOURCE
+ > Task :core:generatePomFileForDebugPublication
+ > Task :core:generatePomFileForMavenJavaPublication
+ > Task :core:sourcesJar UP-TO-DATE
+ > Task :core:generatePomFileForReleasePublication
+ > Task :core:compileKotlin UP-TO-DATE
+ > Task :core:compileJava UP-TO-DATE
+ > Task :core:classes UP-TO-DATE
+ > Task :core:javadoc UP-TO-DATE
+ > Task :core:jar UP-TO-DATE
+ > Task :core:javadocJar UP-TO-DATE
+ > Task :core:generateMetadataFileForMavenJavaPublication
+ > Task :core:generateMetadataFileForDebugPublication
+ > Task :core:generateMetadataFileForReleasePublication
+ > Task :core:publishDebugPublicationToDebugRepository SKIPPED
+ > Task :core:publishDebugPublicationToMavenLocalRepository SKIPPED
+ > Task :core:publishMavenJavaPublicationToReleaseRepository SKIPPED
+ > Task :core:publishMavenJavaPublicationToMavenLocalRepository SKIPPED
+ > Task :core:publishDebugPublicationToReleaseRepository SKIPPED
+ > Task :core:publishMavenJavaPublicationToDebugRepository SKIPPED
+ > Task :core:publishReleasePublicationToMavenLocalRepository SKIPPED
+ > Task :core:publishReleasePublicationToDebugRepository SKIPPED
+ > Task :core:publishReleasePublicationToReleaseRepository
+ >
+ Task :core:publish
+ */
+
+
+/**
+ * 17:35:35: Executing 'core:publishToMavenLocal'...
+
+ Executing tasks: [core:publishToMavenLocal] in project /Users/ying.cao/Documents/project/android-about-demos
+
+ Calculating task graph as no configuration cache is available for tasks: core:publishToMavenLocal
+ > Task :core:processResources NO-SOURCE
+ > Task :core:generatePomFileForMavenJavaPublication
+ > Task :core:generatePomFileForReleasePublication
+ > Task :core:generatePomFileForDebugPublication
+ > Task :core:sourcesJar UP-TO-DATE
+ > Task :core:compileKotlin UP-TO-DATE
+ > Task :core:compileJava UP-TO-DATE
+ > Task :core:classes UP-TO-DATE
+ > Task :core:javadoc UP-TO-DATE
+ > Task :core:jar UP-TO-DATE
+ > Task :core:javadocJar UP-TO-DATE
+ > Task :core:generateMetadataFileForMavenJavaPublication
+ > Task :core:generateMetadataFileForDebugPublication
+ > Task :core:generateMetadataFileForReleasePublication
+ > Task :core:publishMavenJavaPublicationToMavenLocal SKIPPED
+ > Task :core:publishReleasePublicationToMavenLocal SKIPPED
+ > Task :core:publishDebugPublicationToMavenLocal
+ > Task :core:publishToMavenLocal
+
+ BUILD SUCCESSFUL in 359ms
+ 13 actionable tasks: 7 executed, 6 up-to-date
+ Configuration cache entry stored.
+ */
+
+
+/**
+ * 17:36:36: Executing ':core:publishDebugPublicationToMavenLocal'...
+
+ Executing tasks: [:core:publishDebugPublicationToMavenLocal] in project /Users/ying.cao/Documents/project/android-about-demos
+
+ Calculating task graph as no configuration cache is available for tasks: :core:publishDebugPublicationToMavenLocal
+ > Task :core:processResources NO-SOURCE
+ > Task :core:generatePomFileForDebugPublication
+ > Task :core:sourcesJar UP-TO-DATE
+ > Task :core:compileKotlin UP-TO-DATE
+ > Task :core:compileJava UP-TO-DATE
+ > Task :core:classes UP-TO-DATE
+ > Task :core:jar UP-TO-DATE
+ > Task :core:javadoc UP-TO-DATE
+ > Task :core:javadocJar UP-TO-DATE
+ > Task :core:generateMetadataFileForDebugPublication
+ > Task :core:publishDebugPublicationToMavenLocal
+
+ BUILD SUCCESSFUL in 320ms
+ 9 actionable tasks: 3 executed, 6 up-to-date
+ Configuration cache entry stored.
+
+ */

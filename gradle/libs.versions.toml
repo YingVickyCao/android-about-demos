@@ -5,125 +5,70 @@
 # https://github.com/gradle/gradle/issues/16665
 
 [versions]
-# androidx, START
-ktx = "1.9.0"
-appcompat = "1.6.1"
-fragment = "1.5.6"
-activity = "1.7.0"
-annotation = "1.6.0"
-constraintlayout = "2.1.4"
-recyclerview = "1.3.0"
-core = "1.9.0"
-core-ktx = "1.9.0"
-localbroadcastmanager = "1.1.0"
-work = "2.8.1"
-# androidx, END
-
-# google, START
-material = "1.8.0"
-play-services-location = "21.0.1"
-gson = "2.10.1"
-exoplayer = "2.11.3"
-hilt = "2.44"
-
-# google, END
-
-kotlin-stdlib = "1.9.20"
-
-# thirdy party. START
-rxpermissions = "0.9.4"
-rxjava2 = "2.2.19"
-rxAndroid2 = "2.1.1"
-nineoldandroids = "2.4.0"
-j2v8 = "6.2.1"
-picasso = "2.5.2"
-netcipher = "2.1.0"
-okhttp = "4.10.0"
-# thirdy party. END
-
-# debug,START
-debug-db = "1.0.6"
-# debug,END
-
-# test, START
-junit = "4.13.2"
-# test, END
-
-# androidTest, START
-android_test_junit = "1.1.5"
-android_test_core = "1.5.0"
-android_test_espresso_core = "3.5.1"
-android_test_runner = "1.1.1"
-# androidTest, END
-
-# plugin, START
-androidGradlePlugin = "8.1.3"
-kotlinGradlePlugin = "1.9.0"
-# plugin, END
 
 [libraries]
-androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-androidx-fragment = { group = "androidx.fragment", name = "fragment", version.ref = "fragment" }
-androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
-androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
-androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
-androidx-core = { group = "androidx.core", name = "core", version.ref = "core" }
-androidx-coreKtx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
-androidx-localbroadcastmanager = { group = "androidx.localbroadcastmanager", name = "localbroadcastmanager", version.ref = "localbroadcastmanager" }
+androidx-ktx = { group = "androidx.core", name = "core-ktx", version = "1.9.0" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.6.1" }
+androidx-fragment = { group = "androidx.fragment", name = "fragment", version = "1.5.6" }
+androidx-activity = { group = "androidx.activity", name = "activity", version = "1.7.0" }
+androidx-annotation = { group = "androidx.annotation", name = "annotation", version = "1.6.0" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version = "2.1.4" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version = "1.3.0" }
+androidx-core = { group = "androidx.core", name = "core", version = "1.9.0" }
+androidx-coreKtx = { group = "androidx.core", name = "core-ktx", version = "1.9.0" }
+androidx-localbroadcastmanager = { group = "androidx.localbroadcastmanager", name = "localbroadcastmanager", version = "1.1.0" }
 # WorkManager,START
-androidx-workRuntime = { group = "androidx.work", name = "work-runtime", version.ref = "work" }
-androidx-workRuntimeKtx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "work" }
-androidx-workRxJava = { group = "androidx.work", name = "work-rxjava2", version.ref = "work" }
-androidx-workTesting = { group = "androidx.work", name = "work-testing", version.ref = "work" }
-androidx-workGcm = { group = "androidx.work", name = "work-gcm", version.ref = "work" }
-androidx-workMultiprocess = { group = "androidx.work", name = "work-multiprocess", version.ref = "work" }
+androidx-workRuntime = { group = "androidx.work", name = "work-runtime", version = "2.8.1" }
+androidx-workRuntimeKtx = { group = "androidx.work", name = "work-runtime-ktx", version = "2.8.1" }
+androidx-workRxJava = { group = "androidx.work", name = "work-rxjava2", version = "2.8.1" }
+androidx-workTesting = { group = "androidx.work", name = "work-testing", version = "2.8.1" }
+androidx-workGcm = { group = "androidx.work", name = "work-gcm", version = "2.8.1" }
+androidx-workMultiprocess = { group = "androidx.work", name = "work-multiprocess", version = "2.8.1" }
 # WorkManager,END
 # google, START
-google-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-google-playServicesLocation = { group = "com.google.android.gms", name = "play-services-location", version.ref = "play-services-location" }
-google-gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
-google-exoplayer = { group = "com.google.android.exoplayer", name = "exoplayer", version.ref = "exoplayer" }
-google-hiltAndroid = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
-google-hiltCompiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
-google-hiltAndroidCompiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+google-material = { group = "com.google.android.material", name = "material", version = "1.8.0" }
+google-playServicesLocation = { group = "com.google.android.gms", name = "play-services-location", version = "21.0.1" }
+google-gson = { group = "com.google.code.gson", name = "gson", version = "2.10.1" }
+google-exoplayer = { group = "com.google.android.exoplayer", name = "exoplayer", version = "2.11.3" }
+google-hiltAndroid = { group = "com.google.dagger", name = "hilt-android", version = "2.44" }
+google-hiltCompiler = { group = "com.google.dagger", name = "hilt-compiler", version = "2.44" }
+google-hiltAndroidCompiler = { group = "com.google.dagger", name = "hilt-android-compiler", version = "2.44" }
 # google, END
 
 # thirdy party. START
-thirdparty-rxpermissions = { group = "com.tbruyelle.rxpermissions2", name = "rxpermissions", version.ref = "rxpermissions" }  # rxpermissions is "0.9.4@aar"
-thirdparty-rxjava2 = { group = "io.reactivex.rxjava2", name = "rxjava", version.ref = "rxjava2" }
-thirdparty-rxandroid2 = { group = "io.reactivex.rxjava2", name = "rxandroid", version.ref = "rxAndroid2" }
-thirdparty-nineoldandroids = { group = "com.nineoldandroids", name = "library", version.ref = "nineoldandroids" }
+thirdparty-rxpermissions = { group = "com.tbruyelle.rxpermissions2", name = "rxpermissions", version = "0.9.4" }  # rxpermissions is "0.9.4@aar"
+thirdparty-rxjava2 = { group = "io.reactivex.rxjava2", name = "rxjava", version = "2.2.19" }
+thirdparty-rxandroid2 = { group = "io.reactivex.rxjava2", name = "rxandroid", version = "2.1.1" }
+thirdparty-nineoldandroids = { group = "com.nineoldandroids", name = "library", version = "2.4.0" }
 # https://mvnrepository.com/artifact/com.eclipsesource.j2v8/j2v8
-thirdparty-j2v8 = { group = "com.eclipsesource.j2v8", name = "j2v8", version.ref = "j2v8" } # j2v8 is "6.2.1@aar"
-thirdparty-picasso = { group = "com.squareup.picasso", name = "picasso", version.ref = "picasso" }
-thirdparty-netcipher = { group = "info.guardianproject.netcipher", name = "netcipher", version.ref = "netcipher" }
-thirdparty-okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
-thirdparty-loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+thirdparty-j2v8 = { group = "com.eclipsesource.j2v8", name = "j2v8", version = "6.2.1" } # j2v8 is "6.2.1@aar"
+thirdparty-picasso = { group = "com.squareup.picasso", name = "picasso", version = "2.5.2" }
+thirdparty-netcipher = { group = "info.guardianproject.netcipher", name = "netcipher", version = "2.1.0" }
+thirdparty-okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version = "4.10.0" }
+thirdparty-loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version = "4.10.0" }
 # thirdy party. END
 
-kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin-stdlib" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version = "1.9.20" }
 
 
 # debug,START
-debug-debugDb = { group = "com.amitshekhar.android", name = "debug-db", version.ref = "debug-db" }
+debug-debugDb = { group = "com.amitshekhar.android", name = "debug-db", version = "1.0.6" }
 # debug,END
 
 # test, START
-test-junit = { group = "junit", name = "junit", version.ref = "junit" }
+test-junit = { group = "junit", name = "junit", version = "4.13.2" }
 # test, END
 
 # androidTest, START
-androidTest_junit = { group = "androidx.test.ext", name = "junit", version.ref = "android_test_junit" }
-androidTest_core = { group = "androidx.test", name = "core", version.ref = "android_test_core" }
-androidTest_espressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "android_test_espresso_core" }
-androidTest_runner = { group = "androidx.test", name = "runner", version.ref = "android_test_runner" }
+androidTest_junit = { group = "androidx.test.ext", name = "junit", version = "1.1.5" }
+androidTest_core = { group = "androidx.test", name = "core", version = "1.5.0" }
+androidTest_espressoCore = { group = "androidx.test.espresso", name = "espresso-core", version = "3.5.1" }
+androidTest_runner = { group = "androidx.test", name = "runner", version = "1.1.1" }
 # androidTest, END
 
 # plugin, START
-plugin-androidGradle = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
-plugin-kotlinGradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
+plugin-androidGradle = { module = "com.android.tools.build:gradle", version= "8.1.3" }
+plugin-kotlinGradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version = "1.9.0" }
 # plugin, END
 
 [plugins]

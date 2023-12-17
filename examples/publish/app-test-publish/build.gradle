@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.hades.example.app_test_publish'
+    compileSdk rootProject.ext.compileSdk
+
+    defaultConfig {
+        applicationId "com.hades.example.app_test_publush"
+
+        minSdk rootProject.ext.minSdk
+        targetSdk rootProject.ext.targetSdk
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility rootProject.ext.sourceCompatibility
+        targetCompatibility rootProject.ext.targetCompatibility
+    }
+    kotlinOptions {
+        jvmTarget = rootProject.ext.jvmTarget
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation "com.hades.example.android.libexamples:core:0.1.0"
+    implementation "com.hades.example.android.libexamples:widget-debug:1"
+
+    implementation libs.androidx.ktx
+    implementation libs.kotlin.stdlib
+    implementation libs.androidx.appcompat
+
+    testImplementation libs.test.junit
+
+    androidTestImplementation libs.androidTest.junit
+    androidTestImplementation libs.androidTest.espressoCore
+}
