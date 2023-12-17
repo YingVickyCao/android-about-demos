@@ -24,7 +24,9 @@ java {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api libs.google.gson
+    // 不需要变成api，因为正式生成的pom中会带有 dependency gson的信息，自动下载
+//    api libs.google.gson
+    implementation libs.google.gson
 
     testImplementation libs.test.junit
 }
