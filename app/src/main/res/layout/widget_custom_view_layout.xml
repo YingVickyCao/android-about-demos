@@ -87,6 +87,11 @@
                 android:layout_height="wrap_content"
                 android:text="RequiredTextView" />
 
+            <Button
+                android:id="@+id/page_red_badge"
+                style="@style/btn"
+                android:text="@string/page_red_badge" />
+
         </LinearLayout>
 
     </ScrollView>

@@ -18,21 +18,18 @@ public class DensityUtil {
         return mInstance;
     }
 
-    private DensityUtil() {
-    }
-
-    public float scale(Context context) {
+    public static float scale(Context context) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return dm.densityDpi / 160F;
     }
 
-    public int dp2px(Context context, float dp) {
+    public static int dp2px(Context context, float dp) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
 //        return (int) (dipValue * scale + 0.5f);
         return (int) (dp * dm.density + 0.5f);
     }
 
-    public int px2dp(Context context, float px) {
+    public static int px2dp(Context context, float px) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
 //        return (int) (pxValue / scale + 0.5f);
         return (int) (px / dm.density + 0.5f);

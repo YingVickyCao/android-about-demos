@@ -585,4 +585,55 @@
         <item name="android:layout_margin">@dimen/margin_tiny</item>
         <item name="android:layout_gravity">center_horizontal</item>
     </style>
+
+    <!-- badge, start   -->
+    <style name="red_badge">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- 红色圈圈   -->
+    <style name="red_badge_xsmall" parent="red_badge">
+        <item name="android:layout_width">5dp</item>
+        <item name="android:layout_height">5dp</item>
+    </style>
+
+    <!-- 红色圈圈   -->
+    <style name="red_badge_small" parent="red_badge">
+        <item name="android:layout_width">10dp</item>
+        <item name="android:layout_height">10dp</item>
+    </style>
+
+    <!-- 红色圈圈，带数字9   -->
+    <style name="red_badge_medium" parent="red_badge">
+        <item name="android:layout_width">17dp</item>
+        <item name="android:layout_height">17dp</item>
+    </style>
+
+    <!-- 红色椭圆，带数字99 / 99+   -->
+    <style name="red_badge_large" parent="red_badge">
+        <item name="android:layout_width">34dp</item>
+        <item name="android:layout_height">17dp</item>
+    </style>
+
+    <style name="BadgeView">
+        <!--        <item name="badge_mode">dot</item>-->
+        <item name="badge_mode">indicator</item>
+        <item name="size_when_indicator_no_value">@dimen/size_10</item>
+        <item name="layout_height_when_indicator_has_value">17dp</item>
+        <item name="layout_width_when_indicator_value_0_to_9">wrap_content</item>
+        <item name="layout_width_when_indicator_value_10_to_99">@dimen/size_25</item>
+        <item name="layout_width_when_indicator_value_100_to_999">wrap_content</item>
+        <item name="layout_width_when_indicator_value_great_than_999">wrap_content</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@android:color/white</item>
+
+        <!--        <item name="android:ellipsize">end</item>-->
+        <!--        <item name="android:gravity">center</item>-->
+        <!--        <item name="android:maxLines">1</item>-->
+    </style>
+    <!-- badge, end   -->
 </resources>

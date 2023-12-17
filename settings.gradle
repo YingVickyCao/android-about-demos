@@ -17,3 +17,6 @@ include ':custom_theme'
 
 include ':core'
 project(':core').projectDir = new File('lib-examples/core')
+
+include ':app-test-core'
+project(':app-test-core').projectDir = new File('lib-examples/app-test-core')

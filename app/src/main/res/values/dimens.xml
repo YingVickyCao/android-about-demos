@@ -56,6 +56,7 @@
     <dimen name="size_12">12dp</dimen>
     <dimen name="size_15">15dp</dimen>
     <dimen name="size_16">16dp</dimen>
+    <dimen name="size_17">17dp</dimen>
     <dimen name="size_20">20dp</dimen>
     <dimen name="size_24">24dp</dimen>
     <dimen name="size_25">25dp</dimen>

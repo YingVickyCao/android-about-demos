@@ -56,9 +56,6 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_widget_layout);
-
-//        hideActionBar();
-
         initViews();
 
         findViewById(R.id.page_CustomVew).setOnClickListener(v -> pageCustomVew());
@@ -111,7 +108,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     @Override
     protected void showCurrentTest() {
-        pageTextView();
+        pageCustomVew();
     }
 
     private void pageViewLocation() {

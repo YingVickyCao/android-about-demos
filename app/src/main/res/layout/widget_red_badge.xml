@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:layout_alignParentTop="true"
+        android:text="@string/page_red_badge" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-1dp"
+        android:padding="@dimen/size_30">
+
+        <!--  方案1:用svg（圆）      -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/red_badge_xsmall"
+                android:background="@drawable/ic_badge_20x20" />
+
+            <TextView
+                style="@style/red_badge_small"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_badge_20x20" />
+
+            <TextView
+                style="@style/red_badge_medium"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_badge_20x20"
+                android:text="9" />
+
+            <TextView
+                style="@style/red_badge_large"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_badge_20x20"
+                android:text="99" />
+
+            <TextView
+                style="@style/red_badge_large"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_badge_20x20"
+                android:text="99+" />
+
+            <TextView
+                style="@style/red_badge_large"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_badge_20x20"
+                android:text="999+" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--  方案1:用svg（椭圆）      -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/red_badge_xsmall"
+                android:background="@drawable/ic_badge_200x100" />
+
+            <TextView
+                style="@style/red_badge_small"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_badge_200x100" />
+
+            <TextView
+                style="@style/red_badge_medium"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_badge_200x100"
+                android:text="9" />
+
+            <TextView
+                style="@style/red_badge_large"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_badge_200x100"
+                android:text="99" />
+
+            <TextView
+                style="@style/red_badge_large"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_badge_200x100"
+                android:text="99+" />
+
+            <TextView
+                style="@style/red_badge_large"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_badge_200x100"
+                android:text="999+" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--  方案1:用shape oval      -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/red_badge_xsmall"
+                android:background="@drawable/xml_badge_oval" />
+
+            <TextView
+                style="@style/red_badge_small"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/xml_badge_oval" />
+
+            <TextView
+                style="@style/red_badge_medium"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/xml_badge_oval"
+                android:text="9" />
+
+            <TextView
+                style="@style/red_badge_large"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/xml_badge_oval"
+                android:text="99" />
+
+            <TextView
+                style="@style/red_badge_large"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/xml_badge_oval"
+                android:text="99+" />
+
+            <TextView
+                style="@style/red_badge_large"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/xml_badge_oval"
+                android:text="999+" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--        <androidx.appcompat.widget.LinearLayoutCompat-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="vertical">-->
+
+        <!--            <com.hades.example.android.widget.custom_view.badge.RedBadgeView style="@style/red_badge_xsmall" />-->
+
+        <!--            <com.hades.example.android.widget.custom_view.badge.RedBadgeView-->
+        <!--                style="@style/red_badge_small"-->
+        <!--                android:layout_marginTop="8dp" />-->
+
+        <!--            <com.hades.example.android.widget.custom_view.badge.RedBadgeView-->
+        <!--                style="@style/red_badge_medium"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:text="9" />-->
+
+        <!--            <com.hades.example.android.widget.custom_view.badge.RedBadgeView-->
+        <!--                style="@style/red_badge_large"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:text="99" />-->
+
+        <!--            <com.hades.example.android.widget.custom_view.badge.RedBadgeView-->
+        <!--                style="@style/red_badge_large"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:text="99+" />-->
+
+        <!--            <com.hades.example.android.widget.custom_view.badge.RedBadgeView-->
+        <!--                style="@style/red_badge_large"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:text="999+" />-->
+
+        <!--        </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+        <!--        <androidx.appcompat.widget.LinearLayoutCompat-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="vertical">-->
+
+        <!--            <com.hades.example.android.widget.custom_view.badge.RedBadgeView2 style="@style/red_badge_xsmall" />-->
+
+        <!--            <com.hades.example.android.widget.custom_view.badge.RedBadgeView2-->
+        <!--                style="@style/red_badge_small"-->
+        <!--                android:layout_marginTop="8dp" />-->
+
+        <!--            <com.hades.example.android.widget.custom_view.badge.RedBadgeView2-->
+        <!--                style="@style/red_badge_medium"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:text="9" />-->
+
+        <!--            <com.hades.example.android.widget.custom_view.badge.RedBadgeView2-->
+        <!--                style="@style/red_badge_large"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:text="99" />-->
+
+        <!--            <com.hades.example.android.widget.custom_view.badge.RedBadgeView2-->
+        <!--                style="@style/red_badge_large"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:text="99+" />-->
+
+        <!--            <com.hades.example.android.widget.custom_view.badge.RedBadgeView2-->
+        <!--                style="@style/red_badge_large"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:text="999+" />-->
+
+        <!--        </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+        <!--  不同数字，使用不同的svg      -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/red_badge_xsmall"
+                android:background="@drawable/ic_badge_17x17" />
+
+            <TextView
+                style="@style/red_badge_small"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_badge_17x17" />
+
+            <TextView
+                style="@style/red_badge_medium"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_badge_17x17"
+                android:text="9" />
+
+            <TextView
+                style="@style/red_badge_large"
+                android:layout_width="@dimen/size_25"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/xml_badge_oval"
+                android:text="99" />
+
+            <TextView
+                style="@style/red_badge_large"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_badge_34x17"
+                android:text="99+" />
+
+            <TextView
+                style="@style/red_badge_large"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_badge_34x17"
+                android:text="999+" />
+
+            <TextView
+                style="@style/red_badge_large"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_badge_34x17"
+                android:text="9999+" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--  不同数字，使用不同的svg      -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.hades.example.android.widget.custom_view.badge.BadgeView
+                android:layout_width="@dimen/size_5"
+                android:layout_height="@dimen/size_5"
+                app:badge_mode="dot" />
+
+            <com.hades.example.android.widget.custom_view.badge.BadgeView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="8dp"
+                app:badge_mode="dot" />
+
+            <com.hades.example.android.widget.custom_view.badge.BadgeView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="9" />
+
+            <com.hades.example.android.widget.custom_view.badge.BadgeView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="99" />
+
+            <com.hades.example.android.widget.custom_view.badge.BadgeView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="99+" />
+
+            <com.hades.example.android.widget.custom_view.badge.BadgeView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="999+" />
+
+            <com.hades.example.android.widget.custom_view.badge.BadgeView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="9999+"
+                android:backgroundTint="@color/green"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</RelativeLayout>
