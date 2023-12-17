@@ -89,25 +89,6 @@ publishing {
     }
 }
 
-/**
- * https://docs.gradle.org/current/samples/sample_building_kotlin_libraries.html#review_the_project_files
- *
- * 1 generate jar
- * ./gradlew :core:build
- *
- * output :  core/build/libs/core.jar
- *
- * Verify that the archive is valid
- * jar tf lib-examples/core/build/libs/core.jar
-
- 2 want the name of the JAR file to include the library version
- ./gradlew :core:jar
-
- output :  core/build/libs/core-0.1.0.jar
-
- jar tf lib-examples/core/build/libs/core-0.1.0.jar
- */
-
 
 /**
  * https://developer.android.google.cn/studio/build/maven-publish-plugin?hl=zh-cn
