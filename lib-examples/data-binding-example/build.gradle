@@ -10,11 +10,11 @@ apply plugin: 'kotlin-kapt'
 android {
     namespace 'com.hades.example.android.libexamples.data_binding'
 
-    compileSdk rootProject.ext.compileSdkVersion
+    compileSdk rootProject.ext.compileSdk
     defaultConfig {
         applicationId "com.hades.example.android.libexamples.data_binding"
-        minSdk rootProject.ext.compileSdkVersion
-        targetSdk rootProject.ext.targetSdkVersion
+        minSdk rootProject.ext.compileSdk
+        targetSdk rootProject.ext.targetSdk
 
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName

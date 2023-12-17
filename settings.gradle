@@ -10,10 +10,13 @@
 //project(':custom_theme').projectDir = new File('examples/custom_theme')
 
 include ':core'
-project(':core').projectDir = new File('examples/core')
+project(':core').projectDir = new File('examples/publish/core')
 
-include ':app-test-core'
-project(':app-test-core').projectDir = new File('examples/app-test-core')
+include ':widget'
+project(':widget').projectDir = new File('examples/publish/widget')
+
+include ':app-test-publish'
+project(':app-test-publish').projectDir = new File('examples/publish/app-test-publish')
 
 //include ':receive_app_links'
 //project(':receive_app_links').projectDir = new File('examples/receive_app_links')
@@ -44,3 +47,5 @@ project(':app-test-core').projectDir = new File('examples/app-test-core')
 //include ':A1'       // application
 //include ':assist'   // application
 //include ':B'        // application
+
+include ':widget'
