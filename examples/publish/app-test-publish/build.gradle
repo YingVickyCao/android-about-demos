@@ -37,6 +37,7 @@ dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
 
     implementation "com.hades.example.android.libexamples:core:0.1.0"
+    implementation "com.hades.example.android.libexamples:widget-debug:1"
 
     implementation libs.androidx.ktx
     implementation libs.kotlin.stdlib

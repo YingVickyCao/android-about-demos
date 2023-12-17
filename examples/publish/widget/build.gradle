@@ -2,7 +2,6 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
-
 android {
     namespace 'com.hades.example.widget'
     compileSdk rootProject.ext.compileSdk
@@ -12,6 +11,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
     }
 
     buildTypes {
@@ -38,3 +40,4 @@ dependencies {
     androidTestImplementation libs.androidTest.junit
     androidTestImplementation libs.androidTest.espressoCore
 }
+apply from : 'publish_v4.gradle'

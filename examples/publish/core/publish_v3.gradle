@@ -1,10 +1,5 @@
 apply plugin: 'maven-publish'
 
-java {
-    withJavadocJar()
-    withSourcesJar()
-}
-
 group = 'com.hades.example.android.libexamples'
 version = '0.1.0'
 

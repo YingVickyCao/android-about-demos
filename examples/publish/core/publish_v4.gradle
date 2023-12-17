@@ -1,5 +1,11 @@
 // 添加 maven-publish 插件
 apply plugin: 'maven-publish'
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
 // 发布配置
 publishing {
     publications {
@@ -27,7 +33,9 @@ publishing {
     repositories {
         // for debug
         // :core:publishToMavenLocal
-        mavenLocal()
+        // 即使注释掉 mavenLocal()，task PublishToMavenLocal 默认也是发布到mavenLocal()
+//        mavenLocal()
+
 //        // for release
 //        // :core:publish
         maven {

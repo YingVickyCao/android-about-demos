@@ -5,12 +5,31 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--  测试 打包 的 jar  -->
     <Button
         android:id="@+id/test"
         android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:layout_centerInParent="true"
         android:text="Hello World!"
         android:textAllCaps="false" />
+
+    <!--  测试 打包 的 aar  -->
+    <com.hades.example.widget.RedTextView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/testColor"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/testColor"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="Use aar color"
+        android:textColor="@color/fav_color"
+        android:textSize="30sp" />
 
 </RelativeLayout>

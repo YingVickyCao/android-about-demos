@@ -7,7 +7,6 @@ plugins {
 //apply plugin : 'org.jetbrains.kotlin.jvm'
 group = 'com.hades.example.android.libexamples'
 version = '0.1.0'
-apply from : 'publish_v4.gradle'
 
 java {
     sourceCompatibility = rootProject.ext.sourceCompatibility
@@ -30,5 +29,4 @@ dependencies {
     testImplementation libs.test.junit
 }
 
-group = 'com.hades.example.android.libexamples'
-version = '0.1.0'
+apply from : 'publish_v4.gradle'

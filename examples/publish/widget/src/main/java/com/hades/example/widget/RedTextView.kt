@@ -4,6 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 
+/**
+ * This is example of custom widget
+ */
 class RedTextView : AppCompatTextView {
     constructor(context: Context) : super(context) {
         setBackgroundColor(resources.getColor(android.R.color.holo_red_dark, getContext().theme))
