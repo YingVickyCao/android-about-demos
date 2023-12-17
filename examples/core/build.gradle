@@ -1,11 +1,10 @@
-//plugins {
-//    id 'java-library'
-//    id 'org.jetbrains.kotlin.jvm'
-//}
-apply plugin : 'java-library'
-apply plugin : 'org.jetbrains.kotlin.jvm'
-
-//apply from : '../../publish_v3.gradle'
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+}
+// 同样ok
+//apply plugin : 'java-library'
+//apply plugin : 'org.jetbrains.kotlin.jvm'
 apply from : 'publish_v3.gradle'
 
 java {
