@@ -54,7 +54,7 @@ public class TestProgressDialogFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.other_ui_progressdialog, container, false);
+        View view = inflater.inflate(R.layout.other_ui_progress_dialog2, container, false);
 
         view.findViewById(R.id.showCircleProgressDialog).setOnClickListener(this::showCircleProgressDialog);
         view.findViewById(R.id.showCircleProgressDialogWithBtns).setOnClickListener(this::showCircleProgressDialogWithBtns);

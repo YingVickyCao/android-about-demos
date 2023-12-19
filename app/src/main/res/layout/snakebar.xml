@@ -1,6 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/page_Snackbar" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/showNormalSnackBar1"
+            style="@style/btn"
+            android:text="Show -  Way 1"
+            tools:ignore="HardcodedText" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/showNormalSnackBar2"
+            style="@style/btn"
+            android:text="Show - Way 2"
+            tools:ignore="HardcodedText" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/showNormalSnackBar3"
+            style="@style/btn"
+            android:text="Show - Way 3"
+            tools:ignore="HardcodedText" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/onlyShowOneSnackBar"
+            style="@style/btn"
+            android:text="System can only show one Snackbar object at same time"
+            tools:ignore="HardcodedText" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/length_short"
+            style="@style/btn"
+            android:text="LENGTH_SHORT"
+            tools:ignore="HardcodedText" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/length_long"
+            style="@style/btn"
+            android:text="LENGTH_LONG"
+            tools:ignore="HardcodedText" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/length_indefinite"
+            style="@style/btn"
+            android:text="LENGTH_INDEFINITE"
+            tools:ignore="HardcodedText" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add_action"
+            style="@style/btn"
+            android:text="Add Action"
+            tools:ignore="HardcodedText" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</RelativeLayout>
