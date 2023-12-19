@@ -10,60 +10,91 @@
         style="@style/topic"
         android:text="@string/page_Snackbar" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/showNormalSnackBar1"
-            style="@style/btn"
-            android:text="Show -  Way 1"
-            tools:ignore="HardcodedText" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:padding="@dimen/size_30">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/showNormalSnackBar2"
-            style="@style/btn"
-            android:text="Show - Way 2"
-            tools:ignore="HardcodedText" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/showNormalSnackBar1"
+                style="@style/btn"
+                android:text="Show -  Way 1"
+                tools:ignore="HardcodedText" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/showNormalSnackBar3"
-            style="@style/btn"
-            android:text="Show - Way 3"
-            tools:ignore="HardcodedText" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/showNormalSnackBar2"
+                style="@style/btn"
+                android:text="Show - Way 2"
+                tools:ignore="HardcodedText" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/onlyShowOneSnackBar"
-            style="@style/btn"
-            android:text="System can only show one Snackbar object at same time"
-            tools:ignore="HardcodedText" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/showNormalSnackBar3"
+                style="@style/btn"
+                android:text="Show - Way 3"
+                tools:ignore="HardcodedText" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/length_short"
-            style="@style/btn"
-            android:text="LENGTH_SHORT"
-            tools:ignore="HardcodedText" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/onlyShowOneSnackBar"
+                style="@style/btn"
+                android:text="System can only show one Snackbar object at same time"
+                tools:ignore="HardcodedText" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/length_long"
-            style="@style/btn"
-            android:text="LENGTH_LONG"
-            tools:ignore="HardcodedText" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/length_short"
+                style="@style/btn"
+                android:text="LENGTH_SHORT"
+                tools:ignore="HardcodedText" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/length_indefinite"
-            style="@style/btn"
-            android:text="LENGTH_INDEFINITE"
-            tools:ignore="HardcodedText" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/length_long"
+                style="@style/btn"
+                android:text="LENGTH_LONG"
+                tools:ignore="HardcodedText" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/add_action"
-            style="@style/btn"
-            android:text="Add Action"
-            tools:ignore="HardcodedText" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/length_indefinite"
+                style="@style/btn"
+                android:text="LENGTH_INDEFINITE"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/add_action"
+                style="@style/btn"
+                android:text="Add Action"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/change_action_and_message_text_color"
+                style="@style/btn"
+                android:text="设置 setAction 文本颜色、text 颜色"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/change_background_color"
+                style="@style/btn"
+                android:text="设置背景颜色"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addCallback"
+                style="@style/btn"
+                android:text="设置 SnackBar 监听事件"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/test"
+                style="@style/btn_red"
+                android:text="Test"
+                tools:ignore="HardcodedText" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </ScrollView>
 
 </RelativeLayout>

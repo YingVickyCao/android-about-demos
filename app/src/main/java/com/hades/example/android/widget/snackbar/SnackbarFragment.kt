@@ -5,8 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
+import com.hades.example.android.R
 import com.hades.example.android.databinding.SnakebarBinding
 
 private const val TAG = "SnackbarFragment"
@@ -26,6 +28,10 @@ class SnackbarFragment : Fragment() {
         binding.lengthLong.setOnClickListener { this.lengthLong() }
         binding.lengthIndefinite.setOnClickListener { this.lengthIndefinite() }
         binding.addAction.setOnClickListener { this.addAction() }
+        binding.changeActionAndMessageTextColor.setOnClickListener { this.changeActionAndMessageTextColor() }
+        binding.changeBackgroundColor.setOnClickListener { this.changeBackgroundColor() }
+        binding.addCallback.setOnClickListener { this.addCallback() }
+        binding.test.setOnClickListener { this.test() }
         return binding.root
     }
 
@@ -38,7 +44,7 @@ class SnackbarFragment : Fragment() {
     }
 
     private fun showNormalSnackBar3() {
-        if (null != context){
+        if (null != context) {
             Snackbar.make(requireContext(), binding.root, "Normal Snackbar 3", Snackbar.LENGTH_SHORT).show() // way3
         }
     }
@@ -67,19 +73,74 @@ class SnackbarFragment : Fragment() {
     }
 
     private fun addAction() {
-//        Snackbar.make(requireActivity(), binding.root, "Snackbar length is long", Snackbar.LENGTH_INDEFINITE)
-//            .setAction("OK", listener=>{
-//            Log.d(TAG, "addAction: Click ok")
-//        })
-//        .show()
-
-//        Snackbar.make(view, "提示：您有新消息", Snackbar.LENGTH_SHORT)
-//            //设置Action，右边一个按钮
-//            .setAction("确定", click -> {
-//            Toast.makeText(SnackBarActivity.this,"Open Message",Toast.LENGTH_SHORT).show();
-//        }).show();
+        Snackbar.make(requireActivity(), binding.root, "Snackbar length is long", Snackbar.LENGTH_SHORT)
+            // 增加了action，右边自动增加一个ok 文字。Snackbar.LENGTH_SHORT -> 不点ok,自动消失
+            .setAction("OK") {
+                Log.d(TAG, "addAction: Click ok")
+            }
+            .show()
     }
 
+    private fun changeActionAndMessageTextColor() {
+        Snackbar.make(requireActivity(), binding.root, "Snackbar length is long", Snackbar.LENGTH_SHORT)
+            // 增加了action，右边自动增加一个ok 文字。Snackbar.LENGTH_SHORT -> 不点ok,自动消失
+            .setAction("OK") {
+
+            }
+            .setTextColor(resources.getColor(R.color.red, context?.theme))
+            .setActionTextColor(resources.getColor(R.color.red, context?.theme))
+            .show()
+    }
+
+    private fun changeBackgroundColor() {
+        Snackbar.make(requireActivity(), binding.root, "Snackbar length is long", Snackbar.LENGTH_SHORT)
+            // 增加了action，右边自动增加一个ok 文字。Snackbar.LENGTH_SHORT -> 不点ok,自动消失
+            .setAction("OK") {
+                Toast.makeText(activity, "OK clicked", Toast.LENGTH_SHORT).show()
+            }
+            .setBackgroundTint(resources.getColor(R.color.red, context?.theme))
+            .show()
+    }
+
+    private fun addCallback() {
+        Snackbar.make(requireActivity(), binding.root, "Snackbar length is long", Snackbar.LENGTH_SHORT)
+            // 增加了action，右边自动增加一个ok 文字。Snackbar.LENGTH_SHORT -> 不点ok,自动消失
+            .setAction("OK") {
+
+            }
+            .addCallback(object : Snackbar.Callback() {
+                /**
+                 * onDismissed()方法中的 event 事件有 5 种：
+                 *
+                 * 滑动消失的时候调用
+                 * public static final int DISMISS_EVENT_SWIPE=0;
+                 *
+                 * 点击 Action 消失的时候调用
+                 * public static final intDISMISS_EVENT_ACTION=1;
+                 *
+                 * 超时消失的时候调用
+                 * public static final intDISMISS_EVENT_TIMEOUT=2;
+                 *
+                 * 手动调用 dismiss()方法时调用
+                 * public static final intDISMISS_EVENT_MANUAL=3;
+                 *
+                 * 一个新的 SnackBar 出现的时候调用
+                 * public static final intDISMISS_EVENT_CONSECUTIVE=4;
+                 */
+                override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                    Toast.makeText(activity, "onDismissed invoked,event type=$event", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onShown(sb: Snackbar?) {
+                    Toast.makeText(activity, "onShown invoked", Toast.LENGTH_SHORT).show()
+                }
+            })
+            .show()
+    }
+
+    private fun test() {
+
+    }
 
     override fun onDestroy() {
         super.onDestroy()
