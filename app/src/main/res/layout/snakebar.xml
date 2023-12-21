@@ -102,6 +102,29 @@
                 tools:ignore="HardcodedText" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/setBackgroundAlpha"
+                style="@style/btn"
+                android:text="设置背景透明度"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/setPosition"
+                style="@style/btn"
+                android:text="设置显示的位置"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/setLeftRightIcon"
+                style="@style/btn"
+                android:text="设置左右图片"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addView"
+                style="@style/btn"
+                android:text="加入View"
+                tools:ignore="HardcodedText" />
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/test"
                 style="@style/btn_red"
                 android:text="Test"

@@ -27,18 +27,8 @@ import com.hades.example.android.lib.utils.ThemeUtils;
 import com.hades.example.android.tools.DensityUtil;
 
 public class SnackbarUtils {
-    //设置Snackbar背景颜色
-    private static final int color_info = 0XFF2094F3;
-    private static final int color_confirm = 0XFF4CB04E;
-    private static final int color_warning = 0XFFFEC005;
-    private static final int color_danger = 0XFFF44336;
     //工具类当前持有的Snackbar实例
     private static Snackbar mSnackbar = null;
-
-
-    private SnackbarUtils() {
-        throw new RuntimeException("禁止无参创建实例");
-    }
 
     public SnackbarUtils(@NonNull Snackbar snackbar) {
         this.mSnackbar = snackbar;
@@ -51,18 +41,6 @@ public class SnackbarUtils {
      */
     public Snackbar getSnackbar() {
         return mSnackbar;
-    }
-
-    /**
-     * 设置Snackbar 背景透明度
-     *
-     * @param alpha
-     * @return
-     */
-    public SnackbarUtils alpha(float alpha) {
-        alpha = alpha >= 1.0f ? 1.0f : (alpha <= 0.0f ? 0.0f : alpha);
-        mSnackbar.getView().setAlpha(alpha);
-        return new SnackbarUtils(mSnackbar);
     }
 
     /**
@@ -125,10 +103,12 @@ public class SnackbarUtils {
      */
     public SnackbarUtils leftAndRightDrawable(@Nullable Drawable leftDrawable, @Nullable Drawable rightDrawable) {
         TextView message = (TextView) mSnackbar.getView().findViewById(R.id.snackbar_text);
+
         LinearLayout.LayoutParams paramsMessage = (LinearLayout.LayoutParams) message.getLayoutParams();
         paramsMessage = new LinearLayout.LayoutParams(paramsMessage.width, paramsMessage.height, 0.0f);
         message.setLayoutParams(paramsMessage);
         message.setCompoundDrawablePadding(message.getPaddingLeft());
+
         int textSize = (int) message.getTextSize();
         Log.e("Jet", "textSize:" + textSize);
         if (leftDrawable != null) {
@@ -140,22 +120,6 @@ public class SnackbarUtils {
         message.setCompoundDrawables(leftDrawable, null, rightDrawable, null);
         LinearLayout.LayoutParams paramsSpace = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
         ((Snackbar.SnackbarLayout) mSnackbar.getView()).addView(new Space(mSnackbar.getView().getContext()), 1, paramsSpace);
-        return new SnackbarUtils(mSnackbar);
-    }
-
-    /**
-     * 设置TextView(@+id/snackbar_text)中文字的对齐方式 居中
-     *
-     * @return
-     */
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public SnackbarUtils messageCenter() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            TextView message = (TextView) mSnackbar.getView().findViewById(R.id.snackbar_text);
-            //View.setTextAlignment需要SDK>=17
-            message.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
-            message.setGravity(Gravity.CENTER);
-        }
         return new SnackbarUtils(mSnackbar);
     }
 
@@ -217,48 +181,6 @@ public class SnackbarUtils {
         ((ViewGroup.MarginLayoutParams) params).setMargins(left, top, right, bottom);
         mSnackbar.getView().setLayoutParams(params);
         return new SnackbarUtils(mSnackbar);
-    }
-
-    /**
-     * 经试验发现:
-     *      执行过{@link SnackbarUtils#backColor(int)}后:background instanceof ColorDrawable
-     *      未执行过{@link SnackbarUtils#backColor(int)}:background instanceof GradientDrawable
-     * @return
-     */
-    /*
-    public SnackbarUtils radius(){
-        Drawable background = mSnackbar.getView().getBackground();
-        if(background instanceof GradientDrawable){
-            Log.e("Jet","radius():GradientDrawable");
-        }
-        if(background instanceof ColorDrawable){
-            Log.e("Jet","radius():ColorDrawable");
-        }
-        if(background instanceof StateListDrawable){
-            Log.e("Jet","radius():StateListDrawable");
-        }
-        Log.e("Jet","radius()background:"+background.getClass().getSimpleName());
-        return new SnackbarUtils(mSnackbar);
-    }
-    */
-
-    /**
-     * 通过SnackBar现在的背景,获取其设置圆角值时候所需的GradientDrawable实例
-     *
-     * @param backgroundOri
-     * @return
-     */
-    private GradientDrawable getRadiusDrawable(Drawable backgroundOri) {
-        GradientDrawable background = null;
-        if (backgroundOri instanceof GradientDrawable) {
-            background = (GradientDrawable) backgroundOri;
-        } else if (backgroundOri instanceof ColorDrawable) {
-            int backgroundColor = ((ColorDrawable) backgroundOri).getColor();
-            background = new GradientDrawable();
-            background.setColor(backgroundColor);
-        } else {
-        }
-        return background;
     }
 
     /**
