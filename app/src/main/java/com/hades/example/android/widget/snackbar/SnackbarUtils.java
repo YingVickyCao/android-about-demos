@@ -122,36 +122,7 @@ public class SnackbarUtils {
         ((Snackbar.SnackbarLayout) mSnackbar.getView()).addView(new Space(mSnackbar.getView().getContext()), 1, paramsSpace);
         return new SnackbarUtils(mSnackbar);
     }
-
-
-    /**
-     * 向Snackbar布局中添加View(Google不建议,复杂的布局应该使用DialogFragment进行展示)
-     *
-     * @param layoutId 要添加的View的布局文件ID
-     * @param index
-     * @return
-     */
-    public SnackbarUtils addView(int layoutId, int index) {
-        //加载布局文件新建View
-        View addView = LayoutInflater.from(mSnackbar.getView().getContext()).inflate(layoutId, null);
-        return addView(addView, index);
-    }
-
-    /**
-     * 向Snackbar布局中添加View(Google不建议,复杂的布局应该使用DialogFragment进行展示)
-     *
-     * @param addView
-     * @param index
-     * @return
-     */
-    public SnackbarUtils addView(View addView, int index) {
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);//设置新建布局参数
-        //设置新建View在Snackbar内垂直居中显示
-        params.gravity = Gravity.CENTER_VERTICAL;
-        addView.setLayoutParams(params);
-        ((Snackbar.SnackbarLayout) mSnackbar.getView()).addView(addView, index);
-        return new SnackbarUtils(mSnackbar);
-    }
+    
 
     /**
      * 设置Snackbar布局的外边距
