@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
 
@@ -14,11 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.ThemeTools;
 import com.hades.example.android.lib.utils.ThemeUtils;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class BadgeView extends AppCompatTextView {
@@ -51,7 +46,7 @@ public class BadgeView extends AppCompatTextView {
     private void init(Context context, @Nullable AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.BadgeView, R.attr.BadgeViewStyle, R.style.BadgeView);
         mBadgeMode = typedArray.getString(R.styleable.BadgeView_badge_mode);
-        ThemeTools.printTypedArray(TAG, typedArray);
+        ThemeUtils.printTypedArray(TAG, typedArray);
         mSize4IndicatorNoValue = typedArray.getLayoutDimension(R.styleable.BadgeView_size_when_indicator_no_value, getResources().getDimensionPixelSize(R.dimen.size_17));
         mLayoutHeight4Indicator = typedArray.getLayoutDimension(R.styleable.BadgeView_layout_height_when_indicator_has_value, getResources().getDimensionPixelSize(R.dimen.size_17));
         mLayoutWidth4Indicator9 = typedArray.getLayoutDimension(R.styleable.BadgeView_layout_width_when_indicator_value_0_to_9, ViewGroup.LayoutParams.WRAP_CONTENT);

@@ -10,7 +10,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Space;
@@ -20,11 +19,11 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
+import com.hades.example.android.lib.utils.ThemeUtils;
 import com.hades.example.android.tools.DensityUtil;
 
 public class SnackbarUtils {
@@ -52,136 +51,6 @@ public class SnackbarUtils {
      */
     public Snackbar getSnackbar() {
         return mSnackbar;
-    }
-
-    /**
-     * 初始化Snackbar实例
-     * 展示时间:Snackbar.LENGTH_SHORT
-     *
-     * @param view
-     * @param message
-     * @return
-     */
-    public static SnackbarUtils Short(View view, String message) {
-        mSnackbar = Snackbar.make(view, message, Snackbar.LENGTH_SHORT);
-        return new SnackbarUtils(mSnackbar).backColor(0XFF323232);
-    }
-
-    /**
-     * 初始化Snackbar实例
-     * 展示时间:Snackbar.LENGTH_LONG
-     *
-     * @param view
-     * @param message
-     * @return
-     */
-    public static SnackbarUtils Long(View view, String message) {
-        mSnackbar = Snackbar.make(view, message, Snackbar.LENGTH_LONG);
-        return new SnackbarUtils(mSnackbar).backColor(0XFF323232);
-    }
-
-    /**
-     * 初始化Snackbar实例
-     * 展示时间:Snackbar.LENGTH_INDEFINITE
-     *
-     * @param view
-     * @param message
-     * @return
-     */
-    public static SnackbarUtils Indefinite(View view, String message) {
-        mSnackbar = Snackbar.make(view, message, Snackbar.LENGTH_INDEFINITE);
-        return new SnackbarUtils(mSnackbar).backColor(0XFF323232);
-    }
-
-    /**
-     * 初始化Snackbar实例
-     * 展示时间:duration 毫秒
-     *
-     * @param view
-     * @param message
-     * @param duration 展示时长(毫秒)
-     * @return
-     */
-    public static SnackbarUtils Custom(View view, String message, int duration) {
-        mSnackbar = Snackbar.make(view, message, Snackbar.LENGTH_SHORT);
-        mSnackbar.setDuration(duration);
-        return new SnackbarUtils(mSnackbar).backColor(0XFF323232);
-    }
-
-    /**
-     * 设置mSnackbar背景色为  color_info
-     */
-    public SnackbarUtils info() {
-        mSnackbar.getView().setBackgroundColor(color_info);
-        return new SnackbarUtils(mSnackbar);
-    }
-
-    /**
-     * 设置mSnackbar背景色为  color_confirm
-     */
-    public SnackbarUtils confirm() {
-        mSnackbar.getView().setBackgroundColor(color_confirm);
-        return new SnackbarUtils(mSnackbar);
-    }
-
-    /**
-     * 设置Snackbar背景色为   color_warning
-     */
-    public SnackbarUtils warning() {
-        mSnackbar.getView().setBackgroundColor(color_warning);
-        return new SnackbarUtils(mSnackbar);
-    }
-
-    /**
-     * 设置Snackbar背景色为   color_warning
-     */
-    public SnackbarUtils danger() {
-        mSnackbar.getView().setBackgroundColor(color_danger);
-        return new SnackbarUtils(mSnackbar);
-    }
-
-    /**
-     * 设置Snackbar背景色
-     *
-     * @param backgroundColor
-     */
-    public SnackbarUtils backColor(@ColorInt int backgroundColor) {
-        mSnackbar.getView().setBackgroundColor(backgroundColor);
-        return new SnackbarUtils(mSnackbar);
-    }
-
-    /**
-     * 设置TextView(@+id/snackbar_text)的文字颜色
-     *
-     * @param messageColor
-     */
-    public SnackbarUtils messageColor(@ColorInt int messageColor) {
-        ((TextView) mSnackbar.getView().findViewById(R.id.snackbar_text)).setTextColor(messageColor);
-        return new SnackbarUtils(mSnackbar);
-    }
-
-    /**
-     * 设置Button(@+id/snackbar_action)的文字颜色
-     *
-     * @param actionTextColor
-     */
-    public SnackbarUtils actionColor(@ColorInt int actionTextColor) {
-        ((Button) mSnackbar.getView().findViewById(R.id.snackbar_action)).setTextColor(actionTextColor);
-        return new SnackbarUtils(mSnackbar);
-    }
-
-    /**
-     * 设置   Snackbar背景色 + TextView(@+id/snackbar_text)的文字颜色 + Button(@+id/snackbar_action)的文字颜色
-     *
-     * @param backgroundColor
-     * @param messageColor
-     * @param actionTextColor
-     */
-    public SnackbarUtils colors(@ColorInt int backgroundColor, @ColorInt int messageColor, @ColorInt int actionTextColor) {
-        mSnackbar.getView().setBackgroundColor(backgroundColor);
-        ((TextView) mSnackbar.getView().findViewById(R.id.snackbar_text)).setTextColor(messageColor);
-        ((Button) mSnackbar.getView().findViewById(R.id.snackbar_action)).setTextColor(actionTextColor);
-        return new SnackbarUtils(mSnackbar);
     }
 
     /**
@@ -217,42 +86,6 @@ public class SnackbarUtils {
         CoordinatorLayout.LayoutParams params = new CoordinatorLayout.LayoutParams(mSnackbar.getView().getLayoutParams().width, mSnackbar.getView().getLayoutParams().height);
         params.gravity = gravity;
         mSnackbar.getView().setLayoutParams(params);
-        return new SnackbarUtils(mSnackbar);
-    }
-
-    /**
-     * 设置按钮文字内容 及 点击监听
-     * {@link Snackbar#setAction(CharSequence, View.OnClickListener)}
-     *
-     * @param resId
-     * @param listener
-     * @return
-     */
-    public SnackbarUtils setAction(@StringRes int resId, View.OnClickListener listener) {
-        return setAction(getSnackbar().getView().getResources().getText(resId), listener);
-    }
-
-    /**
-     * 设置按钮文字内容 及 点击监听
-     * {@link Snackbar#setAction(CharSequence, View.OnClickListener)}
-     *
-     * @param text
-     * @param listener
-     * @return
-     */
-    public SnackbarUtils setAction(CharSequence text, View.OnClickListener listener) {
-        mSnackbar.setAction(text, listener);
-        return new SnackbarUtils(mSnackbar);
-    }
-
-    /**
-     * 设置 mSnackbar 展示完成 及 隐藏完成 的监听
-     *
-     * @param setCallback
-     * @return
-     */
-    public SnackbarUtils setCallback(Snackbar.Callback setCallback) {
-        mSnackbar.setCallback(setCallback);
         return new SnackbarUtils(mSnackbar);
     }
 
@@ -326,21 +159,6 @@ public class SnackbarUtils {
         return new SnackbarUtils(mSnackbar);
     }
 
-    /**
-     * 设置TextView(@+id/snackbar_text)中文字的对齐方式 居右
-     *
-     * @return
-     */
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public SnackbarUtils messageRight() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            TextView message = (TextView) mSnackbar.getView().findViewById(R.id.snackbar_text);
-            //View.setTextAlignment需要SDK>=17
-            message.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
-            message.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
-        }
-        return new SnackbarUtils(mSnackbar);
-    }
 
     /**
      * 向Snackbar布局中添加View(Google不建议,复杂的布局应该使用DialogFragment进行展示)
@@ -444,50 +262,12 @@ public class SnackbarUtils {
     }
 
     /**
-     * 设置Snackbar布局的圆角半径值
-     *
-     * @param radius 圆角半径
-     * @return
-     */
-    public SnackbarUtils radius(float radius) {
-        //将要设置给mSnackbar的背景
-        GradientDrawable background = getRadiusDrawable(mSnackbar.getView().getBackground());
-        if (background != null) {
-            radius = radius <= 0 ? 12 : radius;
-            background.setCornerRadius(radius);
-            mSnackbar.getView().setBackgroundDrawable(background);
-        }
-        return new SnackbarUtils(mSnackbar);
-    }
-
-    /**
-     * 设置Snackbar布局的圆角半径值及边框颜色及边框宽度
-     *
-     * @param radius
-     * @param strokeWidth
-     * @param strokeColor
-     * @return
-     */
-    public SnackbarUtils radius(int radius, int strokeWidth, @ColorInt int strokeColor) {
-        //将要设置给mSnackbar的背景
-        GradientDrawable background = getRadiusDrawable(mSnackbar.getView().getBackground());
-        if (background != null) {
-            radius = radius <= 0 ? 12 : radius;
-            strokeWidth = strokeWidth <= 0 ? 1 : (strokeWidth >= mSnackbar.getView().findViewById(R.id.snackbar_text).getPaddingTop() ? 2 : strokeWidth);
-            background.setCornerRadius(radius);
-            background.setStroke(strokeWidth, strokeColor);
-            mSnackbar.getView().setBackgroundDrawable(background);
-        }
-        return new SnackbarUtils(mSnackbar);
-    }
-
-    /**
      * 计算单行的Snackbar的高度值(单位 pix)
      *
      * @return
      */
     private int calculateSnackBarHeight() {
-        int SnackbarHeight = DensityUtil.dp2px(mSnackbar.getView().getContext(), 28) + ScreenUtil.sp2px(mSnackbar.getView().getContext(), 14);
+        int SnackbarHeight = DensityUtil.dp2px(mSnackbar.getView().getContext(), 28) + ThemeUtils.sp2px(mSnackbar.getView().getContext(), 14);
         Log.e("Jet", "直接获取MessageView高度:" + mSnackbar.getView().findViewById(R.id.snackbar_text).getHeight());
         return SnackbarHeight;
     }
@@ -536,7 +316,7 @@ public class SnackbarUtils {
         int[] locations = new int[2];
         targetView.getLocationOnScreen(locations);
         int snackbarHeight = calculateSnackBarHeight();
-        int screenHeight = ScreenUtil.getScreenHeight(mSnackbar.getView().getContext());
+        int screenHeight = ThemeUtils.getScreenHeight(mSnackbar.getView().getContext());
         //必须保证指定View的底部可见 且 单行Snackbar可以完整的展示
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             //为什么要'+2'? 因为在Android L(Build.VERSION_CODES.LOLLIPOP)以上,例如Button会有一定的'阴影(shadow)',阴影的大小由'高度(elevation)'决定.

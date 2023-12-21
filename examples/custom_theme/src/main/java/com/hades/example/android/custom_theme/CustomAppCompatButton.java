@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.hades.example.android.lib.utils.ThemeTools;
+import com.hades.example.android.lib.utils.ThemeUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,15 +40,15 @@ public class CustomAppCompatButton extends AppCompatButton {
 
     private void setStyle(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, new int[]{}, defStyleAttr, R.style.themeButtonStyle);
-        ThemeTools.printAttributeSet("CustomAppCompatButton", attrs);
-        ThemeTools.printTypedArray("CustomAppCompatButton", typedArray);
-        String themeMode = ThemeTools.getValueFromAttributeSet("CustomAppCompatButton", attrs);
+        ThemeUtils.printAttributeSet("CustomAppCompatButton", attrs);
+        ThemeUtils.printTypedArray("CustomAppCompatButton", typedArray);
+        String themeMode = ThemeUtils.getValueFromAttributeSet("CustomAppCompatButton", attrs);
         applyTheme(themeMode, attrs);
         typedArray.recycle();
     }
 
     private void setStyle(@Nullable AttributeSet attrs) {
-        String themeMode = ThemeTools.getValueFromAttributeSet("CustomAppCompatButton", attrs);
+        String themeMode = ThemeUtils.getValueFromAttributeSet("CustomAppCompatButton", attrs);
         applyTheme(themeMode, attrs);
     }
 
@@ -67,7 +67,7 @@ public class CustomAppCompatButton extends AppCompatButton {
         if (null != attributeSet) {
             target.put("background", null);
             target.put("backgroundTint", null);
-            ThemeTools.getValuesFromAttributeSet(attributeSet, target);
+            ThemeUtils.getValuesFromAttributeSet(attributeSet, target);
         }
         if (null != target.get("background") || null != target.get("backgroundTint")) {
             return;

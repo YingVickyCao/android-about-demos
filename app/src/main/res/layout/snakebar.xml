@@ -12,7 +12,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topic">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -85,7 +86,19 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/addCallback"
                 style="@style/btn"
-                android:text="设置 SnackBar 监听事件"
+                android:text="设置监听事件"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/setTextPosition"
+                style="@style/btn"
+                android:text="设置文字位置"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/setRadius_border"
+                style="@style/btn"
+                android:text="设置布局的圆角半径值及边框颜色及边框宽度"
                 tools:ignore="HardcodedText" />
 
             <androidx.appcompat.widget.AppCompatButton

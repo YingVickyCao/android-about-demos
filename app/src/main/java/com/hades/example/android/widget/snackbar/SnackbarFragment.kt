@@ -1,10 +1,17 @@
 package com.hades.example.android.widget.snackbar
 
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.TEXT_ALIGNMENT_CENTER
+import android.view.View.TEXT_ALIGNMENT_GRAVITY
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
@@ -18,7 +25,7 @@ class SnackbarFragment : Fragment() {
     private var _binding: SnakebarBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = SnakebarBinding.inflate(inflater, container, false)
         binding.showNormalSnackBar1.setOnClickListener { this.showNormalSnackBar1() }
         binding.showNormalSnackBar2.setOnClickListener { this.showNormalSnackBar2() }
@@ -31,6 +38,8 @@ class SnackbarFragment : Fragment() {
         binding.changeActionAndMessageTextColor.setOnClickListener { this.changeActionAndMessageTextColor() }
         binding.changeBackgroundColor.setOnClickListener { this.changeBackgroundColor() }
         binding.addCallback.setOnClickListener { this.addCallback() }
+        binding.setTextPosition.setOnClickListener { this.setTextPosition() }
+        binding.setRadiusBorder.setOnClickListener { this.setRadiusBorder() }
         binding.test.setOnClickListener { this.test() }
         return binding.root
     }
@@ -77,19 +86,20 @@ class SnackbarFragment : Fragment() {
             // 增加了action，右边自动增加一个ok 文字。Snackbar.LENGTH_SHORT -> 不点ok,自动消失
             .setAction("OK") {
                 Log.d(TAG, "addAction: Click ok")
-            }
-            .show()
+            }.show()
     }
 
+    // snackbar_action
+    // snackbar_text
+    //   mSnackbar.getView().setBackgroundColor(backgroundColor);
+    //        ((TextView) mSnackbar.getView().findViewById(R.id.snackbar_text)).setTextColor(messageColor);
+    //        ((Button) mSnackbar.getView().findViewById(R.id.snackbar_action)).setTextColor(actionTextColor);
     private fun changeActionAndMessageTextColor() {
         Snackbar.make(requireActivity(), binding.root, "Snackbar length is long", Snackbar.LENGTH_SHORT)
             // 增加了action，右边自动增加一个ok 文字。Snackbar.LENGTH_SHORT -> 不点ok,自动消失
             .setAction("OK") {
 
-            }
-            .setTextColor(resources.getColor(R.color.red, context?.theme))
-            .setActionTextColor(resources.getColor(R.color.red, context?.theme))
-            .show()
+            }.setTextColor(resources.getColor(R.color.red, context?.theme)).setActionTextColor(resources.getColor(R.color.red, context?.theme)).show()
     }
 
     private fun changeBackgroundColor() {
@@ -97,9 +107,7 @@ class SnackbarFragment : Fragment() {
             // 增加了action，右边自动增加一个ok 文字。Snackbar.LENGTH_SHORT -> 不点ok,自动消失
             .setAction("OK") {
                 Toast.makeText(activity, "OK clicked", Toast.LENGTH_SHORT).show()
-            }
-            .setBackgroundTint(resources.getColor(R.color.red, context?.theme))
-            .show()
+            }.setBackgroundTint(resources.getColor(R.color.red, context?.theme)).show()
     }
 
     private fun addCallback() {
@@ -107,8 +115,7 @@ class SnackbarFragment : Fragment() {
             // 增加了action，右边自动增加一个ok 文字。Snackbar.LENGTH_SHORT -> 不点ok,自动消失
             .setAction("OK") {
 
-            }
-            .addCallback(object : Snackbar.Callback() {
+            }.addCallback(object : Snackbar.Callback() {
                 /**
                  * onDismissed()方法中的 event 事件有 5 种：
                  *
@@ -134,12 +141,57 @@ class SnackbarFragment : Fragment() {
                 override fun onShown(sb: Snackbar?) {
                     Toast.makeText(activity, "onShown invoked", Toast.LENGTH_SHORT).show()
                 }
-            })
-            .show()
+            }).show()
     }
 
-    private fun test() {
 
+    private fun setTextPosition() {
+        val snackbar = Snackbar.make(binding.root, "Text is center", Snackbar.LENGTH_SHORT).setAction("OK") {
+            Log.d(TAG, "addAction: Click ok")
+        }
+        val message: TextView = snackbar.view.findViewById(R.id.snackbar_text)
+        // 文字左对齐默认
+        // 居中对齐
+        message.textAlignment = TEXT_ALIGNMENT_CENTER
+        message.gravity = Gravity.CENTER
+        // 文字右对齐
+        message.textAlignment = TEXT_ALIGNMENT_GRAVITY
+        message.gravity = Gravity.END
+        snackbar.show()
+    }
+
+    // 布局的圆角半径值及边框颜色及边框宽度
+    private fun setRadiusBorder() {
+        val snackbar = Snackbar.make(binding.root, "set radius", Snackbar.LENGTH_SHORT).setAction("OK") {
+            Log.d(TAG, "addAction: Click ok")
+        }
+        val drawable: Drawable = snackbar.view.background
+        var background: GradientDrawable? = null
+        if (drawable is GradientDrawable) {
+            background = drawable
+        } else if (drawable is ColorDrawable) {
+            val backgroundColor = drawable.color
+            background = GradientDrawable()
+            background.setColor(backgroundColor)
+        }
+        if (background != null) {
+            background.cornerRadius = resources.getDimension(R.dimen.size_3) // 局的圆角半径值
+
+            val strokeWidth: Int = resources.getDimensionPixelOffset(R.dimen.size_10)
+            val newStrokeWidth: Int = if (strokeWidth <= 0) 1 else if (strokeWidth >= snackbar.view.findViewById<View>(R.id.snackbar_text).paddingTop) 2 else strokeWidth
+            background.setStroke(newStrokeWidth, resources.getColor(R.color.red, snackbar.context.theme)) // 边框颜色及边框宽度
+            snackbar.view.background = background
+        }
+        snackbar.show()
+    }
+
+    // 布局的圆角半径值及边框颜色及边框宽度
+    private fun test() {
+        val snackbar = Snackbar.make(binding.root, "set radius", Snackbar.LENGTH_SHORT).setAction("OK") {
+            Log.d(TAG, "addAction: Click ok")
+        }
+        val drawable: Drawable = snackbar.view.background
+        snackbar.show()
     }
 
     override fun onDestroy() {
