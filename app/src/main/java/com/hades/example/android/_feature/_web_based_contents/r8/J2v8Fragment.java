@@ -19,7 +19,7 @@ import com.eclipsesource.v8.V8Function;
 import com.eclipsesource.v8.V8Object;
 import com.eclipsesource.v8.utils.V8ObjectUtils;
 import com.hades.example.android.R;
-import com.hades.example.java.lib.FileUtils;
+import com.hades.utility.jvm.FileUtils;
 
 import java.io.IOException;
 import java.io.InputStream;

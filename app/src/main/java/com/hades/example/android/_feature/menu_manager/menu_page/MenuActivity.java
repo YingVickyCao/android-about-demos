@@ -12,8 +12,8 @@ import com.hades.example.android.R;
 import com.hades.example.android._feature.cache.GlobalCache;
 import com.hades.example.android._feature.menu_manager.Menu;
 import com.hades.example.android._feature.menu_manager.MenuParser;
-import com.hades.example.android.lib.utils.BlockQuickTap;
-import com.hades.example.java.lib.FileUtils;
+import com.hades.utility.android.utils.BlockQuickTap;
+import com.hades.utility.jvm.FileUtils;
 
 public class MenuActivity extends AppCompatActivity {
     private static final String TAG = "MenuActivity";
