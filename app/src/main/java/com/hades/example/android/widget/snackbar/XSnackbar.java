@@ -5,9 +5,13 @@ import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
@@ -20,6 +24,7 @@ import androidx.annotation.StringRes;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
+import com.hades.example.android.lib.utils.ThemeUtils;
 
 
 public class XSnackbar {
@@ -76,16 +81,44 @@ public class XSnackbar {
     }
 
     private XSnackbar setDefaultStyle() {
-        setBottomMargin(R.dimen.size_80);
-        setMargins(getContext().getResources().getDimensionPixelOffset(R.dimen.size_16),
-                0,
-                getContext().getResources().getDimensionPixelOffset(R.dimen.size_16),
-                getContext().getResources().getDimensionPixelOffset(R.dimen.size_46));
+        // content layout
+        setMargins(getContext().getResources().getDimensionPixelOffset(R.dimen.size_16), 0, getContext().getResources().getDimensionPixelOffset(R.dimen.size_16), getContext().getResources().getDimensionPixelOffset(R.dimen.size_46));
         setBackgroundTint(getContext().getColor(R.color.m_0_light));
+        getContent().setPadding(0, 0, 0, 0);
+
+        int size_10 = getContext().getResources().getDimensionPixelOffset(R.dimen.size_10);
+        int size_16 = getContext().getResources().getDimensionPixelSize(R.dimen.size_16);
+
+        // status icon
+        ViewParent parentOfMessage = getMessageView().getParent();
+        Log.d(TAG, "setDefaultStyle: " + parentOfMessage);
+        if (parentOfMessage instanceof LinearLayout) {
+            LinearLayout parent = (LinearLayout) parentOfMessage;
+            ImageView statusIcon = new ImageView(getContext());
+            statusIcon.setBackgroundResource(R.drawable.ic_close);
+            int statusIconSize = size_16;
+            LinearLayout.LayoutParams statusIconLayoutParams = new LinearLayout.LayoutParams(statusIconSize, statusIconSize);
+            statusIconLayoutParams.gravity = Gravity.CENTER_VERTICAL;
+            statusIconLayoutParams.leftMargin = size_10;
+            statusIcon.setLayoutParams(statusIconLayoutParams);
+            parent.addView(statusIcon, 0);
+        }
+
+        // message
         setTextColor(getContext().getColor(R.color.m_0_dark));
-        setActionTextColor(getContext().getColor(R.color.red));
         setTextSize(TypedValue.COMPLEX_UNIT_PX, getContent().getResources().getDimensionPixelSize(R.dimen.text_size_15));
+        getMessageView().setBackgroundColor(getContent().getResources().getColor(R.color.green, getContent().getContext().getTheme()));
+        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) getMessageView().getLayoutParams();
+        layoutParams.leftMargin = size_10;
+        getMessageView().setLayoutParams(layoutParams);
+        getMessageView().setPadding(0, 1, 1, 0);
+        Log.d(TAG, "setDefaultStyle: " + ThemeUtils.px2dp(getContext(), 42)); // todo : 16dp
+
+        // action button
+        setActionTextColor(getContext().getColor(R.color.red));
         setActionTextSize(TypedValue.COMPLEX_UNIT_PX, getContent().getResources().getDimensionPixelSize(R.dimen.text_size_15));
+        getActionView().setBackgroundColor(getContent().getResources().getColor(R.color.blue, getContent().getContext().getTheme()));
+        getActionView().setPadding(0, 1, 1, 0);
         return this;
     }
 
