@@ -364,7 +364,7 @@ class SnackbarFragment : Fragment() {
     }
 
     private fun customSnakeBar() {
-        XSnakebar.make(binding.root, "set radius", Snackbar.LENGTH_SHORT)
+        XSnackbar.make(binding.root, "set radius", Snackbar.LENGTH_SHORT)
             .show()
     }
 

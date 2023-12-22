@@ -16,10 +16,10 @@ import androidx.annotation.StringRes;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
-public class XSnakebar {
+public class XSnackbar {
     Snackbar mSnackbar;
 
-    private XSnakebar(Snackbar snackbar) {
+    private XSnackbar(Snackbar snackbar) {
         mSnackbar = snackbar;
     }
 
@@ -43,22 +43,22 @@ public class XSnakebar {
     }
 
     @NonNull
-    public static XSnakebar make(@NonNull View view, @NonNull CharSequence text, @BaseTransientBottomBar.Duration int duration) {
-        return new XSnakebar(Snackbar.make(view, text, duration));
+    public static XSnackbar make(@NonNull View view, @NonNull CharSequence text, @BaseTransientBottomBar.Duration int duration) {
+        return new XSnackbar(Snackbar.make(view, text, duration));
     }
 
     @NonNull
-    public static XSnakebar make(@NonNull Context context, @NonNull View view, @NonNull CharSequence text, @BaseTransientBottomBar.Duration int duration) {
-        return new XSnakebar(Snackbar.make(context, view, text, duration));
+    public static XSnackbar make(@NonNull Context context, @NonNull View view, @NonNull CharSequence text, @BaseTransientBottomBar.Duration int duration) {
+        return new XSnackbar(Snackbar.make(context, view, text, duration));
     }
 
     @NonNull
-    public static XSnakebar make(@NonNull View view, @StringRes int resId, @BaseTransientBottomBar.Duration int duration) {
-        return new XSnakebar(Snackbar.make(view, resId, duration));
+    public static XSnackbar make(@NonNull View view, @StringRes int resId, @BaseTransientBottomBar.Duration int duration) {
+        return new XSnackbar(Snackbar.make(view, resId, duration));
     }
 
     @NonNull
-    public XSnakebar setText(@NonNull CharSequence message) {
+    public XSnackbar setText(@NonNull CharSequence message) {
         if (null != mSnackbar) {
             mSnackbar.setText(message);
         }
@@ -66,7 +66,7 @@ public class XSnakebar {
     }
 
     @NonNull
-    public XSnakebar setText(@StringRes int resId) {
+    public XSnackbar setText(@StringRes int resId) {
         if (null != mSnackbar) {
             mSnackbar.setText(resId);
         }
@@ -74,7 +74,7 @@ public class XSnakebar {
     }
 
     @NonNull
-    public XSnakebar setAction(@StringRes int resId, View.OnClickListener listener) {
+    public XSnackbar setAction(@StringRes int resId, View.OnClickListener listener) {
         if (null != mSnackbar) {
             mSnackbar.setAction(resId, listener);
         }
@@ -82,7 +82,7 @@ public class XSnakebar {
     }
 
     @NonNull
-    public XSnakebar setAction(@Nullable CharSequence text, @Nullable final View.OnClickListener listener) {
+    public XSnackbar setAction(@Nullable CharSequence text, @Nullable final View.OnClickListener listener) {
         if (null != mSnackbar) {
             mSnackbar.setAction(text, listener);
         }
@@ -98,7 +98,7 @@ public class XSnakebar {
     }
 
     @NonNull
-    public XSnakebar setTextColor(ColorStateList colors) {
+    public XSnackbar setTextColor(ColorStateList colors) {
         if (null != mSnackbar) {
             mSnackbar.setTextColor(colors);
         }
@@ -106,7 +106,7 @@ public class XSnakebar {
     }
 
     @NonNull
-    public XSnakebar setTextColor(@ColorInt int color) {
+    public XSnackbar setTextColor(@ColorInt int color) {
         if (null != mSnackbar) {
             mSnackbar.setTextColor(color);
         }
@@ -114,7 +114,7 @@ public class XSnakebar {
     }
 
     @NonNull
-    public XSnakebar setTextMaxLines(int maxLines) {
+    public XSnackbar setTextMaxLines(int maxLines) {
         if (null != mSnackbar) {
             mSnackbar.setTextMaxLines(maxLines);
         }
@@ -122,7 +122,7 @@ public class XSnakebar {
     }
 
     @NonNull
-    public XSnakebar setActionTextColor(ColorStateList colors) {
+    public XSnackbar setActionTextColor(ColorStateList colors) {
         if (null != mSnackbar) {
             mSnackbar.setActionTextColor(colors);
         }
@@ -130,7 +130,7 @@ public class XSnakebar {
     }
 
     @NonNull
-    public XSnakebar setMaxInlineActionWidth(@Dimension int width) {
+    public XSnackbar setMaxInlineActionWidth(@Dimension int width) {
         if (null != mSnackbar) {
             mSnackbar.setMaxInlineActionWidth(width);
         }
@@ -138,7 +138,7 @@ public class XSnakebar {
     }
 
     @NonNull
-    public XSnakebar setActionTextColor(@ColorInt int color) {
+    public XSnackbar setActionTextColor(@ColorInt int color) {
         if (null != mSnackbar) {
             mSnackbar.setActionTextColor(color);
         }
@@ -146,7 +146,7 @@ public class XSnakebar {
     }
 
     @NonNull
-    public XSnakebar setBackgroundTint(@ColorInt int color) {
+    public XSnackbar setBackgroundTint(@ColorInt int color) {
         if (null != mSnackbar) {
             mSnackbar.setBackgroundTint(color);
         }
@@ -154,7 +154,7 @@ public class XSnakebar {
     }
 
     @NonNull
-    public XSnakebar setBackgroundTintList(@Nullable ColorStateList colorStateList) {
+    public XSnackbar setBackgroundTintList(@Nullable ColorStateList colorStateList) {
         if (null != mSnackbar) {
             mSnackbar.setBackgroundTintList(colorStateList);
         }
@@ -162,7 +162,7 @@ public class XSnakebar {
     }
 
     @NonNull
-    public XSnakebar setBackgroundTintMode(@Nullable PorterDuff.Mode mode) {
+    public XSnackbar setBackgroundTintMode(@Nullable PorterDuff.Mode mode) {
         if (null != mSnackbar) {
             mSnackbar.setBackgroundTintMode(mode);
         }
