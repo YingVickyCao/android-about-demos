@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.hades.example.java.lib.ThreadUtils;
+import com.hades.utility.jvm.ThreadUtils;
 
 public class MyService extends Service {
     private static final String TAG = MyService.class.getSimpleName();

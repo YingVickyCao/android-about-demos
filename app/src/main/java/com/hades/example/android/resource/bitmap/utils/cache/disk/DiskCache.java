@@ -8,7 +8,7 @@ import com.hades.utility.android.utils.AndroidStorageUtils;
 import com.hades.utility.android.utils.ImageUtil;
 import com.hades.example.android.resource.bitmap.utils.cache.ImageCacheParams;
 import com.hades.utility.android.utils.IInBitmapListener;
-import com.hades.example.java.lib.FileUtils;
+import com.hades.utility.jvm.FileUtils;
 
 import java.io.File;
 import java.io.FileDescriptor;

@@ -6,7 +6,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.java.lib.ThreadUtils;
+import com.hades.utility.jvm.ThreadUtils;
 
 public class MyIntentService extends IntentService {
     private static final String TAG = MyIntentService.class.getSimpleName();

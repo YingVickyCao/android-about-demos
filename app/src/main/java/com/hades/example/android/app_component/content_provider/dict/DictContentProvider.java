@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 
-import com.hades.example.java.lib.ThreadUtils;
+import com.hades.utility.jvm.ThreadUtils;
 
 import java.util.Arrays;
 

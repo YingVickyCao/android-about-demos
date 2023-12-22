@@ -16,9 +16,9 @@ import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.NoNeedPermissionActivity;
-import com.hades.example.java.lib.DummyItems;
-import com.hades.example.java.lib.DummyItem;
-import com.hades.example.java.lib.DateUtil;
+import com.hades.utility.jvm.DummyItems;
+import com.hades.utility.jvm.DummyItem;
+import com.hades.utility.jvm.DateUtil;
 import com.hades.example.android.base.DummyContentFragment;
 
 import java.util.ArrayList;

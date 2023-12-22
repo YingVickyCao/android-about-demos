@@ -11,7 +11,7 @@ import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.hades.example.android.R;
-import com.hades.example.java.lib.ThreadUtils;
+import com.hades.utility.jvm.ThreadUtils;
 
 import static com.hades.example.android.other_ui.manager_phone_desktop._app_widget.base.TestAppWidgetConfigureActivity.PREFS_KEY_COLOR;
 

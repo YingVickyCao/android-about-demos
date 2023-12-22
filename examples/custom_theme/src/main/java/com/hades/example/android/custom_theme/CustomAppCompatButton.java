@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.hades.example.android.lib.utils.ThemeUtils;
+import com.hades.utility.android.utils.ThemeUtils;
 
 import java.util.HashMap;
 import java.util.Map;

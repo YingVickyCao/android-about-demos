@@ -10,7 +10,7 @@ import android.util.Log;
 
 import com.hades.example.android.R;
 import com.hades.utility.android.utils.VersionUtil;
-import com.hades.example.java.lib.ThreadUtils;
+import com.hades.utility.jvm.ThreadUtils;
 
 import static com.hades.example.android.app_component.service.unbounservice.StartServiceTest1Activity.KEY_COUNT;
 

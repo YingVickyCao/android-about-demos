@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hades.example.android.R;
-import com.hades.example.java.lib.ThreadUtils;
+import com.hades.utility.jvm.ThreadUtils;
 
 public class TestLocalBoundServiceActivity extends Activity {
     private static final String TAG = TestLocalBoundServiceActivity.class.getSimpleName();
