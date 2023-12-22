@@ -157,6 +157,12 @@
                 style="@style/btn"
                 android:text="Showed at the below of view"
                 tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/customSnakeBar"
+                style="@style/btn"
+                android:text="Custom SnakeBar"
+                tools:ignore="HardcodedText" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>
 

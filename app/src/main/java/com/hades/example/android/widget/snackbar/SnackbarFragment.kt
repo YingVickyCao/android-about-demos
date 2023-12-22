@@ -56,6 +56,7 @@ class SnackbarFragment : Fragment() {
         binding.setOffsetFromBottom.setOnClickListener { setOffsetFromBottom() }
         binding.showedAboveView.setOnClickListener { showedAboveView() }
         binding.showedBelowView.setOnClickListener { showedBelowView() }
+        binding.customSnakeBar.setOnClickListener { customSnakeBar() }
         binding.test.setOnClickListener { this.test() }
         return binding.root
     }
@@ -362,8 +363,13 @@ class SnackbarFragment : Fragment() {
         snackBar.show()
     }
 
+    private fun customSnakeBar() {
+        XSnakebar.make(binding.root, "set radius", Snackbar.LENGTH_SHORT)
+            .show()
+    }
+
     private fun test() {
-        showedAboveView()
+        customSnakeBar()
     }
 
     override fun onDestroy() {
