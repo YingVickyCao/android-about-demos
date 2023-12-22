@@ -22,7 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.hades.example.android.BuildConfig;
-import com.hades.example.android.lib.utils.VersionUtil;
+import com.hades.utility.android.utils.VersionUtil;
 
 public class ImageGridActivity extends AppCompatActivity {
     private static final String TAG = "ImageGridActivity";

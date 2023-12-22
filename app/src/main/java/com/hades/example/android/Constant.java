@@ -1,7 +1,7 @@
 package com.hades.example.android;
 
 
-import com.hades.example.android.lib.utils.AndroidStorageUtils;
+import com.hades.utility.android.utils.AndroidStorageUtils;
 
 public class Constant {
     public final static int KEY_SEND = 0x345;

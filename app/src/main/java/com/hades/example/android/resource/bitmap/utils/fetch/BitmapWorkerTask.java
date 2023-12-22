@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.hades.example.android.lib.utils.VersionUtil;
+import com.hades.utility.android.utils.VersionUtil;
 
 import java.lang.ref.WeakReference;
 

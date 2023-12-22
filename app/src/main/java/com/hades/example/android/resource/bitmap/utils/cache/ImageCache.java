@@ -28,7 +28,7 @@ import androidx.fragment.app.FragmentManager;
 import com.hades.example.android.resource.bitmap.utils.RetainImageCacheFragment;
 import com.hades.example.android.resource.bitmap.utils.cache.disk.DiskCache;
 import com.hades.example.android.resource.bitmap.utils.cache.mememory.BitmapMemoryCache;
-import com.hades.example.android.lib.utils.IInBitmapListener;
+import com.hades.utility.android.utils.IInBitmapListener;
 
 public class ImageCache implements IInBitmapListener {
     public static final String TAG = ImageCache.class.getSimpleName();

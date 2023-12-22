@@ -23,9 +23,9 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.Constant;
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
-import com.hades.example.android.lib.timer.ITimerView;
-import com.hades.example.android.lib.timer.TimerHandler;
-import com.hades.example.android.lib.utils.AndroidStorageUtils;
+import com.hades.utility.android.ITimerView;
+import com.hades.utility.android.TimerHandler;
+import com.hades.utility.android.utils.AndroidStorageUtils;
 
 import java.io.IOException;
 

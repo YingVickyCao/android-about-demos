@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.ThemeUtils;
+import com.hades.utility.android.utils.ThemeUtils;
 
 /*
 // Instance1

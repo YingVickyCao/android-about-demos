@@ -4,10 +4,10 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 
-import com.hades.example.android.lib.utils.AndroidStorageUtils;
-import com.hades.example.android.lib.utils.ImageUtil;
+import com.hades.utility.android.utils.AndroidStorageUtils;
+import com.hades.utility.android.utils.ImageUtil;
 import com.hades.example.android.resource.bitmap.utils.cache.ImageCacheParams;
-import com.hades.example.android.lib.utils.IInBitmapListener;
+import com.hades.utility.android.utils.IInBitmapListener;
 import com.hades.example.java.lib.FileUtils;
 
 import java.io.File;

@@ -8,7 +8,7 @@ import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.lib.R;
+import com.hades.utility.android.R;
 import com.hades.example.java.lib.DummyItem;
 
 import java.util.ArrayList;

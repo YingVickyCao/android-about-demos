@@ -2,7 +2,8 @@ package com.hades.example.android._feature.menu_manager;
 
 import android.util.Log;
 
-import com.hades.example.java.lib.JsonUtil;
+import com.hades.utility.jvm.JsonUtil;
+
 
 public class MenuParser {
     private static final String TAG = "ParseMenu";

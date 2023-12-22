@@ -10,7 +10,7 @@ import android.widget.ProgressBar;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
-import com.hades.example.android.lib.utils.VersionUtil;
+import com.hades.utility.android.utils.VersionUtil;
 import com.hades.example.android.resource.bitmap.utils.fetch.ImageFetcher;
 import com.hades.example.android.resource.bitmap.utils.fetch.OnImageLoadedListener;
 

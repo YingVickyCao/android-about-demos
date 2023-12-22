@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.WindowUtils;
+import com.hades.utility.android.utils.WindowUtils;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 

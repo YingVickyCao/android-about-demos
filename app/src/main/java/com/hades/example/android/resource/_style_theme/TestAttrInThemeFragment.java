@@ -11,7 +11,7 @@ import androidx.annotation.ArrayRes;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.base.BaseFragment;
-import com.hades.example.android.lib.utils.ThemeUtils;
+import com.hades.utility.android.utils.ThemeUtils;
 import com.hades.example.android.R;
 
 public class TestAttrInThemeFragment extends BaseFragment {

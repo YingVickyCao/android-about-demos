@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
-import com.hades.example.android.lib.utils.ThemeUtils;
+import com.hades.utility.android.utils.ThemeUtils;
 
 public class TestColorFragment extends BaseFragment {
     private static final String TAG = "TestColorFragment";
