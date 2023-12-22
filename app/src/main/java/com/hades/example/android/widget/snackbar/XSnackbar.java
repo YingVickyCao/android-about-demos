@@ -24,7 +24,7 @@ import androidx.annotation.StringRes;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.ThemeUtils;
+import com.hades.utility.android.utils.ThemeUtils;
 
 
 public class XSnackbar {
