@@ -32,7 +32,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':JavaLib')
+    implementation(libs.utilityJvm)
 
     implementation libs.androidx.appcompat
     implementation libs.androidx.constraintlayout
