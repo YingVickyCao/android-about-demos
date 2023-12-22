@@ -35,8 +35,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.hades.example.java.lib.Images;
-import com.hades.example.android.lib.utils.VersionUtil;
+import com.hades.utility.jvm.Images;
+import com.hades.utility.android.utils.VersionUtil;
 import com.hades.example.android.resource.bitmap.utils.cache.ImageCacheParams;
 import com.hades.example.android.resource.bitmap.utils.fetch.ImageFetcher;
 import com.hades.example.android.BuildConfig;

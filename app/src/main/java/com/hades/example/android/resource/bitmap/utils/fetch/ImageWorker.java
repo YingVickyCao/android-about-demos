@@ -31,7 +31,7 @@ import android.widget.ImageView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
-import com.hades.example.android.lib.utils.ImageUtil;
+import com.hades.utility.android.utils.ImageUtil;
 import com.hades.example.android.resource.bitmap.utils.cache.ImageCache;
 import com.hades.example.android.resource.bitmap.utils.cache.ImageCacheParams;
 

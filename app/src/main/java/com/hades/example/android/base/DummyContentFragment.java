@@ -8,8 +8,8 @@ import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.lib.R;
-import com.hades.example.java.lib.DummyItem;
+import com.hades.utility.android.R;
+import com.hades.utility.jvm.DummyItem;
 
 import java.util.ArrayList;
 import java.util.Collection;

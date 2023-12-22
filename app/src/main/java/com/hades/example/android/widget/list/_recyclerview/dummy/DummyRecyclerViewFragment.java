@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hades.example.android.base.BaseFragment;
-import com.hades.example.java.lib.DummyItems;
-import com.hades.example.java.lib.DummyItem;
 import com.hades.example.android.R;
 import com.hades.example.android.widget.list._recyclerview._dag_reorder_list.v1.SimpleDividerItemDecoration;
+import com.hades.utility.jvm.DummyItem;
+import com.hades.utility.jvm.DummyItems;
 
 /**
  * A fragment representing a list of Items.
@@ -139,4 +139,5 @@ public class DummyRecyclerViewFragment extends BaseFragment implements IItemClic
     private void smoothScrollToPosition() {
         rv.smoothScrollToPosition(DummyItems.COUNT - 2);
     }
+
 }

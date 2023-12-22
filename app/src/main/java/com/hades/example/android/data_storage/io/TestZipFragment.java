@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
-import com.hades.example.java.lib.FileUtils;
+import com.hades.utility.jvm.FileUtils;
 
 import java.io.File;
 

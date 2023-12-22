@@ -37,8 +37,8 @@ import android.widget.Toast;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
-import com.hades.example.java.lib.Images;
-import com.hades.example.android.lib.utils.VersionUtil;
+import com.hades.utility.jvm.Images;
+import com.hades.utility.android.utils.VersionUtil;
 import com.hades.example.android.resource.bitmap.utils.cache.ImageCacheParams;
 import com.hades.example.android.resource.bitmap.utils.fetch.IImageWorker;
 import com.hades.example.android.resource.bitmap.utils.fetch.ImageFetcher;

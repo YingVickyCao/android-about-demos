@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.lib.utils.ImageUtil;
+import com.hades.utility.android.utils.ImageUtil;
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
 

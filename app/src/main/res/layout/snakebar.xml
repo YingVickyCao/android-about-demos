@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/topic"
+        style="@style/topic"
+        android:text="@string/page_SnackBar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/size_30">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/test"
+                style="@style/btn_red"
+                android:text="Test"
+                android:textSize="@dimen/text_size_15"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/showNormalSnackBar1"
+                style="@style/btn"
+                android:text="Show -  Way 1"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/showNormalSnackBar2"
+                style="@style/btn"
+                android:text="Show - Way 2"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/showNormalSnackBar3"
+                style="@style/btn"
+                android:text="Show - Way 3"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/onlyShowOneSnackBar"
+                style="@style/btn"
+                android:text="System can only show one SnackBar object \nat same time"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/length_short"
+                style="@style/btn"
+                android:text="LENGTH_SHORT"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/length_long"
+                style="@style/btn"
+                android:text="LENGTH_LONG"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/length_indefinite"
+                style="@style/btn"
+                android:text="LENGTH_INDEFINITE"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/add_action"
+                style="@style/btn"
+                android:text="Add Action"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/change_action_and_message_text_color"
+                style="@style/btn"
+                android:text="设置 setAction 文本颜色、text 颜色"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/change_background_color"
+                style="@style/btn"
+                android:text="设置背景颜色"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addCallback"
+                style="@style/btn"
+                android:text="设置监听事件"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/setTextPosition"
+                style="@style/btn"
+                android:text="设置文字位置"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/setRadius_border"
+                style="@style/btn"
+                android:text="设置布局的圆角半径值及边框颜色及边框宽度"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/setBackgroundAlpha"
+                style="@style/btn"
+                android:text="设置背景透明度"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/setPosition"
+                style="@style/btn"
+                android:text="设置显示的位置"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/setLeftRightIcon"
+                style="@style/btn"
+                android:text="设置左右图片"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addView"
+                style="@style/btn"
+                android:text="加入View"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/setMargin"
+                style="@style/btn"
+                android:text="Margin"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/setHeight"
+                style="@style/btn"
+                android:text="Height"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/setOffsetFromBottom"
+                style="@style/btn"
+                android:text="Offset from bottom position"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/showedAboveView"
+                style="@style/btn"
+                android:text="Showed at the above of view"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/showedBelowView"
+                style="@style/btn"
+                android:text="Showed at the below of view"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/customSnakeBar"
+                style="@style/btn"
+                android:text="Custom SnakeBar"
+                tools:ignore="HardcodedText" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
+
+</LinearLayout>

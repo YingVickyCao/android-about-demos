@@ -18,7 +18,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.VersionUtil;
+import com.hades.utility.android.utils.VersionUtil;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 

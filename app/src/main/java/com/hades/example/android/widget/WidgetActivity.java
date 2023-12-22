@@ -36,6 +36,7 @@ import com.hades.example.android.widget.progressbar.TestRatingBarFragment;
 import com.hades.example.android.widget.progressbar.TestSeekBarFragment;
 import com.hades.example.android.widget.radiobutton.TestRadioButtonFragment;
 import com.hades.example.android.widget.search_view.SearchViewFragment;
+import com.hades.example.android.widget.snackbar.SnackbarFragment;
 import com.hades.example.android.widget.spinner.TestSpinnerFragment;
 import com.hades.example.android.widget.surfaceview.TestSurfaceViewPlayVideoFragment;
 import com.hades.example.android.widget.switchBtn.TestSwitchFragment;
@@ -47,7 +48,7 @@ import com.hades.example.android.widget.view_animator.TextSwitcherFragment;
 import com.hades.example.android.widget.view_animator.ViewFlipperFragment;
 import com.hades.example.android.widget.view_animator.ViewSwitcherFragment;
 import com.hades.example.android._feature._web_based_contents.webview.TestWebViewFragment;
-import com.hades.example.java.lib.DummyItem;
+import com.hades.utility.jvm.DummyItem;
 
 public class WidgetActivity extends NoNeedPermissionActivity implements IItemClickAction {
     private static final String TAG = WidgetActivity.class.getSimpleName();
@@ -104,11 +105,12 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.pageKeyBoardView).setOnClickListener(v -> pageKeyBoardView());
         findViewById(R.id.pageZAxis).setOnClickListener(v -> page_z_axis());
         findViewById(R.id.pageTextClock).setOnClickListener(v -> pageTextClock());
+        findViewById(R.id.page_Snackbar).setOnClickListener(v -> page_Snackbar());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageCustomVew();
+        page_Snackbar();
     }
 
     private void pageViewLocation() {
@@ -288,9 +290,12 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         showFragment(new TextClockFragment());
     }
 
+    private void page_Snackbar() {
+        showFragment(new SnackbarFragment());
+    }
+
     @Override
     public void onItemClickListener(DummyItem item) {
         Log.d(TAG, "onItemClickListener: " + item.toString());
-
     }
 }

@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.java.lib.MemoryCache;
 
 // TODO: 2022/6/11
 public class BaseActivity extends AppCompatActivity {

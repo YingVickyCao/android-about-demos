@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseActivity;
-import com.hades.example.android.lib.utils.BlockQuickTap;
+import com.hades.utility.android.utils.BlockQuickTap;
 import com.hades.example.android.other_ui._dialog.depressed.DateTimePickerDialogFragment;
 import com.hades.example.android.other_ui._dialog.depressed.TestAlertDialogFragment;
 import com.hades.example.android.other_ui._dialog.depressed.TestProgressDialogFragment;

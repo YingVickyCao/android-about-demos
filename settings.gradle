@@ -1,7 +1,5 @@
 rootProject.name = "android-about-demos"
 include ':app'      //  application
-include ':JavaLib'
-include ':lib-android'
 
 include ':data-binding-example' // application
 project(':data-binding-example').projectDir = new File('lib-examples/data-binding-example')

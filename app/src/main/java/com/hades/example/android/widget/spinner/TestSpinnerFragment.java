@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.java.lib.DummyItems;
+import com.hades.utility.jvm.DummyItems;
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
 

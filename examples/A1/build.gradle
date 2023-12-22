@@ -32,7 +32,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':lib-android')
+    implementation(libs.utilityAndroid) {
+        artifact {
+            type = 'aar'
+        }
+    }
 
     implementation libs.androidx.appcompat
     implementation libs.androidx.constraintlayout

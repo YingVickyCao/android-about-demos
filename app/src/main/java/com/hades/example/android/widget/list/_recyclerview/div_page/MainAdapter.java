@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.hades.example.java.lib.DummyItem;
+import com.hades.utility.jvm.DummyItem;
 import com.hades.example.android.R;
 import com.hades.example.android.widget.list._recyclerview.dummy.DummyRecyclerViewAdapter;
 

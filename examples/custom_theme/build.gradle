@@ -29,7 +29,11 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':lib-android')
+    implementation(libs.utilityAndroid) {
+        artifact {
+            type = 'aar'
+        }
+    }
     implementation libs.androidx.appcompat
 
     testImplementation libs.test.junit

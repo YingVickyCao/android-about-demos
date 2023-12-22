@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
 
-import com.hades.example.android.lib.utils.AndroidStorageUtils;
+import com.hades.utility.android.utils.AndroidStorageUtils;
 import com.hades.example.android.resource.bitmap.utils.cache.disk.DiskCache;
 import com.hades.example.android.resource.bitmap.utils.cache.mememory.BitmapMemoryCache;
 import com.tbruyelle.rxpermissions.BuildConfig;

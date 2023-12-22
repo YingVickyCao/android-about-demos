@@ -7,8 +7,8 @@ import android.util.Log;
 
 import androidx.collection.LruCache;
 
-import com.hades.example.android.lib.utils.ImageUtil;
-import com.hades.example.android.lib.utils.VersionUtil;
+import com.hades.utility.android.utils.ImageUtil;
+import com.hades.utility.android.utils.VersionUtil;
 import com.hades.example.android.resource.bitmap.utils.cache.ImageCacheParams;
 
 import java.lang.ref.SoftReference;

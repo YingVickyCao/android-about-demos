@@ -1,6 +1,0 @@
-[submodule "lib-android"]
-	path = lib-android
-	url = git@github.com:YingVickyCao/lib-android.git
-[submodule "JavaLib"]
-	path = JavaLib
-	url = git@github.com:YingVickyCao/JavaLib.git

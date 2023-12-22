@@ -63,12 +63,21 @@ android {
     buildFeatures {
         buildConfig true
     }
+
+    viewBinding {
+        enable = true
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(':JavaLib')
-    implementation project(':lib-android')
+
+    implementation(libs.utilityAndroid) {
+        artifact {
+            type = 'aar'
+        }
+    }
+    implementation(libs.utilityJvm)
 
     implementation libs.androidx.appcompat
     implementation libs.androidx.fragment
@@ -87,11 +96,11 @@ dependencies {
     implementation libs.google.playServicesLocation
     implementation libs.google.gson
     implementation libs.google.exoplayer
-    // implementation libs.google.hiltAndroid
-    // kapt libs.google.hiltCompiler
-    // annotationProcessor libs.google.hiltAndroidCompiler
-
-    implementation libs.thirdparty.rxpermissions
+    implementation(libs.thirdparty.rxpermissions) {
+        artifact {
+            type = 'aar'
+        }
+    }
     implementation libs.thirdparty.rxjava2
     implementation libs.thirdparty.rxandroid2
     implementation libs.thirdparty.nineoldandroids
@@ -105,6 +114,7 @@ dependencies {
         }
     }
     implementation libs.kotlin.stdlib
+
     debugImplementation libs.debug.debugDb
 
     testImplementation libs.test.junit

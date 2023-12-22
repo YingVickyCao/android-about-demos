@@ -65,7 +65,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout style="@style/ConstrainLayoutStyle.Large">
 
         <Button
-            android:id="@+id/btn2"
+            android:id="@+id/btn2_2"
             style="@style/btn"
             android:text="@string/a"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -76,7 +76,7 @@
         <Button
             style="@style/btn"
             android:text="B"
-            app:layout_constraintCircle="@id/btn2"
+            app:layout_constraintCircle="@id/btn2_2"
             app:layout_constraintCircleAngle="45"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

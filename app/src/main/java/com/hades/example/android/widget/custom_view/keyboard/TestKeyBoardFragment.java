@@ -17,7 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.android.lib.utils.BlockQuickTap;
+import com.hades.utility.android.utils.BlockQuickTap;
 
 public class TestKeyBoardFragment extends Fragment {
     private static final String TAG = "TestKeyBoardFragment";

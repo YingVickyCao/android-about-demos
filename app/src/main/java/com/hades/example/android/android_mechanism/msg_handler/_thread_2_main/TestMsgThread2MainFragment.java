@@ -13,10 +13,10 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.java.lib.MockHeavyWork;
+import com.hades.utility.jvm.MockHeavyWork;
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
-import com.hades.example.java.lib.ThreadUtils;
+import com.hades.utility.jvm.ThreadUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
