@@ -17,6 +17,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.marginEnd
+import androidx.core.view.setMargins
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.snackbar.Snackbar.SnackbarLayout
@@ -49,6 +51,8 @@ class SnackbarFragment : Fragment() {
         binding.setPosition.setOnClickListener { this.setPosition() }
         binding.setLeftRightIcon.setOnClickListener { setLeftRightIcon() }
         binding.addView.setOnClickListener { addView() }
+        binding.setMargin.setOnClickListener { setMargin() }
+        binding.setHeight.setOnClickListener { setHeight() }
         binding.test.setOnClickListener { this.test() }
         return binding.root
     }
@@ -219,7 +223,6 @@ class SnackbarFragment : Fragment() {
         snackBar.show()
     }
 
-    // TODO: setLeftRightIcon
     private fun setLeftRightIcon() {
         val snackBar = Snackbar.make(binding.root, "set radius", Snackbar.LENGTH_SHORT).setAction("OK") {
             Log.d(TAG, "addAction: Click ok")
@@ -229,9 +232,17 @@ class SnackbarFragment : Fragment() {
         if (layoutParams is LinearLayout.LayoutParams) {
             Log.d(TAG, "test: $layoutParams")
         }
-        message.setCompoundDrawables(ResourcesCompat.getDrawable(resources, R.drawable.ic_svg_home, context?.theme), null, ResourcesCompat.getDrawable(resources, R.drawable.ic_svg_home, context?.theme), null)
-        message.compoundDrawablePadding = message.paddingLeft
+//        val textSize = message.textSize.toInt()
+        val textSize = resources.getDimensionPixelOffset(R.dimen.size_24)
+        val leftDrawable = ResourcesCompat.getDrawable(resources, R.drawable.ic_svg_home, context?.theme)
+        val rightDrawable = ResourcesCompat.getDrawable(resources, R.drawable.ic_svg_home, context?.theme)
+        leftDrawable?.setBounds(0, 0, textSize, textSize)
+        rightDrawable?.setBounds(0, 0, textSize, textSize)
+        message.setCompoundDrawables(leftDrawable, null, rightDrawable, null)
+//        message.compoundDrawablePadding = message.paddingLeft
+        message.compoundDrawablePadding = resources.getDimensionPixelOffset(R.dimen.size_8)
         Log.d(TAG, "test: ${message.compoundDrawables}")
+        message.setBackgroundColor(resources.getColor(R.color.red, context?.theme))
         snackBar.show()
     }
 
@@ -259,39 +270,36 @@ class SnackbarFragment : Fragment() {
         snackBar.show()
     }
 
-    private fun test() {
+    private fun setMargin() {
         val snackBar = Snackbar.make(binding.root, "set radius", Snackbar.LENGTH_SHORT).setAction("OK") {
             Log.d(TAG, "addAction: Click ok")
         }
-//        val message: TextView = snackBar.view.findViewById(R.id.snackbar_text)
-//        val layoutParams: Any = message.layoutParams
-//        if (layoutParams is LinearLayout.LayoutParams) {
-//            Log.d(TAG, "test: $layoutParams")
-//        }
-//        message.setCompoundDrawables(ResourcesCompat.getDrawable(resources, R.drawable.ic_svg_home, context?.theme), null, ResourcesCompat.getDrawable(resources, R.drawable.ic_svg_home, context?.theme), null)
-//        message.compoundDrawablePadding = message.paddingLeft
-//        Log.d(TAG, "test: ${message.compoundDrawables}")
-
-
-        if (snackBar.view is SnackbarLayout) {
-            val layout: SnackbarLayout = snackBar.view as SnackbarLayout
-            val imageView = ImageView(context)
-            val layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT)
-            layoutParams.gravity = Gravity.CENTER_VERTICAL
-            imageView.layoutParams = layoutParams
-            imageView.setBackgroundResource(R.drawable.ic_svg_home)
-            layout.addView(imageView, 0)
-
-            val imageView2 = ImageView(context)
-            val layoutParams2 = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT)
-            layoutParams2.gravity = (Gravity.RIGHT or Gravity.CENTER_VERTICAL)
-            imageView2.layoutParams = layoutParams2
-            imageView2.setBackgroundResource(R.drawable.ic_svg_home)
-            layout.addView(imageView2, 2)
+        val layoutParams: ViewGroup.LayoutParams = snackBar.view.layoutParams
+        Log.d(TAG, "setPosition: $layoutParams")
+        if (layoutParams is ViewGroup.MarginLayoutParams) {
+            val margin: Int = resources.getDimensionPixelOffset(R.dimen.size_8)
+            layoutParams.setMargins(margin)
+            snackBar.view.layoutParams = layoutParams
         }
-
         Log.d(TAG, "test: $snackBar.view")
         snackBar.show()
+    }
+
+    private fun setHeight() {
+        val snackBar = Snackbar.make(binding.root, "set radius", Snackbar.LENGTH_SHORT).setAction("OK", null)
+        val layoutParams: ViewGroup.LayoutParams = snackBar.view.layoutParams
+        Log.d(TAG, "setPosition: $layoutParams")
+        if (layoutParams is ViewGroup.MarginLayoutParams) {
+            val size: Int = resources.getDimensionPixelOffset(R.dimen.size_100)
+            layoutParams.height = size
+            snackBar.view.layoutParams = layoutParams
+        }
+        Log.d(TAG, "test: $snackBar.view")
+        snackBar.show()
+    }
+
+    private fun test() {
+        setHeight()
     }
 
     override fun onDestroy() {
