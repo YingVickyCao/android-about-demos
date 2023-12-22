@@ -364,7 +364,13 @@ class SnackbarFragment : Fragment() {
     }
 
     private fun customSnakeBar() {
-        XSnackbar.make(binding.root, "set radius", Snackbar.LENGTH_SHORT)
+        val text_long =
+            "Android Studio 使用高级构建工具包 Gradle 来自动执行和管理构建流程，同时也允许您自行指定灵活的 build 配置。每项 build 配置均可定义各自的一组代码和资源，同时重复利用所有应用版本共用的部分。Android Gradle 插件与该构建工具包搭配使用，提供专用于构建和测试 Android 应用的流程和可配置设置。";
+        val text_short = "Snackbar has action"
+        XSnackbar.make(binding.root, text_long, Snackbar.LENGTH_SHORT)
+            .setAction("Ok") {
+                Log.d(TAG, "addAction: Click ok")
+            }
             .show()
     }
 

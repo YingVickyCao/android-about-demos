@@ -24,6 +24,7 @@
                 android:id="@+id/test"
                 style="@style/btn_red"
                 android:text="Test"
+                android:textSize="@dimen/text_size_15"
                 tools:ignore="HardcodedText" />
 
             <androidx.appcompat.widget.AppCompatButton
