@@ -48,7 +48,7 @@ import com.hades.example.android.widget.view_animator.TextSwitcherFragment;
 import com.hades.example.android.widget.view_animator.ViewFlipperFragment;
 import com.hades.example.android.widget.view_animator.ViewSwitcherFragment;
 import com.hades.example.android._feature._web_based_contents.webview.TestWebViewFragment;
-import com.hades.example.java.lib.DummyItem;
+import com.hades.utility.jvm.DummyItem;
 
 public class WidgetActivity extends NoNeedPermissionActivity implements IItemClickAction {
     private static final String TAG = WidgetActivity.class.getSimpleName();
@@ -297,6 +297,5 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
     @Override
     public void onItemClickListener(DummyItem item) {
         Log.d(TAG, "onItemClickListener: " + item.toString());
-
     }
 }

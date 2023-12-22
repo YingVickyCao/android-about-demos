@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hades.example.android.R;
+import com.hades.utility.jvm.DummyItem;
 
 import java.util.List;
 
