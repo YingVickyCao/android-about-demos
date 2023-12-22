@@ -11,13 +11,13 @@ import android.view.View
 import android.view.View.TEXT_ALIGNMENT_CENTER
 import android.view.View.TEXT_ALIGNMENT_GRAVITY
 import android.view.ViewGroup
+import android.view.ViewGroup.MarginLayoutParams
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.marginEnd
 import androidx.core.view.setMargins
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
@@ -53,6 +53,9 @@ class SnackbarFragment : Fragment() {
         binding.addView.setOnClickListener { addView() }
         binding.setMargin.setOnClickListener { setMargin() }
         binding.setHeight.setOnClickListener { setHeight() }
+        binding.setOffsetFromBottom.setOnClickListener { setOffsetFromBottom() }
+        binding.showedAboveView.setOnClickListener { showedAboveView() }
+        binding.showedBelowView.setOnClickListener { showedBelowView() }
         binding.test.setOnClickListener { this.test() }
         return binding.root
     }
@@ -276,7 +279,7 @@ class SnackbarFragment : Fragment() {
         }
         val layoutParams: ViewGroup.LayoutParams = snackBar.view.layoutParams
         Log.d(TAG, "setPosition: $layoutParams")
-        if (layoutParams is ViewGroup.MarginLayoutParams) {
+        if (layoutParams is MarginLayoutParams) {
             val margin: Int = resources.getDimensionPixelOffset(R.dimen.size_8)
             layoutParams.setMargins(margin)
             snackBar.view.layoutParams = layoutParams
@@ -289,7 +292,7 @@ class SnackbarFragment : Fragment() {
         val snackBar = Snackbar.make(binding.root, "set radius", Snackbar.LENGTH_SHORT).setAction("OK", null)
         val layoutParams: ViewGroup.LayoutParams = snackBar.view.layoutParams
         Log.d(TAG, "setPosition: $layoutParams")
-        if (layoutParams is ViewGroup.MarginLayoutParams) {
+        if (layoutParams is MarginLayoutParams) {
             val size: Int = resources.getDimensionPixelOffset(R.dimen.size_100)
             layoutParams.height = size
             snackBar.view.layoutParams = layoutParams
@@ -298,8 +301,69 @@ class SnackbarFragment : Fragment() {
         snackBar.show()
     }
 
+    private fun setOffsetFromBottom() {
+        val snackBar = Snackbar.make(binding.root, "set radius", Snackbar.LENGTH_SHORT).setAction("OK", null)
+        val layoutParams: ViewGroup.LayoutParams = snackBar.view.layoutParams
+        Log.d(TAG, "setPosition: $layoutParams")
+        if (layoutParams is MarginLayoutParams) {
+            val size: Int = resources.getDimensionPixelOffset(R.dimen.size_80)
+            layoutParams.bottomMargin = size
+            snackBar.view.layoutParams = layoutParams
+        }
+        Log.d(TAG, "test: $snackBar.view")
+        snackBar.show()
+    }
+
+    private fun showedAboveView() {
+        val locations = IntArray(2)
+        binding.lengthShort.getLocationOnScreen(locations)
+        val btnSize: Int = binding.lengthShort.height
+        Log.e(TAG, "showedAboveView: 距离屏幕左侧:${locations[0]},距离屏幕顶部:${locations[1]}")
+        Log.e(TAG, "showedAboveView: button height=$btnSize}")
+
+        val snackBar = Snackbar.make(binding.root, "set radius", Snackbar.LENGTH_SHORT).setAction("OK", null)
+        val message: TextView = snackBar.view.findViewById(R.id.snackbar_text)
+        Log.d(TAG, "showedAboveView: snackBar height=" + message.height)
+        Log.d(TAG, "showedAboveView: snackBar measuredHeight=" + snackBar.view.measuredHeight)
+
+        val layoutParams: ViewGroup.LayoutParams = snackBar.view.layoutParams
+        if (layoutParams is MarginLayoutParams) {
+            val heightPixels = snackBar.view.resources.displayMetrics.heightPixels
+            Log.e(TAG, "showedAboveView:heightPixels= $heightPixels")
+            val marginBottom = heightPixels - locations[1] + btnSize
+            Log.e(TAG, "showedAboveView:marginBottom= $marginBottom")
+            layoutParams.setMargins(0, 0, 0, marginBottom)
+            snackBar.view.layoutParams = layoutParams
+        }
+        snackBar.show()
+    }
+
+    private fun showedBelowView() {
+        val locations = IntArray(2)
+        binding.lengthShort.getLocationOnScreen(locations)
+        val btnSize: Int = binding.lengthShort.height
+        Log.e(TAG, "showedBelowView: 距离屏幕左侧:${locations[0]},距离屏幕顶部:${locations[1]}")
+        Log.e(TAG, "showedBelowView: button height=$btnSize}")
+
+        val snackBar = Snackbar.make(binding.root, "set radius", Snackbar.LENGTH_SHORT).setAction("OK", null)
+        val message: TextView = snackBar.view.findViewById(R.id.snackbar_text)
+        Log.d(TAG, "showedBelowView: snackBar height=" + message.height)
+        Log.d(TAG, "showedBelowView: snackBar measuredHeight=" + snackBar.view.measuredHeight)
+
+        val layoutParams: ViewGroup.LayoutParams = snackBar.view.layoutParams
+        if (layoutParams is MarginLayoutParams) {
+            val heightPixels = snackBar.view.resources.displayMetrics.heightPixels
+            Log.e(TAG, "showedBelowView:heightPixels= $heightPixels")
+            val marginBottom = heightPixels - locations[1]
+            Log.e(TAG, "showedBelowView:marginBottom= $marginBottom")
+            layoutParams.setMargins(0, 0, 0, marginBottom)
+            snackBar.view.layoutParams = layoutParams
+        }
+        snackBar.show()
+    }
+
     private fun test() {
-        setHeight()
+        showedAboveView()
     }
 
     override fun onDestroy() {

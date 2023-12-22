@@ -8,12 +8,11 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/topic"
         style="@style/topic"
-        android:text="@string/page_Snackbar" />
+        android:text="@string/page_SnackBar" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/topic">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -48,7 +47,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/onlyShowOneSnackBar"
                 style="@style/btn"
-                android:text="System can only show one Snackbar object at same time"
+                android:text="System can only show one SnackBar object \nat same time"
                 tools:ignore="HardcodedText" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -139,6 +138,24 @@
                 android:id="@+id/setHeight"
                 style="@style/btn"
                 android:text="Height"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/setOffsetFromBottom"
+                style="@style/btn"
+                android:text="Offset from bottom position"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/showedAboveView"
+                style="@style/btn"
+                android:text="Showed at the above of view"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/showedBelowView"
+                style="@style/btn"
+                android:text="Showed at the below of view"
                 tools:ignore="HardcodedText" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>
