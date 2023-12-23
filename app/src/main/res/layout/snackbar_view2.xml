@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/snackbar_content_v2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/toastSuccessColor"
+    android:minHeight="45dp"
+    android:orientation="horizontal"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:id="@+id/snackbar_icon_v2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/toast_error" />
+
+    <TextView
+        android:id="@+id/snackbar_text_v2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|left|start"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="@integer/design_snackbar_text_max_lines"
+        android:paddingLeft="@dimen/design_snackbar_padding_horizontal"
+        android:paddingTop="0dp"
+        android:paddingRight="@dimen/design_snackbar_padding_horizontal"
+        android:paddingBottom="0dp"
+        android:text="abxagagqgagaah"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.Design.Snackbar.Message" />
+
+    <Button
+        android:id="@+id/snackbar_action_v2"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|right|end"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="OK"
+        android:minHeight="@dimen/size_30"
+        android:minWidth="30dp"
+        android:textColor="?attr/colorAccent"
+        android:visibility="visible" />
+</androidx.appcompat.widget.LinearLayoutCompat>
