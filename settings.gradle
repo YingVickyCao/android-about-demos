@@ -22,8 +22,8 @@ project(':receive_app_links').projectDir = new File('examples/receive_app_links'
 include ':other_app_having_app_links'
 project(':other_app_having_app_links').projectDir = new File('examples/other_app_having_app_links')
 
-include ':carouselexperiments'
-project(':carouselexperiments').projectDir = new File('examples/carouselexperiments')
+include ':carousel-experiments'
+project(':carousel-experiments').projectDir = new File('examples/carousel-experiments')
 
 
 
