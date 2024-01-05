@@ -10,48 +10,57 @@ import android.widget.TextView;
 
 import com.hades.example.android.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class ViewFlipperAdapter extends BaseAdapter {
     Context context;
-    int[] images;
-    String[] names;
+
+    List<FlipperItem> items = new ArrayList<>();
     LayoutInflater inflater;
 
-    public ViewFlipperAdapter(Context context, String[] names, int[] images) {
+    public ViewFlipperAdapter(Context context, List<FlipperItem> items) {
         this.context = context;
-        this.images = images;
-        this.names = names;
+        this.items.addAll(items);
         inflater = (LayoutInflater.from(context));
     }
 
     @Override
     public int getCount() {
-        return names.length;
+        return items.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
+    public FlipperItem getItem(int position) {
+        return items.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup parent) {
-        view = inflater.inflate(R.layout.custom_adapter_layout, null);
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder;
+        if (null == convertView) {
+            convertView = inflater.inflate(R.layout.custom_adapter_layout, null);
+            viewHolder = new ViewHolder();
+            viewHolder.image = (ImageView) convertView.findViewById(R.id.image);
+            viewHolder.name = (TextView) convertView.findViewById(R.id.name);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
 
-        // Link those objects with their respective id's
-        // that we have given in .XML file
-        TextView name = (TextView) view.findViewById(R.id.name);
-        ImageView image = (ImageView) view.findViewById(R.id.image);
+        FlipperItem model = getItem(position);
+        viewHolder.name.setText(model.getName());
+        viewHolder.image.setImageResource(model.getResId());
+        return convertView;
+    }
 
-        // Set the data in text view
-        name.setText(names[position]);
-
-        // Set the image in Image view
-        image.setImageResource(images[position]);
-        return view;
+    private static class ViewHolder {
+        TextView name;
+        ImageView image;
     }
 }
