@@ -21,7 +21,7 @@ public class AdapterViewFlipper2Fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_adapterviewflipper, container, false);
+        View view = inflater.inflate(R.layout.widget_adapterviewflipper_custom, container, false);
         adapterViewFlipper = (AdapterViewFlipper) view.findViewById(R.id.adapterViewFlipper);
         return view;
     }
