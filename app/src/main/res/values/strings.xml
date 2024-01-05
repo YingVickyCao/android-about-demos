@@ -86,6 +86,8 @@
     <string name="page_widget">Widget</string>
     <string name="page_RelativeView">RelativeView</string>
     <string name="page_view_location">View location</string>
+    <string name="page_ViewFlipper">ViewFlipper</string>
+    <string name="page_AdapterViewFlipper">AdapterViewFlipper</string>
     <!-- START,Custom View   -->
     <string name="page_CustomView">Custom View</string>
     <string name="page_Canvas_and_Paint" tools:ignore="ExtraTranslation">Canvas and Paint</string>

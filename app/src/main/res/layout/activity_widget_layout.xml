@@ -170,9 +170,14 @@
                 android:text="@string/test_drag_and_drop" />
 
             <Button
-                android:id="@+id/testViewFlipper"
+                android:id="@+id/page_ViewFlipper"
                 style="@style/btn"
-                android:text="@string/test_view_flipper" />
+                android:text="@string/page_ViewFlipper" />
+
+            <Button
+                android:id="@+id/page_AdapterViewFlipper"
+                style="@style/btn"
+                android:text="@string/page_AdapterViewFlipper" />
 
             <Button
                 android:id="@+id/testCalendarView"

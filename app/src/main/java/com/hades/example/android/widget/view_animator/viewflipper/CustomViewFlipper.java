@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.view_animator;
+package com.hades.example.android.widget.view_animator.viewflipper;
 
 import android.content.Context;
 import android.util.AttributeSet;
