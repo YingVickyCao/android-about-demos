@@ -1,29 +1,28 @@
 package com.hades.example.android.widget.view_animator.adapterviewflipper.v3;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
+import androidx.collection.SparseArrayCompat;
 
 import com.hades.example.android.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class ViewFlipperAdapter extends BaseAdapter {
+public abstract class ViewFlipperAdapter<T> extends BaseAdapter {
     private static final String TAG = "ViewFlipperAdapter";
     Context context;
 
-    List<FlipperItem> items = new ArrayList<>();
+    List<T> items = new ArrayList<>();
     LayoutInflater inflater;
 
-    public ViewFlipperAdapter(Context context, List<FlipperItem> items) {
+    public ViewFlipperAdapter(Context context, List<T> items) {
         this.context = context;
         this.items.addAll(items);
         inflater = (LayoutInflater.from(context));
@@ -35,7 +34,7 @@ class ViewFlipperAdapter extends BaseAdapter {
     }
 
     @Override
-    public FlipperItem getItem(int position) {
+    public T getItem(int position) {
         return items.get(position);
     }
 
@@ -47,21 +46,18 @@ class ViewFlipperAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = ViewHolder.getViewHolder(convertView, inflater, R.layout.custom_adapter_layout);
-        FlipperItem model = getItem(position);
-        viewHolder.name.setText(model.getName());
-        viewHolder.image.setImageResource(model.getResId());
+        convert(viewHolder, items.get(position));
         return viewHolder.getConvertView();
     }
 
-    private static class ViewHolder {
+    protected abstract void convert(ViewHolder baseViewHolder, T t);
+
+    public static class ViewHolder {
         private View convertView;
-        private TextView name;
-        private ImageView image;
+        private SparseArrayCompat<View> viewIDs = new SparseArrayCompat<>();
 
         public ViewHolder(View convertView) {
             this.convertView = convertView;
-            image = (ImageView) convertView.findViewById(R.id.image);
-            name = (TextView) convertView.findViewById(R.id.name);
         }
 
         public static ViewHolder getViewHolder(View convertView, LayoutInflater inflater, @LayoutRes int resource) {
@@ -78,6 +74,15 @@ class ViewFlipperAdapter extends BaseAdapter {
 
         public View getConvertView() {
             return convertView;
+        }
+
+        public View getViewById(@IdRes int viewId) {
+            View view = viewIDs.get(viewId);
+            if (view == null) {
+                view = convertView.findViewById(viewId);
+                viewIDs.put(viewId, view);
+            }
+            return view;
         }
     }
 }

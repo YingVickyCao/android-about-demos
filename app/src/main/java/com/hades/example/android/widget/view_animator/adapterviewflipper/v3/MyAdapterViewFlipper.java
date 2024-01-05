@@ -6,6 +6,9 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.AdapterViewFlipper;
 
+/**
+ * https://developer.android.google.cn/reference/android/widget/AdapterViewFlipper
+ */
 public class MyAdapterViewFlipper extends AdapterViewFlipper {
     private static final String TAG = "MyAdapterViewFlipper";
     private float mTouchDownX;
@@ -128,7 +131,6 @@ public class MyAdapterViewFlipper extends AdapterViewFlipper {
             }
             return true;
         }
-//        return false;
         return super.onTouchEvent(ev);
     }
 

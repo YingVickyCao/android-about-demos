@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,7 +35,16 @@ public class AdapterViewFlipper3Fragment extends Fragment {
     }
 
     private void initView() {
-        ViewFlipperAdapter viewFlipperAdapter = new ViewFlipperAdapter(getActivity(), buildData());
+        ViewFlipperAdapter<FlipperItem> viewFlipperAdapter = new ViewFlipperAdapter<>(getActivity(), buildData()) {
+
+            @Override
+            protected void convert(ViewHolder baseViewHolder, FlipperItem flipperItem) {
+                TextView textView = (TextView) baseViewHolder.getViewById(R.id.name);
+                textView.setText(flipperItem.name);
+                ImageView imageView = (ImageView) baseViewHolder.getViewById(R.id.image);
+                imageView.setImageResource(flipperItem.getResId());
+            }
+        };
         adapterViewFlipper.setAdapter(viewFlipperAdapter);
         adapterViewFlipper.setFlipInterval(1000);
         adapterViewFlipper.setAutoStart(false);
