@@ -63,9 +63,7 @@ public class AdapterViewFlipper3Fragment extends Fragment {
             protected void convert(ViewHolder baseViewHolder, @ColorRes Integer item) {
                 TextView textView = (TextView) baseViewHolder.getViewById(R.id.name);
                 textView.setText(String.valueOf(item));
-                textView.setBackgroundColor(getResources().getColor(item, getContext().getTheme()));
-                // 必须设置宽度，否则宽度为内容大小
-                textView.getLayoutParams().width = DensityUtil.getWidthSize(getActivity());
+                baseViewHolder.getConvertView().setBackgroundColor(getResources().getColor(item, getContext().getTheme()));
             }
         };
         adapterViewFlipper2.setAdapter(viewFlipperAdapter);
