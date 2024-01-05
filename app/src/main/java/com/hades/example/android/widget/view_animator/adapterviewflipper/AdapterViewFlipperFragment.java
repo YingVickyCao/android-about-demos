@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.android.widget.view_animator.CustomAdapter;
 
 public class AdapterViewFlipperFragment extends Fragment {
     AdapterViewFlipper adapterViewFlipper;
@@ -34,8 +33,8 @@ public class AdapterViewFlipperFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.widget_adapterviewflipper, container, false);
         adapterViewFlipper = (AdapterViewFlipper) view.findViewById(R.id.adapterViewFlipper);
-        CustomAdapter customAdapter = new CustomAdapter(getActivity(), NAMES, IMAGES);
-        adapterViewFlipper.setAdapter(customAdapter);
+        ViewFlipperAdapter viewFlipperAdapter = new ViewFlipperAdapter(getActivity(), NAMES, IMAGES);
+        adapterViewFlipper.setAdapter(viewFlipperAdapter);
         adapterViewFlipper.setFlipInterval(2600);
         adapterViewFlipper.setAutoStart(true);
         return view;

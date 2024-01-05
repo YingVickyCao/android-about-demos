@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 import com.hades.example.android.R;
 
-class CustomAdapter extends BaseAdapter {
+class ViewFlipperAdapter extends BaseAdapter {
     Context context;
     int[] images;
     String[] names;
     LayoutInflater inflater;
 
-    public CustomAdapter(Context context, String[] names, int[] images) {
+    public ViewFlipperAdapter(Context context, String[] names, int[] images) {
         this.context = context;
         this.images = images;
         this.names = names;
