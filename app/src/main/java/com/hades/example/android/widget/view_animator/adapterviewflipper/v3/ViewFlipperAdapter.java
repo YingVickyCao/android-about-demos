@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.LayoutRes;
+
 import com.hades.example.android.R;
 
 import java.util.ArrayList;
@@ -44,32 +46,38 @@ class ViewFlipperAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
-        if (null == convertView) {
-            Log.d(TAG, "getView:convertView=null, position=" + position);
-            convertView = inflater.inflate(R.layout.custom_adapter_layout, null);
-            viewHolder = new ViewHolder(convertView);
-            convertView.setTag(viewHolder);
-        } else {
-            Log.d(TAG, "getView:convertView from tag, position=" + position);
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
-
+        ViewHolder viewHolder = ViewHolder.getViewHolder(convertView, inflater, R.layout.custom_adapter_layout);
         FlipperItem model = getItem(position);
         viewHolder.name.setText(model.getName());
         viewHolder.image.setImageResource(model.getResId());
-        return convertView;
+        return viewHolder.getConvertView();
     }
 
     private static class ViewHolder {
-        View convertView;
-        TextView name;
-        ImageView image;
+        private View convertView;
+        private TextView name;
+        private ImageView image;
 
         public ViewHolder(View convertView) {
             this.convertView = convertView;
             image = (ImageView) convertView.findViewById(R.id.image);
             name = (TextView) convertView.findViewById(R.id.name);
+        }
+
+        public static ViewHolder getViewHolder(View convertView, LayoutInflater inflater, @LayoutRes int resource) {
+            ViewHolder viewHolder;
+            if (null == convertView) {
+                convertView = inflater.inflate(resource, null);
+                viewHolder = new ViewHolder(convertView);
+                convertView.setTag(viewHolder);
+            } else {
+                viewHolder = (ViewHolder) convertView.getTag();
+            }
+            return viewHolder;
+        }
+
+        public View getConvertView() {
+            return convertView;
         }
     }
 }
