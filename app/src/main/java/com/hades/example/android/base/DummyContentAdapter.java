@@ -1,6 +1,7 @@
 package com.hades.example.android.base;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.hades.utility.jvm.DummyItem;
 import java.util.List;
 
 public class DummyContentAdapter extends BaseAdapter {
+    private static final String TAG = "DummyContentAdapter";
     private List<DummyItem> mList;
     private Context mContext;
 
@@ -38,10 +40,11 @@ public class DummyContentAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.d(TAG, "getView: ");
         final ViewHolder viewHolder;
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.dummy_content_item_view, null);
-
+            Log.d(TAG, "getView: position=" + position + ",convertView=null");
             viewHolder = new ViewHolder();
             viewHolder._id = convertView.findViewById(R.id._id);
             viewHolder.col2 = convertView.findViewById(R.id.col2);
@@ -51,6 +54,7 @@ public class DummyContentAdapter extends BaseAdapter {
             convertView.setTag(viewHolder);
 
         } else {
+            Log.d(TAG, "getView: position=" + position + ",convertView from tag");
             // PO: [ListView][Adapter] viewHolder = (ViewHolder) convertView.getTag()
             viewHolder = (ViewHolder) convertView.getTag();
         }

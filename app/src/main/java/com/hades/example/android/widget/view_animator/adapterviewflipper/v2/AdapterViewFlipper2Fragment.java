@@ -16,13 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterViewFlipper2Fragment extends Fragment {
-    AdapterViewFlipper adapterViewFlipper;
+    MyAdapterViewFlipper adapterViewFlipper;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.widget_adapterviewflipper_custom, container, false);
-        adapterViewFlipper = (AdapterViewFlipper) view.findViewById(R.id.adapterViewFlipper);
+        adapterViewFlipper = (MyAdapterViewFlipper) view.findViewById(R.id.adapterViewFlipper);
         return view;
     }
 

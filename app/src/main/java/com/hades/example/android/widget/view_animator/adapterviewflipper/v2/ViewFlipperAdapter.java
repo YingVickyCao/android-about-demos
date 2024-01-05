@@ -1,6 +1,7 @@
 package com.hades.example.android.widget.view_animator.adapterviewflipper.v2;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class ViewFlipperAdapter extends BaseAdapter {
+    private static final String TAG = "ViewFlipperAdapter";
     Context context;
 
     List<FlipperItem> items = new ArrayList<>();
@@ -44,12 +46,14 @@ class ViewFlipperAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (null == convertView) {
+            Log.d(TAG, "getView:convertView=null, position=" + position);
             convertView = inflater.inflate(R.layout.custom_adapter_layout, null);
             viewHolder = new ViewHolder();
             viewHolder.image = (ImageView) convertView.findViewById(R.id.image);
             viewHolder.name = (TextView) convertView.findViewById(R.id.name);
             convertView.setTag(viewHolder);
         } else {
+            Log.d(TAG, "getView:convertView from tag, position=" + position);
             viewHolder = (ViewHolder) convertView.getTag();
         }
 

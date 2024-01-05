@@ -14,6 +14,14 @@ import com.hades.utility.jvm.DummyItem;
 import java.util.ArrayList;
 import java.util.Collection;
 
+//     private void addFragment() {
+//        ArrayList<DummyItem> list = new ArrayList<>();
+//
+//        for (int i = 0; i <= 100; i++) {
+//            list.add(new DummyItem(i, String.valueOf(i), i));
+//        }
+//        getSupportFragmentManager().beginTransaction().add(R.id.root, DummyContentFragment.getInstance(list), "test").commit();
+//    }
 public class DummyContentFragment extends BaseFragment {
     public static final String TAG = DummyContentFragment.class.getSimpleName();
     public static final String KEY_SEARCH_RESULT = "search_result";
@@ -30,7 +38,6 @@ public class DummyContentFragment extends BaseFragment {
         fragment.setArguments(data);
         return fragment;
     }
-
 
     @Nullable
     @Override
