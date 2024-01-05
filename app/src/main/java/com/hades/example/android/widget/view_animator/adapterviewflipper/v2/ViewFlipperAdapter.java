@@ -47,7 +47,7 @@ class ViewFlipperAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (null == convertView) {
             Log.d(TAG, "getView:convertView=null, position=" + position);
-            convertView = inflater.inflate(R.layout.custom_adapter_layout, null);
+            convertView = inflater.inflate(R.layout.adapterviewflipper_item1, null);
             viewHolder = new ViewHolder();
             viewHolder.image = (ImageView) convertView.findViewById(R.id.image);
             viewHolder.name = (TextView) convertView.findViewById(R.id.name);

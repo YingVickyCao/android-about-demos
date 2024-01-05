@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hades.example.android.R;
-import com.hades.example.android.widget.view_animator.adapterviewflipper.v1.FlipperItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +44,7 @@ class ViewFlipperAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (null == convertView) {
-            convertView = inflater.inflate(R.layout.custom_adapter_layout, null);
+            convertView = inflater.inflate(R.layout.adapterviewflipper_item1, null);
             viewHolder = new ViewHolder();
             viewHolder.image = (ImageView) convertView.findViewById(R.id.image);
             viewHolder.name = (TextView) convertView.findViewById(R.id.name);
