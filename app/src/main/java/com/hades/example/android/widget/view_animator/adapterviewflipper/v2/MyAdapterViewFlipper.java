@@ -11,7 +11,14 @@ public class MyAdapterViewFlipper extends AdapterViewFlipper {
     private float mTouchDownX;
     private float mTouchUpX;
 
-    private boolean mLoopViews = false;
+    /**
+     * Specifies if the animator should wrap from 0 to the end and vice versa
+     * or have hard boundaries at the beginning and end
+     */
+    private boolean mLoopViews = true;
+    /**
+     * Specifies if this view automatically calls {@link #startFlipping()} when MotionEvent.ACTION_UP
+     */
     private boolean isAutoFlip = true;
 
     public MyAdapterViewFlipper(Context context) {
