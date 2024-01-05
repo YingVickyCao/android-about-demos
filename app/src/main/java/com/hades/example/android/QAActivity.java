@@ -1,16 +1,13 @@
 package com.hades.example.android;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.hades.example.android.app_component._fragment.back.TestBackActivity;
-import com.hades.example.android.app_component.content_provider.system.media.GalleryActivity;
-import com.hades.example.android.app_component.service.unbounservice.StartServiceTest1Activity;
 import com.hades.example.android.base.DummyContentFragment;
 import com.hades.example.android.widget.view_animator.adapterviewflipper.v2.AdapterViewFlipper2Fragment;
+import com.hades.example.android.widget.view_animator.adapterviewflipper.v3.AdapterViewFlipper3Fragment;
 import com.hades.utility.jvm.DummyItem;
 
 import java.util.ArrayList;
@@ -37,7 +34,7 @@ public class QAActivity extends AppCompatActivity {
     }
 
     private void addFragment2() {
-        getSupportFragmentManager().beginTransaction().add(R.id.root, new AdapterViewFlipper2Fragment(), "test").commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.root, new AdapterViewFlipper3Fragment(), "test").commit();
 
     }
 }
