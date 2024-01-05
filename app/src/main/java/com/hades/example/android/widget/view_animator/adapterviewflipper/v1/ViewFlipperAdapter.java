@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.view_animator.adapterviewflipper;
+package com.hades.example.android.widget.view_animator.adapterviewflipper.v1;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hades.example.android.R;
+import com.hades.example.android.widget.view_animator.adapterviewflipper.v1.FlipperItem;
 
 import java.util.ArrayList;
 import java.util.List;

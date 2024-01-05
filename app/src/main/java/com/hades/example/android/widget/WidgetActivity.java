@@ -43,9 +43,10 @@ import com.hades.example.android.widget.switchBtn.TestSwitchFragment;
 import com.hades.example.android.widget.tablayout.TestTabLayoutFragment;
 import com.hades.example.android.widget.textview.TestTextViewActivity;
 import com.hades.example.android.widget.videoview.VideoViewRotateScreenTipActivity;
-import com.hades.example.android.widget.view_animator.adapterviewflipper.AdapterViewFlipperFragment;
+import com.hades.example.android.widget.view_animator.adapterviewflipper.v1.AdapterViewFlipperFragment;
 import com.hades.example.android.widget.view_animator.ImageSwitcherFragment;
 import com.hades.example.android.widget.view_animator.TextSwitcherFragment;
+import com.hades.example.android.widget.view_animator.adapterviewflipper.v2.AdapterViewFlipper2Fragment;
 import com.hades.example.android.widget.view_animator.viewflipper.ViewFlipperFragment;
 import com.hades.example.android.widget.view_animator.ViewSwitcherFragment;
 import com.hades.example.android._feature._web_based_contents.webview.TestWebViewFragment;
@@ -93,6 +94,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
         findViewById(R.id.page_ViewFlipper).setOnClickListener(v -> page_ViewFlipper());
         findViewById(R.id.page_AdapterViewFlipper).setOnClickListener(v -> page_ViewFlipper());
+        findViewById(R.id.page_AdapterViewFlipper_custom).setOnClickListener(v -> page_AdapterViewFlipper_custom());
         findViewById(R.id.testCalendarView).setOnClickListener(v -> testCalendarView());
         findViewById(R.id.testDatePickerAndTimePicker).setOnClickListener(v -> testDatePickerAndTimePicker());
         findViewById(R.id.testNumberPicker).setOnClickListener(v -> testNumberPicker());
@@ -112,7 +114,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     @Override
     protected void showCurrentTest() {
-        page_AdapterViewFlipper();
+        page_AdapterViewFlipper_custom();
     }
 
     private void pageViewLocation() {
@@ -238,6 +240,11 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
     private void page_AdapterViewFlipper() {
         showFragment(new AdapterViewFlipperFragment());
     }
+
+    private void page_AdapterViewFlipper_custom() {
+        showFragment(new AdapterViewFlipper2Fragment());
+    }
+
 
     private void testCalendarView() {
         showFragment(new CalendarViewFragment());

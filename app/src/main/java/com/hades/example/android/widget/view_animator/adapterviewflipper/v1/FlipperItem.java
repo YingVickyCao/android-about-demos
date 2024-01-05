@@ -1,4 +1,4 @@
-package com.hades.example.android.widget.view_animator.adapterviewflipper;
+package com.hades.example.android.widget.view_animator.adapterviewflipper.v1;
 
 import androidx.annotation.DrawableRes;
 

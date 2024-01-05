@@ -180,6 +180,11 @@
                 android:text="@string/page_AdapterViewFlipper" />
 
             <Button
+                android:id="@+id/page_AdapterViewFlipper_custom"
+                style="@style/btn"
+                android:text="@string/page_AdapterViewFlipper_custom" />
+
+            <Button
                 android:id="@+id/testCalendarView"
                 style="@style/btn"
                 android:text="@string/test_CalendarView" />
