@@ -9,7 +9,7 @@
         style="@style/topic"
         android:text="@string/page_AdapterViewFlipper" />
 
-    <com.hades.example.android.widget.view_animator.adapterviewflipper.v2.MyAdapterViewFlipper
+    <com.hades.example.android.widget.view_animator.adapterviewflipper.v3.MyAdapterViewFlipper
         android:id="@+id/adapterViewFlipper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

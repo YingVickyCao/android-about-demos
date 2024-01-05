@@ -48,9 +48,7 @@ class ViewFlipperAdapter extends BaseAdapter {
         if (null == convertView) {
             Log.d(TAG, "getView:convertView=null, position=" + position);
             convertView = inflater.inflate(R.layout.custom_adapter_layout, null);
-            viewHolder = new ViewHolder();
-            viewHolder.image = (ImageView) convertView.findViewById(R.id.image);
-            viewHolder.name = (TextView) convertView.findViewById(R.id.name);
+            viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
             Log.d(TAG, "getView:convertView from tag, position=" + position);
@@ -64,7 +62,14 @@ class ViewFlipperAdapter extends BaseAdapter {
     }
 
     private static class ViewHolder {
+        View convertView;
         TextView name;
         ImageView image;
+
+        public ViewHolder(View convertView) {
+            this.convertView = convertView;
+            image = (ImageView) convertView.findViewById(R.id.image);
+            name = (TextView) convertView.findViewById(R.id.name);
+        }
     }
 }
