@@ -35,7 +35,7 @@ public class AdapterViewFlipper3Fragment extends Fragment {
     }
 
     private void initView() {
-        ViewFlipperAdapter<FlipperItem> viewFlipperAdapter = new ViewFlipperAdapter<>(getActivity(), buildData()) {
+        ViewFlipperAdapter<FlipperItem> viewFlipperAdapter = new ViewFlipperAdapter<>(getActivity(), R.layout.custom_adapter_layout, buildData()) {
 
             @Override
             protected void convert(ViewHolder baseViewHolder, FlipperItem flipperItem) {

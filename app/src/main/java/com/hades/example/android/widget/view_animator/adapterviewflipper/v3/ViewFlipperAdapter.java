@@ -8,22 +8,21 @@ import android.widget.BaseAdapter;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
 import androidx.collection.SparseArrayCompat;
-
-import com.hades.example.android.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ViewFlipperAdapter<T> extends BaseAdapter {
     private static final String TAG = "ViewFlipperAdapter";
-    Context context;
-
+    @LayoutRes
+    int itemLayoutResId;
     List<T> items = new ArrayList<>();
     LayoutInflater inflater;
 
-    public ViewFlipperAdapter(Context context, List<T> items) {
-        this.context = context;
+    public ViewFlipperAdapter(@NonNull Context context, @LayoutRes int itemLayoutResId, @NonNull List<T> items) {
+        this.itemLayoutResId = itemLayoutResId;
         this.items.addAll(items);
         inflater = (LayoutInflater.from(context));
     }
@@ -45,7 +44,7 @@ public abstract class ViewFlipperAdapter<T> extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = ViewHolder.getViewHolder(convertView, inflater, R.layout.custom_adapter_layout);
+        ViewHolder viewHolder = ViewHolder.getViewHolder(convertView, inflater, itemLayoutResId);
         convert(viewHolder, items.get(position));
         return viewHolder.getConvertView();
     }
