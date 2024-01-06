@@ -27,9 +27,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
-import com.hades.example.android.tools.permission.IRationaleOnClickListener;
-import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
-import com.hades.example.android.tools.permission.PermissionTools;
+import com.hades.utility.permission.OnContextUIListener;
+import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.PermissionsTool;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,13 +79,13 @@ public class TestAudioEffectActivity extends AppCompatActivity {
     }
 
     private void requestPermission() {
-        PermissionTools permissionTools = new PermissionTools(this);
-        permissionTools.request(new IRequestPermissionsCallback() {
+        PermissionsTool permissionTools = new PermissionsTool(this);
+        permissionTools.request(new String[]{Manifest.permission.RECORD_AUDIO}, new OnResultCallback() {
             @Override
-            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+            public void showInContextUI(OnContextUIListener callback) {
                 Snackbar.make(findViewById(R.id.root), "Request Audio Visualizer", Snackbar.LENGTH_INDEFINITE)
-                        .setAction(getString(R.string.ok), view -> callback.clickOK())
-                        .setAction(getString(R.string.cancel), view -> callback.clickCancel())
+                        .setAction(getString(R.string.ok), view -> callback.ok())
+                        .setAction(getString(R.string.cancel), view -> callback.cancel())
                         .show();
             }
 
@@ -93,7 +93,17 @@ public class TestAudioEffectActivity extends AppCompatActivity {
             public void granted() {
                 Toast.makeText(TestAudioEffectActivity.this, "Audio Visualizer permission granted", Toast.LENGTH_SHORT).show();
             }
-        }, Manifest.permission.RECORD_AUDIO);
+
+            @Override
+            public void denied() {
+
+            }
+
+            @Override
+            public void onError(String message) {
+
+            }
+        });
     }
 
     private void setupVisualizer() {

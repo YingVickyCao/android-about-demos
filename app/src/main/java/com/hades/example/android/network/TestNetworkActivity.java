@@ -14,9 +14,9 @@ import com.hades.example.android.network.tcp_ip.one_thread_client.SimpleClientAc
 import com.hades.example.android.network.url.http_url_connection.MultiThreadDownFragment;
 import com.hades.example.android.network.url.url.TestURLFragment;
 import com.hades.example.android.network.url.url_connection.TestURLConnectionFragment;
-import com.hades.example.android.tools.permission.IRationaleOnClickListener;
-import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
-import com.hades.example.android.tools.permission.PermissionTools;
+import com.hades.utility.permission.OnContextUIListener;
+import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.PermissionsTool;
 
 public class TestNetworkActivity extends BaseActivity {
     @Override
@@ -35,13 +35,13 @@ public class TestNetworkActivity extends BaseActivity {
 
     private void requestPermission() {
         // FIXED_ERROR:java.io.FileNotFoundException: /sdcard/bg004.JPG: open failed: EACCES (Permission denied)
-        PermissionTools permissionTools = new PermissionTools(this);
-        permissionTools.request(new IRequestPermissionsCallback() {
+        PermissionsTool permissionTools = new PermissionsTool(this);
+        permissionTools.request(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, new OnResultCallback() {
             @Override
-            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+            public void showInContextUI(OnContextUIListener callback) {
                 Snackbar.make(findViewById(R.id.root), "Request SD Card permission", Snackbar.LENGTH_INDEFINITE)
-                        .setAction(getString(R.string.ok), view -> callback.clickOK())
-                        .setAction(getString(R.string.cancel), view -> callback.clickCancel())
+                        .setAction(getString(R.string.ok), view -> callback.ok())
+                        .setAction(getString(R.string.cancel), view -> callback.cancel())
                         .show();
             }
 
@@ -49,7 +49,17 @@ public class TestNetworkActivity extends BaseActivity {
             public void granted() {
                 Toast.makeText(TestNetworkActivity.this, "SD Card permission granted", Toast.LENGTH_SHORT).show();
             }
-        }, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE);
+
+            @Override
+            public void denied() {
+
+            }
+
+            @Override
+            public void onError(String message) {
+
+            }
+        });
     }
 
 

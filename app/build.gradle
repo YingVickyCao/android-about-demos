@@ -96,11 +96,7 @@ dependencies {
     implementation libs.google.playServicesLocation
     implementation libs.google.gson
     implementation libs.google.exoplayer
-    implementation(libs.thirdparty.rxpermissions) {
-        artifact {
-            type = 'aar'
-        }
-    }
+    implementation libs.permission
     implementation libs.thirdparty.rxjava2
     implementation libs.thirdparty.rxandroid2
     implementation libs.thirdparty.nineoldandroids

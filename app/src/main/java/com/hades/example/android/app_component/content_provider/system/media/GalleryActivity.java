@@ -23,9 +23,9 @@ import androidx.fragment.app.FragmentManager;
 
 import com.hades.example.android.R;
 import com.hades.example.android.tools.FragmentUtils;
-import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
-import com.hades.example.android.tools.permission.PermissionTools;
-import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.hades.utility.permission.OnContextUIListener;
+import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.PermissionsTool;
 
 
 public class GalleryActivity extends AppCompatActivity {
@@ -61,18 +61,30 @@ public class GalleryActivity extends AppCompatActivity {
 
     @SuppressLint("CheckResult")
     private void chooseSystemGallery() {
-        PermissionTools permissionTools = new PermissionTools(this);
-        permissionTools.request(new IRequestPermissionsCallback() {
-            @Override
-            public void granted() {
-                doChooseGallery();
-            }
+        PermissionsTool permissionTools = new PermissionsTool(this);
+        permissionTools.request(
+                new String[]{(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU ? Manifest.permission.READ_MEDIA_IMAGES : Manifest.permission.READ_EXTERNAL_STORAGE)},
+                new OnResultCallback() {
+                    @Override
+                    public void showInContextUI(OnContextUIListener callback) {
+                        callback.ok();
+                    }
 
-            @Override
-            public void denied() {
-                Toast.makeText(GalleryActivity.this, "READ_MEDIA_IMAGES not granted", Toast.LENGTH_SHORT).show();
-            }
-        }, (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU ? Manifest.permission.READ_MEDIA_IMAGES : Manifest.permission.READ_EXTERNAL_STORAGE));
+                    @Override
+                    public void granted() {
+                        doChooseGallery();
+                    }
+
+                    @Override
+                    public void denied() {
+                        Toast.makeText(GalleryActivity.this, "READ_MEDIA_IMAGES not granted", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(String message) {
+
+                    }
+                });
     }
 
     private void doChooseGallery() {

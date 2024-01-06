@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.hades.example.android.base.DummyContentFragment;
 import com.hades.example.android.widget.view_animator.adapterviewflipper.v2.AdapterViewFlipper2Fragment;
 import com.hades.example.android.widget.view_animator.adapterviewflipper.v3.AdapterViewFlipper3Fragment;
+import com.hades.example.android.widget.view_animator.viewflipper.ViewFlipperFragment;
 import com.hades.utility.jvm.DummyItem;
 
 import java.util.ArrayList;
@@ -34,7 +35,8 @@ public class QAActivity extends AppCompatActivity {
     }
 
     private void addFragment2() {
-        getSupportFragmentManager().beginTransaction().add(R.id.root, new AdapterViewFlipper3Fragment(), "test").commit();
+//        getSupportFragmentManager().beginTransaction().add(R.id.root, new AdapterViewFlipper3Fragment(), "test").commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.root, new ViewFlipperFragment(), "test").commit();
 
     }
 }

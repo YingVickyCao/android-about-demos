@@ -20,10 +20,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
-import com.hades.example.android.tools.permission.IRationaleOnClickListener;
-import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
-import com.hades.example.android.tools.permission.PermissionTools;
-import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.hades.utility.permission.OnContextUIListener;
+import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.PermissionsTool;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -63,13 +62,14 @@ public class MediaActivity extends AppCompatActivity {
     }
 
     private void clickView() {
-        PermissionTools permissionTools = new PermissionTools(this);
-        permissionTools.request(new IRequestPermissionsCallback() {
+        PermissionsTool permissionTools = new PermissionsTool(this);
+        permissionTools.request(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, new OnResultCallback() {
+
             @Override
-            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+            public void showInContextUI(OnContextUIListener callback) {
                 Snackbar.make(mRoot, R.string.permission_rationale_4_send_message, Snackbar.LENGTH_INDEFINITE)
-                        .setAction(R.string.ok, view -> callback.clickOK())
-                        .setAction(R.string.cancel, view -> callback.clickCancel())
+                        .setAction(R.string.ok, view -> callback.ok())
+                        .setAction(R.string.cancel, view -> callback.cancel())
                         .show();
             }
 
@@ -83,7 +83,12 @@ public class MediaActivity extends AppCompatActivity {
             public void denied() {
                 Toast.makeText(MediaActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
             }
-        }, Manifest.permission.READ_EXTERNAL_STORAGE);
+
+            @Override
+            public void onError(String message) {
+
+            }
+        });
     }
 
     private void view() {
@@ -119,13 +124,14 @@ public class MediaActivity extends AppCompatActivity {
     }
 
     private void clickAdd() {
-        PermissionTools permissionTools = new PermissionTools(this);
-        permissionTools.request(new IRequestPermissionsCallback() {
+        PermissionsTool permissionTools = new PermissionsTool(this);
+        permissionTools.request(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, new OnResultCallback() {
+
             @Override
-            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+            public void showInContextUI(OnContextUIListener callback) {
                 Snackbar.make(mRoot, R.string.permission_rationale_4_send_message, Snackbar.LENGTH_INDEFINITE)
-                        .setAction(R.string.ok, view -> callback.clickOK())
-                        .setAction(R.string.cancel, view -> callback.clickCancel())
+                        .setAction(R.string.ok, view -> callback.ok())
+                        .setAction(R.string.cancel, view -> callback.cancel())
                         .show();
             }
 
@@ -139,7 +145,12 @@ public class MediaActivity extends AppCompatActivity {
             public void denied() {
                 Toast.makeText(MediaActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
             }
-        }, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+            @Override
+            public void onError(String message) {
+
+            }
+        });
     }
 
     private void add() {

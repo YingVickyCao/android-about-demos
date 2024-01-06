@@ -14,9 +14,9 @@ import com.hades.example.android.data_storage.database.TestSQLiteActivity;
 import com.hades.example.android.data_storage.io.TestIOFragment;
 import com.hades.example.android.data_storage.io.TestZipFragment;
 import com.hades.example.android.data_storage.shared_preferences.TestSharedPreferencesFragment;
-import com.hades.example.android.tools.permission.IRationaleOnClickListener;
-import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
-import com.hades.example.android.tools.permission.PermissionTools;
+import com.hades.utility.permission.OnContextUIListener;
+import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.PermissionsTool;
 
 public class DataStorageActivity extends BaseActivity {
     private static final String TAG = DataStorageActivity.class.getSimpleName();
@@ -39,13 +39,16 @@ public class DataStorageActivity extends BaseActivity {
 
 
     private void requestPermission() {
-        PermissionTools permissionTools = new PermissionTools(this);
-        permissionTools.request(new IRequestPermissionsCallback() {
+        PermissionsTool permissionTools = new PermissionsTool(this);
+        permissionTools.request(new String[]{
+                Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE
+        }, new OnResultCallback() {
+
             @Override
-            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+            public void showInContextUI(OnContextUIListener callback) {
                 Snackbar.make(findViewById(R.id.root), "Request SD card permission", Snackbar.LENGTH_INDEFINITE)
-                        .setAction(getString(R.string.ok), view -> callback.clickOK())
-                        .setAction(getString(R.string.cancel), view -> callback.clickCancel())
+                        .setAction(getString(R.string.ok), view -> callback.ok())
+                        .setAction(getString(R.string.cancel), view -> callback.cancel())
                         .show();
             }
 
@@ -53,7 +56,17 @@ public class DataStorageActivity extends BaseActivity {
             public void granted() {
                 Toast.makeText(DataStorageActivity.this, "SD card permission granted", Toast.LENGTH_SHORT).show();
             }
-        }, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+            @Override
+            public void denied() {
+
+            }
+
+            @Override
+            public void onError(String message) {
+
+            }
+        });
     }
 
     @Override

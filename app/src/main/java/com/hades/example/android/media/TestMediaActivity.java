@@ -14,11 +14,11 @@ import com.hades.example.android.media.audio.media_player.TestMediaPlayer4AudioF
 import com.hades.example.android.media.audio.sound_pool.TestSoundPoolFragment;
 import com.hades.example.android.media.camera.TestCameraActivity;
 import com.hades.example.android.media.record.audio.TestRecordAudioFragment;
-import com.hades.example.android.tools.permission.IRationaleOnClickListener;
-import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
-import com.hades.example.android.tools.permission.PermissionTools;
 import com.hades.example.android.widget.surfaceview.TestSurfaceViewPlayVideoFragment;
 import com.hades.example.android.widget.videoview.VideoViewRotateScreenTipActivity;
+import com.hades.utility.permission.OnContextUIListener;
+import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.PermissionsTool;
 
 public class TestMediaActivity extends BaseActivity {
     @Override
@@ -40,13 +40,13 @@ public class TestMediaActivity extends BaseActivity {
     }
 
     private void requestPermission() {
-        PermissionTools permissionTools = new PermissionTools(this);
-        permissionTools.request(new IRequestPermissionsCallback() {
+        PermissionsTool permissionTools = new PermissionsTool(this);
+        permissionTools.request(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, new OnResultCallback() {
             @Override
-            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+            public void showInContextUI(OnContextUIListener callback) {
                 Snackbar.make(findViewById(R.id.root), "Request SD card permission", Snackbar.LENGTH_INDEFINITE)
-                        .setAction(getString(R.string.ok), view -> callback.clickOK())
-                        .setAction(getString(R.string.cancel), view -> callback.clickCancel())
+                        .setAction(getString(R.string.ok), view -> callback.ok())
+                        .setAction(getString(R.string.cancel), view -> callback.cancel())
                         .show();
             }
 
@@ -54,7 +54,17 @@ public class TestMediaActivity extends BaseActivity {
             public void granted() {
                 Toast.makeText(TestMediaActivity.this, "SD card permission granted", Toast.LENGTH_SHORT).show();
             }
-        }, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+            @Override
+            public void denied() {
+
+            }
+
+            @Override
+            public void onError(String message) {
+
+            }
+        });
     }
 
     @Override

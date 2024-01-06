@@ -16,9 +16,9 @@ import androidx.loader.content.CursorLoader;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
-import com.hades.example.android.tools.permission.IRationaleOnClickListener;
-import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
-import com.hades.example.android.tools.permission.PermissionTools;
+import com.hades.utility.permission.OnContextUIListener;
+import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.PermissionsTool;
 
 public class SystemActionActivity extends AppCompatActivity {
     final int REQUEST_CODE_PICK_CONTACT = 1000;
@@ -42,13 +42,14 @@ public class SystemActionActivity extends AppCompatActivity {
     }
 
     private void requestPermission() {
-        PermissionTools permissionTools = new PermissionTools(this);
-        permissionTools.request(new IRequestPermissionsCallback() {
+        PermissionsTool permissionTools = new PermissionsTool(this);
+        permissionTools.request(new String[]{Manifest.permission.READ_CONTACTS}, new OnResultCallback() {
+
             @Override
-            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+            public void showInContextUI(OnContextUIListener callback) {
                 Snackbar.make(mRoot, "Request permission for READ_CONTACTS", Snackbar.LENGTH_INDEFINITE)
-                        .setAction(getString(R.string.ok), view -> callback.clickOK())
-                        .setAction(getString(R.string.cancel), view -> callback.clickCancel())
+                        .setAction(getString(R.string.ok), view -> callback.ok())
+                        .setAction(getString(R.string.cancel), view -> callback.cancel())
                         .show();
             }
 
@@ -56,7 +57,17 @@ public class SystemActionActivity extends AppCompatActivity {
             public void granted() {
                 Toast.makeText(SystemActionActivity.this, "READ_CONTACTS granted", Toast.LENGTH_SHORT).show();
             }
-        }, Manifest.permission.READ_CONTACTS);
+
+            @Override
+            public void denied() {
+
+            }
+
+            @Override
+            public void onError(String message) {
+
+            }
+        });
     }
 
     private void actionGetContent() {

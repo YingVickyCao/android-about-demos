@@ -25,8 +25,9 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.hades.example.android.R;
-import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
-import com.hades.example.android.tools.permission.PermissionTools;
+import com.hades.utility.permission.OnContextUIListener;
+import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.PermissionsTool;
 
 import java.util.List;
 
@@ -76,13 +77,29 @@ public class TestGpsActivity extends AppCompatActivity {
     }
 
     protected void requestPermission() {
-        PermissionTools permissionTools = new PermissionTools(this);
-        permissionTools.request(new IRequestPermissionsCallback() {
-            @Override
-            public void granted() {
-                Toast.makeText(TestGpsActivity.this, "ACCESS_FINE_LOCATION/ACCESS_COARSE_LOCATION granted", Toast.LENGTH_SHORT).show();
-            }
-        }, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION);
+        PermissionsTool permissionTools = new PermissionsTool(this);
+        permissionTools.request(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}
+                , new OnResultCallback() {
+                    @Override
+                    public void showInContextUI(OnContextUIListener callback) {
+                        callback.ok();
+                    }
+
+                    @Override
+                    public void granted() {
+                        Toast.makeText(TestGpsActivity.this, "ACCESS_FINE_LOCATION/ACCESS_COARSE_LOCATION granted", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void denied() {
+
+                    }
+
+                    @Override
+                    public void onError(String message) {
+
+                    }
+                });
     }
 
     @Override

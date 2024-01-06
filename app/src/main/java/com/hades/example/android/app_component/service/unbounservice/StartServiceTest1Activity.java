@@ -9,9 +9,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
-import com.hades.example.android.tools.permission.IRationaleOnClickListener;
-import com.hades.example.android.tools.permission.IRequestPermissionsCallback;
-import com.hades.example.android.tools.permission.PermissionTools;
+import com.hades.utility.permission.OnContextUIListener;
+import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.PermissionsTool;
 
 import java.util.List;
 
@@ -32,11 +32,13 @@ public class StartServiceTest1Activity extends AppCompatActivity {
     }
 
     private void requestNotificationPermission() {
-        PermissionTools tools = new PermissionTools(this);
-        tools.request(new IRequestPermissionsCallback() {
+        PermissionsTool tools = new PermissionsTool(this);
+        tools.request(new String[]{Manifest.permission.POST_NOTIFICATIONS}, new OnResultCallback() {
+
             @Override
-            public void showRationaleContextUI(IRationaleOnClickListener callback) {
+            public void showInContextUI(OnContextUIListener callback) {
                 Log.d(TAG, "showRationaleContextUI: ");
+                callback.ok();
             }
 
             @Override
@@ -48,7 +50,12 @@ public class StartServiceTest1Activity extends AppCompatActivity {
             public void denied() {
                 Toast.makeText(StartServiceTest1Activity.this, "Deny the notification permission", Toast.LENGTH_SHORT).show();
             }
-        }, Manifest.permission.POST_NOTIFICATIONS);
+
+            @Override
+            public void onError(String message) {
+
+            }
+        });
     }
 
     private void start() {
