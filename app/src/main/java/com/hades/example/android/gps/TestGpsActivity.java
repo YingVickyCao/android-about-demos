@@ -18,15 +18,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.hades.example.android.base.RxPermissionsActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.hades.utility.permission.OnContextUIListener;
-import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.OnPermissionResultCallback;
 import com.hades.utility.permission.PermissionsTool;
 
 import java.util.List;
@@ -79,25 +79,28 @@ public class TestGpsActivity extends AppCompatActivity {
     protected void requestPermission() {
         PermissionsTool permissionTools = new PermissionsTool(this);
         permissionTools.request(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}
-                , new OnResultCallback() {
+                , new OnPermissionResultCallback() {
                     @Override
-                    public void showInContextUI(OnContextUIListener callback) {
-                        callback.ok();
-                    }
-
-                    @Override
-                    public void granted() {
+                    public void onPermissionGranted() {
                         Toast.makeText(TestGpsActivity.this, "ACCESS_FINE_LOCATION/ACCESS_COARSE_LOCATION granted", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
-                    public void denied() {
+                    public void onPermissionDenied() {
 
                     }
 
                     @Override
-                    public void onError(String message) {
+                    public void onPermissionError(String message) {
 
+                    }
+
+                    @Override
+                    public void showInContextUI(OnContextUIListener callback) {
+                        Snackbar.make(findViewById(R.id.root), "Request Location permission", Snackbar.LENGTH_INDEFINITE)
+                                .setAction(getString(R.string.ok), view -> callback.ok())
+                                .setAction(getString(R.string.cancel), view -> callback.cancel())
+                                .show();
                     }
                 });
     }

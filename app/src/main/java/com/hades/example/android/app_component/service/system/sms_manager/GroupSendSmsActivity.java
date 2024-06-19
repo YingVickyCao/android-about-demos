@@ -23,7 +23,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseActivity;
 import com.hades.utility.permission.OnContextUIListener;
-import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.OnPermissionResultCallback;
 import com.hades.utility.permission.PermissionsTool;
 
 import java.util.ArrayList;
@@ -57,7 +57,22 @@ public class GroupSendSmsActivity extends BaseActivity {
 
     protected void requestPermission() {
         PermissionsTool permissionTools = new PermissionsTool(this);
-        permissionTools.request(new String[]{Manifest.permission.READ_CONTACTS, Manifest.permission.SEND_SMS}, new OnResultCallback() {
+        permissionTools.request(new String[]{Manifest.permission.READ_CONTACTS, Manifest.permission.SEND_SMS}, new OnPermissionResultCallback() {
+
+            @Override
+            public void onPermissionGranted() {
+                Toast.makeText(GroupSendSmsActivity.this, "READ_CONTACTS and SEND_SMS granted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionDenied() {
+                Toast.makeText(GroupSendSmsActivity.this, "READ_CONTACTS and SEND_SMS denied", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionError(String message) {
+
+            }
 
             @Override
             public void showInContextUI(OnContextUIListener callback) {
@@ -65,20 +80,6 @@ public class GroupSendSmsActivity extends BaseActivity {
                         .setAction(getString(R.string.ok), view -> callback.ok())
                         .setAction(getString(R.string.cancel), view -> callback.cancel())
                         .show();
-            }
-
-            @Override
-            public void granted() {
-                Toast.makeText(GroupSendSmsActivity.this, "READ_CONTACTS and SEND_SMS granted", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void denied() {
-            }
-
-            @Override
-            public void onError(String message) {
-
             }
         });
     }

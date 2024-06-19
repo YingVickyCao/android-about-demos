@@ -17,7 +17,7 @@ import androidx.loader.content.CursorLoader;
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.hades.utility.permission.OnContextUIListener;
-import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.OnPermissionResultCallback;
 import com.hades.utility.permission.PermissionsTool;
 
 public class SystemActionActivity extends AppCompatActivity {
@@ -43,7 +43,22 @@ public class SystemActionActivity extends AppCompatActivity {
 
     private void requestPermission() {
         PermissionsTool permissionTools = new PermissionsTool(this);
-        permissionTools.request(new String[]{Manifest.permission.READ_CONTACTS}, new OnResultCallback() {
+        permissionTools.request(new String[]{Manifest.permission.READ_CONTACTS}, new OnPermissionResultCallback() {
+
+            @Override
+            public void onPermissionGranted() {
+                Toast.makeText(SystemActionActivity.this, "READ_CONTACTS granted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionDenied() {
+                Toast.makeText(SystemActionActivity.this, "READ_CONTACTS  denied", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionError(String message) {
+
+            }
 
             @Override
             public void showInContextUI(OnContextUIListener callback) {
@@ -51,21 +66,6 @@ public class SystemActionActivity extends AppCompatActivity {
                         .setAction(getString(R.string.ok), view -> callback.ok())
                         .setAction(getString(R.string.cancel), view -> callback.cancel())
                         .show();
-            }
-
-            @Override
-            public void granted() {
-                Toast.makeText(SystemActionActivity.this, "READ_CONTACTS granted", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void denied() {
-
-            }
-
-            @Override
-            public void onError(String message) {
-
             }
         });
     }

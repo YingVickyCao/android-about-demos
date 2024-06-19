@@ -17,15 +17,14 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
-import com.tbruyelle.rxpermissions2.RxPermissions;
-
+import com.hades.utility.permission.OnContextUIListener;
+import com.hades.utility.permission.OnPermissionResultCallback;
+import com.hades.utility.permission.PermissionsTool;
 import java.util.ArrayList;
-
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 
 /*
  <!-- 授予读联系人ContentProvider的权限 -->
@@ -33,8 +32,8 @@ import io.reactivex.functions.Consumer;
  <!-- 授予写联系人ContentProvider的权限 -->
  <uses-permission android:name="android.permission.WRITE_CONTACTS" />
  */
-public class ContactContentProviderActivity extends Activity {
-    private RxPermissions rxPermissions;
+public class ContactContentProviderActivity extends AppCompatActivity {
+    private PermissionsTool permissionsTool;
     private View mRoot;
     private boolean mIsHasPermission = false;
 
@@ -52,8 +51,7 @@ public class ContactContentProviderActivity extends Activity {
         list = findViewById(R.id.list);
         initView();
 
-        rxPermissions = new RxPermissions(this);
-        rxPermissions.setLogging(true);
+        permissionsTool = new PermissionsTool(this);
 
         findViewById(R.id.checkPermission).setOnClickListener(v -> checkPermission());
         findViewById(R.id.query).setOnClickListener(v -> search());
@@ -61,59 +59,36 @@ public class ContactContentProviderActivity extends Activity {
     }
 
     private void checkPermission() {
-        if (!rxPermissions.isGranted(Manifest.permission.WRITE_CONTACTS) || !rxPermissions.isGranted(Manifest.permission.READ_CONTACTS)) {
-            askUser2GrantPermissions();
-            return;
-        } else {
-            mIsHasPermission = true;
-        }
-    }
-
-    private void requestPermission() {
-        rxPermissions.request(Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_CONTACTS).subscribe(new Observer<Boolean>() {
+        permissionsTool.request(new String[]{Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_CONTACTS}, new OnPermissionResultCallback() {
             @Override
-            public void onSubscribe(Disposable d) {
+            public void showInContextUI(OnContextUIListener callback) {
+                Snackbar.make(mRoot, R.string.permission_rationale_4_send_message,
+                                Snackbar.LENGTH_INDEFINITE)
+                        .setAction(R.string.ok, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                callback.ok();
+                            }
+                        })
+                        .setAction(getString(R.string.cancel), view -> callback.cancel())
+                        .show();
             }
 
             @Override
-            public void onNext(Boolean granted) {
-                mIsHasPermission = granted;
-                if (granted) {
-                    Toast.makeText(ContactContentProviderActivity.this, "permission available", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(ContactContentProviderActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
-                }
+            public void onPermissionGranted() {
+                mIsHasPermission = true;
+                Toast.makeText(ContactContentProviderActivity.this, "permission available", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onError(Throwable e) {
-
+            public void onPermissionDenied() {
+                mIsHasPermission = false;
+                Toast.makeText(ContactContentProviderActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onComplete() {
+            public void onPermissionError(String message) {
 
-            }
-        });
-    }
-
-    private void askUser2GrantPermissions() {
-        rxPermissions.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_CONTACTS).subscribe(new Consumer<Boolean>() {
-            @Override
-            public void accept(Boolean shouldShowRequestPermissionRationale) throws Exception {
-                if (shouldShowRequestPermissionRationale) {
-                    Snackbar.make(mRoot, R.string.permission_rationale_4_send_message,
-                            Snackbar.LENGTH_INDEFINITE)
-                            .setAction(R.string.ok, new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    requestPermission();
-                                }
-                            })
-                            .show();
-                } else {
-                    requestPermission();
-                }
             }
         });
     }

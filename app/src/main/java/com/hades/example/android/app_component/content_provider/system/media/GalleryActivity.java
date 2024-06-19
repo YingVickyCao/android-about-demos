@@ -21,10 +21,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.hades.example.android.tools.FragmentUtils;
 import com.hades.utility.permission.OnContextUIListener;
-import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.OnPermissionResultCallback;
+import com.hades.utility.permission.OnSimplePermissionCallback;
 import com.hades.utility.permission.PermissionsTool;
 
 
@@ -64,25 +66,28 @@ public class GalleryActivity extends AppCompatActivity {
         PermissionsTool permissionTools = new PermissionsTool(this);
         permissionTools.request(
                 new String[]{(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU ? Manifest.permission.READ_MEDIA_IMAGES : Manifest.permission.READ_EXTERNAL_STORAGE)},
-                new OnResultCallback() {
+                new OnPermissionResultCallback() {
                     @Override
-                    public void showInContextUI(OnContextUIListener callback) {
-                        callback.ok();
-                    }
-
-                    @Override
-                    public void granted() {
+                    public void onPermissionGranted() {
                         doChooseGallery();
                     }
 
                     @Override
-                    public void denied() {
+                    public void onPermissionDenied() {
                         Toast.makeText(GalleryActivity.this, "READ_MEDIA_IMAGES not granted", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
-                    public void onError(String message) {
+                    public void onPermissionError(String message) {
 
+                    }
+
+                    @Override
+                    public void showInContextUI(OnContextUIListener callback) {
+                        Snackbar.make(findViewById(R.id.root), "Request READ_MEDIA_IMAGES permission", Snackbar.LENGTH_INDEFINITE)
+                                .setAction(getString(R.string.ok), view -> callback.ok())
+                                .setAction(getString(R.string.cancel), view -> callback.cancel())
+                                .show();
                     }
                 });
     }
@@ -128,18 +133,24 @@ public class GalleryActivity extends AppCompatActivity {
     }
 
     private void browserSystemGallery() {
-        PermissionTools permissionTools = new PermissionTools(this);
-        permissionTools.request(new IRequestPermissionsCallback() {
-            @Override
-            public void granted() {
-                doBrowserSystemGallery();
-            }
+        PermissionsTool permissionTools = new PermissionsTool(this);
+        permissionTools.request(new String[]{(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU ? Manifest.permission.READ_MEDIA_IMAGES : Manifest.permission.READ_EXTERNAL_STORAGE)},
+                new OnSimplePermissionCallback() {
+                    @Override
+                    public void onPermissionGranted() {
+                        doBrowserSystemGallery();
+                    }
 
-            @Override
-            public void denied() {
-                Toast.makeText(GalleryActivity.this, "READ_MEDIA_IMAGES not granted", Toast.LENGTH_SHORT).show();
-            }
-        }, (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU ? Manifest.permission.READ_MEDIA_IMAGES : Manifest.permission.READ_EXTERNAL_STORAGE));
+                    @Override
+                    public void onPermissionDenied() {
+                        Toast.makeText(GalleryActivity.this, "READ_MEDIA_IMAGES not granted", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onPermissionError(String message) {
+
+                    }
+                });
     }
 
     private void doBrowserSystemGallery() {

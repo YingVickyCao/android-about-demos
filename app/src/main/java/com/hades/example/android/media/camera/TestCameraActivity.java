@@ -29,7 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.hades.utility.permission.OnContextUIListener;
-import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.OnPermissionResultCallback;
 import com.hades.utility.permission.PermissionsTool;
 
 import java.io.File;
@@ -103,7 +103,22 @@ public class TestCameraActivity extends AppCompatActivity {
     private void requestPermission() {
         // FIXED_ERROR:java.io.FileNotFoundException: /sdcard/bg004.JPG: open failed: EACCES (Permission denied)
         PermissionsTool permissionTools = new PermissionsTool(this);
-        permissionTools.request(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, new OnResultCallback() {
+        permissionTools.request(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, new OnPermissionResultCallback() {
+            @Override
+            public void onPermissionGranted() {
+                Toast.makeText(TestCameraActivity.this, "SD Card permission granted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionDenied() {
+                Toast.makeText(TestCameraActivity.this, "SD Card permission denied", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionError(String message) {
+
+            }
+
             @Override
             public void showInContextUI(OnContextUIListener callback) {
                 Snackbar.make(findViewById(R.id.root), "Request SD Card permission", Snackbar.LENGTH_INDEFINITE)
@@ -112,20 +127,6 @@ public class TestCameraActivity extends AppCompatActivity {
                         .show();
             }
 
-            @Override
-            public void granted() {
-                Toast.makeText(TestCameraActivity.this, "SD Card permission granted", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void denied() {
-
-            }
-
-            @Override
-            public void onError(String message) {
-
-            }
         });
     }
 

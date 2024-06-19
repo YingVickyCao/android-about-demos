@@ -21,7 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.hades.utility.permission.OnContextUIListener;
-import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.OnPermissionResultCallback;
+import com.hades.utility.permission.OnSimplePermissionCallback;
 import com.hades.utility.permission.PermissionsTool;
 
 import java.io.IOException;
@@ -63,7 +64,23 @@ public class MediaActivity extends AppCompatActivity {
 
     private void clickView() {
         PermissionsTool permissionTools = new PermissionsTool(this);
-        permissionTools.request(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, new OnResultCallback() {
+        permissionTools.request(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, new OnPermissionResultCallback() {
+
+            @Override
+            public void onPermissionGranted() {
+                Toast.makeText(MediaActivity.this, "permission available", Toast.LENGTH_SHORT).show();
+                view();
+            }
+
+            @Override
+            public void onPermissionDenied() {
+                Toast.makeText(MediaActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionError(String message) {
+
+            }
 
             @Override
             public void showInContextUI(OnContextUIListener callback) {
@@ -71,22 +88,6 @@ public class MediaActivity extends AppCompatActivity {
                         .setAction(R.string.ok, view -> callback.ok())
                         .setAction(R.string.cancel, view -> callback.cancel())
                         .show();
-            }
-
-            @Override
-            public void granted() {
-                Toast.makeText(MediaActivity.this, "permission available", Toast.LENGTH_SHORT).show();
-                view();
-            }
-
-            @Override
-            public void denied() {
-                Toast.makeText(MediaActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onError(String message) {
-
             }
         });
     }
@@ -125,7 +126,23 @@ public class MediaActivity extends AppCompatActivity {
 
     private void clickAdd() {
         PermissionsTool permissionTools = new PermissionsTool(this);
-        permissionTools.request(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, new OnResultCallback() {
+        permissionTools.request(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, new OnPermissionResultCallback() {
+
+            @Override
+            public void onPermissionGranted() {
+                Toast.makeText(MediaActivity.this, "permission available", Toast.LENGTH_SHORT).show();
+                add();
+            }
+
+            @Override
+            public void onPermissionDenied() {
+                Toast.makeText(MediaActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionError(String message) {
+
+            }
 
             @Override
             public void showInContextUI(OnContextUIListener callback) {
@@ -133,22 +150,6 @@ public class MediaActivity extends AppCompatActivity {
                         .setAction(R.string.ok, view -> callback.ok())
                         .setAction(R.string.cancel, view -> callback.cancel())
                         .show();
-            }
-
-            @Override
-            public void granted() {
-                Toast.makeText(MediaActivity.this, "permission available", Toast.LENGTH_SHORT).show();
-                add();
-            }
-
-            @Override
-            public void denied() {
-                Toast.makeText(MediaActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onError(String message) {
-
             }
         });
     }

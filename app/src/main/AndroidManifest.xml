@@ -370,7 +370,7 @@
         <!-- START_RUNTIME_PERMISSION -->
         <!-- SMSReceiver must add android.provider.Telephony.SMS_RECEIVED, or it cannot receiver nothing -->
         <activity android:name=".others.runtime_permission.RuntTimePermissionTestActivity" />
-        <activity android:name=".others.runtime_permission.RxPermissionsTestActivity" /> <!-- <receiver android:name=".runtime_permission.SMSReceiver"> -->
+<!--        <activity android:name=".others.runtime_permission.RxPermissionsTestActivity" /> &lt;!&ndash; <receiver android:name=".runtime_permission.SMSReceiver"> &ndash;&gt;-->
         <!-- <intent-filter android:priority="1000"> -->
         <!-- <action android:name="android.provider.Telephony.SMS_RECEIVED" /> -->
         <!-- </intent-filter> -->

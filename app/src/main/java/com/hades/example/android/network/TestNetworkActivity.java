@@ -15,7 +15,7 @@ import com.hades.example.android.network.url.http_url_connection.MultiThreadDown
 import com.hades.example.android.network.url.url.TestURLFragment;
 import com.hades.example.android.network.url.url_connection.TestURLConnectionFragment;
 import com.hades.utility.permission.OnContextUIListener;
-import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.OnPermissionResultCallback;
 import com.hades.utility.permission.PermissionsTool;
 
 public class TestNetworkActivity extends BaseActivity {
@@ -36,28 +36,28 @@ public class TestNetworkActivity extends BaseActivity {
     private void requestPermission() {
         // FIXED_ERROR:java.io.FileNotFoundException: /sdcard/bg004.JPG: open failed: EACCES (Permission denied)
         PermissionsTool permissionTools = new PermissionsTool(this);
-        permissionTools.request(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, new OnResultCallback() {
+        permissionTools.request(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, new OnPermissionResultCallback() {
+            @Override
+            public void onPermissionGranted() {
+                Toast.makeText(TestNetworkActivity.this, "SD Card permission granted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionDenied() {
+
+            }
+
+            @Override
+            public void onPermissionError(String message) {
+
+            }
+
             @Override
             public void showInContextUI(OnContextUIListener callback) {
                 Snackbar.make(findViewById(R.id.root), "Request SD Card permission", Snackbar.LENGTH_INDEFINITE)
                         .setAction(getString(R.string.ok), view -> callback.ok())
                         .setAction(getString(R.string.cancel), view -> callback.cancel())
                         .show();
-            }
-
-            @Override
-            public void granted() {
-                Toast.makeText(TestNetworkActivity.this, "SD Card permission granted", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void denied() {
-
-            }
-
-            @Override
-            public void onError(String message) {
-
             }
         });
     }

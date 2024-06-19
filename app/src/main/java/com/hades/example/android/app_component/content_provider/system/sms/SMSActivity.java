@@ -10,17 +10,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
-import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.hades.utility.permission.OnContextUIListener;
+import com.hades.utility.permission.OnPermissionResultCallback;
+import com.hades.utility.permission.PermissionsTool;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
-
-public class SMSActivity extends Activity {
+public class SMSActivity extends AppCompatActivity {
     private static final String TAG = SMSActivity.class.getSimpleName();
 
-    private RxPermissions rxPermissions;
+    private PermissionsTool permissionsTool;
     private View mRoot;
     private SmsContentObserver mSmsContentObserver;
 
@@ -30,9 +31,8 @@ public class SMSActivity extends Activity {
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.content_provider_sms);
 
-        rxPermissions = new RxPermissions(this);
-        rxPermissions.setLogging(true);
         checkPermission();
+        permissionsTool = new PermissionsTool(this);
         mRoot = findViewById(R.id.root);
 
         mSmsContentObserver = new SmsContentObserver(this, new Handler());
@@ -51,50 +51,31 @@ public class SMSActivity extends Activity {
     }
 
     private void checkPermission() {
-        if (!rxPermissions.isGranted(Manifest.permission.READ_SMS)) {
-            askUser2GrantPermissions();
-        }
-    }
-
-    private void requestPermission() {
-        rxPermissions.request(Manifest.permission.READ_SMS).subscribe(new Observer<Boolean>() {
+        permissionsTool.request(new String[]{Manifest.permission.READ_SMS}, new OnPermissionResultCallback() {
             @Override
-            public void onSubscribe(Disposable d) {
+            public void showInContextUI(OnContextUIListener callback) {
+                Snackbar.make(mRoot, "request read sms permission",
+                                Snackbar.LENGTH_INDEFINITE)
+                        .setAction(R.string.ok, view -> callback.ok())
+                        .setAction(getString(R.string.cancel), view -> callback.cancel())
+                        .show();
             }
 
             @Override
-            public void onNext(Boolean granted) {
-                if (granted) {
-                    Toast.makeText(SMSActivity.this, "permission available", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(SMSActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
-                }
+            public void onPermissionGranted() {
+                Toast.makeText(SMSActivity.this, "permission available", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onError(Throwable e) {
-
+            public void onPermissionDenied() {
+                Toast.makeText(SMSActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onComplete() {
+            public void onPermissionError(String message) {
 
             }
         });
-    }
-
-    private void askUser2GrantPermissions() {
-        rxPermissions.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_SMS)
-                .subscribe(shouldShowRequestPermissionRationale -> {
-                    if (shouldShowRequestPermissionRationale) {
-                        Snackbar.make(mRoot, "request read sms permission",
-                                Snackbar.LENGTH_INDEFINITE)
-                                .setAction(R.string.ok, view -> requestPermission())
-                                .show();
-                    } else {
-                        requestPermission();
-                    }
-                });
     }
 
 }

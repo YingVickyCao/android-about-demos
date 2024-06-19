@@ -23,7 +23,7 @@ import com.hades.example.android.widget.custom_view.path_effect.TestPathEffectFr
 import com.hades.example.android.widget.custom_view.shader.ShaderFragment;
 import com.hades.example.android.widget.custom_view.shadow.TestShadowViewFragment;
 import com.hades.utility.permission.OnContextUIListener;
-import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.OnPermissionResultCallback;
 import com.hades.utility.permission.PermissionsTool;
 
 /**
@@ -58,7 +58,7 @@ public class CustomViewActivity extends BaseActivity {
     private void requestPermission() {
         // FIXED_ERROR:java.io.FileNotFoundException: /sdcard/bg004.JPG: open failed: EACCES (Permission denied)
         PermissionsTool permissionTools = new PermissionsTool(this);
-        permissionTools.request(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, new OnResultCallback() {
+        permissionTools.request(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, new OnPermissionResultCallback() {
 
             @Override
             public void showInContextUI(OnContextUIListener callback) {
@@ -69,17 +69,17 @@ public class CustomViewActivity extends BaseActivity {
             }
 
             @Override
-            public void granted() {
+            public void onPermissionGranted() {
                 Toast.makeText(CustomViewActivity.this, "SD Card permission granted", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void denied() {
-
+            public void onPermissionDenied() {
+                Toast.makeText(CustomViewActivity.this, "SD Card permission denied", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onError(String message) {
+            public void onPermissionError(String message) {
 
             }
         });

@@ -17,7 +17,7 @@ import com.hades.example.android.media.record.audio.TestRecordAudioFragment;
 import com.hades.example.android.widget.surfaceview.TestSurfaceViewPlayVideoFragment;
 import com.hades.example.android.widget.videoview.VideoViewRotateScreenTipActivity;
 import com.hades.utility.permission.OnContextUIListener;
-import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.OnPermissionResultCallback;
 import com.hades.utility.permission.PermissionsTool;
 
 public class TestMediaActivity extends BaseActivity {
@@ -41,7 +41,22 @@ public class TestMediaActivity extends BaseActivity {
 
     private void requestPermission() {
         PermissionsTool permissionTools = new PermissionsTool(this);
-        permissionTools.request(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, new OnResultCallback() {
+        permissionTools.request(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, new OnPermissionResultCallback() {
+            @Override
+            public void onPermissionGranted() {
+                Toast.makeText(TestMediaActivity.this, "SD card permission granted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionDenied() {
+                Toast.makeText(TestMediaActivity.this, "SD card permission denied", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionError(String message) {
+
+            }
+
             @Override
             public void showInContextUI(OnContextUIListener callback) {
                 Snackbar.make(findViewById(R.id.root), "Request SD card permission", Snackbar.LENGTH_INDEFINITE)
@@ -50,20 +65,6 @@ public class TestMediaActivity extends BaseActivity {
                         .show();
             }
 
-            @Override
-            public void granted() {
-                Toast.makeText(TestMediaActivity.this, "SD card permission granted", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void denied() {
-
-            }
-
-            @Override
-            public void onError(String message) {
-
-            }
         });
     }
 

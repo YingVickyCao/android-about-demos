@@ -11,11 +11,14 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
-import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.hades.utility.permission.OnContextUIListener;
+import com.hades.utility.permission.OnPermissionResultCallback;
+import com.hades.utility.permission.PermissionsTool;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,8 +34,9 @@ import io.reactivex.functions.Consumer;
     <!-- 添加访问手机状态的权限 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
  */
-public class CheckNetworkAndSIMInfoActivity extends Activity {
-    private RxPermissions rxPermissions;
+public class CheckNetworkAndSIMInfoActivity extends AppCompatActivity {
+    PermissionsTool permissionsTool;
+
     private View mRoot;
     private boolean mIsHasPermission = false;
 
@@ -47,13 +51,13 @@ public class CheckNetworkAndSIMInfoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_system_telehphone_service_4_get_network_and_sim_info);
 
-        rxPermissions = new RxPermissions(this);
-        rxPermissions.setLogging(true);
-
         showView = findViewById(R.id.tableContentList);
+        permissionsTool = new PermissionsTool(this);
 
         adapter = buildSimpleAdapter(status);
         showView.setAdapter(adapter);
+
+        checkPermission();
 
 //        findViewById(R.id.checkPermission).setOnClickListener(v -> checkPermission());
         findViewById(R.id.getData).setOnClickListener(v -> getData());
@@ -124,60 +128,38 @@ public class CheckNetworkAndSIMInfoActivity extends Activity {
     }
 
     private void checkPermission() {
-        if (!rxPermissions.isGranted(Manifest.permission.READ_PHONE_STATE) || !rxPermissions.isGranted(Manifest.permission.ACCESS_COARSE_LOCATION)) {
-            askUser2GrantPermissions();
-            return;
-        } else {
-            mIsHasPermission = true;
-        }
-    }
-
-    private void requestPermission() {
-        rxPermissions.request(Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_COARSE_LOCATION).subscribe(new Observer<Boolean>() {
+        permissionsTool.request(new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_COARSE_LOCATION}, new OnPermissionResultCallback() {
             @Override
-            public void onSubscribe(Disposable d) {
+            public void showInContextUI(OnContextUIListener callback) {
+                Snackbar.make(mRoot, R.string.permission_rationale_4_send_message,
+                                Snackbar.LENGTH_INDEFINITE)
+                        .setAction(R.string.ok, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                callback.ok();
+                            }
+                        })
+                        .setAction(getString(R.string.cancel), view -> callback.cancel())
+                        .show();
             }
 
             @Override
-            public void onNext(Boolean granted) {
-                mIsHasPermission = granted;
-                if (granted) {
-                    Toast.makeText(CheckNetworkAndSIMInfoActivity.this, "permission available", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(CheckNetworkAndSIMInfoActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
-                }
+            public void onPermissionGranted() {
+                mIsHasPermission = true;
+                Toast.makeText(CheckNetworkAndSIMInfoActivity.this, "permission available", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onError(Throwable e) {
-
+            public void onPermissionDenied() {
+                mIsHasPermission = false;
+                Toast.makeText(CheckNetworkAndSIMInfoActivity.this, "permission not granted", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onComplete() {
+            public void onPermissionError(String message) {
 
             }
         });
-    }
 
-    private void askUser2GrantPermissions() {
-        rxPermissions.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_COARSE_LOCATION).subscribe(new Consumer<Boolean>() {
-            @Override
-            public void accept(Boolean shouldShowRequestPermissionRationale) throws Exception {
-                if (shouldShowRequestPermissionRationale) {
-                    Snackbar.make(mRoot, R.string.permission_rationale_4_send_message,
-                            Snackbar.LENGTH_INDEFINITE)
-                            .setAction(R.string.ok, new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    requestPermission();
-                                }
-                            })
-                            .show();
-                } else {
-                    requestPermission();
-                }
-            }
-        });
     }
 }
