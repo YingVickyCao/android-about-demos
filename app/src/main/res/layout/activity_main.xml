@@ -46,7 +46,7 @@
 
             <Button
                 android:id="@+id/pageQAAboutView"
-                style="@style/btn"
+                style="@style/btn_red"
                 android:text="@string/page_qa_about_view" />
 
         </LinearLayout>

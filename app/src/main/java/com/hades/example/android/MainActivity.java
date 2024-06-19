@@ -35,7 +35,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageWidget();
+//        pageWidget();
     }
 
     private void pageSecurity() {

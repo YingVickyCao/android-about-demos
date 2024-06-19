@@ -57,9 +57,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-<!--        android:name=".MainActivity"-->
         <activity
-            android:name=".QAActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -67,7 +66,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity android:name=".QAActivity" />-->
+        <activity android:name=".QAActivity" />
         <activity android:name=".app_component._activity.ManageSystemUIActivity" />
         <activity android:name=".app_component.TestAppComponentActivity" />
         <activity android:name=".app_component._activity.TestActivityActivity" />
