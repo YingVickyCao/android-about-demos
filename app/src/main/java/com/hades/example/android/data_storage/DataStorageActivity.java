@@ -15,7 +15,7 @@ import com.hades.example.android.data_storage.io.TestIOFragment;
 import com.hades.example.android.data_storage.io.TestZipFragment;
 import com.hades.example.android.data_storage.shared_preferences.TestSharedPreferencesFragment;
 import com.hades.utility.permission.OnContextUIListener;
-import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.OnPermissionResultCallback;
 import com.hades.utility.permission.PermissionsTool;
 
 public class DataStorageActivity extends BaseActivity {
@@ -42,7 +42,22 @@ public class DataStorageActivity extends BaseActivity {
         PermissionsTool permissionTools = new PermissionsTool(this);
         permissionTools.request(new String[]{
                 Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE
-        }, new OnResultCallback() {
+        }, new OnPermissionResultCallback() {
+
+            @Override
+            public void onPermissionGranted() {
+                Toast.makeText(DataStorageActivity.this, "SD card permission granted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionDenied() {
+
+            }
+
+            @Override
+            public void onPermissionError(String message) {
+
+            }
 
             @Override
             public void showInContextUI(OnContextUIListener callback) {
@@ -50,21 +65,6 @@ public class DataStorageActivity extends BaseActivity {
                         .setAction(getString(R.string.ok), view -> callback.ok())
                         .setAction(getString(R.string.cancel), view -> callback.cancel())
                         .show();
-            }
-
-            @Override
-            public void granted() {
-                Toast.makeText(DataStorageActivity.this, "SD card permission granted", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void denied() {
-
-            }
-
-            @Override
-            public void onError(String message) {
-
             }
         });
     }

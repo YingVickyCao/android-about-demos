@@ -28,7 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.hades.utility.permission.OnContextUIListener;
-import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.OnPermissionResultCallback;
 import com.hades.utility.permission.PermissionsTool;
 
 import java.util.ArrayList;
@@ -80,28 +80,28 @@ public class TestAudioEffectActivity extends AppCompatActivity {
 
     private void requestPermission() {
         PermissionsTool permissionTools = new PermissionsTool(this);
-        permissionTools.request(new String[]{Manifest.permission.RECORD_AUDIO}, new OnResultCallback() {
+        permissionTools.request(new String[]{Manifest.permission.RECORD_AUDIO}, new OnPermissionResultCallback() {
+            @Override
+            public void onPermissionGranted() {
+                Toast.makeText(TestAudioEffectActivity.this, "Audio Visualizer permission granted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionDenied() {
+                Toast.makeText(TestAudioEffectActivity.this, "Audio Visualizer permission denied", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionError(String message) {
+
+            }
+
             @Override
             public void showInContextUI(OnContextUIListener callback) {
                 Snackbar.make(findViewById(R.id.root), "Request Audio Visualizer", Snackbar.LENGTH_INDEFINITE)
                         .setAction(getString(R.string.ok), view -> callback.ok())
                         .setAction(getString(R.string.cancel), view -> callback.cancel())
                         .show();
-            }
-
-            @Override
-            public void granted() {
-                Toast.makeText(TestAudioEffectActivity.this, "Audio Visualizer permission granted", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void denied() {
-
-            }
-
-            @Override
-            public void onError(String message) {
-
             }
         });
     }
