@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.hades.utility.permission.OnContextUIListener;
-import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.OnPermissionResultCallback;
 import com.hades.utility.permission.PermissionsTool;
 
 public class SMSActivity extends AppCompatActivity {
@@ -51,12 +51,13 @@ public class SMSActivity extends AppCompatActivity {
     }
 
     private void checkPermission() {
-        permissionsTool.request(new String[]{Manifest.permission.READ_SMS}, new OnResultCallback() {
+        permissionsTool.request(new String[]{Manifest.permission.READ_SMS}, new OnPermissionResultCallback() {
             @Override
             public void showInContextUI(OnContextUIListener callback) {
                 Snackbar.make(mRoot, "request read sms permission",
                                 Snackbar.LENGTH_INDEFINITE)
                         .setAction(R.string.ok, view -> callback.ok())
+                        .setAction(getString(R.string.cancel), view -> callback.cancel())
                         .show();
             }
 
@@ -71,7 +72,7 @@ public class SMSActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onPermissionRequestError(String message) {
+            public void onPermissionError(String message) {
 
             }
         });

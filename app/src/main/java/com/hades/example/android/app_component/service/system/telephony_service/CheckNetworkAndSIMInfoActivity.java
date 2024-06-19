@@ -17,7 +17,7 @@ import androidx.core.app.ActivityCompat;
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.hades.utility.permission.OnContextUIListener;
-import com.hades.utility.permission.OnResultCallback;
+import com.hades.utility.permission.OnPermissionResultCallback;
 import com.hades.utility.permission.PermissionsTool;
 
 import java.util.ArrayList;
@@ -128,7 +128,7 @@ public class CheckNetworkAndSIMInfoActivity extends AppCompatActivity {
     }
 
     private void checkPermission() {
-        permissionsTool.request(new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_COARSE_LOCATION}, new OnResultCallback() {
+        permissionsTool.request(new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_COARSE_LOCATION}, new OnPermissionResultCallback() {
             @Override
             public void showInContextUI(OnContextUIListener callback) {
                 Snackbar.make(mRoot, R.string.permission_rationale_4_send_message,
@@ -139,6 +139,7 @@ public class CheckNetworkAndSIMInfoActivity extends AppCompatActivity {
                                 callback.ok();
                             }
                         })
+                        .setAction(getString(R.string.cancel), view -> callback.cancel())
                         .show();
             }
 
@@ -155,7 +156,7 @@ public class CheckNetworkAndSIMInfoActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onPermissionRequestError(String message) {
+            public void onPermissionError(String message) {
 
             }
         });
