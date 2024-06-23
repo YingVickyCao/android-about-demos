@@ -185,9 +185,14 @@
                 android:text="@string/test_CalendarView" />
 
             <Button
-                android:id="@+id/testDatePickerAndTimePicker"
+                android:id="@+id/pageDatePicker"
                 style="@style/btn"
-                android:text="@string/test_DatePicker_and_TimePicker" />
+                android:text="DatePicker" />
+
+            <Button
+                android:id="@+id/pageTimePicker"
+                style="@style/btn"
+                android:text="TimePicker" />
 
             <Button
                 android:id="@+id/testNumberPicker"

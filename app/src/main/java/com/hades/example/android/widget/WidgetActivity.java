@@ -29,10 +29,11 @@ import com.hades.example.android.widget.list._recyclerview._dag_reorder_list.v2.
 import com.hades.example.android.widget.list._recyclerview.dummy.DummyRecyclerViewFragment;
 import com.hades.example.android.widget.list._recyclerview.dummy.IItemClickAction;
 import com.hades.example.android.widget.pickers.CalendarViewFragment;
-import com.hades.example.android.widget.pickers.DateTimePickerDialogFragment;
-import com.hades.example.android.widget.pickers.DateTimePickerFragment;
+import com.hades.example.android.widget.pickers.DatePickerFragment;
+import com.hades.example.android.widget.pickers.DatePickerDialogFragment;
 import com.hades.example.android.widget.pickers.NumberPickerFragment;
 import com.hades.example.android.widget.pickers.TimePickerDialogFragment;
+import com.hades.example.android.widget.pickers.TimePickerFragment;
 import com.hades.example.android.widget.progressbar.TestProgressBarFragment;
 import com.hades.example.android.widget.progressbar.TestRatingBarFragment;
 import com.hades.example.android.widget.progressbar.TestSeekBarFragment;
@@ -45,10 +46,8 @@ import com.hades.example.android.widget.switchBtn.TestSwitchFragment;
 import com.hades.example.android.widget.tablayout.TestTabLayoutFragment;
 import com.hades.example.android.widget.textview.TestTextViewActivity;
 import com.hades.example.android.widget.videoview.VideoViewRotateScreenTipActivity;
-import com.hades.example.android.widget.view_animator.adapterviewflipper.v1.AdapterView1FlipperFragment;
 import com.hades.example.android.widget.view_animator.ImageSwitcherFragment;
 import com.hades.example.android.widget.view_animator.TextSwitcherFragment;
-import com.hades.example.android.widget.view_animator.adapterviewflipper.v2.AdapterViewFlipper2Fragment;
 import com.hades.example.android.widget.view_animator.adapterviewflipper.v3.AdapterViewFlipper3Fragment;
 import com.hades.example.android.widget.view_animator.viewflipper.ViewFlipperFragment;
 import com.hades.example.android.widget.view_animator.ViewSwitcherFragment;
@@ -98,7 +97,8 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.page_ViewFlipper).setOnClickListener(v -> page_ViewFlipper());
         findViewById(R.id.page_AdapterViewFlipper).setOnClickListener(v -> page_AdapterViewFlipper());
         findViewById(R.id.testCalendarView).setOnClickListener(v -> testCalendarView());
-        findViewById(R.id.testDatePickerAndTimePicker).setOnClickListener(v -> testDatePickerAndTimePicker());
+        findViewById(R.id.pageDatePicker).setOnClickListener(v -> pageDatePicker());
+        findViewById(R.id.pageTimePicker).setOnClickListener(v -> pageTimePicker());
         findViewById(R.id.pageDatePickerDialog).setOnClickListener(v -> pageDatePickerDialog());
         findViewById(R.id.pageTimePickerDialog).setOnClickListener(v -> pageTimePickerDialog());
         findViewById(R.id.testNumberPicker).setOnClickListener(v -> testNumberPicker());
@@ -251,16 +251,21 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
     private void testCalendarView() {
         showFragment(new CalendarViewFragment());
     }
+
     private void pageDatePickerDialog() {
-        showFragment(new DateTimePickerDialogFragment());
+        showFragment(new DatePickerDialogFragment());
     }
 
     private void pageTimePickerDialog() {
         showFragment(new TimePickerDialogFragment());
     }
 
-    private void testDatePickerAndTimePicker() {
-        showFragment(new DateTimePickerFragment());
+    private void pageDatePicker() {
+        showFragment(new DatePickerFragment());
+    }
+
+    private void pageTimePicker() {
+        showFragment(new TimePickerFragment());
     }
 
     private void testNumberPicker() {

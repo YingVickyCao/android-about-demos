@@ -16,7 +16,7 @@ import com.hades.example.android.base.BaseFragment;
 
 import java.util.Calendar;
 
-public class DateTimePickerDialogFragment extends BaseFragment {
+public class DatePickerDialogFragment extends BaseFragment {
     TextView show;
 
     @Nullable
