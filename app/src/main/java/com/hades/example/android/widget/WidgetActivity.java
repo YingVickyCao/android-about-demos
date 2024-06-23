@@ -29,8 +29,10 @@ import com.hades.example.android.widget.list._recyclerview._dag_reorder_list.v2.
 import com.hades.example.android.widget.list._recyclerview.dummy.DummyRecyclerViewFragment;
 import com.hades.example.android.widget.list._recyclerview.dummy.IItemClickAction;
 import com.hades.example.android.widget.pickers.CalendarViewFragment;
+import com.hades.example.android.widget.pickers.DateTimePickerDialogFragment;
 import com.hades.example.android.widget.pickers.DateTimePickerFragment;
 import com.hades.example.android.widget.pickers.NumberPickerFragment;
+import com.hades.example.android.widget.pickers.TimePickerDialogFragment;
 import com.hades.example.android.widget.progressbar.TestProgressBarFragment;
 import com.hades.example.android.widget.progressbar.TestRatingBarFragment;
 import com.hades.example.android.widget.progressbar.TestSeekBarFragment;
@@ -97,6 +99,8 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
         findViewById(R.id.page_AdapterViewFlipper).setOnClickListener(v -> page_AdapterViewFlipper());
         findViewById(R.id.testCalendarView).setOnClickListener(v -> testCalendarView());
         findViewById(R.id.testDatePickerAndTimePicker).setOnClickListener(v -> testDatePickerAndTimePicker());
+        findViewById(R.id.pageDatePickerDialog).setOnClickListener(v -> pageDatePickerDialog());
+        findViewById(R.id.pageTimePickerDialog).setOnClickListener(v -> pageTimePickerDialog());
         findViewById(R.id.testNumberPicker).setOnClickListener(v -> testNumberPicker());
         findViewById(R.id.testSearchView).setOnClickListener(v -> testSearchView());
         findViewById(R.id.pageSpinner).setOnClickListener(v -> pageSpinner());
@@ -114,7 +118,7 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     @Override
     protected void showCurrentTest() {
-        page_AdapterViewFlipper();
+//        page_AdapterViewFlipper();
     }
 
     private void pageViewLocation() {
@@ -246,6 +250,13 @@ public class WidgetActivity extends NoNeedPermissionActivity implements IItemCli
 
     private void testCalendarView() {
         showFragment(new CalendarViewFragment());
+    }
+    private void pageDatePickerDialog() {
+        showFragment(new DateTimePickerDialogFragment());
+    }
+
+    private void pageTimePickerDialog() {
+        showFragment(new TimePickerDialogFragment());
     }
 
     private void testDatePickerAndTimePicker() {

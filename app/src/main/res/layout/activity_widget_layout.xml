@@ -195,6 +195,16 @@
                 android:text="@string/test_NumberPicker" />
 
             <Button
+                android:id="@+id/pageDatePickerDialog"
+                style="@style/btn"
+                android:text="@string/page_DatePickerDialog" />
+
+            <Button
+                android:id="@+id/pageTimePickerDialog"
+                style="@style/btn"
+                android:text="@string/page_TimePickerDialog" />
+
+            <Button
                 android:id="@+id/testSearchView"
                 style="@style/btn"
                 android:text="@string/test_SearchView" />

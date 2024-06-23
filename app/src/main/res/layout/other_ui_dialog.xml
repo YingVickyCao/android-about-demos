@@ -154,16 +154,6 @@
                     android:id="@+id/pageProgressDialog"
                     style="@style/btn"
                     android:text="@string/page_ProgressDialog" />
-
-                <Button
-                    android:id="@+id/pageDatePickerDialog"
-                    style="@style/btn"
-                    android:text="@string/page_DatePickerDialog" />
-
-                <Button
-                    android:id="@+id/pageTimePickerDialog"
-                    style="@style/btn"
-                    android:text="@string/page_TimePickerDialog" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

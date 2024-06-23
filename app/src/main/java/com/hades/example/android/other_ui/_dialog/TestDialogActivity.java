@@ -14,10 +14,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseActivity;
 import com.hades.utility.android.utils.BlockQuickTap;
-import com.hades.example.android.other_ui._dialog.depressed.DateTimePickerDialogFragment;
+import com.hades.example.android.widget.pickers.DateTimePickerDialogFragment;
 import com.hades.example.android.other_ui._dialog.depressed.TestAlertDialogFragment;
 import com.hades.example.android.other_ui._dialog.depressed.TestProgressDialogFragment;
-import com.hades.example.android.other_ui._dialog.depressed.TimePickerDialogFragment;
+import com.hades.example.android.widget.pickers.TimePickerDialogFragment;
 import com.hades.example.android.other_ui._dialog.good.activity.DialogStyleActivity;
 import com.hades.example.android.other_ui._dialog.good.fragment.HalfWidthDialogFragment;
 import com.hades.example.android.other_ui._dialog.good.fragment.MyAlertDialogFragment;
@@ -66,8 +66,6 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
 
         findViewById(R.id.page_AlertDialog).setOnClickListener(v -> pageAlertDialog());
         findViewById(R.id.pageProgressDialog).setOnClickListener(v -> pageProgressDialog());
-        findViewById(R.id.pageDatePickerDialog).setOnClickListener(v -> pageDatePickerDialog());
-        findViewById(R.id.pageTimePickerDialog).setOnClickListener(v -> pageTimePickerDialog());
         findViewById(R.id.pageHalfWidthDialogFragment).setOnClickListener(v -> pageHalfWidthDialogFragment());
     }
 
@@ -186,13 +184,5 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
 
     private void pageProgressDialog() {
         showFragment(new TestProgressDialogFragment());
-    }
-
-    private void pageDatePickerDialog() {
-        showFragment(new DateTimePickerDialogFragment());
-    }
-
-    private void pageTimePickerDialog() {
-        showFragment(new TimePickerDialogFragment());
     }
 }

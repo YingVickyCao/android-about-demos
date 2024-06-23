@@ -29,7 +29,7 @@ public class OtherUIActivity extends NoNeedPermissionActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageToast();
+//        pageToast();
     }
 
     private void pageNotification() {
