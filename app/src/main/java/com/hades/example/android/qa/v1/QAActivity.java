@@ -1,4 +1,4 @@
-package com.hades.example.android.qa;
+package com.hades.example.android.qa.v1;
 
 import android.os.Bundle;
 import android.widget.Toast;
@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.DummyContentFragment;
+import com.hades.example.android.qa.AlertParam;
+import com.hades.example.android.qa.DefaultAlertConfigure;
+import com.hades.example.android.qa.DefaultUIConfigure;
 import com.hades.example.android.widget.view_animator.viewflipper.ViewFlipperFragment;
 import com.hades.utility.jvm.DummyItem;
 

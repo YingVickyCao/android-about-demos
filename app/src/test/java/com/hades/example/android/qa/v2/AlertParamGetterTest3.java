@@ -1,11 +1,12 @@
-package com.hades.example.android.qa;
+package com.hades.example.android.qa.v2;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import android.app.Activity;
 
-import com.hades.example.android.R;
+import com.hades.example.android.qa.AlertParam;
+import com.hades.example.android.qa.DefaultAlertConfigure;
+import com.hades.example.android.qa.DefaultUIConfigure;
 
 import org.junit.Assert;
 import org.junit.Test;

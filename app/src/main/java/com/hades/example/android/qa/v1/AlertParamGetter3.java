@@ -1,22 +1,28 @@
-package com.hades.example.android.qa;
+package com.hades.example.android.qa.v1;
 
 import android.app.Activity;
 
 import com.hades.example.android.R;
+import com.hades.example.android.qa.AlertParam;
+import com.hades.example.android.qa.DefaultUIConfigure;
 
-class AlertParamGetter2 {
+class AlertParamGetter3 {
     private Activity context;
+    private DefaultUIConfigure configure;
 
-    public AlertParamGetter2(Activity context) {
+    public AlertParamGetter3(Activity context, DefaultUIConfigure configure) {
         this.context = context;
+        this.configure = configure;
     }
 
-    public void getAlertParam(AlertParam param, DefaultUIConfigure configure) {
-        getDefaultAlertParam(param);
+    public AlertParam getAlertParam() {
+        AlertParam param = getDefaultAlertParam();
         setCustomAlertParam(param, configure);
+        return param;
     }
 
-    public AlertParam getDefaultAlertParam(AlertParam param) {
+    public AlertParam getDefaultAlertParam() {
+        AlertParam param = new AlertParam();
         param.setTitle(getDefaultTitle());
         return param;
     }

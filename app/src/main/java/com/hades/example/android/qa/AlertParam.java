@@ -1,6 +1,6 @@
 package com.hades.example.android.qa;
 
-class AlertParam {
+public class AlertParam {
     private String title = "";
 
     public String getTitle() {
