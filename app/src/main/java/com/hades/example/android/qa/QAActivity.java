@@ -1,4 +1,4 @@
-package com.hades.example.android.qa.v1;
+package com.hades.example.android.qa;
 
 import android.os.Bundle;
 import android.widget.Toast;
@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.DummyContentFragment;
-import com.hades.example.android.qa.AlertParam;
-import com.hades.example.android.qa.DefaultAlertConfigure;
-import com.hades.example.android.qa.DefaultUIConfigure;
+import com.hades.example.android.qa.mockito.AlertParam;
+import com.hades.example.android.qa.mockito.DefaultAlertConfigure;
+import com.hades.example.android.qa.mockito.DefaultUIConfigure;
 import com.hades.example.android.widget.view_animator.viewflipper.ViewFlipperFragment;
 import com.hades.utility.jvm.DummyItem;
 
@@ -51,14 +51,14 @@ public class QAActivity extends AppCompatActivity {
         configure.setDefaultAlertConfigure(new DefaultAlertConfigure());
         configure.getDefaultAlertConfigure().setTitle("custom title");
 
-        AlertParamGetter getter = new AlertParamGetter(this, configure);
+        com.hades.example.android.qa.mockito.v1.AlertParamGetter getter = new com.hades.example.android.qa.mockito.v1.AlertParamGetter(this, configure);
         AlertParam alertParam = getter.getAlertParam();
         String title = alertParam.getTitle();
         Toast.makeText(this, title, Toast.LENGTH_SHORT).show();
     }
 
     private void test2() {
-        AlertParamGetter getter = new AlertParamGetter(this, null);
+        com.hades.example.android.qa.mockito.v1.AlertParamGetter getter = new com.hades.example.android.qa.mockito.v1.AlertParamGetter(this, null);
         AlertParam alertParam = getter.getAlertParam();
         String title = alertParam.getTitle();
         Toast.makeText(this, title, Toast.LENGTH_SHORT).show();

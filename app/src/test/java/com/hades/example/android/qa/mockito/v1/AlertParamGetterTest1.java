@@ -1,11 +1,11 @@
-package com.hades.example.android.qa.v1;
+package com.hades.example.android.qa.mockito.v1;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.hades.example.android.qa.AlertParam;
-import com.hades.example.android.qa.DefaultAlertConfigure;
-import com.hades.example.android.qa.DefaultUIConfigure;
+import com.hades.example.android.qa.mockito.AlertParam;
+import com.hades.example.android.qa.mockito.DefaultAlertConfigure;
+import com.hades.example.android.qa.mockito.DefaultUIConfigure;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class AlertParamGetterTest1 {
 
     @Test
     public void getAlertParam_1() { // ok
-        AlertParamGetter getter = mock(AlertParamGetter.class);
+        com.hades.example.android.qa.mockito.v1.AlertParamGetter getter = mock(com.hades.example.android.qa.mockito.v1.AlertParamGetter.class);
         when(getter.getConfigure()).thenReturn(null);
         when(getter.getDefaultTitle()).thenReturn(defaultTitle);
 
@@ -31,7 +31,7 @@ public class AlertParamGetterTest1 {
 
     @Test
     public void getAlertParam_2() { // not ok
-        AlertParamGetter getter = mock(AlertParamGetter.class);
+        com.hades.example.android.qa.mockito.v1.AlertParamGetter getter = mock(com.hades.example.android.qa.mockito.v1.AlertParamGetter.class);
 
         AlertParam param = new AlertParam();
 

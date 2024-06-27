@@ -1,9 +1,9 @@
-package com.hades.example.android.qa.v2
+package com.hades.example.android.qa.mockito.v2
 
 import android.app.Activity
 import com.hades.example.android.R
-import com.hades.example.android.qa.AlertParam
-import com.hades.example.android.qa.DefaultUIConfigure
+import com.hades.example.android.qa.mockito.AlertParam
+import com.hades.example.android.qa.mockito.DefaultUIConfigure
 
 internal open class AlertParamGetter3(
     private val context: Activity,

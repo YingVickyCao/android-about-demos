@@ -1,4 +1,4 @@
-package com.hades.example.android.qa;
+package com.hades.example.android.qa.mockito;
 
 public class AlertParam {
     private String title = "";

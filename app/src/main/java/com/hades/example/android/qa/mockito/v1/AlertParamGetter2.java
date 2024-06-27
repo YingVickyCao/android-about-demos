@@ -1,28 +1,24 @@
-package com.hades.example.android.qa.v1;
+package com.hades.example.android.qa.mockito.v1;
 
 import android.app.Activity;
 
 import com.hades.example.android.R;
-import com.hades.example.android.qa.AlertParam;
-import com.hades.example.android.qa.DefaultUIConfigure;
+import com.hades.example.android.qa.mockito.AlertParam;
+import com.hades.example.android.qa.mockito.DefaultUIConfigure;
 
-class AlertParamGetter3 {
+class AlertParamGetter2 {
     private Activity context;
-    private DefaultUIConfigure configure;
 
-    public AlertParamGetter3(Activity context, DefaultUIConfigure configure) {
+    public AlertParamGetter2(Activity context) {
         this.context = context;
-        this.configure = configure;
     }
 
-    public AlertParam getAlertParam() {
-        AlertParam param = getDefaultAlertParam();
+    public void getAlertParam(AlertParam param, DefaultUIConfigure configure) {
+        getDefaultAlertParam(param);
         setCustomAlertParam(param, configure);
-        return param;
     }
 
-    public AlertParam getDefaultAlertParam() {
-        AlertParam param = new AlertParam();
+    public AlertParam getDefaultAlertParam(AlertParam param) {
         param.setTitle(getDefaultTitle());
         return param;
     }

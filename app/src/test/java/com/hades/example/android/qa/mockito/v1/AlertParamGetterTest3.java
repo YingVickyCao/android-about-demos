@@ -1,12 +1,12 @@
-package com.hades.example.android.qa.v1;
+package com.hades.example.android.qa.mockito.v1;
 
 import static org.mockito.Mockito.mock;
 
 import android.app.Activity;
 
-import com.hades.example.android.qa.AlertParam;
-import com.hades.example.android.qa.DefaultAlertConfigure;
-import com.hades.example.android.qa.DefaultUIConfigure;
+import com.hades.example.android.qa.mockito.AlertParam;
+import com.hades.example.android.qa.mockito.DefaultAlertConfigure;
+import com.hades.example.android.qa.mockito.DefaultUIConfigure;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,7 +19,7 @@ public class AlertParamGetterTest3 {
     @Test
     public void getAlertParam_1() { // ok
         DefaultUIConfigure configure = null;
-        AlertParamGetter3 getter = new AlertParamGetter3(mock(Activity.class), configure) {
+        com.hades.example.android.qa.mockito.v1.AlertParamGetter3 getter = new com.hades.example.android.qa.mockito.v1.AlertParamGetter3(mock(Activity.class), configure) {
             public String getDefaultTitle() {
                 return defaultTitle;
             }
@@ -34,7 +34,7 @@ public class AlertParamGetterTest3 {
         configure.setDefaultAlertConfigure(new DefaultAlertConfigure());
         configure.getDefaultAlertConfigure().setTitle(customTitle);
 
-        AlertParamGetter3 getter = new AlertParamGetter3(mock(Activity.class), configure) {
+        com.hades.example.android.qa.mockito.v1.AlertParamGetter3 getter = new com.hades.example.android.qa.mockito.v1.AlertParamGetter3(mock(Activity.class), configure) {
             public String getDefaultTitle() {
                 return defaultTitle;
             }

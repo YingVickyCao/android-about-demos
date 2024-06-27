@@ -6,7 +6,7 @@ import android.view.View;
 import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.data_storage.DataStorageActivity;
 import com.hades.example.android.other_ui.OtherUIActivity;
-import com.hades.example.android.qa.v1.QAActivity;
+import com.hades.example.android.qa.QAActivity;
 import com.hades.example.android.test_libs.TestLibsActivity;
 import com.hades.example.android.po.security.SecurityActivity;
 import com.hades.example.android.resource.ResourceActivity;

@@ -1,12 +1,12 @@
-package com.hades.example.android.qa.v1;
+package com.hades.example.android.qa.mockito.v1;
 
 import android.app.Activity;
 
 import com.hades.example.android.R;
-import com.hades.example.android.qa.AlertParam;
-import com.hades.example.android.qa.DefaultUIConfigure;
+import com.hades.example.android.qa.mockito.AlertParam;
+import com.hades.example.android.qa.mockito.DefaultUIConfigure;
 
-class AlertParamGetter {
+public class AlertParamGetter {
     private Activity context;
     private DefaultUIConfigure configure;
 
