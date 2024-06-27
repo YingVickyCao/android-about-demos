@@ -1,13 +1,13 @@
-package com.hades.example.android;
+package com.hades.example.android.qa;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.hades.example.android.R;
 import com.hades.example.android.base.DummyContentFragment;
-import com.hades.example.android.widget.view_animator.adapterviewflipper.v2.AdapterViewFlipper2Fragment;
-import com.hades.example.android.widget.view_animator.adapterviewflipper.v3.AdapterViewFlipper3Fragment;
 import com.hades.example.android.widget.view_animator.viewflipper.ViewFlipperFragment;
 import com.hades.utility.jvm.DummyItem;
 
@@ -22,7 +22,10 @@ public class QAActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qa);
 //        addFragment();
-        addFragment2();
+//        addFragment2();
+
+        findViewById(R.id.test).setOnClickListener(v -> test());
+        findViewById(R.id.test2).setOnClickListener(v -> test2());
     }
 
     private void addFragment() {
@@ -38,5 +41,23 @@ public class QAActivity extends AppCompatActivity {
 //        getSupportFragmentManager().beginTransaction().add(R.id.root, new AdapterViewFlipper3Fragment(), "test").commit();
         getSupportFragmentManager().beginTransaction().add(R.id.root, new ViewFlipperFragment(), "test").commit();
 
+    }
+
+    private void test() {
+        DefaultUIConfigure configure = new DefaultUIConfigure();
+        configure.setDefaultAlertConfigure(new DefaultAlertConfigure());
+        configure.getDefaultAlertConfigure().setTitle("custom title");
+
+        AlertParamGetter getter = new AlertParamGetter(this, configure);
+        AlertParam alertParam = getter.getAlertParam();
+        String title = alertParam.getTitle();
+        Toast.makeText(this, title, Toast.LENGTH_SHORT).show();
+    }
+
+    private void test2() {
+        AlertParamGetter getter = new AlertParamGetter(this, null);
+        AlertParam alertParam = getter.getAlertParam();
+        String title = alertParam.getTitle();
+        Toast.makeText(this, title, Toast.LENGTH_SHORT).show();
     }
 }
