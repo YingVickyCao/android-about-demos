@@ -3,23 +3,20 @@ package com.hades.example.android.qa;
 import android.app.Activity;
 
 import com.hades.example.android.R;
+import com.hades.example.android.app_component._activity._life_cycle.A;
 
-class AlertParamGetter {
+class AlertParamGetter3 {
     private Activity context;
     private DefaultUIConfigure configure;
 
-    public AlertParamGetter(Activity context, DefaultUIConfigure configure) {
+    public AlertParamGetter3(Activity context, DefaultUIConfigure configure) {
         this.context = context;
         this.configure = configure;
     }
 
-    public DefaultUIConfigure getConfigure() {
-        return configure;
-    }
-
     public AlertParam getAlertParam() {
         AlertParam param = getDefaultAlertParam();
-        setCustomAlertParam(param);
+        setCustomAlertParam(param, configure);
         return param;
     }
 
@@ -29,7 +26,7 @@ class AlertParamGetter {
         return param;
     }
 
-    public void setCustomAlertParam(AlertParam param) {
+    public void setCustomAlertParam(AlertParam param, DefaultUIConfigure configure) {
         if (null == configure) {
             return;
         }
