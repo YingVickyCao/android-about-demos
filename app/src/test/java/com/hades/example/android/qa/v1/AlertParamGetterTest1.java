@@ -31,7 +31,7 @@ public class AlertParamGetterTest1 {
 
     @Test
     public void getAlertParam_2() { // not ok
-        AlertParamGetter2 getter = mock(AlertParamGetter2.class);
+        AlertParamGetter getter = mock(AlertParamGetter.class);
 
         AlertParam param = new AlertParam();
 
@@ -42,12 +42,10 @@ public class AlertParamGetterTest1 {
 
         when(getter.getDefaultTitle()).thenReturn(defaultTitle);
 
-        when(getter.getDefaultAlertParam(param)).thenCallRealMethod();
-        Mockito.doCallRealMethod().when(getter).setCustomAlertParam(param, configure);
+        when(getter.getDefaultAlertParam()).thenCallRealMethod();
+        Mockito.doCallRealMethod().when(getter).getAlertParam();
 
-        Mockito.doCallRealMethod().when(getter).getAlertParam(param, configure);
-
-        getter.getAlertParam(param, configure);
+        getter.getAlertParam();
         Assert.assertEquals(customTitle, param.getTitle());
     }
 }
