@@ -5,6 +5,8 @@ import android.view.View;
 
 import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.data_storage.DataStorageActivity;
+import com.hades.example.android.other_ui.OtherUIActivity;
+import com.hades.example.android.qa.QAActivity;
 import com.hades.example.android.test_libs.TestLibsActivity;
 import com.hades.example.android.po.security.SecurityActivity;
 import com.hades.example.android.resource.ResourceActivity;
@@ -28,6 +30,7 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.pageDateStorage).setOnClickListener(v -> pageDateStorage());
         findViewById(R.id.pageResource).setOnClickListener(v -> pageResource());
         findViewById(R.id.page_Libs).setOnClickListener(v -> page_Libs());
+        findViewById(R.id.pageOtherUI).setOnClickListener(v -> pageOtherUI());
         findViewById(R.id.pageQAAboutView).setOnClickListener(v -> pageQAAboutView());
         showCurrentTest();
 
@@ -35,7 +38,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void showCurrentTest() {
-        pageWidget();
+//        pageWidget();
     }
 
     private void pageSecurity() {
@@ -56,6 +59,10 @@ public class MainActivity extends BaseActivity {
 
     private void page_Libs() {
         showActivity(TestLibsActivity.class);
+    }
+
+    private void pageOtherUI() {
+        showActivity(OtherUIActivity.class);
     }
 
     private void pageQAAboutView() {

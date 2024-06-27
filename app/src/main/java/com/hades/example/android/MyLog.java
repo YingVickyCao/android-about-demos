@@ -26,10 +26,10 @@ public class MyLog {
          * 2021-12-28 19:53:27.037 27424-27424/com.hades.example.android E/AppLog: test,e log
          *     java.lang.Exception: Null
          *         at com.hades.example.android.MyLog.test(MyLog.java:24)
-         *         at com.hades.example.android.QAActivity.temp(QAActivity.java:40)
-         *         at com.hades.example.android.QAActivity.showCurrentTest(QAActivity.java:35)
+         *         at com.hades.example.android.qa.QAActivity.temp(QAActivity.java:40)
+         *         at com.hades.example.android.qa.mockito.QAActivity.showCurrentTest(QAActivity.java:35)
          *         at com.hades.example.android.base.BaseActivity.initViews(BaseActivity.java:62)
-         *         at com.hades.example.android.QAActivity.onCreate(QAActivity.java:19)
+         *         at com.hades.example.android.qa.mockito.QAActivity.onCreate(QAActivity.java:19)
          *         at android.app.Activity.performCreate(Activity.java:8000)
          *         at android.app.Activity.performCreate(Activity.java:7984)
          *         at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1309)

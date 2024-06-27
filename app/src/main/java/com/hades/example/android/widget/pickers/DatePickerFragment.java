@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import androidx.annotation.Nullable;
 
@@ -15,9 +14,9 @@ import com.hades.example.android.base.BaseFragment;
 
 import java.util.Calendar;
 
-public class DateTimePickerFragment extends BaseFragment {
+public class DatePickerFragment extends BaseFragment {
 
-    private TextView mShow;
+    private TextView selectDate;
 
     private int mYear;
     private int mMonth;
@@ -28,12 +27,11 @@ public class DateTimePickerFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.widget_datepicker_timepicker, container, false);
+        View view = inflater.inflate(R.layout.widget_datepicker, container, false);
 
-        mShow = view.findViewById(R.id.tableContentList);
+        selectDate = view.findViewById(R.id.selectDate);
 
         DatePicker mDatePicker = view.findViewById(R.id.datePicker);
-        TimePicker timePicker = view.findViewById(R.id.timePicker);
 
         Calendar c = Calendar.getInstance();
         mYear = c.get(Calendar.YEAR);
@@ -49,17 +47,10 @@ public class DateTimePickerFragment extends BaseFragment {
 
             showDate(mYear, mMonth, mDay, mHour, mMinute);
         });
-
-        timePicker.setEnabled(true);
-        timePicker.setOnTimeChangedListener((view1, hourOfDay, minute) -> {
-            mHour = hourOfDay;
-            mMinute = minute;
-            showDate(mYear, mMonth, mDay, mHour, mMinute);
-        });
         return view;
     }
 
     private void showDate(int year, int month, int day, int hour, int minute) {
-        mShow.setText(year + "年" + (month + 1) + "月" + day + "日  " + hour + "时" + minute + "分");
+        selectDate.setText(year + "年" + (month + 1) + "月" + day + "日  " + hour + "时" + minute + "分");
     }
 }

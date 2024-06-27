@@ -561,4 +561,5 @@
     <string name="CHANNEL_ID_OF_FIRST_SERVICE">FIRST_SERVICE_CHANNEL_ID</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_title">Default title</string>
 </resources>

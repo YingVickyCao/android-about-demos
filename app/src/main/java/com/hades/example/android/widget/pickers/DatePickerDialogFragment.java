@@ -1,4 +1,4 @@
-package com.hades.example.android.other_ui._dialog.depressed;
+package com.hades.example.android.widget.pickers;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -16,7 +16,7 @@ import com.hades.example.android.base.BaseFragment;
 
 import java.util.Calendar;
 
-public class DateTimePickerDialogFragment extends BaseFragment {
+public class DatePickerDialogFragment extends BaseFragment {
     TextView show;
 
     @Nullable

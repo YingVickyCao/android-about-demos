@@ -64,6 +64,7 @@ debug-debugDb = { group = "com.amitshekhar.android", name = "debug-db", version 
 
 # test, START
 test-junit = { group = "junit", name = "junit", version = "4.13.2" }
+test-mockitoCore = { group = "org.mockito", name = "mockito-core", version = "5.12.0" }
 # test, END
 
 # androidTest, START

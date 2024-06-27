@@ -114,6 +114,7 @@ dependencies {
     debugImplementation libs.debug.debugDb
 
     testImplementation libs.test.junit
+    testImplementation libs.test.mockitoCore
 
     androidTestImplementation libs.androidTest.junit
     androidTestImplementation libs.androidTest.core
