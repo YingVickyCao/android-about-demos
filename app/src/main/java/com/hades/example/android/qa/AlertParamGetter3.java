@@ -3,7 +3,6 @@ package com.hades.example.android.qa;
 import android.app.Activity;
 
 import com.hades.example.android.R;
-import com.hades.example.android.app_component._activity._life_cycle.A;
 
 class AlertParamGetter3 {
     private Activity context;
