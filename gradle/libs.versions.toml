@@ -5,6 +5,7 @@
 # https://github.com/gradle/gradle/issues/16665
 
 [versions]
+media3 = "1.3.1"
 
 [libraries]
 androidx-ktx = { group = "androidx.core", name = "core-ktx", version = "1.10.1" }
@@ -31,8 +32,17 @@ androidx-workMultiprocess = { group = "androidx.work", name = "work-multiprocess
 google-material = { group = "com.google.android.material", name = "material", version = "1.10.0" }
 google-playServicesLocation = { group = "com.google.android.gms", name = "play-services-location", version = "21.0.1" }
 google-gson = { group = "com.google.code.gson", name = "gson", version = "2.10.1" }
-google-exoplayer = { group = "com.google.android.exoplayer", name = "exoplayer", version = "2.11.3" }
 google-hiltAndroid = { group = "com.google.dagger", name = "hilt-android", version = "2.44" }
+androidx-media3 = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "media3" }
+androidx-media3-ui = { group = "androidx.media3", name = "media3-ui", version.ref = "media3" }
+androidx-media3-hls = { group = "androidx.media3", name = "media3-exoplayer-hls", version.ref = "media3" }
+androidx-media3-dash = { group = "androidx.media3", name = "media3-exoplayer-dash", version.ref = "media3" }
+androidx-media3-rtsp = { group = "androidx.media3", name = "media3-exoplayer-rtsp", version.ref = "media3" }
+androidx-media3-smoothstreaming = { group = "androidx.media3", name = "media3-exoplayer-smoothstreaming", version.ref = "media3" }
+androidx-media3-cronet = { group = "androidx.media3", name = "media3-datasource-cronet", version.ref = "media3" }
+androidx-media3-ima = { group = "androidx.media3", name = "media3-exoplayer-ima", version.ref = "media3" }
+checker-qual = { module = "org.checkerframework:checker-qual", version = "3.45.0" }
+tv = { group = "com.google.android.tv", name = "tv-ads", version = "1.0.0" }
 google-hiltCompiler = { group = "com.google.dagger", name = "hilt-compiler", version = "2.44" }
 google-hiltAndroidCompiler = { group = "com.google.dagger", name = "hilt-android-compiler", version = "2.44" }
 # google, END
@@ -41,21 +51,22 @@ google-hiltAndroidCompiler = { group = "com.google.dagger", name = "hilt-android
 #thirdparty-rxpermissions = { group = "com.tbruyelle.rxpermissions2", name = "rxpermissions", version = "0.9.5" }  # rxpermissions is "0.9.4@aar"
 #permission = { group = "com.github.YingVickyCao", name = "SimplePermissions", version = "v0.1.2" }
 permission = { group = "com.hades", name = "utility-permission", version = "0.1.3" }
-thirdparty-rxjava2 = { group = "io.reactivex.rxjava2", name = "rxjava", version = "2.2.19" }
-thirdparty-rxandroid2 = { group = "io.reactivex.rxjava2", name = "rxandroid", version = "2.1.1" }
-thirdparty-nineoldandroids = { group = "com.nineoldandroids", name = "library", version = "2.4.0" }
+rxjava2 = { group = "io.reactivex.rxjava2", name = "rxjava", version = "2.2.19" }
+rxandroid2 = { group = "io.reactivex.rxjava2", name = "rxandroid", version = "2.1.1" }
+nineoldandroids = { group = "com.nineoldandroids", name = "library", version = "2.4.0" }
 # https://mvnrepository.com/artifact/com.eclipsesource.j2v8/j2v8
-thirdparty-j2v8 = { group = "com.eclipsesource.j2v8", name = "j2v8", version = "6.2.1" } # j2v8 is "6.2.1@aar"
-thirdparty-picasso = { group = "com.squareup.picasso", name = "picasso", version = "2.5.2" }
-thirdparty-netcipher = { group = "info.guardianproject.netcipher", name = "netcipher", version = "2.1.0" }
-thirdparty-okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version = "4.10.0" }
-thirdparty-loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version = "4.10.0" }
+j2v8 = { group = "com.eclipsesource.j2v8", name = "j2v8", version = "6.2.1" } # j2v8 is "6.2.1@aar"
+picasso = { group = "com.squareup.picasso", name = "picasso", version = "2.5.2" }
+netcipher = { group = "info.guardianproject.netcipher", name = "netcipher", version = "2.1.0" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version = "4.10.0" }
+loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version = "4.10.0" }
 # thirdy party. END
 
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version = "1.9.20" }
 
 utilityAndroid = { group = "com.hades", name = "utility-android", version = "0.0.2" }
 utilityJvm = { group = "com.hades", name = "utility-jvm", version = "0.0.1" }
+
 
 
 # debug,START

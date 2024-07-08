@@ -43,9 +43,17 @@
     <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="false" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
 
     <application
-        android:name=".App"
         android:allowBackup="false"
         android:banner="@drawable/ic_launcher"
         android:icon="@drawable/ic_launcher"
@@ -369,7 +377,7 @@
         <!-- START_RUNTIME_PERMISSION -->
         <!-- SMSReceiver must add android.provider.Telephony.SMS_RECEIVED, or it cannot receiver nothing -->
         <activity android:name=".others.runtime_permission.RuntTimePermissionTestActivity" />
-<!--        <activity android:name=".others.runtime_permission.RxPermissionsTestActivity" /> &lt;!&ndash; <receiver android:name=".runtime_permission.SMSReceiver"> &ndash;&gt;-->
+        <!--        <activity android:name=".others.runtime_permission.RxPermissionsTestActivity" /> &lt;!&ndash; <receiver android:name=".runtime_permission.SMSReceiver"> &ndash;&gt;-->
         <!-- <intent-filter android:priority="1000"> -->
         <!-- <action android:name="android.provider.Telephony.SMS_RECEIVED" /> -->
         <!-- </intent-filter> -->
@@ -571,93 +579,6 @@
             android:resizeableActivity="true"
             tools:targetApi="n" />
         <activity android:name=".feature.multi_window.BActivity" /> <!-- Feature,END -->
-        <!-- ExoPlayer2,START -->
-        <activity
-            android:name=".test_libs.exoplayer2.TestExoplayer2MainActivity"
-            android:configChanges="keyboardHidden"
-            android:exported="true"
-            android:label="@string/label_ExoPlayer2"
-            android:theme="@style/Theme.AppCompat">
-            <intent-filter>
-
-                <!-- <action android:name="android.intent.action.MAIN" /> -->
-                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="*"
-                    android:pathPattern=".*\\.exolist\\.json"
-                    android:scheme="content" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="*"
-                    android:pathPattern=".*\\.exolist\\.json"
-                    android:scheme="asset" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="*"
-                    android:pathPattern=".*\\.exolist\\.json"
-                    android:scheme="file" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".test_libs.exoplayer2.PlayerActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
-            android:exported="true"
-            android:label="@string/label_ExoPlayer2"
-            android:launchMode="singleTop"
-            android:theme="@style/PlayerTheme">
-            <intent-filter>
-
-                <!-- <action android:name="com.google.android.exoplayer.demo.action.VIEW" /> -->
-                <!-- <category android:name="android.intent.category.DEFAULT" /> -->
-
-                <data android:scheme="http" />
-                <data android:scheme="https" />
-                <data android:scheme="content" />
-                <data android:scheme="asset" />
-                <data android:scheme="file" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="com.google.android.exoplayer.demo.action.VIEW_LIST" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <service
-            android:name=".test_libs.exoplayer2.DownloadService"
-            android:exported="false"
-            android:label="@string/label_ExoPlayer2">
-            <intent-filter>
-                <action android:name="com.google.android.exoplayer.downloadService.action.RESTART" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </service>
-        <service
-            android:name="com.google.android.exoplayer2.scheduler.PlatformScheduler$PlatformSchedulerService"
-            android:exported="true"
-            android:label="@string/label_ExoPlayer2"
-            android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- ExoPlayer2,END -->
         <activity android:name=".test_libs.TestLibsActivity" />
         <activity android:name=".test_libs.okhttp.TestOkHttpActivity" />
         <activity android:name="._feature.FaqPenetrateClickActivity" />

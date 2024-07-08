@@ -95,16 +95,15 @@ dependencies {
     implementation libs.google.material
     implementation libs.google.playServicesLocation
     implementation libs.google.gson
-    implementation libs.google.exoplayer
     implementation libs.permission
-    implementation libs.thirdparty.rxjava2
-    implementation libs.thirdparty.rxandroid2
-    implementation libs.thirdparty.nineoldandroids
-    implementation libs.thirdparty.picasso
-    implementation libs.thirdparty.netcipher
-    implementation libs.thirdparty.okhttp
-    implementation libs.thirdparty.loggingInterceptor
-    implementation(libs.thirdparty.j2v8) {
+    implementation libs.rxjava2
+    implementation libs.rxandroid2
+    implementation libs.nineoldandroids
+    implementation libs.picasso
+    implementation libs.netcipher
+    implementation libs.okhttp
+    implementation libs.loggingInterceptor
+    implementation(libs.j2v8) {
         artifact {
             type = 'aar'
         }

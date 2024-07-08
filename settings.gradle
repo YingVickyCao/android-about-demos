@@ -4,6 +4,9 @@ include ':app'      //  application
 include ':data-binding-example' // application
 project(':data-binding-example').projectDir = new File('lib-examples/data-binding-example')
 
+include ':androidx-media-example' // application
+project(':androidx-media-example').projectDir = new File('lib-examples/androidx-media-example')
+
 include ':custom_theme'
 project(':custom_theme').projectDir = new File('examples/custom_theme')
 
@@ -51,3 +54,4 @@ project(':A1').projectDir = new File('examples/A1')
 //include ':B'        // application
 
 include ':widget'
+include ':androidx-media'
