@@ -1,10 +1,10 @@
 rootProject.name = "android-about-demos"
-include ':app'      //  application
+include ':app'
 
-include ':data-binding-example' // application
+include ':data-binding-example'
 project(':data-binding-example').projectDir = new File('lib-examples/data-binding-example')
 
-include ':androidx-media-example' // application
+include ':androidx-media-example'
 project(':androidx-media-example').projectDir = new File('lib-examples/androidx-media-example')
 
 include ':custom_theme'
@@ -34,24 +34,19 @@ project(':carousel-experiments-modified').projectDir = new File('examples/carous
 include ':A'
 project(':A').projectDir = new File('examples/A')
 
-
 include ':B1'
 project(':B1').projectDir = new File('examples/B1')
 
 include ':A1'
 project(':A1').projectDir = new File('examples/A1')
 
+include ':B'
+project(':B').projectDir = new File('examples/B')
 
-//include ':B'
-//project(':B').projectDir = new File('examples/B')
-
-
-// When not use below modules, mark them to improve build speed
-//include ':A'        // application
-//include ':B1'       // application
-//include ':A1'       // application
-//include ':assist'   // application
-//include ':B'        // application
+include ':A'        // application
+include ':B1'       // application
+include ':A1'       // application
+include ':assist'   // application
+include ':B'        // application
 
 include ':widget'
-include ':androidx-media'

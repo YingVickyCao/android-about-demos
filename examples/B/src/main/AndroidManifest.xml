@@ -18,7 +18,19 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".BActivity" />
+        <activity
+            android:name=".bound_service.TestRemoteBoundServiceActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".BActivity"
+            android:exported="true" />
 
         <!-- START_ALLOW_OTHER_APP_ACCESS_YOUR_ACTIVITIES -->
 
@@ -61,10 +73,6 @@
             <!--</intent-filter>-->
         </service>
 
-        <activity
-            android:name=".bound_service.TestRemoteBoundServiceActivity"
-            android:exported="false" />
-
         <!-- Even add intent-filter, it can not be accessed from other app -->
         <service
             android:name="com.hades.example.android.b.bound_service.RemoteBoundedService"
@@ -75,6 +83,15 @@
             <!--<category android:name="android.intent.category.DEFAULT" />-->
             <!--</intent-filter>-->
         </service>
+
+        <activity
+            android:name=".EActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.hades.example.android.b.e" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
