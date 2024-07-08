@@ -1,0 +1,69 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'androidx.media3.demo.main'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.androidx_media_example"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility rootProject.ext.sourceCompatibility
+        targetCompatibility rootProject.ext.targetCompatibility
+    }
+    kotlinOptions {
+        jvmTarget = rootProject.ext.jvmTarget
+    }
+
+
+    buildFeatures {
+        buildConfig = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.5.1'
+    }
+    packaging {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation libs.androidx.ktx
+    implementation libs.androidx.media3
+    implementation libs.androidx.media3.ui
+    implementation libs.androidx.media3.dash
+    implementation libs.androidx.media3.hls
+    implementation libs.androidx.media3.cronet
+    implementation libs.androidx.media3.ima
+    implementation libs.androidx.media3.rtsp
+    implementation libs.androidx.media3.smoothstreaming
+    implementation libs.tv
+    implementation libs.google.material
+    compileOnly libs.checker.qual
+
+    testImplementation libs.test.junit
+
+    androidTestImplementation libs.androidTest.junit
+    androidTestImplementation libs.androidTest.espressoCore
+}
