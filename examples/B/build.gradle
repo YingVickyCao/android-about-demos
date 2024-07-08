@@ -50,6 +50,8 @@ dependencies {
     implementation libs.androidx.appcompat
     implementation libs.androidx.constraintlayout
 
-    androidTestImplementation libs.androidTest.junit
+    testImplementation libs.test.junit
+
+    androidTestImplementation libs.androidTest.runner
     androidTestImplementation libs.androidTest.espressoCore
 }

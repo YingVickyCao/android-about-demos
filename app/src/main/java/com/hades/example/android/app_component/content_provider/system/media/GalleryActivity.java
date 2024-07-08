@@ -61,11 +61,21 @@ public class GalleryActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private String[] getGalleryPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            return new String[]{Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED, Manifest.permission.READ_MEDIA_IMAGES};
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            return new String[]{Manifest.permission.READ_MEDIA_IMAGES};
+        } else {
+            return new String[]{Manifest.permission.READ_EXTERNAL_STORAGE};
+        }
+    }
+
     @SuppressLint("CheckResult")
     private void chooseSystemGallery() {
         PermissionsTool permissionTools = new PermissionsTool(this);
         permissionTools.request(
-                new String[]{(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU ? Manifest.permission.READ_MEDIA_IMAGES : Manifest.permission.READ_EXTERNAL_STORAGE)},
+                getGalleryPermission(),
                 new OnPermissionResultCallback() {
                     @Override
                     public void onPermissionGranted() {
@@ -74,7 +84,11 @@ public class GalleryActivity extends AppCompatActivity {
 
                     @Override
                     public void onPermissionDenied() {
-                        Toast.makeText(GalleryActivity.this, "READ_MEDIA_IMAGES not granted", Toast.LENGTH_SHORT).show();
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE && (permissionTools.isGranted(new String[]{Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED}) || permissionTools.isGranted(new String[]{Manifest.permission.READ_MEDIA_IMAGES}))) {
+                            doChooseGallery();
+                        } else {
+                            Toast.makeText(GalleryActivity.this, "READ_MEDIA_IMAGES not granted", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override

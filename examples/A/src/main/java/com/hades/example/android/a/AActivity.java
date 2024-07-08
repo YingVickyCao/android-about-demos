@@ -19,11 +19,13 @@ public class AActivity extends AppCompatActivity {
         findViewById(R.id.jumpB).setOnClickListener(v -> jumpB());
         findViewById(R.id.jumpC4ImplicitIntent).setOnClickListener(v -> jumpC4ImplicitIntent());
         findViewById(R.id.jumpC4ExplicitIntent).setOnClickListener(v -> jumpC4ExplicitIntent());
+        findViewById(R.id.jumpE).setOnClickListener(v -> jumpE());
+        findViewById(R.id.jumpF).setOnClickListener(v -> jumpF());
     }
 
     private void jumpB() {
-        ComponentName componentName = new ComponentName("com.hades.example.android.b", "com.hades.example.android.b.BActivity");
         Intent intent = new Intent();
+        ComponentName componentName = new ComponentName("com.hades.example.android.b", "com.hades.example.android.b.BActivity");
         intent.setComponent(componentName);
         intent.putExtra("NUM", 100);
         startActivity(intent);
@@ -31,11 +33,6 @@ public class AActivity extends AppCompatActivity {
 
     private void jumpC4ExplicitIntent() {
         Intent intent = new Intent();
-        // setComponent
-        ComponentName componentName = new ComponentName("com.hades.example.android.b", "com.hades.example.android.b.CActivity");
-//        intent.setComponent(componentName);
-
-        // setClassName
         intent.setClassName("com.hades.example.android.b", "com.hades.example.android.b.CActivity");
         intent.putExtra("NUM1", 100);
 //        startActivity(intent);
@@ -59,13 +56,44 @@ public class AActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d(TAG, "onActivityResult: intent=" + data.toString());
         if (1000 == requestCode) {
-            Log.d(TAG, "onActivityResult:num1=" + data.getStringExtra("NUM1"));
-            Toast.makeText(this, data.getIntExtra("NUM1", 0), Toast.LENGTH_SHORT).show();
+            if (data != null) {
+                int num1 = data.getIntExtra("NUM1", 0);
+                Log.e(TAG, "onActivityResult:num1=" + num1);
+                Toast.makeText(this, String.valueOf(num1), Toast.LENGTH_SHORT).show();
+            }
         } else if (2000 == requestCode) {
-            Log.d(TAG, "onActivityResult:num2=" + data.getStringExtra("NUM2"));
-            Toast.makeText(this, data.getIntExtra("NUM2", 0), Toast.LENGTH_SHORT).show();
+            if (data != null) {
+                int num2 = data.getIntExtra("NUM2", 0);
+                Log.d(TAG, "onActivityResult:num2=" + num2);
+                Toast.makeText(this, String.valueOf(num2), Toast.LENGTH_SHORT).show();
+            }
         }
+    }
+
+    private void jumpE() {
+        // https://developer.android.google.cn/about/versions/14/behavior-changes-14?hl=en#safer-intents
+        // launch this activity using an implicit intent, an exception would be thrown
+        // Error:java.lang.SecurityException: Permission Denial: starting Intent { act=com.hades.example.android.b.e cmp=com.hades.example.android.b/.EActivity } from ProcessRecord{cb265d 25303:com.hades.example.android.a/u0a586} (pid=25303, uid=10586) not exported from uid 10585
+//        Intent intent = new Intent("com.hades.example.android.b.e");
+//        startActivity(intent);
+        // To launch the non-exported activity, your app should use an explicit intent instead:
+        Intent intent = new Intent("com.hades.example.android.b.e");
+        intent.setPackage("com.hades.example.android.b");
+//        intent.setPackage(getPackageName());
+        startActivity(intent);
+    }
+
+    private void jumpF() {
+        // https://developer.android.google.cn/about/versions/14/behavior-changes-14?hl=en#safer-intents
+        // launch this activity using an implicit intent, an exception would be thrown
+        // Error:android.content.ActivityNotFoundException: No Activity found to handle Intent { act=com.hades.example.android.a.f }
+//        Intent intent = new Intent("com.hades.example.android.a.f");
+//        startActivity(intent);
+        // To launch the non-exported activity, your app should use an explicit intent instead:
+        Intent intent = new Intent("com.hades.example.android.a.f");
+        intent.setPackage("com.hades.example.android.a"); // ok
+        intent.setPackage(getPackageName());
+        startActivity(intent);
     }
 }

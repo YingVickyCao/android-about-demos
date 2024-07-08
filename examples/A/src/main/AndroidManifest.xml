@@ -34,6 +34,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".FActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.hades.example.android.a.f" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".TestCustomPermissionActivity" />
         <activity android:name="com.hades.example.android.a1.app_component.Intent_and_intent_filter.TestAccessRemoteActivity" />
     </application>

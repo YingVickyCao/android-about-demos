@@ -16,30 +16,47 @@
         android:gravity="center_vertical"
         android:text="android:sharedUserId\nandroid:exported" />
 
-    <Button
-        android:id="@+id/jumpB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:text="Jump B"
-        android:textAllCaps="false" />
 
-    <Button
-        android:id="@+id/jumpC4ImplicitIntent"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Jump C by Implicit Intent"
-        android:textAllCaps="false" />
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/jumpC4ExplicitIntent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:text="Jump C"
-        android:textAllCaps="false" />
+        <Button
+            android:id="@+id/jumpB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="use an explicit intent to launch the exported activity B"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/jumpC4ImplicitIntent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="use an implicit intent to launch the exported activity C"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/jumpC4ExplicitIntent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="use an explicit intent to launch the exported activity C"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/jumpE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cannot use an explicit intent to launch the non-exported activity E at other app"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/jumpF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="use an explicit intent to launch the non-exported activity E at this app"
+            android:textAllCaps="false" />
+    </LinearLayout>
 </RelativeLayout>
