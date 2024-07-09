@@ -17,8 +17,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseActivity;
@@ -50,7 +48,7 @@ public class GroupSendSmsActivity extends BaseActivity {
         content = findViewById(R.id.content);
 
         findViewById(R.id.select).setOnClickListener(v -> selectContacts());
-        findViewById(R.id.sendImplicitBroadcast).setOnClickListener(v -> groupSendSms());
+        findViewById(R.id.sendBroadcast).setOnClickListener(v -> groupSendSms());
 
         requestPermission();
     }

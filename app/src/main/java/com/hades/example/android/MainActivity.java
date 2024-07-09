@@ -3,8 +3,11 @@ package com.hades.example.android;
 import android.os.Bundle;
 import android.view.View;
 
+import com.hades.example.android.app_component.broadcast.normal.TestNormalBroadcastActivity;
+import com.hades.example.android.app_component.broadcast.ordered.TestOrderedBroadcastActivity;
 import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.data_storage.DataStorageActivity;
+import com.hades.example.android.gps.TestGpsActivity;
 import com.hades.example.android.other_ui.OtherUIActivity;
 import com.hades.example.android.qa.QAActivity;
 import com.hades.example.android.test_libs.TestLibsActivity;
@@ -66,6 +69,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void pageQAAboutView() {
-        showActivity(QAActivity.class);
+//        showActivity(QAActivity.class);
+        showActivity(TestGpsActivity.class);
     }
 }

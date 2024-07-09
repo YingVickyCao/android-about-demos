@@ -31,11 +31,10 @@ public class SimpleReceiver extends BroadcastReceiver {
         switch (intent.getAction()) {
             case ACTION_ONE:
                 /*
-                 onReceive: action=com.hades.example.android.app_component.broadcast.normal.SimpleReceiver.ONE,info=Explicit broadcast
-                 onReceive: action=com.hades.example.android.app_component.broadcast.normal.SimpleReceiver.ONE,info=implicit Broadcast
+                 onReceive: action=com.hades.example.android.app_component.broadcast.normal.SimpleReceiver.ONE,info=normal Broadcast
                  */
                 Log.d(TAG, "onReceive: " + "action=" + intent.getAction() + ",info=" + intent.getStringExtra(KEY_ONE));
-                Toast.makeText(context, "接收到的Intent的Action为：" + intent.getAction() + "\n消息内容是：" + intent.getStringExtra(KEY_ONE), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "消息内容是：" + intent.getStringExtra(KEY_ONE), Toast.LENGTH_LONG).show();
 
 //                startLongRunningBackgroundThreads();
 //                doLongRunningWorkInMain();

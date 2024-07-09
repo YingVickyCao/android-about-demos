@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
+
 import com.hades.example.android.R;
 
 
@@ -41,31 +43,29 @@ public class TestOrderedBroadcastActivity extends Activity {
     private void test1() {
         // If no action, can not receive anything
         IntentFilter intentFilter = new IntentFilter(ACTION_TWO);
-//        IntentFilter intentFilter = new IntentFilter();
-        registerReceiver(mReceiver1, intentFilter);
+        ContextCompat.registerReceiver(this, mReceiver1, intentFilter, ContextCompat.RECEIVER_NOT_EXPORTED);
 
         IntentFilter intentFilter2 = new IntentFilter(ACTION_TWO);
-//        IntentFilter intentFilter2 = new IntentFilter();
-        registerReceiver(mReceiver2, intentFilter2);
+        ContextCompat.registerReceiver(this, mReceiver2, intentFilter2, ContextCompat.RECEIVER_NOT_EXPORTED);
 
         IntentFilter intentFilter3 = new IntentFilter(ACTION_TWO);
-//        IntentFilter intentFilter3 = new IntentFilter();
-        registerReceiver(mReceiver3, intentFilter3);
+        ContextCompat.registerReceiver(this, mReceiver3, intentFilter3, ContextCompat.RECEIVER_NOT_EXPORTED);
     }
 
     private void test2() {
         // 1 -> 3 -> 2
         IntentFilter intentFilter = new IntentFilter(ACTION_TWO);
         intentFilter.setPriority(3);
-        registerReceiver(mReceiver1, intentFilter);
+        ContextCompat.registerReceiver(this, mReceiver1, intentFilter, ContextCompat.RECEIVER_NOT_EXPORTED);
 
         IntentFilter intentFilter2 = new IntentFilter(ACTION_TWO);
         intentFilter2.setPriority(1);
-        registerReceiver(mReceiver2, intentFilter2);
+        ContextCompat.registerReceiver(this, mReceiver2, intentFilter2, ContextCompat.RECEIVER_NOT_EXPORTED);
 
         IntentFilter intentFilter3 = new IntentFilter(ACTION_TWO);
         intentFilter3.setPriority(2);
-        registerReceiver(mReceiver3, intentFilter3);
+        ContextCompat.registerReceiver(this, mReceiver3, intentFilter3, ContextCompat.RECEIVER_NOT_EXPORTED);
+
     }
 
     @Override
@@ -78,6 +78,6 @@ public class TestOrderedBroadcastActivity extends Activity {
     }
 
     private void sendOrderedBroadcast() {
-        sendOrderedBroadcast(new Intent(ACTION_TWO), null);
+        sendOrderedBroadcast(new Intent(ACTION_TWO).setPackage(getPackageName()), null);
     }
 }
