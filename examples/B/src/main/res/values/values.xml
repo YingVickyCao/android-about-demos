@@ -1,4 +1,5 @@
 <resources>
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <!--   a darker variant of the primary color, used for the status bar (on Android 5.0+) and contextual app bars -->
@@ -19,4 +20,6 @@
     <string name="getServiceStatus">获取Service状态</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
+
+    <string name="custom_permission">CUSTOM_PERMISSION_TEST</string>
 </resources>
