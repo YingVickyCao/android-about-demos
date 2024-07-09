@@ -566,19 +566,10 @@
         <activity
             android:name=".feature.multi_window.MultiWindowRootActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
-            android:resizeableActivity="true"
-            tools:targetApi="n">
-            <layout
-                android:defaultWidth="600dp"
-                android:defaultHeight="500dp"
-                android:gravity="top|end"
-                android:minWidth="300dp"
-                android:minHeight="450dp" />
-        </activity>
+            android:resizeableActivity="true" />
         <activity
             android:name=".feature.multi_window.AActivity"
-            android:resizeableActivity="true"
-            tools:targetApi="n" />
+            android:resizeableActivity="true" />
         <activity android:name=".feature.multi_window.BActivity" /> <!-- Feature,END -->
         <activity android:name=".test_libs.TestLibsActivity" />
         <activity android:name=".test_libs.okhttp.TestOkHttpActivity" />

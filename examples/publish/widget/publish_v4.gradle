@@ -75,7 +75,9 @@ afterEvaluate {
     }
 }
 
-tasks.withType(PublishToMavenRepository) { it.dependsOn lint, test }.configureEach {
+tasks.withType(PublishToMavenRepository).tap {
+    configureEach { it.dependsOn lint, test }
+}.configureEach {
     def predicate = provider {
         (repository == publishing.repositories.release && publication == publishing.publications.release)
     }

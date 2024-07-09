@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="HardcodedText"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_Preference" />
+
+    <LinearLayout
+        android:id="@+id/setting_btns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!-- 指定启动指定PreferenceFragment的列表项 -->
+        <RelativeLayout
+            android:id="@+id/app_option_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_20">
+
+            <ImageView
+                android:id="@+id/app_option_setting_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_10"
+                android:src="@drawable/ic_svg_dashboard" />
+
+            <TextView
+                android:id="@+id/app_option_setting_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/app_option_setting_icon"
+                android:text="程序选项设置" />
+
+            <TextView
+                android:id="@+id/app_option_setting_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/app_option_setting_title"
+                android:layout_toEndOf="@id/app_option_setting_icon"
+                android:text="设置应用的相关选项" />
+        </RelativeLayout>
+
+        <!-- 指定启动指定PreferenceFragment的列表项 -->
+        <RelativeLayout
+            android:id="@+id/ui_option_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_20">
+
+            <ImageView
+                android:id="@+id/ui_option_setting_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_10"
+                android:src="@drawable/ic_svg_notifications" />
+
+            <TextView
+                android:id="@+id/ui_option_setting_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ui_option_setting_icon"
+                android:text="界面选项设置" />
+
+            <TextView
+                android:id="@+id/ui_option_setting_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ui_option_setting_title"
+                android:layout_toEndOf="@id/ui_option_setting_icon"
+                android:text="设置显示界面的相关选项" />
+        </RelativeLayout>
+
+        <!-- 使用Intent启动指定Activity的列表项 -->
+        <RelativeLayout
+            android:id="@+id/use_intent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_20">
+
+            <ImageView
+                android:id="@+id/use_intent_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_10"
+                android:src="@drawable/ic_svg_home" />
+
+            <TextView
+                android:id="@+id/use_intent_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/use_intent_icon"
+                android:text="使用Intent" />
+
+            <TextView
+                android:id="@+id/use_intent_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/use_intent_title"
+                android:layout_toEndOf="@id/use_intent_icon"
+                android:text="使用Intent启动某个Activity" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/settings_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
+</LinearLayout>

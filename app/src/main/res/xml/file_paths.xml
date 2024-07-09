@@ -24,7 +24,4 @@
     <!--    <external-cache-path-->
     <!--        name="external_cache"-->
     <!--        path="."></external-cache-path>-->
-    <root-path
-        name="root"
-        path="."></root-path>
 </paths>

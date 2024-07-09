@@ -3,6 +3,7 @@ package com.hades.example.android;
 import android.os.Bundle;
 import android.view.View;
 
+import com.hades.example.android.app_component._activity._children.TestPreferenceActivity;
 import com.hades.example.android.app_component.broadcast.normal.TestNormalBroadcastActivity;
 import com.hades.example.android.app_component.broadcast.ordered.TestOrderedBroadcastActivity;
 import com.hades.example.android.base.BaseActivity;
@@ -70,6 +71,6 @@ public class MainActivity extends BaseActivity {
 
     private void pageQAAboutView() {
 //        showActivity(QAActivity.class);
-        showActivity(TestGpsActivity.class);
+        showActivity(TestPreferenceActivity.class);
     }
 }
