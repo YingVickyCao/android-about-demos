@@ -3,11 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools">
     <!--android:sharedUserId="android_about_demos.test.AcrossAPPJump"-->
     <!--android:protectionLevel="normal"-->
-    <!--<permission-->
-    <!--android:name="${applicationId}.CUSTOM_PERMISSION_TEST"-->
-    <!--android:description="@string/app_name"-->
-    <!--android:permissionGroup="${applicationId}.CUSTOM_PERMISSION_GROUP"-->
-    <!--android:protectionLevel="signature" />-->
+    <!--    <permission-->
+    <!--        android:name="${applicationId}.CUSTOM_PERMISSION_TEST"-->
+    <!--        android:description="@string/app_name"-->
+    <!--        android:permissionGroup="${applicationId}.CUSTOM_PERMISSION_GROUP"-->
+    <!--        android:protectionLevel="signature" />-->
+
+    <permission
+        android:name="${applicationId}.CUSTOM_PERMISSION_TEST"
+        android:description="@string/custom_permission"
+        android:label="@string/custom_permission"
+        android:protectionLevel="dangerous" />
 
     <application
         android:allowBackup="false"
