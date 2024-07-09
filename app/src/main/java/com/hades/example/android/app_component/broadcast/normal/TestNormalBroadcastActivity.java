@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.core.content.ContextCompat;
 
 import com.hades.example.android.R;
 
@@ -24,15 +24,14 @@ public class TestNormalBroadcastActivity extends Activity {
 
         mSimpleReceiver = new SimpleReceiver();
 
-        findViewById(R.id.sendImplicitBroadcast).setOnClickListener(v -> sendImplicitBroadcast());
-        findViewById(R.id.sendExplicitBroadcast).setOnClickListener(v -> sendExplicitBroadcast());
+        findViewById(R.id.sendBroadcast).setOnClickListener(v -> sendImplicitBroadcast());
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        receivingImplicitBroadcast();
+        receivingBroadcast();
     }
 
     @Override
@@ -42,32 +41,18 @@ public class TestNormalBroadcastActivity extends Activity {
     }
 
     // QA：Receiving an Implicit broadcast
-    private void receivingImplicitBroadcast() {
+    private void receivingBroadcast() {
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_ONE);
-//        registerReceiver(mSimpleReceiver, filter);
-        LocalBroadcastManager.getInstance(this).registerReceiver(mSimpleReceiver, filter);
+        ContextCompat.registerReceiver(this, mSimpleReceiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED);
     }
 
-    // QA：Sending an Implicit Broadcast.(通常)
     private void sendImplicitBroadcast() {
         Intent intent = new Intent();
         intent.setAction(ACTION_ONE);
-        intent.putExtra(KEY_ONE, "implicit Broadcast");
-//        sendBroadcast(intent);
-        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
-    }
-
-    /**
-     * QA：Sending an Explicit Broadcast
-     */
-    private void sendExplicitBroadcast() {
-        Intent intent = new Intent(this, SimpleReceiver.class);
-        intent.setAction(ACTION_ONE);
-        intent.putExtra(KEY_ONE, "Explicit broadcast");
+        // // This makes the intent explicit.
+        intent.setPackage(getPackageName());
+        intent.putExtra(KEY_ONE, "normal Broadcast " + System.currentTimeMillis());
         sendBroadcast(intent);
-//        sendOrderedBroadcast();
-        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
-//        LocalBroadcastManager.getInstance(this).sendBroadcastSync (intent);  == sendOrderedBroadcast()
     }
 }

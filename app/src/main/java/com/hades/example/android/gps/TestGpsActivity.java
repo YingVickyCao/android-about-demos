@@ -10,6 +10,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -42,85 +44,97 @@ public class TestGpsActivity extends AppCompatActivity {
     private static final String TAG = TestGpsActivity.class.getSimpleName();
 
     LocationManager mLocationManager;
-
     private LocationListener mLocationListener;
 
-    private ProximityAlertReceiver mProximityAlertReceiver = new ProximityAlertReceiver();
+    private ProximityAlertReceiver mProximityAlertReceiver;
     public final static String PROXIMITY_ALERT_ACTION = "PROXIMITY_ALERT_ACTION";
 
     private FusedLocationProviderClient mFusedLocationClient;
     private LocationCallback mLocationCallback;
     private LocationRequest mLocationRequest;
 
+    private final String[] permissions = new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+    private PermissionsTool permissionTools;
+
     @SuppressLint("MissingPermission")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gps);
-
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE); // 获取系统的LocationManager对象
-
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this); // Google play store Location
-
-        listAllLocationProviders();
-        listAllFreeLocationProviders();
-
-        proximityAlert();
-
         lastLocation();
         lastLocation_4_GooglePlayServices();
-
-        initLocationUpdates();
-        initLocationUpdates_4_GooglePlayServices();
-
         requestPermission();
     }
 
     protected void requestPermission() {
-        PermissionsTool permissionTools = new PermissionsTool(this);
-        permissionTools.request(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}
-                , new OnPermissionResultCallback() {
-                    @Override
-                    public void onPermissionGranted() {
-                        Toast.makeText(TestGpsActivity.this, "ACCESS_FINE_LOCATION/ACCESS_COARSE_LOCATION granted", Toast.LENGTH_SHORT).show();
-                    }
+        permissionTools = new PermissionsTool(this);
+        permissionTools.request(permissions, new OnPermissionResultCallback() {
+            @Override
+            public void onPermissionGranted() {
+                Toast.makeText(TestGpsActivity.this, "ACCESS_FINE_LOCATION/ACCESS_COARSE_LOCATION granted", Toast.LENGTH_SHORT).show();
+                listAllFreeLocationProviders();
+                listAllLocationProviders();
 
-                    @Override
-                    public void onPermissionDenied() {
+                doResume();
+                proximityAlert();
+                initLocationUpdates();
+                initLocationUpdates_4_GooglePlayServices();
+            }
 
-                    }
+            @Override
+            public void onPermissionDenied() {
 
-                    @Override
-                    public void onPermissionError(String message) {
+            }
 
-                    }
+            @Override
+            public void onPermissionError(String message) {
 
-                    @Override
-                    public void showInContextUI(OnContextUIListener callback) {
-                        Snackbar.make(findViewById(R.id.root), "Request Location permission", Snackbar.LENGTH_INDEFINITE)
-                                .setAction(getString(R.string.ok), view -> callback.ok())
-                                .setAction(getString(R.string.cancel), view -> callback.cancel())
-                                .show();
-                    }
-                });
+            }
+
+            @Override
+            public void showInContextUI(OnContextUIListener callback) {
+                Snackbar.make(findViewById(R.id.root), "Request Location permission", Snackbar.LENGTH_INDEFINITE)
+                        .setAction(getString(R.string.ok), view -> callback.ok())
+                        .setAction(getString(R.string.cancel), view -> callback.cancel())
+                        .show();
+            }
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        registerReceiver(mProximityAlertReceiver, new IntentFilter(PROXIMITY_ALERT_ACTION));
+        if (permissionTools.isGranted(permissions)) {
+            doResume();
+        }
+    }
 
-        startLocationUpdates();
-        startLocationUpdates_4_GooglePlayServices();
+    private void doResume() {
+        if (null == mProximityAlertReceiver) {
+            mProximityAlertReceiver = new ProximityAlertReceiver();
+            ContextCompat.registerReceiver(this, mProximityAlertReceiver, new IntentFilter(PROXIMITY_ALERT_ACTION), Context.RECEIVER_NOT_EXPORTED);
+            startLocationUpdates();
+            startLocationUpdates_4_GooglePlayServices();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(mProximityAlertReceiver);
+        if (permissionTools.isGranted(permissions)) {
+            doPause();
+        }
+    }
 
-        stopLocationUpdates();
-        stopLocationUpdates_4_GooglePlayServices();
+    private void doPause() {
+        if (null != mProximityAlertReceiver) {
+            unregisterReceiver(mProximityAlertReceiver);
+            mProximityAlertReceiver = null;
+            stopLocationUpdates();
+            stopLocationUpdates_4_GooglePlayServices();
+        }
     }
 
     private void listAllLocationProviders() {
@@ -137,9 +151,9 @@ public class TestGpsActivity extends AppCompatActivity {
         cri.setAltitudeRequired(true);
         cri.setBearingRequired(true);
 
-//        List<String> providerNames = mLocationManager.getProviders(cri, false); // Samsung SM-G9730: gps
+        List<String> providerNames = mLocationManager.getProviders(cri, false); // Samsung SM-G9730: gps
 
-        List<String> providerNames = mLocationManager.getProviders(cri, true); // Samsung SM-G9730: null
+//        List<String> providerNames = mLocationManager.getProviders(cri, true); // Samsung SM-G9730: null
 
         TextView textView = findViewById(R.id.allFreeProviders);
         textView.setText(providerNames.toString());
@@ -155,8 +169,15 @@ public class TestGpsActivity extends AppCompatActivity {
         double latitude = 50;
         float radius = 5000; // 定义半径（5公里）
 
-        Intent intent = new Intent(PROXIMITY_ALERT_ACTION); // 定义Intent
-        PendingIntent pi = PendingIntent.getBroadcast(this, -1, intent, 0);  // 将Intent包装成PendingIntent
+        Intent intent = new Intent(PROXIMITY_ALERT_ACTION);
+        // 定义Intent
+        PendingIntent pi;
+        // 将Intent包装成PendingIntent
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            pi = PendingIntent.getBroadcast(this, -1, intent, PendingIntent.FLAG_MUTABLE);
+        } else {
+            pi = PendingIntent.getBroadcast(this, -1, intent, 0);
+        }
         mLocationManager.addProximityAlert(latitude, longitude, radius, -1, pi); // 添加临近警告
     }
 
@@ -207,10 +228,6 @@ public class TestGpsActivity extends AppCompatActivity {
 
                 @Override
                 public void onProviderEnabled(String provider) {
-                }
-
-                @Override
-                public void onStatusChanged(String provider, int status, Bundle extras) {
                 }
             };
         }

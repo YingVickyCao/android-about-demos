@@ -3,6 +3,7 @@
 
     <string name="page_app_component">App Components</string>
     <string name="page_bond_service">Bound service</string>
+    <string name="page_normal_broadcast">Normal broadcast</string>
     <string name="page_content_provider">Content Provider</string>
     <string name="page_content_provider_gallery">Content Provider - Gallery</string>
     <string name="page_content_provider_system_Contact">Content Provider - System Contact</string>
@@ -300,8 +301,7 @@
     <string name="content">短信内容</string>
     <string name="select">选择收件人</string>
     <string name="send">Send</string>
-    <string name="sendImplicitBroadcast">Sending an implicit Broadcast</string>
-    <string name="sendExplicitBroadcast">Sending an Explicit Broadcast</string>
+    <string name="sendBroadcast">Sending a Broadcast</string>
     <string name="up_volumn">增大音量</string>
     <string name="down_volume">降低音量</string>
     <string name="normal">静音</string>

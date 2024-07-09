@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/sendImplicitBroadcast"
-        style="@style/btn"
-        android:text="@string/sendImplicitBroadcast" />
+    <TextView
+        style="@style/topic"
+        android:text="@string/page_normal_broadcast" />
 
     <Button
-        android:id="@+id/sendExplicitBroadcast"
+        android:id="@+id/sendBroadcast"
         style="@style/btn"
-        android:text="@string/sendExplicitBroadcast" />
-</LinearLayout>
+        android:layout_centerInParent="true"
+        android:text="@string/sendBroadcast" />
+</RelativeLayout>
