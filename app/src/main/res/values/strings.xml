@@ -26,6 +26,7 @@
     <string name="page_half_width_DialogFragment">Half width DialogFragment</string>
     <string name="page_DialogFragment">DialogFragment</string>
     <string name="page_Base_DialogFragment">Base DialogFragment</string>
+    <string name="page_Preference">Preference</string>
 
     <string name="page_sms_group_send_sms">短信群发</string>
 

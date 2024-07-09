@@ -3,6 +3,7 @@
 # How Gradle Version Catalog to support aar library?
 # https://stackoverflow.com/questions/69046247/gradle-version-catalog-specify-library-build-type
 # https://github.com/gradle/gradle/issues/16665
+# https://github.com/gradle/gradle/issues/20074
 
 [versions]
 media3 = "1.3.1"
@@ -24,15 +25,15 @@ androidx-localbroadcastmanager = { group = "androidx.localbroadcastmanager", nam
 androidx-workRuntime = { group = "androidx.work", name = "work-runtime", version = "2.8.1" }
 androidx-workRuntimeKtx = { group = "androidx.work", name = "work-runtime-ktx", version = "2.8.1" }
 androidx-workRxJava = { group = "androidx.work", name = "work-rxjava2", version = "2.8.1" }
-androidx-workTesting = { group = "androidx.work", name = "work-testing", version = "2.8.1" }
-androidx-workGcm = { group = "androidx.work", name = "work-gcm", version = "2.8.1" }
-androidx-workMultiprocess = { group = "androidx.work", name = "work-multiprocess", version = "2.8.1" }
+#androidx-workTesting = { group = "androidx.work", name = "work-testing", version = "2.8.1" }
+#androidx-workGcm = { group = "androidx.work", name = "work-gcm", version = "2.8.1" }
+#androidx-workMultiprocess = { group = "androidx.work", name = "work-multiprocess", version = "2.8.1" }
 # WorkManager,END
 # google, START
 google-material = { group = "com.google.android.material", name = "material", version = "1.10.0" }
 google-playServicesLocation = { group = "com.google.android.gms", name = "play-services-location", version = "21.0.1" }
 google-gson = { group = "com.google.code.gson", name = "gson", version = "2.10.1" }
-google-hiltAndroid = { group = "com.google.dagger", name = "hilt-android", version = "2.44" }
+#google-hiltAndroid = { group = "com.google.dagger", name = "hilt-android", version = "2.44" }
 androidx-media3 = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "media3" }
 androidx-media3-ui = { group = "androidx.media3", name = "media3-ui", version.ref = "media3" }
 androidx-media3-hls = { group = "androidx.media3", name = "media3-exoplayer-hls", version.ref = "media3" }
@@ -43,8 +44,8 @@ androidx-media3-cronet = { group = "androidx.media3", name = "media3-datasource-
 androidx-media3-ima = { group = "androidx.media3", name = "media3-exoplayer-ima", version.ref = "media3" }
 checker-qual = { module = "org.checkerframework:checker-qual", version = "3.45.0" }
 tv = { group = "com.google.android.tv", name = "tv-ads", version = "1.0.0" }
-google-hiltCompiler = { group = "com.google.dagger", name = "hilt-compiler", version = "2.44" }
-google-hiltAndroidCompiler = { group = "com.google.dagger", name = "hilt-android-compiler", version = "2.44" }
+#google-hiltCompiler = { group = "com.google.dagger", name = "hilt-compiler", version = "2.44" }
+#google-hiltAndroidCompiler = { group = "com.google.dagger", name = "hilt-android-compiler", version = "2.44" }
 # google, END
 
 # thirdy party. START
@@ -88,6 +89,7 @@ androidTest_runner = { group = "androidx.test", name = "runner", version = "1.5.
 # plugin, START
 plugin-androidGradle = { module = "com.android.tools.build:gradle", version = "8.5.0" }
 plugin-kotlinGradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version = "1.9.0" }
+androidx-preference = { group = "androidx.preference", name = "preference", version = "1.2.1" }
 # plugin, END
 
 [plugins]
