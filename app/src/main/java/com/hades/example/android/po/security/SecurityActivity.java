@@ -23,15 +23,17 @@ public class SecurityActivity extends AppCompatActivity {
         if (null == visibilityHelper) {
             visibilityHelper = new ViewsVisibilityHelper(findViewById(R.id.topic), findViewById(R.id.scrollView), findViewById(R.id.fragmentRoot));
         }
+        //  set enabled = false, handleOnBackPressed not invoked and directly back to previous activity.
+        //  set enabled = true, handleOnBackPressed invoked
         getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
                 if (visibilityHelper.isShowFragmentRoot()) {
-                    Log.e(TAG, "onCreate : handleOnBackPressed - hide fragment ");
+                    Log.d(TAG, "onCreate : handleOnBackPressed - hide fragment ");
                     visibilityHelper.showBtns();
                     FragmentUtils.remove(SecurityActivity.this, R.id.fragmentRoot);
                 } else {
-                    Log.e(TAG, "onCreate : handleOnBackPressed - finsh ");
+                    Log.d(TAG, "onCreate : handleOnBackPressed - finsh ");
                     finish();
                 }
             }

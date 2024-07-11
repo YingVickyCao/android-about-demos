@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
@@ -20,7 +22,9 @@ import java.util.List;
  * <a href="https://blog.csdn.net/oudetu/article/details/78443826">https://blog.csdn.net/oudetu/article/details/78443826</a>
  */
 public class ShowAppChooserFragment extends BaseFragment {
-    @Nullable
+    private static final String TAG = "ShowAppChooserFragment";
+    OnBackPressedCallback onBackPressedCallback;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.app_chooser_layout, container, false);
