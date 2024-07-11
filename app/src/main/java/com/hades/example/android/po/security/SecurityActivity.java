@@ -1,7 +1,9 @@
 package com.hades.example.android.po.security;
 
 import android.os.Bundle;
+import android.util.Log;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +12,7 @@ import com.hades.example.android.base.ViewsVisibilityHelper;
 import com.hades.example.android.tools.FragmentUtils;
 
 public class SecurityActivity extends AppCompatActivity {
+    private static final String TAG = "SecurityActivity";
     ViewsVisibilityHelper visibilityHelper;
 
     @Override
@@ -17,23 +20,26 @@ public class SecurityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security);
         findViewById(R.id.pageAppChooser).setOnClickListener(v -> pageAppChooser());
-    }
-
-    private void pageAppChooser() {
         if (null == visibilityHelper) {
             visibilityHelper = new ViewsVisibilityHelper(findViewById(R.id.topic), findViewById(R.id.scrollView), findViewById(R.id.fragmentRoot));
         }
-        visibilityHelper.hideBtns();
-        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new ShowAppChooserFragment(), ShowAppChooserFragment.class.getSimpleName());
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (visibilityHelper.isShowFragmentRoot()) {
+                    Log.e(TAG, "onCreate : handleOnBackPressed - hide fragment ");
+                    visibilityHelper.showBtns();
+                    FragmentUtils.remove(SecurityActivity.this, R.id.fragmentRoot);
+                } else {
+                    Log.e(TAG, "onCreate : handleOnBackPressed - finsh ");
+                    finish();
+                }
+            }
+        });
     }
 
-    @Override
-    public void onBackPressed() {
-        if (visibilityHelper.isShowFragmentRoot()) {
-            visibilityHelper.showBtns();
-            FragmentUtils.remove(this, R.id.fragmentRoot);
-        } else {
-            super.onBackPressed();
-        }
+    private void pageAppChooser() {
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new ShowAppChooserFragment(), ShowAppChooserFragment.class.getSimpleName());
     }
 }

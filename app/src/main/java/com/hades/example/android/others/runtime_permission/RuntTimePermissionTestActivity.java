@@ -314,11 +314,7 @@ public class RuntTimePermissionTestActivity extends AppCompatActivity implements
     }
 
     private void requestGroupPermission4SMS() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            ActivityCompat.requestPermissions(getContext(), new String[]{Manifest.permission_group.SMS}, REQUEST_CODE_4_REQUEST_PERMISSIONS_GROUP_4_SMS);
-        } else {
-            Toast.makeText(this, R.string.min_api_4_group_permission, Toast.LENGTH_SHORT).show();
-        }
+        ActivityCompat.requestPermissions(getContext(), new String[]{Manifest.permission_group.SMS}, REQUEST_CODE_4_REQUEST_PERMISSIONS_GROUP_4_SMS);
     }
 
     /**
