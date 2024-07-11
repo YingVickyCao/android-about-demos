@@ -27,6 +27,23 @@ public class TestActionBarActivity extends BaseActivity {
         enableAppIconClick();
     }
 
+    private void showActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (null == actionBar) {
+            return;
+        }
+        actionBar.show();
+    }
+
+    private void hideActionBar() {
+        showToast("Hide");
+        ActionBar actionBar = getSupportActionBar();
+        if (null == actionBar) {
+            return;
+        }
+        actionBar.hide();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -84,7 +101,7 @@ public class TestActionBarActivity extends BaseActivity {
         textView.setTextColor(getResources().getColor(android.R.color.holo_green_light));
     }
 
-    private void home(){
+    private void home() {
         showToast("App Icon click");
     }
 

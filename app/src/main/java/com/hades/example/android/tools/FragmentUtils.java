@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
+import com.hades.example.android.R;
 import com.hades.example.android._feature.menu_manager.menu_page.MenuFragment;
 import com.hades.example.android.app_component._intent_and_intent_filter._flag.D;
 
@@ -30,6 +31,14 @@ public class FragmentUtils {
     public static void removedFromParent(Fragment fragment) {
         fragment.getParentFragmentManager().beginTransaction().remove(fragment).commit();
     }
+
+    public static void remove(FragmentActivity activity, @IdRes int containerViewId) {
+        Fragment fragment = activity.getSupportFragmentManager().findFragmentById(R.id.fragmentRoot);
+        if (null != fragment) {
+            activity.getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+        }
+    }
+
 
     public static void popBackStack(FragmentActivity activity) {
         activity.getSupportFragmentManager().popBackStack();

@@ -10,7 +10,6 @@
     <Button
         android:id="@+id/click"
         style="@style/btn"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:text="@string/click" />
 </RelativeLayout>

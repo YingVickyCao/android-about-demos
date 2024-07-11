@@ -54,6 +54,13 @@
         android:name="android.hardware.microphone"
         android:required="false" />
 
+    <queries>
+        <!-- For ShowAppChooserFragment -->
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+        </intent>
+    </queries>
+
     <application
         android:allowBackup="false"
         android:banner="@drawable/ic_launcher"

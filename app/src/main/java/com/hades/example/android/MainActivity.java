@@ -22,7 +22,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initViews();
 
         findViewById(R.id.pageSecurity).setOnClickListener(v -> pageSecurity());
         findViewById(R.id.pageWidget).setOnClickListener(v -> pageWidget());

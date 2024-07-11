@@ -26,23 +26,6 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
-    protected void showActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        if (null == actionBar) {
-            return;
-        }
-        actionBar.show();
-    }
-
-    protected void hideActionBar() {
-        showToast("Hide");
-        ActionBar actionBar = getSupportActionBar();
-        if (null == actionBar) {
-            return;
-        }
-        actionBar.hide();
-    }
-
     protected void initViews() {
         topic = findViewById(R.id.topic);
         mScrollView = findViewById(R.id.scrollView);
@@ -124,21 +107,12 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (isIgnoreBack()) {
-            super.onBackPressed();
-            return;
-        }
-
         if (isShowDetail()) {
             showBtns();
             removeDetailFragment();
         } else {
             super.onBackPressed();
         }
-    }
-
-    protected boolean isIgnoreBack() {
-        return false;
     }
 
     protected void showToast(String msg) {

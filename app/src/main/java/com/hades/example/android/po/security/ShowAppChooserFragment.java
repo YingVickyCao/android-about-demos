@@ -15,11 +15,15 @@ import com.hades.example.android.base.BaseFragment;
 
 import java.util.List;
 
+/**
+ * 模拟分享功能：点击按钮，弹出可选列表
+ * <a href="https://blog.csdn.net/oudetu/article/details/78443826">https://blog.csdn.net/oudetu/article/details/78443826</a>
+ */
 public class ShowAppChooserFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.security_app_chooser, container, false);
+        View view = inflater.inflate(R.layout.app_chooser_layout, container, false);
         view.findViewById(R.id.click).setOnClickListener(v -> click());
         return view;
     }
@@ -29,8 +33,13 @@ public class ShowAppChooserFragment extends BaseFragment {
     }
 
     private void send() {
-        Intent intent = new Intent(Intent.ACTION_SEND                                                                                             );
+        if (null == getActivity()) {
+            return;
+        }
+        Intent intent = new Intent(Intent.ACTION_SEND);
         intent.addFlags(Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, "Fav music");
         List<ResolveInfo> activities = getActivity().getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_ALL);
         if (activities.size() > 1) {
             String title = "Share";
