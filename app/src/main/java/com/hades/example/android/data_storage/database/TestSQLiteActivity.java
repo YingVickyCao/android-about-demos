@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.NoNeedPermissionActivity;
+import com.hades.example.android.base.BaseActivity;
 import com.hades.utility.jvm.DummyItems;
 import com.hades.utility.jvm.DummyItem;
 import com.hades.utility.jvm.DateUtil;
@@ -24,7 +24,7 @@ import com.hades.example.android.base.DummyContentFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestSQLiteActivity extends NoNeedPermissionActivity {
+public class TestSQLiteActivity extends BaseActivity {
     private static final String TAG = TestSQLiteActivity.class.getSimpleName();
 
     private MySQLiteOpenHelper dbHelper;

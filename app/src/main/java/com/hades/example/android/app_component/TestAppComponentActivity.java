@@ -5,12 +5,12 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
+import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.other_ui._dialog.TestDialogActivity;
 import com.hades.example.android.app_component.service.boundservice.TestLocalBoundServiceActivity;
 import com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity2;
-import com.hades.example.android.base.NoNeedPermissionActivity;
 
-public class TestAppComponentActivity extends NoNeedPermissionActivity {
+public class TestAppComponentActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

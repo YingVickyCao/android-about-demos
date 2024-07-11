@@ -68,11 +68,6 @@ public class TestNetworkActivity extends BaseActivity {
         pageHttpURLConnection();
     }
 
-    @Override
-    protected boolean isNeedCheckPermission() {
-        return true;
-    }
-
     private void pageSimpleSocketClient() {
         showActivity(SimpleClientActivity.class);
     }

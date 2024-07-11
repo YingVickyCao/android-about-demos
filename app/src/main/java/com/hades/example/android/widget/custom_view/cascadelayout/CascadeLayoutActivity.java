@@ -4,14 +4,14 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import com.hades.example.android.base.NoNeedPermissionActivity;
+import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.R;
 
 /**
  * Created by hades on 17/03/2018.
  * 扑克牌游戏中的玩家手牌
  */
-public class CascadeLayoutActivity extends NoNeedPermissionActivity {
+public class CascadeLayoutActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

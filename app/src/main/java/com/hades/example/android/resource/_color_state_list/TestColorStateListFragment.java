@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
@@ -68,11 +69,8 @@ public class TestColorStateListFragment extends BaseFragment {
 //        tv2.setTextColor(getResources().getColor(R.color.textview_color_enable_v2)); // not work
 
 //        tv2.setTextColor(AppCompatResources.getColorStateList(getActivity(), R.color.textview_color_enable_v2)); // work
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            tv2.setTextColor(getResources().getColorStateList(R.color.textview_color_enable_v2, getActivity().getTheme())); // work
-        } else {
-            tv2.setTextColor(getResources().getColorStateList(R.color.textview_color_enable_v2)); // not work
+        if (null != getActivity()) {
+            tv2.setTextColor(getResources().getColorStateList(R.color.textview_color_enable_v2, getActivity().getTheme())); // work=
         }
         return view;
     }

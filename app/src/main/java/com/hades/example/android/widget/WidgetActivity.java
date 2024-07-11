@@ -6,7 +6,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.NoNeedPermissionActivity;
+import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.widget.button.TestButtonActivity;
 import com.hades.example.android.widget.checkbox.CheckBoxFragment;
 import com.hades.example.android.widget.custom_view.CustomViewActivity;
@@ -54,7 +54,7 @@ import com.hades.example.android.widget.view_animator.ViewSwitcherFragment;
 import com.hades.example.android._feature._web_based_contents.webview.TestWebViewFragment;
 import com.hades.utility.jvm.DummyItem;
 
-public class WidgetActivity extends NoNeedPermissionActivity implements IItemClickAction {
+public class WidgetActivity extends BaseActivity implements IItemClickAction {
     private static final String TAG = WidgetActivity.class.getSimpleName();
 
     @Override

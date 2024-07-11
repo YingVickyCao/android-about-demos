@@ -8,10 +8,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.NoNeedPermissionActivity;
+import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.base.DummyFragment;
 
-public class TestActionBarNavigationActivity extends NoNeedPermissionActivity implements ActionBar.TabListener {
+public class TestActionBarNavigationActivity extends BaseActivity implements ActionBar.TabListener {
 
     private static final String SELECTED_ITEM = "selected_item";
 

@@ -24,25 +24,13 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         initViews();
 
-        findViewById(R.id.pageSecurity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pageResource();
-            }
-        });
+        findViewById(R.id.pageSecurity).setOnClickListener(v -> pageSecurity());
         findViewById(R.id.pageWidget).setOnClickListener(v -> pageWidget());
         findViewById(R.id.pageDateStorage).setOnClickListener(v -> pageDateStorage());
         findViewById(R.id.pageResource).setOnClickListener(v -> pageResource());
         findViewById(R.id.page_Libs).setOnClickListener(v -> page_Libs());
         findViewById(R.id.pageOtherUI).setOnClickListener(v -> pageOtherUI());
         findViewById(R.id.pageQAAboutView).setOnClickListener(v -> pageQAAboutView());
-        showCurrentTest();
-
-    }
-
-    @Override
-    protected void showCurrentTest() {
-//        pageWidget();
     }
 
     private void pageSecurity() {
@@ -70,7 +58,6 @@ public class MainActivity extends BaseActivity {
     }
 
     private void pageQAAboutView() {
-//        showActivity(QAActivity.class);
-        showActivity(TestPreferenceActivity.class);
+        showActivity(QAActivity.class);
     }
 }

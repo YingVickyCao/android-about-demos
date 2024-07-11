@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
@@ -24,8 +25,12 @@ public class TestLayerDrawableFragment extends BaseFragment {
 
     private void btn() {
 //        View red = view.findViewById(R.id.red); // not work
-        LayerDrawable layerDrawable = (LayerDrawable) getActivity().getResources().getDrawable(R.drawable.drawable_layer_list_4_normal_item);
-        Drawable red = layerDrawable.findDrawableByLayerId(R.id.red);
+        if (null != getActivity()) {
+            LayerDrawable layerDrawable = (LayerDrawable) ContextCompat.getDrawable(getActivity(), R.drawable.drawable_layer_list_4_normal_item);
+            if (null != layerDrawable) {
+                Drawable red = layerDrawable.findDrawableByLayerId(R.id.red);
+            }
+        }
 //        red.setVisible(false,true);// not work
     }
 }

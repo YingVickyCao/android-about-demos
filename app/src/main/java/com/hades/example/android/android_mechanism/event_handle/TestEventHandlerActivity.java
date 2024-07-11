@@ -25,11 +25,6 @@ public class TestEventHandlerActivity extends BaseActivity {
         findViewById(R.id.page_event_handler_base_on_callback).setOnClickListener(v -> page_event_handler_base_on_callback());
     }
 
-    @Override
-    protected boolean isNeedCheckPermission() {
-        return false;
-    }
-
     private void page_event_handler_base_on_listener() {
         showFragment(new TestEventHandlerBaseOnListenFragment());
     }

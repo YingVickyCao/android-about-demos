@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
@@ -61,10 +62,12 @@ public class ViewSwitcherFragment extends BaseFragment {
     }
 
     private void mockAppInfoList() {
+        if (null == getActivity()) {
+            return;
+        }
         for (int i = 0; i < NUMBER_APPS; i++) {
             String label = "" + i;
-            Drawable drawable = getResources().getDrawable(R.drawable.ic_launcher);
-
+            Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_launcher, getActivity().getTheme());
             MockedAppInfo item = new MockedAppInfo();
             item.appName = label;
             item.appIcon = drawable;

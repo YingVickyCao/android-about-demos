@@ -127,19 +127,22 @@ public class TestTintFragment extends Fragment {
     }
 
     private void changeColorByTint() {
+        if (null == getActivity()) {
+            return;
+        }
         // Android>=6.0
-        Drawable drawable = getResources().getDrawable(R.drawable.ic_svg_adjust, getContext().getTheme());
+        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_svg_adjust, getActivity().getTheme());
         imageview3.setImageDrawable(drawable);
         // 设置单个颜色
-        imageview3.getDrawable().setTint(getResources().getColor(R.color.red, getContext().getTheme()));
+        imageview3.getDrawable().setTint(ContextCompat.getColor(getActivity(), R.color.red));
         // 假如imageview3 和 imageview4 的颜色变成了同一个，要mutate().
 //        imageview3.getDrawable().mutate();
 
         // Android>=6.0
-        Drawable drawable2 = getResources().getDrawable(R.drawable.ic_svg_adjust, getContext().getTheme());
+        Drawable drawable2 = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_svg_adjust, getActivity().getTheme());
         imageview4.setImageDrawable(drawable2);
         // 设置一组selector颜色
-        imageview4.getDrawable().setTintList(getResources().getColorStateList(R.color.textview_color_enable, getContext().getTheme()));
+        imageview4.getDrawable().setTintList(getResources().getColorStateList(R.color.textview_color_enable, getActivity().getTheme()));
         imageview4.setOnClickListener(v -> imageview4.setSelected(!imageview4.isSelected()));
 //        imageview4.getDrawable().mutate();
 

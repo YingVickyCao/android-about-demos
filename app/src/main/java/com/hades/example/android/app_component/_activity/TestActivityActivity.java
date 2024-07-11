@@ -8,10 +8,10 @@ import com.hades.example.android.R;
 import com.hades.example.android.app_component._activity._children.TestLauncherActivity;
 import com.hades.example.android.app_component._intent_and_intent_filter._launch_mode.D;
 import com.hades.example.android.app_component._activity._start_close.AActivity;
-import com.hades.example.android.base.NoNeedPermissionActivity;
+import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.resource.adapter_screen.TestSaveAndRestoreStateActivity;
 
-public class TestActivityActivity extends NoNeedPermissionActivity {
+public class TestActivityActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

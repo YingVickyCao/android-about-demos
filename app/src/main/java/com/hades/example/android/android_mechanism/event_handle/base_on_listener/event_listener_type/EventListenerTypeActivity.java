@@ -30,12 +30,6 @@ public class EventListenerTypeActivity extends BaseActivity {
 //        showCurrentTest();
     }
 
-    @Override
-    protected boolean isNeedCheckPermission() {
-        return false;
-    }
-
-
     private void test_listener_4_inner_class() {
         showFragment(new InnerClassListenFragment());
     }

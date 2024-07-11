@@ -43,11 +43,6 @@ public class BaseActivity extends AppCompatActivity {
         actionBar.hide();
     }
 
-    protected boolean isNeedCheckPermission() {
-        return false;
-    }
-
-    // TODO: 2022/4/26 refactor
     protected void initViews() {
         topic = findViewById(R.id.topic);
         mScrollView = findViewById(R.id.scrollView);
@@ -55,7 +50,6 @@ public class BaseActivity extends AppCompatActivity {
         showCurrentTest();
     }
 
-    // TODO: 2022/4/26 refactor
     protected void initViews(@IdRes int rootId) {
         initViews();
     }

@@ -7,9 +7,9 @@ import androidx.annotation.Nullable;
 import com.hades.example.android.R;
 import com.hades.example.android._process_and_thread._asynctask.TestAsyncTaskTestFragment;
 import com.hades.example.android._process_and_thread.threadPoolExecutor.ThreadPoolExecutorFragment;
-import com.hades.example.android.base.NoNeedPermissionActivity;
+import com.hades.example.android.base.BaseActivity;
 
-public class TestBackgroundTasksActivity extends NoNeedPermissionActivity {
+public class TestBackgroundTasksActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

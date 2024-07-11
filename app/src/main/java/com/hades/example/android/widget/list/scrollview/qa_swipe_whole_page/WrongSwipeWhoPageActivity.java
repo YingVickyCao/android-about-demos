@@ -25,11 +25,6 @@ public class WrongSwipeWhoPageActivity extends BaseActivity implements View.OnCl
     }
 
     @Override
-    protected boolean isNeedCheckPermission() {
-        return false;
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.detail:

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/root"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="UseSwitchCompatOrMaterialXml">
 
     <TextView
         android:id="@+id/topic"
@@ -100,9 +102,9 @@
                 <Switch
                     android:id="@+id/toggleAcousticEchoCanceler"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textOff="@string/off"
-                    android:textOn="@string/on"
-                    android:layout_height="wrap_content" />
+                    android:textOn="@string/on" />
             </LinearLayout>
 
             <View style="@style/div" />
@@ -119,9 +121,9 @@
                 <Switch
                     android:id="@+id/toggleAutomaticGainControl"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textOff="@string/off"
-                    android:textOn="@string/on"
-                    android:layout_height="wrap_content" />
+                    android:textOn="@string/on" />
             </LinearLayout>
 
             <View style="@style/div" />
