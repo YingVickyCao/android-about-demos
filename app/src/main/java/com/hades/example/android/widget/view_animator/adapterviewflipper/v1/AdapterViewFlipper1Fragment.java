@@ -15,7 +15,7 @@ import com.hades.example.android.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterView1FlipperFragment extends Fragment {
+public class AdapterViewFlipper1Fragment extends Fragment {
     AdapterViewFlipper adapterViewFlipper;
 
     @Nullable

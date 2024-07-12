@@ -1,12 +1,15 @@
 package com.hades.example.android.widget;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.BaseActivity;
+import com.hades.example.android.base.ViewsVisibilityHelper;
+import com.hades.example.android.tools.FragmentUtils;
 import com.hades.example.android.widget.button.TestButtonActivity;
 import com.hades.example.android.widget.checkbox.CheckBoxFragment;
 import com.hades.example.android.widget.custom_view.CustomViewActivity;
@@ -27,7 +30,6 @@ import com.hades.example.android.widget.list._listview.TestListViewFragment;
 import com.hades.example.android.widget.list._recyclerview._dag_reorder_list.v1.DragAndReorderListActivity;
 import com.hades.example.android.widget.list._recyclerview._dag_reorder_list.v2.screen_size.TestViewLocationFragment;
 import com.hades.example.android.widget.list._recyclerview.dummy.DummyRecyclerViewFragment;
-import com.hades.example.android.widget.list._recyclerview.dummy.IItemClickAction;
 import com.hades.example.android.widget.pickers.CalendarViewFragment;
 import com.hades.example.android.widget.pickers.DatePickerFragment;
 import com.hades.example.android.widget.pickers.DatePickerDialogFragment;
@@ -52,16 +54,15 @@ import com.hades.example.android.widget.view_animator.adapterviewflipper.v3.Adap
 import com.hades.example.android.widget.view_animator.viewflipper.ViewFlipperFragment;
 import com.hades.example.android.widget.view_animator.ViewSwitcherFragment;
 import com.hades.example.android._feature._web_based_contents.webview.TestWebViewFragment;
-import com.hades.utility.jvm.DummyItem;
 
-public class WidgetActivity extends BaseActivity implements IItemClickAction {
+public class WidgetActivity extends AppCompatActivity {
     private static final String TAG = WidgetActivity.class.getSimpleName();
+    ViewsVisibilityHelper visibilityHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_widget_layout);
-        initViews();
 
         findViewById(R.id.page_CustomVew).setOnClickListener(v -> pageCustomVew());
         findViewById(R.id.pageListView).setOnClickListener(v -> pageListView());
@@ -114,215 +115,265 @@ public class WidgetActivity extends BaseActivity implements IItemClickAction {
         findViewById(R.id.pageZAxis).setOnClickListener(v -> page_z_axis());
         findViewById(R.id.pageTextClock).setOnClickListener(v -> pageTextClock());
         findViewById(R.id.page_Snackbar).setOnClickListener(v -> page_Snackbar());
-    }
 
-    @Override
-    protected void showCurrentTest() {
-//        page_AdapterViewFlipper();
+        if (null == visibilityHelper) {
+            visibilityHelper = new ViewsVisibilityHelper(findViewById(R.id.topic), findViewById(R.id.scrollView), findViewById(R.id.fragmentRoot));
+        }
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (visibilityHelper.isBtnsHiden()) {
+                    FragmentUtils.remove(WidgetActivity.this, R.id.fragmentRoot);
+                    visibilityHelper.showBtns();
+                } else {
+                    finish();
+                }
+            }
+        });
     }
 
     private void pageViewLocation() {
-        showFragment(new TestViewLocationFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestViewLocationFragment(), TestViewLocationFragment.class.getSimpleName());
     }
 
     private void pageListView() {
-        showFragment(new TestListViewFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestListViewFragment(), TestListViewFragment.class.getSimpleName());
     }
 
     private void pageCustomVew() {
-        showActivity(CustomViewActivity.class);
+        visibilityHelper.hideBtns();
+        startActivity(new Intent(this, CustomViewActivity.class));
     }
 
     private void pageConstraintLayout() {
-        showFragment(new TestConstraintLayoutFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestConstraintLayoutFragment(), TestConstraintLayoutFragment.class.getSimpleName());
     }
 
     private void pageLinearLayout() {
-        showFragment(new TestLinearLayoutFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestLinearLayoutFragment(), TestLinearLayoutFragment.class.getSimpleName());
     }
 
     private void pageLinearLayoutCanNotChangeColor() {
-        showFragment(new TestLinearLayoutCannotChangeColorFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestLinearLayoutCannotChangeColorFragment(), TestLinearLayoutCannotChangeColorFragment.class.getSimpleName());
     }
 
     private void pageLinearLayoutCanNotChangeColor2() {
-        showFragment(new TestLinearLayoutCannotChangeColor2Fragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestLinearLayoutCannotChangeColor2Fragment(), TestLinearLayoutCannotChangeColor2Fragment.class.getSimpleName());
     }
 
     private void pageLinearLayout4LayoutGravityAndGravity() {
-        showFragment(new TestLinearLayout4LayoutGravityAndGravityFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestLinearLayout4LayoutGravityAndGravityFragment(), TestLinearLayout4LayoutGravityAndGravityFragment.class.getSimpleName());
     }
 
     private void pageViewGroup() {
-        showFragment(new TestViewGroupFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestViewGroupFragment(), TestViewGroupFragment.class.getSimpleName());
     }
 
     private void pageFrameLayout() {
-        showFragment(new TestFrameLayoutFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestFrameLayoutFragment(), TestFrameLayoutFragment.class.getSimpleName());
     }
 
     private void pageWebView() {
-        showFragment(new TestWebViewFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestWebViewFragment(), TestWebViewFragment.class.getSimpleName());
     }
 
     private void pageVideoView() {
-        showActivity(VideoViewRotateScreenTipActivity.class);
+        startActivity(new Intent(this, VideoViewRotateScreenTipActivity.class));
     }
 
     private void pageSurfaceViewPlayVideo() {
-        showFragment(new TestSurfaceViewPlayVideoFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestSurfaceViewPlayVideoFragment(), TestSurfaceViewPlayVideoFragment.class.getSimpleName());
     }
 
     private void pageTextView() {
-        showActivity(TestTextViewActivity.class);
+        startActivity(new Intent(this, TestTextViewActivity.class));
     }
 
     private void pageButton() {
-        showActivity(TestButtonActivity.class);
+        startActivity(new Intent(this, TestButtonActivity.class));
     }
 
     private void page_ImageButton() {
-        showFragment(new TestImageButtonFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestImageButtonFragment(), TestImageButtonFragment.class.getSimpleName());
     }
 
     private void pageImageView() {
-        showFragment(new TestImageViewFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestImageViewFragment(), TestImageViewFragment.class.getSimpleName());
     }
 
     private void pageKenBurnsImage() {
-        showFragment(new KenBurnsImageFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new KenBurnsImageFragment(), KenBurnsImageFragment.class.getSimpleName());
     }
 
     private void pageImageViewScaleType() {
-        showFragment(new TestImageViewScaleTypeFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestImageViewScaleTypeFragment(), TestImageViewScaleTypeFragment.class.getSimpleName());
     }
 
     private void pageRatingBar() {
-        showFragment(new TestRatingBarFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestRatingBarFragment(), TestRatingBarFragment.class.getSimpleName());
     }
 
     private void pageSeekBar() {
-        showFragment(new TestSeekBarFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestSeekBarFragment(), TestSeekBarFragment.class.getSimpleName());
     }
 
     private void pageProgressbar() {
-        showFragment(new TestProgressBarFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestProgressBarFragment(), TestProgressBarFragment.class.getSimpleName());
     }
 
     private void testViewSwitcher() {
-        showFragment(new ViewSwitcherFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new ViewSwitcherFragment(), ViewSwitcherFragment.class.getSimpleName());
     }
 
     private void testImageSwitcher() {
-        showFragment(new ImageSwitcherFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new ImageSwitcherFragment(), ImageSwitcherFragment.class.getSimpleName());
     }
 
     private void testTextSwitcher() {
-        showFragment(new TextSwitcherFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TextSwitcherFragment(), TextSwitcherFragment.class.getSimpleName());
     }
 
     private void pageRecyclerView() {
-        showFragment(DummyRecyclerViewFragment.newInstance(1), DummyRecyclerViewFragment.class.getSimpleName());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new DummyRecyclerViewFragment(), DummyRecyclerViewFragment.class.getSimpleName());
     }
 
     private void recyclerView2() {
-        showFragment(DummyRecyclerViewFragment.newInstance(2), DummyRecyclerViewFragment.class.getSimpleName());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new DummyRecyclerViewFragment(), DummyRecyclerViewFragment.class.getSimpleName());
     }
 
     private void pageRecyclerView4DragReorderList() {
-        showActivity(DragAndReorderListActivity.class);
+        startActivity(new Intent(this, DragAndReorderListActivity.class));
     }
 
     private void testDragAndDrop() {
-        showFragment(new DragDropFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new DragDropFragment(), DragDropFragment.class.getSimpleName());
     }
 
     private void page_ViewFlipper() {
-        showFragment(new ViewFlipperFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new ViewFlipperFragment(), ViewFlipperFragment.class.getSimpleName());
     }
 
     private void page_AdapterViewFlipper() {
-//        showFragment(new AdapterView1FlipperFragment());
-//        showFragment(new AdapterViewFlipper2Fragment());
-        showFragment(new AdapterViewFlipper3Fragment());
+        visibilityHelper.hideBtns();
+//        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new AdapterViewFlipper1Fragment(), AdapterViewFlipper1Fragment.class.getSimpleName());
+//        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new AdapterViewFlipper2Fragment(), AdapterViewFlipper2Fragment.class.getSimpleName());
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new AdapterViewFlipper3Fragment(), AdapterViewFlipper3Fragment.class.getSimpleName());
     }
 
 
     private void testCalendarView() {
-        showFragment(new CalendarViewFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new CalendarViewFragment(), CalendarViewFragment.class.getSimpleName());
     }
 
     private void pageDatePickerDialog() {
-        showFragment(new DatePickerDialogFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new DatePickerDialogFragment(), DatePickerDialogFragment.class.getSimpleName());
     }
 
     private void pageTimePickerDialog() {
-        showFragment(new TimePickerDialogFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TimePickerDialogFragment(), TimePickerDialogFragment.class.getSimpleName());
     }
 
     private void pageDatePicker() {
-        showFragment(new DatePickerFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new DatePickerFragment(), DatePickerFragment.class.getSimpleName());
     }
 
     private void pageTimePicker() {
-        showFragment(new TimePickerFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TimePickerFragment(), TimePickerFragment.class.getSimpleName());
     }
 
     private void testNumberPicker() {
-        showFragment(new NumberPickerFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new NumberPickerFragment(), NumberPickerFragment.class.getSimpleName());
     }
 
     private void testSearchView() {
-        showFragment(SearchViewFragment.newInstance());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new SearchViewFragment(), SearchViewFragment.class.getSimpleName());
     }
 
     private void pageSpinner() {
-        showFragment(new TestSpinnerFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestSpinnerFragment(), TestSpinnerFragment.class.getSimpleName());
     }
 
     private void pageTabLayout() {
-        showFragment(new TestTabLayoutFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestTabLayoutFragment(), TestTabLayoutFragment.class.getSimpleName());
     }
 
     private void pageRadioButton() {
-        showFragment(new TestRadioButtonFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestRadioButtonFragment(), TestRadioButtonFragment.class.getSimpleName());
     }
 
     private void pageCheckBox() {
-        showFragment(new CheckBoxFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new CheckBoxFragment(), CheckBoxFragment.class.getSimpleName());
     }
 
     private void pageSwitch() {
-        showFragment(new TestSwitchFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestSwitchFragment(), TestSwitchFragment.class.getSimpleName());
     }
 
     private void page_ToggleButton() {
-        showFragment(new TestToggleButtonFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestToggleButtonFragment(), TestToggleButtonFragment.class.getSimpleName());
     }
 
     private void pageEditText() {
-        showFragment(new TestEditTextFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestEditTextFragment(), TestEditTextFragment.class.getSimpleName());
     }
 
     private void pageKeyBoardView() {
-        showFragment(new TestKeyBoardFragment());
+        visibilityHelper.hideBtns();
 //        showFragment(new TestKeyBoardFragment2());
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestKeyBoardFragment(), TestKeyBoardFragment.class.getSimpleName());
     }
 
     private void page_z_axis() {
-        showFragment(new ZAxisFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new ZAxisFragment(), ZAxisFragment.class.getSimpleName());
     }
 
     private void pageTextClock() {
-        showFragment(new TextClockFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TextClockFragment(), TextClockFragment.class.getSimpleName());
     }
 
     private void page_Snackbar() {
-        showFragment(new SnackbarFragment());
-    }
-
-    @Override
-    public void onItemClickListener(DummyItem item) {
-        Log.d(TAG, "onItemClickListener: " + item.toString());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new SnackbarFragment(), SnackbarFragment.class.getSimpleName());
     }
 }
