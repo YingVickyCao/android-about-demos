@@ -10,6 +10,5 @@
     <!--  paint.setPathEffect  -->
     <com.hades.example.android.widget.custom_view.path_effect.PathWithPathEffect
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_200"
-        android:visibility="gone" />
+        android:layout_height="@dimen/size_200" />
 </FrameLayout>
