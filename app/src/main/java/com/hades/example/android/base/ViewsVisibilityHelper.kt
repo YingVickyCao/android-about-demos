@@ -20,7 +20,7 @@ data class ViewsVisibilityHelper(
         fragmentRoot.visibility = View.VISIBLE
     }
 
-    fun isShowFragmentRoot(): Boolean {
+    fun isBtnsHiden(): Boolean {
         return fragmentRoot.visibility == View.VISIBLE
     }
 }

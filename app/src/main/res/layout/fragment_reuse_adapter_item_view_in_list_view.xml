@@ -8,27 +8,6 @@
     <TextView
         style="@style/topic"
         android:text="@string/page_ListView" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="@dimen/size_5">
-
-        <LinearLayout
-            android:id="@+id/itemsRoot"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <include layout="@layout/list_item_view_4" />
-
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <!--    <ListView-->
     <!--        android:id="@+id/listView"-->
     <!--        android:layout_width="match_parent"-->

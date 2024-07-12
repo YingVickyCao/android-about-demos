@@ -28,7 +28,7 @@ public class SecurityActivity extends AppCompatActivity {
         getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                if (visibilityHelper.isShowFragmentRoot()) {
+                if (visibilityHelper.isBtnsHiden()) {
                     Log.d(TAG, "onCreate : handleOnBackPressed - hide fragment ");
                     visibilityHelper.showBtns();
                     FragmentUtils.remove(SecurityActivity.this, R.id.fragmentRoot);
