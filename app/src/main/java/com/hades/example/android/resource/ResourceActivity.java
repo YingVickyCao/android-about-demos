@@ -1,15 +1,21 @@
 package com.hades.example.android.resource;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.hades.example.android.base.BaseActivity;
+import com.hades.example.android.base.ViewsVisibilityHelper;
+import com.hades.example.android.data_storage.DataStorageActivity;
+import com.hades.example.android.data_storage.shared_preferences.TestSharedPreferencesFragment;
 import com.hades.example.android.resource._array.TestStringIntegerArrayFragment;
 import com.hades.example.android.resource._color_state_list.TestColorFragment;
 import com.hades.example.android.resource._color_state_list.TestColorStateListFragment;
@@ -25,6 +31,7 @@ import com.hades.example.android.resource.font.TestFontFragment;
 import com.hades.example.android.resource.i18n.InternationalizationFragment;
 import com.hades.example.android.resource.material.TestMaterialFragment;
 import com.hades.example.android.resource.xml.TestXMLFragment;
+import com.hades.example.android.tools.FragmentUtils;
 import com.hades.utility.permission.OnContextUIListener;
 import com.hades.utility.permission.OnPermissionResultCallback;
 import com.hades.utility.permission.PermissionsTool;
@@ -32,8 +39,9 @@ import com.hades.utility.permission.PermissionsTool;
 /**
  * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html
  */
-public class ResourceActivity extends BaseActivity {
+public class ResourceActivity extends AppCompatActivity {
     private static final String TAG = ResourceActivity.class.getSimpleName();
+    ViewsVisibilityHelper visibilityHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,7 +49,6 @@ public class ResourceActivity extends BaseActivity {
 //        setTheme(R.style.AppTheme_Light);
         setContentView(R.layout.activity_resources);
         Log.d(TAG, "onCreate: ");
-        initViews(R.id.root);
 
         findViewById(R.id.pageMaterial).setOnClickListener(v -> pageMaterial());
         findViewById(R.id.pageDimension).setOnClickListener(v -> pageDimension());
@@ -61,6 +68,20 @@ public class ResourceActivity extends BaseActivity {
         findViewById(R.id.page_ValueAnimation).setOnClickListener(v -> page_ValueAnimation());
 
         requestPermission();
+        if (null == visibilityHelper) {
+            visibilityHelper = new ViewsVisibilityHelper(findViewById(R.id.topic), findViewById(R.id.scrollView), findViewById(R.id.fragmentRoot));
+        }
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (visibilityHelper.isBtnsHiden()) {
+                    FragmentUtils.remove(ResourceActivity.this, R.id.fragmentRoot);
+                    visibilityHelper.showBtns();
+                } else {
+                    finish();
+                }
+            }
+        });
     }
 
 
@@ -92,68 +113,75 @@ public class ResourceActivity extends BaseActivity {
         });
     }
 
-    @Override
-    protected void showCurrentTest() {
-        page_ObjectAnimation();
-    }
-
     private void pageColor() {
-        showFragment(new TestColorFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestColorFragment(), TestColorFragment.class.getSimpleName());
     }
 
     private void pageColorStateListResource() {
-        showFragment(new TestColorStateListFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestColorStateListFragment(), TestColorStateListFragment.class.getSimpleName());
     }
 
     private void pageMaterial() {
-        showFragment(new TestMaterialFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestMaterialFragment(), TestMaterialFragment.class.getSimpleName());
     }
 
     private void pageDimension() {
-        showFragment(new TestDimensionFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestDimensionFragment(), TestDimensionFragment.class.getSimpleName());
     }
 
     private void pageThemeChoose() {
-        showActivity(ThemeChoosePageAActivity.class);
+        startActivity(new Intent(this, ThemeChoosePageAActivity.class));
     }
 
     private void pageInternationalization() {
-        showFragment(new InternationalizationFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new InternationalizationFragment(), InternationalizationFragment.class.getSimpleName());
     }
 
     private void pageStringIntegerArray() {
-        showFragment(new TestStringIntegerArrayFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestStringIntegerArrayFragment(), TestStringIntegerArrayFragment.class.getSimpleName());
     }
 
     private void pageFont() {
-        showFragment(new TestFontFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestFontFragment(), TestFontFragment.class.getSimpleName());
     }
 
     private void pageXML() {
-        showFragment(new TestXMLFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestXMLFragment(), TestXMLFragment.class.getSimpleName());
     }
 
     private void pageScreenOrientation() {
-        showActivity(TestConfigurationActivity.class);
+        startActivity(new Intent(this, TestConfigurationActivity.class));
     }
 
     private void pageScreenSize() {
-        showActivity(ScreenSizeActivity.class);
+        startActivity(new Intent(this, ScreenSizeActivity.class));
     }
 
     private void pageTweenAnimation() {
-        showFragment(new TestTweenAnimationFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestTweenAnimationFragment(), TestTweenAnimationFragment.class.getSimpleName());
     }
 
     private void pageFrameAnimation() {
-        showFragment(new TestFrameAnimationFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestFrameAnimationFragment(), TestFrameAnimationFragment.class.getSimpleName());
     }
 
     private void page_ObjectAnimation() {
-        showFragment(new TestObjectAnimationFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestObjectAnimationFragment(), TestObjectAnimationFragment.class.getSimpleName());
     }
 
     private void page_ValueAnimation() {
-        showFragment(new TestValueAnimationFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestValueAnimationFragment(), TestValueAnimationFragment.class.getSimpleName());
     }
 }
