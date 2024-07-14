@@ -59,7 +59,6 @@ public class OtherUIActivity extends AppCompatActivity {
     }
 
     private void pageActionBar() {
-        visibilityHelper.hideBtns();
         startActivity(new Intent(this,TestActionBarActivity.class));
     }
 
@@ -69,7 +68,6 @@ public class OtherUIActivity extends AppCompatActivity {
     }
 
     private void pageDialog() {
-        visibilityHelper.hideBtns();
         startActivity(new Intent(this,TestDialogActivity.class));
     }
 }
