@@ -1,5 +1,6 @@
 package com.hades.example.android.other_ui._notification;
 
+import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -7,18 +8,24 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.hades.utility.android.utils.VersionUtil;
+import com.hades.utility.permission.OnContextUIListener;
+import com.hades.utility.permission.OnPermissionResultCallback;
+import com.hades.utility.permission.PermissionsTool;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -36,6 +43,7 @@ public class TestNotificationFragment extends Fragment {
 
     private final String PROGRESS_NOTIFICATION_CHANNEL_ID = "PROGRESS_NOTIFICATION";
     private boolean isOnProgressNotification;
+    private View view;
 
     @Nullable
     @Override
@@ -48,7 +56,40 @@ public class TestNotificationFragment extends Fragment {
         view.findViewById(R.id.progressNotification).setOnClickListener(source -> sendProgressNotification());
 
         view.findViewById(R.id.del).setOnClickListener(this::delete);
+        this.view = view;
+        requestPermission();
         return view;
+    }
+
+    private void requestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            PermissionsTool permissionTools = new PermissionsTool(this);
+            permissionTools.request(new String[]{Manifest.permission.POST_NOTIFICATIONS}, new OnPermissionResultCallback() {
+
+                @Override
+                public void showInContextUI(OnContextUIListener callback) {
+                    Snackbar.make(view.findViewById(R.id.root), "Request POST_NOTIFICATIONS", Snackbar.LENGTH_INDEFINITE)
+                            .setAction(getString(R.string.ok), view -> callback.ok())
+                            .setAction(getString(R.string.cancel), view -> callback.cancel())
+                            .show();
+                }
+
+                @Override
+                public void onPermissionGranted() {
+                    Toast.makeText(getActivity(), "POST_NOTIFICATIONS granted", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onPermissionDenied() {
+                    Toast.makeText(getActivity(), "POST_NOTIFICATIONS denied", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onPermissionError(String message) {
+
+                }
+            });
+        }
     }
 
     @Override
@@ -75,7 +116,7 @@ public class TestNotificationFragment extends Fragment {
          * QA:Android中getResources().getDrawable() Deprecated?
          * https://blog.csdn.net/zheng0203/article/details/62909177
          */
-        Notification.Builder builder = new Notification.Builder(getUsedContext())
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getUsedContext(), PROGRESS_NOTIFICATION_CHANNEL_ID)
                 /**
                  * 点击通知后，通知是否自动消失。 若设置否，点击一次通知后，下次单击动作仍然生效。故，一般设置为 false
                  */
@@ -108,12 +149,6 @@ public class TestNotificationFragment extends Fragment {
                 //.setContentInfo("10")
                 //number设计用来显示同种通知的数量和ContentInfo的位置一样，如果设置了ContentInfo,则number会被隐藏
                 .setNumber(10); // ①;
-
-        if (VersionUtil.isAndroid8()) {
-            // FIXED_ERROR: Android 8.0 can not send notification success?
-            // Run on Android 8.0, must add setChannelId, or it won't send notification success.
-            builder.setChannelId(PROGRESS_NOTIFICATION_CHANNEL_ID);
-        }
 
         /**
          * 通过NotificationManager发送通知。
