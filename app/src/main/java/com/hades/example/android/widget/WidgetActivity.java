@@ -14,6 +14,7 @@ import com.hades.example.android.widget.button.TestButtonActivity;
 import com.hades.example.android.widget.checkbox.CheckBoxFragment;
 import com.hades.example.android.widget.custom_view.CustomViewActivity;
 import com.hades.example.android.widget.custom_view.keyboard.TestKeyBoardFragment;
+import com.hades.example.android.widget.custom_view.keyboard.TestKeyBoardFragment2;
 import com.hades.example.android.widget.drag_drop.DragDropFragment;
 import com.hades.example.android.widget.edittext.TestEditTextFragment;
 import com.hades.example.android.widget.imageview.KenBurnsImageFragment;
@@ -112,6 +113,7 @@ public class WidgetActivity extends AppCompatActivity {
         findViewById(R.id.page_ToggleButton).setOnClickListener(v -> page_ToggleButton());
         findViewById(R.id.pageEditText).setOnClickListener(v -> pageEditText());
         findViewById(R.id.pageKeyBoardView).setOnClickListener(v -> pageKeyBoardView());
+        findViewById(R.id.pageKeyBoardView2).setOnClickListener(v -> pageKeyBoardView2());
         findViewById(R.id.pageZAxis).setOnClickListener(v -> page_z_axis());
         findViewById(R.id.pageTextClock).setOnClickListener(v -> pageTextClock());
         findViewById(R.id.page_Snackbar).setOnClickListener(v -> page_Snackbar());
@@ -143,7 +145,7 @@ public class WidgetActivity extends AppCompatActivity {
     }
 
     private void pageCustomVew() {
-        visibilityHelper.hideBtns();
+        visibilityHelper.showBtns();
         startActivity(new Intent(this, CustomViewActivity.class));
     }
 
@@ -358,8 +360,12 @@ public class WidgetActivity extends AppCompatActivity {
 
     private void pageKeyBoardView() {
         visibilityHelper.hideBtns();
-//        showFragment(new TestKeyBoardFragment2());
         FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestKeyBoardFragment(), TestKeyBoardFragment.class.getSimpleName());
+    }
+
+    private void pageKeyBoardView2() {
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestKeyBoardFragment2(), TestKeyBoardFragment2.class.getSimpleName());
     }
 
     private void page_z_axis() {

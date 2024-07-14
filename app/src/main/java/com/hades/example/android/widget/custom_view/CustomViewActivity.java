@@ -1,16 +1,13 @@
 package com.hades.example.android.widget.custom_view;
 
-import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
 import com.hades.example.android.base.ViewsVisibilityHelper;
 import com.hades.example.android.tools.FragmentUtils;
@@ -26,10 +23,6 @@ import com.hades.example.android.widget.custom_view.mesh.BitmapMeshFragment;
 import com.hades.example.android.widget.custom_view.path_effect.TestPathEffectFragment;
 import com.hades.example.android.widget.custom_view.shader.ShaderFragment;
 import com.hades.example.android.widget.custom_view.shadow.TestShadowViewFragment;
-import com.hades.example.android.widget.list._recyclerview._dag_reorder_list.v2.screen_size.TestViewLocationFragment;
-import com.hades.utility.permission.OnContextUIListener;
-import com.hades.utility.permission.OnPermissionResultCallback;
-import com.hades.utility.permission.PermissionsTool;
 
 /**
  * https://www.cnblogs.com/andriod-html5/archive/2012/04/30/2539419.html
@@ -70,37 +63,6 @@ public class CustomViewActivity extends AppCompatActivity {
                 } else {
                     finish();
                 }
-            }
-        });
-        requestPermission();
-    }
-
-    private void requestPermission() {
-        // FIXED_ERROR:java.io.FileNotFoundException: /sdcard/bg004.JPG: open failed: EACCES (Permission denied)
-        PermissionsTool permissionTools = new PermissionsTool(this);
-        permissionTools.request(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, new OnPermissionResultCallback() {
-
-            @Override
-            public void showInContextUI(OnContextUIListener callback) {
-                Snackbar.make(findViewById(R.id.root), "Request SD Card permission", Snackbar.LENGTH_INDEFINITE)
-                        .setAction(getString(R.string.ok), view -> callback.ok())
-                        .setAction(getString(R.string.cancel), view -> callback.cancel())
-                        .show();
-            }
-
-            @Override
-            public void onPermissionGranted() {
-                Toast.makeText(CustomViewActivity.this, "SD Card permission granted", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onPermissionDenied() {
-                Toast.makeText(CustomViewActivity.this, "SD Card permission denied", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onPermissionError(String message) {
-
             }
         });
     }
