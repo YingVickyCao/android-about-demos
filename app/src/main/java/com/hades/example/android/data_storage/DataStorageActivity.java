@@ -37,6 +37,7 @@ public class DataStorageActivity extends AppCompatActivity {
         findViewById(R.id.pageDatabase).setOnClickListener(v -> pageDatabase());
         findViewById(R.id.pageIO).setOnClickListener(v -> pageIO());
         findViewById(R.id.pageIO_Zip).setOnClickListener(v -> pageIO_Zip());
+        findViewById(R.id.page_internal_storage).setOnClickListener(v -> page_internal_storage());
         requestPermission();
 
         if (null == visibilityHelper) {
@@ -104,5 +105,10 @@ public class DataStorageActivity extends AppCompatActivity {
     private void pageIO_Zip() {
         visibilityHelper.hideBtns();
         FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestZipFragment(), TestZipFragment.class.getSimpleName());
+    }
+
+    private void page_internal_storage(){
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new InternalStorageExampleFragment(), InternalStorageExampleFragment.class.getSimpleName());
     }
 }

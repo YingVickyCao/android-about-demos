@@ -52,6 +52,11 @@
                 android:text="@string/page_Libs" />
 
             <Button
+                android:id="@+id/page_Feature"
+                style="@style/btn"
+                android:text="@string/page_Feature" />
+
+            <Button
                 android:id="@+id/pageQAAboutView"
                 style="@style/btn_red"
                 android:text="@string/page_qa_about_view" />

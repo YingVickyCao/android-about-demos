@@ -165,6 +165,11 @@
                 android:text="@string/page_recyclerView_4_drag_reorder_list" />
 
             <Button
+                android:id="@+id/pageRecyclerView4DragReorderList2"
+                style="@style/btn"
+                android:text="@string/page_recyclerView_4_drag_reorder_list" />
+
+            <Button
                 android:id="@+id/testDragAndDrop"
                 style="@style/btn"
                 android:text="@string/test_drag_and_drop" />

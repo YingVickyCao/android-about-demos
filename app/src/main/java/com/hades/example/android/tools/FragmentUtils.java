@@ -3,14 +3,10 @@ package com.hades.example.android.tools;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 
 import com.hades.example.android.R;
-import com.hades.example.android._feature.menu_manager.menu_page.MenuFragment;
-import com.hades.example.android.app_component._intent_and_intent_filter._flag.D;
 
 public class FragmentUtils {
     public FragmentUtils() {

@@ -605,6 +605,8 @@
             android:name="androidx.work.impl.WorkManagerInitializer"
             android:authorities="${applicationId}.workmanager-init"
             tools:node="remove" />
+
+        <activity android:name="._feature.FeatureActivity"/>
     </application>
 
 </manifest>

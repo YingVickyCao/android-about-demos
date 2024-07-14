@@ -94,6 +94,7 @@ public class WidgetActivity extends AppCompatActivity {
         findViewById(R.id.pageRecyclerView).setOnClickListener(v -> pageRecyclerView());
         findViewById(R.id.recyclerView2).setOnClickListener(v -> recyclerView2());
         findViewById(R.id.pageRecyclerView4DragReorderList).setOnClickListener(v -> pageRecyclerView4DragReorderList());
+        findViewById(R.id.pageRecyclerView4DragReorderList2).setOnClickListener(v -> pageRecyclerView4DragReorderList2());
         findViewById(R.id.testDragAndDrop).setOnClickListener(v -> testDragAndDrop());
 
         findViewById(R.id.page_ViewFlipper).setOnClickListener(v -> page_ViewFlipper());
@@ -267,7 +268,11 @@ public class WidgetActivity extends AppCompatActivity {
     }
 
     private void pageRecyclerView4DragReorderList() {
-        startActivity(new Intent(this, DragAndReorderListActivity.class));
+        startActivity(new Intent(this, com.hades.example.android.widget.list._recyclerview._dag_reorder_list.v1.DragAndReorderListActivity.class));
+    }
+
+    private void pageRecyclerView4DragReorderList2() {
+        startActivity(new Intent(this, com.hades.example.android.widget.list._recyclerview._dag_reorder_list.v2.DragAndReorderListActivity.class));
     }
 
     private void testDragAndDrop() {

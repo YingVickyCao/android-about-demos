@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/root"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/topic"
         style="@style/topic"
-        android:text="@string/page_data_storage" />
+        android:text="@string/page_Feature" />
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/size_topic">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -23,30 +21,24 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/pageSharedPreferences"
+                android:id="@+id/page_J2v8"
                 style="@style/btn"
-                android:text="@string/page_shared_preferences" />
+                android:text="@string/page_J2v8" />
 
             <Button
-                android:id="@+id/pageDatabase"
+                android:id="@+id/page_faq_penetrate_click"
                 style="@style/btn"
-                android:text="@string/page_sqlite" />
+                android:text="@string/page_faq_penetrate_click" />
 
             <Button
-                android:id="@+id/pageIO"
+                android:id="@+id/page_faq_player_controller_layer"
                 style="@style/btn"
-                android:text="@string/page_io" />
+                android:text="@string/page_faq_player_controller_layer" />
 
             <Button
-                android:id="@+id/pageIO_Zip"
+                android:id="@+id/page_WorkManager"
                 style="@style/btn"
-                android:text="@string/page_io_zip" />
-
-            <Button
-                android:id="@+id/page_internal_storage"
-                style="@style/btn"
-                android:text="@string/page_internal_storage" />
-
+                android:text="@string/page_WorkManager" />
         </LinearLayout>
     </ScrollView>
 
@@ -54,4 +46,4 @@
         android:id="@+id/fragmentRoot"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-</FrameLayout>
+</LinearLayout>

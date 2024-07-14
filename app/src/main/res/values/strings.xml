@@ -40,6 +40,7 @@
 
     <string name="page_resource">Resource</string>
     <string name="page_Libs">Libs</string>
+    <string name="page_Feature">Feature</string>
     <string name="page_dimension">Dimension</string>
     <string name="page_XML">XML</string>
     <string name="page_material">原始资源</string>
@@ -209,7 +210,7 @@
     <string name="page_Screen_Capture">Screen Capture</string>
 
     <string name="page_multi_window">Multi-Window</string>
-    <string name="page_j2v8">j2v8 (R8 wrappered)</string>
+    <string name="page_J2v8">j2v8 (R8 wrappered)</string>
     <string name="page_WorkManager">WorkManager</string>
 
     <!-- ========================= -->
