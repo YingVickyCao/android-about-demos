@@ -50,3 +50,9 @@ include ':assist'   // application
 include ':B'        // application
 
 include ':widget'
+
+include ':coroutines'
+project(':coroutines').projectDir = new File('lib-examples/coroutines')
+
+include ':lifecycle'
+project(':lifecycle').projectDir = new File('lib-examples/lifecycle')

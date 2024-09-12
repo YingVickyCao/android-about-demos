@@ -1,25 +1,30 @@
 package com.hades.example.android.data_storage;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.hades.example.android.R;
-import com.hades.example.android.base.BaseActivity;
+import com.hades.example.android.base.ViewsVisibilityHelper;
 import com.hades.example.android.data_storage.database.TestSQLiteActivity;
 import com.hades.example.android.data_storage.io.TestIOFragment;
 import com.hades.example.android.data_storage.io.TestZipFragment;
 import com.hades.example.android.data_storage.shared_preferences.TestSharedPreferencesFragment;
+import com.hades.example.android.tools.FragmentUtils;
 import com.hades.utility.permission.OnContextUIListener;
 import com.hades.utility.permission.OnPermissionResultCallback;
 import com.hades.utility.permission.PermissionsTool;
 
-public class DataStorageActivity extends BaseActivity {
+public class DataStorageActivity extends AppCompatActivity {
     private static final String TAG = DataStorageActivity.class.getSimpleName();
+    ViewsVisibilityHelper visibilityHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,13 +33,27 @@ public class DataStorageActivity extends BaseActivity {
 
         setContentView(R.layout.data_storage_layout);
 
-        initViews(R.id.root);
-
         findViewById(R.id.pageSharedPreferences).setOnClickListener(v -> pageSharedPreferences());
         findViewById(R.id.pageDatabase).setOnClickListener(v -> pageDatabase());
         findViewById(R.id.pageIO).setOnClickListener(v -> pageIO());
         findViewById(R.id.pageIO_Zip).setOnClickListener(v -> pageIO_Zip());
+        findViewById(R.id.page_internal_storage).setOnClickListener(v -> page_internal_storage());
         requestPermission();
+
+        if (null == visibilityHelper) {
+            visibilityHelper = new ViewsVisibilityHelper(findViewById(R.id.topic), findViewById(R.id.scrollView), findViewById(R.id.fragmentRoot));
+        }
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (visibilityHelper.isBtnsHiden()) {
+                    FragmentUtils.remove(DataStorageActivity.this, R.id.fragmentRoot);
+                    visibilityHelper.showBtns();
+                } else {
+                    finish();
+                }
+            }
+        });
     }
 
 
@@ -69,25 +88,27 @@ public class DataStorageActivity extends BaseActivity {
         });
     }
 
-    @Override
-    protected void showCurrentTest() {
-        pageIO_Zip();
-    }
-
     private void pageSharedPreferences() {
-        showFragment(new TestSharedPreferencesFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestSharedPreferencesFragment(), TestSharedPreferencesFragment.class.getSimpleName());
     }
 
     private void pageDatabase() {
-//        showFragment(new TestDBFragment());
-        showActivity(TestSQLiteActivity.class);
+        startActivity(new Intent(this, TestSQLiteActivity.class));
     }
 
     private void pageIO() {
-        showFragment(new TestIOFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestIOFragment(), TestIOFragment.class.getSimpleName());
     }
 
     private void pageIO_Zip() {
-        showFragment(new TestZipFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestZipFragment(), TestZipFragment.class.getSimpleName());
+    }
+
+    private void page_internal_storage(){
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new InternalStorageExampleFragment(), InternalStorageExampleFragment.class.getSimpleName());
     }
 }

@@ -3,6 +3,7 @@ package com.hades.example.android;
 import android.os.Bundle;
 import android.view.View;
 
+import com.hades.example.android._feature.FeatureActivity;
 import com.hades.example.android.app_component._activity._children.TestPreferenceActivity;
 import com.hades.example.android.app_component.broadcast.normal.TestNormalBroadcastActivity;
 import com.hades.example.android.app_component.broadcast.ordered.TestOrderedBroadcastActivity;
@@ -29,6 +30,7 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.pageResource).setOnClickListener(v -> pageResource());
         findViewById(R.id.page_Libs).setOnClickListener(v -> page_Libs());
         findViewById(R.id.pageOtherUI).setOnClickListener(v -> pageOtherUI());
+        findViewById(R.id.page_Feature).setOnClickListener(v -> page_Feature());
         findViewById(R.id.pageQAAboutView).setOnClickListener(v -> pageQAAboutView());
     }
 
@@ -54,6 +56,9 @@ public class MainActivity extends BaseActivity {
 
     private void pageOtherUI() {
         showActivity(OtherUIActivity.class);
+    }
+    private void page_Feature() {
+        showActivity(FeatureActivity.class);
     }
 
     private void pageQAAboutView() {

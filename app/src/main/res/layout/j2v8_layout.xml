@@ -6,7 +6,7 @@
 
     <TextView
         style="@style/topic"
-        android:text="@string/page_j2v8"
+        android:text="@string/page_J2v8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

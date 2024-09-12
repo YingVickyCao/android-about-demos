@@ -1,19 +1,21 @@
 package com.hades.example.android.other_ui._dialog;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.hades.example.android.R;
-import com.hades.example.android.base.BaseActivity;
-import com.hades.utility.android.utils.BlockQuickTap;
+import com.hades.example.android.base.ViewsVisibilityHelper;
 import com.hades.example.android.other_ui._dialog.depressed.TestAlertDialogFragment;
 import com.hades.example.android.other_ui._dialog.depressed.TestProgressDialogFragment;
 import com.hades.example.android.other_ui._dialog.good.activity.DialogStyleActivity;
@@ -22,8 +24,10 @@ import com.hades.example.android.other_ui._dialog.good.fragment.MyAlertDialogFra
 import com.hades.example.android.other_ui._dialog.good.fragment.MyBaseDialogFragment;
 import com.hades.example.android.other_ui._dialog.good.fragment.ShowAsDialogOrEmbeddedDialogFragment;
 import com.hades.example.android.other_ui._dialog.good.fragment.TestBottomSheetDialogFragment;
+import com.hades.example.android.tools.FragmentUtils;
+import com.hades.utility.android.utils.BlockQuickTap;
 
-public class TestDialogActivity extends BaseActivity implements MyAlertDialogFragment.NoticeDialogListener {
+public class TestDialogActivity extends AppCompatActivity implements MyAlertDialogFragment.NoticeDialogListener {
     private static final String TAG = TestDialogActivity.class.getSimpleName();
 
     boolean mIsLargeLayout;
@@ -31,6 +35,7 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
     private TestBottomSheetDialogFragment bottomSheetDialogFragment;
     private String MOCK_BOTTOM_SHEET_BEAN_1 = "bean 1";
     private String MOCK_BOTTOM_SHEET_BEAN_2 = "bean 2";
+    ViewsVisibilityHelper visibilityHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,8 +43,6 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
         setContentView(R.layout.other_ui_dialog);
 
         mIsLargeLayout = getResources().getBoolean(R.bool.is_large_layout);
-
-        initViews(R.id.root);
 
         findViewById(R.id.btn1).setOnClickListener(v -> showMyBaseDialogFragment(1));
         findViewById(R.id.btn2).setOnClickListener(v -> showMyBaseDialogFragment(2));
@@ -65,6 +68,21 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
         findViewById(R.id.page_AlertDialog).setOnClickListener(v -> pageAlertDialog());
         findViewById(R.id.pageProgressDialog).setOnClickListener(v -> pageProgressDialog());
         findViewById(R.id.pageHalfWidthDialogFragment).setOnClickListener(v -> pageHalfWidthDialogFragment());
+
+        if (null == visibilityHelper) {
+            visibilityHelper = new ViewsVisibilityHelper(findViewById(R.id.topic), findViewById(R.id.scrollView), findViewById(R.id.fragmentRoot));
+        }
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (visibilityHelper.isBtnsHiden()) {
+                    FragmentUtils.remove(TestDialogActivity.this, R.id.fragmentRoot);
+                    visibilityHelper.showBtns();
+                } else {
+                    finish();
+                }
+            }
+        });
     }
 
     @Override
@@ -124,7 +142,9 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
     }
 
     private void showAsEmbeddedFragment() {
-        showFragment(new ShowAsDialogOrEmbeddedDialogFragment(), "dialog");                     // embedded : added as content in a view hierarchy
+        visibilityHelper.hideBtns();
+        // embedded : added as content in a view hierarchy
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new ShowAsDialogOrEmbeddedDialogFragment(), ShowAsDialogOrEmbeddedDialogFragment.class.getSimpleName());
     }
 
     private void pageBottomSheetDialogFragment() {
@@ -173,14 +193,16 @@ public class TestDialogActivity extends BaseActivity implements MyAlertDialogFra
     }
 
     private void pageDialogStyleActivity() {
-        showActivity(DialogStyleActivity.class);
+        startActivity(new Intent(this, DialogStyleActivity.class));
     }
 
     private void pageAlertDialog() {
-        showFragment(new TestAlertDialogFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestAlertDialogFragment(), TestAlertDialogFragment.class.getSimpleName());
     }
 
     private void pageProgressDialog() {
-        showFragment(new TestProgressDialogFragment());
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestProgressDialogFragment(), TestProgressDialogFragment.class.getSimpleName());
     }
 }

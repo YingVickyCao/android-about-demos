@@ -1,6 +1,5 @@
 package com.hades.example.android._feature.cache;
 
-import com.hades.example.android._feature.menu_manager.Menu;
 
 public class GlobalCache {
     private static GlobalCache mInstance;
@@ -19,16 +18,5 @@ public class GlobalCache {
             }
         }
         return mInstance;
-    }
-
-
-    private Menu menuTree;
-
-    public Menu getMenuTree() {
-        return menuTree;
-    }
-
-    public void setMenuTree(Menu menuTree) {
-        this.menuTree = menuTree;
     }
 }
