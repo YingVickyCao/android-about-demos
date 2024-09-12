@@ -11,7 +11,6 @@ android {
         applicationId "com.example.coroutine"
         minSdk rootProject.ext.compileSdk
         targetSdk rootProject.ext.targetSdk
-
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
 

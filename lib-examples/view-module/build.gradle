@@ -3,14 +3,14 @@ apply plugin: 'kotlin-android'
 
 android {
     namespace 'com.example.android'
-    compileSdk 34
+    compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
         applicationId "com.example.android"
-        minSdk 28
-        targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        minSdk rootProject.ext.compileSdk
+        targetSdk rootProject.ext.targetSdk
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -22,11 +22,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility rootProject.ext.sourceCompatibility
+        targetCompatibility rootProject.ext.targetCompatibility
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = rootProject.ext.jvmTarget
     }
     packaging {
         resources {
