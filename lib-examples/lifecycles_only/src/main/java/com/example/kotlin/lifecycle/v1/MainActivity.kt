@@ -1,8 +1,9 @@
-package com.example.kotlin.lifecycle
+package com.example.kotlin.lifecycle.v1
 
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kotlin.lifecycle.R
 
 /**
  * Update the count to screen
