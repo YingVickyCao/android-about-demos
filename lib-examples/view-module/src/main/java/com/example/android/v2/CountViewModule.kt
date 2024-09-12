@@ -14,4 +14,9 @@ class CountViewModule : ViewModel() {
             }
         }
     }
+
+
+    fun plusCount() {
+        count += 1
+    }
 }

@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)
         countView = findViewById(R.id.count)
 
         findViewById<View>(R.id.btn).setOnClickListener { clickBtn() }
@@ -32,11 +32,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clickBtn() {
-        plusCount()
-    }
-
-    private fun plusCount() {
-        viewModule.count += 1
+        viewModule.plusCount()
         displayCount(viewModule.count)
     }
 
