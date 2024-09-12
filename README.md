@@ -19,7 +19,7 @@ project :
 - [app内部版本升级](app/src/main/java/com/hades/example/android/_case/apk_upgrade)
 
 
-## Module - [lifecycles_only](./lib-examples/lifecycles_only)
+## Module - [lifecycles_only](./lib-examples/lifecycles-only)
 Test Lifecycles only (without ViewModel or LiveData)
 ```
 implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
