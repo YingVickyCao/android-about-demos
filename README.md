@@ -17,3 +17,13 @@ project :
 
 # Case
 - [app内部版本升级](app/src/main/java/com/hades/example/android/_case/apk_upgrade)
+
+
+## Module - [lifecycles_only](./lib-examples/lifecycles_only)
+Test Lifecycles only (without ViewModel or LiveData)
+```
+implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+```
+Ref - 
+https://developer.android.google.cn/jetpack/androidx/releases/lifecycle#declaring_dependencies
+https://developer.android.google.cn/topic/libraries/architecture/lifecycle
