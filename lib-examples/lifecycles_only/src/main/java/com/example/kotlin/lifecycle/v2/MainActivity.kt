@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         positionView = findViewById(R.id.positionView)
 
-        locationListener = LocationListener(this) { location: Location ->
+        locationListener = LocationListener(this, lifecycle) { location: Location ->
             // Update UI
             location.position(object : Location.LocationCallback {
                 override fun update(position: Int) {
@@ -28,15 +28,8 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         }
-    }
 
-    override fun onStart() {
-        super.onStart()
-        locationListener.start()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        locationListener.stop()
+        // check user status is enabled
+        locationListener.enabled()
     }
 }
