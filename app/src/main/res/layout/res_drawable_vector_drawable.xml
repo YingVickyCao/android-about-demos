@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:tint="@android:color/holo_green_dark">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,7 +43,7 @@
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/ic_svg_vd"
                 android:theme="@style/Theme_Vector_drawable"
-                android:tint="@android:color/holo_green_dark" />
+                tools:ignore="UseAppTint" />
 
             <!--  app:srcCompat="@drawable/drawable_vector_4_vd"
                   用支持库，使得 svg 支持 API<21。

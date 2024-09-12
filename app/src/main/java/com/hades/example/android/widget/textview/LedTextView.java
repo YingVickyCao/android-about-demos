@@ -3,9 +3,10 @@ package com.hades.example.android.widget.textview;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
-public class LedTextView extends TextView {
+import androidx.appcompat.widget.AppCompatTextView;
+
+public class LedTextView extends AppCompatTextView {
 
 
     public LedTextView(Context context) {

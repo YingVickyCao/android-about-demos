@@ -68,6 +68,8 @@ kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", versio
 utilityAndroid = { group = "com.hades", name = "utility-android", version = "0.0.2" }
 utilityJvm = { group = "com.hades", name = "utility-jvm", version = "0.0.1" }
 
+kotlinx-coroutines-android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1"
+
 
 
 # debug,START

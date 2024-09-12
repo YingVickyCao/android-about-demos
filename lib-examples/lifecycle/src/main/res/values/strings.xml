@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Lifecycles only (without ViewModel or LiveData)
+    </string>
+</resources>
