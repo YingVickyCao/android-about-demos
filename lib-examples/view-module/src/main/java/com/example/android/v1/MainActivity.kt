@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.android.R
 
 /***
@@ -11,8 +12,7 @@ import com.example.android.R
  */
 class MainActivity : AppCompatActivity() {
     private lateinit var countView: TextView
-
-    var count: Int = 0
+    private lateinit var viewModule: CountViewModule
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,16 +20,20 @@ class MainActivity : AppCompatActivity() {
         countView = findViewById(R.id.count)
 
         findViewById<View>(R.id.btn).setOnClickListener { clickBtn() }
-        displayCount(count)
+        bindViewModule()
+        displayCount(viewModule.count)
+    }
+
+    private fun bindViewModule() {
+        // TODO: How to create ViewModule ?
+        // Create CountViewModule
+        // Way 1
+        viewModule = ViewModelProvider(this).get(CountViewModule::class.java)
     }
 
     private fun clickBtn() {
-        plusCount()
-    }
-
-    private fun plusCount() {
-        count += 1
-        displayCount(count)
+        viewModule.plusCount()
+        displayCount(viewModule.count)
     }
 
     private fun displayCount(count: Int) {
