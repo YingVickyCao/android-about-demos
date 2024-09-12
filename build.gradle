@@ -44,6 +44,7 @@ tasks.register('clean', Delete) {
 ext {
     sdkVersion = 34
     compileSdk = 34
+    compileSdkVerion = 34
     minSdk = 30
     targetSdk = 34
 
