@@ -70,7 +70,8 @@ utilityJvm = { group = "com.hades", name = "utility-jvm", version = "0.0.1" }
 
 kotlinx-coroutines-android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1"
 
-
+# Lifecycles only (without ViewModel or LiveData)
+lifecycle-runtime ="androidx.lifecycle:lifecycle-runtime-ktx:2.8.5"
 
 # debug,START
 debug-debugDb = { group = "com.amitshekhar.android", name = "debug-db", version = "1.0.6" }
