@@ -1,10 +1,11 @@
-package com.example.android
+package com.example.android.v1
 
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.android.R
 
 /***
  * Click button, refresh the count on the screen
