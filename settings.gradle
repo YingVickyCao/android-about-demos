@@ -54,5 +54,5 @@ include ':widget'
 include ':coroutines'
 project(':coroutines').projectDir = new File('lib-examples/coroutines')
 
-include ':lifecycle'
-project(':lifecycle').projectDir = new File('lib-examples/lifecycle')
+include ':lifecycles_only'
+project(':lifecycles_only').projectDir = new File('lib-examples/lifecycles_only')
