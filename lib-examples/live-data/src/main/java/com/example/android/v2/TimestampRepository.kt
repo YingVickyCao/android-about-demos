@@ -30,4 +30,15 @@ class TimestampRepository(private val network: TimestampNetwork, private val pre
             }
         }
     }
+
+    suspend fun loadDefaultTimestamp() {
+        withContext(Dispatchers.IO) {
+            try {
+                preference.loadDefaultTimestamp()
+            } catch (ex: Exception) {
+                Log.e(TAG, "loadDefaultTimestamp: exception occurred", ex)
+                throw Exception("Unable to load default timestamp")
+            }
+        }
+    }
 }

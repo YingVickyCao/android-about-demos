@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 import kotlin.math.absoluteValue
 
 private const val TAG = "TimestampViewModule"
+
 class TimestampViewModule(private val repository: TimestampRepository) : ViewModel() {
 
     val timestamp = repository.timestamp
@@ -32,6 +33,12 @@ class TimestampViewModule(private val repository: TimestampRepository) : ViewMod
     private fun refreshTimestamp() {
         loadTimestamp {
             repository.refreshTimestamp()
+        }
+    }
+
+    fun loadDefaultTimestamp() {
+        loadTimestamp {
+            repository.loadDefaultTimestamp()
         }
     }
 

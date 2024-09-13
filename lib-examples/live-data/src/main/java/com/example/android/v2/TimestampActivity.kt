@@ -13,6 +13,7 @@ import com.example.android.R
  * Click button, refresh the count on the screen
  */
 private const val TAG = "TimestampActivity"
+
 class TimestampActivity : AppCompatActivity() {
     private lateinit var timestampView: TextView
     private lateinit var loaderView: View
@@ -26,7 +27,7 @@ class TimestampActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.btn).setOnClickListener { clickBtn() }
         binds()
-//        startTimestamp()
+        initTimestamp()
     }
 
     private fun binds() {
@@ -50,6 +51,10 @@ class TimestampActivity : AppCompatActivity() {
         viewModule.loader.observe(this) { isShow ->
             loaderView.visibility = if (isShow) View.VISIBLE else View.GONE
         }
+    }
+
+    private fun initTimestamp() {
+        viewModule.loadDefaultTimestamp()
     }
 
     private fun clickBtn() {
