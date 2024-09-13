@@ -23,7 +23,7 @@ public class TestConcurrentReplaceAsyncTaskFragment extends Fragment implements 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.bt_asynctask, container, false);
+        View view = inflater.inflate(R.layout.bt_use_concurrent_replace_asynctask, container, false);
         progressBar = view.findViewById(R.id.progressbar);
         mResult = view.findViewById(R.id.result);
 

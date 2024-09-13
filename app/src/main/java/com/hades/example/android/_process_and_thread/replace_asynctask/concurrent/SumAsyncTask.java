@@ -3,7 +3,7 @@ package com.hades.example.android._process_and_thread.replace_asynctask.concurre
 import android.os.AsyncTask;
 import android.util.Log;
 
-public class SumAsyncTask extends AsyncTask<Integer, Integer, Long> {
+public class SumAsyncTask extends AsyncTaskExecutorService<Integer, Integer, Long> {
     private static final String TAG = SumAsyncTask.class.getSimpleName();
 
     private ISum mISum;
