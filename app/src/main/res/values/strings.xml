@@ -160,7 +160,7 @@
     <string name="page_threadPoolExecutor">ThreadPoolExecutor</string>
     <string name="page_AsyncTask">AsyncTask</string>
     <string name="page_use_Concurrent_to_replace_AsyncTask">Use Concurrent to Replace AsyncTask</string>
-    <string name="page_use_Coroutine_to_replace_AsyncTask">Use Coroutine to Replace AsyncTask (TBD)</string>
+    <string name="page_use_Coroutine_to_replace_AsyncTask">Use Coroutine to Replace AsyncTask</string>
     <string name="page_use_RxJava_to_replace_AsyncTask">Use RxJava to Replace AsyncTask (TBD)</string>
     <string name="page_use_Thread_to_replace_AsyncTask">Use Thread to Replace AsyncTask (TBD)</string>
 
