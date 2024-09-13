@@ -52,15 +52,13 @@ abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructo
     val isCancelled: Boolean
         get() = mCancelled.get() || !mainScope.isActive
 
-    //    public final AsyncTaskExecutorService<Params, Progress, Result> execute(Params... params) {
-    //        return executeOnExecutor(sDefaultExecutor, params);
-    //    }
+
     @MainThread
     suspend fun execute(vararg params: Params) {
         executeParam(*params)
     }
 
-    private fun <Params> executeParam(vararg params: Params?) {
+    private fun executeParam(vararg params: Params?) {
         mainScope.launch {
             if (!isCancelled) {
                 onPreExecute()
