@@ -1,4 +1,4 @@
-package com.hades.example.android._process_and_thread._asynctask;
+package com.hades.example.android._process_and_thread.replace_asynctask.coroutine;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
 
-public class TestAsyncTaskTestFragment extends Fragment implements ISum {
-    private static final String TAG = TestAsyncTaskTestFragment.class.getSimpleName();
+public class TestCoroutineReplaceAsyncTaskFragment extends Fragment implements ISum {
+    private static final String TAG = TestCoroutineReplaceAsyncTaskFragment.class.getSimpleName();
 
     ProgressBar progressBar;
     public TextView mResult;

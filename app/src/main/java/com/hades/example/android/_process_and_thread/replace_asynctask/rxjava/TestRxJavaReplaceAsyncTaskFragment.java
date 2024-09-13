@@ -1,4 +1,4 @@
-package com.hades.example.android._process_and_thread._asynctask;
+package com.hades.example.android._process_and_thread.replace_asynctask.rxjava;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,15 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
+import com.hades.example.android.base.BaseFragment;
 
-public class TestAsyncTaskTestFragment extends Fragment implements ISum {
-    private static final String TAG = TestAsyncTaskTestFragment.class.getSimpleName();
+public class TestRxJavaReplaceAsyncTaskFragment extends BaseFragment implements ISum {
+    private static final String TAG = TestRxJavaReplaceAsyncTaskFragment.class.getSimpleName();
 
     ProgressBar progressBar;
     public TextView mResult;
@@ -152,7 +151,7 @@ public class TestAsyncTaskTestFragment extends Fragment implements ISum {
 
     @Override
     public void onPreExecute(String msg) {
-        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+        showToast(msg);
         mResult.setText("");
         progressBar.setVisibility(View.VISIBLE);
         progressBar.setProgress(0);

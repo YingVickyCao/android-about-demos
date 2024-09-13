@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/topic"
         style="@style/topic"
-        android:text="@string/page_asynctask" />
+        android:text="@string/page_AsyncTask" />
 
     <ProgressBar
         android:id="@+id/progressbar"

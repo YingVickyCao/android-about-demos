@@ -1,7 +1,6 @@
 package com.hades.example.android._process_and_thread;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
@@ -9,11 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
 import com.hades.example.android._process_and_thread._asynctask.TestAsyncTaskTestFragment;
+import com.hades.example.android._process_and_thread.replace_asynctask.concurrent.TestConcurrentReplaceAsyncTaskFragment;
+import com.hades.example.android._process_and_thread.replace_asynctask.coroutine.TestCoroutineReplaceAsyncTaskFragment;
+import com.hades.example.android._process_and_thread.replace_asynctask.rxjava.TestRxJavaReplaceAsyncTaskFragment;
+import com.hades.example.android._process_and_thread.replace_asynctask.thread.TestThreadReplaceAsyncTaskFragment;
 import com.hades.example.android._process_and_thread.threadPoolExecutor.ThreadPoolExecutorFragment;
-import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.base.ViewsVisibilityHelper;
-import com.hades.example.android.po.security.SecurityActivity;
-import com.hades.example.android.po.security.ShowAppChooserFragment;
 import com.hades.example.android.tools.FragmentUtils;
 
 public class TestBackgroundTasksActivity extends AppCompatActivity {
@@ -26,7 +26,11 @@ public class TestBackgroundTasksActivity extends AppCompatActivity {
 
         findViewById(R.id.pageThreadPoolExecutor).setOnClickListener(v -> pageThreadPoolExecutor());
         findViewById(R.id.pageAsyncTask).setOnClickListener(v -> pageAsyncTask());
-        
+        findViewById(R.id.page_use_Concurrent_to_replace_AsyncTask).setOnClickListener(v -> page_use_Concurrent_to_replace_AsyncTask());
+        findViewById(R.id.page_use_Coroutine_to_replace_AsyncTask).setOnClickListener(v -> page_use_Coroutine_to_replace_AsyncTask());
+        findViewById(R.id.page_use_RxJava_to_replace_AsyncTask).setOnClickListener(v -> page_use_RxJava_to_replace_AsyncTask());
+        findViewById(R.id.page_use_Thread_to_replace_AsyncTask).setOnClickListener(v -> page_use_Thread_to_replace_AsyncTask());
+
         setPageSwitch();
     }
 
@@ -38,6 +42,26 @@ public class TestBackgroundTasksActivity extends AppCompatActivity {
     private void pageAsyncTask() {
         visibilityHelper.hideBtns();
         FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestAsyncTaskTestFragment());
+    }
+
+    private void page_use_Concurrent_to_replace_AsyncTask() {
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestConcurrentReplaceAsyncTaskFragment());
+    }
+
+    private void page_use_Coroutine_to_replace_AsyncTask() {
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestCoroutineReplaceAsyncTaskFragment());
+    }
+
+    private void page_use_RxJava_to_replace_AsyncTask() {
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestRxJavaReplaceAsyncTaskFragment());
+    }
+
+    private void page_use_Thread_to_replace_AsyncTask() {
+        visibilityHelper.hideBtns();
+        FragmentUtils.replaceFragment(this, R.id.fragmentRoot, new TestThreadReplaceAsyncTaskFragment());
     }
 
     private void setPageSwitch() {

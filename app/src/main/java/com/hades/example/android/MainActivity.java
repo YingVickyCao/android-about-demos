@@ -35,6 +35,8 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.pageOtherUI).setOnClickListener(v -> pageOtherUI());
         findViewById(R.id.page_Feature).setOnClickListener(v -> page_Feature());
         findViewById(R.id.pageQAAboutView).setOnClickListener(v -> pageQAAboutView());
+
+        page_background_tasks();
     }
 
     private void pageSecurity() {

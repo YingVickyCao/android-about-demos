@@ -29,7 +29,27 @@
             <Button
                 android:id="@+id/pageAsyncTask"
                 style="@style/btn"
-                android:text="@string/page_asynctask" />
+                android:text="@string/page_AsyncTask" />
+
+            <Button
+                android:id="@+id/page_use_Concurrent_to_replace_AsyncTask"
+                style="@style/btn"
+                android:text="@string/page_use_Concurrent_to_replace_AsyncTask" />
+
+            <Button
+                android:id="@+id/page_use_Coroutine_to_replace_AsyncTask"
+                style="@style/btn"
+                android:text="@string/page_use_Coroutine_to_replace_AsyncTask" />
+
+            <Button
+                android:id="@+id/page_use_RxJava_to_replace_AsyncTask"
+                style="@style/btn"
+                android:text="@string/page_use_RxJava_to_replace_AsyncTask" />
+
+            <Button
+                android:id="@+id/page_use_Thread_to_replace_AsyncTask"
+                style="@style/btn"
+                android:text="@string/page_use_Thread_to_replace_AsyncTask" />
         </LinearLayout>
     </ScrollView>
 
