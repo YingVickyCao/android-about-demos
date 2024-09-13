@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/topic"
         style="@style/topic"
-        android:text="@string/page_AsyncTask" />
+        android:text="@string/page_use_Concurrent_to_replace_AsyncTask" />
 
     <ProgressBar
         android:id="@+id/progressbar"
@@ -22,7 +22,8 @@
     <TextView
         android:id="@+id/result"
         style="@style/tv"
-        android:layout_below="@+id/progressbar" />
+        android:layout_below="@+id/progressbar"
+        android:layout_centerInParent="true" />
 
     <Button
         android:id="@+id/sum"

@@ -1,4 +1,4 @@
-package com.hades.example.android._process_and_thread._asynctask;
+package com.hades.example.android._process_and_thread.replace_asynctask.concurrent;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment;
 
 import com.hades.example.android.R;
 
-public class TestAsyncTaskTestFragment extends Fragment implements ISum {
-    private static final String TAG = TestAsyncTaskTestFragment.class.getSimpleName();
+public class TestConcurrentReplaceAsyncTaskFragment extends Fragment implements ISum {
+    private static final String TAG = TestConcurrentReplaceAsyncTaskFragment.class.getSimpleName();
 
     ProgressBar progressBar;
     public TextView mResult;
@@ -23,7 +23,7 @@ public class TestAsyncTaskTestFragment extends Fragment implements ISum {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.bt_asynctask, container, false);
+        View view = inflater.inflate(R.layout.bt_use_concurrent_replace_asynctask, container, false);
         progressBar = view.findViewById(R.id.progressbar);
         mResult = view.findViewById(R.id.result);
 
@@ -161,6 +161,16 @@ public class TestAsyncTaskTestFragment extends Fragment implements ISum {
     @Override
     public void setProgress(int progress) {
         progressBar.setProgress(progress);
+    }
+
+    @Override
+    public void onCancelled() {
+        Toast.makeText(getActivity(), "onCancelled", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onCancelled(Long result) {
+        Toast.makeText(getActivity(), "onCancelled:" + result, Toast.LENGTH_SHORT).show();
     }
 
     @Override
