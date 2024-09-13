@@ -20,6 +20,10 @@ public class FragmentUtils {
         activity.getSupportFragmentManager().beginTransaction().replace(containerViewId, fragment, tag).commit();
     }
 
+    public static void replaceFragment(FragmentActivity activity, @IdRes int containerViewId, @NonNull Fragment fragment) {
+        activity.getSupportFragmentManager().beginTransaction().replace(containerViewId, fragment, fragment.getClass().getSimpleName()).commit();
+    }
+
     public static void replaceFragment(FragmentActivity activity, String backStackName, @IdRes int containerViewId, @NonNull Fragment fragment, @Nullable String tag) {
         activity.getSupportFragmentManager().beginTransaction().addToBackStack(backStackName).replace(containerViewId, fragment, tag).commit();
     }

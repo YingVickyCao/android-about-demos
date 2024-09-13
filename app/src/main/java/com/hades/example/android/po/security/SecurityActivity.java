@@ -20,6 +20,11 @@ public class SecurityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security);
         findViewById(R.id.pageAppChooser).setOnClickListener(v -> pageAppChooser());
+
+        setPageSwitch();
+    }
+
+    private void setPageSwitch() {
         if (null == visibilityHelper) {
             visibilityHelper = new ViewsVisibilityHelper(findViewById(R.id.topic), findViewById(R.id.scrollView), findViewById(R.id.fragmentRoot));
         }
