@@ -164,6 +164,16 @@ public class TestConcurrentReplaceAsyncTaskFragment extends Fragment implements 
     }
 
     @Override
+    public void onCancelled() {
+        Toast.makeText(getActivity(), "onCancelled", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onCancelled(Long result) {
+        Toast.makeText(getActivity(), "onCancelled:" + result, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void setResult(long result) {
         mResult.setText(String.valueOf(result));
         progressBar.setVisibility(View.GONE);

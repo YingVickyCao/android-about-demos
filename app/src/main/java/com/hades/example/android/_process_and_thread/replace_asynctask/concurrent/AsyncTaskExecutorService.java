@@ -1,19 +1,20 @@
 package com.hades.example.android._process_and_thread.replace_asynctask.concurrent;
 
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.WorkerThread;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class AsyncTaskExecutorService<Params, Progress, Result> {
+    private static final String TAG = "AsyncTaskExecutorService";
+
     // ExecutorService / Executor : ok
     private ExecutorService executor;
     private Handler handler;
@@ -21,11 +22,13 @@ public abstract class AsyncTaskExecutorService<Params, Progress, Result> {
 
 
     protected AsyncTaskExecutorService() {
-        executor = Executors.newSingleThreadExecutor(r -> {
-            Thread thread = new Thread(r);
-            thread.setDaemon(true); //
-            return thread;
-        });
+//        executor = Executors.newSingleThreadExecutor(r -> {
+//            Thread thread = new Thread(r);
+//            thread.setDaemon(true); //
+//            return thread;
+//        });
+
+        executor = Executors.newSingleThreadExecutor();
     }
 
     public ExecutorService getExecutor() {
@@ -71,23 +74,23 @@ public abstract class AsyncTaskExecutorService<Params, Progress, Result> {
 
     @MainThread
     protected void onCancelled(Result result) {
-
+        onCancelled();
     }
 
     @MainThread
     protected void onCancelled() {
     }
 
-
     public final boolean isCancelled() {
         return mCancelled.get() || null == executor || executor.isTerminated() || executor.isShutdown();
     }
 
-    @MainThread
-//    public final AsyncTaskExecutorService<Params, Progress, Result> execute(Params... params) {
+    //    public final AsyncTaskExecutorService<Params, Progress, Result> execute(Params... params) {
 //        return executeOnExecutor(sDefaultExecutor, params);
 //    }
 
+    @SafeVarargs
+    @MainThread
     public final void execute(Params... params) {
         getHandler().post(() -> {
             if (!isCancelled()) {
@@ -95,9 +98,14 @@ public abstract class AsyncTaskExecutorService<Params, Progress, Result> {
             }
             executor.execute(() -> {
                 Result result = doInBackground(params);
-                if (!isCancelled()) {
-                    getHandler().post(() -> onPostExecute(result));
+                if (isCancelled()) {
+                    getHandler().post(() -> onCancelled(result));
+                } else {
+                    if (!isCancelled()) {
+                        getHandler().post(() -> onPostExecute(result));
+                    }
                 }
+
             });
         });
     }
@@ -107,6 +115,14 @@ public abstract class AsyncTaskExecutorService<Params, Progress, Result> {
 //        sDefaultExecutor.execute(runnable);
 //    }
 
+    @MainThread
+    public void execute(Runnable runnable) {
+        if (null != executor) {
+            executor.execute(runnable);
+        }
+    }
+
+
 //    @MainThread
 //    public static void execute() {
 //        execute(null);
@@ -114,26 +130,21 @@ public abstract class AsyncTaskExecutorService<Params, Progress, Result> {
 
     @MainThread
     public void execute() {
-        execute(null);
+        execute((Params) null);
     }
 
 //    @MainThread
 //    public final AsyncTaskExecutorService<Params, Progress, Result> executeOnExecutor(Executor exec, Params... params) {
-//
+//        return this;
 //    }
 
+    @SafeVarargs
     @WorkerThread
     protected final void publishProgress(@NonNull Progress... values) {
+        Log.d(TAG, "publishProgress: " + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
         if (isCancelled()) {
             return;
         }
         getHandler().post(() -> onProgressUpdate(values));
-    }
-
-    public void shutDown() {
-        if (executor != null) {
-            mCancelled.set(true);
-            executor.shutdown();
-        }
     }
 }

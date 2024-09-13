@@ -66,11 +66,17 @@ public class SumAsyncTask extends AsyncTaskExecutorService<Integer, Integer, Lon
     protected void onCancelled() {// UI Thread
         super.onCancelled();
         Log.d(TAG, "onCancelled: thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
+        if (null != mISum) {
+            mISum.onCancelled();
+        }
     }
 
     @Override
-    protected void onCancelled(Long aLong) {// UI Thread
-        super.onCancelled(aLong);
-        Log.d(TAG, "onCancelled: aLong=" + aLong + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
+    protected void onCancelled(Long result) {// UI Thread
+        super.onCancelled(result);
+        Log.d(TAG, "onCancelled: result=" + result + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
+        if (null != mISum) {
+            mISum.onCancelled(result);
+        }
     }
 }

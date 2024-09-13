@@ -6,4 +6,8 @@ public interface ISum {
     void setProgress(int progress);
 
     void setResult(long result);
+
+    void onCancelled();
+
+    void onCancelled(Long result);
 }
