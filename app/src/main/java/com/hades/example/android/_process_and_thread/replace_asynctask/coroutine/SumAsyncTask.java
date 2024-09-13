@@ -1,9 +1,8 @@
 package com.hades.example.android._process_and_thread.replace_asynctask.coroutine;
 
-import android.os.AsyncTask;
 import android.util.Log;
 
-public class SumAsyncTask extends AsyncTask<Integer, Integer, Long> {
+public class SumAsyncTask extends CoroutineAsyncTask<Integer, Integer, Long> {
     private static final String TAG = SumAsyncTask.class.getSimpleName();
 
     private ISum mISum;
@@ -66,11 +65,17 @@ public class SumAsyncTask extends AsyncTask<Integer, Integer, Long> {
     protected void onCancelled() {// UI Thread
         super.onCancelled();
         Log.d(TAG, "onCancelled: thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
+        if (null != mISum) {
+            mISum.onCancelled();
+        }
     }
 
     @Override
-    protected void onCancelled(Long aLong) {// UI Thread
-        super.onCancelled(aLong);
-        Log.d(TAG, "onCancelled: aLong=" + aLong + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
+    protected void onCancelled(Long result) {// UI Thread
+        super.onCancelled(result);
+        Log.d(TAG, "onCancelled: result=" + result + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
+        if (null != mISum) {
+            mISum.onCancelled(result);
+        }
     }
 }

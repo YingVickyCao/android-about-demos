@@ -168,4 +168,14 @@ public class TestCoroutineReplaceAsyncTaskFragment extends Fragment implements I
         mResult.setText(String.valueOf(result));
         progressBar.setVisibility(View.GONE);
     }
+
+    @Override
+    public void onCancelled() {
+        Toast.makeText(getActivity(), "onCancelled", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onCancelled(Long result) {
+        Toast.makeText(getActivity(), "onCancelled:" + result, Toast.LENGTH_SHORT).show();
+    }
 }
