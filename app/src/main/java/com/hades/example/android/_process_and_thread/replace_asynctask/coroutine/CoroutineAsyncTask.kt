@@ -1,33 +1,18 @@
 package com.hades.example.android._process_and_thread.replace_asynctask.coroutine
 
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 import java.util.concurrent.atomic.AtomicBoolean
 
 abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructor() {
-    // ExecutorService / Executor : ok
-    //        executor = Executors.newSingleThreadExecutor(r -> {
-//            Thread thread = new Thread(r);
-//            thread.setDaemon(true); //
-//            return thread;
-//        });
-    val executor: ExecutorService? = Executors.newSingleThreadExecutor()
-    var handler: Handler? = null
-        get() {
-            if (null == field) {
-                synchronized(CoroutineAsyncTask::class.java) {
-                    field = Handler(Looper.getMainLooper())
-                }
-            }
-            return field
-        }
-        private set
     private val mCancelled = AtomicBoolean()
+    private val mainScope = CoroutineScope(Dispatchers.Main)
 
     @MainThread
     protected open fun onPreExecute() {
@@ -48,10 +33,8 @@ abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructo
     fun cancel(mayInterruptIfRunning: Boolean): Boolean {
         mCancelled.set(true)
         if (mayInterruptIfRunning) {
-            if (null != executor) {
-                if (!executor.isShutdown && !executor.isTerminated) {
-                    executor.shutdown()
-                }
+            if (!mainScope.isActive) {
+                mainScope.cancel()
             }
         }
         return mCancelled.get()
@@ -67,28 +50,36 @@ abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructo
     }
 
     val isCancelled: Boolean
-        get() = mCancelled.get() || null == executor || executor.isTerminated || executor.isShutdown
+        get() = mCancelled.get() || !mainScope.isActive
 
     //    public final AsyncTaskExecutorService<Params, Progress, Result> execute(Params... params) {
     //        return executeOnExecutor(sDefaultExecutor, params);
     //    }
-    @SafeVarargs
     @MainThread
-    fun execute(vararg params: Params) {
-        handler!!.post {
+    suspend fun execute(vararg params: Params) {
+        executeParam(*params)
+    }
+
+    private fun <Params> executeParam(vararg params: Params?) {
+        mainScope.launch {
             if (!isCancelled) {
                 onPreExecute()
             }
-            executor!!.execute {
+            launch(Dispatchers.IO) {
                 val result = doInBackground(*params)
                 if (isCancelled) {
-                    handler!!.post { onCancelled(result) }
+                    launch(Dispatchers.Main) {
+                        onCancelled(result)
+                    }
                 } else {
                     if (!isCancelled) {
-                        handler!!.post { onPostExecute(result) }
+                        launch(Dispatchers.Main) {
+                            onPostExecute(result)
+                        }
                     }
                 }
             }
+
         }
     }
 
@@ -96,33 +87,14 @@ abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructo
     //    public static void execute(Runnable runnable) {
     //        sDefaultExecutor.execute(runnable);
     //    }
-    @MainThread
-    fun execute(runnable: Runnable?) {
-        executor?.execute(runnable)
-    }
-
 
     //    @MainThread
     //    public static void execute() {
     //        execute(null);
     //    }
     @MainThread
-    fun execute() {
-        handler!!.post {
-            if (!isCancelled) {
-                onPreExecute()
-            }
-            executor!!.execute {
-                val result = doInBackground(null)
-                if (isCancelled) {
-                    handler!!.post { onCancelled(result) }
-                } else {
-                    if (!isCancelled) {
-                        handler!!.post { onPostExecute(result) }
-                    }
-                }
-            }
-        }
+    suspend fun execute() {
+        executeParam(null)
     }
 
     //    @MainThread
@@ -136,7 +108,9 @@ abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructo
         if (isCancelled) {
             return
         }
-        handler!!.post { onProgressUpdate(*values) }
+        mainScope.launch {
+            onProgressUpdate(*values)
+        }
     }
 
     companion object {
