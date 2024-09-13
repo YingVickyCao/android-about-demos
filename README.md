@@ -27,16 +27,32 @@ implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
 ```
 
 Ref -
-https://developer.android.google.cn/jetpack/androidx/releases/lifecycle#declaring_dependencies
+https://developer.android.google.cn/jetpack/androidx/releases/lifecycle#declaring_dependencies  
 https://developer.android.google.cn/topic/libraries/architecture/lifecycle
 
 ## Module - [view-module](./lib-examples/view-module)
 
 Test ViewModel
+
 ```
  implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 ```
 
 Ref -
-https://developer.android.google.cn/jetpack/androidx/releases/lifecycle#declaring_dependencies  
-https://developer.android.google.cn/topic/libraries/architecture/viewmodel 
+https://developer.android.google.cn/jetpack/androidx/releases/lifecycle#declaring_dependencies    
+https://developer.android.google.cn/topic/libraries/architecture/viewmodel  
+https://www.geeksforgeeks.org/viewmodel-in-android-architecture-components/
+
+## Module - [live-data](./lib-examples/live-data)
+
+Test LiveData + ViewModel + Repository
+
+```
+ implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+```
+
+Ref -
+https://developer.android.google.cn/jetpack/androidx/releases/lifecycle#declaring_dependencies    
+https://developer.android.google.cn/topic/libraries/architecture/livedata
+https://www.geeksforgeeks.org/livedata-in-android-architecture-components
+https://developersdome.com/android-viewmodel-and-viewmodel-factory-with-example/

@@ -59,3 +59,6 @@ project(':lifecycles-only').projectDir = new File('lib-examples/lifecycles-only'
 
 include ':view-module'
 project(':view-module').projectDir = new File('lib-examples/view-module')
+
+include ':live-data'
+project(':live-data').projectDir = new File('lib-examples/live-data')
