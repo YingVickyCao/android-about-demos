@@ -83,3 +83,5 @@ doc/.DS_Store
 
 # Keystore files
 #*.jks
+lib-examples/live-data/src/main/java/com/example/android/v1/CounterViewModule.kt
+lib-examples/live-data/src/main/java/com/example/android/v1/CounterViewModule.kt

@@ -53,3 +53,4 @@ Ref -
 https://developer.android.google.cn/jetpack/androidx/releases/lifecycle#declaring_dependencies    
 https://developer.android.google.cn/topic/libraries/architecture/livedata
 https://www.geeksforgeeks.org/livedata-in-android-architecture-components
+https://developersdome.com/android-viewmodel-and-viewmodel-factory-with-example/
