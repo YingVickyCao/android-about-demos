@@ -9,7 +9,6 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import java.util.concurrent.atomic.AtomicBoolean
-import kotlin.jvm.internal.Intrinsics.Kotlin
 
 abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructor() {
     private val mCancelled = AtomicBoolean()
