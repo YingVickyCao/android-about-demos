@@ -1,9 +1,11 @@
 package com.hades.example.android;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.hades.example.android._feature.FeatureActivity;
+import com.hades.example.android._process_and_thread.TestBackgroundTasksActivity;
 import com.hades.example.android.app_component._activity._children.TestPreferenceActivity;
 import com.hades.example.android.app_component.broadcast.normal.TestNormalBroadcastActivity;
 import com.hades.example.android.app_component.broadcast.ordered.TestOrderedBroadcastActivity;
@@ -25,6 +27,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.pageSecurity).setOnClickListener(v -> pageSecurity());
+        findViewById(R.id.page_background_tasks).setOnClickListener(v -> page_background_tasks());
         findViewById(R.id.pageWidget).setOnClickListener(v -> pageWidget());
         findViewById(R.id.pageDateStorage).setOnClickListener(v -> pageDateStorage());
         findViewById(R.id.pageResource).setOnClickListener(v -> pageResource());
@@ -36,6 +39,10 @@ public class MainActivity extends BaseActivity {
 
     private void pageSecurity() {
         showActivity(SecurityActivity.class);
+    }
+
+    private void page_background_tasks() {
+        startActivity(new Intent(this, TestBackgroundTasksActivity.class));
     }
 
     private void pageWidget() {
@@ -57,6 +64,7 @@ public class MainActivity extends BaseActivity {
     private void pageOtherUI() {
         showActivity(OtherUIActivity.class);
     }
+
     private void page_Feature() {
         showActivity(FeatureActivity.class);
     }

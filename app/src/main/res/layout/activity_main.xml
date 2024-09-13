@@ -27,6 +27,11 @@
                 android:text="@string/page_security" />
 
             <Button
+                android:id="@+id/page_background_tasks"
+                style="@style/btn"
+                android:text="@string/page_background_tasks" />
+
+            <Button
                 android:id="@+id/pageWidget"
                 style="@style/btn"
                 android:text="Widget" />
