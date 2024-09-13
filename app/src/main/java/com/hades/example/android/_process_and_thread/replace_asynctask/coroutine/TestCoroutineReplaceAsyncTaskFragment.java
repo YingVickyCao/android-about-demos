@@ -23,7 +23,7 @@ public class TestCoroutineReplaceAsyncTaskFragment extends Fragment implements I
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.bt_asynctask, container, false);
+        View view = inflater.inflate(R.layout.bt_use_coroutine_replace_asynctask, container, false);
         progressBar = view.findViewById(R.id.progressbar);
         mResult = view.findViewById(R.id.result);
 
@@ -41,7 +41,7 @@ public class TestCoroutineReplaceAsyncTaskFragment extends Fragment implements I
         mSumAsyncTask = new SumAsyncTask();
         mSumAsyncTask.setISum(this);
         // 串行
-        mSumAsyncTask.execute(10);
+        mSumAsyncTask.execute(new Integer[]{10});
         /*
             D/SumAsyncTask: doInBackground,SumAsyncTask@105483046,progress=10,thread id=3223,thread name=AsyncTask #1,result=0
             D/SumAsyncTask: doInBackground,SumAsyncTask@105483046,progress=20,thread id=3223,thread name=AsyncTask #1,result=1
@@ -167,5 +167,15 @@ public class TestCoroutineReplaceAsyncTaskFragment extends Fragment implements I
     public void setResult(long result) {
         mResult.setText(String.valueOf(result));
         progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onCancelled() {
+        Toast.makeText(getActivity(), "onCancelled", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onCancelled(Long result) {
+        Toast.makeText(getActivity(), "onCancelled:" + result, Toast.LENGTH_SHORT).show();
     }
 }
