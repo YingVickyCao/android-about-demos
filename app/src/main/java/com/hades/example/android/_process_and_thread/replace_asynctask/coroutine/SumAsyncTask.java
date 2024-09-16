@@ -23,6 +23,7 @@ public class SumAsyncTask extends CoroutineAsyncTask<Integer, Integer, Long> {
 
     @Override
     protected void onPreExecute() {// UI Thread
+        super.onPreExecute();
         if (null != mISum) {
             mISum.onPreExecute("Start work");
         }
@@ -31,6 +32,7 @@ public class SumAsyncTask extends CoroutineAsyncTask<Integer, Integer, Long> {
 
     @Override
     protected Long doInBackground(Integer... params) {//work thread
+        Log.e(TAG, "doInBackground: ");
         int max = params[0];
         long result = 0;
         for (int i = 1; i <= max; i++) {
@@ -58,6 +60,7 @@ public class SumAsyncTask extends CoroutineAsyncTask<Integer, Integer, Long> {
 
     @Override
     protected void onProgressUpdate(Integer... values) {// UI Thread
+        Log.e(TAG, "onProgressUpdate: ");
         if (null != mISum) {
             mISum.setProgress(values[0]);
         }
@@ -66,6 +69,7 @@ public class SumAsyncTask extends CoroutineAsyncTask<Integer, Integer, Long> {
 
     @Override
     protected void onPostExecute(Long result) {// UI Thread
+        super.onPostExecute(result);
         if (null != mISum) {
             mISum.setResult(result);
         }

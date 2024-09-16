@@ -41,7 +41,7 @@ public class TestCoroutineReplaceAsyncTaskFragment extends Fragment implements I
         mSumAsyncTask = new SumAsyncTask();
         mSumAsyncTask.setISum(this);
         // 串行
-        mSumAsyncTask.execute(new Integer[]{50});
+        mSumAsyncTask.execute(new Integer[]{10});
         /*
             D/SumAsyncTask: doInBackground,SumAsyncTask@105483046,progress=10,thread id=3223,thread name=AsyncTask #1,result=0
             D/SumAsyncTask: doInBackground,SumAsyncTask@105483046,progress=20,thread id=3223,thread name=AsyncTask #1,result=1
