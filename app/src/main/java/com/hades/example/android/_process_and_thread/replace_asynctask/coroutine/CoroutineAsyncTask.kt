@@ -16,7 +16,7 @@ private const val TAG = "CoroutineAsyncTask"
 
 abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructor() {
     private val mCancelled = AtomicBoolean()
-    private val mainScope = CoroutineScope(Dispatchers.Main)
+    private var mainScope: CoroutineScope? = null
     private var ioJob: Job? = null
     private var mainLunchJob1: Job? = null
     private var mainLunchJob2: Job? = null
@@ -43,30 +43,44 @@ abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructo
         Log.e(TAG, "onProgressUpdate: ")
     }
 
-    fun cancel(mayInterruptIfRunning: Boolean): Boolean {
-        mCancelled.set(true)
-        Log.e(TAG, "cancel[1]:mainScope,isActive=" + mainScope.isActive)
-        Log.e(TAG, "cancel[1]:ioJob,isActive=" + mainScope.isActive)
-        Log.e(TAG, "cancel[1]:mainLunchJob1,isActive=" + mainScope.isActive)
-        Log.e(TAG, "cancel[1]:mainLunchJob1,isActive=" + mainScope.isActive)
-        Log.e(TAG, "cancel[1]:mainLunchJob2,isActive=" + mainScope.isActive)
-        Log.e(TAG, "cancel[1]:mainLunchJob3,isActive=" + mainScope.isActive)
-        Log.e(TAG, "cancel[1]:mainLunchJob4,isActive=" + mainScope.isActive)
-        Log.e(TAG, "cancel[1]:mainLunchJob5,isActive=" + mainScope.isActive)
-        if (mayInterruptIfRunning) {
-            if (mainScope.isActive) {
-                Log.e(TAG, "cancel: ")
-                mainScope.cancel()
-            }
+
+    private fun cancel(mayInterruptIfRunning: Boolean, cancelByClient: Boolean): Boolean {
+        if (mCancelled.get()) {
+            Log.e(TAG, "cancel: [0]" + mCancelled.get())
+            return mCancelled.get()
         }
-        Log.e(TAG, "cancel[2]:mainScope,isActive=" + mainScope.isActive)
-        Log.e(TAG, "cancel[2]:ioJob,isActive=" + mainScope.isActive)
-        Log.e(TAG, "cancel[2]:mainLunchJob1,isActive=" + mainScope.isActive)
-        Log.e(TAG, "cancel[2]:mainLunchJob1,isActive=" + mainScope.isActive)
-        Log.e(TAG, "cancel[2]:mainLunchJob2,isActive=" + mainScope.isActive)
-        Log.e(TAG, "cancel[2]:mainLunchJob3,isActive=" + mainScope.isActive)
-        Log.e(TAG, "cancel[2]:mainLunchJob4,isActive=" + mainScope.isActive)
-        Log.e(TAG, "cancel[2]:mainLunchJob5,isActive=" + mainScope.isActive)
+        mCancelled.set(true)
+        if (cancelByClient) {
+            mainScope?.launch {
+                interrupt(mayInterruptIfRunning)
+                onCancelled()
+                Log.e(TAG, "cancel: [1]" + mCancelled.get())
+                return@launch
+            }
+            Log.e(TAG, "cancel: [2]" + mCancelled.get())
+            return mCancelled.get()
+        } else {
+            interrupt(mayInterruptIfRunning)
+            Log.e(TAG, "cancel: [3]" + mCancelled.get())
+            return mCancelled.get()
+        }
+    }
+
+    private fun interrupt(mayInterruptIfRunning: Boolean) {
+        if (mayInterruptIfRunning) {
+            mainScope?.let {
+                if (it.isActive) {
+                    Log.e(TAG, "cancel: mainScope is cancelled ")
+                    it.cancel()
+                }
+            }
+            mainScope = null
+        }
+    }
+
+    fun cancel(mayInterruptIfRunning: Boolean): Boolean {
+        Log.e(TAG, "cancel: ")
+        cancel(mayInterruptIfRunning, true)
         return mCancelled.get()
     }
 
@@ -87,7 +101,7 @@ abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructo
     }
 
     val isCancelled: Boolean
-        get() = mCancelled.get() || !mainScope.isActive
+        get() = mCancelled.get() || (null != mainScope && !(mainScope?.isActive)!!)
 
 
     @MainThread
@@ -97,7 +111,11 @@ abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructo
 
     private fun executeParam(vararg params: Params?) {
         Log.e(TAG, "executeParam: ")
-        mainLunchJob5 = mainScope.launch {
+        if (mainScope == null) {
+            mainScope = CoroutineScope(Dispatchers.Main)
+        }
+
+        mainLunchJob5 = mainScope?.launch {
             if (!isCancelled) {
                 onPreExecute()
             }
@@ -116,14 +134,14 @@ abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructo
                             mainLunchJob2 = launch(Dispatchers.Main) {
                                 Log.e(TAG, "executeParam: invoke onPostExecute")
                                 onPostExecute(result)
-                                cancel(true)
+                                cancel(true, false)
                             }
                         }
                     }
                 } catch (ex: Exception) {
                     mainLunchJob3 = launch(Dispatchers.Main) {
                         onError(ex)
-                        cancel(true)
+                        cancel(true, false)
                     }
                 }
             }
@@ -151,11 +169,11 @@ abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructo
     @SafeVarargs
     @WorkerThread
     protected fun publishProgress(vararg values: Progress) {
-        Log.e(TAG, "publishProgress: " + ",thread id=" + Thread.currentThread().id + ",thread name=" + Thread.currentThread().name)
         if (isCancelled) {
             return
         }
-        mainLunchJob4 = mainScope.launch {
+        Log.e(TAG, "publishProgress: " + ",thread id=" + Thread.currentThread().id + ",thread name=" + Thread.currentThread().name)
+        mainLunchJob4 = mainScope?.launch {
             onProgressUpdate(*values)
         }
     }
