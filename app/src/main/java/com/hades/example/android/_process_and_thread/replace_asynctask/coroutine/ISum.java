@@ -10,4 +10,6 @@ public interface ISum {
     void onCancelled();
 
     void onCancelled(Long result);
+
+    void onError(Exception exception);
 }

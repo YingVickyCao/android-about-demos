@@ -10,6 +10,8 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import java.util.concurrent.atomic.AtomicBoolean
 
+private const val TAG = "CoroutineAsyncTask"
+
 abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructor() {
     private val mCancelled = AtomicBoolean()
     private val mainScope = CoroutineScope(Dispatchers.Main)
@@ -42,11 +44,16 @@ abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructo
 
     @MainThread
     protected open fun onCancelled(result: Result) {
+        Log.d(TAG, "onCancelled: ")
         onCancelled()
     }
 
     @MainThread
     protected open fun onCancelled() {
+    }
+
+    @MainThread
+    protected open fun onError(exception: Exception) {
     }
 
     val isCancelled: Boolean
@@ -64,16 +71,23 @@ abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructo
                 onPreExecute()
             }
             launch(Dispatchers.IO) {
-                val result = doInBackground(*params)
-                if (isCancelled) {
-                    launch(Dispatchers.Main) {
-                        onCancelled(result)
-                    }
-                } else {
-                    if (!isCancelled) {
+                try {
+                    val result = doInBackground(*params)
+                    if (isCancelled) {
                         launch(Dispatchers.Main) {
-                            onPostExecute(result)
+                            onCancelled(result)
                         }
+                    } else {
+                        if (!isCancelled) {
+                            launch(Dispatchers.Main) {
+                                onPostExecute(result)
+                            }
+                        }
+                    }
+                } catch (ex: Exception) {
+                    launch(Dispatchers.Main) {
+                        onError(ex)
+                        cancel(true)
                     }
                 }
             }
@@ -109,9 +123,5 @@ abstract class CoroutineAsyncTask<Params, Progress, Result> protected constructo
         mainScope.launch {
             onProgressUpdate(*values)
         }
-    }
-
-    companion object {
-        private const val TAG = "AsyncTaskExecutorService"
     }
 }

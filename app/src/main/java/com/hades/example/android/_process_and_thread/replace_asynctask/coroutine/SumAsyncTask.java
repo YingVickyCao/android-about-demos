@@ -2,6 +2,8 @@ package com.hades.example.android._process_and_thread.replace_asynctask.coroutin
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 public class SumAsyncTask extends CoroutineAsyncTask<Integer, Integer, Long> {
     private static final String TAG = SumAsyncTask.class.getSimpleName();
 
@@ -35,6 +37,10 @@ public class SumAsyncTask extends CoroutineAsyncTask<Integer, Integer, Long> {
             if (isCancelled()) {
                 Log.d(TAG, "doInBackground: isCancelled");
                 return result;
+            }
+
+            if (i == 5) {
+                int test = i / 0; // Test exception
             }
 
             try {
@@ -81,6 +87,15 @@ public class SumAsyncTask extends CoroutineAsyncTask<Integer, Integer, Long> {
         Log.d(TAG, "onCancelled: result=" + result + ",thread id=" + Thread.currentThread().getId() + ",thread name=" + Thread.currentThread().getName());
         if (null != mISum) {
             mISum.onCancelled(result);
+        }
+    }
+
+    @Override
+    protected void onError(@NonNull Exception exception) {
+        super.onError(exception);
+        Log.d(TAG, "onError: ");
+        if (null != mISum) {
+            mISum.onError(exception);
         }
     }
 }
