@@ -33,7 +33,17 @@ class MainViewModel : ViewModel() {
                 // set the counter is finished to enable the start button
                 isFinished.value = true
             }
-
         }.start()
+
+//        for (i in 1..5) {
+//            Thread(Runnable {
+//                Thread.sleep(1000)
+//                // set second value
+//                seconds.value = i // java.lang.IllegalStateException: Cannot invoke setValue on a background thread
+//            }).start()
+//        }
+        // set the counter is finished to enable the start button
+        isFinished.value = true
+
     }
 }
