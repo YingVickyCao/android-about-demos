@@ -28,6 +28,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeout
+import kotlinx.coroutines.withTimeoutOrNull
 import java.io.FileInputStream
 
 // https://github.com/Kotlin/kotlinx.coroutines/blob/master/ui/coroutines-guide-ui.md
@@ -447,31 +448,61 @@ class Example1Activity : AppCompatActivity() {
 //    }
 
     // Suspending functions - Flows, computed asynchronously
+//    private fun test(hello: TextView, fab: Button) {
+//        fun simple(): Flow<Int> = flow {
+//            Log.e(TAG, "test: flow")
+//            for (i in 1..3) {
+//                delay(1_000)
+//                Log.e(TAG, "test: flow emit $i")
+//                emit(i) // sended
+//            }
+//        }
+//
+//        CoroutineScope(Dispatchers.IO).launch {
+//            Log.e(TAG, "test: [0]")
+//            // the code in flow is not run until the flow is collected
+//            val streams: Flow<Int> = simple()
+//            Log.e(TAG, "test: [2]")
+//            streams.collect { // receive
+//                launch(Dispatchers.Main) {
+//                    Log.e(TAG, "test: collected $it")
+//                    hello.text = "$it"
+//                    Log.e(TAG, "test:$it ")
+//                }
+//            }
+//        }
+//    }
+
+
+    // Suspending functions - Flows, cancel
+    // https://kotlinlang.org/docs/flow.html#flow-cancellation-basics
+//    private fun test(hello: TextView, fab: Button) {
+//        fun simple(): Flow<Int> = flow {
+//            for (i in 1..3) {
+//                emit(i)
+//                delay(1_000)
+//            }
+//        }
+//        CoroutineScope(Dispatchers.IO).launch {
+//            Log.e(TAG, "test: [0]]")
+//            withTimeoutOrNull(1_000) { // timeout after 1 second
+//                Log.e(TAG, "test: starting")
+//                val flow: Flow<Int> = simple()
+//                flow.collect {
+//                    launch(Dispatchers.Main) {
+//                        Log.e(TAG, "test: collected $it")
+//                        hello.text = "$it"
+//                    }
+//                }
+//            }
+//            Log.e(TAG, "test: done")
+//        }
+//    }
+
+    // Suspending functions - flowOf
     private fun test(hello: TextView, fab: Button) {
-        fun simple(): Flow<Int> = flow {
-            Log.e(TAG, "test: flow")
-            for (i in 1..3) {
-                delay(1_000)
-                Log.e(TAG, "test: flow emit $i")
-                emit(i) // sended
-            }
-        }
 
-        CoroutineScope(Dispatchers.IO).launch {
-            Log.e(TAG, "test: [0]")
-            val streams: Flow<Int> = simple()
-            Log.e(TAG, "test: [2]")
-            streams.collect { // receive
-                launch(Dispatchers.Main) {
-                    Log.e(TAG, "test: collected $it")
-                    hello.text = "$it"
-                    Log.e(TAG, "test:$it ")
-                }
-            }
-        }
     }
-
-    // the code in flow is not run until the flow is collected{
 
 
     /**
