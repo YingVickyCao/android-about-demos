@@ -3,7 +3,9 @@ package com.example.kotlin.coroutines.coroutines_guide_ui
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlin.coroutines.R
@@ -21,8 +23,13 @@ import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.count
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.filterNot
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.transform
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -40,12 +47,14 @@ private const val TAG = "Example1Activity"
 @OptIn(DelicateCoroutinesApi::class)
 class Example1Activity : AppCompatActivity() {
     private lateinit var hello: TextView
+    private lateinit var loadingView: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_example1)
 
         hello = findViewById(R.id.hello)
+        loadingView = findViewById<ProgressBar>(R.id.loadingView)
 
         setup(hello, findViewById(R.id.cancelUICoroutine))
     }
@@ -411,7 +420,7 @@ class Example1Activity : AppCompatActivity() {
 //    }
 
 
-    // Asynchronous Flow - Sequences
+    // Asynchronous Flow - Sequences - synchronously computed values and the value is yield one by one
 //    private fun test(hello: TextView, fab: Button) {
 //        val sequence: Sequence<Int> = sequence { // synchronously computed values
 //            for (i in 1..3) {
@@ -429,10 +438,26 @@ class Example1Activity : AppCompatActivity() {
 //                Log.e(TAG, "test:$it ")
 //            }
 //        }
+
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val sequence: Sequence<Int> = sequence {
+//                for (i in 1..3) {
+//                    Thread.sleep(2_000)
+//                    yield(i)
+//                }
+//            }
+//            sequence.forEach {
+//                runOnUiThread {
+//                    hello.text = "${hello.text}\n$it"
+//                    Log.e(TAG, "test:$it ")
+//                }
+//            }
+//        }
 //    }
 
     // Suspending functions - Suspending functions
 //    private fun test(hello: TextView, fab: Button) {
+//        hello.text = ""
 //        suspend fun simple(): List<Int> {
 //            delay(1_000)
 //            return listOf(1, 2, 3) // return values at once
@@ -440,7 +465,7 @@ class Example1Activity : AppCompatActivity() {
 //        CoroutineScope(Dispatchers.IO).launch {
 //            simple().forEach {
 //                launch(Dispatchers.Main) {
-//                    hello.text = "$it"
+//                    hello.text = "${hello.text}\n $it"
 //                    Log.e(TAG, "test:$it ")
 //                }
 //            }
@@ -499,9 +524,131 @@ class Example1Activity : AppCompatActivity() {
 //        }
 //    }
 
-    // Suspending functions - flowOf
-    private fun test(hello: TextView, fab: Button) {
+    // Suspending functions - flowOf -
+    // builder defines a flow that emits a fixed set of values.
+    // collections and sequences can be converted to flows
+//    private fun test(hello: TextView, fab: Button) {
+//        loadingView.visibility = View.VISIBLE;
+//        CoroutineScope(Dispatchers.IO).launch {
+//            (1..3).asFlow().collect { value ->
+//                launch(Dispatchers.Main) {
+//                    hello.text = "$value"
+//                    loadingView.visibility = View.GONE
+//                }
+//            }
+//        }
+//    }
 
+    // Suspending functions - Intermediate flow operators
+    // flow -> map
+//    private fun test(hello: TextView, fab: Button) {
+//        loadingView.visibility = View.VISIBLE
+//        suspend fun performRequest(request: Int): String {
+//            delay(1000)
+//            return "request $request"
+//        }
+//        CoroutineScope(Dispatchers.IO).launch {
+//            (1..3).asFlow()
+//                .map { it -> performRequest(it) }
+//                .collect { response ->
+//                    launch(Dispatchers.Main) {
+//                        hello.text = "${hello.text} \n$response"
+//                        loadingView.visibility = View.GONE
+//                    }
+//                }
+//        }
+//    }
+
+    // Suspending functions - Intermediate flow operators
+    // flow -> filter
+    // https://blog.csdn.net/chuyouyinghe/article/details/137056200
+    // https://kotlinlang.org/docs/flow.html#intermediate-flow-operators
+//    private fun test(hello: TextView, fab: Button) {
+//        loadingView.visibility = View.VISIBLE
+//        suspend fun performRequest(request: Int): String {
+//            delay(1000)
+//            return "request $request"
+//        }
+//        CoroutineScope(Dispatchers.IO).launch {
+//            (1..15).asFlow()
+//                .filter { it -> it > 10 }
+//                .map { performRequest(it) }
+//                .collect { response ->
+//                    launch(Dispatchers.Main) { // 11,...,15
+//                        hello.text = "${hello.text} \n$response"
+//                        loadingView.visibility = View.GONE
+//                    }
+//                }
+//        }
+//    }
+
+    // Suspending functions - Intermediate flow operators
+    // flow - flow -> filterNot
+    // https://blog.csdn.net/chuyouyinghe/article/details/137056200
+    // https://kotlinlang.org/docs/flow.html#intermediate-flow-operators
+//    private fun test(hello: TextView, fab: Button) {
+//        loadingView.visibility = View.VISIBLE
+//        suspend fun performRequest(request: Int): String {
+//            delay(1000)
+//            return "request $request"
+//        }
+//        CoroutineScope(Dispatchers.IO).launch {
+//            (1..15).asFlow()
+//                .filterNot { it -> it > 10 }
+//                .map { performRequest(it) }
+//                .collect { response ->
+//                    launch(Dispatchers.Main) { // 1,...,10
+//                        hello.text = "${hello.text} \n$response"
+//                        loadingView.visibility = View.GONE
+//                    }
+//                }
+//        }
+//    }
+
+    // https://blog.csdn.net/chuyouyinghe/article/details/137056200
+    // flow - map ： 从一个集转成成另一个集合，一对一映射
+//    private fun test(hello: TextView, fab: Button) {
+//        listOf(1, 2, 3).map {
+//            hello.text = "${hello.text}\n$it"
+//        }
+//    }
+
+    // flow - flapMap: 将每一个元素转换另一个项目的集合，然后将这些集合平坦地化为一个单一集合。
+//    private fun test(hello: TextView, fab: Button) {
+//        val words = listOf("Kotlin is fun", "I love Kotlin").flatMap {
+//            it.split(" ")
+//        }
+//        // words
+//        // 0 = "Kotlin"
+//        //1 = "is"
+//        //2 = "fun"
+//        //3 = "I"
+//        //4 = "love"
+//        //5 = "Kotlin"
+//        words.map {
+//            hello.text = "${hello.text}\n$it"
+//        }
+//    }
+
+    // flow - transform:  1 imitate simple transformations like map and filter  2 implement more complex transformations.
+    private fun test(hello: TextView, fab: Button) {
+        CoroutineScope(Dispatchers.IO).launch {
+            (1..3).asFlow()
+                .transform {
+                    emit("Makeing request $it")
+                    emit(performRequest(it))
+                }
+                .collect {
+                    launch(Dispatchers.Main) {
+                        hello.text = "${hello.text}\n$it"
+                    }
+                }
+        }
+    }
+
+    suspend fun performRequest(request: Int): String {
+        delay(1000)
+        return "request $request"
     }
 
 

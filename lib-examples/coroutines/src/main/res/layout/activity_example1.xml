@@ -22,4 +22,12 @@
         style="@style/btn"
         android:layout_centerInParent="true"
         android:text="Cancel UI coroutine" />
+
+    <ProgressBar
+        android:id="@+id/loadingView"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cancelUICoroutine"
+        android:layout_centerInParent="true" />
 </RelativeLayout>
