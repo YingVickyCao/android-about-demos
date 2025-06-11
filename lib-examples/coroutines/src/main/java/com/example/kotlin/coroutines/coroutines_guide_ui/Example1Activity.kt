@@ -8,10 +8,15 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlin.coroutines.R
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -22,7 +27,12 @@ import kotlinx.coroutines.flow.flatMapMerge
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.supervisorScope
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.yield
+import java.io.IOException
 
 // https://github.com/Kotlin/kotlinx.coroutines/blob/master/ui/coroutines-guide-ui.md
 // Guide to UI programming with coroutines
@@ -981,8 +991,308 @@ class Example1Activity : AppCompatActivity() {
         }
     }
 
+    private fun root_coroutine_throw_exception() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val job = GlobalScope.launch { // root coroutine with launch
+                println("Throwing exception from launch")
+                // App crashed
+                throw IndexOutOfBoundsException() // Will be printed to the console by Thread.defaultUncaughtExceptionHandler
+            }
+            job.join()
+            println("Joined failed job")
+            val deferred = GlobalScope.async { // root coroutine with async
+                println("Throwing exception from async")
+                throw ArithmeticException() // Nothing is printed, relying on user to call await
+            }
+            try {
+                deferred.await()
+                println("Unreached")
+            } catch (e: ArithmeticException) {
+                println("Caught ArithmeticException")
+            }
+
+        }
+    }
+
+    private fun root_coroutine_throw_exception2() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val job = GlobalScope.launch { // root coroutine with launch
+                println("Throwing exception from launch")
+            }
+            job.join()
+            println("Joined failed job")
+            val deferred = GlobalScope.async { // root coroutine with async
+                println("Throwing exception from async")
+                throw ArithmeticException() // Nothing is printed, relying on user to call await
+            }
+            try {
+                deferred.await()
+                println("Unreached")
+            } catch (e: ArithmeticException) {
+                // TODO: app not crashed
+                println("Caught ArithmeticException")
+            }
+
+        }
+    }
+
+    private fun root_coroutine_throw_exception3() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val job = GlobalScope.launch { // root coroutine with launch
+                println("Throwing exception from launch")
+            }
+            job.join()
+            println("Joined failed job")
+            val deferred = GlobalScope.async { // root coroutine with async
+                println("Throwing exception from async")
+                // TODO: app crashed
+                throw ArithmeticException() // Nothing is printed, relying on user to call await
+            }
+
+            deferred.await()
+            println("Unreached")
+
+        }
+    }
+
+
+    private fun root_coroutine_throw_exception4() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val handler = CoroutineExceptionHandler { _, exception ->
+                println("CoroutineExceptionHandler got $exception")
+            }
+
+            val job = GlobalScope.launch(handler) { // root coroutine with launch
+                println("Throwing exception from launch")
+                throw AssertionError()
+            }
+//            job.join()
+
+            println("Joined success job")
+            val deferred = GlobalScope.async(handler) { // root coroutine with async
+                println("Throwing exception from async")
+                // TODO: app not crashed
+                throw ArithmeticException() // Nothing is printed, relying on user to call await
+            }
+            // Suspends current coroutine until all given jobs are complete.
+            joinAll(job, deferred)
+            println("Reached")
+        }
+    }
+
+    private fun root_coroutine_throw_exception5() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val handler = CoroutineExceptionHandler { _, exception ->
+                println("CoroutineExceptionHandler got $exception")
+            }
+
+            val job = GlobalScope.launch(handler) { // root coroutine with launch
+                println("Throwing exception from launch")
+                throw AssertionError()
+            }
+            job.join()
+
+            println("Joined success job")
+            val deferred = GlobalScope.async(handler) { // root coroutine with async
+                println("Throwing exception from async")
+                // TODO: app crashed
+                throw ArithmeticException() // Nothing is printed, relying on user to call await
+            }
+            deferred.await()
+            println("Unreached")
+
+        }
+    }
+
+    private fun root_coroutine_throw_exception6() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val job = launch {
+                val child = launch {
+                    try {
+                        delay(Long.MAX_VALUE)
+                    } finally {
+                        println("Child is cancelled")
+                    }
+                }
+                // 同jS yield ： “return the value，and continue when you next enter
+                // 在此处返回，并且在你下次进入时 从此处继续
+                yield()
+                println("Cancelling child")
+                child.cancel()
+                child.join()
+                yield()
+                println("Parent is not cancelled")
+            }
+            job.join()
+
+        }
+    }
+
+    private fun Cancellation_exceptions() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val job = launch {
+                val child = launch {
+                    try {
+                        delay(Long.MAX_VALUE)
+                    } catch (ex: Exception) {
+                        println("JobCancellationException catched : $ex")
+                    } finally {
+                        println("Child is cancelled")
+                    }
+                }
+                yield()
+                println("Cancelling child")
+                child.cancel() // CancellationException
+                child.join()
+                yield()
+                println("Parent is not cancelled")
+            }
+            job.join()
+        }
+    }
+
+    private fun Cancellation_exceptions2() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val handler = CoroutineExceptionHandler { _, exception ->
+                println("CoroutineExceptionHandler got $exception")
+            }
+            val job = GlobalScope.launch(handler) {
+                launch { // the first child
+                    try {
+                        delay(Long.MAX_VALUE)
+                    } catch (ex: Exception) {
+                        println("JobCancellationException catched : $ex")
+                    } finally {
+                        withContext(NonCancellable) {
+                            println("Children are cancelled, but exception is not handled until all children terminate")
+                            delay(100)
+                            println("The first child finished its non cancellable block")
+                        }
+                    }
+                }
+                launch { // the second child
+                    delay(10)
+                    println("Second child throws an exception")
+                    throw ArithmeticException()
+                }
+            }
+            job.join()
+        }
+    }
+
+    private fun test_Exceptions_aggregation() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val handler = CoroutineExceptionHandler { _, exception ->
+                // I  CoroutineExceptionHandler got java.io.IOException with suppressed [java.lang.ArithmeticException]
+                println("CoroutineExceptionHandler got $exception with suppressed ${exception.suppressed.contentToString()}") // IOException
+            }
+            val job = GlobalScope.launch(handler) {
+                launch {
+                    try {
+                        delay(Long.MAX_VALUE) // it gets cancelled when another sibling fails with IOException
+                    } catch (ex: Exception) {
+                        // I  JobCancellationException catched : kotlinx.coroutines.JobCancellationException: Parent job is Cancelling; job=StandaloneCoroutine{Cancelling}@c88b442
+                        println("JobCancellationException catched : $ex")
+                    } finally {
+                        throw ArithmeticException() // the second exception
+                    }
+                }
+                launch {
+                    delay(100)
+                    println("Second child throws an exception")
+                    throw IOException() // the first exception
+                }
+                delay(Long.MAX_VALUE)
+            }
+            job.join()
+        }
+    }
+
+    // https://kotlinlang.org/docs/exception-handling.html#supervision-job
+    private fun test_supervision_job() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val supervisor = SupervisorJob()
+            with(CoroutineScope(coroutineContext + supervisor)) {
+                // launch the first child -- its exception is ignored for this example (don't do this in practice!)
+                val firstChild = launch(CoroutineExceptionHandler { _, _ -> }) {
+                    println("The first child is failing")
+                    throw AssertionError("The first child is cancelled")
+                }
+                // launch the second child
+                val secondChild = launch {
+                    firstChild.join()
+                    // Cancellation of the first child is not propagated to the second child
+                    println("The first child is cancelled: ${firstChild.isCancelled}, but the second one is still active")
+                    try {
+                        delay(Long.MAX_VALUE)
+                    } catch (ex: Exception) {
+                        // I  JobCancellationException catched : kotlinx.coroutines.JobCancellationException: Job was cancelled; job=SupervisorJobImpl{Cancelling}@a21b990
+                        println("JobCancellationException catched : $ex")
+                    } finally {
+                        // But cancellation of the supervisor is propagated
+                        println("The second child is cancelled because the supervisor was cancelled")
+                    }
+                }
+                // wait until the first child fails & completes
+                println("firstChild joined")
+                firstChild.join()
+                println("Cancelling the supervisor")
+                supervisor.cancel()
+                println("parent is not cancelled")
+                secondChild.join()
+            }
+        }
+    }
+
+    private fun test_supervision_scope() {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                supervisorScope {
+                    val child = launch {
+                        try {
+                            println("The child is sleeping")
+                            delay(Long.MAX_VALUE)
+                        } catch (ex: Exception) {
+                            // JobCancellationException catched : kotlinx.coroutines.JobCancellationException: Parent job is Cancelling; job=SupervisorCoroutine{Cancelling}@a21b990
+                            println("JobCancellationException catched : $ex")
+                        } finally {
+                            println("The child is cancelled")
+                        }
+                    }
+                    // Give our child a chance to execute and print using yield
+                    yield()
+                    println("Throwing an exception from the scope")
+                    throw AssertionError() // TODO: app crashed
+                }
+            } catch (ex: Exception) {
+                println("Caught an assertion error : $ex")
+            }
+        }
+    }
+
+    private fun test_supervision_scope2() {
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                supervisorScope {
+                    launch {
+                        throw Exception("子协程失败")
+                    }
+                    launch {
+                        delay(100L)
+                        println("尽管其他子协程失败了，这段代码仍然会被打印。")
+                    }
+                }
+            } catch (ex: Exception) {
+                println(ex)
+            }
+        }
+    }
+
+
     private fun test(hello: TextView, fab: Button) {
-        flatMapMerge(hello, fab);
+//        flatMapMerge(hello, fab);
+//        test_supervision_job();
+        test_supervision_scope2();
     }
 
     suspend fun performRequest(request: Int): String {
