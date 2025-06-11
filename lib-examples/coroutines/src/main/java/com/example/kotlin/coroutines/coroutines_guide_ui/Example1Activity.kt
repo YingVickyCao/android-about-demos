@@ -3,48 +3,26 @@ package com.example.kotlin.coroutines.coroutines_guide_ui
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlin.coroutines.R
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.CoroutineStart
-import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.NonCancellable
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.buffer
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.conflate
-import kotlinx.coroutines.flow.count
-import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.filterNot
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flatMapMerge
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.take
-import kotlinx.coroutines.flow.transform
-import kotlinx.coroutines.flow.zip
-import kotlinx.coroutines.isActive
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
-import kotlinx.coroutines.withTimeout
-import kotlinx.coroutines.withTimeoutOrNull
-import java.io.FileInputStream
-import kotlin.system.measureTimeMillis
 
 // https://github.com/Kotlin/kotlinx.coroutines/blob/master/ui/coroutines-guide-ui.md
 // Guide to UI programming with coroutines
@@ -846,16 +824,76 @@ class Example1Activity : AppCompatActivity() {
 //    }
 
     // Zip - combines the corresponding values of two flows  https://kotlinlang.org/docs/flow.html#zip
-    private fun test(hello: TextView, fab: Button) {
-        val flow1 = (1..3).asFlow()
-        val flow2 = flowOf("one", "two", "three")
+//    private fun test(hello: TextView, fab: Button) {
+//        val flow1 = (1..3).asFlow()
+//        val flow2 = flowOf("one", "two", "three")
+//        CoroutineScope(Dispatchers.IO).launch {
+//            flow1.zip(flow2) { a, b -> "$a - $b" }
+//                .collect {
+//                    println("$it are collected")
+// 1 -> one at 452 ms from start
+//2 -> one at 651 ms from start
+//2 -> two at 854 ms from start
+//3 -> two at 952 ms from start
+//3 -> three at 1256 ms from start
+//                    launch(Dispatchers.Main) {
+//                        hello.text = "${hello.text}\n$it"
+//                    }
+//                }
+//        }
+//    }
+
+    // combine
+//    private fun test(hello: TextView, fab: Button) {
+//        val flow1 = (1..3).asFlow().onEach { delay(3_000L) }
+//        val flow2 = flowOf("one", "two", "three").onEach { delay(4_000L) }
+//        CoroutineScope(Dispatchers.IO).launch {
+////            val ms = measureTimeMillis {
+////                val startTime = System.currentTimeMillis()
+////                flow1.zip(flow2) { a, b -> "$a - $b" } //  zip 操作符合并它们，但仍会产生相同的结果， 尽管每 400 毫秒打印一次结果
+////                    .collect {
+////                        println("$it at ${System.currentTimeMillis() - startTime} ms from start")
+////                        //  1 - one are collected
+////                        //  2 - two are collected
+////                        //  3 - three are collected
+////                        launch(Dispatchers.Main) {
+////                            hello.text = "${hello.text}\n$it"
+////                        }
+////                    }
+////            }
+////            println("Collected in $ms ms")
+//
+//            val ms = measureTimeMillis {
+//                val startTime = System.currentTimeMillis()
+//                flow1.combine(flow2) { a, b -> "$a - $b" } //  使用“combine”组合单个字符串
+//                    .collect {
+//                        println("$it at ${System.currentTimeMillis() - startTime} ms from start")
+//                        //  1 - one are collected
+//                        //  2 - two are collected
+//                        //  3 - three are collected
+//                        launch(Dispatchers.Main) {
+//                            hello.text = "${hello.text}\n$it"
+//                        }
+//                    }
+//            }
+//            println("Collected in $ms ms")
+//        }
+//    }
+
+    //  a flow of flows
+    private fun no_flattenFlows(hello: TextView, fab: Button) {
         CoroutineScope(Dispatchers.IO).launch {
-            flow1.zip(flow2) { a, b -> "$a - $b" }
-                .collect {
-                    println("$it are collected")
-                    //  1 - one are collected
-                    //  2 - two are collected
-                    //  3 - three are collected
+            fun requestFlow(i: Int): Flow<String> = flow {
+                emit("$i: First")
+                delay(500) // wait 500 ms
+                emit("$i: Second")
+            }
+
+            (1..3).asFlow()
+                .map {
+                    requestFlow(it)
+                }.collect {
+                    println("$it are collected") // kotlinx.coroutines.flow.SafeFlow@c88b442 are collected
                     launch(Dispatchers.Main) {
                         hello.text = "${hello.text}\n$it"
                     }
@@ -863,6 +901,89 @@ class Example1Activity : AppCompatActivity() {
         }
     }
 
+    //  a flow of flows (Flow<Flow<String>>) that needs to be flattened into a single flow for further processing.
+    // flatMapConcat
+    private fun flatMapConcat(hello: TextView, fab: Button) {
+        CoroutineScope(Dispatchers.IO).launch {
+            fun requestFlow(i: Int): Flow<String> = flow {
+                emit("$i: First")
+                delay(500) // wait 500 ms
+                emit("$i: Second")
+            }
+
+            (1..3).asFlow()
+                .flatMapConcat {
+                    requestFlow(it)
+                }.collect {
+                    // 1: First are collected
+                    // 1: Second are collected
+                    // 2: First are collected
+                    // 2: Second are collected
+                    // 3: First are collected
+                    // 3: Second are collected
+                    println("$it are collected")
+                    launch(Dispatchers.Main) {
+                        hello.text = "${hello.text}\n$it"
+                    }
+                }
+        }
+    }
+
+    private fun flatMapMerge(hello: TextView, fab: Button) {
+        CoroutineScope(Dispatchers.IO).launch {
+            fun requestFlow(i: Int): Flow<String> = flow {
+                emit("$i: First")
+                delay(500) // wait 500 ms
+                emit("$i: Second")
+            }
+
+            (1..3).asFlow()
+                .flatMapMerge {
+                    requestFlow(it)
+                }.collect {
+                    // 1: First are collected
+                    // 3: First are collected
+                    // 2: First are collected
+                    // 1: Second are collected
+                    // 3: Second are collected
+                    // 2: Second are collected
+                    println("$it are collected")
+                    launch(Dispatchers.Main) {
+                        hello.text = "${hello.text}\n$it"
+                    }
+                }
+        }
+    }
+
+    private fun flatMapLatest(hello: TextView, fab: Button) {
+        CoroutineScope(Dispatchers.IO).launch {
+            fun requestFlow(i: Int): Flow<String> = flow {
+                emit("$i: First")
+                delay(500) // wait 500 ms
+                emit("$i: Second")
+            }
+
+            (1..3).asFlow().onEach { delay(100) }
+                .flatMapLatest {
+                    requestFlow(it)
+                }.collect {
+                    // 1: First are collected
+                    // 3: First are collected
+                    // 2: First are collected
+                    // 1: Second are collected
+                    // 3: Second are collected
+                    // 2: Second are collected
+                    println("$it are collected")
+                    launch(Dispatchers.Main) {
+                        hello.text = "${hello.text}\n$it"
+                    }
+                }
+        }
+    }
+
+    private fun test(hello: TextView, fab: Button) {
+        flatMapMerge(hello, fab);
+    }
 
     suspend fun performRequest(request: Int): String {
         delay(1000)

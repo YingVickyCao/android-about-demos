@@ -94,7 +94,7 @@ class Example3_2Activity : AppCompatActivity() {
         }
     }
 
-    //  I  Background concurrent mark compact GC freed 3035KB AllocSpace bytes, 1(20KB) LOS objects, 87% free, 3408KB/27MB, paused 321us,5.631ms total 76.322ms
+    //  Background concurrent mark compact GC freed 3035KB AllocSpace bytes, 1(20KB) LOS objects, 87% free, 3408KB/27MB, paused 321us,5.631ms total 76.322ms
     suspend fun fib(x: Int): Int = withContext(Dispatchers.IO) {
         // E  Dispatchers.IO (DefaultDispatcher-worker-1,61)
         Log.e(TAG, "Dispatchers.IO (${Thread.currentThread().name},${Thread.currentThread().id})")
