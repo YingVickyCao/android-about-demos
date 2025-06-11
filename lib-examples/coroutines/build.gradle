@@ -36,6 +36,7 @@ dependencies {
     implementation libs.androidx.appcompat
     implementation libs.androidx.activity
     implementation libs.kotlinx.coroutines.android
+    implementation libs.androidx.activity.ktx
 
     testImplementation libs.test.junit
 

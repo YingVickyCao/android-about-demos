@@ -24,12 +24,19 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.buffer
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.filterNot
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.flow.transform
+import kotlinx.coroutines.flow.zip
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -37,6 +44,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeout
 import kotlinx.coroutines.withTimeoutOrNull
 import java.io.FileInputStream
+import kotlin.system.measureTimeMillis
 
 // https://github.com/Kotlin/kotlinx.coroutines/blob/master/ui/coroutines-guide-ui.md
 // Guide to UI programming with coroutines
@@ -631,20 +639,230 @@ class Example1Activity : AppCompatActivity() {
 //    }
 
     // flow - transform:  1 imitate simple transformations like map and filter  2 implement more complex transformations.
+//    private fun test(hello: TextView, fab: Button) {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            (1..3).asFlow()
+//                .transform {
+//                    emit("Makeing request $it")
+//                    emit(performRequest(it))
+//                }
+//                .collect {
+//                    launch(Dispatchers.Main) {
+//                        hello.text = "${hello.text}\n$it"
+//                    }
+//                }
+//        }
+//    }
+
+    // flow - take th size limit like then cancel execution of the flow, and AbortFlowException
+//    private fun test(hello: TextView, fab: Button) {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val flow: Flow<Int> = flow {
+//                try {
+//                    launch(Dispatchers.Main) {
+//                        loadingView.visibility = View.VISIBLE
+//                    }
+//                    emit(1)
+//                    launch(Dispatchers.Main) {
+//                        loadingView.visibility = View.VISIBLE
+//                    }
+//                    delay(1_000L)
+//                    emit(2)
+//                    launch(Dispatchers.Main) {
+//                        loadingView.visibility = View.VISIBLE
+//                    }
+//                    delay(1_000L)
+//                    emit(3)
+//                    launch(Dispatchers.Main) {
+//                        loadingView.visibility = View.VISIBLE
+//                    }
+//                    delay(1_000L)
+//                    emit(4)
+//                    println("This line will not execute")
+//                } catch (ex: Exception) { // kotlinx.coroutines.flow.internal.AbortFlowException: Flow was aborted, no more elements needed
+//                    println("flow occurred exception: $ex")
+//                } finally {
+//                    println("finally, should close the resources")
+//                }
+//            }
+//            flow.take(3) // take only the first two
+//                .collect {
+//                    launch(Dispatchers.Main) {
+//                        hello.text = "${hello.text}\n$it"
+//                        loadingView.visibility = View.GONE
+//                    }
+//                }
+//        }
+//    }
+
+    // Flows are sequential
+//    private fun test(hello: TextView, fab: Button) {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            (1..5).asFlow()
+//                .filter {
+//                    println("Filter $it")
+//                    it % 2 == 0
+//                }.map {
+//                    println("Map $it")
+//                    it
+//                }
+//                .collect {
+//                    println("collected $it")
+//                    launch(Dispatchers.Main) {
+//                        hello.text = "${hello.text}\n$it"
+//                    }
+//                }
+//        }
+//    }
+
+    // Flows are sequential
+//    private fun test(hello: TextView, fab: Button) {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            withContext(Dispatchers.Default.limitedParallelism(5)) {
+//            }
+//        }
+//    }
+
+    // Flows - flowOn, change the context the flow emission
+//    private fun test(hello: TextView, fab: Button) {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val flow: Flow<Int> = flow {
+//                for (i in 1..3) {
+//                    delay(1_000) // mock cpu-consuming work
+//                    println("${Thread.currentThread().id} , ${Thread.currentThread().name}") // DefaultDispatcher-worker-1
+//                    emit(i)
+//                }
+//            }.flowOn(Dispatchers.Default)
+//            flow.collect {
+//                println("collected:${Thread.currentThread().id} , ${Thread.currentThread().name}") // DefaultDispatcher-worker-1
+//                launch(Dispatchers.Main) {
+//                    hello.text = "${hello.text}\n$it"
+//                }
+//            }
+//        }
+//    }
+
+    // Buffering
+//    private fun test(hello: TextView, fab: Button) {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val flow: Flow<Int> = flow {
+//                for (i in 1..3) {
+//                    delay(1_100) // flow is slow
+//                    println("send $i")
+//                    emit(i)
+//                }
+//            }
+//            val time = measureTimeMillis {
+//                flow.collect {
+//                    delay(3_000L) // collector is also slow
+//                    println("$it are collected")
+//                    launch(Dispatchers.Main) {
+//                        hello.text = "${hello.text}\n$it"
+//                    }
+//                }
+//            }
+//            println("Collected in $time ms")
+//        }
+
+
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val flow: Flow<Int> = flow {
+////                for (i in 1..3) {
+////                    // // 假装我们异步等待了 1 秒
+////                    delay(1_100) // flow is slow
+////                    println("send $i")
+////                    emit(i) // 发射下一个值
+////                }
+////            }
+////            val time = measureTimeMillis {
+////                flow
+////                    //  // 缓冲发射项，无需等待
+////                    .buffer() // buffer - emit the code of flow concurrently
+////                    .collect {
+////                        // // 假装我们花费 300 毫秒来处理它
+////                        delay(3_000L) // collector is also slow
+////                        println("$it are collected")
+////                        launch(Dispatchers.Main) {
+////                            hello.text = "${hello.text}\n$it"
+////                        }
+////                    }
+////            }
+//            println("Collected in $time ms")
+//        }
+//    }
+
+    // conflate - skip intermediate values 跳过中间项只处理最新数据
+//    private fun test(hello: TextView, fab: Button) {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val flow: Flow<Int> = flow {
+//                for (i in 1..3) {
+//                    // // 假装我们异步等待了 1 秒
+//                    delay(1_100) // flow is slow
+//                    println("send $i")
+//                    emit(i) // 发射下一个值
+//                }
+//            }
+//            val time = measureTimeMillis {
+//                flow
+//                    .conflate() // buffer - emit the code of flow concurrently
+//                    .collect {
+//                        println("$it is comming")
+//                        // 假装我们花费 300 毫秒来处理它
+//                        delay(3_000L) // collector is also slow
+//                        println("$it are collected")
+//                        launch(Dispatchers.Main) {
+//                            hello.text = "${hello.text}\n$it"
+//                        }
+//                    }
+//            }
+//            println("Collected in $time ms")
+//        }
+//    }
+
+    // collectLatest - Processing the latest value https://kotlinlang.org/docs/flow.html#processing-the-latest-value
+//    private fun test(hello: TextView, fab: Button) {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val flow: Flow<Int> = flow {
+//                for (i in 1..3) {
+//                    // // 假装我们异步等待了 1 秒
+//                    delay(1_100) // flow is slow
+//                    println("send $i")
+//                    emit(i) // 发射下一个值
+//                }
+//            }
+//            val time = measureTimeMillis {
+//                flow.collectLatest {
+//                    println("$it is comming")
+//                    // 假装我们花费 300 毫秒来处理它
+//                    delay(3_000L) // collector is also slow
+//                    println("$it are collected")
+//                    launch(Dispatchers.Main) {
+//                        hello.text = "${hello.text}\n$it"
+//                    }
+//                }
+//            }
+//            println("Collected in $time ms")
+//        }
+//    }
+
+    // Zip - combines the corresponding values of two flows  https://kotlinlang.org/docs/flow.html#zip
     private fun test(hello: TextView, fab: Button) {
+        val flow1 = (1..3).asFlow()
+        val flow2 = flowOf("one", "two", "three")
         CoroutineScope(Dispatchers.IO).launch {
-            (1..3).asFlow()
-                .transform {
-                    emit("Makeing request $it")
-                    emit(performRequest(it))
-                }
+            flow1.zip(flow2) { a, b -> "$a - $b" }
                 .collect {
+                    println("$it are collected")
+                    //  1 - one are collected
+                    //  2 - two are collected
+                    //  3 - three are collected
                     launch(Dispatchers.Main) {
                         hello.text = "${hello.text}\n$it"
                     }
                 }
         }
     }
+
 
     suspend fun performRequest(request: Int): String {
         delay(1000)
