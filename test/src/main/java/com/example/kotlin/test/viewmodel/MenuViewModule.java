@@ -3,9 +3,11 @@ package com.example.kotlin.test.viewmodel;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RestrictTo;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.Observer;
 
 import com.example.kotlin.test.db.Menu;
 import com.example.kotlin.test.respository.MenuRepository;
@@ -16,20 +18,26 @@ import java.util.List;
 // TODO: 2025/6/14  import androidx.lifecycle.ViewModel; 
 public class MenuViewModule extends AndroidViewModel {
     private MenuRepository repository;
-    private LiveData<List<Menu>> menus;
+//    private final LiveData<List<Menu>> menus;
 
     public MenuViewModule(@NonNull Application application) {
         super(application);
 
         repository = new MenuRepository(application);
-        menus = repository.getAllMenus();
+//        menus = repository.getAllMenus();
     }
 
     public LiveData<List<Menu>> getMenus() {
-        return menus;
+//        return menus;
+        return new LiveData<List<Menu>>() {
+            @Override
+            public void observe(@NonNull LifecycleOwner owner, @NonNull Observer<? super List<Menu>> observer) {
+                super.observe(owner, observer);
+            }
+        };
     }
 
     public void insert(Menu menu) {
-        repository.insert(menu);
+//        repository.insert(menu);
     }
 }

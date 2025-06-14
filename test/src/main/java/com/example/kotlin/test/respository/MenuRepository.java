@@ -2,7 +2,10 @@ package com.example.kotlin.test.respository;
 
 import android.app.Application;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import com.example.kotlin.test.db.AppDatabase;
 import com.example.kotlin.test.db.Menu;
@@ -19,21 +22,27 @@ public class MenuRepository {
     // https://github.com/googlesamples ->  android-architecture-components repository
     public MenuRepository(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
-        menuDao = db.menuDao();
-        allMenus = menuDao.getAll2(); // Room execute all queries on a separate thread
+//        menuDao = db.menuDao();
+//        allMenus = menuDao.getAll2(); // Room execute all queries on a separate thread
     }
 
     public LiveData<List<Menu>> getAllMenus() {
-        return allMenus;
+//        return allMenus;
+        return new LiveData<List<Menu>>() {
+            @Override
+            public void observe(@NonNull LifecycleOwner owner, @NonNull Observer<? super List<Menu>> observer) {
+                super.observe(owner, observer);
+            }
+        };
     }
 
     public void insert(Menu menu) {
         // Use ExecutorService to insert into a background thread
-        AppDatabase.databaseExecutorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                menuDao.insert(menu);
-            }
-        });
+//        AppDatabase.databaseExecutorService.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                menuDao.insert(menu);
+//            }
+//        });
     }
 }

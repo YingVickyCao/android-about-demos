@@ -17,4 +17,11 @@ public class Menu {
 
     @ColumnInfo(name = "menu_type")
     public String menuType;
+
+
+    public Menu(int code, String menuTitle, String menuType) {
+        this.code = code;
+        this.menuTitle = menuTitle;
+        this.menuType = menuType;
+    }
 }
