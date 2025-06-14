@@ -22,7 +22,7 @@ public interface PageDataDao {
 //            "WHERE menu.code = :menuCode")
     @Query("SELECT title FROM page_data WHERE code = :menuCode")
     LiveData<List<String>> getTitle(int menuCode);
-
-    @Query("SELECT title FROM page_data WHERE code = :menuCode")
+    
+    @Query("SELECT title FROM page_data JOIN menu ON  page_data.code = menu.code WHERE menu.code = :menuCode ")
     List<String> getTitle2(int menuCode);
 }
