@@ -22,6 +22,14 @@ public class PageDataRepository {
         return pageDataDao.getAll();
     }
 
+    public LiveData<List<String>> getTitle(int menuCode) {
+        return pageDataDao.getTitle(menuCode);
+    }
+
+    public List<String> getTitle2(int menuCode) {
+        return pageDataDao.getTitle2(menuCode);
+    }
+
     public void insert(PageData... data) {
         AppDatabase.databaseExecutorService.execute(new Runnable() {
             @Override

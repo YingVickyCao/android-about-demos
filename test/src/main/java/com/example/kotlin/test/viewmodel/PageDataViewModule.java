@@ -23,6 +23,15 @@ public class PageDataViewModule extends AndroidViewModel {
         return repository.getAll();
     }
 
+    public LiveData<List<String>> getTitle(int menuCode) {
+        return repository.getTitle(menuCode);
+    }
+
+    public List<String> getTitle2(int menuCode) {
+        return repository.getTitle2(menuCode);
+    }
+
+
     public void insert(PageData... data) {
         repository.insert(data);
     }

@@ -102,6 +102,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        pageDataViewModule.getTitle(-2048508799).observe(this, new Observer<List<String>>() {
+            @Override
+            public void onChanged(List<String> list) {
+                if (list != null && !list.isEmpty()) {
+                    for (String item : list) {
+                        Log.e(TAG, "PageDataViewModule getTitle by code: " + item);
+                    }
+                    return;
+                }
+                Log.e(TAG, "PageDataViewModule getTitle by code: empty");
+            }
+        });
+
         findViewById(R.id.title).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -141,6 +154,31 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        }
 
-        menuViewModule.delete(new Menu(439933464, "", ""));
+
+//        menuViewModule.delete(new Menu(439933464, "", ""));
+
+
+//        List<String> list = pageDataViewModule.getTitle(-2048508799).getValue();
+//        if (list != null && !list.isEmpty()) {
+//            for (String item : list) {
+//                Log.e(TAG, "PageDataViewModule getAll by code: " + item);
+//                return;
+//            }
+//        }
+//        Log.e(TAG, "PageDataViewModule getAll: empty");
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<String> list = pageDataViewModule.getTitle2(-2048508799);
+                if (list != null && !list.isEmpty()) {
+                    for (String item : list) {
+                        Log.e(TAG, "PageDataViewModule getAll by code: " + item);
+                    }
+                    return;
+                }
+                Log.e(TAG, "PageDataViewModule getAll by code: empty");
+            }
+        }).start();
     }
 }
