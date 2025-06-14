@@ -2,6 +2,7 @@ package com.example.kotlin.test.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -13,19 +14,27 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.viewmodel.internal.DefaultViewModelProviderFactory;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kotlin.test.R;
 import com.example.kotlin.test.db.Menu;
+import com.example.kotlin.test.db.PageData;
+import com.example.kotlin.test.db.PageDataDao;
+import com.example.kotlin.test.db.SimpleMenu;
 import com.example.kotlin.test.viewmodel.MenuViewModule;
+import com.example.kotlin.test.viewmodel.PageDataViewModule;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
 
     private MenuViewModule menuViewModule;
+    private PageDataViewModule pageDataViewModule;
 
     RecyclerView recyclerView;
 
@@ -60,6 +69,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        String menuCode = "437697905";
+        menuViewModule.findMenuTitle(menuCode).observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Log.e(TAG, "onChanged: findMenuTitle=" + s);
+            }
+        });
+
+
+        menuViewModule.findMenuSimple(menuCode).observe(this, new Observer<SimpleMenu>() {
+            @Override
+            public void onChanged(SimpleMenu s) {
+                if (null != s) {
+                    Log.e(TAG, "onChanged: findMenuSimple=" + s.menuTitle);
+                }
+            }
+        });
+
+        pageDataViewModule = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(PageDataViewModule.class);
+
+        pageDataViewModule.getAll().observe(this, new Observer<List<PageData>>() {
+            @Override
+            public void onChanged(List<PageData> data) {
+                if (data != null && !data.isEmpty()) {
+                    for (PageData item : data) {
+                        Log.e(TAG, "PageDataViewModule onChanged: " + item.toString());
+                        return;
+                    }
+                }
+                Log.e(TAG, "PageDataViewModule onChanged: empty");
+            }
+        });
+
         findViewById(R.id.title).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -69,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        findViewById(R.id.test).setOnClickListener(v -> test());
     }
 
     @Override
@@ -81,5 +125,22 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(), "Empty not saved", Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void test() {
+//        List<Menu> menus = menuViewModule.getMenus().getValue();
+//        for (Menu item : menus) {
+////            List<PageData> pageDatas = new ArrayList<>();
+//            for (int i = 0; i < 3; i++) {
+//                PageData pageData = new PageData();
+//                pageData.id = (int) System.currentTimeMillis() + i + 1;
+//                pageData.code = item.code;
+//                pageData.title = "Item " + System.currentTimeMillis();
+////                pageDatas.add(pageData);
+//                pageDataViewModule.insert(pageData);
+//            }
+//        }
+
+        menuViewModule.delete(new Menu(439933464, "", ""));
     }
 }

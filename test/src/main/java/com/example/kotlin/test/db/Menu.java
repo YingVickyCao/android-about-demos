@@ -1,14 +1,21 @@
 package com.example.kotlin.test.db;
 
+import android.graphics.Bitmap;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Fts4;
+import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 // Entity - data entity
-@Entity(tableName = "menu")
+// primaryKeys - set multiple primary keys
+// indices - set index
+@Entity(tableName = "menu", primaryKeys = {"code"}, indices = {@Index(value = {"menu_title"}, unique = true)})
 public class Menu {
-    @PrimaryKey
+    //    @PrimaryKey
     @NonNull
     public int code;
 
@@ -17,6 +24,14 @@ public class Menu {
 
     @ColumnInfo(name = "menu_type")
     public String menuType;
+
+    //  don't want to persist
+    @Ignore
+    public Bitmap picture;
+
+    // v1 : no country field
+
+//    public String country;
 
 
     public Menu(int code, String menuTitle, String menuType) {

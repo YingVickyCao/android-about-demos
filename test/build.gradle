@@ -15,7 +15,20 @@ android {
         versionCode 1
         versionName "1.0"
 
+
+        javaCompileOptions {
+            // used by Room, to test migrations
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    // used by Room, to test migrations
+    sourceSets {
+        androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
     }
 
     buildTypes {
@@ -57,4 +70,5 @@ dependencies {
 
     androidTestImplementation libs.androidTest.junit
     androidTestImplementation libs.androidTest.espressoCore
+    androidTestImplementation libs.androidx.room.testing
 }

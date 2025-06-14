@@ -10,6 +10,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
 import com.example.kotlin.test.db.Menu;
+import com.example.kotlin.test.db.SimpleMenu;
 import com.example.kotlin.test.respository.MenuRepository;
 
 import java.util.List;
@@ -34,4 +35,17 @@ public class MenuViewModule extends AndroidViewModel {
     public void insert(Menu menu) {
         repository.insert(menu);
     }
+
+    public LiveData<SimpleMenu> findMenuSimple(String meuCode) {
+        return repository.findMenuSimple(meuCode);
+    }
+
+    public LiveData<String> findMenuTitle(String menuCode) {
+        return repository.findMenuTitle(menuCode);
+    }
+
+    public void delete(Menu menu) {
+        repository.delete(menu);
+    }
+
 }
