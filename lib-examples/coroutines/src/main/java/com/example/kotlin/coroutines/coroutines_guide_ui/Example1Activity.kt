@@ -1288,7 +1288,6 @@ class Example1Activity : AppCompatActivity() {
         }
     }
 
-
     private fun test(hello: TextView, fab: Button) {
 //        flatMapMerge(hello, fab);
 //        test_supervision_job();

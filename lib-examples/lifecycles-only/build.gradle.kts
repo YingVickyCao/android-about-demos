@@ -46,7 +46,7 @@ android {
 dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity)
-    implementation(libs.lifecycle.runtime)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 
     testImplementation(libs.test.junit)
 

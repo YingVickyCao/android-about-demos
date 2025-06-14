@@ -1,0 +1,57 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.example.kotlin.test'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.kotlin.test"
+        minSdk 29
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation libs.androidx.appcompat
+    implementation libs.google.material
+    implementation libs.androidx.activity
+    implementation libs.androidx.constraintlayout
+
+    implementation libs.androidx.room.runtime
+    annotationProcessor libs.androidx.room.compiler
+    implementation libs.androidx.room.rxjava2
+    implementation libs.androidx.room.ktx
+
+    implementation libs.rxandroid2
+    implementation libs.kotlinx.coroutines.android
+
+
+    // Lifecycle components
+    implementation libs.androidx.lifecycle.viewmodel
+    implementation libs.androidx.lifecycle.livedata
+
+    testImplementation(libs.androidx.room.testing)
+    testImplementation libs.test.junit
+
+    androidTestImplementation libs.androidTest.junit
+    androidTestImplementation libs.androidTest.espressoCore
+}
