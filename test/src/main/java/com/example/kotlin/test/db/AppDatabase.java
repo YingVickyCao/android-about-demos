@@ -31,6 +31,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 if (null == INSTANCE) {
                     // Caused by: java.lang.RuntimeException: Cannot find implementation for com.example.kotlin.test.db.AppDatabase. AppDatabase_Impl does not exist. Is Room annotation processor correctly configured?
                     // Caused by: java.lang.ClassNotFoundException: Didn't find class "com.example.kotlin.test.db.AppDatabase_Impl"
+                    // https://programmerah.com/room-db-error-appdatabase_impl-does-not-exist-how-to-solve-56474/
                     // //    annotationProcessor libs.androidx.room.compiler
                     // changed to
                     //    annotationProcessor 'androidx.room:room-compiler:2.7.1'
@@ -91,6 +92,5 @@ public abstract class AppDatabase extends RoomDatabase {
         public void onDestructiveMigration(@NonNull SupportSQLiteDatabase db) {
             super.onDestructiveMigration(db);
         }
-
     };
 }

@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && requestCode == RESULT_OK) {
+        if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             String menuText = data.getStringExtra(NewMenuActivity.EXTRA_REPLY);
             Menu menu = new Menu(menuText.hashCode(), menuText, "new");
             menuViewModule.insert(menu);

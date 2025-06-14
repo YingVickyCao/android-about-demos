@@ -10,7 +10,7 @@ import com.example.kotlin.test.R;
 
 public class NewMenuActivity extends AppCompatActivity {
     public static final String EXTRA_REPLY = "com.example.kotlin.test.ui.REPLY";
-    private String menuText;
+    private String menuText = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,6 +34,6 @@ public class NewMenuActivity extends AppCompatActivity {
             replayIntent.putExtra(EXTRA_REPLY, menuText);
             setResult(RESULT_OK, replayIntent);
         }
-
+        finish();
     }
 }

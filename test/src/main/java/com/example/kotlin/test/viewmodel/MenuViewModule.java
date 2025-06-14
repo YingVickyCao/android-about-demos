@@ -18,26 +18,20 @@ import java.util.List;
 // TODO: 2025/6/14  import androidx.lifecycle.ViewModel; 
 public class MenuViewModule extends AndroidViewModel {
     private MenuRepository repository;
-//    private final LiveData<List<Menu>> menus;
+    private final LiveData<List<Menu>> menus;
 
     public MenuViewModule(@NonNull Application application) {
         super(application);
 
         repository = new MenuRepository(application);
-//        menus = repository.getAllMenus();
+        menus = repository.getAllMenus();
     }
 
     public LiveData<List<Menu>> getMenus() {
-//        return menus;
-        return new LiveData<List<Menu>>() {
-            @Override
-            public void observe(@NonNull LifecycleOwner owner, @NonNull Observer<? super List<Menu>> observer) {
-                super.observe(owner, observer);
-            }
-        };
+        return menus;
     }
 
     public void insert(Menu menu) {
-//        repository.insert(menu);
+        repository.insert(menu);
     }
 }

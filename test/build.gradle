@@ -38,7 +38,7 @@ dependencies {
 
     implementation libs.androidx.room.runtime
     annotationProcessor libs.androidx.room.compiler
-    // https://developer.android.com/studio/build/migrate-to-ksp
+    // TODO:https://developer.android.com/studio/build/migrate-to-ksp
     kapt libs.androidx.room.compiler
 
     implementation libs.androidx.room.rxjava2
