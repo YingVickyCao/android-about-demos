@@ -5,10 +5,15 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import com.example.kotlin.test.db.AppDatabase;
+import com.example.kotlin.test.db.Menu;
+import com.example.kotlin.test.db.MenuPageData;
 import com.example.kotlin.test.db.PageData;
 import com.example.kotlin.test.db.PageDataDao;
 
 import java.util.List;
+import java.util.Map;
+
+import io.reactivex.Single;
 
 public class PageDataRepository {
     PageDataDao pageDataDao;
@@ -37,5 +42,17 @@ public class PageDataRepository {
                 pageDataDao.insert(data);
             }
         });
+    }
+
+    public Map<Menu, List<PageData>> loadMenuAndPageData() {
+        return pageDataDao.loadMenuAndPageData();
+    }
+
+    public List<MenuPageData> loadMenuPageData() {
+        return pageDataDao.loadMenuPageData();
+    }
+
+    public Single<List<MenuPageData>> loadMenuPageData2() {
+        return pageDataDao.loadMenuPageData2();
     }
 }

@@ -27,11 +27,12 @@ import java.util.concurrent.Executors;
  * }
  * }
  */
-@Database(entities = {Menu.class, PageData.class}, version = 1, exportSchema = true)
+@Database(entities = {Menu.class, PageData.class}, /*views = {MenuPageDataDetails.class},*/ version = 1, exportSchema = true)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String TAG = "AppDatabase";
 
     public abstract MenuDao menuDao();
+
     public abstract PageDataDao pageDataDao();
 
     // Define a singletone to avoid having multiple instances of database opened at the same time.

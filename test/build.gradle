@@ -53,12 +53,14 @@ dependencies {
     annotationProcessor libs.androidx.room.compiler
     // TODO:https://developer.android.com/studio/build/migrate-to-ksp
     kapt libs.androidx.room.compiler
-
     implementation libs.androidx.room.rxjava2
 //    implementation libs.androidx.room.ktx
 
     implementation libs.rxandroid2
     implementation libs.kotlinx.coroutines.android
+
+//    implementation libs.androidx.paging.runtime
+//    testImplementation libs.androidx.paging.common
 
 
     // Lifecycle components

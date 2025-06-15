@@ -19,7 +19,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kotlin.test.R;
+import com.example.kotlin.test.db.AppDatabase;
 import com.example.kotlin.test.db.Menu;
+import com.example.kotlin.test.db.MenuPageData;
 import com.example.kotlin.test.db.PageData;
 import com.example.kotlin.test.db.PageDataDao;
 import com.example.kotlin.test.db.SimpleMenu;
@@ -28,6 +30,7 @@ import com.example.kotlin.test.viewmodel.PageDataViewModule;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -144,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
 //        List<Menu> menus = menuViewModule.getMenus().getValue();
 //        for (Menu item : menus) {
 ////            List<PageData> pageDatas = new ArrayList<>();
-//            for (int i = 0; i < 3; i++) {
+//            for (int i = 0; i < 1000; i++) {
 //                PageData pageData = new PageData();
 //                pageData.id = (int) System.currentTimeMillis() + i + 1;
 //                pageData.code = item.code;
@@ -167,18 +170,30 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //        Log.e(TAG, "PageDataViewModule getAll: empty");
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                List<String> list = pageDataViewModule.getTitle2(-2048508799);
-                if (list != null && !list.isEmpty()) {
-                    for (String item : list) {
-                        Log.e(TAG, "PageDataViewModule getAll by code: " + item);
-                    }
-                    return;
-                }
-                Log.e(TAG, "PageDataViewModule getAll by code: empty");
-            }
-        }).start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                List<String> list = pageDataViewModule.getTitle2(-2048508799);
+//                if (list != null && !list.isEmpty()) {
+//                    for (String item : list) {
+//                        Log.e(TAG, "PageDataViewModule getAll by code: " + item);
+//                    }
+//                    return;
+//                }
+//                Log.e(TAG, "PageDataViewModule getAll by code: empty");
+//            }
+//        }).start();
+//
+//        AppDatabase.databaseExecutorService.execute(new Runnable() {
+//            @Override
+//            public void run() {
+////                Map<Menu, List<PageData>> result = pageDataViewModule.loadMenuAndPageData();
+//                List<MenuPageData> result = pageDataViewModule.loadMenuPageData();
+//                Log.e(TAG, "run: " + result);
+//            }
+//        });
+
+        List<MenuPageData> result = pageDataViewModule.loadMenuPageData();
+        Log.e(TAG, "run: " + result);
     }
 }
