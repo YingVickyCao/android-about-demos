@@ -12,30 +12,30 @@ import java.util.List;
 
 @Dao
 public interface MenuDao {
-    @Query("SELECT * from menu ORDER BY menu_title ASC")
+    @Query("SELECT * from menu2 ORDER BY menu_title ASC")
     List<Menu> getAll();
 
     // MutableLiveData
-    @Query("SELECT * from menu")
+    @Query("SELECT * from menu2")
     LiveData<List<Menu>> getAll2();
 
     // can return a array or list
-    @Query("SELECT * FROM menu WHERE code IN (:menuCodes) ")
+    @Query("SELECT * FROM menu2 WHERE code IN (:menuCodes) ")
     List<Menu> loadAllByCodes(int[] menuCodes);
 
     // fuzzy query
-    @Query("SELECT * FROM menu WHERE menu_title LIKE :menuTitle")
+    @Query("SELECT * FROM menu2 WHERE menu_title LIKE :menuTitle")
     Menu findByTitle(String menuTitle);
 
-    @Query("SELECT * FROM menu WHERE code = :menuCode")
+    @Query("SELECT * FROM menu2 WHERE code = :menuCode")
     Menu findByCode(String menuCode);
 
     // Return a subset of a table's columns
-    @Query("SELECT menu_title FROM menu WHERE code = :menuCode")
+    @Query("SELECT menu_title FROM menu2 WHERE code = :menuCode")
     String findMenuTitle(String menuCode);
 
     // Return a subset of a table's columns
-    @Query("SELECT menu_title FROM menu WHERE code = :menuCode")
+    @Query("SELECT menu_title FROM menu2 WHERE code = :menuCode")
     SimpleMenu findMenuSimple(String menuCode);
 
     // @Insert - can return a new rowId for the inserted item
@@ -56,6 +56,6 @@ public interface MenuDao {
     @Delete
     void delete(Menu menu); // Use primary key to match the passed entity instances to rows in database.
 
-    @Query("DELETE from menu")
+    @Query("DELETE from menu2")
     void deleteAll();
 }

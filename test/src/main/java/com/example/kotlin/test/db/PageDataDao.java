@@ -29,7 +29,7 @@ public interface PageDataDao {
     @Query("SELECT title FROM page_data WHERE code = :menuCode")
     LiveData<List<String>> getTitle(int menuCode);
 
-    @Query("SELECT title FROM page_data JOIN menu ON  page_data.code = menu.code WHERE menu.code = :menuCode ")
+    @Query("SELECT title FROM page_data JOIN menu2 ON  page_data.code = menu2.code WHERE menu2.code = :menuCode ")
     List<String> getTitle2(int menuCode);
 
     //  return a paging source
@@ -44,18 +44,18 @@ public interface PageDataDao {
 
     //    @Query("SELECT * FROM menu JOIN page_data ON menu.code = page_data.code WHERE menu.code= :code")
     // todo: not expected
-    @Query("SELECT * FROM menu JOIN page_data ON menu.code = page_data.code")
+    @Query("SELECT * FROM menu2 JOIN page_data ON menu2.code = page_data.code")
 //    Map<Menu, List<PageData>> loadMenuAndPageData(int code);
     Map<Menu, List<PageData>> loadMenuAndPageData();
 
 
     // Transaction -多次查询，以确定整个操作以原子方式运行。
     @Transaction
-    @Query("SELECT * FROM menu")
+    @Query("SELECT * FROM menu2")
     List<MenuPageData> loadMenuPageData();
 
     // Transaction -多次查询，以确定整个操作以原子方式运行。
     @Transaction
-    @Query("SELECT * FROM menu")
+    @Query("SELECT * FROM menu2")
     Single<List<MenuPageData>> loadMenuPageData2(); // RxJava
 }

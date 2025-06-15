@@ -13,7 +13,7 @@ import androidx.room.PrimaryKey;
 // Entity - data entity
 // primaryKeys - set multiple primary keys
 // indices - set index
-@Entity(tableName = "menu", primaryKeys = {"code"}, indices = {@Index(value = {"menu_title"}, unique = true)})
+@Entity(tableName = "menu2", primaryKeys = {"code"}, indices = {@Index(value = {"menu_title"}, unique = true)})
 public class Menu {
     //    @PrimaryKey
     @NonNull
@@ -30,8 +30,8 @@ public class Menu {
     public Bitmap picture;
 
     // v1 : no country field
-
-//    public String country;
+    // added in v2
+    public String country;
 
 
     public Menu(int code, String menuTitle, String menuType) {

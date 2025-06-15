@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
@@ -11,7 +12,6 @@ import androidx.room.migration.Migration;
 import androidx.sqlite.SQLiteConnection;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import java.nio.file.attribute.FileAttribute;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -27,7 +27,12 @@ import java.util.concurrent.Executors;
  * }
  * }
  */
-@Database(entities = {Menu.class, PageData.class}, /*views = {MenuPageDataDetails.class},*/ version = 1, exportSchema = true)
+@Database(entities = {Menu.class, PageData.class}
+        , version = 3
+        , exportSchema = true
+        , autoMigrations = {@AutoMigration(from = 1, to = 2),
+        @AutoMigration(from = 2, to = 3, spec = L2ToL3MigrationSpec.class)}
+)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String TAG = "AppDatabase";
 
@@ -55,12 +60,13 @@ public abstract class AppDatabase extends RoomDatabase {
                     //    annotationProcessor 'androidx.room:room-compiler:2.7.1'
                     //    kapt 'androidx.room:room-compiler:2.7.1'
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "test.db")
+                            .createFromAsset("database/test.db")
                             .addCallback(roomDatabaseCallback)
                             // 迁移数据库
 //                            .addMigrations(MIGRATION_1_to_2)
                             // false - crash app> java.lang.IllegalStateException: Migration didn't properly handle: menu(com.example.kotlin.test.db.Menu)
                             // true = //迁移数据库如果发生错误，将会删除数据，而不是发生崩溃
-                            .fallbackToDestructiveMigration(false)
+//                            .fallbackToDestructiveMigration(false)
                             .build();
                 }
             }
