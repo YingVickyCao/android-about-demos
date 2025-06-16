@@ -8,6 +8,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import java.util.Date;
 import java.util.List;
 
 @Dao
@@ -28,7 +29,7 @@ public interface MenuDao {
     Menu findByTitle(String menuTitle);
 
     @Query("SELECT * FROM menu2 WHERE code = :menuCode")
-    Menu findByCode(String menuCode);
+    Menu findByCode(int menuCode);
 
     // Return a subset of a table's columns
     @Query("SELECT menu_title FROM menu2 WHERE code = :menuCode")
@@ -37,6 +38,10 @@ public interface MenuDao {
     // Return a subset of a table's columns
     @Query("SELECT menu_title FROM menu2 WHERE code = :menuCode")
     SimpleMenu findMenuSimple(String menuCode);
+
+    //  使用复杂的数据
+    @Query("select * from menu2 where createdDate=:date")
+    List<Menu> findMenuOnDate(Date date);
 
     // @Insert - can return a new rowId for the inserted item
     @Insert

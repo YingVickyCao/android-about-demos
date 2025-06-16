@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 3,
-    "identityHash": "fd47f349667a71b95500dab3751a58ec",
+    "identityHash": "933bbb950d98795fa03048f75119d19e",
     "entities": [
       {
         "tableName": "menu2",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`code` INTEGER NOT NULL, `menu_title` TEXT, `menu_type` TEXT, `country` TEXT, PRIMARY KEY(`code`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`code` INTEGER NOT NULL, `menu_title` TEXT, `menu_type` TEXT, `country` TEXT, `createdDate` INTEGER, PRIMARY KEY(`code`))",
         "fields": [
           {
             "fieldPath": "code",
@@ -28,6 +28,11 @@
             "fieldPath": "country",
             "columnName": "country",
             "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "createdDate",
+            "columnName": "createdDate",
+            "affinity": "INTEGER"
           }
         ],
         "primaryKey": {
@@ -93,7 +98,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fd47f349667a71b95500dab3751a58ec')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '933bbb950d98795fa03048f75119d19e')"
     ]
   }
 }

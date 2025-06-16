@@ -48,4 +48,9 @@ public class MenuViewModule extends AndroidViewModel {
         repository.delete(menu);
     }
 
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        // close cursor
+    }
 }

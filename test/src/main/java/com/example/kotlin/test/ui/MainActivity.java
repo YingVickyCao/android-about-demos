@@ -193,7 +193,13 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        List<MenuPageData> result = pageDataViewModule.loadMenuPageData();
-        Log.e(TAG, "run: " + result);
+        // java.lang.IllegalStateException: Cannot access database on the main thread since it may potentially lock the UI for a long period of time.
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<MenuPageData> result = pageDataViewModule.loadMenuPageData();
+                Log.e(TAG, "run: " + result);
+            }
+        }).start();
     }
 }

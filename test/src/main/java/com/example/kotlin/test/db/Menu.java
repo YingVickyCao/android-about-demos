@@ -10,6 +10,8 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 // Entity - data entity
 // primaryKeys - set multiple primary keys
 // indices - set index
@@ -32,6 +34,8 @@ public class Menu {
     // v1 : no country field
     // added in v2
     public String country;
+
+    public Date createdDate;
 
 
     public Menu(int code, String menuTitle, String menuType) {

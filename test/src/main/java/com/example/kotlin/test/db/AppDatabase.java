@@ -8,6 +8,7 @@ import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.room.migration.Migration;
 import androidx.sqlite.SQLiteConnection;
 import androidx.sqlite.db.SupportSQLiteDatabase;
@@ -27,12 +28,13 @@ import java.util.concurrent.Executors;
  * }
  * }
  */
-@Database(entities = {Menu.class, PageData.class}
-        , version = 3
-        , exportSchema = true
-        , autoMigrations = {@AutoMigration(from = 1, to = 2),
-        @AutoMigration(from = 2, to = 3, spec = L2ToL3MigrationSpec.class)}
+@Database(entities = {Menu.class, PageData.class},
+        version = 3,
+        exportSchema = true
+//      autoMigrations = {@AutoMigration(from = 1, to = 2),
+//        @AutoMigration(from = 2, to = 3, spec = L2ToL3MigrationSpec.class)},
 )
+@TypeConverters({MenuConverters.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static final String TAG = "AppDatabase";
 
@@ -60,13 +62,13 @@ public abstract class AppDatabase extends RoomDatabase {
                     //    annotationProcessor 'androidx.room:room-compiler:2.7.1'
                     //    kapt 'androidx.room:room-compiler:2.7.1'
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "test.db")
-                            .createFromAsset("database/test.db")
+//                            .createFromAsset("database/test.db")
                             .addCallback(roomDatabaseCallback)
                             // 迁移数据库
-//                            .addMigrations(MIGRATION_1_to_2)
+                            .addMigrations(MIGRATION_1_to_2, MIGRATION_2_to_3)
                             // false - crash app> java.lang.IllegalStateException: Migration didn't properly handle: menu(com.example.kotlin.test.db.Menu)
                             // true = //迁移数据库如果发生错误，将会删除数据，而不是发生崩溃
-//                            .fallbackToDestructiveMigration(false)
+                            .fallbackToDestructiveMigration(true)
                             .build();
                 }
             }
@@ -74,25 +76,60 @@ public abstract class AppDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    static final Migration MIGRATION_1_to_2 = new Migration(1, 2) {
+    public static final Migration MIGRATION_1_to_2 = new Migration(1, 2) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase db) {
 //            super.migrate(db);
-            Log.e(TAG, "migrate: SupportSQLiteDatabase");
-            // db.execSQL("ALTER TABLE menu ADD COLUMN country TEXT ");
+            Log.e(TAG, "MIGRATION_1_to_2: SupportSQLiteDatabase");
 
-            //     android.database.sqlite.SQLiteException: table aaaa has 4 columns but 3 values were supplied (code 1 SQLITE_ERROR[1]): , while compiling: insert into aaaa select code  ,menu_title ,menu_type from menu
-            db.execSQL("CREATE TABLE aaaa(code INTEGER PRIMARY KEY,menu_title text,menu_type text,country text)");
-            db.execSQL("INSERT INTO aaaa SELECT code,menu_title,menu_type from menu");
-            db.execSQL("DROP TABLE menu");
-            db.execSQL("alter table  aaaa rename to menu");
+            // way 1
+            try {
+                // way 1
+                db.execSQL("ALTER TABLE menu ADD COLUMN country TEXT ");
 
+                //                 android.database.sqlite.SQLiteException: table aaaa has 4 columns but 3 values were supplied (code 1 SQLITE_ERROR[1]): , while compiling: insert into aaaa select code  ,menu_title ,menu_type from menu
+//                db.execSQL("CREATE TABLE aaaa(code INTEGER PRIMARY KEY,menu_title text,menu_type text,country text)");
+//                db.execSQL("INSERT INTO aaaa SELECT code,menu_title,menu_type from menu");
+//                db.execSQL("DROP TABLE menu");
+//                db.execSQL("alter table  aaaa rename to menu");
+            } catch (Exception exception) {
+                Log.e(TAG, "MIGRATION_1_to_2: SupportSQLiteDatabase Exception");
+            }
         }
 
         @Override
         public void migrate(@NonNull SQLiteConnection connection) {
             super.migrate(connection);
-            Log.e(TAG, "migrate: SQLiteConnection");
+            Log.e(TAG, "MIGRATION_1_to_2: SQLiteConnection");
+        }
+    };
+
+    public static final Migration MIGRATION_2_to_3 = new Migration(2, 3) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase db) {
+            try {
+//            super.migrate(db);
+//             db.execSQL("ALTER TABLE menu RENAME to menu2 ");
+                // https://cloud.tencent.com/developer/ask/sof/106750124
+                db.execSQL("CREATE TABLE menu2(code INTEGER PRIMARY KEY, menu_title text, menu_type text, country text)");
+                db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_menu2_menu_title` ON menu2 (menu_title)");
+                db.execSQL("INSERT INTO menu2 SELECT * from menu");
+
+                db.execSQL("CREATE TABLE IF NOT EXISTS tmp_page_data (id INTEGER PRIMARY KEY, code TEXT, title text, FOREIGN KEY(code)  REFERENCES menu2(code) on DELETE CASCADE on UPDATE CASCADE)");
+                db.execSQL("INSERT INTO tmp_page_data SELECT * from page_data");
+                db.execSQL("DROP TABLE IF EXISTS page_data ");
+                db.execSQL("ALTER TABLE  tmp_page_data rename to page_data");
+                db.execSQL("DROP TABLE IF EXISTS menu ");
+                Log.e(TAG, "MIGRATION_2_to_3: SupportSQLiteDatabase");
+            } catch (Exception exception) {
+                Log.e(TAG, "MIGRATION_2_to_3: SupportSQLiteDatabase exception");
+            }
+        }
+
+        @Override
+        public void migrate(@NonNull SQLiteConnection connection) {
+            super.migrate(connection);
+            Log.e(TAG, "MIGRATION_2_to_3: SQLiteConnection");
         }
     };
 
