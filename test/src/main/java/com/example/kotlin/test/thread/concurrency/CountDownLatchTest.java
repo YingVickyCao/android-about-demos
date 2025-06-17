@@ -2,11 +2,13 @@ package com.example.kotlin.test.thread.concurrency;
 
 import android.util.Log;
 
-// https://zhuanlan.zhihu.com/p/665862642
-// synchronized block
+import java.util.concurrent.CountDownLatch;
+
+// https://cloud.tencent.com/developer/article/2528687
+// CountDownLatch
 //  E  run: Counter = 20000
-// E  run: Completed 100*200 actions in 2285 ms
-public class Synchronized4 {
+// E  run: Completed 100*200 actions in 1856 ms
+public class CountDownLatchTest {
     private static final String TAG = "Synchronized1";
     ILoadingViewStatus viewStatus;
 
@@ -14,14 +16,15 @@ public class Synchronized4 {
         public static int count = 0;
 
         public void increment() {
-            // 同步的代码块 : 锁定的是当前实例对象（this）。这意味着同一实例的不同方法调用会相互排斥，但不同实例之间的方法调用不会相互排斥。
-            synchronized (this) {
-                count++;
-            }
+            count++;
+        }
+
+        public void reset() {
+            count = 0;
         }
     }
 
-    public Synchronized4(ILoadingViewStatus viewStatus) {
+    public CountDownLatchTest(ILoadingViewStatus viewStatus) {
         this.viewStatus = viewStatus;
     }
 
@@ -35,10 +38,12 @@ public class Synchronized4 {
             public void run() {
                 long start = System.currentTimeMillis();
                 Counter test = new Counter();
+                test.reset();
 //        int n = 5;
                 int n = 100;
-                int k = 200;
+                int k = 100;
 //        int k = 5;
+                CountDownLatch countDownLatch = new CountDownLatch(n * k);
                 for (int i = 1; i <= n; i++) {
                     for (int j = 1; j <= k; j++) {
                         int finalI = i;
@@ -48,6 +53,7 @@ public class Synchronized4 {
                             @Override
                             public void run() {
                                 test.increment();
+//                                Log.e(TAG, "run: " + "thread name:" + Thread.currentThread().getName() + "，开始执行！");
 //                        Log.e(TAG, "finalI = " + finalI + ",finalK = " + finalJ);
 //                        Log.e(TAG, "run: " + "Counter = " + test.count);
                                 if (finalI == n && finalJ == k) {
@@ -57,9 +63,18 @@ public class Synchronized4 {
                                     Log.e(TAG, "run: " + "Completed " + finalI + "*" + finalJ + " actions in " + time + " ms");
                                     viewStatus.hideLoading();
                                 }
+                                Log.e(TAG, "run: getCount=" + countDownLatch.getCount() + ",countDown = " + test.count);
+                                countDownLatch.countDown();
                             }
                         }).start();
                     }
+                }
+
+                try {
+                    countDownLatch.await();
+                    Log.e(TAG, "所有任务线程已执行完毕，准备进行结果汇总");
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
         }).start();

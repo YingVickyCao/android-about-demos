@@ -22,8 +22,8 @@ public class TestThreadConcurrencyActivity extends AppCompatActivity implements 
     }
 
     private void test() {
-        Synchronized3 synchronized1 = new Synchronized3(this);
-        synchronized1.test();
+        CountDownLatchTest test = new CountDownLatchTest(this);
+        test.test();
     }
 
     @Override
