@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
+import com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity3;
 import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.other_ui._dialog.TestDialogActivity;
 import com.hades.example.android.app_component.service.boundservice.TestLocalBoundServiceActivity;
@@ -20,12 +21,13 @@ public class TestAppComponentActivity extends BaseActivity {
 
         findViewById(R.id.pageBondService).setOnClickListener(v -> pageBondService());
         findViewById(R.id.pageBondService2).setOnClickListener(v -> pageBondService2());
+        findViewById(R.id.pageBondService3).setOnClickListener(v -> pageBondService3());
         findViewById(R.id.pageDialogFragment).setOnClickListener(v -> pageDialogFragment());
     }
 
     @Override
     protected void showCurrentTest() {
-        pageDialogFragment();
+//        pageDialogFragment();
     }
 
     private void pageBondService() {
@@ -34,6 +36,10 @@ public class TestAppComponentActivity extends BaseActivity {
 
     private void pageBondService2() {
         showActivity(TestRemoteBoundServiceActivity2.class);
+    }
+
+    private void pageBondService3() {
+        showActivity(TestRemoteBoundServiceActivity3.class);
     }
 
     private void pageDialogFragment() {

@@ -14,23 +14,18 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.viewmodel.internal.DefaultViewModelProviderFactory;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kotlin.test.R;
-import com.example.kotlin.test.db.AppDatabase;
-import com.example.kotlin.test.db.Menu;
-import com.example.kotlin.test.db.MenuPageData;
-import com.example.kotlin.test.db.PageData;
-import com.example.kotlin.test.db.PageDataDao;
-import com.example.kotlin.test.db.SimpleMenu;
+import com.example.kotlin.test.data.db.Menu;
+import com.example.kotlin.test.data.db.MenuPageData;
+import com.example.kotlin.test.data.db.PageData;
+import com.example.kotlin.test.data.db.SimpleMenu;
 import com.example.kotlin.test.viewmodel.MenuViewModule;
 import com.example.kotlin.test.viewmodel.PageDataViewModule;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";

@@ -1,4 +1,4 @@
-package com.example.kotlin.test.db;
+package com.example.kotlin.test.data.db;
 
 import androidx.room.TypeConverter;
 

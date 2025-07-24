@@ -58,9 +58,14 @@ android {
         main {
             res.srcDirs += ['src/main/res-android']
             res.srcDirs += ['src/main/res-keyboard']
+            aidl {
+                srcDirs 'src/main/aidl'
+            }
         }
     }
-    buildFeatures {
+
+    buildFeatures{
+        aidl(true)
         buildConfig true
     }
 

@@ -6,13 +6,15 @@ import androidx.room.Room;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import com.example.kotlin.test.data.db.AppDatabase;
+import com.example.kotlin.test.data.db.Menu;
+import com.example.kotlin.test.data.db.MenuDao;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.util.List;
 
 @RunWith(AndroidJUnit4.class)
 public class MenuDaoReadWriteTest {

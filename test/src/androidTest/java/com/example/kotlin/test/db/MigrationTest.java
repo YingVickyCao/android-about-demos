@@ -7,6 +7,8 @@ import androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import com.example.kotlin.test.data.db.AppDatabase;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;

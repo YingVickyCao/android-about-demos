@@ -84,10 +84,22 @@
             android:name="com.hades.example.android.b.bound_service.RemoteBoundedService"
             android:exported="true"
             android:process=":remote">
+            <!--   intent-filter 可以不用         -->
             <!--<intent-filter>-->
             <!--<action android:name="com.hades.example.android.b.bound_service.RemoteBoundedService" />-->
             <!--<category android:name="android.intent.category.DEFAULT" />-->
             <!--</intent-filter>-->
+        </service>
+
+        <service
+            android:name="com.hades.example.android.b.bound_service.RemoteBoundedService2"
+            android:exported="true"
+            android:process=":RemoteBoundedService2">
+            <!--   intent-filter 必须加         -->
+            <intent-filter>
+                <action android:name="com.hades.example.android.b.bound_service.RemoteBoundedService2" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </service>
 
         <activity

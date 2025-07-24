@@ -1,17 +1,14 @@
-package com.example.kotlin.test.respository;
+package com.example.kotlin.test.data.respository;
 
 import android.app.Application;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
-import com.example.kotlin.test.db.AppDatabase;
-import com.example.kotlin.test.db.Menu;
-import com.example.kotlin.test.db.MenuDao;
-import com.example.kotlin.test.db.SimpleMenu;
+import com.example.kotlin.test.data.db.AppDatabase;
+import com.example.kotlin.test.data.db.Menu;
+import com.example.kotlin.test.data.db.MenuDao;
+import com.example.kotlin.test.data.db.SimpleMenu;
 
 import java.util.List;
 

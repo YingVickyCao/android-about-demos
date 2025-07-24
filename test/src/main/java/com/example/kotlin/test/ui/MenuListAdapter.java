@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
-import com.example.kotlin.test.db.Menu;
+import com.example.kotlin.test.data.db.Menu;
 
 public class MenuListAdapter extends ListAdapter<Menu, MenuViewHolder> {
     protected MenuListAdapter(@NonNull DiffUtil.ItemCallback<Menu> diffCallback) {

@@ -119,6 +119,9 @@ public class TestLocalBoundServiceActivity extends Activity {
     }
 
     private void getServiceStatus() {
+        if (mBinder == null) {
+            return;
+        }
         Log.d(TAG, "getServiceStatus: mBinder.getCount()=" + mBinder.getCount());
         Toast.makeText(TestLocalBoundServiceActivity.this, "Service的count值为：" + mBinder.getCount(), Toast.LENGTH_SHORT).show();  // ②
     }

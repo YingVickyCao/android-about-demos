@@ -2,7 +2,7 @@ package com.example.kotlin.test;
 
 import android.app.Application;
 
-import com.example.kotlin.test.db.AppDatabase;
+import com.example.kotlin.test.data.db.AppDatabase;
 
 public class App extends Application {
 

@@ -37,6 +37,18 @@ android {
         sourceCompatibility rootProject.ext.sourceCompatibility
         targetCompatibility rootProject.ext.targetCompatibility
     }
+
+    sourceSets {
+        main {
+            aidl {
+                srcDirs 'src/main/aidl'
+            }
+        }
+    }
+
+    buildFeatures{
+        aidl(true)
+    }
 }
 
 dependencies {
@@ -48,6 +60,7 @@ dependencies {
     }
 
     implementation libs.androidx.appcompat
+    implementation libs.kotlinx.coroutines.android
     implementation libs.androidx.constraintlayout
 
     testImplementation libs.test.junit

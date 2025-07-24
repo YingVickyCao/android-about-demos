@@ -1,14 +1,14 @@
-package com.example.kotlin.test.respository;
+package com.example.kotlin.test.data.respository;
 
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.kotlin.test.db.AppDatabase;
-import com.example.kotlin.test.db.Menu;
-import com.example.kotlin.test.db.MenuPageData;
-import com.example.kotlin.test.db.PageData;
-import com.example.kotlin.test.db.PageDataDao;
+import com.example.kotlin.test.data.db.AppDatabase;
+import com.example.kotlin.test.data.db.Menu;
+import com.example.kotlin.test.data.db.MenuPageData;
+import com.example.kotlin.test.data.db.PageData;
+import com.example.kotlin.test.data.db.PageDataDao;
 
 import java.util.List;
 import java.util.Map;

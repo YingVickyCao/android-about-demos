@@ -6,10 +6,10 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.kotlin.test.db.Menu;
-import com.example.kotlin.test.db.MenuPageData;
-import com.example.kotlin.test.db.PageData;
-import com.example.kotlin.test.respository.PageDataRepository;
+import com.example.kotlin.test.data.db.Menu;
+import com.example.kotlin.test.data.db.MenuPageData;
+import com.example.kotlin.test.data.db.PageData;
+import com.example.kotlin.test.data.respository.PageDataRepository;
 
 import java.util.List;
 import java.util.Map;

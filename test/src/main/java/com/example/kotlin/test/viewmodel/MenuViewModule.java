@@ -3,15 +3,12 @@ package com.example.kotlin.test.viewmodel;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RestrictTo;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 
-import com.example.kotlin.test.db.Menu;
-import com.example.kotlin.test.db.SimpleMenu;
-import com.example.kotlin.test.respository.MenuRepository;
+import com.example.kotlin.test.data.db.Menu;
+import com.example.kotlin.test.data.db.SimpleMenu;
+import com.example.kotlin.test.data.respository.MenuRepository;
 
 import java.util.List;
 

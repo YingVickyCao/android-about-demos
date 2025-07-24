@@ -68,8 +68,7 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
     }
 
     private Intent buildIntent() {
-//        Intent intent = new Intent(B_REMOTEBOUNDEDSERVICE_CLASS_ACTION); // Can not access B RemoteBoundedService
-        Intent intent = new Intent(); // Can not access B RemoteBoundedService
+        Intent intent = new Intent();
         intent.setComponent(new ComponentName(BConstant.B_PACKAGE, BConstant.B_REMOTEBOUNDEDSERVICE_CLASS));
         return intent;
     }
