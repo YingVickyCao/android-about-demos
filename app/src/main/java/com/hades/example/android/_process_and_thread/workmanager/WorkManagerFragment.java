@@ -1,5 +1,8 @@
 package com.hades.example.android._process_and_thread.workmanager;
 
+import static com.hades.example.android._process_and_thread.workmanager.MyLongRunningWorker.KEY_INPUT_URL;
+import static com.hades.example.android._process_and_thread.workmanager.MyLongRunningWorker.KEY_OUTPUT_FILE_NAME;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -420,6 +423,16 @@ public class WorkManagerFragment extends Fragment {
     }
 
     private void longRunningWorkers() {
-        new LongRunningWorkersExample().test();
+        Log.e(TAG, "longRunningWorkers: " );
+        Data data = new Data.Builder()
+                .putString(KEY_INPUT_URL, "ac")
+                .putString(KEY_OUTPUT_FILE_NAME, "df")
+                .build();
+        OneTimeWorkRequest request = new OneTimeWorkRequest.Builder(MyLongRunningWorker.class)
+                .addTag("long-running-workers")
+                .setInputData(data)
+                .build();
+        WorkManager instance = getInstance();
+        instance.enqueueUniqueWork("CoroutineWorker", ExistingWorkPolicy.REPLACE, request);
     }
 }

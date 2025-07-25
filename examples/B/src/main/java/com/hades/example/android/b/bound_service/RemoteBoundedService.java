@@ -85,7 +85,7 @@ public class RemoteBoundedService extends Service {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MSG_REQUEST:
-                    Log.d(TAG, "handleMessage: " + LogHelper.getThreadInfo());
+                    Log.e(TAG, "handleMessage: " + LogHelper.getThreadInfo());
                     Messenger activityMessenger = msg.replyTo;
                     response(activityMessenger);
                     break;

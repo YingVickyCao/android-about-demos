@@ -32,6 +32,11 @@
                 android:text="@string/page_AsyncTask" />
 
             <Button
+                android:id="@+id/pageWorkManager"
+                style="@style/btn"
+                android:text="@string/page_WorkManager" />
+
+            <Button
                 android:id="@+id/page_use_Concurrent_to_replace_AsyncTask"
                 style="@style/btn"
                 android:text="@string/page_use_Concurrent_to_replace_AsyncTask" />

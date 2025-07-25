@@ -6,6 +6,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.hades.example.android.b.IRemoteService;
+import com.hades.example.android.b.LogHelper;
 
 public class RemoteBoundedService2 extends Service {
     private static final String TAG = "RemoteBoundedService2";
@@ -19,14 +20,15 @@ public class RemoteBoundedService2 extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         // Return the interface.
-        Log.e(TAG, "onBind: ");
+        // E  onBind: [thread =2,main]
+        Log.e(TAG, "onBind: " + LogHelper.getThreadInfo());
         return binder;
     }
 
     private final IRemoteService.Stub binder = new IRemoteService.Stub() {
         public int getPid() {
+            Log.e(TAG, "getPid: " + LogHelper.getThreadInfo());
             // getPid: thread name=binder:8580_1,thread id=46
-            Log.e(TAG, "getPid: thread name=" + Thread.currentThread().getName() + ",thread id=" + Thread.currentThread().getId());
             return (int) System.currentTimeMillis();
         }
 
