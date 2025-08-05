@@ -1,7 +1,12 @@
 package com.hades.example.android.b.bound_service;
 
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -17,13 +22,52 @@ public class RemoteBoundedService2 extends Service {
         Log.e(TAG, "onCreate: ");
     }
 
+    @SuppressLint("BinderGetCallingInMainThread")
     @Override
     public IBinder onBind(Intent intent) {
         // Return the interface.
         // E  onBind: [thread =2,main]
         Log.e(TAG, "onBind: " + LogHelper.getThreadInfo());
+//        Log.e(TAG, "onBind: Binder.getCallingPid=" + Binder.getCallingPid());
+//        Log.e(TAG, "onBind: Binder.getCallingWorkSourceUid=" + Binder.getCallingWorkSourceUid());
+//        Log.e(TAG, "onBind: Binder.getCallingUid=" + Binder.getCallingUid());
+//        Log.e(TAG, "onBind: Binder.getCallingUserHandle=" + Binder.getCallingUserHandle());
+//        Log.e(TAG, "onBind: Binder.getCallingWorkSourceUid=" + Binder.getCallingWorkSourceUid());
+//        Log.e(TAG, "onBind: intent=" + intent.toString());
+//
+//        try {
+//            int callingUid = Binder.getCallingUid();
+//            // TODO:com.hades.example.android.b
+//            // 不起作用，因为得不到调用者的package，得到的始终是当前service的package
+//            String[] packages = getPackageManager().getPackagesForUid(callingUid);
+//
+//            if (packages != null && packages.length > 0) {
+//                // Check the signature of the first package found for this UID
+//                String callingPackageName = packages[0];
+//                PackageInfo packageInfo = getPackageManager().getPackageInfo(callingPackageName, PackageManager.GET_SIGNATURES);
+//                Signature[] signatures = packageInfo.signatures;
+//
+//                // Compare with your application's signatures
+//                // You'll need to store your app's signatures for comparison
+//                if (!hasMatchingSignature(signatures)) {
+//                    throw new SecurityException("Caller has an invalid signature.");
+//                }
+//            } else {
+//                throw new SecurityException("Could not retrieve caller package information.");
+//            }
+//        } catch (PackageManager.NameNotFoundException e) {
+//            throw new SecurityException("Could not find package for caller.");
+//        }
         return binder;
     }
+
+//    private boolean hasMatchingSignature(Signature[] callerSignatures) {
+//        // Load your application's signature(s) here
+//        // For example, by loading them from resources or hardcoding them (less recommended)
+//        // Then compare callerSignatures with your own signatures
+//        // This part requires careful implementation
+//        return true; // Placeholder
+//    }
 
     private final IRemoteService.Stub binder = new IRemoteService.Stub() {
         public int getPid() {

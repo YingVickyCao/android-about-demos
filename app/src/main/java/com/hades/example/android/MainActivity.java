@@ -10,6 +10,7 @@ import com.hades.example.android.app_component.TestAppComponentActivity;
 import com.hades.example.android.app_component._activity._children.TestPreferenceActivity;
 import com.hades.example.android.app_component.broadcast.normal.TestNormalBroadcastActivity;
 import com.hades.example.android.app_component.broadcast.ordered.TestOrderedBroadcastActivity;
+import com.hades.example.android.app_component.service.system.audio_manager.AudioServiceActivity;
 import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.data_storage.DataStorageActivity;
 import com.hades.example.android.gps.TestGpsActivity;
@@ -78,6 +79,6 @@ public class MainActivity extends BaseActivity {
     }
 
     private void pageQAAboutView() {
-        showActivity(QAActivity.class);
+        showActivity(AudioServiceActivity.class);
     }
 }

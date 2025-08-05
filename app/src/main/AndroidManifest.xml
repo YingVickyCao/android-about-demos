@@ -620,7 +620,7 @@
     </application>
 
     <queries>
-        <package android:name="com.hades.example.android.b" />
+<!--        <package android:name="com.hades.example.android.b" />-->
         <intent>
             <category android:name="android.intent.category.DEFAULT" />
             <action android:name="com.hades.example.android.b.bound_service.RemoteBoundedService2" />
