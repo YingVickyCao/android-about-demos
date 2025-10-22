@@ -31,6 +31,7 @@ class StickyEventExampleActivity2 : AppCompatActivity() {
         viewModule.n1.observe(this, object : Observer<Long> {
             override fun onChanged(value: Long) {
                 runOnUiThread {
+                    Log.e(TAG, "onChanged: $value", )
                     content.text = value.toString()
                 }
             }
@@ -38,6 +39,7 @@ class StickyEventExampleActivity2 : AppCompatActivity() {
     }
 
     private fun addNewObserver() {
+        // LiveData的粘性问题：新加入的observer，它能收到最后一次的数据
         viewModule.n1.observe(this, object : Observer<Long> {
             override fun onChanged(value: Long) {
                 runOnUiThread {

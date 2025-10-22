@@ -37,7 +37,6 @@ class FragmentA : Fragment() {
             }
 
         })
-
         sharedViewModel.one_time_event_shared.observe(viewLifecycleOwner, object : Observer<SingleEvent<Long>> {
             override fun onChanged(value: SingleEvent<Long>) {
                 value.consume { it ->

@@ -15,5 +15,10 @@ class AddNewObserverViewModule(private val savedStateHandle: SavedStateHandle) :
     fun increase() {
         val v = System.currentTimeMillis()
         _n1.value = v
+
+        // LiveData的数据抖动问题
+//        val v = 1L
+//        _n1.value = v
+//        _n1.postValue(v)
     }
 }
