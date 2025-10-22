@@ -27,6 +27,7 @@ public class Fragment1 extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: " + hashCode());
+
     }
 
     @Nullable

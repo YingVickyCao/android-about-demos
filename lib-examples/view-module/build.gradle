@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.android"
-        minSdk rootProject.ext.compileSdk
+        minSdk rootProject.ext.minSdk
         targetSdk rootProject.ext.targetSdk
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName

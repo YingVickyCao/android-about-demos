@@ -14,6 +14,10 @@ class MainViewModel : ViewModel() {
         return seconds
     }
 
+    override fun onCleared() {
+        super.onCleared()
+    }
+
     // post is finished value
     fun isFinishedValue(): LiveData<Boolean> {
         return isFinished

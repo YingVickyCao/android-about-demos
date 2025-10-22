@@ -1,11 +1,13 @@
 package com.example.android.v1
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.R
+import com.example.android.v3.MainActivity
 
 /***
  * Click button, refresh the count on the screen
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.btn).setOnClickListener { clickBtn() }
         bindViewModule()
         displayCount(viewModule.count)
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     private fun bindViewModule() {
