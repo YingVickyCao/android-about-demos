@@ -8,7 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".sticky_event.StickyEventExampleActivity2"
+            android:name=".sticky_event.StickyEventExampleActivity"
             android:exported="true"
             android:theme="@style/AppTheme">
             <intent-filter>

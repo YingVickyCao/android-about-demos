@@ -9,6 +9,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -102,14 +103,11 @@ class SharedViewModule(private val savedStateHandle: SavedStateHandle) : ViewMod
 }
 
 class SingleEvent<T>(val content: T) {
-    // var consumed = false // 标记事件是否已被处理
     var consumed: AtomicBoolean = AtomicBoolean() // 标记事件是否已被处理
 
-    // callback lambda 只有在事件未被消耗时才会执行
+    // callback lambda ： 只有在事件未被消耗时才会执行
     fun consume(callback: (T) -> Unit) { // 消耗事件的方法
-//        if (!consumed) {
         if (!consumed.get()) {
-//            consumed = true // 标记为已处理
             consumed.getAndSet(true) // 标记为已处理
             callback(content) // 执行实际的处理逻辑
         }
@@ -117,13 +115,16 @@ class SingleEvent<T>(val content: T) {
 }
 
 class SingleMutableLiveData<T> : MutableLiveData<T>() {
+    //  标记数据是否已被处理
     var consumed: AtomicBoolean = AtomicBoolean(false)
 
     @MainThread
     override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
         super.observe(owner, object : Observer<T> {
             override fun onChanged(value: T) {
-                if (consumed.get()) {
+                //  只有当值未被处理时，才调用onChanged通知观察者,并标记为已经处理
+                if (!consumed.get()) {
+                    consumed.getAndSet(true)
                     observer.onChanged(value)
                 }
             }
@@ -132,7 +133,8 @@ class SingleMutableLiveData<T> : MutableLiveData<T>() {
 
     @MainThread
     override fun setValue(value: T?) {
-        consumed.getAndSet(true)
+        // 当值更新时，标记为没有被处理
+        consumed.getAndSet(false)
         super.setValue(value)
     }
 }
