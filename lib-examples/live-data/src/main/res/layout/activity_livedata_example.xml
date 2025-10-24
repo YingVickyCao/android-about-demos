@@ -24,7 +24,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentA"
-        android:name="com.example.android.sticky_event.FragmentA"
+        android:name="com.example.android.shared_viewmodule.FragmentA"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_below="@+id/btn"
@@ -32,7 +32,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentB"
-        android:name="com.example.android.sticky_event.FragmentB"
+        android:name="com.example.android.shared_viewmodule.FragmentB"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_below="@+id/fragmentA"

@@ -1,4 +1,4 @@
-package com.example.android.sticky_event
+package com.example.android.shared_viewmodule
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -28,7 +28,6 @@ class FragmentA : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         sharedViewModel.shared.observe(viewLifecycleOwner, object : Observer<Long> {
             override fun onChanged(value: Long) {
                 activity?.runOnUiThread {

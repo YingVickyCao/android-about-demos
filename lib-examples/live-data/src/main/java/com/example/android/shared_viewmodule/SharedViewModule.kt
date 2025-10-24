@@ -1,4 +1,4 @@
-package com.example.android.sticky_event
+package com.example.android.shared_viewmodule
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
@@ -9,7 +9,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 import java.util.concurrent.atomic.AtomicBoolean
 
