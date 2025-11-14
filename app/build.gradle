@@ -8,6 +8,7 @@ plugins {
 
 android {
     namespace 'com.hades.example.android'
+    compileSdk rootProject.ext.compileSdk
 
     signingConfigs {
         config {
@@ -17,8 +18,6 @@ android {
             keyPassword '123456'
         }
     }
-
-    compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
         applicationId "com.hades.example.android"
@@ -76,6 +75,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(":dict-content-provider-common")
 
     implementation(libs.utilityAndroid) {
         artifact {

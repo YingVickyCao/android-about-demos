@@ -5,12 +5,8 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@android:color/holo_purple"
-        android:gravity="center"
-        android:text="@string/subject" />
-
+        android:id="@+id/topic"
+        style="@style/topic_lib" />
 
     <EditText
         android:id="@+id/word"
@@ -22,22 +18,18 @@
         android:id="@+id/insert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/insert" />
+        android:text="Insert dict" />
 
     <EditText
         android:id="@+id/key"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Query word by ID" />
+        android:layout_marginTop="50dp"
+        android:hint="Query word by word or detail" />
 
     <Button
-        android:id="@+id/search"
+        android:id="@+id/query"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/search" />
-
-    <!--<ListView-->
-    <!--android:id="@+id/show"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent" />-->
+        android:text="Query" />
 </LinearLayout>

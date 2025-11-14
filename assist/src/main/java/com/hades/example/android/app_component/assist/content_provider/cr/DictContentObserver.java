@@ -2,8 +2,13 @@ package com.hades.example.android.app_component.assist.content_provider.cr;
 
 import android.database.ContentObserver;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
+
+import com.hades.example.android.app_component.content_provider.dict.Dict;
 
 /**
  * https://www.cnblogs.com/zsychanpin/p/7242147.html
@@ -32,6 +37,6 @@ final class DictContentObserver extends ContentObserver {
     }
 
     private Cursor doSearchWords(String key) {
-        return mSMSActivity.getContentResolver().query(Dict.Word.WORDS_URI, null, null, null, null);
+        return mSMSActivity.getContentResolver().query(Dict.WORDS_URI, null, null, null, null);
     }
 }

@@ -5,19 +5,28 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hades.example.android.app_component.assist.R;
+import com.hades.example.android.app_component.content_provider.dict.Dict;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 
+/**
+ * 用来访问app中的 DictContentProvider
+ */
 public class DictUserActivity extends Activity {
+    private static final String TAG = "DictUserActivity";
 
     private ContentResolver contentResolver;
     public static final String KEY_SEARCH_RESULT = "search_result";
@@ -26,15 +35,21 @@ public class DictUserActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cp_dict_user);
+        setContentView(R.layout.content_provider_dict);
+
+        ((TextView) findViewById(R.id.topic)).setText("Dict Content Resolver Operations");
 
         contentResolver = getContentResolver();
 
-        mDictContentObserver = new DictContentObserver(this, new Handler());
-        getContentResolver().registerContentObserver(Dict.Word.WORDS_URI, true, mDictContentObserver);
+        /**
+         * java.lang.SecurityException: Failed to find provider ** for user 0; expected to find a valid ContentProvider for this authority
+         */
+        mDictContentObserver = new DictContentObserver(this, new Handler(Looper.getMainLooper()));
+        getContentResolver().registerContentObserver(Dict.getUri(), true, mDictContentObserver);
+        getContentResolver().notifyChange(Dict.getUri(), mDictContentObserver);
 
         findViewById(R.id.insert).setOnClickListener(v -> insert());
-        findViewById(R.id.search).setOnClickListener(v -> search());
+        findViewById(R.id.query).setOnClickListener(v -> query());
     }
 
     @Override
@@ -71,10 +86,11 @@ public class DictUserActivity extends Activity {
         ContentValues values = new ContentValues();
         values.put(Dict.Word.WORD, word);
         values.put(Dict.Word.DETAIL, detail);
-        contentResolver.insert(Dict.Word.WORDS_URI, values);
+        Uri uri = contentResolver.insert(Dict.WORDS_URI, values);
+        Log.e(TAG, "doInsertWords: " + uri);
     }
 
-    private void search() {
+    private void query() {
         String key = ((EditText) findViewById(R.id.key)).getText().toString();
 
         Cursor cursor = doSearchWords(key);
@@ -88,7 +104,7 @@ public class DictUserActivity extends Activity {
     }
 
     private Cursor doSearchWords(String key) {
-        return contentResolver.query(Dict.Word.WORDS_URI, null, "word like ? or detail like ?", new String[]{"%" + key + "%", "%" + key + "%"}, null);
+        return contentResolver.query(Dict.WORDS_URI, null, "word like ? or detail like ?", new String[]{"%" + key + "%", "%" + key + "%"}, null);
     }
 
     private ArrayList<Map<String, String>> convertCursorToList(Cursor cursor) {

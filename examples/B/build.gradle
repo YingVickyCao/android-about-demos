@@ -60,7 +60,7 @@ dependencies {
     }
 
     implementation libs.androidx.appcompat
-    implementation libs.kotlinx.coroutines.android
+    implementation platform(libs.kotlin.bom)
     implementation libs.androidx.constraintlayout
 
     testImplementation libs.test.junit

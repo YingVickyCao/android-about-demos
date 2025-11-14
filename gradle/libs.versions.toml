@@ -13,15 +13,21 @@ media3 = "1.3.1"
 activityKtx = "1.9.0"
 agp = "8.5.0"
 #kotlin = "2.0.21"
-kotlin = "1.9.0"
+kotlin = "2.2.21"
 activityCompose = "1.9.0"
 composeBom = "2024.09.00"
 roomVersion = "2.7.1"
 paging_version = "3.3.6"
+material = "1.10.0"
+playServicesLocation = "21.0.1"
+gson = "2.10.1"
+# hiltAndroid = "2.44" # 注释掉的行保持不变
+checkerQual = "3.45.0"
+jetbrainsKotlinJvm = "2.2.21"
 
 [libraries]
 androidx-ktx = { module = "androidx.core:core-ktx", version = "1.10.1" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.7.0" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.7.1" }
 androidx-fragment = { module = "androidx.fragment:fragment", version = "1.5.6" }
 androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version = "1.8.9" }
 androidx-preference = { group = "androidx.preference", name = "preference", version = "1.2.1" }
@@ -38,7 +44,6 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-annotation = { group = "androidx.annotation", name = "annotation", version = "1.6.0" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version = "2.1.4" }
-#androidx.constraintlayout:constraintlayout-core:1.0.4
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
 androidx-room-rxjava2 = { module = "androidx.room:room-rxjava2", version.ref = "roomVersion" }
@@ -57,23 +62,21 @@ androidx-workRxJava = { group = "androidx.work", name = "work-rxjava2", version 
 #androidx-workTesting = { group = "androidx.work", name = "work-testing", version = "2.8.1" }
 #androidx-workGcm = { group = "androidx.work", name = "work-gcm", version = "2.8.1" }
 #androidx-workMultiprocess = { group = "androidx.work", name = "work-multiprocess", version = "2.8.1" }
-
 # WorkManager,END
-# google, START
-google-material = { group = "com.google.android.material", name = "material", version = "1.10.0" }
-google-playServicesLocation = { group = "com.google.android.gms", name = "play-services-location", version = "21.0.1" }
-google-gson = { group = "com.google.code.gson", name = "gson", version = "2.10.1" }
+google-material = { module = "com.google.android.material:material", version.ref = "material" }
+google-playServicesLocation = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
+google-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 #google-hiltAndroid = { group = "com.google.dagger", name = "hilt-android", version = "2.44" }
-androidx-media3 = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "media3" }
-androidx-media3-ui = { group = "androidx.media3", name = "media3-ui", version.ref = "media3" }
-androidx-media3-hls = { group = "androidx.media3", name = "media3-exoplayer-hls", version.ref = "media3" }
-androidx-media3-dash = { group = "androidx.media3", name = "media3-exoplayer-dash", version.ref = "media3" }
-androidx-media3-rtsp = { group = "androidx.media3", name = "media3-exoplayer-rtsp", version.ref = "media3" }
-androidx-media3-smoothstreaming = { group = "androidx.media3", name = "media3-exoplayer-smoothstreaming", version.ref = "media3" }
-androidx-media3-cronet = { group = "androidx.media3", name = "media3-datasource-cronet", version.ref = "media3" }
-androidx-media3-ima = { group = "androidx.media3", name = "media3-exoplayer-ima", version.ref = "media3" }
-checker-qual = { module = "org.checkerframework:checker-qual", version = "3.45.0" }
-# Lifecycles only (without ViewModel or LiveData)
+androidx-media3 = { module = "androidx.media3:media3-exoplayer", version.ref = "media3" }
+androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "media3" }
+androidx-media3-hls = { module = "androidx.media3:media3-exoplayer-hls", version.ref = "media3" }
+androidx-media3-dash = { module = "androidx.media3:media3-exoplayer-dash", version.ref = "media3" }
+androidx-media3-rtsp = { module = "androidx.media3:media3-exoplayer-rtsp", version.ref = "media3" }
+androidx-media3-smoothstreaming = { module = "androidx.media3:media3-exoplayer-smoothstreaming", version.ref = "media3" }
+androidx-media3-cronet = { module = "androidx.media3:media3-datasource-cronet", version.ref = "media3" }
+androidx-media3-ima = { module = "androidx.media3:media3-exoplayer-ima", version.ref = "media3" }
+checker-qual = { module = "org.checkerframework:checker-qual", version.ref = "checkerQual" }
+# Lifecycles
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime", version.ref = "lifecycle" }
 # ViewModel
@@ -103,7 +106,9 @@ okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version = "4.10.0" }
 loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version = "4.10.0" }
 # thirdy party. END
 
-kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version = "1.9.20" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+# Kotlin依赖平台，该平台可以方便地管理和使用Kotlin相关库，保证这些库都是兼容的版本 https://blog.csdn.net/yc040416/article/details/142896543
+kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
 
 utilityAndroid = { group = "com.hades", name = "utility-android", version = "0.0.2" }
 utilityJvm = { group = "com.hades", name = "utility-jvm", version = "0.0.1" }
@@ -142,10 +147,11 @@ androidTest_runner = { group = "androidx.test", name = "runner", version = "1.5.
 
 # plugin, START
 plugin-androidGradle = { module = "com.android.tools.build:gradle", version.ref = "agp" }
-plugin-kotlinGradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+plugin-kotlinGradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version = "2.2.0" }
 # plugin, END
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }

@@ -22,7 +22,7 @@ public class DictContentProvider extends ContentProvider {
     private static final int WORD = 2;
 
     // TODO: 06/07/2018  dbOpenHelper not close
-    private MyDatabaseHelper dbOpenHelper;
+    private DictSQLiteOpenHelper dbOpenHelper;
 
     static {
         // 为 UriMatcher 注册两个Uri
@@ -33,7 +33,7 @@ public class DictContentProvider extends ContentProvider {
     // 第一次调用该DictProvider时，系统先创建DictProvider对象，并回调该方法
     @Override
     public boolean onCreate() {
-        dbOpenHelper = new MyDatabaseHelper(this.getContext(), "myDict.db3", 1);
+        dbOpenHelper = new DictSQLiteOpenHelper(this.getContext(), "myDict.db3", 1);
         Log.d(TAG, "onCreate: ");
         return true;
     }

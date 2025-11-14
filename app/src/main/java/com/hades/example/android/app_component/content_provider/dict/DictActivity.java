@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hades.example.android.R;
@@ -15,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DictActivity extends Activity {
-    MyDatabaseHelper dbHelper;
+    DictSQLiteOpenHelper dbHelper;
 
     private EditText mInputWorldView;
     private EditText mInputIdView;
@@ -24,13 +25,14 @@ public class DictActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_provider_dict);
+        ((TextView) findViewById(R.id.topic)).setText("Dict Content Provider DB Operations");
 
-        dbHelper = new MyDatabaseHelper(this, 1);
+        dbHelper = new DictSQLiteOpenHelper(this, 1);
 
         mInputWorldView = findViewById(R.id.word);
         mInputIdView = findViewById(R.id.key);
 
-        findViewById(R.id.insertBtnClick).setOnClickListener(source -> insert());
+        findViewById(R.id.insert).setOnClickListener(source -> insert());
         findViewById(R.id.query).setOnClickListener(source -> search());
     }
 
@@ -63,7 +65,7 @@ public class DictActivity extends Activity {
 
     private void addWord2Db(String word, String detail) {
         // table name = dict
-        dbHelper.getReadableDatabase().execSQL(MyDatabaseHelper.INSERT_TABLE_DICT, new String[]{null, word, detail});
+        dbHelper.getReadableDatabase().execSQL(DictDbOps.INSERT_TABLE_DICT, new String[]{null, word, detail});
     }
 
     private String getInputQueryUsedId() {
@@ -87,8 +89,8 @@ public class DictActivity extends Activity {
         while (cursor.moveToNext()) {
             Map<String, String> map = new HashMap<>();
             // 取出查询记录中第2列、第3列的值
-            map.put(MyDatabaseHelper.KEY_COLUM_WORD, cursor.getString(1));
-            map.put(MyDatabaseHelper.KEY_COLUM_DETAIL, cursor.getString(2));
+            map.put(Dict.Word.WORD, cursor.getString(1));
+            map.put(Dict.Word.DETAIL, cursor.getString(2));
             result.add(map);
         }
         return result;
@@ -107,6 +109,6 @@ public class DictActivity extends Activity {
          *     #################################################################
          */
 //        //        return dbHelper.getReadableDatabase().rawQuery("select * from dict where word like ? or word like ?", new String[]{"%" + key + "%", "%" + key + "%"});
-        return dbHelper.getReadableDatabase().rawQuery(MyDatabaseHelper.QUERY_TABLE_DICT, new String[]{"%" + key + "%", "%" + key + "%"});
+        return dbHelper.getReadableDatabase().rawQuery(DictDbOps.QUERY_TABLE_DICT, new String[]{"%" + key + "%", "%" + key + "%"});
     }
 }

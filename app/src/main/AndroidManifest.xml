@@ -330,8 +330,9 @@
 
         <provider
             android:name=".app_component.content_provider.dict.DictContentProvider"
-            android:authorities=".app_component.cp.dict.DictContentProvider"
-            android:exported="false" />
+            android:authorities="com.hades.example.android.app_component.content_provider.dict.DictContentProvider"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity android:name=".app_component.content_provider.dict.DictActivity" />
         <activity android:name=".app_component.content_provider.dict.DictSearchResultActivity" />

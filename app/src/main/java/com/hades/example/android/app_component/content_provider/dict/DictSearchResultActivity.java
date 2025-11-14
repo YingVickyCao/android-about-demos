@@ -22,7 +22,7 @@ public class DictSearchResultActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_provider_dict_search_result_popup);
 
-        listView = findViewById(R.id.tableContentList);
+        listView = findViewById(R.id.dictsList);
         showDictSearchResult();
     }
 

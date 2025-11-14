@@ -1,43 +1,41 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
 
 android {
-    namespace 'com.hades.example.android.app_component.assist'
+    namespace 'com.example.kotlin.dict_content_provider_common'
     compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
-        applicationId "com.hades.example.android.app_component.assist"
-
         minSdk rootProject.ext.minSdk
         targetSdk rootProject.ext.targetSdk
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
         sourceCompatibility rootProject.ext.sourceCompatibility
         targetCompatibility rootProject.ext.targetCompatibility
     }
+    kotlinOptions {
+        jvmTarget = rootProject.ext.jvmTarget
+    }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation libs.androidx.appcompat
-    implementation libs.androidx.constraintlayout
     implementation platform(libs.kotlin.bom)
-    implementation project(":dict-content-provider-common")
+    implementation libs.androidx.ktx
 
     testImplementation libs.test.junit
 
-    androidTestImplementation libs.androidTest.runner
+    androidTestImplementation libs.androidTest.junit
     androidTestImplementation libs.androidTest.espressoCore
 }
