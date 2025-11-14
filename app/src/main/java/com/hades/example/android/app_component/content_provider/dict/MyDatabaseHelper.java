@@ -17,28 +17,29 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private final static String DB_NAME = "used_test_content_provider.db";
 
-    final String CREATE_TABLE_1_SQL = "create table table1(_id integer primary " + "key autoincrement , col2 ,colo3)";
-    /**
-     * FIXED_ERROR:
-     * 2019-03-15 11:11:53.511 14465-14465/com.hades.example.android E/SQLiteLog: (1) table table1 already exists
-     * Process: com.hades.example.android, PID: 14465
-     * android.database.sqlite.SQLiteException: table table1 already exists (code 1): , while compiling: create table table1(_id integer primary key autoincrement , col2 ,colo3)
-     * #################################################################
-     * Error Code : 1 (SQLITE_ERROR)
-     * Caused By : SQL(query) error or missing database.
-     * (table table1 already exists (code 1): , while compiling: create table table1(_id integer primary key autoincrement , col2 ,colo3))
-     * #################################################################
-     */
-//    final String CREATE_TABLE_2_SQL = "create table table1(_id integer primary " + "key autoincrement , col2 ,colo3)";
-    final String CREATE_TABLE_2_SQL = "create table table2(_id integer primary " + "key autoincrement , col2 ,colo3)";
-    final String CREATE_TABLE_3_SQL = "create table table3(_id integer primary " + "key autoincrement , col2 ,colo3)";
+    final String CREATE_TABLE_DICT_SQL = "create table dict(id integer primary " + "key autoincrement , word ,detail)";
+    final String CREATE_TABLE_1_SQL = "create table table1(id integer primary " + "key autoincrement , col2 ,colo3)";
+    final String CREATE_TABLE_2_SQL = "create table table2(id integer primary " + "key autoincrement , col2 ,colo3)";
+    final String CREATE_TABLE_3_SQL = "create table table3(id integer primary " + "key autoincrement , col2 ,colo3)";
 
+    public static final String TABLE_DICT_NAME = "dict";
     public static final String TABLE_1_NAME = "table1";
     public static final String TABLE_2_NAME = "table2";
     public static final String TABLE_3_NAME = "table3";
+
     private static final String KEY_COLUMN_ID = "id";
     private static final String KEY_COLUMN_COL2 = "col2";
     private static final String KEY_COLUM_COL3 = "colo3";
+    public static final String KEY_COLUM_WORD = "word";
+    public static final String KEY_COLUM_DETAIL = "detail";
+
+    public static final String INSERT_TABLE_DICT = "insert into " + TABLE_DICT_NAME
+            + "(" + KEY_COLUMN_ID
+            + "," + KEY_COLUM_WORD
+            + "," + KEY_COLUM_DETAIL
+            + ") values(?,?,?)";
+
+    public static final String QUERY_TABLE_DICT = "select * from " + TABLE_DICT_NAME + " where " + KEY_COLUM_WORD + " like ? or " + KEY_COLUM_DETAIL + " like ?";
 
     public final String INSERT_table1 = "insert into " + TABLE_1_NAME
             + "(" + KEY_COLUMN_ID
@@ -69,6 +70,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // When first use DB, auto create table
+        db.execSQL(CREATE_TABLE_DICT_SQL);
         db.execSQL(CREATE_TABLE_1_SQL);
         db.execSQL(CREATE_TABLE_2_SQL);
         db.execSQL(CREATE_TABLE_3_SQL);
@@ -116,7 +118,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         list.add(new RowBean(1, "ABC", 2));
         list.add(new RowBean(2, "hello", 204));
         list.add(new RowBean(3, "Book", 9));
-        list.add(new RowBean(3, "OP", 15));
+        list.add(new RowBean(4, "OP", 15));
         return list;
     }
 

@@ -63,7 +63,7 @@ public class DictActivity extends Activity {
 
     private void addWord2Db(String word, String detail) {
         // table name = dict
-        dbHelper.getWritableDatabase().execSQL("insert into dict values(null , ? , ?)", new String[]{word, detail});
+        dbHelper.getReadableDatabase().execSQL(MyDatabaseHelper.INSERT_TABLE_DICT, new String[]{null, word, detail});
     }
 
     private String getInputQueryUsedId() {
@@ -87,8 +87,8 @@ public class DictActivity extends Activity {
         while (cursor.moveToNext()) {
             Map<String, String> map = new HashMap<>();
             // 取出查询记录中第2列、第3列的值
-            map.put("col2", cursor.getString(1));
-            map.put("col3", cursor.getString(2));
+            map.put(MyDatabaseHelper.KEY_COLUM_WORD, cursor.getString(1));
+            map.put(MyDatabaseHelper.KEY_COLUM_DETAIL, cursor.getString(2));
             result.add(map);
         }
         return result;
@@ -106,7 +106,7 @@ public class DictActivity extends Activity {
          *     	(no such table: dict (code 1): , while compiling: select * from dict where word like ? or detail like ?)
          *     #################################################################
          */
-//        return dbHelper.getReadableDatabase().rawQuery("select * from table1 where col2 like ? or colo3 like ?", new String[]{"%" + key + "%", "%" + key + "%"});
-        return dbHelper.getReadableDatabase().rawQuery("select * from table1 ", null);
+//        //        return dbHelper.getReadableDatabase().rawQuery("select * from dict where word like ? or word like ?", new String[]{"%" + key + "%", "%" + key + "%"});
+        return dbHelper.getReadableDatabase().rawQuery(MyDatabaseHelper.QUERY_TABLE_DICT, new String[]{"%" + key + "%", "%" + key + "%"});
     }
 }
