@@ -42,7 +42,22 @@ public class DictUserActivity extends Activity {
         contentResolver = getContentResolver();
 
         /**
-         * java.lang.SecurityException: Failed to find provider ** for user 0; expected to find a valid ContentProvider for this authority
+         * FIX_ERROR:java.lang.SecurityException: Failed to find provider ** for user 0; expected to find a valid ContentProvider for this authority
+         * https://blog.csdn.net/qq_41806128/article/details/115190130
+         *
+         * 解决：
+         * 1 提供 content provider 的app 中，添加 android:authorities 并  android:exported
+         *  <provider
+         *             android:name=".app_component.content_provider.dict.DictContentProvider"
+         *             android:authorities="com.hades.example.android.app_component.content_provider.dict.DictContentProvider"
+         *             android:enabled="true"
+         *             android:exported="true" />
+         * 使用content provider 的assist 中, UR 必须 提供正确，它的authority 必须对应 android:authorities
+         * 2 使用content provider 的assist 中,要声明 queries
+         *
+         *    <queries>
+         *         <provider android:authorities="com.hades.example.android.app_component.content_provider.dict.DictContentProvider" />
+         *     </queries>
          */
         mDictContentObserver = new DictContentObserver(this, new Handler(Looper.getMainLooper()));
         getContentResolver().registerContentObserver(Dict.getUri(), true, mDictContentObserver);

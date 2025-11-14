@@ -81,6 +81,7 @@ public class DictActivity extends Activity {
         Intent intent = new Intent(DictActivity.this, DictSearchResultActivity.class);
         intent.putExtras(data);
         startActivity(intent);
+        cursor.close();
     }
 
     protected ArrayList<Map<String, String>> convertCursorResultToList(Cursor cursor) {

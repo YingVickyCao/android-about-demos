@@ -18,39 +18,44 @@ public class DictContentProvider extends ContentProvider {
 
     private static UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
 
-    private static final int WORDS = 1;
-    private static final int WORD = 2;
-
     // TODO: 06/07/2018  dbOpenHelper not close
     private DictSQLiteOpenHelper dbOpenHelper;
 
     static {
         // 为 UriMatcher 注册两个Uri
-        matcher.addURI(Dict.AUTHORITY, "words", WORDS);
-        matcher.addURI(Dict.AUTHORITY, "word/#", WORD);
+        matcher.addURI(Dict.AUTHORITY, Dict.WORDS_URI_PATH, Dict.WORDS_URI_CODE);
+        matcher.addURI(Dict.AUTHORITY, Dict.WORD_URI_PATH, Dict.WORD_URI_CODE);
     }
 
     // 第一次调用该DictProvider时，系统先创建DictProvider对象，并回调该方法
     @Override
     public boolean onCreate() {
-        dbOpenHelper = new DictSQLiteOpenHelper(this.getContext(), "myDict.db3", 1);
+        dbOpenHelper = new DictSQLiteOpenHelper(this.getContext(), DictDbOps.DB_NAME, 1);
         Log.d(TAG, "onCreate: ");
         return true;
     }
 
-    // 返回指定Uri参数对应的数据的MIME类型
-    // TODO: 11/07/2018 getType没有调用
+    //     返回指定Uri参数对应的数据的MIME类型
+//     TODO: 11/07/2018 getType没有调用
     @Override
     public String getType(Uri uri) {
         Log.d(TAG, "getType: uri=" + uri.toString());
+        /**
+         * MIME 类型 是一种标准化的标识符，用于描述数据的类型。例如：
+         * text/plain (纯文本)
+         * image/jpeg (JPEG 图片)
+         * application/json (JSON 数据)
+         * vnd.android.cursor.dir/ (代表多条记录的 Cursor)
+         * vnd.android.cursor.item/ (代表单条记录的 Cursor)
+         */
         switch (matcher.match(uri)) {
             // 如果操作的数据是多项记录
-            case WORDS:
-                return "vnd.android.cursor.dir/hades.dict";
+            case Dict.WORDS_URI_CODE:
+                return "vnd.android.cursor.dir/" + Dict.WORDS_URI;
 
             // 如果操作的数据是单项记录
-            case WORD:
-                return "vnd.android.cursor.item/hades.dict";
+            case Dict.WORD_URI_CODE:
+                return "vnd.android.cursor.item/" + Dict.WORD_URI;
             default:
                 throw new IllegalArgumentException("未知Uri:" + uri);
         }
@@ -69,20 +74,21 @@ public class DictContentProvider extends ContentProvider {
          insert,thread =179,Binder:3178_1
          */
 
-        Log.d(TAG, "insert: "+ThreadUtils.getThreadInfo());
+        Log.d(TAG, "insert: " + ThreadUtils.getThreadInfo());
 
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
         switch (matcher.match(uri)) {
             // 如果Uri参数代表操作全部数据项
-            case WORDS:
+            case Dict.WORDS_URI_CODE:
                 // 插入数据，返回插入记录的ID
-                long rowId = db.insert("dict", Dict.Word._ID, values);
+                long rowId = db.insert(DictDbOps.TABLE_DICT_NAME, Dict.Word._ID, values);
                 // 如果插入成功返回uri
                 if (rowId > 0) {
                     // 在已有的 Uri的后面追加ID
                     Uri wordUri = ContentUris.withAppendedId(uri, rowId);
                     // 通知数据已经改变
                     getContext().getContentResolver().notifyChange(wordUri, null);
+                    getContext().getContentResolver().notifyChange(Dict.WORDS_URI, null);
                     return wordUri;
                 }
                 break;
@@ -95,7 +101,7 @@ public class DictContentProvider extends ContentProvider {
     @Override
     public int delete(Uri uri, String where, String[] whereArgs) {
         Log.d(TAG, "update: uri=" + uri.toString() + ",where=" + where + ",whereArgs=" + Arrays.toString(whereArgs));
-        Log.d(TAG, "delete: "+ThreadUtils.getThreadInfo());
+        Log.d(TAG, "delete: " + ThreadUtils.getThreadInfo());
 
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
         // 记录所删除的记录数
@@ -103,12 +109,12 @@ public class DictContentProvider extends ContentProvider {
         // 对uri进行匹配
         switch (matcher.match(uri)) {
             // 如果Uri参数代表操作全部数据项
-            case WORDS:
-                num = db.delete("dict", where, whereArgs);
+            case Dict.WORDS_URI_CODE:
+                num = db.delete(DictDbOps.TABLE_DICT_NAME, where, whereArgs);
                 break;
             // 如果Uri参数代表操作指定数据项
 
-            case WORD:
+            case Dict.WORD_URI_CODE:
                 // 解析出所需要删除的记录ID
                 long id = ContentUris.parseId(uri);
                 String whereClause = Dict.Word._ID + "=" + id;
@@ -116,7 +122,7 @@ public class DictContentProvider extends ContentProvider {
                 if (where != null && !where.equals("")) {
                     whereClause = whereClause + " and " + where;
                 }
-                num = db.delete("dict", whereClause, whereArgs);
+                num = db.delete(DictDbOps.TABLE_DICT_NAME, whereClause, whereArgs);
                 break;
             default:
                 throw new IllegalArgumentException("未知Uri:" + uri);
@@ -129,19 +135,19 @@ public class DictContentProvider extends ContentProvider {
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
         Log.d(TAG, "update: uri=" + uri.toString() + ",where=" + where + ",whereArgs=" + Arrays.toString(whereArgs));
-        Log.d(TAG, "update: "+ThreadUtils.getThreadInfo());
+        Log.d(TAG, "update: " + ThreadUtils.getThreadInfo());
 
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
         // 记录所修改的记录数
         int num = 0;
         switch (matcher.match(uri)) {
             // 如果Uri参数代表操作全部数据项
-            case WORDS:
-                num = db.update("dict", values, where, whereArgs);
+            case Dict.WORDS_URI_CODE:
+                num = db.update(DictDbOps.TABLE_DICT_NAME, values, where, whereArgs);
                 break;
 
             // 如果Uri参数代表操作指定数据项
-            case WORD:
+            case Dict.WORD_URI_CODE:
                 // 解析出想修改的记录ID
                 long id = ContentUris.parseId(uri);
                 String whereClause = Dict.Word._ID + "=" + id;
@@ -149,7 +155,7 @@ public class DictContentProvider extends ContentProvider {
                 if (where != null && !where.equals("")) {
                     whereClause = whereClause + " and " + where;
                 }
-                num = db.update("dict", values, whereClause, whereArgs);
+                num = db.update(DictDbOps.TABLE_DICT_NAME, values, whereClause, whereArgs);
                 break;
             default:
                 throw new IllegalArgumentException("未知Uri:" + uri);
@@ -158,7 +164,7 @@ public class DictContentProvider extends ContentProvider {
         getContext().getContentResolver().notifyChange(uri, null);
         return num;
     }
-    
+
     @Override
     public Cursor query(Uri uri, String[] projection, String where, String[] whereArgs, String sortOrder) {
         Log.d(TAG, "query: uri=" + uri.toString() + ",where=" + where);
@@ -166,18 +172,18 @@ public class DictContentProvider extends ContentProvider {
          * query: uri=content://com.hades.example.android.app_component.cp.dict.DictContentProvider/words,where=word like ? or detail like ?
          * query,thread =4331,Binder:21984_2
          */
-        Log.d(TAG, "query: "+ThreadUtils.getThreadInfo());
+        Log.d(TAG, "query: " + ThreadUtils.getThreadInfo());
 
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
 
         switch (matcher.match(uri)) {
             // 如果Uri参数代表操作全部数据项
-            case WORDS:
+            case Dict.WORDS_URI_CODE:
                 // 执行查询
-                return db.query("dict", projection, where, whereArgs, null, null, sortOrder);
+                return db.query(DictDbOps.TABLE_DICT_NAME, projection, where, whereArgs, null, null, sortOrder);
             // 如果Uri参数代表操作指定数据项
 
-            case WORD:
+            case Dict.WORD_URI_CODE:
                 // 解析出想查询的记录ID
                 long id = ContentUris.parseId(uri);
                 String whereClause = Dict.Word._ID + "=" + id;
@@ -185,7 +191,7 @@ public class DictContentProvider extends ContentProvider {
                 if (where != null && !"".equals(where)) {
                     whereClause = whereClause + " and " + where;
                 }
-                return db.query("dict", projection, whereClause, whereArgs,
+                return db.query(DictDbOps.TABLE_DICT_NAME, projection, whereClause, whereArgs,
                         null, null, sortOrder);
             default:
                 throw new IllegalArgumentException("未知Uri:" + uri);
