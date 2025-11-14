@@ -39,7 +39,7 @@ public class DictAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        DictRowBean contactInfo = getItem(position);
+        DictRowBean bean = getItem(position);
 
         // 1. 布局复用 (ViewHolder 模式)
         if (convertView == null) {
@@ -50,24 +50,24 @@ public class DictAdapter extends BaseAdapter {
             holder.detail = convertView.findViewById(R.id.detail);
             holder.update = convertView.findViewById(R.id.update);
             holder.delete = convertView.findViewById(R.id.delete);
-            holder.update.setOnClickListener(v -> {
-                if (listener != null) {
-                    listener.onUpdate(position, contactInfo.get_id());
-                }
-            });
-            holder.delete.setOnClickListener(v -> {
-                if (listener != null) {
-                    listener.onDelete(position, contactInfo.get_id());
-                }
-            });
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.id.setText(String.valueOf(contactInfo.get_id()));
-        holder.word.setText(contactInfo.getWord());
-        holder.detail.setText(contactInfo.getDetail());
+        holder.id.setText(String.valueOf(bean.get_id()));
+        holder.word.setText(bean.getWord());
+        holder.detail.setText(bean.getDetail());
+        holder.update.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onUpdate(position, bean.getWord(), bean.get_id());
+            }
+        });
+        holder.delete.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onDelete(position, bean.get_id());
+            }
+        });
         return convertView;
     }
 

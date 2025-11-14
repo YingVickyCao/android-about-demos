@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.hades.example.android.app_component.content_provider.dict.common.Dict
 import com.hades.example.android.app_component.content_provider.dict.common.DictDbOps
+import com.hades.example.android.app_component.content_provider.dict.common.DictRowBean
 
 /*
     // data/data/com.xxx.xxx/dict.db

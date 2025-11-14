@@ -3,6 +3,7 @@ package com.hades.example.android.app_component.assist.content_provider.cr;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,10 +15,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.hades.example.android.app_component.assist.R;
 import com.hades.example.android.app_component.content_provider.dict.common.DicListener;
 import com.hades.example.android.app_component.content_provider.dict.common.Dict;
 import com.hades.example.android.app_component.content_provider.dict.common.DictAdapter;
+import com.hades.example.android.app_component.content_provider.dict.common.DictInputListener;
 import com.hades.example.android.app_component.content_provider.dict.common.DictRowBean;
 
 import java.util.ArrayList;
@@ -78,8 +82,8 @@ public class DictUserActivity extends Activity {
     private void initView() {
         DicListener listener = new DicListener() {
             @Override
-            public void onUpdate(int position, long key) {
-
+            public void onUpdate(int position, String word, long key) {
+                update(word, key);
             }
 
             @Override
@@ -103,17 +107,21 @@ public class DictUserActivity extends Activity {
 
     private void insert() {
         String word = ((EditText) findViewById(R.id.word)).getText().toString();
-
         if (word.isEmpty()) {
             Toast.makeText(DictUserActivity.this, "Input invalid", Toast.LENGTH_SHORT).show();
             return;
         }
-
         String detail = buildDetail(word);
 
-        doInsertWords(word, detail);
+        ContentValues values = new ContentValues();
+        values.put(Dict.Word.WORD, word);
+        values.put(Dict.Word.DETAIL, detail);
+        Uri uri = contentResolver.insert(Dict.WORDS_URI, values);
+        Log.e(TAG, "insert: " + uri);
 
-        Toast.makeText(DictUserActivity.this, "添加生词成功！", Toast.LENGTH_SHORT).show();
+        if (null != uri) {
+            Toast.makeText(DictUserActivity.this, "添加生词成功！", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void delete(long id) {
@@ -127,29 +135,59 @@ public class DictUserActivity extends Activity {
         }
     }
 
-    private String buildDetail(String word) {
-        return word + "  detail";
+    private void update(String word, long id) {
+        showUpdateWordDialog(word, new DictInputListener() {
+            @Override
+            public void onInput(String enteredText) {
+                ContentValues values = new ContentValues();
+                values.put(Dict.Word.WORD, enteredText);
+                values.put(Dict.Word.DETAIL, buildDetail(enteredText));
+                String where = Dict.Word._ID + " = ?";
+                int rowNumer = contentResolver.update(Dict.WORDS_URI, values, where, new String[]{String.valueOf(id)});
+                Log.e(TAG, "update: " + rowNumer);
+            }
+        });
     }
 
-    private void doInsertWords(String word, String detail) {
-        ContentValues values = new ContentValues();
-        values.put(Dict.Word.WORD, word);
-        values.put(Dict.Word.DETAIL, detail);
-        Uri uri = contentResolver.insert(Dict.WORDS_URI, values);
-        Log.e(TAG, "doInsertWords: " + uri);
+    private void showUpdateWordDialog(String word, DictInputListener listener) {
+        final EditText input = new EditText(this);
+        input.setText(word);
+        input.setHint("请输入内容..."); // 设置提示文字
+        // input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD); // 如果需要密码输入
+        // input.setText("默认值"); // 设置默认值
+
+        // 创建 AlertDialog
+        new AlertDialog.Builder(this)
+                .setTitle("输入框对话框") // 对话框标题
+                .setView(input) // 设置 EditText 为对话框的视图
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String enteredText = input.getText().toString();
+                        listener.onInput(enteredText);
+                        dialog.cancel();
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .show(); // 显示对话框
+    }
+
+    private String buildDetail(String word) {
+        return "detail of " + word;
     }
 
     private void query() {
         String key = ((EditText) findViewById(R.id.key)).getText().toString();
-        Cursor cursor = doSearchWords(key);
+        Cursor cursor = contentResolver.query(Dict.WORDS_URI, null, "word like ? or detail like ?", new String[]{"%" + key + "%", "%" + key + "%"}, null);
         List<DictRowBean> result = convertCursorToList(cursor);
         list.clear();
         list.addAll(result);
         adapter.notifyDataSetChanged();
-    }
-
-    private Cursor doSearchWords(String key) {
-        return contentResolver.query(Dict.WORDS_URI, null, "word like ? or detail like ?", new String[]{"%" + key + "%", "%" + key + "%"}, null);
     }
 
     private List<DictRowBean> convertCursorToList(Cursor cursor) {
@@ -160,7 +198,7 @@ public class DictUserActivity extends Activity {
         // 遍历Cursor结果集
         while (cursor.moveToNext()) {
             // 将结果集中的数据存入ArrayList中
-            DictRowBean row = new DictRowBean(cursor.getLong(0), cursor.getString(1), cursor.getString(1));
+            DictRowBean row = new DictRowBean(cursor.getLong(0), cursor.getString(1), cursor.getString(2));
             result.add(row);
         }
         return result;
