@@ -1,32 +1,18 @@
 package com.hades.example.android.app_component.assist.content_provider.cr;
 
-import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AlertDialog;
 
 import com.hades.example.android.app_component.assist.R;
-import com.hades.example.android.app_component.content_provider.dict.common.DicListener;
 import com.hades.example.android.app_component.content_provider.dict.common.Dict;
-import com.hades.example.android.app_component.content_provider.dict.common.DictAdapter;
 import com.hades.example.android.app_component.content_provider.dict.common.DictBasicActivity;
-import com.hades.example.android.app_component.content_provider.dict.common.DictInputListener;
-import com.hades.example.android.app_component.content_provider.dict.common.DictRowBean;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
