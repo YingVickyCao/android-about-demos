@@ -9,6 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hades.example.android.R;
+import com.hades.example.android.app_component.content_provider.dict.common.Dict;
+import com.hades.example.android.app_component.content_provider.dict.common.DictDbOps;
 import com.hades.example.android.base.DummyContentFragment;
 
 import java.util.ArrayList;

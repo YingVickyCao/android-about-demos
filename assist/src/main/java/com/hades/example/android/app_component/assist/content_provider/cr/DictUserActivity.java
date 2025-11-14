@@ -3,7 +3,6 @@ package com.hades.example.android.app_component.assist.content_provider.cr;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,15 +10,18 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hades.example.android.app_component.assist.R;
-import com.hades.example.android.app_component.content_provider.dict.Dict;
+import com.hades.example.android.app_component.content_provider.dict.common.DicListener;
+import com.hades.example.android.app_component.content_provider.dict.common.Dict;
+import com.hades.example.android.app_component.content_provider.dict.common.DictAdapter;
+import com.hades.example.android.app_component.content_provider.dict.common.DictRowBean;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 
 /**
@@ -31,6 +33,9 @@ public class DictUserActivity extends Activity {
     private ContentResolver contentResolver;
     public static final String KEY_SEARCH_RESULT = "search_result";
     private DictContentObserver mDictContentObserver;
+    private ListView listView;
+    private List<DictRowBean> list;
+    private DictAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,8 @@ public class DictUserActivity extends Activity {
         setContentView(R.layout.content_provider_dict);
 
         ((TextView) findViewById(R.id.topic)).setText("Dict Content Resolver Operations");
+        listView = findViewById(R.id.dictList);
+        list = new ArrayList<>();
 
         contentResolver = getContentResolver();
 
@@ -63,8 +70,25 @@ public class DictUserActivity extends Activity {
         getContentResolver().registerContentObserver(Dict.getUri(), true, mDictContentObserver);
         getContentResolver().notifyChange(Dict.getUri(), mDictContentObserver);
 
+        initView();
         findViewById(R.id.insert).setOnClickListener(v -> insert());
         findViewById(R.id.query).setOnClickListener(v -> query());
+    }
+
+    private void initView() {
+        DicListener listener = new DicListener() {
+            @Override
+            public void onUpdate(int position, long key) {
+
+            }
+
+            @Override
+            public void onDelete(int position, long key) {
+                delete(key);
+            }
+        };
+        adapter = new DictAdapter(list, listener, this);
+        listView.setAdapter(adapter);
     }
 
     @Override
@@ -92,6 +116,16 @@ public class DictUserActivity extends Activity {
         Toast.makeText(DictUserActivity.this, "添加生词成功！", Toast.LENGTH_SHORT).show();
     }
 
+    private void delete(long id) {
+        ContentValues values = new ContentValues();
+        values.put(Dict.Word._ID, id);
+        String where = Dict.Word._ID + " = ?";
+        int rowNum = contentResolver.delete(Dict.WORDS_URI, where, new String[]{String.valueOf(id)});
+        Log.e(TAG, "doInsertWords: " + rowNum);
+        if (rowNum > 0) {
+            Toast.makeText(DictUserActivity.this, "Delete 生词成功！", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private String buildDetail(String word) {
         return word + "  detail";
@@ -107,34 +141,27 @@ public class DictUserActivity extends Activity {
 
     private void query() {
         String key = ((EditText) findViewById(R.id.key)).getText().toString();
-
         Cursor cursor = doSearchWords(key);
-
-        // 创建一个Bundle对象
-        Bundle data = new Bundle();
-        data.putSerializable(KEY_SEARCH_RESULT, convertCursorToList(cursor));
-        Intent intent = new Intent(DictUserActivity.this, DictUserSearchResultActivity.class);
-        intent.putExtras(data);
-        startActivity(intent);
+        List<DictRowBean> result = convertCursorToList(cursor);
+        list.clear();
+        list.addAll(result);
+        adapter.notifyDataSetChanged();
     }
 
     private Cursor doSearchWords(String key) {
         return contentResolver.query(Dict.WORDS_URI, null, "word like ? or detail like ?", new String[]{"%" + key + "%", "%" + key + "%"}, null);
     }
 
-    private ArrayList<Map<String, String>> convertCursorToList(Cursor cursor) {
-        ArrayList<Map<String, String>> result = new ArrayList<>();
+    private List<DictRowBean> convertCursorToList(Cursor cursor) {
+        List<DictRowBean> result = new ArrayList<>();
         if (null == cursor) {
             return result;
         }
         // 遍历Cursor结果集
         while (cursor.moveToNext()) {
             // 将结果集中的数据存入ArrayList中
-            Map<String, String> map = new HashMap<>();
-            // 取出查询记录中第2列、第3列的值
-            map.put(Dict.Word.WORD, cursor.getString(1));
-            map.put(Dict.Word.DETAIL, cursor.getString(2));
-            result.add(map);
+            DictRowBean row = new DictRowBean(cursor.getLong(0), cursor.getString(1), cursor.getString(1));
+            result.add(row);
         }
         return result;
     }

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.kotlin.dict_content_provider_common'
+    namespace 'com.hades.example.android.app_component.content_provider.dict.common'
     compileSdk rootProject.ext.compileSdk
 
     defaultConfig {

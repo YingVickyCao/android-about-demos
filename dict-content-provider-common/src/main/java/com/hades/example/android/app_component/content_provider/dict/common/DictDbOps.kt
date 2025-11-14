@@ -1,4 +1,4 @@
-package com.hades.example.android.app_component.content_provider.dict
+package com.hades.example.android.app_component.content_provider.dict.common
 
 object DictDbOps {
     const val DB_NAME = "dict.db"

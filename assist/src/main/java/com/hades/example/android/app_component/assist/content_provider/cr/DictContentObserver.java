@@ -2,13 +2,10 @@ package com.hades.example.android.app_component.assist.content_provider.cr;
 
 import android.database.ContentObserver;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
-
-import com.hades.example.android.app_component.content_provider.dict.Dict;
+import com.hades.example.android.app_component.content_provider.dict.common.Dict;
 
 /**
  * https://www.cnblogs.com/zsychanpin/p/7242147.html

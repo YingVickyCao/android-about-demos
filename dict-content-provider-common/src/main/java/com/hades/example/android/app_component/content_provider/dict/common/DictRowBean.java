@@ -1,14 +1,14 @@
-package com.hades.example.android.app_component.content_provider.dict;
+package com.hades.example.android.app_component.content_provider.dict.common;
 
 public class DictRowBean {
     private long _id = -1;
     private String word;
-    private int detail;
+    private String detail;
 
-    public DictRowBean(long id, String col2, int col3) {
-        this._id = id;
-        this.word = col2;
-        this.detail = col3;
+    public DictRowBean(long _id, String word, String detail) {
+        this._id = _id;
+        this.word = word;
+        this.detail = detail;
     }
 
     public long get_id() {
@@ -27,11 +27,11 @@ public class DictRowBean {
         this.word = word;
     }
 
-    public int getDetail() {
+    public String getDetail() {
         return detail;
     }
 
-    public void setDetail(int detail) {
+    public void setDetail(String detail) {
         this.detail = detail;
     }
 }

@@ -5,6 +5,8 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import com.hades.example.android.app_component.content_provider.dict.common.Dict
+import com.hades.example.android.app_component.content_provider.dict.common.DictDbOps
 
 /*
     // data/data/com.xxx.xxx/dict.db
@@ -46,14 +48,14 @@ class DictSQLiteOpenHelper(context: Context?, name: String?, version: Int) : SQL
 
     fun buildTable1Data(): MutableList<DictRowBean?> {
         val list: MutableList<DictRowBean?> = ArrayList<DictRowBean?>()
-        list.add(DictRowBean(1, "City", 1))
-        list.add(DictRowBean(2, "China", 11))
-        list.add(DictRowBean(3, "D", 2))
-        list.add(DictRowBean(4, "ABC", 2))
-        list.add(DictRowBean(5, "hello", 204))
-        list.add(DictRowBean(6, "Book", 9))
-        list.add(DictRowBean(7, "OP", 15))
-        list.add(DictRowBean(8, "Agile", 1911))
+        list.add(DictRowBean(1, "City", "City detail"))
+        list.add(DictRowBean(2, "China", "China detail"))
+        list.add(DictRowBean(3, "D", "D detail"))
+        list.add(DictRowBean(4, "ABC", "ABC detail"))
+        list.add(DictRowBean(5, "hello", "hello detail"))
+        list.add(DictRowBean(6, "Book", "Book detail"))
+        list.add(DictRowBean(7, "OP", "OP detail"))
+        list.add(DictRowBean(8, "Agile", "Agile detail"))
         return list
     }
 

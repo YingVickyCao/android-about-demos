@@ -8,28 +8,44 @@
         android:id="@+id/topic"
         style="@style/topic_lib" />
 
-    <EditText
-        android:id="@+id/word"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Input word" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/insert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Insert dict" />
+        <Button
+            android:id="@+id/insert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Insert"
+            android:textAllCaps="false" />
 
-    <EditText
-        android:id="@+id/key"
+        <EditText
+            android:id="@+id/word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Input word" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:hint="Query word by word or detail" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/query"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Query" />
+        <Button
+            android:id="@+id/query"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Query"
+            android:textAllCaps="false" />
+
+        <EditText
+            android:id="@+id/key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Query by word or detail" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/dictList"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
 </LinearLayout>
