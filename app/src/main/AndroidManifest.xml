@@ -335,7 +335,6 @@
             android:exported="true" />
 
         <activity android:name=".app_component.content_provider.dict.DictActivity" />
-        <activity android:name=".app_component.content_provider.dict.DictSearchResultActivity" />
         <activity android:name=".app_component.content_provider.system.contact.ContactContentProviderActivity" />
         <activity android:name=".app_component.content_provider.system.media.MediaActivity" />
         <activity android:name=".app_component.content_provider.system.sms.SMSActivity" /> <!-- android:foregroundServiceType : show notification immediately in startForeground on Android 13(33) -->

@@ -8,6 +8,11 @@ object DictDbOps {
             + "," + Dict.Word.WORD
             + "," + Dict.Word.DETAIL
             + ") values(?,?,?)")
+    const val DELETE_TABLE_DICT: String = ("insert into " + TABLE_DICT_NAME
+            + "(" + Dict.Word._ID
+            + "," + Dict.Word.WORD
+            + "," + Dict.Word.DETAIL
+            + ") values(?,?,?)")
 
     const val QUERY_TABLE_DICT_SELECTION = Dict.Word.WORD + " like ? or " + Dict.Word.DETAIL + " like ?"
     const val QUERY_TABLE_DICT: String = "select * from " + TABLE_DICT_NAME + " where " + QUERY_TABLE_DICT_SELECTION

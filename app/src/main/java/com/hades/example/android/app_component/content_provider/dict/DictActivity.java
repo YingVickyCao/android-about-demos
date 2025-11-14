@@ -1,41 +1,27 @@
 package com.hades.example.android.app_component.content_provider.dict;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hades.example.android.R;
 import com.hades.example.android.app_component.content_provider.dict.common.Dict;
+import com.hades.example.android.app_component.content_provider.dict.common.DictBasicActivity;
 import com.hades.example.android.app_component.content_provider.dict.common.DictDbOps;
-import com.hades.example.android.base.DummyContentFragment;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-public class DictActivity extends Activity {
+public class DictActivity extends DictBasicActivity {
     DictSQLiteOpenHelper dbHelper;
-
-    private EditText mInputWorldView;
-    private EditText mInputIdView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_provider_dict);
         ((TextView) findViewById(R.id.topic)).setText("Dict Content Provider DB Operations");
+    }
 
+    @Override
+    public void init() {
         dbHelper = new DictSQLiteOpenHelper(this, 1);
-
-        mInputWorldView = findViewById(R.id.word);
-        mInputIdView = findViewById(R.id.key);
-
-        findViewById(R.id.insert).setOnClickListener(source -> insert());
-        findViewById(R.id.query).setOnClickListener(source -> search());
     }
 
     @Override
@@ -47,59 +33,19 @@ public class DictActivity extends Activity {
         }
     }
 
-    private String getInputWord() {
-        return mInputWorldView.getText().toString();
-    }
 
-    private String buildDetail(String word) {
-        return word + "  detail";
-    }
-
-    private void insert() {
-        String word = getInputWord();
-        if (word.isEmpty()) {
-            Toast.makeText(DictActivity.this, "Input invalid", Toast.LENGTH_SHORT).show();
-            return;
+    @Override
+    public boolean doInsert(String word, String detail) {
+        try {
+            dbHelper.getReadableDatabase().execSQL(DictDbOps.INSERT_TABLE_DICT, new String[]{null, word, detail});
+            return true;
+        } catch (Exception ex) {
+            return false;
         }
-        addWord2Db(word, buildDetail(word));
-        Toast.makeText(DictActivity.this, "添加生词成功！", Toast.LENGTH_LONG).show();
     }
 
-    private void addWord2Db(String word, String detail) {
-        // table name = dict
-        dbHelper.getReadableDatabase().execSQL(DictDbOps.INSERT_TABLE_DICT, new String[]{null, word, detail});
-    }
-
-    private String getInputQueryUsedId() {
-        return mInputIdView.getText().toString();
-    }
-
-    private void search() {
-        Cursor cursor = queryDictById(getInputQueryUsedId());
-
-        Bundle data = new Bundle();
-        data.putSerializable(DummyContentFragment.KEY_SEARCH_RESULT, convertCursorResultToList(cursor));
-
-        Intent intent = new Intent(DictActivity.this, DictSearchResultActivity.class);
-        intent.putExtras(data);
-        startActivity(intent);
-        cursor.close();
-    }
-
-    protected ArrayList<Map<String, String>> convertCursorResultToList(Cursor cursor) {
-        ArrayList<Map<String, String>> result = new ArrayList<>();
-
-        while (cursor.moveToNext()) {
-            Map<String, String> map = new HashMap<>();
-            // 取出查询记录中第2列、第3列的值
-            map.put(Dict.Word.WORD, cursor.getString(1));
-            map.put(Dict.Word.DETAIL, cursor.getString(2));
-            result.add(map);
-        }
-        return result;
-    }
-
-    private Cursor queryDictById(String key) {
+    @Override
+    public Cursor doQuery(String keyword) {
         /**
          * FIXED_ERROR:
          * 2019-03-15 11:22:16.590 19002-19002/com.hades.example.android E/AndroidRuntime: FATAL EXCEPTION: main
@@ -112,6 +58,31 @@ public class DictActivity extends Activity {
          *     #################################################################
          */
 //        //        return dbHelper.getReadableDatabase().rawQuery("select * from dict where word like ? or word like ?", new String[]{"%" + key + "%", "%" + key + "%"});
-        return dbHelper.getReadableDatabase().rawQuery(DictDbOps.QUERY_TABLE_DICT, new String[]{"%" + key + "%", "%" + key + "%"});
+        return dbHelper.getReadableDatabase().rawQuery(DictDbOps.QUERY_TABLE_DICT, new String[]{"%" + keyword + "%", "%" + keyword + "%"});
+    }
+
+    @Override
+    public boolean doDelete(long id) {
+        try {
+            String where = Dict.Word._ID + " = " + id;
+            int rowNum = dbHelper.getReadableDatabase().delete(DictDbOps.TABLE_DICT_NAME, where, null);
+            return rowNum > 0;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean doUpdate(String word, String detail, long id) {
+        try {
+            ContentValues values = new ContentValues();
+            values.put(Dict.Word.WORD, word);
+            values.put(Dict.Word.DETAIL, detail);
+            String where = Dict.Word._ID + " = ? ";
+            int rowNum = dbHelper.getReadableDatabase().update(DictDbOps.TABLE_DICT_NAME, values, where, new String[]{String.valueOf(id)});
+            return rowNum > 0;
+        } catch (Exception ex) {
+            return false;
+        }
     }
 }
