@@ -47,6 +47,10 @@ public class RemoteBoundedService extends Service {
      */
     @Override
     public IBinder onBind(Intent intent) {
+        /**
+         * onBind: [thread =2,main]
+         * 无论Activity 从主线程还是子线程 bindService(),onBind() 都是运行在主线程。
+         */
         Log.d(TAG, "onBind: " + LogHelper.getThreadInfo());
         mMessenger = new Messenger(new IncomingHandler(this));
         return mMessenger.getBinder();
@@ -85,9 +89,9 @@ public class RemoteBoundedService extends Service {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MSG_REQUEST:
-                    Log.e(TAG, "handleMessage: " + LogHelper.getThreadInfo());
+                    Log.e(TAG, "handleMessage: " + LogHelper.getThreadInfo()); // [thread =2,main]
                     Messenger activityMessenger = msg.replyTo;
-                    response(activityMessenger);
+                    handleRequest(activityMessenger);
                     break;
 
                 default:
@@ -95,14 +99,19 @@ public class RemoteBoundedService extends Service {
             }
         }
 
-        private void response(Messenger activityMessenger) {
+        private void handleRequest(Messenger activityMessenger) {
+            /**
+             * 从Activity 收到请求后，处理数据应该在子线程上。
+             */
             new Thread(() -> {
                 Bundle b = new Bundle();
-                b.putString("TIME_STAMP", buildResponse(mService.get().mChronometer));
+                String result = buildResponse(mService.get().mChronometer);
+                b.putString("TIME_STAMP", result);
                 Message replyMsg = Message.obtain(null, MSG_RESPONSE);
                 replyMsg.what = MSG_RESPONSE;
                 replyMsg.setData(b);
                 try {
+                    Log.e(TAG, "back to result:" + result);
                     activityMessenger.send(replyMsg);
                 } catch (RemoteException e) {
                     e.printStackTrace();

@@ -24,6 +24,7 @@ class StickyEventExampleActivity : AppCompatActivity() {
         content = findViewById<TextView>(R.id.content)
         content2 = findViewById<TextView>(R.id.content2)
 
+
         findViewById<Button>(R.id.btn).setOnClickListener { viewModule.increase() }
         findViewById<Button>(R.id.addNewObserver).setOnClickListener { addNewObserver() }
         viewModule.n1.observe(this, object : Observer<Long> {

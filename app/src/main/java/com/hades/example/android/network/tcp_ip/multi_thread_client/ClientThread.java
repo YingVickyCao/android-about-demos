@@ -29,8 +29,8 @@ public class ClientThread implements Runnable {
     BufferedReader receive_server_2_memory = null;
     OutputStream send_memory_2_server = null;
 
-    public ClientThread(Handler handler) {
-        this.ui_handler = handler;
+    public ClientThread(Handler ui_handler) {
+        this.ui_handler = ui_handler;
     }
 
     @SuppressLint("HandlerLeak")

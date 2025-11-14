@@ -2,20 +2,16 @@ package com.hades.example.android;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.hades.example.android._feature.FeatureActivity;
 import com.hades.example.android._process_and_thread.TestBackgroundTasksActivity;
 import com.hades.example.android.app_component.TestAppComponentActivity;
-import com.hades.example.android.app_component._activity._children.TestPreferenceActivity;
-import com.hades.example.android.app_component.broadcast.normal.TestNormalBroadcastActivity;
-import com.hades.example.android.app_component.broadcast.ordered.TestOrderedBroadcastActivity;
-import com.hades.example.android.app_component.service.system.audio_manager.AudioServiceActivity;
+import com.hades.example.android.app_component.content_provider.dict.DictActivity;
+import com.hades.example.android.app_component.service.boundservice.TestLocalBoundServiceActivity;
+import com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity2;
 import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.data_storage.DataStorageActivity;
-import com.hades.example.android.gps.TestGpsActivity;
 import com.hades.example.android.other_ui.OtherUIActivity;
-import com.hades.example.android.qa.QAActivity;
 import com.hades.example.android.test_libs.TestLibsActivity;
 import com.hades.example.android.po.security.SecurityActivity;
 import com.hades.example.android.resource.ResourceActivity;
@@ -40,6 +36,7 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.pageQAAboutView).setOnClickListener(v -> pageQAAboutView());
 
 //        page_background_tasks();
+        pageQAAboutView();
     }
 
     private void pageComponent() {
@@ -79,6 +76,6 @@ public class MainActivity extends BaseActivity {
     }
 
     private void pageQAAboutView() {
-        showActivity(AudioServiceActivity.class);
+        showActivity(DictActivity.class);
     }
 }

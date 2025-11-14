@@ -18,7 +18,7 @@ public class MultiThreadClientActivity extends Activity {
     EditText input;
     TextView show;
 
-    Handler handler;
+    Handler ui_handler;
     ClientThread clientThread;
 
     @SuppressLint("HandlerLeak")
@@ -32,7 +32,7 @@ public class MultiThreadClientActivity extends Activity {
 
         findViewById(R.id.send).setOnClickListener(v -> send());
 
-        handler = new Handler() {
+        ui_handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 if (msg.what == Constant.KEY_UPDATE_UI) {
@@ -43,7 +43,7 @@ public class MultiThreadClientActivity extends Activity {
         };
 
 
-        clientThread = new ClientThread(handler);
+        clientThread = new ClientThread(ui_handler);
         new Thread(clientThread).start();   // 客户端启动ClientThread线程创建网络连接、读取来自服务器的数据
     }
 

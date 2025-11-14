@@ -5,11 +5,10 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.hades.example.android.R;
-import com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity3;
+import com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity2;
 import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.other_ui._dialog.TestDialogActivity;
 import com.hades.example.android.app_component.service.boundservice.TestLocalBoundServiceActivity;
-import com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity2;
 
 public class TestAppComponentActivity extends BaseActivity {
     @Override
@@ -39,7 +38,7 @@ public class TestAppComponentActivity extends BaseActivity {
     }
 
     private void pageBondService3() {
-        showActivity(TestRemoteBoundServiceActivity3.class);
+        showActivity(TestRemoteBoundServiceActivity2.class);
     }
 
     private void pageDialogFragment() {

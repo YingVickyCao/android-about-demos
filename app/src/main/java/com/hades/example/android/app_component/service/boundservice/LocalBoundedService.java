@@ -13,6 +13,7 @@ public class LocalBoundedService extends Service {
     private int mCount;
     private boolean mQuit;
     private boolean mIsBounded = false;
+    private OnCountCompleteListener listener;
 
     // 定义onBinder方法所返回的
     private MyBinder binder = new MyBinder();
@@ -24,9 +25,19 @@ public class LocalBoundedService extends Service {
             return mCount;
         }
 
+        public void setOnCountCompleteListener(OnCountCompleteListener listener) {
+            LocalBoundedService.this.listener = listener;
+        }
+
         public boolean isBounded() {
             return mIsBounded;
         }
+    }
+
+    public interface OnCountCompleteListener {
+        void onCountComplete(int finalCount);
+
+        void onProgress(int count);
     }
 
     // Service被创建时回调该方法
@@ -51,6 +62,10 @@ public class LocalBoundedService extends Service {
     // 必须实现的方法，绑定该Service时回调该方法
     @Override
     public IBinder onBind(Intent intent) {
+        /**
+         * onBind: [thread =2,main]
+         * 无论Activity 从主线程还是子线程 bindService(),onBind() 都是运行在主线程。
+         */
         Log.d(TAG, "onBind: " + ThreadUtils.getThreadInfo());
         mIsBounded = true;
 
@@ -65,6 +80,20 @@ public class LocalBoundedService extends Service {
                     } catch (InterruptedException e) {
                     }
                     mCount++;
+                    Log.d(TAG, "run: count=" + mCount);
+                    if (mCount == 10){
+                        Log.e(TAG, "run: stopSelf() invoked");
+                        stopSelf();
+                    }
+                    // 计算结束：
+                    if (null != listener) {
+                        listener.onProgress(mCount);
+                    }
+                }
+
+                // 计算结束：
+                if (null != listener) {
+                    listener.onCountComplete(mCount);
                 }
             }
         }.start();

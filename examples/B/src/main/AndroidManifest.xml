@@ -71,16 +71,6 @@
 
         <!-- Even add intent-filter, it can not be accessed from other app -->
         <service
-            android:name=".bound_service.LocalBoundedService"
-            android:exported="true">
-            <!--<intent-filter>-->
-            <!--<action android:name="com.hades.example.android.b.bound_service.LocalBoundedService" />-->
-            <!--<category android:name="android.intent.category.DEFAULT" />-->
-            <!--</intent-filter>-->
-        </service>
-
-        <!-- Even add intent-filter, it can not be accessed from other app -->
-        <service
             android:name="com.hades.example.android.b.bound_service.RemoteBoundedService"
             android:exported="true"
             android:process=":remote">

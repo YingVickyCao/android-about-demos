@@ -27,6 +27,10 @@ public class RemoteBoundedService2 extends Service {
     public IBinder onBind(Intent intent) {
         // Return the interface.
         // E  onBind: [thread =2,main]
+        /**
+         * onBind: [thread =2,main]
+         * 无论Activity 从主线程还是子线程 bindService(),onBind() 都是运行在主线程。
+         */
         Log.e(TAG, "onBind: " + LogHelper.getThreadInfo());
 //        Log.e(TAG, "onBind: Binder.getCallingPid=" + Binder.getCallingPid());
 //        Log.e(TAG, "onBind: Binder.getCallingWorkSourceUid=" + Binder.getCallingWorkSourceUid());
@@ -37,7 +41,7 @@ public class RemoteBoundedService2 extends Service {
 //
 //        try {
 //            int callingUid = Binder.getCallingUid();
-//            // TODO:com.hades.example.android.b
+            // TODO:com.hades.example.android.b
 //            // 不起作用，因为得不到调用者的package，得到的始终是当前service的package
 //            String[] packages = getPackageManager().getPackagesForUid(callingUid);
 //
@@ -71,6 +75,7 @@ public class RemoteBoundedService2 extends Service {
 
     private final IRemoteService.Stub binder = new IRemoteService.Stub() {
         public int getPid() {
+            //  Stub的方法始终运行在子线程，不用新键子线程来执行任务
             Log.e(TAG, "getPid: " + LogHelper.getThreadInfo());
             // getPid: thread name=binder:8580_1,thread id=46
             return (int) System.currentTimeMillis();

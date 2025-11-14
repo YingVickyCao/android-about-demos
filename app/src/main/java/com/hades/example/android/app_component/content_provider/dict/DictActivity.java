@@ -63,7 +63,7 @@ public class DictActivity extends Activity {
 
     private void addWord2Db(String word, String detail) {
         // table name = dict
-        dbHelper.getReadableDatabase().execSQL("insert into dict values(null , ? , ?)", new String[]{word, detail});
+        dbHelper.getWritableDatabase().execSQL("insert into dict values(null , ? , ?)", new String[]{word, detail});
     }
 
     private String getInputQueryUsedId() {

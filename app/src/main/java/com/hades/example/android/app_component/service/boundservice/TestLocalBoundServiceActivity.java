@@ -43,7 +43,7 @@ public class TestLocalBoundServiceActivity extends Activity {
         findViewById(R.id.start).setOnClickListener(v -> startService());
         findViewById(R.id.stopRecord).setOnClickListener(v -> stopService());
 
-        findViewById(R.id.check).setOnClickListener(v -> getServiceStatus());
+        findViewById(R.id.check).setOnClickListener(v -> checkCount());
         findViewById(R.id.jump).setOnClickListener(v -> jump());
     }
 
@@ -51,6 +51,9 @@ public class TestLocalBoundServiceActivity extends Activity {
         /**
          * ServiceConnection 用于监听访问者与Service之间的连接情况
          */
+        if (null != mConn) {
+            return;
+        }
         mConn = new ServiceConnection() {
             // 当该Activity与Service连接成功时回调该方法
             @Override
@@ -58,6 +61,17 @@ public class TestLocalBoundServiceActivity extends Activity {
                 Log.d(TAG, "onServiceConnected: ");
                 // 获取Service的onBind()方法所返回的IBinder - MyBinder对象 ,访问者通过IBinder与Service进行通信。
                 mBinder = (LocalBoundedService.MyBinder) service;  // ①
+                mBinder.setOnCountCompleteListener(new LocalBoundedService.OnCountCompleteListener() {
+                    @Override
+                    public void onCountComplete(int finalCount) {
+                        Log.e(TAG, "onCountComplete: " + finalCount);
+                    }
+
+                    @Override
+                    public void onProgress(int count) {
+                        Log.e(TAG, "onProgress: " + count);
+                    }
+                });
                 bound = true;
             }
 
@@ -81,19 +95,30 @@ public class TestLocalBoundServiceActivity extends Activity {
         return intent;
     }
 
+    /*
+     * boolean bindService(Intent service, ServiceConnection conn,int flags)
+     * flags：
+     * BIND_AUTO_CREATE: 如果 Service 还未创建，则自动创建它。
+     * BIND_DEBUG_UNBIND: 打印有关 Service 绑定的日志。
+     * BIND_IMPORTANT: Service 对客户端来说很重要。
+     * BIND_ADJUST_WITH_ACTIVITY: Service 的优先级会根据绑定的 Activity 的状态进行调整。
+     */
     private void bindService() {
         Log.d(TAG, "bindService: ");
+        initServiceConnection();
         bindService(buildIntent(), mConn, 0);
     }
 
     private void bindAutoCreate() {
         Log.d(TAG, "bindService: ");
+        initServiceConnection();
         bindService(buildIntent(), mConn, Service.BIND_AUTO_CREATE);
     }
 
     private void bindAutoCreateInThread() {
         new Thread(() -> {
             Log.d(TAG, "bindAutoCreateInThread->run: " + ThreadUtils.getThreadInfo());
+            initServiceConnection();
             bindService(buildIntent(), mConn, Service.BIND_AUTO_CREATE);
         }).start();
     }
@@ -118,7 +143,7 @@ public class TestLocalBoundServiceActivity extends Activity {
         stopService(buildIntent());
     }
 
-    private void getServiceStatus() {
+    private void checkCount() {
         if (mBinder == null) {
             return;
         }

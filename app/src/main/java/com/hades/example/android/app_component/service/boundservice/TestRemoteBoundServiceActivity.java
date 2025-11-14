@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.hades.example.android.BConstant;
 import com.hades.example.android.R;
 
-public class TestRemoteBoundServiceActivity extends Activity implements IResponse {
+public class TestRemoteBoundServiceActivity extends Activity {
     private static final String TAG = TestRemoteBoundServiceActivity.class.getSimpleName();
 
     static final int MSG_REQUEST = 1;
@@ -27,8 +27,8 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
     /**
      * Messenger for communicating with the service.
      */
-    Messenger mBoundServiceMessenger = null;
-    Messenger mActivityMessenger;
+    Messenger mToBoundServiceMessenger = null;
+    Messenger mFromBoundServiceMessenger;
 
     private ServiceConnection mConnection;
     /**
@@ -52,16 +52,27 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
 
         findViewById(R.id.start).setOnClickListener(v -> startService());
         findViewById(R.id.stopRecord).setOnClickListener(v -> stopService());
-        findViewById(R.id.check).setOnClickListener(v -> check());
+        findViewById(R.id.check).setOnClickListener(v -> sendBoundServiceMessage());
     }
 
-    public void check() {
+    public void sendBoundServiceMessage() {
+//        send();
+        new Thread(new Runnable(){
+
+            @Override
+            public void run() {
+                send();
+            }
+        }).start();
+    }
+
+    private void send() {
         if (!bound) return;
         // Create and send a message to the service, using a supported 'what' value
         Message msg = Message.obtain(null, MSG_REQUEST, 0, 0);
-        msg.replyTo = mActivityMessenger;
+        msg.replyTo = mFromBoundServiceMessenger;
         try {
-            mBoundServiceMessenger.send(msg);
+            mToBoundServiceMessenger.send(msg);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -128,24 +139,28 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
             public void onServiceConnected(ComponentName className, IBinder service) {
                 // This is called when the connection with the service has been established, giving us the object we can use to interact with the service.
                 // We are communicating with the service using a Messenger, so here we get a client-side representation of that from the raw IBinder object.
-                mBoundServiceMessenger = new Messenger(service);
-                mActivityMessenger = new Messenger(new ActivityHandler(TestRemoteBoundServiceActivity.this));
+                mToBoundServiceMessenger = new Messenger(service);
+                mFromBoundServiceMessenger = new Messenger(new ActivityHandler(new IResponse() {
+                    @Override
+                    public void onComplete(String data) {
+                        /**
+                         * [thread =2,main]
+                         */
+                        Log.e(TAG, "onComplete: " + "[thread =" + Thread.currentThread().getId() + "," + Thread.currentThread().getName() + "]"); // [thread =2,main]
+                        Toast.makeText(TestRemoteBoundServiceActivity.this, "" + data, Toast.LENGTH_SHORT).show();
+                    }
+                }));
                 bound = true;
             }
 
             public void onServiceDisconnected(ComponentName className) {
                 // This is called when the connection with the service has been
                 // unexpectedly disconnected -- that is, its process crashed.
-                mBoundServiceMessenger = null;
-                mActivityMessenger = null;
+                mToBoundServiceMessenger = null;
+                mFromBoundServiceMessenger = null;
                 bound = false;
             }
         };
-    }
-
-    @Override
-    public void setData(String data) {
-        Toast.makeText(this, "" + data, Toast.LENGTH_SHORT).show();
     }
 
     static class ActivityHandler extends Handler {
@@ -160,7 +175,7 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
             switch (msg.what) {
                 case MSG_RESPONSE:
                     if (null != mIResponse) {
-                        mIResponse.setData(msg.getData().getString("TIME_STAMP"));
+                        mIResponse.onComplete(msg.getData().getString("TIME_STAMP"));
                     }
                     break;
                 default:

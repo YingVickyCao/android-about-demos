@@ -17,6 +17,8 @@ import com.hades.example.android.R;
 import com.hades.example.android.base.BaseFragment;
 import com.hades.utility.jvm.ThreadUtils;
 
+import java.lang.reflect.Field;
+
 /**
  * main -> thread -> main
  */
@@ -32,7 +34,7 @@ public class TestMsgMain2Thread2MainFragment extends BaseFragment {
     private static final String TAG = TestMsgMain2Thread2MainFragment.class.getSimpleName();
 
     static final String UPPER_NUM = "upper";
-    private final int num = 1000;
+    private int num = 1000;
 
     SumThread calThread;
     private TextView result;
@@ -45,6 +47,8 @@ public class TestMsgMain2Thread2MainFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.msg_handler_main_2_thread_2_main, container, false);
 
         view.findViewById(R.id.sum).setOnClickListener(this::sum);
+        view.findViewById(R.id.stopLooper).setOnClickListener(v -> stopLooper());
+        view.findViewById(R.id.isActive).setOnClickListener(v -> isActive());
         result = view.findViewById(R.id.result);
 
         calThread = new SumThread();
@@ -53,7 +57,7 @@ public class TestMsgMain2Thread2MainFragment extends BaseFragment {
     }
 
     public void sum(View source) {
-        Log.d(TAG, "sum: " + ThreadUtils.getThreadInfo() + ",sum()=" + String.valueOf(num));
+        Log.d(TAG, "num: " + num + "," + ThreadUtils.getThreadInfo());
         /**
          * main -> thread
          */
@@ -61,10 +65,16 @@ public class TestMsgMain2Thread2MainFragment extends BaseFragment {
     }
 
     private Message createMessage() {
-        Message msg = new Message();
+//        Message msg = new Message();
+        /**
+         * Message:
+         * private static int sPoolSize = 0;
+         * private static final int MAX_POOL_SIZE = 50;
+         */
+        Message msg = calThread.mHandlerOfThread.obtainMessage();
         msg.what = HANDLER_MSG_KEY_1;
         Bundle bundle = new Bundle();
-        bundle.putInt(UPPER_NUM, num);
+        bundle.putInt(UPPER_NUM, num++);
         msg.setData(bundle);
         return msg;
     }
@@ -75,7 +85,7 @@ public class TestMsgMain2Thread2MainFragment extends BaseFragment {
         public void run() {
             Looper.prepare();
 
-            mHandlerOfThread = new Handler() {
+            mHandlerOfThread = new Handler(Looper.myLooper()) {
                 @Override
                 public void handleMessage(Message msg) {
                     /**
@@ -83,20 +93,33 @@ public class TestMsgMain2Thread2MainFragment extends BaseFragment {
                      */
                     if (msg.what == HANDLER_MSG_KEY_1) {
                         int upper = msg.getData().getInt(UPPER_NUM);
-                        Log.d(TAG, "SumThread -> handleMessage()" + String.valueOf(upper));
-                        Log.d(TAG, "handleMessage: " + ThreadUtils.getThreadInfo());
                         long sum = MockHeavyWork.sum(upper);
+                        Log.d(TAG, "handleMessage: " + upper + ",sum=" + sum + "," + ThreadUtils.getThreadInfo());
 
                         /**
                          * thread -> main
                          */
                         updateResult(sum);
+
+                        //  执行异步后，结束Looper，退出run()
+//                        getLooper().quitSafely();
                     }
+
                 }
             };
 
+            // 阻塞，开始处理消息.Looper.loop() 使得该线程专注于处理其关联的 MessageQueue
             Looper.loop();
+            Log.e(TAG, "<------run"); // Looper.loop() 返回后，会执行到这里
         }
+    }
+
+    private void stopLooper() {
+        calThread.mHandlerOfThread.getLooper().quitSafely();
+    }
+
+    private void isActive() {
+        Log.e(TAG, "isAlive: " + calThread.isAlive());
     }
 
 
@@ -109,6 +132,5 @@ public class TestMsgMain2Thread2MainFragment extends BaseFragment {
             }
         });
     }
-
 }
 

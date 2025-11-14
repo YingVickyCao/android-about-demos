@@ -9,15 +9,25 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.hades.example.android.BConstant;
 import com.hades.example.android.R;
+import com.hades.example.android.b.IRemoteService;
 import com.hades.utility.jvm.ThreadUtils;
 
+/**
+ * 测试 bound service - .aidl
+ *
+ * bound service using aidl failed:
+ * https://blog.csdn.net/qq_37506816/article/details/128643540
+ *
+ */
 public class TestRemoteBoundServiceActivity2 extends Activity {
     private static final String TAG = TestRemoteBoundServiceActivity2.class.getSimpleName();
 
     // 保持所启动的Service的IBinder对象
-    IBinder mBinder;
+    IRemoteService mBinder;
     // 定义一个ServiceConnection对象
     private ServiceConnection mConnection;
     boolean bound;
@@ -27,7 +37,7 @@ public class TestRemoteBoundServiceActivity2 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_bounded_service_test);
 
-        ((TextView)findViewById(R.id.topic)).setText("Remote BoundService");
+        ((TextView) findViewById(R.id.topic)).setText("Remote BoundService");
 
         setServiceConnection();
 
@@ -39,13 +49,14 @@ public class TestRemoteBoundServiceActivity2 extends Activity {
 
         findViewById(R.id.start).setOnClickListener(v -> startService());
         findViewById(R.id.stopRecord).setOnClickListener(v -> stopService());
+        findViewById(R.id.check).setOnClickListener(v -> check());
     }
 
     private Intent buildIntent() {
         Intent intent = new Intent();
-        intent.setComponent(new ComponentName("com.hades.example.android.b", "com.hades.example.android.b.bound_service.LocalBoundedService"));
-        intent.setAction("com.hades.example.android.b.bound_service.LocalBoundedService");
-        intent.addCategory(Intent.CATEGORY_DEFAULT);
+        intent.setAction(BConstant.B_REMOTEBOUNDEDSERVICE2_CLASS);
+        intent.setPackage(BConstant.B_PACKAGE);
+//        intent.setComponent(new ComponentName(BConstant.B_PACKAGE, BConstant.B_REMOTEBOUNDEDSERVICE2_CLASS));
         return intent;
     }
 
@@ -70,13 +81,15 @@ public class TestRemoteBoundServiceActivity2 extends Activity {
     }
 
     private void unbindService() {
-        if (null == mBinder || !bound) {
-            return;
+        // Unbind from the service
+        if (bound) {
+            unbindService(mConnection);
+            bound = false;
         }
-        Log.d(TAG, "unbindService: ");
-        unbindService(mConnection);
     }
 
+    // TODO: android.app.BackgroundServiceStartNotAllowedException: Not allowed to start service Intent { act=com.hades.example.android.b.bound_service.RemoteBoundedService2 pkg=com.hades.example.android.b cmp=com.hades.example.android.b/.bound_service.RemoteBoundedService2 }: app is in background
+    //  uid null
     private void startService() {
         Log.d(TAG, "startService: ");
         Intent intent = buildIntent();
@@ -89,6 +102,18 @@ public class TestRemoteBoundServiceActivity2 extends Activity {
         stopService(intent);
     }
 
+    private void check() {
+        if (mBinder != null) {
+            try {
+                // main thread
+                int value = mBinder.getPid(); // getPid() 在bound service 运行在子线程中
+                Toast.makeText(this, value + "", Toast.LENGTH_SHORT).show();
+            } catch (Exception ex) {
+                Log.e(TAG, "check: " + ex.getMessage());
+            }
+        }
+    }
+
     private void setServiceConnection() {
         /**
          * ServiceConnection 用于监听访问者与Service之间的连接情况
@@ -99,16 +124,17 @@ public class TestRemoteBoundServiceActivity2 extends Activity {
             public void onServiceConnected(ComponentName name, IBinder service) {
                 Log.d(TAG, "onServiceConnected: ");
                 // 获取Service的onBind()方法所返回的IBinder - MyBinder对象 ,访问者通过IBinder与Service进行通信。
-                mBinder = service;  // ①
+                mBinder = IRemoteService.Stub.asInterface(service);  // ①
                 bound = true;
             }
 
             // 当Service所在当宿主进程由于异常终止或者其他原因终止，导致该Service与访问者之间断开连接时，回调该方法
-            // 当调用者主动使用unbindService()时，不回调该方法。
+            // 当调用者主动使用 unbindService()时，不回调该方法。
             @Override
             public void onServiceDisconnected(ComponentName name) {
                 Log.d(TAG, "onServiceDisconnected: ");
                 bound = false;
+                mBinder = null;
             }
         };
     }
