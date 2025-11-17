@@ -44,6 +44,24 @@
             android:hint="Query by word or detail" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/queryById"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Query"
+            android:textAllCaps="false" />
+
+        <EditText
+            android:id="@+id/dicId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Query by id" />
+    </LinearLayout>
+
     <ListView
         android:id="@+id/dictList"
         android:layout_width="match_parent"

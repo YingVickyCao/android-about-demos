@@ -40,6 +40,7 @@ public abstract class DictBasicActivity extends Activity {
         initView();
         findViewById(R.id.insert).setOnClickListener(v -> insert());
         findViewById(R.id.query).setOnClickListener(v -> query());
+        findViewById(R.id.queryById).setOnClickListener(v -> queryById());
 
         init();
     }
@@ -150,7 +151,24 @@ public abstract class DictBasicActivity extends Activity {
         }
     }
 
+    private void queryById() {
+        String keyword = ((EditText) findViewById(R.id.dicId)).getText().toString();
+
+        Cursor cursor = doQueryById(keyword);
+        List<DictRowBean> result = convertCursorToList(cursor);
+
+        list.clear();
+        list.addAll(result);
+        adapter.notifyDataSetChanged();
+
+        if (null != cursor) {
+            cursor.close();
+        }
+    }
+
     public abstract Cursor doQuery(String keyword);
+
+    public abstract Cursor doQueryById(String id);
 
     protected List<DictRowBean> convertCursorToList(Cursor cursor) {
         List<DictRowBean> result = new ArrayList<>();

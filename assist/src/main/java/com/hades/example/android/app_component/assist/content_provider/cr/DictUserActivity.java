@@ -22,7 +22,7 @@ public class DictUserActivity extends DictBasicActivity {
     private static final String TAG = "DictUserActivity";
 
     private ContentResolver contentResolver;
-    private DictContentObserver mDictContentObserver;
+//    private DictContentObserver mDictContentObserver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,23 +52,27 @@ public class DictUserActivity extends DictBasicActivity {
          *         <provider android:authorities="com.hades.example.android.app_component.content_provider.dict.DictContentProvider" />
          *     </queries>
          */
-        mDictContentObserver = new DictContentObserver(this, new Handler(Looper.getMainLooper()));
-        getContentResolver().registerContentObserver(Dict.getUri(), true, mDictContentObserver);
-        getContentResolver().notifyChange(Dict.getUri(), mDictContentObserver);
+//        mDictContentObserver = new DictContentObserver(this, new Handler(Looper.getMainLooper()));
+//        getContentResolver().registerContentObserver(Dict.getUri(), true, mDictContentObserver);
+//        getContentResolver().notifyChange(Dict.getUri(), mDictContentObserver);
+//
+//        getContentResolver().registerContentObserver(Dict.getUriById(), true, mDictContentObserver);
+//        getContentResolver().notifyChange(Dict.getUriById(), mDictContentObserver);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-        if (null != mDictContentObserver) {
-            getContentResolver().unregisterContentObserver(mDictContentObserver);
-            mDictContentObserver = null;
-        }
+//        if (null != mDictContentObserver) {
+//            getContentResolver().unregisterContentObserver(mDictContentObserver);
+//            mDictContentObserver = null;
+//        }
     }
 
     @Override
     public boolean doInsert(String word, String detail) {
+        // 插入多条记录, 也适合参数多条记录
         ContentValues values = new ContentValues();
         values.put(Dict.Word.WORD, word);
         values.put(Dict.Word.DETAIL, detail);
@@ -87,6 +91,14 @@ public class DictUserActivity extends DictBasicActivity {
         return rowNum > 0;
     }
 
+    public boolean doDeleteById(long id) {
+        // 删除单条记录
+        int rowNum = contentResolver.delete(Dict.getUriById(id), null, null);
+        Log.e(TAG, "doDelete: " + rowNum);
+        return rowNum > 0;
+    }
+
+
     @Override
     public boolean doUpdate(String word, String detail, long id) {
         ContentValues values = new ContentValues();
@@ -98,6 +110,16 @@ public class DictUserActivity extends DictBasicActivity {
         return rowNumer > 0;
     }
 
+    public boolean doUpdateById(String word, String detail, long id) {
+        // 更新单条记录
+        ContentValues values = new ContentValues();
+        values.put(Dict.Word.WORD, word);
+        values.put(Dict.Word.DETAIL, detail);
+        int rowNumer = contentResolver.update(Dict.getUriById(id), values, null, null);
+        Log.e(TAG, "update: " + rowNumer);
+        return rowNumer > 0;
+    }
+
     @Override
     public Cursor doQuery(String keyword) {
         return contentResolver.query(Dict.WORDS_URI,
@@ -105,5 +127,11 @@ public class DictUserActivity extends DictBasicActivity {
                 "word like ? or detail like ?",
                 new String[]{"%" + keyword + "%", "%" + keyword + "%"},
                 null);
+    }
+
+    @Override
+    public Cursor doQueryById(String id) {
+        // 查询单条记录
+        return contentResolver.query(Dict.getUriById(id), null, null, null, null);
     }
 }

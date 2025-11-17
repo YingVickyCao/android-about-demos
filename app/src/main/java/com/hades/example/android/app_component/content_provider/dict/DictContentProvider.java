@@ -27,6 +27,7 @@ public class DictContentProvider extends ContentProvider {
         // 为 UriMatcher 注册两个Uri
         matcher.addURI(Dict.AUTHORITY, Dict.WORDS_URI_PATH, Dict.WORDS_URI_CODE);
         matcher.addURI(Dict.AUTHORITY, Dict.WORD_URI_PATH, Dict.WORD_URI_CODE);
+        Log.e(TAG, "matcher: " + matcher);
     }
 
     // 第一次调用该DictProvider时，系统先创建DictProvider对象，并回调该方法
@@ -177,7 +178,6 @@ public class DictContentProvider extends ContentProvider {
         Log.d(TAG, "query: " + ThreadUtils.getThreadInfo());
 
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
-
         switch (matcher.match(uri)) {
             // 如果Uri参数代表操作全部数据项
             case Dict.WORDS_URI_CODE:
@@ -196,6 +196,7 @@ public class DictContentProvider extends ContentProvider {
                 return db.query(DictDbOps.TABLE_DICT_NAME, projection, whereClause, whereArgs,
                         null, null, sortOrder);
             default:
+                Log.e(TAG, "query: error: " + uri);
                 throw new IllegalArgumentException("未知Uri:" + uri);
         }
     }

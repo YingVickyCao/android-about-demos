@@ -62,6 +62,11 @@ public class DictActivity extends DictBasicActivity {
     }
 
     @Override
+    public Cursor doQueryById(String id) {
+        return dbHelper.getReadableDatabase().rawQuery(DictDbOps.QUERY_TABLE_DICT_BY_ID, new String[]{id});
+    }
+
+    @Override
     public boolean doDelete(long id) {
         try {
             String where = Dict.Word._ID + " = " + id;
