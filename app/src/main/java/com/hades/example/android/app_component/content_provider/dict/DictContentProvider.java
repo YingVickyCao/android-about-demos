@@ -25,8 +25,8 @@ public class DictContentProvider extends ContentProvider {
 
     static {
         // 为 UriMatcher 注册两个Uri
-        matcher.addURI(Dict.AUTHORITY, Dict.WORDS_URI_PATH, Dict.WORDS_URI_CODE);
-        matcher.addURI(Dict.AUTHORITY, Dict.WORD_URI_PATH, Dict.WORD_URI_CODE);
+        matcher.addURI(Dict.AUTHORITY, Dict.PATH_WORDS_URI, Dict.CODE_WORDS_URI);
+        matcher.addURI(Dict.AUTHORITY, Dict.PATH_WORD_URI, Dict.CODE_WORD_URI);
         Log.e(TAG, "matcher: " + matcher);
     }
 
@@ -53,11 +53,11 @@ public class DictContentProvider extends ContentProvider {
          */
         switch (matcher.match(uri)) {
             // 如果操作的数据是多项记录
-            case Dict.WORDS_URI_CODE:
+            case Dict.CODE_WORDS_URI:
                 return "vnd.android.cursor.dir/" + Dict.WORDS_URI;
 
             // 如果操作的数据是单项记录
-            case Dict.WORD_URI_CODE:
+            case Dict.CODE_WORD_URI:
                 return "vnd.android.cursor.item/" + Dict.WORD_URI;
             default:
                 throw new IllegalArgumentException("未知Uri:" + uri);
@@ -82,7 +82,7 @@ public class DictContentProvider extends ContentProvider {
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
         switch (matcher.match(uri)) {
             // 如果Uri参数代表操作全部数据项
-            case Dict.WORDS_URI_CODE:
+            case Dict.CODE_WORDS_URI:
                 // 插入数据，返回插入记录的ID
                 long rowId = db.insert(DictDbOps.TABLE_DICT_NAME, Dict.Word._ID, values);
                 // 如果插入成功返回uri
@@ -112,12 +112,12 @@ public class DictContentProvider extends ContentProvider {
         // 对uri进行匹配
         switch (matcher.match(uri)) {
             // 如果Uri参数代表操作全部数据项
-            case Dict.WORDS_URI_CODE:
+            case Dict.CODE_WORDS_URI:
                 num = db.delete(DictDbOps.TABLE_DICT_NAME, where, whereArgs);
                 break;
             // 如果Uri参数代表操作指定数据项
 
-            case Dict.WORD_URI_CODE:
+            case Dict.CODE_WORD_URI:
                 // 解析出所需要删除的记录ID
                 long id = ContentUris.parseId(uri);
                 String whereClause = Dict.Word._ID + "=" + id;
@@ -145,12 +145,12 @@ public class DictContentProvider extends ContentProvider {
         int num = 0;
         switch (matcher.match(uri)) {
             // 如果Uri参数代表操作全部数据项
-            case Dict.WORDS_URI_CODE:
+            case Dict.CODE_WORDS_URI:
                 num = db.update(DictDbOps.TABLE_DICT_NAME, values, where, whereArgs);
                 break;
 
             // 如果Uri参数代表操作指定数据项
-            case Dict.WORD_URI_CODE:
+            case Dict.CODE_WORD_URI:
                 // 解析出想修改的记录ID
                 long id = ContentUris.parseId(uri);
                 String whereClause = Dict.Word._ID + "=" + id;
@@ -170,22 +170,21 @@ public class DictContentProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String where, String[] whereArgs, String sortOrder) {
+        // query,thread =4331,Binder:21984_2
         Log.d(TAG, "query: uri=" + uri.toString() + ",where=" + where);
-        /**
-         * query: uri=content://com.hades.example.android.app_component.cp.dict.DictContentProvider/words,where=word like ? or detail like ?
-         * query,thread =4331,Binder:21984_2
-         */
         Log.d(TAG, "query: " + ThreadUtils.getThreadInfo());
 
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
         switch (matcher.match(uri)) {
             // 如果Uri参数代表操作全部数据项
-            case Dict.WORDS_URI_CODE:
+            case Dict.CODE_WORDS_URI:
+                //  uri=content://com.hades.example.android.app_component.content_provider.dict.DictContentProvider/words,where=word like ? or detail like ?
                 // 执行查询
                 return db.query(DictDbOps.TABLE_DICT_NAME, projection, where, whereArgs, null, null, sortOrder);
             // 如果Uri参数代表操作指定数据项
 
-            case Dict.WORD_URI_CODE:
+            case Dict.CODE_WORD_URI:
+                // query: uri=content://com.hades.example.android.app_component.content_provider.dict.DictContentProvider/word/10,where=null
                 // 解析出想查询的记录ID
                 long id = ContentUris.parseId(uri);
                 String whereClause = Dict.Word._ID + "=" + id;
@@ -193,8 +192,7 @@ public class DictContentProvider extends ContentProvider {
                 if (where != null && !"".equals(where)) {
                     whereClause = whereClause + " and " + where;
                 }
-                return db.query(DictDbOps.TABLE_DICT_NAME, projection, whereClause, whereArgs,
-                        null, null, sortOrder);
+                return db.query(DictDbOps.TABLE_DICT_NAME, projection, whereClause, whereArgs, null, null, sortOrder);
             default:
                 Log.e(TAG, "query: error: " + uri);
                 throw new IllegalArgumentException("未知Uri:" + uri);

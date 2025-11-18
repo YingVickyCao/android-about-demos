@@ -108,10 +108,7 @@ public abstract class DictBasicActivity extends Activity {
         final EditText input = new EditText(this);
         input.setText(word);
         input.setHint("请输入内容..."); // 设置提示文字
-        // input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD); // 如果需要密码输入
-        // input.setText("默认值"); // 设置默认值
-
-        // 创建 AlertDialog
+        
         new AlertDialog.Builder(this)
                 .setTitle("输入框对话框") // 对话框标题
                 .setView(input) // 设置 EditText 为对话框的视图
@@ -147,7 +144,9 @@ public abstract class DictBasicActivity extends Activity {
         adapter.notifyDataSetChanged();
 
         if (null != cursor) {
-            cursor.close();
+            if (!cursor.isClosed()) {
+                cursor.close();
+            }
         }
     }
 
