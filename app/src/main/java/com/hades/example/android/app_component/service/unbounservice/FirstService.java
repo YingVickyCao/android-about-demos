@@ -23,9 +23,11 @@ import java.util.concurrent.Executor;
 public class FirstService extends Service {
     private static final String TAG = FirstService.class.getSimpleName();
     private int mNum = 0;
-    private int MAX_NUM = 1000;
+    //    private int MAX_NUM = 1000;
+    private int MAX_NUM = Integer.MAX_VALUE;
     //    private int MAX_NUM = 100;
     private boolean mIsForceStop;
+    private Thread mThread;
 
     @Override
     public IBinder onBind(Intent arg0) {
@@ -107,10 +109,10 @@ public class FirstService extends Service {
 //    @Override
 //    public int onStartCommand(Intent intent, int flags, int startId) {
 //        Log.d(TAG, "onStartCommand");
-////        LogHelper.printThread(TAG, "onStartCommand");
+
+    /// /        LogHelper.printThread(TAG, "onStartCommand");
 //        return START_STICKY;
 //    }
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "onStartCommand");
@@ -119,22 +121,22 @@ public class FirstService extends Service {
         Log.d(TAG, "onStartCommand," + num);
         mNum = num;
         startForegroundWhenAndroid8();
-        mockHeavyWorkInThread();
-        ////        mockHeavyWorkInUIThread();
-//        mockHeavyWorkInThread4CheckStop();
+//        mockHeavyWorkInThread();
+        //        mockHeavyWorkInUIThread();
+        mockHeavyWorkInThread4CheckStop();
         return START_STICKY;
     }
 
 //    @Override
 //    public int onStartCommand(Intent intent, int flags, int startId) {
-////        Log.d(TAG, "onStartCommand");
+
+    /// /        Log.d(TAG, "onStartCommand");
 //        LogHelper.printThread(TAG, "onStartCommand");
 
 //        return START_STICKY;
 //    }
-
     private void mockHeavyWorkInThread() {
-        new Thread(new Runnable() {
+        mThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 for (int i = mNum; i < MAX_NUM; i++) {
@@ -149,30 +151,53 @@ public class FirstService extends Service {
                 }
                 stopSelf();
             }
-        }).start();
+        });
+        mThread.start();
     }
 
+    /**
+     * 如何销毁（停止）一个Java线程？
+     * 方式 1： 使用 标志位，若循环中检查为true则退出循环。
+     * 方式 2： 使用 Thread.interrupt()，并捕获InterruptedException，退出循环。
+     */
     private void mockHeavyWorkInThread4CheckStop() {
-        new Thread(new Runnable() {
+        mThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 for (int i = mNum; i < MAX_NUM; i++) {
-                    if (mIsForceStop) {
-                        Log.d(TAG, "mockHeavyWork,force stop" + ",i=" + i);
-                        return;
-                    }
-                    setNotification(i);
-                    Log.d(TAG, "mockHeavyWork" + ",i=" + i);
-                    Log.d(TAG, "run: " + ThreadUtils.getThreadInfo());
                     try {
-                        Thread.sleep(1000);
+                        // 销毁Thread 方式 1：使用标志位
+//                        if (mIsForceStop) {
+//                            Log.d(TAG, "mockHeavyWork,force stop" + ",i=" + i);
+//                            break;
+//                        }
+                        Log.d(TAG, "mockHeavyWork" + ",i=" + i);
+//                        if (i == 5) { // 假设当i == 5 时，要销毁Thread
+//                            mIsForceStop = true;
+//                            break;
+//                        }
+                        Log.d(TAG, "run: " + ThreadUtils.getThreadInfo());
+                        // 销毁Thread 方式 2： interrupt()  并捕捉 InterruptedException
+//                        Log.e(TAG, "run: isInterrupted=" + Thread.currentThread().isInterrupted());
+//                        if (Thread.currentThread().isInterrupted()) { //  不起作用。始终：isInterrupted=false
+//                            return;
+//                        }
+                        if (i == 5) { // 假设当i == 5 时，要销毁Thread
+                            if (!Thread.currentThread().isInterrupted()) {
+                                mThread.interrupt();
+                            }
+                        }
+                        setNotification(i);
+                        Thread.sleep(1000); // throw java.lang.InterruptedException
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        Log.e(TAG, "run: InterruptedException: ", e); // InterruptedException
+                        break;
                     }
                 }
                 stopSelf();
             }
-        }).start();
+        });
+        mThread.start();
     }
 
     private void mockHeavyWorkInUIThread() {
@@ -191,8 +216,9 @@ public class FirstService extends Service {
 //    // Service被关闭之前回调
 //    @Override
 //    public void onDestroy() {
-////        Log.d(TAG, "onDestroy");
-////        stopSelf();
+
+    /// /        Log.d(TAG, "onDestroy");
+    /// /        stopSelf();
 //        LogHelper.printThread(TAG, "onDestroy");
 //    }
 
@@ -200,8 +226,14 @@ public class FirstService extends Service {
     @Override
     public void onDestroy() {
 //        Log.d(TAG, "onDestroy");
-//        mIsForceStop = true;
+        // 销毁Thread 方式 1：
+        mIsForceStop = true;
         Log.d(TAG, "onDestroy: " + ThreadUtils.getThreadInfo());
+
+        // 销毁Thread 方式 2：
+//        if (null != mThread){
+//            mThread.interrupt();
+//        }
 
         if (VersionUtil.isAndroid8()) {
             stopForeground(true);

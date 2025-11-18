@@ -9,6 +9,7 @@ import com.hades.example.android.app_component.TestAppComponentActivity;
 import com.hades.example.android.app_component.content_provider.dict.DictActivity;
 import com.hades.example.android.app_component.service.boundservice.TestLocalBoundServiceActivity;
 import com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity2;
+import com.hades.example.android.app_component.service.unbounservice.StartServiceTest1Activity;
 import com.hades.example.android.base.BaseActivity;
 import com.hades.example.android.data_storage.DataStorageActivity;
 import com.hades.example.android.other_ui.OtherUIActivity;
@@ -76,6 +77,6 @@ public class MainActivity extends BaseActivity {
     }
 
     private void pageQAAboutView() {
-        showActivity(DictActivity.class);
+        showActivity(StartServiceTest1Activity.class);
     }
 }
