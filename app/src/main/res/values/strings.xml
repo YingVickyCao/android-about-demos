@@ -313,6 +313,8 @@
     <string name="select">选择收件人</string>
     <string name="send">Send</string>
     <string name="sendBroadcast">Sending a Broadcast</string>
+    <string name="sendImplicitBroadcast">Sending a Implicit Broadcast</string>
+    <string name="sendExplicitBroadcast">Sending a Explicit Broadcast</string>
     <string name="up_volumn">增大音量</string>
     <string name="down_volume">降低音量</string>
     <string name="normal">静音</string>
@@ -579,4 +581,7 @@
     <string name="work_manager_name">CoroutineWorker long running time</string>
     <string name="work_manager_notification_title">CoroutineWorker - title</string>
     <string name="work_manager_cancel_download">CoroutineWorker - cancel</string>
+
+    <string name="dict2_readPermission">Request DictContentProvider2 read permission</string>
+    <string name="dict2_writePermission">Request DictContentProvider2 write permission</string>
 </resources>

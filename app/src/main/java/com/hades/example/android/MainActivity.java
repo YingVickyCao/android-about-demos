@@ -6,6 +6,10 @@ import android.os.Bundle;
 import com.hades.example.android._feature.FeatureActivity;
 import com.hades.example.android._process_and_thread.TestBackgroundTasksActivity;
 import com.hades.example.android.app_component.TestAppComponentActivity;
+import com.hades.example.android.app_component.broadcast.cross_app.CrossBroadcastActivity;
+import com.hades.example.android.app_component.broadcast.normal.TestNormalBroadcastActivity;
+import com.hades.example.android.app_component.broadcast.ordered.TestOrderedBroadcastActivity;
+import com.hades.example.android.app_component.content_provider.dict.Dict2Activity;
 import com.hades.example.android.app_component.content_provider.dict.DictActivity;
 import com.hades.example.android.app_component.service.boundservice.TestLocalBoundServiceActivity;
 import com.hades.example.android.app_component.service.boundservice.TestRemoteBoundServiceActivity2;
@@ -77,6 +81,6 @@ public class MainActivity extends BaseActivity {
     }
 
     private void pageQAAboutView() {
-        showActivity(StartServiceTest1Activity.class);
+        showActivity(Dict2Activity.class);
     }
 }

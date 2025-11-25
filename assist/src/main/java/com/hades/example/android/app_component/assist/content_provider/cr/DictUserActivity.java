@@ -1,5 +1,7 @@
 package com.hades.example.android.app_component.assist.content_provider.cr;
 
+import static com.hades.example.android.app_component.content_provider.dict.common.Dict.WORD_URI;
+
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -22,7 +24,7 @@ public class DictUserActivity extends DictBasicActivity {
     private static final String TAG = "DictUserActivity";
 
     private ContentResolver contentResolver;
-//    private DictContentObserver mDictContentObserver;
+    private DictContentObserver mDictContentObserver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,8 +34,6 @@ public class DictUserActivity extends DictBasicActivity {
 
     @Override
     public void init() {
-        contentResolver = getContentResolver();
-
         /**
          * FIX_ERROR:java.lang.SecurityException: Failed to find provider ** for user 0; expected to find a valid ContentProvider for this authority
          * https://blog.csdn.net/qq_41806128/article/details/115190130
@@ -52,30 +52,28 @@ public class DictUserActivity extends DictBasicActivity {
          *         <provider android:authorities="com.hades.example.android.app_component.content_provider.dict.DictContentProvider" />
          *     </queries>
          */
-//        mDictContentObserver = new DictContentObserver(this, new Handler(Looper.getMainLooper()));
-//        getContentResolver().registerContentObserver(Dict.getUri(), true, mDictContentObserver);
-//        getContentResolver().notifyChange(Dict.getUri(), mDictContentObserver);
-//
-//        getContentResolver().registerContentObserver(Dict.getUriById(), true, mDictContentObserver);
-//        getContentResolver().notifyChange(Dict.getUriById(), mDictContentObserver);
+        contentResolver = getContentResolver();
+        mDictContentObserver = new DictContentObserver(this, new Handler(Looper.getMainLooper()));
+        contentResolver.registerContentObserver(Dict.getUri(), true, mDictContentObserver);
+        contentResolver.registerContentObserver(WORD_URI, true, mDictContentObserver);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-//        if (null != mDictContentObserver) {
-//            getContentResolver().unregisterContentObserver(mDictContentObserver);
-//            mDictContentObserver = null;
-//        }
+        if (null != mDictContentObserver) {
+            contentResolver.unregisterContentObserver(mDictContentObserver);
+            mDictContentObserver = null;
+        }
     }
 
     @Override
     public boolean doInsert(String word, String detail) {
         // 插入多条记录, 也适合参数多条记录
         ContentValues values = new ContentValues();
-        values.put(Dict.Word.WORD, word);
-        values.put(Dict.Word.DETAIL, detail);
+        values.put(Dict.DictColumns.WORD, word);
+        values.put(Dict.DictColumns.DETAIL, detail);
         Uri uri = contentResolver.insert(Dict.WORDS_URI, values);
         Log.e(TAG, "doInsert: " + uri);
         return null != uri;
@@ -83,9 +81,7 @@ public class DictUserActivity extends DictBasicActivity {
 
     @Override
     public boolean doDelete(long id) {
-        ContentValues values = new ContentValues();
-        values.put(Dict.Word._ID, id);
-        String where = Dict.Word._ID + " = ?";
+        String where = Dict.DictColumns._ID + " = ?";
         int rowNum = contentResolver.delete(Dict.WORDS_URI, where, new String[]{String.valueOf(id)});
         Log.e(TAG, "doDelete: " + rowNum);
         return rowNum > 0;
@@ -102,9 +98,9 @@ public class DictUserActivity extends DictBasicActivity {
     @Override
     public boolean doUpdate(String word, String detail, long id) {
         ContentValues values = new ContentValues();
-        values.put(Dict.Word.WORD, word);
-        values.put(Dict.Word.DETAIL, detail);
-        String where = Dict.Word._ID + " = ?";
+        values.put(Dict.DictColumns.WORD, word);
+        values.put(Dict.DictColumns.DETAIL, detail);
+        String where = Dict.DictColumns._ID + " = ?";
         int rowNumer = contentResolver.update(Dict.WORDS_URI, values, where, new String[]{String.valueOf(id)});
         Log.e(TAG, "update: " + rowNumer);
         return rowNumer > 0;
@@ -113,8 +109,8 @@ public class DictUserActivity extends DictBasicActivity {
     public boolean doUpdateById(String word, String detail, long id) {
         // 更新单条记录
         ContentValues values = new ContentValues();
-        values.put(Dict.Word.WORD, word);
-        values.put(Dict.Word.DETAIL, detail);
+        values.put(Dict.DictColumns.WORD, word);
+        values.put(Dict.DictColumns.DETAIL, detail);
         int rowNumer = contentResolver.update(Dict.getUriById(id), values, null, null);
         Log.e(TAG, "update: " + rowNumer);
         return rowNumer > 0;

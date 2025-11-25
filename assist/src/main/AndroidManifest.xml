@@ -5,14 +5,33 @@
         <!-- 声明要访问的 Content Provider 的 Authority -->
         <provider android:authorities="com.hades.example.android.app_component.content_provider.dict.DictContentProvider" />
     </queries>
+    <queries>
+        <!-- 声明要访问的 Content Provider 的 Authority -->
+        <provider android:authorities="com.hades.example.android.app_component.content_provider.dict.DictContentProvider2" />
+    </queries>
+
+
+    <!-- 声明 Dict2ContentProvider 需要的权限  -->
+    <uses-permission android:name="com.hades.example.android.app_component.content_provider.dict.DictContentProvider2.readPermission" />
+    <uses-permission android:name="com.hades.example.android.app_component.content_provider.dict.DictContentProvider2.writePermission" />
 
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<!--        <activity-->
+<!--            android:name=".content_provider.cr.DictUserActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
         <activity
-            android:name=".content_provider.cr.DictUserActivity"
+            android:name=".content_provider.cr.Dict2UserActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +39,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <!--        <activity-->
+        <!--            android:name=".CrossBroadcastActivity"-->
+        <!--            android:exported="true">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.MAIN" />-->
+
+        <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
+
+        <receiver
+            android:name="com.hades.example.android.app_component.assist.brodcast.CrossAppBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.hades.example.android.app_component.broadcast.CROSS_APP_ACTION" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

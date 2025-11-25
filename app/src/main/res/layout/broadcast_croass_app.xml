@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/topic"
+        android:text="Send Cross app 自定义 Broadcast" />
+
+    <Button
+        android:id="@+id/sendImplicitBroadcast"
+        style="@style/btn"
+        android:layout_above="@+id/sendExplicitBroadcast"
+        android:layout_centerHorizontal="true"
+        android:text="@string/sendImplicitBroadcast" />
+
+    <Button
+        android:id="@+id/sendExplicitBroadcast"
+        style="@style/btn"
+        android:layout_centerInParent="true"
+        android:text="@string/sendExplicitBroadcast" />
+</RelativeLayout>

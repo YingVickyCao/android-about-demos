@@ -10,7 +10,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d(TAG, "onReceive: " + intent.getAction());
+        Log.e(TAG, "onReceive: " + intent.getAction());
 
         //  1 -> 3 -> 2 => abort = 1
         if (isOrderedBroadcast()) {

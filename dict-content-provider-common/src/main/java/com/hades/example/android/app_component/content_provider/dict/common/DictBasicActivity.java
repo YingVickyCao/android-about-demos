@@ -152,6 +152,10 @@ public abstract class DictBasicActivity extends Activity {
 
     private void queryById() {
         String keyword = ((EditText) findViewById(R.id.dicId)).getText().toString();
+        if (keyword.isEmpty()){
+            Toast.makeText(this, "Id is 空", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Cursor cursor = doQueryById(keyword);
         List<DictRowBean> result = convertCursorToList(cursor);

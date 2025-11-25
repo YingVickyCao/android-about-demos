@@ -78,6 +78,13 @@ public class TestOrderedBroadcastActivity extends Activity {
     }
 
     private void sendOrderedBroadcast() {
-        sendOrderedBroadcast(new Intent(ACTION_TWO).setPackage(getPackageName()), null);
+//        new Thread(new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                sendOrderedBroadcast(new Intent(ACTION_TWO).setPackage(getPackageName()), null);
+//            }
+//        }).start();
+//        sendOrderedBroadcast(new Intent(ACTION_TWO).setPackage(getPackageName()), null);
     }
 }

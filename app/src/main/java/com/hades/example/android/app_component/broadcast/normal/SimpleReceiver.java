@@ -23,6 +23,7 @@ public class SimpleReceiver extends BroadcastReceiver {
         /**
          * SimpleReceiver: onReceive,[thread =2,main],hashCode()=77016919
          */
+        // 无论使用sendBroadcast 在哪个线程发送广播，广播的接收始终在主线程。
         Log.d(TAG, "onReceive: " + ThreadUtils.getThreadInfo());
         Log.d(TAG, "onReceive" + ",hashCode=" + String.valueOf(System.identityHashCode(this)));
         if (null == intent || null == intent.getAction()) {

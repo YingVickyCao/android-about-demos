@@ -38,6 +38,18 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- Target SDK     Android 14 -->
 
 
+    <permission
+        android:name="com.hades.example.android.app_component.content_provider.dict.DictContentProvider2.readPermission"
+        android:description="@string/dict2_readPermission"
+        android:label="@string/dict2_readPermission"
+        android:protectionLevel="normal" />
+
+    <permission
+        android:name="com.hades.example.android.app_component.content_provider.dict.DictContentProvider2.writePermission"
+        android:description="@string/dict2_writePermission"
+        android:label="@string/dict2_writePermission"
+        android:protectionLevel="normal" />
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -333,6 +345,26 @@
             android:authorities="com.hades.example.android.app_component.content_provider.dict.DictContentProvider"
             android:enabled="true"
             android:exported="true" />
+        <activity android:name=".app_component.content_provider.dict.Dict2Activity" />
+
+        <!--
+        声明读写权限：android:permission 更通用，等价于同时声明 readPermission  和 writePermission
+        声明路径权限：path-permission
+         -->
+        <provider
+            android:name=".app_component.content_provider.dict.Dict2ContentProvider"
+            android:authorities="com.hades.example.android.app_component.content_provider.dict.DictContentProvider2"
+            android:enabled="true"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:readPermission="com.hades.example.android.app_component.content_provider.dict.DictContentProvider2.readPermission"
+            android:writePermission="com.hades.example.android.app_component.content_provider.dict.DictContentProvider2.writePermission">
+
+            <path-permission
+                android:pathPrefix="/sensitive_data"
+                android:readPermission="com.example.myapp.provider.permission.READ_SENSITIVE_DATA"
+                android:writePermission="com.example.myapp.provider.permission.WRITE_SENSITIVE_DATA" />
+        </provider>
 
         <activity android:name=".app_component.content_provider.dict.DictActivity" />
         <activity android:name=".app_component.content_provider.system.contact.ContactContentProviderActivity" />
@@ -388,7 +420,20 @@
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
-        </receiver> <!-- <receiver android:name=".app_component.broadcast.ordered.OrderMsgReceiver2"> -->
+        </receiver>
+
+        <!--  静态注册的广播接收者，如果不需要被其他应用或系统直接发送广播，应该在 Manifest 中将 android:exported 设置为 false。      -->
+        <receiver
+            android:name=".app_component.broadcast._static.TimezoneChangedReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".app_component.broadcast.cross_app.CrossBroadcastActivity" />
+
+        <!-- <receiver android:name=".app_component.broadcast.ordered.OrderMsgReceiver2"> -->
         <!-- <intent-filter android:priority="1"> -->
         <!-- <action android:name=".app_component.broadcast.ordered.BootCompletedReceivereiver.TWO" /> -->
         <!-- </intent-filter> -->

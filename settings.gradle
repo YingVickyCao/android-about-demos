@@ -64,3 +64,4 @@ include ':live-data'
 project(':live-data').projectDir = new File('lib-examples/live-data')
 include ':test'
 include ':dict-content-provider-common'
+include ':cross-brodcast-common'

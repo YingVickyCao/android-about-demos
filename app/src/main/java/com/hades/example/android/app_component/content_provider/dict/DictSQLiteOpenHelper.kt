@@ -41,9 +41,9 @@ class DictSQLiteOpenHelper(context: Context?, name: String?, version: Int) : SQL
 
     private fun convertBean2ContentValues(info: DictRowBean): ContentValues {
         val value = ContentValues()
-        value.put(Dict.Word._ID, info.get_id())
-        value.put(Dict.Word.WORD, info.getWord())
-        value.put(Dict.Word.DETAIL, info.getDetail())
+        value.put(Dict.DictColumns._ID, info.get_id())
+        value.put(Dict.DictColumns.WORD, info.getWord())
+        value.put(Dict.DictColumns.DETAIL, info.getDetail())
         return value
     }
 

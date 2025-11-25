@@ -1,5 +1,9 @@
 package com.hades.example.android.app_component.content_provider.dict;
 
+import static android.content.ContentResolver.NOTIFY_DELETE;
+import static android.content.ContentResolver.NOTIFY_INSERT;
+import static android.content.ContentResolver.NOTIFY_UPDATE;
+
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -15,6 +19,10 @@ import com.hades.utility.jvm.ThreadUtils;
 
 import java.util.Arrays;
 
+/**
+ * notifyChange(Uri, ContentObserver, int) - 当 ContentResolver 更新数据后，可以通过注入到 ContentResolver 的ContentObserver 得到通知。
+ * flags = 0 (或者 null observer): 最常见，ContentResolver 会查找所有注册的、匹配 uri 的 ContentObserver，然后调用它们的 onChange() 方法。
+ */
 public class DictContentProvider extends ContentProvider {
     public static final String TAG = DictContentProvider.class.getSimpleName();
 
@@ -84,14 +92,13 @@ public class DictContentProvider extends ContentProvider {
             // 如果Uri参数代表操作全部数据项
             case Dict.CODE_WORDS_URI:
                 // 插入数据，返回插入记录的ID
-                long rowId = db.insert(DictDbOps.TABLE_DICT_NAME, Dict.Word._ID, values);
+                long rowId = db.insert(DictDbOps.TABLE_DICT_NAME, Dict.DictColumns._ID, values);
                 // 如果插入成功返回uri
                 if (rowId > 0) {
                     // 在已有的 Uri的后面追加ID
                     Uri wordUri = ContentUris.withAppendedId(uri, rowId);
                     // 通知数据已经改变
-                    getContext().getContentResolver().notifyChange(wordUri, null);
-                    getContext().getContentResolver().notifyChange(Dict.WORDS_URI, null);
+                    getContext().getContentResolver().notifyChange(Dict.WORDS_URI, null, NOTIFY_INSERT);
                     return wordUri;
                 }
                 break;
@@ -120,7 +127,7 @@ public class DictContentProvider extends ContentProvider {
             case Dict.CODE_WORD_URI:
                 // 解析出所需要删除的记录ID
                 long id = ContentUris.parseId(uri);
-                String whereClause = Dict.Word._ID + "=" + id;
+                String whereClause = Dict.DictColumns._ID + "=" + id;
                 // 如果原来的where子句存在，拼接where子句
                 if (where != null && !where.equals("")) {
                     whereClause = whereClause + " and " + where;
@@ -131,7 +138,7 @@ public class DictContentProvider extends ContentProvider {
                 throw new IllegalArgumentException("未知Uri:" + uri);
         }
         // 通知数据已经改变
-        getContext().getContentResolver().notifyChange(uri, null);
+        getContext().getContentResolver().notifyChange(uri, null, NOTIFY_DELETE);
         return num;
     }
 
@@ -153,7 +160,7 @@ public class DictContentProvider extends ContentProvider {
             case Dict.CODE_WORD_URI:
                 // 解析出想修改的记录ID
                 long id = ContentUris.parseId(uri);
-                String whereClause = Dict.Word._ID + "=" + id;
+                String whereClause = Dict.DictColumns._ID + "=" + id;
                 // 如果原来的where子句存在，拼接where子句
                 if (where != null && !where.equals("")) {
                     whereClause = whereClause + " and " + where;
@@ -164,7 +171,7 @@ public class DictContentProvider extends ContentProvider {
                 throw new IllegalArgumentException("未知Uri:" + uri);
         }
         // 通知数据已经改变
-        getContext().getContentResolver().notifyChange(uri, null);
+        getContext().getContentResolver().notifyChange(uri, null, NOTIFY_UPDATE);
         return num;
     }
 
@@ -187,7 +194,7 @@ public class DictContentProvider extends ContentProvider {
                 // query: uri=content://com.hades.example.android.app_component.content_provider.dict.DictContentProvider/word/10,where=null
                 // 解析出想查询的记录ID
                 long id = ContentUris.parseId(uri);
-                String whereClause = Dict.Word._ID + "=" + id;
+                String whereClause = Dict.DictColumns._ID + "=" + id;
                 // 如果原来的where子句存在，拼接where子句
                 if (where != null && !"".equals(where)) {
                     whereClause = whereClause + " and " + where;

@@ -50,7 +50,7 @@ public final class Dict {
 
 
     // 定义一个静态内部类，定义该ContentProvider所包含的数据列的列名
-    public static final class Word implements BaseColumns {
+    public static final class DictColumns implements BaseColumns {
         // 定义Content所允许操作的三个数据列
         public final static String WORD = "word";
         public final static String DETAIL = "detail";

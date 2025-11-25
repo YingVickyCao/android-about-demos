@@ -48,11 +48,17 @@ public class TestNormalBroadcastActivity extends Activity {
     }
 
     private void sendImplicitBroadcast() {
-        Intent intent = new Intent();
-        intent.setAction(ACTION_ONE);
-        // // This makes the intent explicit.
-        intent.setPackage(getPackageName());
-        intent.putExtra(KEY_ONE, "normal Broadcast " + System.currentTimeMillis());
-        sendBroadcast(intent);
+//        new Thread(new Runnable() {
+//
+//            @Override
+//            public void run() {
+                Intent intent = new Intent();
+                intent.setAction(ACTION_ONE);
+                // // This makes the intent explicit.
+                intent.setPackage(getPackageName());
+                intent.putExtra(KEY_ONE, "normal Broadcast " + System.currentTimeMillis());
+                sendBroadcast(intent);
+//            }
+//        }).start();
     }
 }

@@ -69,7 +69,7 @@ public class DictActivity extends DictBasicActivity {
     @Override
     public boolean doDelete(long id) {
         try {
-            String where = Dict.Word._ID + " = " + id;
+            String where = Dict.DictColumns._ID + " = " + id;
             int rowNum = dbHelper.getReadableDatabase().delete(DictDbOps.TABLE_DICT_NAME, where, null);
             return rowNum > 0;
         } catch (Exception ex) {
@@ -81,9 +81,9 @@ public class DictActivity extends DictBasicActivity {
     public boolean doUpdate(String word, String detail, long id) {
         try {
             ContentValues values = new ContentValues();
-            values.put(Dict.Word.WORD, word);
-            values.put(Dict.Word.DETAIL, detail);
-            String where = Dict.Word._ID + " = ? ";
+            values.put(Dict.DictColumns.WORD, word);
+            values.put(Dict.DictColumns.DETAIL, detail);
+            String where = Dict.DictColumns._ID + " = ? ";
             int rowNum = dbHelper.getReadableDatabase().update(DictDbOps.TABLE_DICT_NAME, values, where, new String[]{String.valueOf(id)});
             return rowNum > 0;
         } catch (Exception ex) {

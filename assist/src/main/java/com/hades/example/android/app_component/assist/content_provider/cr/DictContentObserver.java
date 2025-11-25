@@ -1,11 +1,9 @@
 package com.hades.example.android.app_component.assist.content_provider.cr;
 
 import android.database.ContentObserver;
-import android.database.Cursor;
+import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
-
-import com.hades.example.android.app_component.content_provider.dict.common.Dict;
 
 /**
  * https://www.cnblogs.com/zsychanpin/p/7242147.html
@@ -20,20 +18,15 @@ final class DictContentObserver extends ContentObserver {
         mSMSActivity = activity;
     }
 
-    // TODO: 11/07/2018  DictContentObserver onChange not called
-    public void onChange(boolean selfChange) {
-        Log.d(TAG, "onChange: ");
-        Cursor cursor = doSearchWords(null);
-        ;
-        if (null == cursor) {
-            return;
-        }
-        while (cursor.moveToNext()) {
-            Log.d(TAG, "onChange: " + cursor.toString());
-        }
+    @Override
+    public void onChange(boolean selfChange, Uri uri) {
+        super.onChange(selfChange, uri);
+        Log.d(TAG, "onChange: " + uri + ", selfChange: " + selfChange);
     }
 
-    private Cursor doSearchWords(String key) {
-        return mSMSActivity.getContentResolver().query(Dict.WORDS_URI, null, null, null, null);
+    @Override
+    public void onChange(boolean selfChange) {
+        super.onChange(selfChange);
+        Log.e(TAG, "onChange: " + selfChange);
     }
 }
