@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
@@ -68,7 +69,10 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
     }
 
     private Intent buildIntent() {
-        return new Intent(this, RemoteBoundedService.class);
+        Intent intent =  new Intent(this, RemoteBoundedService.class);
+        IntentFilter intentFilter  = new IntentFilter();
+        intentFilter.addAction();
+        return  intent;
     }
 
     @Override
