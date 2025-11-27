@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.hades.example.android.R;
-import com.hades.example.android.app_component.content_provider.dict.common.Dict;
-import com.hades.example.android.app_component.content_provider.dict.common.DictBasicActivity;
-import com.hades.example.android.app_component.content_provider.dict.common.DictDbOps;
+import com.hades.example.android.app_component.ipc.common.content_provider.Dict;
+import com.hades.example.android.app_component.ipc.common.content_provider.DictBasicActivity;
+import com.hades.example.android.app_component.ipc.common.content_provider.DictDbOps;
 
 public class DictActivity extends DictBasicActivity {
     DictSQLiteOpenHelper dbHelper;

@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
-import com.hades.example.android.app_component.content_provider.dict.common.Dict2;
+import com.hades.example.android.app_component.ipc.common.content_provider.Dict2;
 
 public class Dict2Activity extends AppCompatActivity {
     private static final String TAG = "Dict2Activity";

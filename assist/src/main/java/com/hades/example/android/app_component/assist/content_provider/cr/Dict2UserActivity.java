@@ -11,8 +11,7 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.app_component.assist.R;
-import com.hades.example.android.app_component.content_provider.dict.common.Dict;
-import com.hades.example.android.app_component.content_provider.dict.common.Dict2;
+import com.hades.example.android.app_component.ipc.common.content_provider.Dict2;
 
 
 /**

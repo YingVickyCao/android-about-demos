@@ -63,5 +63,4 @@ project(':view-module').projectDir = new File('lib-examples/view-module')
 include ':live-data'
 project(':live-data').projectDir = new File('lib-examples/live-data')
 include ':test'
-include ':dict-content-provider-common'
-include ':cross-brodcast-common'
+include ':ipc-common'

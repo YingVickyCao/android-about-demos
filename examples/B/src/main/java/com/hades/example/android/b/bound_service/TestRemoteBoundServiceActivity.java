@@ -70,9 +70,7 @@ public class TestRemoteBoundServiceActivity extends Activity implements IRespons
 
     private Intent buildIntent() {
         Intent intent =  new Intent(this, RemoteBoundedService.class);
-        IntentFilter intentFilter  = new IntentFilter();
-        intentFilter.addAction();
-        return  intent;
+        return intent;
     }
 
     @Override

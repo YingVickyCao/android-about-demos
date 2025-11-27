@@ -5,9 +5,9 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
-import com.hades.example.android.app_component.content_provider.dict.common.Dict
-import com.hades.example.android.app_component.content_provider.dict.common.DictDbOps
-import com.hades.example.android.app_component.content_provider.dict.common.DictRowBean
+import com.hades.example.android.app_component.ipc.common.content_provider.Dict
+import com.hades.example.android.app_component.ipc.common.content_provider.DictDbOps
+import com.hades.example.android.app_component.ipc.common.content_provider.DictRowBean
 
 /*
     // data/data/com.xxx.xxx/dict.db

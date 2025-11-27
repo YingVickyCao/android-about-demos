@@ -8,7 +8,7 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hades.example.android.R;
-import com.hades.example.android.app_component.broadcast.common.CrossBroadcastCommon;
+import com.hades.example.android.app_component.ipc.common.broadcast.CrossBroadcastCommon;
 
 public class CrossBroadcastActivity extends AppCompatActivity {
     private static final String TAG = "CrossBroadcastActivity";

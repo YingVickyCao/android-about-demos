@@ -1,6 +1,6 @@
 package com.hades.example.android.app_component.assist.content_provider.cr;
 
-import static com.hades.example.android.app_component.content_provider.dict.common.Dict.WORD_URI;
+import static com.hades.example.android.app_component.ipc.common.content_provider.Dict.WORD_URI;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -13,8 +13,8 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.hades.example.android.app_component.assist.R;
-import com.hades.example.android.app_component.content_provider.dict.common.Dict;
-import com.hades.example.android.app_component.content_provider.dict.common.DictBasicActivity;
+import com.hades.example.android.app_component.ipc.common.content_provider.Dict;
+import com.hades.example.android.app_component.ipc.common.content_provider.DictBasicActivity;
 
 
 /**

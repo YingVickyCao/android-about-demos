@@ -75,8 +75,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(":dict-content-provider-common")
-    implementation project(":cross-brodcast-common")
+    implementation project(":ipc-common")
 
     implementation(libs.utilityAndroid) {
         artifact {

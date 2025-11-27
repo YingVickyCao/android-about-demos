@@ -9,12 +9,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.UriMatcher;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 
-import com.hades.example.android.app_component.content_provider.dict.common.Dict2;
+import com.hades.example.android.app_component.ipc.common.content_provider.Dict2;
 import com.hades.utility.jvm.ThreadUtils;
 
 import java.util.Arrays;

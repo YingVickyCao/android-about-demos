@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.hades.example.android.app_component.broadcast.common.CrossBroadcastCommon;
+import com.hades.example.android.app_component.ipc.common.broadcast.CrossBroadcastCommon;
 
 /**
  * 测试发现：
